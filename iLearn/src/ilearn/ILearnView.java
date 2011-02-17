@@ -1,9 +1,9 @@
 /*
  * ILearnView.java
  */
-
 package ilearn;
 
+import ilearn.student.FrmNewStudent;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -11,17 +11,24 @@ import org.jdesktop.application.FrameView;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JInternalFrame;
 
 /**
  * The application's main frame.
  */
-public class ILearnView extends FrameView {
+public class ILearnView extends FrameView
+{
 
-    public ILearnView(SingleFrameApplication app) {
+    FrmNewStudent frmNewStudent = null;
+
+    public ILearnView(SingleFrameApplication app)
+    {
         super(app);
 
         initComponents();
@@ -29,18 +36,25 @@ public class ILearnView extends FrameView {
         // status bar initialization - message timeout, idle icon and busy animation, etc
         ResourceMap resourceMap = getResourceMap();
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
-        messageTimer = new Timer(messageTimeout, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        messageTimer = new Timer(messageTimeout, new ActionListener()
+        {
+
+            public void actionPerformed(ActionEvent e)
+            {
                 statusMessageLabel.setText("");
             }
         });
         messageTimer.setRepeats(false);
         int busyAnimationRate = resourceMap.getInteger("StatusBar.busyAnimationRate");
-        for (int i = 0; i < busyIcons.length; i++) {
+        for (int i = 0; i < busyIcons.length; i++)
+        {
             busyIcons[i] = resourceMap.getIcon("StatusBar.busyIcons[" + i + "]");
         }
-        busyIconTimer = new Timer(busyAnimationRate, new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+        busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
+        {
+
+            public void actionPerformed(ActionEvent e)
+            {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
                 statusAnimationLabel.setIcon(busyIcons[busyIconIndex]);
             }
@@ -51,28 +65,39 @@ public class ILearnView extends FrameView {
 
         // connecting action tasks to status bar via TaskMonitor
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
-        taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+        taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
+        {
+
+            public void propertyChange(java.beans.PropertyChangeEvent evt)
+            {
                 String propertyName = evt.getPropertyName();
-                if ("started".equals(propertyName)) {
-                    if (!busyIconTimer.isRunning()) {
+                if ("started".equals(propertyName))
+                {
+                    if (!busyIconTimer.isRunning())
+                    {
                         statusAnimationLabel.setIcon(busyIcons[0]);
                         busyIconIndex = 0;
                         busyIconTimer.start();
                     }
                     progressBar.setVisible(true);
                     progressBar.setIndeterminate(true);
-                } else if ("done".equals(propertyName)) {
+                }
+                else if ("done".equals(propertyName))
+                {
                     busyIconTimer.stop();
                     statusAnimationLabel.setIcon(idleIcon);
                     progressBar.setVisible(false);
                     progressBar.setValue(0);
-                } else if ("message".equals(propertyName)) {
-                    String text = (String)(evt.getNewValue());
+                }
+                else if ("message".equals(propertyName))
+                {
+                    String text = (String) (evt.getNewValue());
                     statusMessageLabel.setText((text == null) ? "" : text);
                     messageTimer.restart();
-                } else if ("progress".equals(propertyName)) {
-                    int value = (Integer)(evt.getNewValue());
+                }
+                else if ("progress".equals(propertyName))
+                {
+                    int value = (Integer) (evt.getNewValue());
                     progressBar.setVisible(true);
                     progressBar.setIndeterminate(false);
                     progressBar.setValue(value);
@@ -81,9 +106,43 @@ public class ILearnView extends FrameView {
         });
     }
 
+    /**
+     * This function checks if a specified form is already displayed.
+     * It accepts the window title in the form of a string and checks if
+     * it is already loaded onto the desktop pane.  It then returns a boolean
+     * depending on the result of the test.
+     *
+     * @param FormTitle
+     * @return True if a loaded frame contains the specified string in title.  False if no frames contains the specified string.
+     */
+    protected boolean isLoaded(String FormTitle)
+    {
+        JInternalFrame Form[] = desktopPane.getAllFrames();
+        for (int i = 0; i < Form.length; i++)
+        {
+            if (Form[i].getTitle().equalsIgnoreCase(FormTitle))
+            {
+                Form[i].show();
+                try
+                {
+                    Form[i].setIcon(false);
+                    Form[i].setSelected(true);
+                }
+                catch (Exception e)
+                {
+                    Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying form.", e);
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+
     @Action
-    public void showAboutBox() {
-        if (aboutBox == null) {
+    public void showAboutBox()
+    {
+        if (aboutBox == null)
+        {
             JFrame mainFrame = ILearnApp.getApplication().getMainFrame();
             aboutBox = new ILearnAboutBox(mainFrame);
             aboutBox.setLocationRelativeTo(mainFrame);
@@ -101,6 +160,7 @@ public class ILearnView extends FrameView {
     private void initComponents() {
 
         mainPanel = new javax.swing.JPanel();
+        desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
@@ -116,15 +176,17 @@ public class ILearnView extends FrameView {
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        desktopPane.setName("desktopPane"); // NOI18N
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 248, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -203,11 +265,30 @@ public class ILearnView extends FrameView {
 
     @Action
     public void showAddStudent()
-    {
-    }
+    { //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Add Student");
+        if (AlreadyLoaded == false)
+        {
+            frmNewStudent = new FrmNewStudent();
+            desktopPane.add(frmNewStudent);
 
+            //Load the Form
+            frmNewStudent.setVisible(true);
+            frmNewStudent.show();
+            try
+            {
+                frmNewStudent.setIcon(false);
+                frmNewStudent.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addStudent;
+    private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
@@ -216,12 +297,10 @@ public class ILearnView extends FrameView {
     private javax.swing.JPanel statusPanel;
     private javax.swing.JMenu studentMenu;
     // End of variables declaration//GEN-END:variables
-
     private final Timer messageTimer;
     private final Timer busyIconTimer;
     private final Icon idleIcon;
     private final Icon[] busyIcons = new Icon[15];
     private int busyIconIndex = 0;
-
     private JDialog aboutBox;
 }
