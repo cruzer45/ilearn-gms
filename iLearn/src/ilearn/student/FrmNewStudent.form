@@ -13,6 +13,9 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
+  <Events>
+    <EventHandler event="internalFrameClosing" listener="javax.swing.event.InternalFrameListener" parameters="javax.swing.event.InternalFrameEvent" handler="frameClosing"/>
+  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
@@ -74,8 +77,13 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblClass" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
+                              <Component id="cmbClass" pref="252" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="69" max="32767" attributes="0"/>
+                              <EmptySpace pref="88" max="32767" attributes="0"/>
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -92,12 +100,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPhoto" alignment="0" pref="280" max="32767" attributes="0"/>
-                                  <Component id="calDOB" alignment="0" pref="280" max="32767" attributes="0"/>
-                                  <Component id="cmbGender" alignment="0" pref="280" max="32767" attributes="0"/>
-                                  <Component id="txtOtherName" alignment="0" pref="280" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" pref="280" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="txtPhoto" alignment="0" pref="249" max="32767" attributes="0"/>
+                                  <Component id="calDOB" alignment="0" pref="249" max="32767" attributes="0"/>
+                                  <Component id="cmbGender" alignment="0" pref="249" max="32767" attributes="0"/>
+                                  <Component id="txtOtherName" alignment="0" pref="249" max="32767" attributes="0"/>
+                                  <Component id="txtLastName" alignment="0" pref="249" max="32767" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" pref="249" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -140,7 +148,12 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Component id="cmdBrowse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="125" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace pref="85" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -154,6 +167,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblFirstName">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="lblFirstName.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="lblFirstName.text"/>
                 <Property name="name" type="java.lang.String" value="lblFirstName" noResource="true"/>
               </Properties>
@@ -169,6 +183,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblLastName">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="lblLastName.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="lblLastName.text"/>
                 <Property name="name" type="java.lang.String" value="lblLastName" noResource="true"/>
               </Properties>
@@ -196,6 +211,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblGender">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="lblGender.text"/>
                 <Property name="name" type="java.lang.String" value="lblGender" noResource="true"/>
               </Properties>
@@ -215,6 +231,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblDOB">
               <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="lblDOB.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="lblDOB.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="lblDOB" noResource="true"/>
@@ -240,6 +257,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="cmdBrowse">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.student.FrmNewStudent" id="browse" methodName="browse"/>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="cmdBrowse.text"/>
                 <Property name="name" type="java.lang.String" value="cmdBrowse" noResource="true"/>
               </Properties>
@@ -269,6 +289,26 @@
                 </Property>
                 <Property name="text" type="java.lang.String" resourceKey="cmdReset.text"/>
                 <Property name="name" type="java.lang.String" value="cmdReset" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbClass">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+                <Property name="name" type="java.lang.String" value="cmbClass" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblClass">
+              <Properties>
+                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
+                <Property name="text" type="java.lang.String" resourceKey="lblClass.text"/>
+                <Property name="name" type="java.lang.String" value="lblClass" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>
@@ -301,10 +341,10 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtEmail" alignment="0" pref="299" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" pref="299" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="1" pref="299" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="299" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="275" max="32767" attributes="0"/>
+                                  <Component id="txtPhone" alignment="0" pref="275" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="1" pref="275" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="275" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -340,7 +380,7 @@
                           <Component id="lblMailingAddress" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="74" max="32767" attributes="0"/>
+                      <EmptySpace pref="83" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -371,9 +411,6 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new NotEmptyValidator(parent, txtHomeAddress, &quot;This cannot be empty.&quot;)" type="code"/>
-                    </Property>
                     <Property name="name" type="java.lang.String" value="txtHomeAddress" noResource="true"/>
                   </Properties>
                 </Component>
@@ -452,7 +489,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="ICE">
+              <JTabbedPaneConstraints tabName="Guardian">
                 <Property name="tabTitle" type="java.lang.String" resourceKey="parentPanel.TabConstraints.tabTitle"/>
                 <Property name="tabIcon" type="javax.swing.Icon" resourceKey="parentPanel.TabConstraints.tabIcon"/>
               </JTabbedPaneConstraints>
@@ -465,16 +502,14 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="primaryContactPanel" min="-2" max="-2" attributes="1"/>
-                          <Component id="secConPanel" alignment="0" min="-2" max="-2" attributes="1"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="cmdNext3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdCancel3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="secConPanel" alignment="0" max="32767" attributes="2"/>
+                          <Component id="primaryContactPanel" alignment="0" max="32767" attributes="2"/>
                       </Group>
-                      <EmptySpace pref="32" max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="186" max="32767" attributes="0"/>
-                      <Component id="cmdNext3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cmdCancel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -486,7 +521,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace pref="13" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -758,9 +793,9 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDoctorPhone" alignment="0" pref="240" max="32767" attributes="0"/>
-                                  <Component id="txtPrimaryDoctor" alignment="0" pref="240" max="32767" attributes="0"/>
-                                  <Component id="txtHospital" alignment="1" pref="240" max="32767" attributes="0"/>
+                                  <Component id="txtDoctorPhone" alignment="0" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtPrimaryDoctor" alignment="0" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtHospital" alignment="1" pref="201" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -791,7 +826,7 @@
                           <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="232" max="32767" attributes="0"/>
+                      <EmptySpace pref="231" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
