@@ -30,32 +30,43 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblClassLevel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="cmbClassLevel" pref="294" max="32767" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
+                      <Component id="lblClassName" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                      <Component id="txtClassName" pref="294" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lblClassCode" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
+                      <Component id="txtClassCode" pref="294" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblClassCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblClassName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClassDesc" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblRoom" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHomeRoom" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClassSize" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbHomeRoom" alignment="0" pref="279" max="32767" attributes="0"/>
-                          <Component id="cmbRoom" alignment="0" pref="279" max="32767" attributes="0"/>
-                          <Component id="txtClassDescription" alignment="0" pref="279" max="32767" attributes="0"/>
-                          <Component id="txtClassName" alignment="0" pref="279" max="32767" attributes="0"/>
-                          <Component id="txtClassCode" alignment="0" pref="279" max="32767" attributes="0"/>
-                          <Component id="spinnerClassSize" alignment="0" pref="279" max="32767" attributes="0"/>
+                          <Component id="cmbHomeRoom" alignment="0" pref="294" max="32767" attributes="0"/>
+                          <Component id="cmbRoom" alignment="0" pref="294" max="32767" attributes="0"/>
+                          <Component id="txtClassDescription" alignment="0" pref="294" max="32767" attributes="0"/>
+                          <Component id="spinnerClassSize" alignment="0" pref="294" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -64,13 +75,18 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblClassCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtClassCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblClassLevel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmbClassLevel" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblClassName" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtClassName" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="lblClassCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtClassCode" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -87,12 +103,12 @@
                   <Component id="lblHomeRoom" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmbHomeRoom" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblClassSize" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="spinnerClassSize" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -103,6 +119,25 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JLabel" name="lblClassLevel">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="lblClassLevel.text"/>
+        <Property name="name" type="java.lang.String" value="lblClassLevel" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbClassLevel">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="First"/>
+            <StringItem index="1" value="Second"/>
+            <StringItem index="2" value="Third"/>
+            <StringItem index="3" value="Fourth"/>
+          </StringArray>
+        </Property>
+        <Property name="name" type="java.lang.String" value="cmbClassLevel" noResource="true"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JLabel" name="lblClassCode">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="lblClassCode.text"/>
@@ -111,6 +146,7 @@
     </Component>
     <Component class="javax.swing.JTextField" name="txtClassCode">
       <Properties>
+        <Property name="editable" type="boolean" value="false"/>
         <Property name="text" type="java.lang.String" resourceKey="txtClassCode.text"/>
         <Property name="name" type="java.lang.String" value="txtClassCode" noResource="true"/>
       </Properties>
@@ -177,6 +213,20 @@
         <Property name="name" type="java.lang.String" value="cmbHomeRoom" noResource="true"/>
       </Properties>
     </Component>
+    <Component class="javax.swing.JLabel" name="lblClassSize">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="lblClassSize.text"/>
+        <Property name="name" type="java.lang.String" value="lblClassSize" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spinnerClassSize">
+      <Properties>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+          <SpinnerModel initial="30" numberType="java.lang.Integer" stepSize="1" type="number"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="spinnerClassSize" noResource="true"/>
+      </Properties>
+    </Component>
     <Component class="javax.swing.JButton" name="cmdCancel">
       <Properties>
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
@@ -193,20 +243,6 @@
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="cmdSave.text"/>
         <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblClassSize">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblClassSize.text"/>
-        <Property name="name" type="java.lang.String" value="lblClassSize" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="spinnerClassSize">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="30" numberType="java.lang.Integer" stepSize="1" type="number"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="spinnerClassSize" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

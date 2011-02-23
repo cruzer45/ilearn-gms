@@ -33,6 +33,8 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblClassLevel = new javax.swing.JLabel();
+        cmbClassLevel = new javax.swing.JComboBox();
         lblClassCode = new javax.swing.JLabel();
         txtClassCode = new javax.swing.JTextField();
         lblClassName = new javax.swing.JLabel();
@@ -43,10 +45,10 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
         cmbRoom = new javax.swing.JComboBox();
         lblHomeRoom = new javax.swing.JLabel();
         cmbHomeRoom = new javax.swing.JComboBox();
-        cmdCancel = new javax.swing.JButton();
-        cmdSave = new javax.swing.JButton();
         lblClassSize = new javax.swing.JLabel();
         spinnerClassSize = new javax.swing.JSpinner();
+        cmdCancel = new javax.swing.JButton();
+        cmdSave = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -56,9 +58,16 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
+        lblClassLevel.setText(resourceMap.getString("lblClassLevel.text")); // NOI18N
+        lblClassLevel.setName("lblClassLevel"); // NOI18N
+
+        cmbClassLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First", "Second", "Third", "Fourth" }));
+        cmbClassLevel.setName("cmbClassLevel"); // NOI18N
+
         lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
         lblClassCode.setName("lblClassCode"); // NOI18N
 
+        txtClassCode.setEditable(false);
         txtClassCode.setText(resourceMap.getString("txtClassCode.text")); // NOI18N
         txtClassCode.setName("txtClassCode"); // NOI18N
 
@@ -86,6 +95,12 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
         cmbHomeRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbHomeRoom.setName("cmbHomeRoom"); // NOI18N
 
+        lblClassSize.setText(resourceMap.getString("lblClassSize.text")); // NOI18N
+        lblClassSize.setName("lblClassSize"); // NOI18N
+
+        spinnerClassSize.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(30), null, null, Integer.valueOf(1)));
+        spinnerClassSize.setName("spinnerClassSize"); // NOI18N
+
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddNewClass.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
@@ -95,12 +110,6 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
 
-        lblClassSize.setText(resourceMap.getString("lblClassSize.text")); // NOI18N
-        lblClassSize.setName("lblClassSize"); // NOI18N
-
-        spinnerClassSize.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(30), null, null, Integer.valueOf(1)));
-        spinnerClassSize.setName("spinnerClassSize"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,26 +117,34 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblClassLevel)
+                        .addGap(8, 8, 8)
+                        .addComponent(cmbClassLevel, 0, 294, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel))
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblClassName)
+                        .addGap(6, 6, 6)
+                        .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(lblClassCode)
+                        .addGap(8, 8, 8)
+                        .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClassCode)
-                            .addComponent(lblClassName)
                             .addComponent(lblClassDesc)
                             .addComponent(lblRoom)
                             .addComponent(lblHomeRoom)
                             .addComponent(lblClassSize))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbHomeRoom, 0, 279, Short.MAX_VALUE)
-                            .addComponent(cmbRoom, 0, 279, Short.MAX_VALUE)
-                            .addComponent(txtClassDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                            .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                            .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                            .addComponent(spinnerClassSize, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))))
+                            .addComponent(cmbHomeRoom, 0, 294, Short.MAX_VALUE)
+                            .addComponent(cmbRoom, 0, 294, Short.MAX_VALUE)
+                            .addComponent(txtClassDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                            .addComponent(spinnerClassSize, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -135,12 +152,16 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassCode)
-                    .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblClassLevel)
+                    .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassName)
                     .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClassCode)
+                    .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassDesc)
@@ -157,7 +178,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassSize)
                     .addComponent(spinnerClassSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))
@@ -180,12 +201,14 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox cmbClassLevel;
     private javax.swing.JComboBox cmbHomeRoom;
     private javax.swing.JComboBox cmbRoom;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdSave;
     private javax.swing.JLabel lblClassCode;
     private javax.swing.JLabel lblClassDesc;
+    private javax.swing.JLabel lblClassLevel;
     private javax.swing.JLabel lblClassName;
     private javax.swing.JLabel lblClassSize;
     private javax.swing.JLabel lblHomeRoom;
