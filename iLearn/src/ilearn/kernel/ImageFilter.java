@@ -43,14 +43,14 @@ public class ImageFilter extends FileFilter {
             return true;
         }
 
-        String extension = Utils.getExtension(f);
+        String extension = ImageFilterUtils.getExtension(f);
         if (extension != null) {
-            if (extension.equals(Utils.tiff) ||
-                extension.equals(Utils.tif) ||
-                extension.equals(Utils.gif) ||
-                extension.equals(Utils.jpeg) ||
-                extension.equals(Utils.jpg) ||
-                extension.equals(Utils.png)) {
+            if (extension.equals(ImageFilterUtils.tiff) ||
+                extension.equals(ImageFilterUtils.tif) ||
+                extension.equals(ImageFilterUtils.gif) ||
+                extension.equals(ImageFilterUtils.jpeg) ||
+                extension.equals(ImageFilterUtils.jpg) ||
+                extension.equals(ImageFilterUtils.png)) {
                     return true;
             } else {
                 return false;
