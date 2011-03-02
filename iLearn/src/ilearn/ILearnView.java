@@ -4,6 +4,8 @@
 package ilearn;
 
 import ilearn.classes.FrmAddNewClass;
+import ilearn.kernel.Environment;
+import ilearn.security.FrmLogin;
 import ilearn.student.FrmNewStudent;
 import ilearn.subject.FrmAddSubject;
 import org.jdesktop.application.Action;
@@ -108,6 +110,9 @@ public class ILearnView extends FrameView
                 }
             }
         });
+
+        Environment.createConnection();
+        showLoginScreen();
     }
 
     /**
@@ -366,6 +371,14 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    private void showLoginScreen()
+    {
+        FrmLogin frmLogin = new FrmLogin(this.getFrame(), true);
+        frmLogin.setLocationRelativeTo(this.getFrame());
+        frmLogin.setVisible(true);
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStudent;

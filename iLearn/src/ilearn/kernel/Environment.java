@@ -39,7 +39,7 @@ public class Environment
     {
         try
         {
-            properties.load(new FileInputStream("iLoan.properties"));
+            properties.load(new FileInputStream("conf/iLearn.properties"));
         }
         catch (Exception e)
         {
@@ -77,18 +77,31 @@ public class Environment
         }
         catch (ClassNotFoundException cnfEx)
         {
-
             String message = "ERROR: The driver specified could not be found.";
             Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message, cnfEx);
+            message = "An error occurred while connecting to the database.\n"
+                    + "Kindly check with your system administrator.";
+            Utilities.showErrorMessage(null, message);
+            ILearnApp.getApplication().exit();
         }
         catch (SQLException sqlEx)
         {
-
             String message = "ERROR: Could not connect to the database.";
             Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message, sqlEx);
+            message = "An error occurred while connecting to the database.\n"
+                    + "Kindly check your connection and consult with your system administrator.";
+            Utilities.showErrorMessage(null, message);
+            ILearnApp.getApplication().exit();
         }
-
-
+        catch (Exception e)
+        {
+            String message = "ERROR: Could not connect to the database.";
+            Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message, e);
+            message = "An error occurred while connecting to the database.\n"
+                    + "Kindly check with your system administrator.";
+            Utilities.showErrorMessage(null, message);
+            ILearnApp.getApplication().exit();
+        }
     }
 
     public static void checkAppInfo()
@@ -106,15 +119,12 @@ public class Environment
         }
 
         //Check time code
-
         try
         {
             Date currentDate = Utilities.YMD_Formatter.parse(Utilities.YMD_Formatter.format(new Date()));
             Date expiryDate = Utilities.YMD_Formatter.parse(EncryptionHandler.decrypt(timeCode));
 
             //TODO add code to calculate date difference
-            
-
             if (expiryDate.before(currentDate))
             {
                 String message = "The license has expired.\n"

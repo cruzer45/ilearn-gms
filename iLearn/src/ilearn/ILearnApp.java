@@ -3,6 +3,7 @@
  */
 package ilearn;
 
+import ilearn.kernel.Environment;
 import javax.swing.UIManager;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
@@ -52,7 +53,7 @@ public class ILearnApp extends SingleFrameApplication
         };
         UIManager.put("Synthetica.license.info", li);
         UIManager.put("Synthetica.license.key", "2BCF99E0-3738913D-F30B5EC9-622511CC-4F19572A");
-        
+
         launch(ILearnApp.class, args);
     }
 }

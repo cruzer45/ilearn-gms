@@ -127,6 +127,11 @@ public class Utilities
         JOptionPane.showMessageDialog(rootpane, message, "iLearn", JOptionPane.ERROR_MESSAGE);
     }
 
+     public static void showWarningMessage(Component rootpane, String message)
+    {
+        JOptionPane.showMessageDialog(rootpane, message, "iLearn", JOptionPane.WARNING_MESSAGE);
+    }
+
     public static void showCancelScreen(JInternalFrame frame)
     {
         String message = "Are you sure you want to close this window?";
