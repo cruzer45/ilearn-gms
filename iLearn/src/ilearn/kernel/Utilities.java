@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JComboBox;
@@ -22,6 +21,7 @@ public class Utilities
 {
 
     public static DateFormat YMD_Formatter = new SimpleDateFormat("yyyy-MM-dd");
+    public static DateFormat MDY_Formatter = new SimpleDateFormat("MMM d, yyyy");
 
     /**
      * This method loads the result set contents into the provided combo box.
@@ -46,7 +46,7 @@ public class Utilities
         catch (Exception e)
         {
             String message = "An error occurred while loading the combo box values.";
-            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, message);
+            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, message, e);
         }
     }
 
@@ -92,19 +92,6 @@ public class Utilities
         }
     }
 
-    public static String YMDFormatter(Date date)
-    {
-        DateFormat YMD_Formatter = new SimpleDateFormat("yyyy-MM-dd"); //Create an object to format the dates
-        //private
-        return YMD_Formatter.format(date);
-    }
-
-    public static String MDYFormatter(Date date)
-    {
-        DateFormat MDY_Formatter = new SimpleDateFormat("MMM d, yyyy"); //Create an object to format the dates
-        return MDY_Formatter.format(date);
-    }
-
     public static String formatAsMoney(double value)
     {
         DecimalFormat df = new DecimalFormat("$#,##0.00");
@@ -127,7 +114,7 @@ public class Utilities
         JOptionPane.showMessageDialog(rootpane, message, "iLearn", JOptionPane.ERROR_MESSAGE);
     }
 
-     public static void showWarningMessage(Component rootpane, String message)
+    public static void showWarningMessage(Component rootpane, String message)
     {
         JOptionPane.showMessageDialog(rootpane, message, "iLearn", JOptionPane.WARNING_MESSAGE);
     }

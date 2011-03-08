@@ -8,7 +8,7 @@
  *
  * Created on Mar 1, 2011, 7:46:53 PM
  */
-package ilearn.security;
+package ilearn.user;
 
 import ilearn.kernel.Utilities;
 import java.awt.event.KeyEvent;
@@ -38,55 +38,60 @@ public class FrmLogin extends javax.swing.JDialog
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        lblIcon = new javax.swing.JLabel();
+        lblUserName = new javax.swing.JLabel();
+        txtUsername = new javax.swing.JTextField();
+        lblPassword = new javax.swing.JLabel();
+        txtPassword = new javax.swing.JPasswordField();
+        cmdCancel = new javax.swing.JButton();
+        cmdLogin = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmLogin.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setModalityType(java.awt.Dialog.ModalityType.APPLICATION_MODAL);
         setName("Form"); // NOI18N
-
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setIcon(resourceMap.getIcon("jLabel1.icon")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-
-        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
-        jTextField1.setName("jTextField1"); // NOI18N
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
             }
         });
 
-        jLabel3.setText(resourceMap.getString("jLabel3.text")); // NOI18N
-        jLabel3.setName("jLabel3"); // NOI18N
+        lblIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblIcon.setIcon(resourceMap.getIcon("lblIcon.icon")); // NOI18N
+        lblIcon.setText(resourceMap.getString("lblIcon.text")); // NOI18N
+        lblIcon.setName("lblIcon"); // NOI18N
 
-        jPasswordField1.setText(resourceMap.getString("jPasswordField1.text")); // NOI18N
-        jPasswordField1.setName("jPasswordField1"); // NOI18N
-        jPasswordField1.addKeyListener(new java.awt.event.KeyAdapter() {
+        lblUserName.setText(resourceMap.getString("lblUserName.text")); // NOI18N
+        lblUserName.setName("lblUserName"); // NOI18N
+
+        txtUsername.setText(resourceMap.getString("txtUsername.text")); // NOI18N
+        txtUsername.setName("txtUsername"); // NOI18N
+        txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jPasswordField1KeyPressed(evt);
+                txtUsernameKeyPressed(evt);
+            }
+        });
+
+        lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
+        lblPassword.setName("lblPassword"); // NOI18N
+
+        txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
+        txtPassword.setName("txtPassword"); // NOI18N
+        txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtPasswordKeyPressed(evt);
             }
         });
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmLogin.class, this);
-        jButton1.setAction(actionMap.get("cancel")); // NOI18N
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
+        cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
+        cmdCancel.setName("cmdCancel"); // NOI18N
 
-        jButton2.setAction(actionMap.get("login")); // NOI18N
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
+        cmdLogin.setAction(actionMap.get("login")); // NOI18N
+        cmdLogin.setText(resourceMap.getString("cmdLogin.text")); // NOI18N
+        cmdLogin.setName("cmdLogin"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,59 +100,64 @@ public class FrmLogin extends javax.swing.JDialog
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblIcon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3))
+                            .addComponent(lblUserName)
+                            .addComponent(lblPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(cmdLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(cmdCancel)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lblIcon)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblUserName)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdLogin))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jPasswordField1KeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jPasswordField1KeyPressed
-    {//GEN-HEADEREND:event_jPasswordField1KeyPressed
+    private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPasswordKeyPressed
+    {//GEN-HEADEREND:event_txtPasswordKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             login();
         }
-    }//GEN-LAST:event_jPasswordField1KeyPressed
+    }//GEN-LAST:event_txtPasswordKeyPressed
 
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_jTextField1KeyPressed
-    {//GEN-HEADEREND:event_jTextField1KeyPressed
+    private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUsernameKeyPressed
+    {//GEN-HEADEREND:event_txtUsernameKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
-            jPasswordField1.grabFocus();
+            txtPassword.grabFocus();
         }
-    }//GEN-LAST:event_jTextField1KeyPressed
+    }//GEN-LAST:event_txtUsernameKeyPressed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
+    {//GEN-HEADEREND:event_formWindowClosing
+        cancel();
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * Closes the window and exits the application.
@@ -168,9 +178,9 @@ public class FrmLogin extends javax.swing.JDialog
     @Action
     public void login()
     {
-        String username = jTextField1.getText().trim();
-        String password = String.valueOf(jPasswordField1.getPassword()).trim();
-        if (Security.logIn(username, password))
+        String username = txtUsername.getText().trim();
+        String password = String.valueOf(txtPassword.getPassword()).trim();
+        if (User.logIn(username, password))
         {
             this.dispose();
         }
@@ -179,18 +189,18 @@ public class FrmLogin extends javax.swing.JDialog
             String message = "You have enterd an incorrect username/password combination.\n"
                     + "Kindly try again.";
             Utilities.showWarningMessage(null, message);
-            jPasswordField1.grabFocus();
-            jPasswordField1.setSelectionStart(0);
-            jPasswordField1.setSelectionEnd(jPasswordField1.getPassword().length);
+            txtPassword.grabFocus();
+            txtPassword.setSelectionStart(0);
+            txtPassword.setSelectionEnd(txtPassword.getPassword().length);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdLogin;
+    private javax.swing.JLabel lblIcon;
+    private javax.swing.JLabel lblPassword;
+    private javax.swing.JLabel lblUserName;
+    private javax.swing.JPasswordField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

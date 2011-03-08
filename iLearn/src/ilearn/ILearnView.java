@@ -5,7 +5,9 @@ package ilearn;
 
 import ilearn.classes.FrmAddNewClass;
 import ilearn.kernel.Environment;
-import ilearn.security.FrmLogin;
+import ilearn.user.FrmAddUser;
+import ilearn.user.FrmEditUser;
+import ilearn.user.FrmLogin;
 import ilearn.student.FrmNewStudent;
 import ilearn.subject.FrmAddSubject;
 import org.jdesktop.application.Action;
@@ -32,6 +34,8 @@ public class ILearnView extends FrameView
     FrmNewStudent frmNewStudent = null;
     FrmAddNewClass frmAddNewClass = null;
     FrmAddSubject frmAddSubject = null;
+    FrmAddUser frmAddUser = null;
+    FrmEditUser frmEditUser = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -173,12 +177,16 @@ public class ILearnView extends FrameView
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
+        manageMenu = new javax.swing.JMenu();
         studentMenu = new javax.swing.JMenu();
         addStudent = new javax.swing.JMenuItem();
         subjectMenu = new javax.swing.JMenu();
         addSubject = new javax.swing.JMenuItem();
         classMenu = new javax.swing.JMenu();
         addClass = new javax.swing.JMenuItem();
+        userMenu = new javax.swing.JMenu();
+        addUser = new javax.swing.JMenuItem();
+        editUser = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -199,7 +207,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -215,6 +223,10 @@ public class ILearnView extends FrameView
 
         menuBar.add(fileMenu);
 
+        manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
+        manageMenu.setName("manageMenu"); // NOI18N
+
+        studentMenu.setIcon(resourceMap.getIcon("studentMenu.icon")); // NOI18N
         studentMenu.setText(resourceMap.getString("studentMenu.text")); // NOI18N
         studentMenu.setName("studentMenu"); // NOI18N
 
@@ -223,8 +235,9 @@ public class ILearnView extends FrameView
         addStudent.setName("addStudent"); // NOI18N
         studentMenu.add(addStudent);
 
-        menuBar.add(studentMenu);
+        manageMenu.add(studentMenu);
 
+        subjectMenu.setIcon(resourceMap.getIcon("subjectMenu.icon")); // NOI18N
         subjectMenu.setText(resourceMap.getString("subjectMenu.text")); // NOI18N
         subjectMenu.setName("subjectMenu"); // NOI18N
 
@@ -234,8 +247,9 @@ public class ILearnView extends FrameView
         addSubject.setName("addSubject"); // NOI18N
         subjectMenu.add(addSubject);
 
-        menuBar.add(subjectMenu);
+        manageMenu.add(subjectMenu);
 
+        classMenu.setIcon(resourceMap.getIcon("classMenu.icon")); // NOI18N
         classMenu.setText(resourceMap.getString("classMenu.text")); // NOI18N
         classMenu.setName("classMenu"); // NOI18N
 
@@ -245,7 +259,26 @@ public class ILearnView extends FrameView
         addClass.setName("addClass"); // NOI18N
         classMenu.add(addClass);
 
-        menuBar.add(classMenu);
+        manageMenu.add(classMenu);
+
+        userMenu.setIcon(resourceMap.getIcon("userMenu.icon")); // NOI18N
+        userMenu.setText(resourceMap.getString("userMenu.text")); // NOI18N
+        userMenu.setName("userMenu"); // NOI18N
+
+        addUser.setAction(actionMap.get("showAddUser")); // NOI18N
+        addUser.setIcon(resourceMap.getIcon("addUser.icon")); // NOI18N
+        addUser.setText(resourceMap.getString("addUser.text")); // NOI18N
+        addUser.setName("addUser"); // NOI18N
+        userMenu.add(addUser);
+
+        editUser.setAction(actionMap.get("showEditUser")); // NOI18N
+        editUser.setText(resourceMap.getString("editUser.text")); // NOI18N
+        editUser.setName("editUser"); // NOI18N
+        userMenu.add(editUser);
+
+        manageMenu.add(userMenu);
+
+        menuBar.add(manageMenu);
 
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
@@ -275,7 +308,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -379,13 +412,65 @@ public class ILearnView extends FrameView
         frmLogin.setVisible(true);
     }
 
+    @Action
+    public void showAddUser()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Add User");
+        if (AlreadyLoaded == false)
+        {
+            frmAddUser = new FrmAddUser();
+            desktopPane.add(frmAddUser);
+
+            //Load the Form
+            frmAddUser.setVisible(true);
+            frmAddUser.show();
+            try
+            {
+                frmAddUser.setIcon(false);
+                frmAddUser.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showEditUser()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit User");
+        if (AlreadyLoaded == false)
+        {
+            frmEditUser = new FrmEditUser();
+            desktopPane.add(frmEditUser);
+
+            //Load the Form
+            frmEditUser.setVisible(true);
+            frmEditUser.show();
+            try
+            {
+                frmEditUser.setIcon(false);
+                frmEditUser.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStudent;
     private javax.swing.JMenuItem addSubject;
+    private javax.swing.JMenuItem addUser;
     private javax.swing.JMenu classMenu;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem editUser;
     private javax.swing.JPanel mainPanel;
+    private javax.swing.JMenu manageMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JLabel statusAnimationLabel;
@@ -393,6 +478,7 @@ public class ILearnView extends FrameView
     private javax.swing.JPanel statusPanel;
     private javax.swing.JMenu studentMenu;
     private javax.swing.JMenu subjectMenu;
+    private javax.swing.JMenu userMenu;
     // End of variables declaration//GEN-END:variables
     private final Timer messageTimer;
     private final Timer busyIconTimer;

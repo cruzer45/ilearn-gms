@@ -3,7 +3,6 @@
  */
 package ilearn;
 
-import ilearn.kernel.Environment;
 import javax.swing.UIManager;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
@@ -56,4 +55,5 @@ public class ILearnApp extends SingleFrameApplication
 
         launch(ILearnApp.class, args);
     }
+
 }
