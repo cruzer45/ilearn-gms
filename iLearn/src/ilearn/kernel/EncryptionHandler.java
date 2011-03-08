@@ -14,16 +14,31 @@ import java.security.*;
 public class EncryptionHandler
 {
 
+    /**
+     * This function encrypts the given string with the Base64 algorithm.
+     * @param clearText to be encoded.
+     * @return the Base64 encoded text.
+     */
     public static String encrypt(String clearText)
     {
         return new String(Base64.encodeBase64(clearText.getBytes()));
     }
 
+    /**
+     * This function decrypts text encoded using the Base64 algorithm.
+     * @param encodedText
+     * @return the plain decrypted text.
+     */
     public static String decrypt(String encodedText)
     {
         return new String(Base64.decodeBase64(encodedText.getBytes()));
     }
 
+    /**
+     * This function encrypts a plain text string with a SHA 512 hash.
+     * @param message
+     * @return the SHA-512 has of the given string.
+     */
     public static String encryptPassword(String message)
     {
         MessageDigest md;
@@ -46,7 +61,7 @@ public class EncryptionHandler
                 s = s.substring(s.length() - 2);
                 out += s;
             }
-           // System.out.println(out.length());
+            // System.out.println(out.length());
             //System.out.println("CRYPTO: " + out);
             encrypted = out;
         }

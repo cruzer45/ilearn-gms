@@ -10,6 +10,7 @@ import ilearn.user.FrmEditUser;
 import ilearn.user.FrmLogin;
 import ilearn.student.FrmNewStudent;
 import ilearn.subject.FrmAddSubject;
+import ilearn.user.User;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -31,6 +32,9 @@ import javax.swing.JInternalFrame;
 public class ILearnView extends FrameView
 {
 
+    /**
+     * Declare the form objects.
+     */
     FrmNewStudent frmNewStudent = null;
     FrmAddNewClass frmAddNewClass = null;
     FrmAddSubject frmAddSubject = null;
@@ -117,6 +121,7 @@ public class ILearnView extends FrameView
 
         Environment.createConnection();
         showLoginScreen();
+        checkPrivileges();
     }
 
     /**
@@ -151,6 +156,9 @@ public class ILearnView extends FrameView
         return false;
     }
 
+    /**
+     * Shows the About window.
+     */
     @Action
     public void showAboutBox()
     {
@@ -197,6 +205,8 @@ public class ILearnView extends FrameView
 
         mainPanel.setName("mainPanel"); // NOI18N
 
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(ILearnView.class);
+        desktopPane.setBackground(resourceMap.getColor("desktopPane.background")); // NOI18N
         desktopPane.setName("desktopPane"); // NOI18N
 
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
@@ -207,12 +217,11 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(ILearnView.class);
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
 
@@ -308,7 +317,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -331,6 +340,9 @@ public class ILearnView extends FrameView
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Shows the Add Student Window
+     */
     @Action
     public void showAddStudent()
     { //Verify if the form is already loaded
@@ -355,6 +367,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Add Class Window.
+     */
     @Action
     public void showAddClass()
     {
@@ -380,6 +395,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Add Subject Window.
+     */
     @Action
     public void showAddSubject()
     {
@@ -405,6 +423,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Login Screen.
+     */
     private void showLoginScreen()
     {
         FrmLogin frmLogin = new FrmLogin(this.getFrame(), true);
@@ -412,6 +433,9 @@ public class ILearnView extends FrameView
         frmLogin.setVisible(true);
     }
 
+    /**
+     * Displays the Add User window.
+     */
     @Action
     public void showAddUser()
     {
@@ -437,6 +461,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Displays the Edit User window.
+     */
     @Action
     public void showEditUser()
     {
@@ -460,6 +487,17 @@ public class ILearnView extends FrameView
                 Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
+    }
+
+    /**
+     * This method checks what the user can and cannot access.
+     * It then enables or disables the menu items based on those checks.
+     */
+    private void checkPrivileges()
+    {
+        //********* Manage Menu ****************
+        manageMenu.setEnabled(User.isInAdmin());
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;

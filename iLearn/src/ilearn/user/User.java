@@ -23,6 +23,9 @@ public class User
 {
 
     private static int loginCount = 0;
+    private static String userName = "";
+    private static String userGroup = "";
+    private static String userLevel = "";
 
     public static boolean logIn(String username, String password)
     {
@@ -40,12 +43,16 @@ public class User
             while (rs.next())
             {
                 storedPassword = rs.getString("usrPassword");
+                userName = username;
+                userGroup = rs.getString("usrGroup");
+                userLevel = rs.getString("usrLevel");
             }
             rs.close();
             prep.close();
 
             if (storedPassword.equals(encryptedPassword))
             {
+
                 successful = true;
             }
             else
@@ -215,5 +222,84 @@ public class User
         }
 
         return successful;
+    }
+
+    public static ArrayList<String> getUserGroups()
+    {
+        ArrayList<String> groups = new ArrayList<String>();
+        String sql = "SELECT DISTINCT `groupName` FROM `ilearn`.`listusergroups` ORDER BY `groupName` ASC;";
+        try
+        {
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                groups.add(rs.getString("groupName"));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the user group listing.";
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+        }
+        return groups;
+    }
+
+    public static ArrayList<String> getGroupLevels(String group)
+    {
+        ArrayList<String> levels = new ArrayList<String>();
+        String sql = "SELECT `levels` FROM `listusergroups` WHERE `groupName` = ? ORDER BY `levels` ASC;";
+        try
+        {
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, group);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                levels.add(rs.getString("levels"));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the user group levels listing.";
+            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+        }
+        return levels;
+    }
+
+    /**
+     * @return the userName
+     */
+    public static String getUserName()
+    {
+        return userName;
+    }
+
+    /**
+     * @return the userGroup
+     */
+    public static String getUserGroup()
+    {
+        return userGroup;
+    }
+
+    /**
+     * @return the userLevel
+     */
+    public static String getUserLevel()
+    {
+        return userLevel;
+    }
+
+    public static boolean isInAdmin()
+    {
+        if (userGroup.equals("Administration"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

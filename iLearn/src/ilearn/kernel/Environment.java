@@ -24,10 +24,7 @@ import javax.swing.JOptionPane;
 public class Environment
 {
 
-    private static String companyName = "";
-    private static String telephone1 = "";
-    private static String telephone2 = "";
-    private static String address = "";
+    
     private static String branchCode = "";
     private static String registrationCode = "";
     private static String timeCode = "";

@@ -7,6 +7,7 @@
 package ilearn.user;
 
 import ilearn.kernel.Utilities;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 
@@ -21,6 +22,10 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     public FrmAddUser()
     {
         initComponents();
+        
+        //Loads the values from the database into the combo boxes.
+        cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
+        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
     }
 
     /** This method is called from within the constructor to
@@ -85,6 +90,11 @@ public class FrmAddUser extends javax.swing.JInternalFrame
 
         cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGroup.setName("cmbGroup"); // NOI18N
+        cmbGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGroupActionPerformed(evt);
+            }
+        });
 
         lblLevel.setText(resourceMap.getString("lblLevel.text")); // NOI18N
         lblLevel.setName("lblLevel"); // NOI18N
@@ -122,15 +132,15 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                             .addComponent(lblLevel))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbLevel, 0, 242, Short.MAX_VALUE)
-                            .addComponent(cmbGroup, 0, 242, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)))
+                            .addComponent(cmbLevel, 0, 257, Short.MAX_VALUE)
+                            .addComponent(cmbGroup, 0, 257, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel)))
@@ -163,7 +173,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblLevel)
                     .addComponent(cmbLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave)
@@ -175,15 +185,30 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         setBounds((screenSize.width-353)/2, (screenSize.height-244)/2, 353, 244);
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This is called when the user changes the user group.
+     * The subgroups are reloaded when the group is changed.
+     * @param evt
+     */
+    private void cmbGroupActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbGroupActionPerformed
+    {//GEN-HEADEREND:event_cmbGroupActionPerformed
+        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
+    }//GEN-LAST:event_cmbGroupActionPerformed
+
     @Action
     public void cancel()
     {
         Utilities.showCancelScreen(this);
     }
 
+    /**
+     * This function tries to add the user to the system.
+     * It tells them if it was successful or not.
+     */
     @Action
     public void save()
     {
+        //Declare the variables.
         String username = txtUserName.getText().trim();
         String password = String.valueOf(txtPassword.getPassword()).trim();
         String firstName = txtFirstName.getText().trim();
@@ -191,6 +216,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         String group = cmbGroup.getSelectedItem().toString();
         String level = cmbLevel.getSelectedItem().toString();
 
+        //If the user was added successfully, it displays a message.
         if (User.addUser(username, password, firstName, lastName, group, level))
         {
             String message = "The user was successfully added.\n"
@@ -206,7 +232,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 this.dispose();
             }
         }
-        else
+        else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
                     + "Kindly verify your information and try again.\n"
@@ -215,6 +241,9 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         }
     }
 
+    /**
+     * This function clears all inputs from the forms.
+     */
     @Action
     public void resetForm()
     {
