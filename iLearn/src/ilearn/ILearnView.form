@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="254" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="248" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -69,6 +69,25 @@
             <Property name="name" type="java.lang.String" value="manageMenu" noResource="true"/>
           </Properties>
           <SubComponents>
+            <Menu class="javax.swing.JMenu" name="classMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="classMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="classMenu.text"/>
+                <Property name="name" type="java.lang.String" value="classMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="addClass">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAddClass" methodName="showAddClass"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="addClass.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="addClass.text"/>
+                    <Property name="name" type="java.lang.String" value="addClass" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <Menu class="javax.swing.JMenu" name="studentMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="studentMenu.icon"/>
@@ -106,21 +125,29 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <Menu class="javax.swing.JMenu" name="classMenu">
+            <Menu class="javax.swing.JMenu" name="termMenu">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="classMenu.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="classMenu.text"/>
-                <Property name="name" type="java.lang.String" value="classMenu" noResource="true"/>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="termMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="termMenu.text"/>
+                <Property name="name" type="java.lang.String" value="termMenu" noResource="true"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="addClass">
+                <MenuItem class="javax.swing.JMenuItem" name="addTerm">
                   <Properties>
                     <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                      <action class="ilearn.ILearnView" id="showAddClass" methodName="showAddClass"/>
+                      <action class="ilearn.ILearnView" id="showAddTerm" methodName="showAddTerm"/>
                     </Property>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="addClass.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="addClass.text"/>
-                    <Property name="name" type="java.lang.String" value="addClass" noResource="true"/>
+                    <Property name="text" type="java.lang.String" resourceKey="addTerm.text"/>
+                    <Property name="name" type="java.lang.String" value="addTerm" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="editTerm">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showEditTerm" methodName="showEditTerm"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" resourceKey="editTerm.text"/>
+                    <Property name="name" type="java.lang.String" value="editTerm" noResource="true"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -193,7 +220,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="230" max="32767" attributes="0"/>
+                  <EmptySpace pref="216" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

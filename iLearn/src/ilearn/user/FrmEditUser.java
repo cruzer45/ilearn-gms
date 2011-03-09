@@ -11,6 +11,7 @@
 package ilearn.user;
 
 import ilearn.kernel.Utilities;
+import javax.swing.DefaultComboBoxModel;
 import org.jdesktop.application.Action;
 
 /**
@@ -25,6 +26,10 @@ public class FrmEditUser extends javax.swing.JInternalFrame
     {
         initComponents();
         tblUsers.setModel(User.getUserList());
+        //Loads the values from the database into the combo boxes.
+        cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
+        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
+
     }
 
     /** This method is called from within the constructor to
@@ -176,6 +181,11 @@ public class FrmEditUser extends javax.swing.JInternalFrame
 
         cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGroup.setName("cmbGroup"); // NOI18N
+        cmbGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGroupActionPerformed(evt);
+            }
+        });
 
         lblLevel.setText(resourceMap.getString("lblLevel.text")); // NOI18N
         lblLevel.setName("lblLevel"); // NOI18N
@@ -301,6 +311,11 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             next();
         }
     }//GEN-LAST:event_tblUsersMouseClicked
+
+    private void cmbGroupActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbGroupActionPerformed
+    {//GEN-HEADEREND:event_cmbGroupActionPerformed
+        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
+    }//GEN-LAST:event_cmbGroupActionPerformed
 
     private void loadSelectedUser()
     {

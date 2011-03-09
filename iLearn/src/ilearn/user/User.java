@@ -27,6 +27,7 @@ public class User
     private static String userGroup = "";
     private static String userLevel = "";
 
+
     public static boolean logIn(String username, String password)
     {
         String storedPassword = "";
@@ -35,7 +36,7 @@ public class User
 
         try
         {
-            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`, `usrLevel`, `usrStatus` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
+            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`, `usrLevel`, `usrStatus`, `usrTimeout` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, username);
             ResultSet rs = prep.executeQuery();
@@ -227,7 +228,7 @@ public class User
     public static ArrayList<String> getUserGroups()
     {
         ArrayList<String> groups = new ArrayList<String>();
-        String sql = "SELECT DISTINCT `groupName` FROM `ilearn`.`listusergroups` ORDER BY `groupName` ASC;";
+        String sql = "SELECT DISTINCT `groupName` FROM `iLearn`.`listUserGroups` ORDER BY `groupName` ASC;";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -236,6 +237,8 @@ public class User
             {
                 groups.add(rs.getString("groupName"));
             }
+            rs.close();
+            prep.close();
         }
         catch (Exception e)
         {
@@ -248,7 +251,7 @@ public class User
     public static ArrayList<String> getGroupLevels(String group)
     {
         ArrayList<String> levels = new ArrayList<String>();
-        String sql = "SELECT `levels` FROM `listusergroups` WHERE `groupName` = ? ORDER BY `levels` ASC;";
+        String sql = "SELECT `levels` FROM `listUserGroups` WHERE `groupName` = ? ORDER BY `levels` ASC;";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -258,6 +261,8 @@ public class User
             {
                 levels.add(rs.getString("levels"));
             }
+            rs.close();
+            prep.close();
         }
         catch (Exception e)
         {
@@ -291,15 +296,6 @@ public class User
         return userLevel;
     }
 
-    public static boolean isInAdmin()
-    {
-        if (userGroup.equals("Administration"))
-        {
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }
-}
+
+
+  }

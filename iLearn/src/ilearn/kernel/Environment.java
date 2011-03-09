@@ -12,10 +12,11 @@ import java.sql.SQLException;
 import java.text.ParseException;
 import java.util.Date;
 import java.util.Properties;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-
 
 /**
  *
@@ -24,11 +25,11 @@ import javax.swing.JOptionPane;
 public class Environment
 {
 
-    
     private static String branchCode = "";
     private static String registrationCode = "";
     private static String timeCode = "";
     private static String dbVersion = "";
+    private static double  timeout = 0.17;
     public static Connection dbConnection;
     static Properties properties = new Properties();
 
@@ -143,5 +144,37 @@ public class Environment
     public static Connection getConnection()
     {
         return dbConnection;
+    }
+
+    /**
+     * Sets the time to wait before automatic shutdown.
+     * @param time
+     */
+    public static void setTimeOut(int time)
+    {
+        timeout = time;
+    }
+
+    /**
+     * Runs a background timer to log off inactive users.
+     */
+    public static void startTimer()
+    {
+        long waitTime = (long) (timeout * 60 * 1000);
+        TimerTask logOff = new TimerTask()
+        {
+
+            @Override
+            public void run()
+            {
+                String message = "You have been idle for " + timeout + " minutes.\n"
+                        + "The program will now close.";
+                Utilities.showInfoMessage(null, message);
+                ilearn.ILearnApp.getApplication().exit();
+            }
+        };
+
+        Timer timer = new Timer();
+        timer.schedule(logOff, waitTime);
     }
 }
