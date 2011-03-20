@@ -152,6 +152,33 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="timeSlotsMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="timeSlotsMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="timeSlotsMenu.text"/>
+                <Property name="name" type="java.lang.String" value="timeSlotsMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="addTimeSlot">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAddTimeSlot" methodName="showAddTimeSlot"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" resourceKey="addTimeSlot.text"/>
+                    <Property name="name" type="java.lang.String" value="addTimeSlot" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="editTimeSlot">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showEditTimeSlots" methodName="showEditTimeSlots"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" resourceKey="editTimeSlot.text"/>
+                    <Property name="name" type="java.lang.String" value="editTimeSlot" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <Menu class="javax.swing.JMenu" name="userMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="userMenu.icon"/>

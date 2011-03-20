@@ -11,6 +11,8 @@ import ilearn.user.FrmEditUser;
 import ilearn.user.FrmLogin;
 import ilearn.student.FrmNewStudent;
 import ilearn.subject.FrmAddSubject;
+import ilearn.term.FrmEditTimeSlots;
+import ilearn.term.FrmAddTimeSlot;
 import ilearn.term.FrmEditTerm;
 import ilearn.user.UserCheck;
 import org.jdesktop.application.Action;
@@ -44,6 +46,10 @@ public class ILearnView extends FrameView
     FrmEditUser frmEditUser = null;
     FrmAddTerm frmAddTerm = null;
     FrmEditTerm frmEditTerm = null;
+    FrmAddTimeSlot frmAddTimeSlot = null;
+    FrmEditTimeSlots frmEditTimeSlots = null;
+
+    private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -153,7 +159,7 @@ public class ILearnView extends FrameView
                 }
                 catch (Exception e)
                 {
-                    Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying form.", e);
+                   logger.log(Level.SEVERE, "Error displaying form.", e);
                 }
                 return true;
             }
@@ -200,6 +206,9 @@ public class ILearnView extends FrameView
         termMenu = new javax.swing.JMenu();
         addTerm = new javax.swing.JMenuItem();
         editTerm = new javax.swing.JMenuItem();
+        timeSlotsMenu = new javax.swing.JMenu();
+        addTimeSlot = new javax.swing.JMenuItem();
+        editTimeSlot = new javax.swing.JMenuItem();
         userMenu = new javax.swing.JMenu();
         addUser = new javax.swing.JMenuItem();
         editUser = new javax.swing.JMenuItem();
@@ -294,6 +303,22 @@ public class ILearnView extends FrameView
 
         manageMenu.add(termMenu);
 
+        timeSlotsMenu.setIcon(resourceMap.getIcon("timeSlotsMenu.icon")); // NOI18N
+        timeSlotsMenu.setText(resourceMap.getString("timeSlotsMenu.text")); // NOI18N
+        timeSlotsMenu.setName("timeSlotsMenu"); // NOI18N
+
+        addTimeSlot.setAction(actionMap.get("showAddTimeSlot")); // NOI18N
+        addTimeSlot.setText(resourceMap.getString("addTimeSlot.text")); // NOI18N
+        addTimeSlot.setName("addTimeSlot"); // NOI18N
+        timeSlotsMenu.add(addTimeSlot);
+
+        editTimeSlot.setAction(actionMap.get("showEditTimeSlots")); // NOI18N
+        editTimeSlot.setText(resourceMap.getString("editTimeSlot.text")); // NOI18N
+        editTimeSlot.setName("editTimeSlot"); // NOI18N
+        timeSlotsMenu.add(editTimeSlot);
+
+        manageMenu.add(timeSlotsMenu);
+
         userMenu.setIcon(resourceMap.getIcon("userMenu.icon")); // NOI18N
         userMenu.setText(resourceMap.getString("userMenu.text")); // NOI18N
         userMenu.setName("userMenu"); // NOI18N
@@ -386,7 +411,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -414,7 +439,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -442,7 +467,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -480,7 +505,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -508,7 +533,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -528,7 +553,7 @@ public class ILearnView extends FrameView
     @Action
     public void showAddTerm()
     {
-          //Verify if the form is already loaded
+        //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Add Term");
         if (AlreadyLoaded == false)
         {
@@ -545,7 +570,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -553,7 +578,7 @@ public class ILearnView extends FrameView
     @Action
     public void showEditTerm()
     {
-               //Verify if the form is already loaded
+        //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Edit Term");
         if (AlreadyLoaded == false)
         {
@@ -570,7 +595,57 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-                Logger.getLogger(ILearnView.class.getName()).log(Level.SEVERE, "Error displaying the form.", e);
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showEditTimeSlots()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Time Slots");
+        if (AlreadyLoaded == false)
+        {
+            frmEditTimeSlots = new FrmEditTimeSlots();
+            desktopPane.add(frmEditTimeSlots);
+
+            //Load the Form
+            frmEditTimeSlots.setVisible(true);
+            frmEditTimeSlots.show();
+            try
+            {
+                frmEditTimeSlots.setIcon(false);
+                frmEditTimeSlots.setSelected(true);
+            }
+            catch (Exception e)
+            {
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showAddTimeSlot()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Add Time Slot");
+        if (AlreadyLoaded == false)
+        {
+            frmAddTimeSlot = new FrmAddTimeSlot();
+            desktopPane.add(frmAddTimeSlot);
+
+            //Load the Form
+            frmAddTimeSlot.setVisible(true);
+            frmAddTimeSlot.show();
+            try
+            {
+                frmAddTimeSlot.setIcon(false);
+                frmAddTimeSlot.setSelected(true);
+            }
+            catch (Exception e)
+            {
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -579,10 +654,12 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addStudent;
     private javax.swing.JMenuItem addSubject;
     private javax.swing.JMenuItem addTerm;
+    private javax.swing.JMenuItem addTimeSlot;
     private javax.swing.JMenuItem addUser;
     private javax.swing.JMenu classMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem editTerm;
+    private javax.swing.JMenuItem editTimeSlot;
     private javax.swing.JMenuItem editUser;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu manageMenu;
@@ -594,6 +671,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu studentMenu;
     private javax.swing.JMenu subjectMenu;
     private javax.swing.JMenu termMenu;
+    private javax.swing.JMenu timeSlotsMenu;
     private javax.swing.JMenu userMenu;
     // End of variables declaration//GEN-END:variables
     private final Timer messageTimer;

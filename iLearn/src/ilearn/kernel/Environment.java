@@ -30,7 +30,7 @@ public class Environment
     private static String timeCode = "";
     private static String dbVersion = "";
     private static double  timeout = 0.17;
-    public static Connection dbConnection;
+    private static Connection dbConnection;
     static Properties properties = new Properties();
 
     public static void getProperties()
@@ -176,5 +176,18 @@ public class Environment
 
         Timer timer = new Timer();
         timer.schedule(logOff, waitTime);
+    }
+
+
+    public static void closeConnection()
+    {
+        try
+        {
+            dbConnection.close();
+        }
+        catch (SQLException ex)
+        {
+            Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
