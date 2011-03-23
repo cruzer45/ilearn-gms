@@ -6,6 +6,7 @@ package ilearn;
 import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
 import ilearn.kernel.Environment;
+import ilearn.staff.FrmAddStaff;
 import ilearn.user.FrmAddUser;
 import ilearn.user.FrmEditUser;
 import ilearn.user.FrmLogin;
@@ -48,6 +49,7 @@ public class ILearnView extends FrameView
     FrmEditTerm frmEditTerm = null;
     FrmAddTimeSlot frmAddTimeSlot = null;
     FrmEditTimeSlots frmEditTimeSlots = null;
+    FrmAddStaff frmAddStaff = null;
 
     private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
 
@@ -201,6 +203,8 @@ public class ILearnView extends FrameView
         addClass = new javax.swing.JMenuItem();
         studentMenu = new javax.swing.JMenu();
         addStudent = new javax.swing.JMenuItem();
+        staffMenu = new javax.swing.JMenu();
+        addStaff = new javax.swing.JMenuItem();
         subjectMenu = new javax.swing.JMenu();
         addSubject = new javax.swing.JMenuItem();
         termMenu = new javax.swing.JMenu();
@@ -234,7 +238,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -274,6 +278,18 @@ public class ILearnView extends FrameView
         studentMenu.add(addStudent);
 
         manageMenu.add(studentMenu);
+
+        staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
+        staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
+        staffMenu.setName("staffMenu"); // NOI18N
+
+        addStaff.setAction(actionMap.get("showAddStaff")); // NOI18N
+        addStaff.setIcon(resourceMap.getIcon("addStaff.icon")); // NOI18N
+        addStaff.setText(resourceMap.getString("addStaff.text")); // NOI18N
+        addStaff.setName("addStaff"); // NOI18N
+        staffMenu.add(addStaff);
+
+        manageMenu.add(staffMenu);
 
         subjectMenu.setIcon(resourceMap.getIcon("subjectMenu.icon")); // NOI18N
         subjectMenu.setText(resourceMap.getString("subjectMenu.text")); // NOI18N
@@ -366,7 +382,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -655,8 +671,34 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showAddStaff()
+    {
+         //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Add Staff");
+        if (AlreadyLoaded == false)
+        {
+            frmAddStaff = new FrmAddStaff();
+            desktopPane.add(frmAddStaff);
+
+            //Load the Form
+            frmAddStaff.setVisible(true);
+            frmAddStaff.show();
+            try
+            {
+                frmAddStaff.setIcon(false);
+                frmAddStaff.setSelected(true);
+            }
+            catch (Exception e)
+            {
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
+    private javax.swing.JMenuItem addStaff;
     private javax.swing.JMenuItem addStudent;
     private javax.swing.JMenuItem addSubject;
     private javax.swing.JMenuItem addTerm;
@@ -671,6 +713,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu manageMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JMenu staffMenu;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;

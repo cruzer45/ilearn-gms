@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="248" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="254" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -102,6 +102,25 @@
                     </Property>
                     <Property name="text" type="java.lang.String" resourceKey="addStudent.text"/>
                     <Property name="name" type="java.lang.String" value="addStudent" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="staffMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="staffMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="staffMenu.text"/>
+                <Property name="name" type="java.lang.String" value="staffMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="addStaff">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAddStaff" methodName="showAddStaff"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="addStaff.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="addStaff.text"/>
+                    <Property name="name" type="java.lang.String" value="addStaff" noResource="true"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -247,7 +266,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="216" max="32767" attributes="0"/>
+                  <EmptySpace pref="230" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

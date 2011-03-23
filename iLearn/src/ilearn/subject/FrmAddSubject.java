@@ -38,6 +38,15 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     {
     }
 
+    @Action
+    public void resetForm()
+    {
+        TimeList.setListData(TimeSlots.getTimeSlotList().toArray());
+        txtDescription.setText("");
+        txtSubjectCode.setText("");
+        txtSubjectName.setText("");
+    }
+
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -59,6 +68,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         TimeList = new javax.swing.JList();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -111,6 +121,10 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
 
+        jButton1.setAction(actionMap.get("resetForm")); // NOI18N
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -131,6 +145,8 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                             .addComponent(txtSubjectCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                             .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 104, Short.MAX_VALUE)
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel)))
@@ -158,7 +174,8 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmdCancel)
-                            .addComponent(cmdSave)))
+                            .addComponent(cmdSave)
+                            .addComponent(jButton1)))
                     .addComponent(lblDays_Time))
                 .addContainerGap())
         );
@@ -169,6 +186,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     private javax.swing.JList TimeList;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDays_Time;
