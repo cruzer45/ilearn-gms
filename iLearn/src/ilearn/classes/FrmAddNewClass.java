@@ -8,20 +8,26 @@
  *
  * Created on Feb 21, 2011, 9:58:49 PM
  */
-
 package ilearn.classes;
 
+import ilearn.kernel.Utilities;
+import ilearn.staff.Staff;
+import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import org.jdesktop.application.Action;
 
 /**
  *
  * @author mrogers
  */
-public class FrmAddNewClass extends javax.swing.JInternalFrame {
+public class FrmAddNewClass extends javax.swing.JInternalFrame
+{
 
     /** Creates new form FrmAddNewClass */
-    public FrmAddNewClass() {
+    public FrmAddNewClass()
+    {
         initComponents();
+        populateLists();
     }
 
     /** This method is called from within the constructor to
@@ -67,7 +73,6 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
         lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
         lblClassCode.setName("lblClassCode"); // NOI18N
 
-        txtClassCode.setEditable(false);
         txtClassCode.setText(resourceMap.getString("txtClassCode.text")); // NOI18N
         txtClassCode.setName("txtClassCode"); // NOI18N
 
@@ -172,7 +177,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassSize)
                     .addComponent(spinnerClassSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))
@@ -185,7 +190,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
     @Action
     public void cancel()
     {
-        this.dispose();
+        Utilities.showCancelScreen(this);
     }
 
     @Action
@@ -193,7 +198,13 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
     {
     }
 
-
+    private void populateLists()
+    {
+        //Set the home room list
+        ArrayList<String> staffList = Staff.getStaffList();
+        staffList.add(0, "--- Select One ---");
+        cmbHomeRoom.setModel(new DefaultComboBoxModel(staffList.toArray()));
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbClassLevel;
     private javax.swing.JComboBox cmbHomeRoom;
@@ -212,5 +223,4 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame {
     private javax.swing.JTextField txtClassDescription;
     private javax.swing.JTextField txtClassName;
     // End of variables declaration//GEN-END:variables
-
 }

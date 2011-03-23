@@ -156,4 +156,27 @@ public class Staff
 
         return successful;
     }
+
+    public static ArrayList<String> getStaffList()
+    {
+        ArrayList<String> staffList = new ArrayList<String>();
+
+        try
+        {
+            String sql = "SELECT  `staFirstName`, `staLastName` FROM `iLearn`.`Staff` WHERE `staStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                staffList.add(rs.getString("staFirstName") + " " + rs.getString("staLastName"));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the staff list.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
+        return staffList;
+    }
 }
