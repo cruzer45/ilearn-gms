@@ -21,7 +21,7 @@ public class TimeSlots
 {
 
     private static final Logger logger = Logger.getLogger(TimeSlots.class.getName());
-    SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
+    private static SimpleDateFormat timeFormat = new SimpleDateFormat("h:mm a");
 
     public static boolean addTimeSlot(String code, String day, String startTime, String endTime)
     {
@@ -72,8 +72,8 @@ public class TimeSlots
                 ids.add(rs.getString("id"));
                 codes.add(rs.getString("hrsKey"));
                 days.add(rs.getString("hrsDay"));
-                begin.add(rs.getString("hrsBegin"));
-                end.add(rs.getString("hrsEnd"));
+                begin.add(timeFormat.format(rs.getTime("hrsBegin")));
+                end.add(timeFormat.format(rs.getTime("hrsEnd")));
                 status.add(rs.getString("hrsStatus"));
             }
             rs.close();
@@ -84,7 +84,7 @@ public class TimeSlots
             model.addColumn("Day", days.toArray());
             model.addColumn("Start", begin.toArray());
             model.addColumn("End", end.toArray());
-            model.addColumn("Status",status.toArray());
+            model.addColumn("Status", status.toArray());
         }
         catch (Exception e)
         {
@@ -93,5 +93,32 @@ public class TimeSlots
         }
 
         return model;
+    }
+
+    public static boolean updateTimeSlot(String id, String code, String day, String startTime, String endTime, String status)
+    {
+        boolean successful = true;
+
+        try
+        {
+            String sql = "UPDATE `TimeSlots` SET `hrsKey`= ?, `hrsDay`= ?, `hrsBegin`= ?, `hrsEnd`=?, `hrsStatus`=? WHERE `id`= ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, code);
+            prep.setString(2, day);
+            prep.setString(3, startTime);
+            prep.setString(4, endTime);
+            prep.setString(5, status);
+            prep.setString(6, id);
+            prep.executeUpdate();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the time slots.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
+        return successful;
     }
 }

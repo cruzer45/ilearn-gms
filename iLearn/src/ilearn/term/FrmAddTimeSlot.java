@@ -201,6 +201,12 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
                 this.dispose();
             }
         }
+        else
+        {
+            String message = "An error occurred while trying to add this time slot.\n"
+                    + "Kindly verify your information and try again.";
+            Utilities.showErrorMessage(rootPane, message);
+        }
     }
 
     private void resetForm()

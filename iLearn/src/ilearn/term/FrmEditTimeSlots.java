@@ -10,14 +10,18 @@
  */
 package ilearn.term;
 
+import ilearn.kernel.TableColumnAdjuster;
+import ilearn.kernel.Utilities;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerDateModel;
+import org.jdesktop.application.Action;
 
 /**
  *
@@ -44,7 +48,9 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
         initComponents();
         spinnerStart.setModel(new SpinnerDateModel(startDate, null, null, Calendar.HOUR_OF_DAY));
         spinnerEnd.setModel(new SpinnerDateModel(startDate, null, null, Calendar.HOUR_OF_DAY));
-        jTable1.setModel(TimeSlots.getTimeSlotList());
+        tblTimeSlots.setModel(TimeSlots.getTimeSlotList());
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblTimeSlots);
+        tca.adjustColumns();
     }
 
     /** This method is called from within the constructor to
@@ -56,13 +62,15 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        timeSlotsTabbedPane = new javax.swing.JTabbedPane();
+        SearchPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        tblTimeSlots = new javax.swing.JTable();
+        cmdCancel = new javax.swing.JButton();
+        cmdNext = new javax.swing.JButton();
+        detailsPanel2 = new javax.swing.JPanel();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
         lblTimeCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         lblDay = new javax.swing.JLabel();
@@ -76,8 +84,10 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
         spinnerEnd = spinnerEnd = new javax.swing.JSpinner(sm);
         JSpinner.DateEditor de2 = new JSpinner.DateEditor(spinnerEnd, "h:mm a");
         spinnerEnd.setEditor(de2);
-        jLabel1 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox();
+        lblStatus = new javax.swing.JLabel();
+        cmbStatus = new javax.swing.JComboBox();
+        cmdCancel2 = new javax.swing.JButton();
+        cmdSave = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -86,13 +96,13 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
-        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        timeSlotsTabbedPane.setName("timeSlotsTabbedPane"); // NOI18N
 
-        jPanel1.setName("jPanel1"); // NOI18N
+        SearchPanel.setName("SearchPanel"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblTimeSlots.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -100,50 +110,66 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
                 "ID", "Code", "Day", "Start", "End", "Status"
             }
         ));
-        jTable1.setName("jTable1"); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
-        jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
-        jTable1.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("jTable1.columnModel.title2")); // NOI18N
-        jTable1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("jTable1.columnModel.title3")); // NOI18N
-        jTable1.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("jTable1.columnModel.title4")); // NOI18N
-        jTable1.getColumnModel().getColumn(5).setHeaderValue(resourceMap.getString("jTable1.columnModel.title5")); // NOI18N
+        tblTimeSlots.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblTimeSlots.setName("tblTimeSlots"); // NOI18N
+        tblTimeSlots.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblTimeSlotsMouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(tblTimeSlots);
+        tblTimeSlots.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblTimeSlots.columnModel.title0")); // NOI18N
+        tblTimeSlots.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblTimeSlots.columnModel.title1")); // NOI18N
+        tblTimeSlots.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblTimeSlots.columnModel.title2")); // NOI18N
+        tblTimeSlots.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblTimeSlots.columnModel.title3")); // NOI18N
+        tblTimeSlots.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblTimeSlots.columnModel.title4")); // NOI18N
+        tblTimeSlots.getColumnModel().getColumn(5).setHeaderValue(resourceMap.getString("tblTimeSlots.columnModel.title5")); // NOI18N
 
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditTimeSlots.class, this);
+        cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
+        cmdCancel.setName("cmdCancel"); // NOI18N
 
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
+        cmdNext.setAction(actionMap.get("next")); // NOI18N
+        cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
+        cmdNext.setName("cmdNext"); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout SearchPanelLayout = new javax.swing.GroupLayout(SearchPanel);
+        SearchPanel.setLayout(SearchPanelLayout);
+        SearchPanelLayout.setHorizontalGroup(
+            SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                    .addGroup(SearchPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
+                        .addComponent(cmdCancel)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        SearchPanelLayout.setVerticalGroup(
+            SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 230, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
+                .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdNext))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab(resourceMap.getString("jPanel1.TabConstraints.tabTitle"), resourceMap.getIcon("jPanel1.TabConstraints.tabIcon"), jPanel1); // NOI18N
+        timeSlotsTabbedPane.addTab(resourceMap.getString("SearchPanel.TabConstraints.tabTitle"), resourceMap.getIcon("SearchPanel.TabConstraints.tabIcon"), SearchPanel); // NOI18N
 
-        jPanel2.setName("jPanel2"); // NOI18N
+        detailsPanel2.setName("detailsPanel2"); // NOI18N
+
+        lblID.setText(resourceMap.getString("lblID.text")); // NOI18N
+        lblID.setName("lblID"); // NOI18N
+
+        txtID.setEditable(false);
+        txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
+        txtID.setName("txtID"); // NOI18N
 
         lblTimeCode.setText(resourceMap.getString("lblTimeCode.text")); // NOI18N
         lblTimeCode.setName("lblTimeCode"); // NOI18N
@@ -168,60 +194,84 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
         spinnerEnd.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
         spinnerEnd.setName("spinnerEnd"); // NOI18N
 
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
+        lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
+        lblStatus.setName("lblStatus"); // NOI18N
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBox1.setName("jComboBox1"); // NOI18N
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
+        cmbStatus.setName("cmbStatus"); // NOI18N
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        cmdCancel2.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel2.setText(resourceMap.getString("cmdCancel2.text")); // NOI18N
+        cmdCancel2.setName("cmdCancel2"); // NOI18N
+
+        cmdSave.setAction(actionMap.get("save")); // NOI18N
+        cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
+        cmdSave.setName("cmdSave"); // NOI18N
+
+        javax.swing.GroupLayout detailsPanel2Layout = new javax.swing.GroupLayout(detailsPanel2);
+        detailsPanel2.setLayout(detailsPanel2Layout);
+        detailsPanel2Layout.setHorizontalGroup(
+            detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailsPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTimeCode)
-                    .addComponent(lblDay)
-                    .addComponent(lblStart)
-                    .addComponent(lblEnd)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jComboBox1, 0, 265, Short.MAX_VALUE)
-                    .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                    .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 265, Short.MAX_VALUE)
-                    .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                    .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE))
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailsPanel2Layout.createSequentialGroup()
+                        .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTimeCode)
+                            .addComponent(lblDay)
+                            .addComponent(lblStart)
+                            .addComponent(lblEnd)
+                            .addComponent(lblStatus)
+                            .addComponent(lblID))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(cmbStatus, 0, 265, Short.MAX_VALUE)
+                            .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 265, Short.MAX_VALUE)
+                            .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
+                            .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanel2Layout.createSequentialGroup()
+                        .addComponent(cmdSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel2)))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        detailsPanel2Layout.setVerticalGroup(
+            detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailsPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTimeCode)
                     .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblDay)
                     .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spinnerStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblStart))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spinnerEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEnd))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStatus)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel2)
+                    .addComponent(cmdSave))
+                .addContainerGap())
         );
 
-        jTabbedPane1.addTab(resourceMap.getString("jPanel2.TabConstraints.tabTitle"), resourceMap.getIcon("jPanel2.TabConstraints.tabIcon"), jPanel2); // NOI18N
+        timeSlotsTabbedPane.addTab(resourceMap.getString("detailsPanel2.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel2.TabConstraints.tabIcon"), detailsPanel2); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,37 +279,131 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(timeSlotsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addComponent(timeSlotsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-401)/2, (screenSize.height-361)/2, 401, 361);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblTimeSlotsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblTimeSlotsMouseClicked
+    {//GEN-HEADEREND:event_tblTimeSlotsMouseClicked
+        loadTimeSlotDetails();
+    }//GEN-LAST:event_tblTimeSlotsMouseClicked
+
+    private void loadTimeSlotDetails()
+    {
+        if (tblTimeSlots.getSelectedRow() != -1)
+        {
+            txtID.setText(tblTimeSlots.getValueAt(tblTimeSlots.getSelectedRow(), 0).toString());
+            txtCode.setText(tblTimeSlots.getValueAt(tblTimeSlots.getSelectedRow(), 1).toString());
+            cmbDay.setSelectedItem(tblTimeSlots.getValueAt(tblTimeSlots.getSelectedRow(), 2).toString());
+            cmbStatus.setSelectedItem(tblTimeSlots.getValueAt(tblTimeSlots.getSelectedRow(), 5).toString());
+            String start = tblTimeSlots.getValueAt(tblTimeSlots.getSelectedRow(), 3).toString();
+            String end = tblTimeSlots.getValueAt(tblTimeSlots.getSelectedRow(), 4).toString();
+
+            Date startTime = new Date(), endTime = new Date();
+            try
+            {
+                startTime = timeFormat.parse(start);
+                endTime = timeFormat.parse(end);
+            }
+            catch (ParseException ex)
+            {
+                Logger.getLogger(FrmEditTimeSlots.class.getName()).log(Level.SEVERE, null, ex);
+            }
+
+            SpinnerDateModel sm = (SpinnerDateModel) spinnerStart.getModel();
+            sm.setValue((Date) startTime);
+            SpinnerDateModel sm2 = (SpinnerDateModel) spinnerEnd.getModel();
+            sm2.setValue((Date) endTime);
+        }
+        else
+        {
+            String message = "Kindly select a time slot before proceeding.";
+            Utilities.showWarningMessage(rootPane, message);
+        }
+    }
+
+    @Action
+    public void cancel()
+    {
+        Utilities.showCancelScreen(this);
+    }
+
+    @Action
+    public void next()
+    {
+        loadTimeSlotDetails();
+        timeSlotsTabbedPane.setSelectedIndex(timeSlotsTabbedPane.getSelectedIndex() + 1);
+    }
+
+    @Action
+    public void save()
+    {
+        String id = txtID.getText().trim();
+        String code = txtCode.getText().trim();
+        String day = cmbDay.getSelectedItem().toString();
+        Date startTime1 = new Date(Date.parse(spinnerStart.getModel().getValue().toString()));
+        Date endTime1 = new Date(Date.parse(spinnerEnd.getModel().getValue().toString()));
+        String startTime = timeFormat2.format(startTime1);
+        String endTime = timeFormat2.format(endTime1);
+        String status = cmbStatus.getSelectedItem().toString();
+
+        if (TimeSlots.updateTimeSlot(id, code, day, startTime, endTime, status))
+        {
+            String message = "The Time Slot was successfully updated.\n"
+                    + "Would you like to edit another?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                tblTimeSlots.setModel(TimeSlots.getTimeSlotList());
+                TableColumnAdjuster tca = new TableColumnAdjuster(tblTimeSlots);
+                tca.adjustColumns();
+                timeSlotsTabbedPane.setSelectedIndex(timeSlotsTabbedPane.getSelectedIndex() - 1);
+            }
+            else
+            {
+                this.dispose();
+            }
+        }
+        else
+        {
+            String message = "An error occurred while trying to update this time slot.\n"
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists kindly contact your system administrator.";
+            Utilities.showErrorMessage(rootPane, message);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel SearchPanel;
     private javax.swing.JComboBox cmbDay;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox jComboBox1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JComboBox cmbStatus;
+    private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdCancel2;
+    private javax.swing.JButton cmdNext;
+    private javax.swing.JButton cmdSave;
+    private javax.swing.JPanel detailsPanel2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblDay;
     private javax.swing.JLabel lblEnd;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblStart;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTimeCode;
     private javax.swing.JSpinner spinnerEnd;
     private javax.swing.JSpinner spinnerStart;
+    private javax.swing.JTable tblTimeSlots;
+    private javax.swing.JTabbedPane timeSlotsTabbedPane;
     private javax.swing.JTextField txtCode;
+    private javax.swing.JTextField txtID;
     // End of variables declaration//GEN-END:variables
 }
