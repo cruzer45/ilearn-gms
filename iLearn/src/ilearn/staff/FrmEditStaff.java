@@ -8,18 +8,31 @@
  *
  * Created on Mar 23, 2011, 2:12:07 PM
  */
-
 package ilearn.staff;
+
+import ilearn.kernel.TableColumnAdjuster;
+import ilearn.kernel.Utilities;
+import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+import org.jdesktop.application.Action;
 
 /**
  *
  * @author m.rogers
  */
-public class FrmEditStaff extends javax.swing.JInternalFrame {
+public class FrmEditStaff extends javax.swing.JInternalFrame
+{
+
+    static final Logger logger = Logger.getLogger(FrmEditStaff.class.getName());
 
     /** Creates new form FrmEditStaff */
-    public FrmEditStaff() {
+    public FrmEditStaff()
+    {
         initComponents();
+        reloadTable();
     }
 
     /** This method is called from within the constructor to
@@ -31,88 +44,276 @@ public class FrmEditStaff extends javax.swing.JInternalFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        staffTabbedPane = new javax.swing.JTabbedPane();
+        staffPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblStaff = new javax.swing.JTable();
+        cmdCancel = new javax.swing.JButton();
+        cmdNext = new javax.swing.JButton();
+        detailsPanel = new javax.swing.JPanel();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
+        lblFirstName = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
+        txtFirstName = new javax.swing.JTextField();
+        txtLastName = new javax.swing.JTextField();
+        lblStaffCode = new javax.swing.JLabel();
+        txtStaffCode = new javax.swing.JTextField();
+        lblGender = new javax.swing.JLabel();
+        cmbGender = new javax.swing.JComboBox();
+        lblDob = new javax.swing.JLabel();
+        calDOB = new com.toedter.calendar.JDateChooser();
+        lblNotes = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JTextArea();
+        txtEmail = new javax.swing.JTextField();
+        lblEmail = new javax.swing.JLabel();
+        cmbStatus = new javax.swing.JComboBox();
+        lblStatus = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        jButton3 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditStaff.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
+        setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
-        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        staffTabbedPane.setName("staffTabbedPane"); // NOI18N
 
-        jPanel1.setName("jPanel1"); // NOI18N
+        staffPanel.setName("staffPanel"); // NOI18N
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblStaff.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "ID", "Code", "Name", "DOB", "Status"
             }
-        ));
-        jTable1.setName("jTable1"); // NOI18N
-        jScrollPane1.setViewportView(jTable1);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
 
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tblStaff.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
+        tblStaff.setName("tblStaff"); // NOI18N
+        jScrollPane1.setViewportView(tblStaff);
+        tblStaff.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblStaff.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title1")); // NOI18N
+        tblStaff.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title2")); // NOI18N
+        tblStaff.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title3")); // NOI18N
+        tblStaff.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title0")); // NOI18N
+        tblStaff.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title4")); // NOI18N
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditStaff.class, this);
+        cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
+        cmdCancel.setName("cmdCancel"); // NOI18N
+
+        cmdNext.setAction(actionMap.get("next")); // NOI18N
+        cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
+        cmdNext.setName("cmdNext"); // NOI18N
+
+        javax.swing.GroupLayout staffPanelLayout = new javax.swing.GroupLayout(staffPanel);
+        staffPanel.setLayout(staffPanelLayout);
+        staffPanelLayout.setHorizontalGroup(
+            staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, staffPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
+                    .addGroup(staffPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel)))
+                .addContainerGap())
+        );
+        staffPanelLayout.setVerticalGroup(
+            staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, staffPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdNext))
+                .addContainerGap())
+        );
+
+        staffTabbedPane.addTab(resourceMap.getString("staffPanel.TabConstraints.tabTitle"), resourceMap.getIcon("staffPanel.TabConstraints.tabIcon"), staffPanel); // NOI18N
+
+        detailsPanel.setName("detailsPanel"); // NOI18N
+
+        lblID.setText(resourceMap.getString("lblID.text")); // NOI18N
+        lblID.setName("lblID"); // NOI18N
+
+        txtID.setEditable(false);
+        txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
+        txtID.setName("txtID"); // NOI18N
+
+        lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
+        lblFirstName.setName("lblFirstName"); // NOI18N
+
+        lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
+        lblLastName.setName("lblLastName"); // NOI18N
+
+        txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
+        txtFirstName.setName("txtFirstName"); // NOI18N
+
+        txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
+        txtLastName.setName("txtLastName"); // NOI18N
+
+        lblStaffCode.setText(resourceMap.getString("lblStaffCode.text")); // NOI18N
+        lblStaffCode.setName("lblStaffCode"); // NOI18N
+
+        txtStaffCode.setToolTipText(resourceMap.getString("txtStaffCode.toolTipText")); // NOI18N
+        txtStaffCode.setName("txtStaffCode"); // NOI18N
+
+        lblGender.setText(resourceMap.getString("lblGender.text")); // NOI18N
+        lblGender.setName("lblGender"); // NOI18N
+
+        cmbGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
+        cmbGender.setToolTipText(resourceMap.getString("cmbGender.toolTipText")); // NOI18N
+        cmbGender.setName("cmbGender"); // NOI18N
+
+        lblDob.setText(resourceMap.getString("lblDob.text")); // NOI18N
+        lblDob.setName("lblDob"); // NOI18N
+
+        calDOB.setToolTipText(resourceMap.getString("calDOB.toolTipText")); // NOI18N
+        calDOB.setName("calDOB"); // NOI18N
+
+        lblNotes.setText(resourceMap.getString("lblNotes.text")); // NOI18N
+        lblNotes.setName("lblNotes"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        txtNotes.setColumns(20);
+        txtNotes.setLineWrap(true);
+        txtNotes.setRows(5);
+        txtNotes.setToolTipText(resourceMap.getString("txtNotes.toolTipText")); // NOI18N
+        txtNotes.setWrapStyleWord(true);
+        txtNotes.setName("txtNotes"); // NOI18N
+        jScrollPane2.setViewportView(txtNotes);
+
+        txtEmail.setToolTipText(resourceMap.getString("txtEmail.toolTipText")); // NOI18N
+        txtEmail.setName("txtEmail"); // NOI18N
+
+        lblEmail.setText(resourceMap.getString("lblEmail.text")); // NOI18N
+        lblEmail.setName("lblEmail"); // NOI18N
+
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
+        cmbStatus.setName("cmbStatus"); // NOI18N
+
+        lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
+        lblStatus.setName("lblStatus"); // NOI18N
+
+        jButton1.setAction(actionMap.get("cancel")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
 
+        jButton2.setAction(actionMap.get("save")); // NOI18N
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        jButton3.setAction(actionMap.get("resetForm")); // NOI18N
+        jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
+        jButton3.setName("jButton3"); // NOI18N
+
+        javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
+        detailsPanel.setLayout(detailsPanelLayout);
+        detailsPanelLayout.setHorizontalGroup(
+            detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 353, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(detailsPanelLayout.createSequentialGroup()
+                        .addComponent(lblID)
+                        .addGap(45, 45, 45)
+                        .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
+                    .addGroup(detailsPanelLayout.createSequentialGroup()
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblStaffCode)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblLastName)
+                            .addComponent(lblGender)
+                            .addComponent(lblDob)
+                            .addComponent(lblEmail)
+                            .addComponent(lblNotes)
+                            .addComponent(lblStatus))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbStatus, javax.swing.GroupLayout.Alignment.TRAILING, 0, 264, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(cmbGender, 0, 264, Short.MAX_VALUE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                            .addComponent(txtStaffCode, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jButton1)))
                 .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+        detailsPanelLayout.setVerticalGroup(
+            detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(detailsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 291, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStaffCode)
+                    .addComponent(txtStaffCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLastName)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGender)
+                    .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                    .addComponent(lblDob)
+                    .addComponent(calDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblEmail))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblNotes)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblStatus))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab(resourceMap.getString("jPanel1.TabConstraints.tabTitle"), jPanel1); // NOI18N
-
-        jPanel2.setName("jPanel2"); // NOI18N
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 373, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 347, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab(resourceMap.getString("jPanel2.TabConstraints.tabTitle"), jPanel2); // NOI18N
+        staffTabbedPane.addTab(resourceMap.getString("detailsPanel.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,30 +321,145 @@ public class FrmEditStaff extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                .addComponent(staffTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(staffTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-414)/2, (screenSize.height-426)/2, 414, 426);
+        setBounds((screenSize.width-385)/2, (screenSize.height-444)/2, 385, 444);
     }// </editor-fold>//GEN-END:initComponents
 
+    @Action
+    public void cancel()
+    {
+        Utilities.showCancelScreen(this);
+    }
 
+    @Action
+    public void save()
+    {
+        String id = txtID.getText().toString();
+        String code = txtStaffCode.getText().trim();
+        String firstName = txtFirstName.getText().trim();
+        String lastName = txtLastName.getText().trim();
+        String gender = cmbGender.getSelectedItem().toString();
+        String DOB = Utilities.YMD_Formatter.format(calDOB.getDate());
+        String notes = txtNotes.getText().trim();
+        String email = txtEmail.getText().trim();
+        String status = cmbStatus.getSelectedItem().toString();
+
+        if (Staff.updateStaffDetails(id, code, firstName, lastName, gender, DOB, notes, email, status))
+        {
+            String message = "The information was successfully updated. \n"
+                    + "Would you like to continue editing?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                reloadTable();
+                staffTabbedPane.setSelectedIndex(staffTabbedPane.getSelectedIndex() - 1);
+            }
+            else
+            {
+                this.dispose();
+            }
+        }
+        else
+        {
+            String message = "An error occurred while trying to save this staff member.\n"
+                    + "Kindly verify your information and try again.";
+            Utilities.showErrorMessage(rootPane, message);
+        }
+    }
+
+    @Action
+    public void resetForm()
+    {
+        getStaffDetails();
+    }
+
+    private void reloadTable()
+    {
+        tblStaff.setModel(Staff.getStaffListTableModel());
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblStaff);
+        tca.adjustColumns();
+    }
+
+    private void getStaffDetails()
+    {
+        if (tblStaff.getSelectedRow() != -1)
+        {
+            String id = tblStaff.getValueAt(tblStaff.getSelectedRow(), 0).toString();
+            ArrayList<String> details = Staff.getStaffDetails(id);
+
+            txtID.setText(details.get(0));
+            txtStaffCode.setText(details.get(1));
+            txtFirstName.setText(details.get(2));
+            txtLastName.setText(details.get(3));
+            cmbGender.setSelectedItem(details.get(4));
+            try
+            {
+                calDOB.setDate(Utilities.YMD_Formatter.parse(details.get(5)));
+            }
+            catch (ParseException ex)
+            {
+                logger.log(Level.SEVERE, null, ex);
+            }
+            txtNotes.setText(details.get(6));
+            txtEmail.setText(details.get(7));
+            cmbStatus.setSelectedItem(details.get(8));
+        }
+        else
+        {
+            String message = "Kindly select a staff member before proceeding";
+            Utilities.showWarningMessage(rootPane, message);
+        }
+    }
+
+    @Action
+    public void next()
+    {
+        getStaffDetails();
+        if (tblStaff.getSelectedRow() != -1)
+        {
+            staffTabbedPane.setSelectedIndex(staffTabbedPane.getSelectedIndex() + 1);
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser calDOB;
+    private javax.swing.JComboBox cmbGender;
+    private javax.swing.JComboBox cmbStatus;
+    private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdNext;
+    private javax.swing.JPanel detailsPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDob;
+    private javax.swing.JLabel lblEmail;
+    private javax.swing.JLabel lblFirstName;
+    private javax.swing.JLabel lblGender;
+    private javax.swing.JLabel lblID;
+    private javax.swing.JLabel lblLastName;
+    private javax.swing.JLabel lblNotes;
+    private javax.swing.JLabel lblStaffCode;
+    private javax.swing.JLabel lblStatus;
+    private javax.swing.JPanel staffPanel;
+    private javax.swing.JTabbedPane staffTabbedPane;
+    private javax.swing.JTable tblStaff;
+    private javax.swing.JTextField txtEmail;
+    private javax.swing.JTextField txtFirstName;
+    private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtLastName;
+    private javax.swing.JTextArea txtNotes;
+    private javax.swing.JTextField txtStaffCode;
     // End of variables declaration//GEN-END:variables
-
 }

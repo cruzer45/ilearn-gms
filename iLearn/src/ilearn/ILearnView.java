@@ -7,6 +7,7 @@ import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
 import ilearn.kernel.Environment;
 import ilearn.staff.FrmAddStaff;
+import ilearn.staff.FrmEditStaff;
 import ilearn.user.FrmAddUser;
 import ilearn.user.FrmEditUser;
 import ilearn.user.FrmLogin;
@@ -50,6 +51,7 @@ public class ILearnView extends FrameView
     FrmAddTimeSlot frmAddTimeSlot = null;
     FrmEditTimeSlots frmEditTimeSlots = null;
     FrmAddStaff frmAddStaff = null;
+    FrmEditStaff frmEditStaff = null;
 
     private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
 
@@ -205,6 +207,7 @@ public class ILearnView extends FrameView
         addStudent = new javax.swing.JMenuItem();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
+        editStaff = new javax.swing.JMenuItem();
         subjectMenu = new javax.swing.JMenu();
         addSubject = new javax.swing.JMenuItem();
         termMenu = new javax.swing.JMenu();
@@ -288,6 +291,12 @@ public class ILearnView extends FrameView
         addStaff.setText(resourceMap.getString("addStaff.text")); // NOI18N
         addStaff.setName("addStaff"); // NOI18N
         staffMenu.add(addStaff);
+
+        editStaff.setAction(actionMap.get("showEditStaff")); // NOI18N
+        editStaff.setIcon(resourceMap.getIcon("editStaff.icon")); // NOI18N
+        editStaff.setText(resourceMap.getString("editStaff.text")); // NOI18N
+        editStaff.setName("editStaff"); // NOI18N
+        staffMenu.add(editStaff);
 
         manageMenu.add(staffMenu);
 
@@ -696,6 +705,31 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showEditStaff()
+    {
+         //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Staff");
+        if (AlreadyLoaded == false)
+        {
+            frmEditStaff = new FrmEditStaff();
+            desktopPane.add(frmEditStaff);
+
+            //Load the Form
+            frmEditStaff.setVisible(true);
+            frmEditStaff.show();
+            try
+            {
+                frmEditStaff.setIcon(false);
+                frmEditStaff.setSelected(true);
+            }
+            catch (Exception e)
+            {
+               logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -706,6 +740,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addUser;
     private javax.swing.JMenu classMenu;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem editStaff;
     private javax.swing.JMenuItem editTerm;
     private javax.swing.JMenuItem editTimeSlot;
     private javax.swing.JMenuItem editUser;

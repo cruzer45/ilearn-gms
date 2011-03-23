@@ -123,6 +123,16 @@
                     <Property name="name" type="java.lang.String" value="addStaff" noResource="true"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="editStaff">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showEditStaff" methodName="showEditStaff"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="editStaff.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="editStaff.text"/>
+                    <Property name="name" type="java.lang.String" value="editStaff" noResource="true"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="subjectMenu">

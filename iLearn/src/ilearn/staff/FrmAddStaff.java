@@ -104,8 +104,10 @@ public class FrmAddStaff extends javax.swing.JInternalFrame
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         txtNotes.setColumns(20);
+        txtNotes.setLineWrap(true);
         txtNotes.setRows(5);
         txtNotes.setToolTipText(resourceMap.getString("txtNotes.toolTipText")); // NOI18N
+        txtNotes.setWrapStyleWord(true);
         txtNotes.setName("txtNotes"); // NOI18N
         jScrollPane1.setViewportView(txtNotes);
 
