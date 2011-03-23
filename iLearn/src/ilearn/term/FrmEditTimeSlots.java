@@ -48,7 +48,7 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
         initComponents();
         spinnerStart.setModel(new SpinnerDateModel(startDate, null, null, Calendar.HOUR_OF_DAY));
         spinnerEnd.setModel(new SpinnerDateModel(startDate, null, null, Calendar.HOUR_OF_DAY));
-        tblTimeSlots.setModel(TimeSlots.getTimeSlotList());
+        tblTimeSlots.setModel(TimeSlots.getTimeSlotTableModelList());
         TableColumnAdjuster tca = new TableColumnAdjuster(tblTimeSlots);
         tca.adjustColumns();
     }
@@ -365,7 +365,7 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
-                tblTimeSlots.setModel(TimeSlots.getTimeSlotList());
+                tblTimeSlots.setModel(TimeSlots.getTimeSlotTableModelList());
                 TableColumnAdjuster tca = new TableColumnAdjuster(tblTimeSlots);
                 tca.adjustColumns();
                 timeSlotsTabbedPane.setSelectedIndex(timeSlotsTabbedPane.getSelectedIndex() - 1);

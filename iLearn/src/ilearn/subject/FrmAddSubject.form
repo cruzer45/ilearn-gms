@@ -35,16 +35,14 @@
                           <Component id="lblSubjectCode" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDays" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTime" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="timePanel" max="32767" attributes="0"/>
-                          <Component id="daysPanel" alignment="0" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" pref="309" max="32767" attributes="0"/>
                           <Component id="txtSubjectName" alignment="0" pref="309" max="32767" attributes="0"/>
                           <Component id="txtSubjectCode" alignment="0" pref="309" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="1" pref="309" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -77,18 +75,15 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblDays" min="-2" max="-2" attributes="0"/>
-                  <Component id="daysPanel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblTime" min="-2" max="-2" attributes="0"/>
-                  <Component id="timePanel" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="32767" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -105,6 +100,7 @@
     <Component class="javax.swing.JTextField" name="txtSubjectCode">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtSubjectCode.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtSubjectCode.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtSubjectCode" noResource="true"/>
       </Properties>
     </Component>
@@ -145,188 +141,26 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="daysPanel">
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
-          </Border>
-        </Property>
-        <Property name="name" type="java.lang.String" value="daysPanel" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
       </Properties>
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
 
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="chkMon" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkThur" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="chkTue" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="chkWed" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="chkFri" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace pref="35" max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkMon" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkTue" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkWed" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="chkThur" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="chkFri" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JCheckBox" name="chkMon">
+        <Component class="javax.swing.JList" name="TimeList">
           <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="chkMon.text"/>
-            <Property name="name" type="java.lang.String" value="chkMon" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkTue">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="chkTue.text"/>
-            <Property name="name" type="java.lang.String" value="chkTue" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkWed">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="chkWed.text"/>
-            <Property name="name" type="java.lang.String" value="chkWed" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkThur">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="chkThur.text"/>
-            <Property name="name" type="java.lang.String" value="chkThur" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="chkFri">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="chkFri.text"/>
-            <Property name="name" type="java.lang.String" value="chkFri" noResource="true"/>
+            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+              <StringArray count="0"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="TimeList" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblDays">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblDays.text"/>
-        <Property name="name" type="java.lang.String" value="lblDays" noResource="true"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JPanel" name="timePanel">
-      <Properties>
-        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-          <Border info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
-            <EtchetBorder/>
-          </Border>
-        </Property>
-        <Property name="name" type="java.lang.String" value="timePanel" noResource="true"/>
-      </Properties>
-
-      <Layout>
-        <DimensionLayout dim="0">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="lblStart" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblEnd" alignment="0" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="spinnerEnd" alignment="0" pref="201" max="32767" attributes="0"/>
-                      <Component id="spinnerStart" alignment="0" pref="201" max="32767" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-        <DimensionLayout dim="1">
-          <Group type="103" groupAlignment="0" attributes="0">
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblStart" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spinnerStart" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="lblEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="spinnerEnd" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-          </Group>
-        </DimensionLayout>
-      </Layout>
-      <SubComponents>
-        <Component class="javax.swing.JLabel" name="lblStart">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="lblStart.text"/>
-            <Property name="name" type="java.lang.String" value="lblStart" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spinnerStart">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY)" type="code"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="spinnerStart" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="spinnerStart = new javax.swing.JSpinner(sm);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="JSpinner.DateEditor de = new JSpinner.DateEditor(spinnerStart, &quot;h:mm a&quot;);&#xd;&#xa;spinnerStart.setEditor(de);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePre" type="java.lang.String" value="SpinnerDateModel sm = new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY);"/>
-          </AuxValues>
-        </Component>
-        <Component class="javax.swing.JLabel" name="lblEnd">
-          <Properties>
-            <Property name="text" type="java.lang.String" resourceKey="lblEnd.text"/>
-            <Property name="name" type="java.lang.String" value="lblEnd" noResource="true"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="spinnerEnd">
-          <Properties>
-            <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY)" type="code"/>
-            </Property>
-            <Property name="name" type="java.lang.String" value="spinnerEnd" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="spinnerEnd = new javax.swing.JSpinner(sm);"/>
-            <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="JSpinner.DateEditor de2 = new JSpinner.DateEditor(spinnerEnd, &quot;h:mm a&quot;);&#xd;&#xa;spinnerEnd.setEditor(de2);"/>
-          </AuxValues>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JLabel" name="lblTime">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblTime.text"/>
-        <Property name="name" type="java.lang.String" value="lblTime" noResource="true"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JButton" name="cmdCancel">
       <Properties>
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
@@ -343,6 +177,12 @@
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="cmdSave.text"/>
         <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
+        <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

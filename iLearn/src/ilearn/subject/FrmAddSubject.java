@@ -10,10 +10,7 @@
  */
 package ilearn.subject;
 
-import java.util.Calendar;
-import java.util.Date;
-import javax.swing.JSpinner;
-import javax.swing.SpinnerDateModel;
+import ilearn.term.TimeSlots;
 import org.jdesktop.application.Action;
 
 /**
@@ -27,6 +24,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     public FrmAddSubject()
     {
         initComponents();
+        TimeList.setListData(TimeSlots.getTimeSlotList().toArray());
     }
 
     @Action
@@ -56,26 +54,11 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         lblDescription = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
-        daysPanel = new javax.swing.JPanel();
-        chkMon = new javax.swing.JCheckBox();
-        chkTue = new javax.swing.JCheckBox();
-        chkWed = new javax.swing.JCheckBox();
-        chkThur = new javax.swing.JCheckBox();
-        chkFri = new javax.swing.JCheckBox();
-        lblDays = new javax.swing.JLabel();
-        timePanel = new javax.swing.JPanel();
-        lblStart = new javax.swing.JLabel();
-        SpinnerDateModel sm = new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY);
-        spinnerStart = spinnerStart = new javax.swing.JSpinner(sm);
-        JSpinner.DateEditor de = new JSpinner.DateEditor(spinnerStart, "h:mm a");
-        spinnerStart.setEditor(de);
-        lblEnd = new javax.swing.JLabel();
-        spinnerEnd = spinnerEnd = new javax.swing.JSpinner(sm);
-        JSpinner.DateEditor de2 = new JSpinner.DateEditor(spinnerEnd, "h:mm a");
-        spinnerEnd.setEditor(de2);
-        lblTime = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        TimeList = new javax.swing.JList();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -89,6 +72,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         lblSubjectCode.setName("lblSubjectCode"); // NOI18N
 
         txtSubjectCode.setText(resourceMap.getString("txtSubjectCode.text")); // NOI18N
+        txtSubjectCode.setToolTipText(resourceMap.getString("txtSubjectCode.toolTipText")); // NOI18N
         txtSubjectCode.setName("txtSubjectCode"); // NOI18N
 
         lblSubjectName.setText(resourceMap.getString("lblSubjectName.text")); // NOI18N
@@ -107,106 +91,10 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         txtDescription.setName("txtDescription"); // NOI18N
         jScrollPane1.setViewportView(txtDescription);
 
-        daysPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        daysPanel.setName("daysPanel"); // NOI18N
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
 
-        chkMon.setText(resourceMap.getString("chkMon.text")); // NOI18N
-        chkMon.setName("chkMon"); // NOI18N
-
-        chkTue.setText(resourceMap.getString("chkTue.text")); // NOI18N
-        chkTue.setName("chkTue"); // NOI18N
-
-        chkWed.setText(resourceMap.getString("chkWed.text")); // NOI18N
-        chkWed.setName("chkWed"); // NOI18N
-
-        chkThur.setText(resourceMap.getString("chkThur.text")); // NOI18N
-        chkThur.setName("chkThur"); // NOI18N
-
-        chkFri.setText(resourceMap.getString("chkFri.text")); // NOI18N
-        chkFri.setName("chkFri"); // NOI18N
-
-        javax.swing.GroupLayout daysPanelLayout = new javax.swing.GroupLayout(daysPanel);
-        daysPanel.setLayout(daysPanelLayout);
-        daysPanelLayout.setHorizontalGroup(
-            daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(daysPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(chkMon)
-                    .addComponent(chkThur))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(daysPanelLayout.createSequentialGroup()
-                        .addComponent(chkTue)
-                        .addGap(18, 18, 18)
-                        .addComponent(chkWed))
-                    .addComponent(chkFri))
-                .addContainerGap(35, Short.MAX_VALUE))
-        );
-        daysPanelLayout.setVerticalGroup(
-            daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(daysPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkMon)
-                    .addComponent(chkTue)
-                    .addComponent(chkWed))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkThur)
-                    .addComponent(chkFri))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        lblDays.setText(resourceMap.getString("lblDays.text")); // NOI18N
-        lblDays.setName("lblDays"); // NOI18N
-
-        timePanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
-        timePanel.setName("timePanel"); // NOI18N
-
-        lblStart.setText(resourceMap.getString("lblStart.text")); // NOI18N
-        lblStart.setName("lblStart"); // NOI18N
-
-        spinnerStart.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
-        spinnerStart.setName("spinnerStart"); // NOI18N
-
-        lblEnd.setText(resourceMap.getString("lblEnd.text")); // NOI18N
-        lblEnd.setName("lblEnd"); // NOI18N
-
-        spinnerEnd.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
-        spinnerEnd.setName("spinnerEnd"); // NOI18N
-
-        javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
-        timePanel.setLayout(timePanelLayout);
-        timePanelLayout.setHorizontalGroup(
-            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblStart)
-                    .addComponent(lblEnd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(spinnerEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                    .addComponent(spinnerStart, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        timePanelLayout.setVerticalGroup(
-            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(timePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStart)
-                    .addComponent(spinnerStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblEnd)
-                    .addComponent(spinnerEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        lblTime.setText(resourceMap.getString("lblTime.text")); // NOI18N
-        lblTime.setName("lblTime"); // NOI18N
+        TimeList.setName("TimeList"); // NOI18N
+        jScrollPane2.setViewportView(TimeList);
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddSubject.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
@@ -216,6 +104,9 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
+
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -229,15 +120,13 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                             .addComponent(lblSubjectCode)
                             .addComponent(lblSubjectName)
                             .addComponent(lblDescription)
-                            .addComponent(lblDays)
-                            .addComponent(lblTime))
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(timePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(daysPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
                             .addComponent(txtSubjectName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
-                            .addComponent(txtSubjectCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)))
+                            .addComponent(txtSubjectCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -261,41 +150,28 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblDays)
-                    .addComponent(daysPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTime)
-                    .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmdCancel)
+                            .addComponent(cmdSave)))
+                    .addComponent(jLabel1))
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JCheckBox chkFri;
-    private javax.swing.JCheckBox chkMon;
-    private javax.swing.JCheckBox chkThur;
-    private javax.swing.JCheckBox chkTue;
-    private javax.swing.JCheckBox chkWed;
+    private javax.swing.JList TimeList;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdSave;
-    private javax.swing.JPanel daysPanel;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblDays;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDescription;
-    private javax.swing.JLabel lblEnd;
-    private javax.swing.JLabel lblStart;
     private javax.swing.JLabel lblSubjectCode;
     private javax.swing.JLabel lblSubjectName;
-    private javax.swing.JLabel lblTime;
-    private javax.swing.JSpinner spinnerEnd;
-    private javax.swing.JSpinner spinnerStart;
-    private javax.swing.JPanel timePanel;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtSubjectCode;
     private javax.swing.JTextField txtSubjectName;

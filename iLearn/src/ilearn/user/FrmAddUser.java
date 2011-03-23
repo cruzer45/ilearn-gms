@@ -76,15 +76,19 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         lblPassword.setName("lblPassword"); // NOI18N
 
         txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
+        txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
 
         txtUserName.setText(resourceMap.getString("txtUserName.text")); // NOI18N
+        txtUserName.setToolTipText(resourceMap.getString("txtUserName.toolTipText")); // NOI18N
         txtUserName.setName("txtUserName"); // NOI18N
 
         txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
+        txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
         txtLastName.setName("txtLastName"); // NOI18N
 
         txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
+        txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
         txtPassword.setName("txtPassword"); // NOI18N
 
         lblGroup.setText(resourceMap.getString("lblGroup.text")); // NOI18N

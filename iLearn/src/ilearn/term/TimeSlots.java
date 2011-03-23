@@ -48,7 +48,35 @@ public class TimeSlots
         return successful;
     }
 
-    public static DefaultTableModel getTimeSlotList()
+    public static ArrayList<String> getTimeSlotList()
+    {
+        ArrayList<String> list = new ArrayList<String>();
+
+        try
+        {
+            String sql = "SELECT `id`, `hrsKey` ,`hrsStatus` FROM `iLearn`.`TimeSlots` WHERE `hrsStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+
+            while (rs.next())
+            {
+                String item = rs.getString("hrsKey");
+                list.add(item);
+            }
+            rs.close();
+            prep.close();
+
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while fetching the list of time slots.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
+        return list;
+    }
+
+    public static DefaultTableModel getTimeSlotTableModelList()
     {
 
         DefaultTableModel model = new DefaultTableModel();

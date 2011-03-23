@@ -550,6 +550,9 @@ public class ILearnView extends FrameView
 
     }
 
+    /**
+     * Displays the Add Term window
+     */
     @Action
     public void showAddTerm()
     {
@@ -575,6 +578,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Displays the Edit Term window.
+     */
     @Action
     public void showEditTerm()
     {
