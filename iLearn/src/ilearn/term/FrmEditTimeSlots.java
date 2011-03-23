@@ -141,7 +141,7 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                     .addGroup(SearchPanelLayout.createSequentialGroup()
                         .addComponent(cmdNext)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -152,7 +152,7 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
             SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, SearchPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(SearchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
@@ -169,17 +169,20 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
 
         txtID.setEditable(false);
         txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
+        txtID.setToolTipText(resourceMap.getString("txtID.toolTipText")); // NOI18N
         txtID.setName("txtID"); // NOI18N
 
         lblTimeCode.setText(resourceMap.getString("lblTimeCode.text")); // NOI18N
         lblTimeCode.setName("lblTimeCode"); // NOI18N
 
+        txtCode.setToolTipText(resourceMap.getString("txtCode.toolTipText")); // NOI18N
         txtCode.setName("txtCode"); // NOI18N
 
         lblDay.setText(resourceMap.getString("lblDay.text")); // NOI18N
         lblDay.setName("lblDay"); // NOI18N
 
         cmbDay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        cmbDay.setToolTipText(resourceMap.getString("cmbDay.toolTipText")); // NOI18N
         cmbDay.setName("cmbDay"); // NOI18N
 
         lblEnd.setText(resourceMap.getString("lblEnd.text")); // NOI18N
@@ -189,15 +192,18 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
         lblStart.setName("lblStart"); // NOI18N
 
         spinnerStart.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
+        spinnerStart.setToolTipText(resourceMap.getString("spinnerStart.toolTipText")); // NOI18N
         spinnerStart.setName("spinnerStart"); // NOI18N
 
         spinnerEnd.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
+        spinnerEnd.setToolTipText(resourceMap.getString("spinnerEnd.toolTipText")); // NOI18N
         spinnerEnd.setName("spinnerEnd"); // NOI18N
 
         lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
         lblStatus.setName("lblStatus"); // NOI18N
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
+        cmbStatus.setToolTipText(resourceMap.getString("cmbStatus.toolTipText")); // NOI18N
         cmbStatus.setName("cmbStatus"); // NOI18N
 
         cmdCancel2.setAction(actionMap.get("cancel")); // NOI18N
@@ -225,12 +231,12 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
                             .addComponent(lblID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(cmbStatus, 0, 265, Short.MAX_VALUE)
-                            .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 265, Short.MAX_VALUE)
-                            .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(cmbStatus, 0, 282, Short.MAX_VALUE)
+                            .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 282, Short.MAX_VALUE)
+                            .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)
+                            .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 282, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanel2Layout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -264,7 +270,7 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
                 .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStatus)
                     .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 79, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 83, Short.MAX_VALUE)
                 .addGroup(detailsPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel2)
                     .addComponent(cmdSave))
@@ -279,14 +285,14 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(timeSlotsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                .addComponent(timeSlotsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(timeSlotsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
+                .addComponent(timeSlotsTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                 .addContainerGap())
         );
 

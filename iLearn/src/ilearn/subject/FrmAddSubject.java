@@ -54,11 +54,11 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         lblDescription = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtDescription = new javax.swing.JTextArea();
+        lblDays_Time = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         TimeList = new javax.swing.JList();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setClosable(true);
         setIconifiable(true);
@@ -79,6 +79,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         lblSubjectName.setName("lblSubjectName"); // NOI18N
 
         txtSubjectName.setText(resourceMap.getString("txtSubjectName.text")); // NOI18N
+        txtSubjectName.setToolTipText(resourceMap.getString("txtSubjectName.toolTipText")); // NOI18N
         txtSubjectName.setName("txtSubjectName"); // NOI18N
 
         lblDescription.setText(resourceMap.getString("lblDescription.text")); // NOI18N
@@ -88,11 +89,16 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
 
         txtDescription.setColumns(20);
         txtDescription.setRows(5);
+        txtDescription.setToolTipText(resourceMap.getString("txtDescription.toolTipText")); // NOI18N
         txtDescription.setName("txtDescription"); // NOI18N
         jScrollPane1.setViewportView(txtDescription);
 
+        lblDays_Time.setText(resourceMap.getString("lblDays_Time.text")); // NOI18N
+        lblDays_Time.setName("lblDays_Time"); // NOI18N
+
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
+        TimeList.setToolTipText(resourceMap.getString("TimeList.toolTipText")); // NOI18N
         TimeList.setName("TimeList"); // NOI18N
         jScrollPane2.setViewportView(TimeList);
 
@@ -104,9 +110,6 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,7 +123,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                             .addComponent(lblSubjectCode)
                             .addComponent(lblSubjectName)
                             .addComponent(lblDescription)
-                            .addComponent(jLabel1))
+                            .addComponent(lblDays_Time))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 309, Short.MAX_VALUE)
@@ -152,11 +155,11 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(cmdCancel)
                             .addComponent(cmdSave)))
-                    .addComponent(jLabel1))
+                    .addComponent(lblDays_Time))
                 .addContainerGap())
         );
 
@@ -166,9 +169,9 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     private javax.swing.JList TimeList;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdSave;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblDays_Time;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblSubjectCode;
     private javax.swing.JLabel lblSubjectName;

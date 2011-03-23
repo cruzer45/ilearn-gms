@@ -86,12 +86,14 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
         lblTimeCode.setName("lblTimeCode"); // NOI18N
 
         txtCode.setText(resourceMap.getString("txtCode.text")); // NOI18N
+        txtCode.setToolTipText(resourceMap.getString("txtCode.toolTipText")); // NOI18N
         txtCode.setName("txtCode"); // NOI18N
 
         lblDay.setText(resourceMap.getString("lblDay.text")); // NOI18N
         lblDay.setName("lblDay"); // NOI18N
 
         cmbDay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
+        cmbDay.setToolTipText(resourceMap.getString("cmbDay.toolTipText")); // NOI18N
         cmbDay.setName("cmbDay"); // NOI18N
 
         lblEnd.setText(resourceMap.getString("lblEnd.text")); // NOI18N
@@ -101,9 +103,11 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
         lblStart.setName("lblStart"); // NOI18N
 
         spinnerStart.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
+        spinnerStart.setToolTipText(resourceMap.getString("spinnerStart.toolTipText")); // NOI18N
         spinnerStart.setName("spinnerStart"); // NOI18N
 
         spinnerEnd.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
+        spinnerEnd.setToolTipText(resourceMap.getString("spinnerEnd.toolTipText")); // NOI18N
         spinnerEnd.setName("spinnerEnd"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddTimeSlot.class, this);
@@ -130,10 +134,10 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
                             .addComponent(lblEnd))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                            .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 279, Short.MAX_VALUE)
-                            .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                            .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)))
+                            .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                            .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 292, Short.MAX_VALUE)
+                            .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                            .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -159,7 +163,7 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(spinnerEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblEnd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))

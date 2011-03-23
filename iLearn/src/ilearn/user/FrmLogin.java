@@ -66,6 +66,7 @@ public class FrmLogin extends javax.swing.JDialog
         lblUserName.setName("lblUserName"); // NOI18N
 
         txtUsername.setText(resourceMap.getString("txtUsername.text")); // NOI18N
+        txtUsername.setToolTipText(resourceMap.getString("txtUsername.toolTipText")); // NOI18N
         txtUsername.setName("txtUsername"); // NOI18N
         txtUsername.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -77,6 +78,7 @@ public class FrmLogin extends javax.swing.JDialog
         lblPassword.setName("lblPassword"); // NOI18N
 
         txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
+        txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
         txtPassword.setName("txtPassword"); // NOI18N
         txtPassword.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
@@ -107,8 +109,8 @@ public class FrmLogin extends javax.swing.JDialog
                             .addComponent(lblPassword))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)))
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdLogin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)

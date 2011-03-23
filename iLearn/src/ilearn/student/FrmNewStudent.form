@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="381" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" pref="385" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -77,13 +77,8 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="lblClass" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="47" max="-2" attributes="0"/>
-                              <Component id="cmbClass" pref="252" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="88" max="32767" attributes="0"/>
+                              <EmptySpace pref="69" max="32767" attributes="0"/>
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -97,15 +92,17 @@
                                   <Component id="lblGender" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDOB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblPhoto" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblClass" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPhoto" alignment="0" pref="249" max="32767" attributes="0"/>
-                                  <Component id="calDOB" alignment="0" pref="249" max="32767" attributes="0"/>
-                                  <Component id="cmbGender" alignment="0" pref="249" max="32767" attributes="0"/>
-                                  <Component id="txtOtherName" alignment="0" pref="249" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" pref="249" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="249" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="txtPhoto" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="calDOB" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="cmbGender" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="txtOtherName" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="txtLastName" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" pref="278" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -153,7 +150,7 @@
                           <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="85" max="32767" attributes="0"/>
+                      <EmptySpace pref="96" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -219,11 +216,9 @@
             <Component class="javax.swing.JComboBox" name="cmbGender">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
+                  <StringArray count="2">
+                    <StringItem index="0" value="Male"/>
+                    <StringItem index="1" value="Female"/>
                   </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbGender" noResource="true"/>
@@ -341,10 +336,10 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtEmail" alignment="0" pref="275" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" pref="275" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="1" pref="275" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="275" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="299" max="32767" attributes="0"/>
+                                  <Component id="txtPhone" alignment="0" pref="299" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="1" pref="299" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="299" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -380,7 +375,7 @@
                           <Component id="lblMailingAddress" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                      <EmptySpace pref="78" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -521,7 +516,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace pref="14" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -556,9 +551,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtPriConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtPriConName" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtPriConPhone" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtPriConName" alignment="0" pref="247" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -668,9 +663,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtSecConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtSecConName" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtSecConPhone" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtSecConName" alignment="0" pref="247" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -793,9 +788,9 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDoctorPhone" alignment="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="txtPrimaryDoctor" alignment="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="txtHospital" alignment="1" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtDoctorPhone" alignment="0" pref="240" max="32767" attributes="0"/>
+                                  <Component id="txtPrimaryDoctor" alignment="0" pref="240" max="32767" attributes="0"/>
+                                  <Component id="txtHospital" alignment="1" pref="240" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -826,7 +821,7 @@
                           <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="231" max="32767" attributes="0"/>
+                      <EmptySpace pref="236" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>

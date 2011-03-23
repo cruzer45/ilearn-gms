@@ -41,8 +41,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtPassword" alignment="0" pref="315" max="32767" attributes="0"/>
-                          <Component id="txtUsername" alignment="0" pref="315" max="32767" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" pref="340" max="32767" attributes="0"/>
+                          <Component id="txtUsername" alignment="0" pref="340" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -98,6 +98,7 @@
     <Component class="javax.swing.JTextField" name="txtUsername">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtUsername.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtUsername.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtUsername" noResource="true"/>
       </Properties>
       <Events>
@@ -113,6 +114,7 @@
     <Component class="javax.swing.JPasswordField" name="txtPassword">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtPassword.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtPassword.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtPassword" noResource="true"/>
       </Properties>
       <Events>

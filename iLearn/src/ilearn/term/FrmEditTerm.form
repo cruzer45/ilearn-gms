@@ -38,7 +38,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="termTabbedPane" pref="246" max="32767" attributes="0"/>
+              <Component id="termTabbedPane" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -71,7 +71,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="371" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="375" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdNExt" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -119,6 +119,7 @@
                         <Column editable="false" title="Long Name" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="tblTerms.toolTipText"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="1">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -210,18 +211,18 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtTermID" pref="281" max="32767" attributes="0"/>
+                                      <Component id="txtTermID" pref="311" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cmbStatus" pref="281" max="32767" attributes="0"/>
+                                      <Component id="cmbStatus" pref="311" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtLongName" alignment="0" pref="280" max="32767" attributes="0"/>
-                                          <Component id="txtShortName" alignment="0" pref="280" max="32767" attributes="0"/>
-                                          <Component id="txtTermCode" alignment="0" pref="280" max="32767" attributes="0"/>
+                                          <Component id="txtLongName" alignment="0" pref="308" max="32767" attributes="0"/>
+                                          <Component id="txtShortName" alignment="0" pref="308" max="32767" attributes="0"/>
+                                          <Component id="txtTermCode" alignment="0" pref="308" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>
@@ -259,7 +260,7 @@
                           <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="40" max="32767" attributes="0"/>
+                      <EmptySpace pref="49" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -280,6 +281,7 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" resourceKey="txtTermID.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtTermID.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtTermID" noResource="true"/>
               </Properties>
             </Component>
@@ -291,6 +293,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtTermCode">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtTermCode.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtTermCode" noResource="true"/>
               </Properties>
             </Component>
@@ -302,6 +305,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtShortName">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtShortName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtShortName" noResource="true"/>
               </Properties>
             </Component>
@@ -313,6 +317,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtLongName">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtLongName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtLongName" noResource="true"/>
               </Properties>
             </Component>
@@ -330,6 +335,7 @@
                     <StringItem index="1" value="Inactive"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbStatus.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
               </Properties>
             </Component>

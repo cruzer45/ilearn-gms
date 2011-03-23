@@ -35,7 +35,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="106" max="32767" attributes="0"/>
+                      <EmptySpace pref="64" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -52,13 +52,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbLevel" alignment="0" pref="242" max="32767" attributes="0"/>
-                          <Component id="cmbGroup" alignment="0" pref="242" max="32767" attributes="0"/>
-                          <Component id="txtPassword" alignment="0" pref="242" max="32767" attributes="0"/>
-                          <Component id="txtUserName" alignment="0" pref="242" max="32767" attributes="0"/>
-                          <Component id="txtFirstName" alignment="0" pref="242" max="32767" attributes="0"/>
-                          <Component id="txtLastName" alignment="1" pref="242" max="32767" attributes="0"/>
-                          <Component id="jTextField1" alignment="0" pref="242" max="32767" attributes="0"/>
+                          <Component id="cmbLevel" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="cmbGroup" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="txtUserName" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="txtFirstName" alignment="0" pref="257" max="32767" attributes="0"/>
+                          <Component id="txtLastName" alignment="1" pref="257" max="32767" attributes="0"/>
+                          <Component id="jTextField1" alignment="0" pref="257" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -104,7 +104,7 @@
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace pref="48" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -184,6 +184,7 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGroup.toolTipText"/>
         <Property name="name" type="java.lang.String" value="cmbGroup" noResource="true"/>
       </Properties>
       <Events>
@@ -206,6 +207,7 @@
             <StringItem index="3" value="Item 4"/>
           </StringArray>
         </Property>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="cmbLevel.toolTipText"/>
         <Property name="name" type="java.lang.String" value="cmbLevel" noResource="true"/>
       </Properties>
     </Component>

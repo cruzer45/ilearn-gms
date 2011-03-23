@@ -41,14 +41,14 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtLongName" alignment="0" pref="280" max="32767" attributes="0"/>
-                          <Component id="txtShortName" alignment="0" pref="280" max="32767" attributes="0"/>
-                          <Component id="txtTermCode" alignment="0" pref="280" max="32767" attributes="0"/>
+                          <Component id="txtLongName" alignment="0" pref="296" max="32767" attributes="0"/>
+                          <Component id="txtShortName" alignment="0" pref="296" max="32767" attributes="0"/>
+                          <Component id="txtTermCode" alignment="0" pref="296" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="114" max="32767" attributes="0"/>
+                      <EmptySpace pref="81" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -97,6 +97,7 @@
     <Component class="javax.swing.JTextField" name="txtTermCode">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtTermCode.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtTermCode.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtTermCode" noResource="true"/>
       </Properties>
     </Component>
@@ -109,6 +110,7 @@
     <Component class="javax.swing.JTextField" name="txtShortName">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtShortName.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtShortName.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtShortName" noResource="true"/>
       </Properties>
     </Component>
@@ -121,6 +123,7 @@
     <Component class="javax.swing.JTextField" name="txtLongName">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtLongName.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtLongName.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtLongName" noResource="true"/>
       </Properties>
     </Component>

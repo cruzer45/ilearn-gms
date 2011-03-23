@@ -58,18 +58,21 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
         lblTermCode.setName("lblTermCode"); // NOI18N
 
         txtTermCode.setText(resourceMap.getString("txtTermCode.text")); // NOI18N
+        txtTermCode.setToolTipText(resourceMap.getString("txtTermCode.toolTipText")); // NOI18N
         txtTermCode.setName("txtTermCode"); // NOI18N
 
         lblShortName.setText(resourceMap.getString("lblShortName.text")); // NOI18N
         lblShortName.setName("lblShortName"); // NOI18N
 
         txtShortName.setText(resourceMap.getString("txtShortName.text")); // NOI18N
+        txtShortName.setToolTipText(resourceMap.getString("txtShortName.toolTipText")); // NOI18N
         txtShortName.setName("txtShortName"); // NOI18N
 
         lblLongName.setText(resourceMap.getString("lblLongName.text")); // NOI18N
         lblLongName.setName("lblLongName"); // NOI18N
 
         txtLongName.setText(resourceMap.getString("txtLongName.text")); // NOI18N
+        txtLongName.setToolTipText(resourceMap.getString("txtLongName.toolTipText")); // NOI18N
         txtLongName.setName("txtLongName"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddTerm.class, this);
@@ -98,12 +101,12 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
                             .addComponent(lblLongName))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLongName, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                            .addComponent(txtTermCode, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
+                            .addComponent(txtLongName, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                            .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                            .addComponent(txtTermCode, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel)))

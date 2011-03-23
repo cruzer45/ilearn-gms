@@ -32,7 +32,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="userTabbedPane" pref="364" max="32767" attributes="0"/>
+              <Component id="userTabbedPane" pref="354" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -41,7 +41,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="userTabbedPane" pref="313" max="32767" attributes="0"/>
+              <Component id="userTabbedPane" pref="310" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -79,7 +79,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="335" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="329" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -89,7 +89,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="229" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="222" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -122,6 +122,7 @@
                         <Column editable="true" title="Status" type="java.lang.Object"/>
                       </Table>
                     </Property>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="tblUsers.toolTipText"/>
                     <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                       <TableColumnModel selectionModel="1">
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
@@ -213,14 +214,14 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbStatus" alignment="0" pref="250" max="32767" attributes="0"/>
-                                  <Component id="txtID" alignment="0" pref="250" max="32767" attributes="0"/>
-                                  <Component id="cmbLevel" alignment="0" pref="250" max="32767" attributes="0"/>
-                                  <Component id="cmbGroup" alignment="0" pref="250" max="32767" attributes="0"/>
-                                  <Component id="txtPassword" alignment="0" pref="250" max="32767" attributes="0"/>
-                                  <Component id="txtUserName" alignment="0" pref="250" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="1" pref="250" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="250" max="32767" attributes="0"/>
+                                  <Component id="cmbStatus" alignment="0" pref="269" max="32767" attributes="0"/>
+                                  <Component id="txtID" alignment="0" pref="269" max="32767" attributes="0"/>
+                                  <Component id="cmbLevel" alignment="0" pref="269" max="32767" attributes="0"/>
+                                  <Component id="cmbGroup" alignment="0" pref="269" max="32767" attributes="0"/>
+                                  <Component id="txtPassword" alignment="0" pref="269" max="32767" attributes="0"/>
+                                  <Component id="txtUserName" alignment="0" pref="269" max="32767" attributes="0"/>
+                                  <Component id="txtLastName" alignment="1" pref="269" max="32767" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" pref="269" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -271,7 +272,7 @@
                           <Component id="lblStatis" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="23" max="32767" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -316,26 +317,31 @@
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="text" type="java.lang.String" resourceKey="txtID.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtID.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtID" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtFirstName">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtFirstName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtFirstName" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtUserName">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtUserName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtUserName" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtLastName">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtLastName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtLastName" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JPasswordField" name="txtPassword">
               <Properties>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtPassword.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtPassword" noResource="true"/>
               </Properties>
             </Component>
@@ -355,6 +361,7 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGroup.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="cmbGroup" noResource="true"/>
               </Properties>
               <Events>
@@ -377,6 +384,7 @@
                     <StringItem index="3" value="Item 4"/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbLevel.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="cmbLevel" noResource="true"/>
               </Properties>
             </Component>
@@ -395,6 +403,7 @@
                     <StringItem index="2" value=" "/>
                   </StringArray>
                 </Property>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbStatus.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
               </Properties>
             </Component>

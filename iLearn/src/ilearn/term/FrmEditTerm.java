@@ -87,6 +87,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
                 return canEdit [columnIndex];
             }
         });
+        tblTerms.setToolTipText(resourceMap.getString("tblTerms.toolTipText")); // NOI18N
         tblTerms.setName("tblTerms"); // NOI18N
         tblTerms.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -116,7 +117,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, termPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(termPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addGroup(termPanelLayout.createSequentialGroup()
                         .addComponent(cmdNExt)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -144,27 +145,32 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
 
         txtTermID.setEditable(false);
         txtTermID.setText(resourceMap.getString("txtTermID.text")); // NOI18N
+        txtTermID.setToolTipText(resourceMap.getString("txtTermID.toolTipText")); // NOI18N
         txtTermID.setName("txtTermID"); // NOI18N
 
         lblTermCode.setText(resourceMap.getString("lblTermCode.text")); // NOI18N
         lblTermCode.setName("lblTermCode"); // NOI18N
 
+        txtTermCode.setToolTipText(resourceMap.getString("txtTermCode.toolTipText")); // NOI18N
         txtTermCode.setName("txtTermCode"); // NOI18N
 
         lblShortName.setText(resourceMap.getString("lblShortName.text")); // NOI18N
         lblShortName.setName("lblShortName"); // NOI18N
 
+        txtShortName.setToolTipText(resourceMap.getString("txtShortName.toolTipText")); // NOI18N
         txtShortName.setName("txtShortName"); // NOI18N
 
         lblLongName.setText(resourceMap.getString("lblLongName.text")); // NOI18N
         lblLongName.setName("lblLongName"); // NOI18N
 
+        txtLongName.setToolTipText(resourceMap.getString("txtLongName.toolTipText")); // NOI18N
         txtLongName.setName("txtLongName"); // NOI18N
 
         lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
         lblStatus.setName("lblStatus"); // NOI18N
 
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
+        cmbStatus.setToolTipText(resourceMap.getString("cmbStatus.toolTipText")); // NOI18N
         cmbStatus.setName("cmbStatus"); // NOI18N
 
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
@@ -195,16 +201,16 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(detailsPanelLayout.createSequentialGroup()
-                                .addComponent(txtTermID, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                                .addComponent(txtTermID, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
                                 .addContainerGap())
                             .addGroup(detailsPanelLayout.createSequentialGroup()
-                                .addComponent(cmbStatus, 0, 281, Short.MAX_VALUE)
+                                .addComponent(cmbStatus, 0, 311, Short.MAX_VALUE)
                                 .addContainerGap())
                             .addGroup(detailsPanelLayout.createSequentialGroup()
                                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txtLongName, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                                    .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
-                                    .addComponent(txtTermCode, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
+                                    .addComponent(txtLongName, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                                    .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE)
+                                    .addComponent(txtTermCode, javax.swing.GroupLayout.DEFAULT_SIZE, 308, Short.MAX_VALUE))
                                 .addGap(13, 13, 13))))))
         );
         detailsPanelLayout.setVerticalGroup(
@@ -230,7 +236,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStatus)
                     .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 49, Short.MAX_VALUE)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))
@@ -252,7 +258,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(termTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addComponent(termTabbedPane)
                 .addContainerGap())
         );
 

@@ -35,7 +35,7 @@
                           <Component id="lblSubjectCode" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
@@ -77,13 +77,13 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="26" max="32767" attributes="0"/>
+                      <EmptySpace pref="34" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDays_Time" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -113,6 +113,7 @@
     <Component class="javax.swing.JTextField" name="txtSubjectName">
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="txtSubjectName.text"/>
+        <Property name="toolTipText" type="java.lang.String" resourceKey="txtSubjectName.toolTipText"/>
         <Property name="name" type="java.lang.String" value="txtSubjectName" noResource="true"/>
       </Properties>
     </Component>
@@ -136,11 +137,18 @@
           <Properties>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="txtDescription.toolTipText"/>
             <Property name="name" type="java.lang.String" value="txtDescription" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="lblDays_Time">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="lblDays_Time.text"/>
+        <Property name="name" type="java.lang.String" value="lblDays_Time" noResource="true"/>
+      </Properties>
+    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane2">
       <Properties>
         <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
@@ -156,6 +164,7 @@
             <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
               <StringArray count="0"/>
             </Property>
+            <Property name="toolTipText" type="java.lang.String" resourceKey="TimeList.toolTipText"/>
             <Property name="name" type="java.lang.String" value="TimeList" noResource="true"/>
           </Properties>
         </Component>
@@ -177,12 +186,6 @@
         </Property>
         <Property name="text" type="java.lang.String" resourceKey="cmdSave.text"/>
         <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>
