@@ -5,6 +5,7 @@ package ilearn;
 
 import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
+import ilearn.classes.FrmEditClass;
 import ilearn.kernel.Environment;
 import ilearn.staff.FrmAddStaff;
 import ilearn.staff.FrmEditStaff;
@@ -52,7 +53,7 @@ public class ILearnView extends FrameView
     FrmEditTimeSlots frmEditTimeSlots = null;
     FrmAddStaff frmAddStaff = null;
     FrmEditStaff frmEditStaff = null;
-
+    FrmEditClass frmEditClass = null;
     private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
 
     public ILearnView(SingleFrameApplication app)
@@ -163,7 +164,7 @@ public class ILearnView extends FrameView
                 }
                 catch (Exception e)
                 {
-                   logger.log(Level.SEVERE, "Error displaying form.", e);
+                    logger.log(Level.SEVERE, "Error displaying form.", e);
                 }
                 return true;
             }
@@ -203,6 +204,7 @@ public class ILearnView extends FrameView
         manageMenu = new javax.swing.JMenu();
         classMenu = new javax.swing.JMenu();
         addClass = new javax.swing.JMenuItem();
+        editClass = new javax.swing.JMenuItem();
         studentMenu = new javax.swing.JMenu();
         addStudent = new javax.swing.JMenuItem();
         staffMenu = new javax.swing.JMenu();
@@ -241,7 +243,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -268,6 +270,12 @@ public class ILearnView extends FrameView
         addClass.setText(resourceMap.getString("addClass.text")); // NOI18N
         addClass.setName("addClass"); // NOI18N
         classMenu.add(addClass);
+
+        editClass.setAction(actionMap.get("showEditClass")); // NOI18N
+        editClass.setIcon(resourceMap.getIcon("editClass.icon")); // NOI18N
+        editClass.setText(resourceMap.getString("editClass.text")); // NOI18N
+        editClass.setName("editClass"); // NOI18N
+        classMenu.add(editClass);
 
         manageMenu.add(classMenu);
 
@@ -391,7 +399,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 216, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -464,7 +472,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -492,7 +500,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -530,7 +538,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -558,7 +566,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -598,7 +606,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -626,7 +634,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -651,7 +659,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -676,7 +684,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -684,7 +692,7 @@ public class ILearnView extends FrameView
     @Action
     public void showAddStaff()
     {
-         //Verify if the form is already loaded
+        //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Add Staff");
         if (AlreadyLoaded == false)
         {
@@ -701,7 +709,7 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -709,7 +717,7 @@ public class ILearnView extends FrameView
     @Action
     public void showEditStaff()
     {
-         //Verify if the form is already loaded
+        //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Edit Staff");
         if (AlreadyLoaded == false)
         {
@@ -726,7 +734,32 @@ public class ILearnView extends FrameView
             }
             catch (Exception e)
             {
-               logger.log(Level.SEVERE, "Error displaying the form.", e);
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showEditClass()
+    {
+         //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Class");
+        if (AlreadyLoaded == false)
+        {
+            frmEditClass = new FrmEditClass();
+            desktopPane.add(frmEditClass);
+
+            //Load the Form
+            frmEditClass.setVisible(true);
+            frmEditClass.show();
+            try
+            {
+                frmEditClass.setIcon(false);
+                frmEditClass.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
         }
     }
@@ -740,6 +773,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addUser;
     private javax.swing.JMenu classMenu;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem editClass;
     private javax.swing.JMenuItem editStaff;
     private javax.swing.JMenuItem editTerm;
     private javax.swing.JMenuItem editTimeSlot;

@@ -14,6 +14,7 @@ import ilearn.kernel.Utilities;
 import ilearn.staff.Staff;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 
 /**
@@ -46,15 +47,13 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         lblClassName = new javax.swing.JLabel();
         txtClassName = new javax.swing.JTextField();
         lblClassDesc = new javax.swing.JLabel();
-        txtClassDescription = new javax.swing.JTextField();
-        lblRoom = new javax.swing.JLabel();
-        cmbRoom = new javax.swing.JComboBox();
         lblHomeRoom = new javax.swing.JLabel();
         cmbHomeRoom = new javax.swing.JComboBox();
-        lblClassSize = new javax.swing.JLabel();
-        spinnerClassSize = new javax.swing.JSpinner();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
+        cmdReset = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtClassDescription = new javax.swing.JTextArea();
 
         setClosable(true);
         setIconifiable(true);
@@ -68,43 +67,32 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         lblClassLevel.setName("lblClassLevel"); // NOI18N
 
         cmbClassLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First", "Second", "Third", "Fourth" }));
+        cmbClassLevel.setToolTipText(resourceMap.getString("cmbClassLevel.toolTipText")); // NOI18N
         cmbClassLevel.setName("cmbClassLevel"); // NOI18N
 
         lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
         lblClassCode.setName("lblClassCode"); // NOI18N
 
         txtClassCode.setText(resourceMap.getString("txtClassCode.text")); // NOI18N
+        txtClassCode.setToolTipText(resourceMap.getString("txtClassCode.toolTipText")); // NOI18N
         txtClassCode.setName("txtClassCode"); // NOI18N
 
         lblClassName.setText(resourceMap.getString("lblClassName.text")); // NOI18N
         lblClassName.setName("lblClassName"); // NOI18N
 
         txtClassName.setText(resourceMap.getString("txtClassName.text")); // NOI18N
+        txtClassName.setToolTipText(resourceMap.getString("txtClassName.toolTipText")); // NOI18N
         txtClassName.setName("txtClassName"); // NOI18N
 
         lblClassDesc.setText(resourceMap.getString("lblClassDesc.text")); // NOI18N
         lblClassDesc.setName("lblClassDesc"); // NOI18N
 
-        txtClassDescription.setText(resourceMap.getString("txtClassDescription.text")); // NOI18N
-        txtClassDescription.setName("txtClassDescription"); // NOI18N
-
-        lblRoom.setText(resourceMap.getString("lblRoom.text")); // NOI18N
-        lblRoom.setName("lblRoom"); // NOI18N
-
-        cmbRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbRoom.setName("cmbRoom"); // NOI18N
-
         lblHomeRoom.setText(resourceMap.getString("lblHomeRoom.text")); // NOI18N
         lblHomeRoom.setName("lblHomeRoom"); // NOI18N
 
         cmbHomeRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbHomeRoom.setToolTipText(resourceMap.getString("cmbHomeRoom.toolTipText")); // NOI18N
         cmbHomeRoom.setName("cmbHomeRoom"); // NOI18N
-
-        lblClassSize.setText(resourceMap.getString("lblClassSize.text")); // NOI18N
-        lblClassSize.setName("lblClassSize"); // NOI18N
-
-        spinnerClassSize.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(30), null, null, Integer.valueOf(1)));
-        spinnerClassSize.setName("spinnerClassSize"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddNewClass.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
@@ -115,41 +103,57 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
 
+        cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
+        cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
+        cmdReset.setName("cmdReset"); // NOI18N
+
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        txtClassDescription.setColumns(20);
+        txtClassDescription.setLineWrap(true);
+        txtClassDescription.setRows(5);
+        txtClassDescription.setToolTipText(resourceMap.getString("txtClassDescription.toolTipText")); // NOI18N
+        txtClassDescription.setWrapStyleWord(true);
+        txtClassDescription.setName("txtClassDescription"); // NOI18N
+        jScrollPane1.setViewportView(txtClassDescription);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmdReset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel))
-                    .addGroup(layout.createSequentialGroup()
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClassDesc)
-                            .addComponent(lblRoom)
-                            .addComponent(lblHomeRoom)
-                            .addComponent(lblClassSize)
                             .addComponent(lblClassCode)
+                            .addComponent(lblClassLevel)
                             .addComponent(lblClassName)
-                            .addComponent(lblClassLevel))
+                            .addComponent(lblClassDesc)
+                            .addComponent(lblHomeRoom))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbClassLevel, 0, 294, Short.MAX_VALUE)
+                            .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 294, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
                             .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(cmbHomeRoom, 0, 294, Short.MAX_VALUE)
-                            .addComponent(cmbRoom, 0, 294, Short.MAX_VALUE)
-                            .addComponent(txtClassDescription, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(spinnerClassSize, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))))
+                            .addComponent(cmbClassLevel, 0, 294, Short.MAX_VALUE)
+                            .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClassCode)
+                    .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassLevel)
                     .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -158,33 +162,23 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
                     .addComponent(lblClassName)
                     .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassCode)
-                    .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblClassDesc)
-                    .addComponent(txtClassDescription, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblRoom)
-                    .addComponent(cmbRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblHomeRoom)
-                    .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassSize)
-                    .addComponent(spinnerClassSize, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
+                    .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblHomeRoom))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
-                    .addComponent(cmdSave))
+                    .addComponent(cmdSave)
+                    .addComponent(cmdReset))
                 .addContainerGap())
         );
 
-        pack();
+        java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
+        setBounds((screenSize.width-411)/2, (screenSize.height-276)/2, 411, 276);
     }// </editor-fold>//GEN-END:initComponents
 
     @Action
@@ -196,6 +190,33 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+
+        String code = txtClassCode.getText().trim();
+        String level = cmbClassLevel.getSelectedItem().toString();
+        String name = txtClassName.getText().trim();
+        String description = txtClassDescription.getText().trim();
+        String homeRoom = cmbHomeRoom.getSelectedItem().toString();
+
+        if (Classes.addClass(code, level, name, description, homeRoom))
+        {
+            String message = "The class was successfully added. \n"
+                    + "Would you like to add another?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                resetForm();
+            }
+            else
+            {
+                this.dispose();
+            }
+        }
+        else
+        {
+            String message = "An error occurred while trying to save this class.\n"
+                    + "Kindly verify your information and try again.";
+            Utilities.showErrorMessage(rootPane, message);
+        }
     }
 
     private void populateLists()
@@ -205,22 +226,29 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         staffList.add(0, "--- Select One ---");
         cmbHomeRoom.setModel(new DefaultComboBoxModel(staffList.toArray()));
     }
+
+    @Action
+    public void resetForm()
+    {
+        populateLists();
+        txtClassCode.setText("");
+        txtClassDescription.setText("");
+        txtClassName.setText("");
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbClassLevel;
     private javax.swing.JComboBox cmbHomeRoom;
-    private javax.swing.JComboBox cmbRoom;
     private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClassCode;
     private javax.swing.JLabel lblClassDesc;
     private javax.swing.JLabel lblClassLevel;
     private javax.swing.JLabel lblClassName;
-    private javax.swing.JLabel lblClassSize;
     private javax.swing.JLabel lblHomeRoom;
-    private javax.swing.JLabel lblRoom;
-    private javax.swing.JSpinner spinnerClassSize;
     private javax.swing.JTextField txtClassCode;
-    private javax.swing.JTextField txtClassDescription;
+    private javax.swing.JTextArea txtClassDescription;
     private javax.swing.JTextField txtClassName;
     // End of variables declaration//GEN-END:variables
 }

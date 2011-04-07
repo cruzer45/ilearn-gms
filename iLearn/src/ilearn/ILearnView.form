@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="254" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="248" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -84,6 +84,16 @@
                     <Property name="icon" type="javax.swing.Icon" resourceKey="addClass.icon"/>
                     <Property name="text" type="java.lang.String" resourceKey="addClass.text"/>
                     <Property name="name" type="java.lang.String" value="addClass" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="editClass">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showEditClass" methodName="showEditClass"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="editClass.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="editClass.text"/>
+                    <Property name="name" type="java.lang.String" value="editClass" noResource="true"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>
@@ -276,7 +286,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="230" max="32767" attributes="0"/>
+                  <EmptySpace pref="216" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
