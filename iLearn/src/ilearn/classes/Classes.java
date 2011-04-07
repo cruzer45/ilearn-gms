@@ -62,7 +62,6 @@ public class Classes
         ArrayList<String> HomeRoom = new ArrayList<String>();
         ArrayList<String> Status = new ArrayList<String>();
 
-
         try
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` ;";
@@ -151,7 +150,32 @@ public class Classes
             String message = "An error occurred while updating the class information.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return successful;
+    }
+
+    public static ArrayList<String> getClassList()
+    {
+        ArrayList<String> classes = new ArrayList<String>();
+
+        try
+        {
+            String sql = "SELECT `clsName` FROM `iLearn`.`Class` WHERE `clsStatus` = 'Active' ORDER BY `clsName` ASC ;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+
+            while (rs.next())
+            {
+                classes.add(rs.getString("clsName"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of classes.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
+        return classes;
     }
 }

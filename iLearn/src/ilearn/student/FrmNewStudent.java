@@ -10,13 +10,15 @@
  */
 package ilearn.student;
 
+import ilearn.classes.Classes;
 import ilearn.kernel.ImageFilter;
 import ilearn.kernel.Utilities;
-import ilearn.kernel.validator.NotEmptyValidator;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import org.jdesktop.application.Action;
@@ -28,13 +30,20 @@ import org.jdesktop.application.Action;
 public class FrmNewStudent extends javax.swing.JInternalFrame
 {
 
-    JComponent parent = this.rootPane;
+    JComponent parent = this.getRootPane();
     File selectedFile;
 
     /** Creates new form FrmNewStudent */
     public FrmNewStudent()
     {
         initComponents();
+        populateLists();
+    }
+
+    private void populateLists()
+    {
+        ArrayList<String> classList = Classes.getClassList();
+        cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
     }
 
     @Action
@@ -54,12 +63,12 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     {
         this.remove(studentTabbedPane);
         initComponents();
+        populateLists();
     }
 
     @Action
     public void save()
     {
-        
     }
 
     @Action
@@ -188,20 +197,18 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
 
         generalPanel.setName("generalPanel"); // NOI18N
 
-        lblFirstName.setFont(resourceMap.getFont("lblFirstName.font")); // NOI18N
+        lblFirstName.setFont(resourceMap.getFont("lblGender.font")); // NOI18N
         lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
         lblFirstName.setName("lblFirstName"); // NOI18N
 
         txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
-        txtFirstName.setInputVerifier(new NotEmptyValidator(parent, txtFirstName, "This cannot be empty."));
         txtFirstName.setName("txtFirstName"); // NOI18N
 
-        lblLastName.setFont(resourceMap.getFont("lblLastName.font")); // NOI18N
+        lblLastName.setFont(resourceMap.getFont("lblGender.font")); // NOI18N
         lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
         lblLastName.setName("lblLastName"); // NOI18N
 
         txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
-        txtLastName.setInputVerifier(new NotEmptyValidator(parent, txtLastName, "This cannot be empty."));
         txtLastName.setName("txtLastName"); // NOI18N
 
         lblOtherName.setText(resourceMap.getString("lblOtherName.text")); // NOI18N
@@ -248,7 +255,6 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
 
-        cmbClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbClass.setName("cmbClass"); // NOI18N
 
         lblClass.setFont(resourceMap.getFont("lblGender.font")); // NOI18N
@@ -264,7 +270,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
                         .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
                         .addComponent(cmdNext1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel1))
@@ -280,13 +286,13 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                             .addComponent(lblClass))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbClass, 0, 278, Short.MAX_VALUE)
-                            .addComponent(txtPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(cmbGender, 0, 278, Short.MAX_VALUE)
-                            .addComponent(txtOtherName, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE))))
+                            .addComponent(cmbClass, 0, 251, Short.MAX_VALUE)
+                            .addComponent(txtPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(cmbGender, 0, 251, Short.MAX_VALUE)
+                            .addComponent(txtOtherName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -322,7 +328,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblClass))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 89, Short.MAX_VALUE)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel1)
                     .addComponent(cmdNext1)
@@ -387,10 +393,10 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                             .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                            .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                            .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 275, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contactPanelLayout.createSequentialGroup()
                         .addComponent(cmdNext2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -416,7 +422,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 78, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 87, Short.MAX_VALUE)
                 .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel2)
                     .addComponent(cmdNext2))
@@ -427,6 +433,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
 
         parentPanel.setName("parentPanel"); // NOI18N
 
+        primaryContactPanel.setBackground(resourceMap.getColor("primaryContactPanel.background")); // NOI18N
         primaryContactPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("primaryContactPanel.border.title"))); // NOI18N
         primaryContactPanel.setName("primaryContactPanel"); // NOI18N
 
@@ -441,11 +448,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         lblPriConAddress.setName("lblPriConAddress"); // NOI18N
 
         txtPriConPhone.setText(resourceMap.getString("txtPriConPhone.text")); // NOI18N
-        txtPriConPhone.setInputVerifier(new NotEmptyValidator(parent, txtPriConPhone, "This cannot be empty."));
         txtPriConPhone.setName("txtPriConPhone"); // NOI18N
 
         txtPriConName.setText(resourceMap.getString("txtPriConName.text")); // NOI18N
-        txtPriConName.setInputVerifier(new NotEmptyValidator(parent, txtPriConName, "This cannot be empty."));
         txtPriConName.setName("txtPriConName"); // NOI18N
 
         lblPriConPhone.setText(resourceMap.getString("lblPriConPhone.text")); // NOI18N
@@ -466,9 +471,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                     .addComponent(lblPriConAddress))
                 .addGap(13, 13, 13)
                 .addGroup(primaryContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(txtPriConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(txtPriConName, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(txtPriConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(txtPriConName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addContainerGap())
         );
         primaryContactPanelLayout.setVerticalGroup(
@@ -488,6 +493,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        secConPanel.setBackground(resourceMap.getColor("secConPanel.background")); // NOI18N
         secConPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(resourceMap.getString("secConPanel.border.title"))); // NOI18N
         secConPanel.setName("secConPanel"); // NOI18N
 
@@ -523,9 +529,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                     .addComponent(lblSecConAddress))
                 .addGap(13, 13, 13)
                 .addGroup(secConPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(txtSecConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
-                    .addComponent(txtSecConName, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(txtSecConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
+                    .addComponent(txtSecConName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
                 .addContainerGap())
         );
         secConPanelLayout.setVerticalGroup(
@@ -573,7 +579,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addComponent(primaryContactPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(secConPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(parentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel3)
                     .addComponent(cmdNext3))
@@ -622,9 +628,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                             .addComponent(lblHospital))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(medicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDoctorPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                            .addComponent(txtPrimaryDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                            .addComponent(txtHospital, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)))
+                            .addComponent(txtDoctorPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                            .addComponent(txtPrimaryDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                            .addComponent(txtHospital, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, medicalPanelLayout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -646,7 +652,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(medicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHospital))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 236, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 235, Short.MAX_VALUE)
                 .addGroup(medicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel4)
                     .addComponent(cmdSave))
@@ -679,7 +685,6 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     {//GEN-HEADEREND:event_frameClosing
         cancel();
     }//GEN-LAST:event_frameClosing
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDOB;
     private javax.swing.JComboBox cmbClass;

@@ -78,7 +78,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="69" max="32767" attributes="0"/>
+                              <EmptySpace pref="88" max="32767" attributes="0"/>
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -96,13 +96,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbClass" alignment="0" pref="278" max="32767" attributes="0"/>
-                                  <Component id="txtPhoto" alignment="0" pref="278" max="32767" attributes="0"/>
-                                  <Component id="calDOB" alignment="0" pref="278" max="32767" attributes="0"/>
-                                  <Component id="cmbGender" alignment="0" pref="278" max="32767" attributes="0"/>
-                                  <Component id="txtOtherName" alignment="0" pref="278" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" pref="278" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="278" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="txtPhoto" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="calDOB" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="cmbGender" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="txtOtherName" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="txtLastName" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" pref="251" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -150,7 +150,7 @@
                           <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="96" max="32767" attributes="0"/>
+                      <EmptySpace pref="89" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -164,7 +164,7 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblFirstName">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblFirstName.font"/>
+                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="lblFirstName.text"/>
                 <Property name="name" type="java.lang.String" value="lblFirstName" noResource="true"/>
               </Properties>
@@ -172,15 +172,12 @@
             <Component class="javax.swing.JTextField" name="txtFirstName">
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="txtFirstName.text"/>
-                <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new NotEmptyValidator(parent, txtFirstName, &quot;This cannot be empty.&quot;)" type="code"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="txtFirstName" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblLastName">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblLastName.font"/>
+                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
                 <Property name="text" type="java.lang.String" resourceKey="lblLastName.text"/>
                 <Property name="name" type="java.lang.String" value="lblLastName" noResource="true"/>
               </Properties>
@@ -188,9 +185,6 @@
             <Component class="javax.swing.JTextField" name="txtLastName">
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="txtLastName.text"/>
-                <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="new NotEmptyValidator(parent, txtLastName, &quot;This cannot be empty.&quot;)" type="code"/>
-                </Property>
                 <Property name="name" type="java.lang.String" value="txtLastName" noResource="true"/>
               </Properties>
             </Component>
@@ -289,12 +283,7 @@
             <Component class="javax.swing.JComboBox" name="cmbClass">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="4">
-                    <StringItem index="0" value="Item 1"/>
-                    <StringItem index="1" value="Item 2"/>
-                    <StringItem index="2" value="Item 3"/>
-                    <StringItem index="3" value="Item 4"/>
-                  </StringArray>
+                  <StringArray count="0"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbClass" noResource="true"/>
               </Properties>
@@ -336,10 +325,10 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtEmail" alignment="0" pref="299" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" pref="299" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="1" pref="299" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="299" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="275" max="32767" attributes="0"/>
+                                  <Component id="txtPhone" alignment="0" pref="275" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="1" pref="275" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="275" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -375,7 +364,7 @@
                           <Component id="lblMailingAddress" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="78" max="32767" attributes="0"/>
+                      <EmptySpace pref="87" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -516,7 +505,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="14" max="32767" attributes="0"/>
+                      <EmptySpace pref="17" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -529,6 +518,7 @@
           <SubComponents>
             <Container class="javax.swing.JPanel" name="primaryContactPanel">
               <Properties>
+                <Property name="background" type="java.awt.Color" resourceKey="primaryContactPanel.background"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Primary Contact">
@@ -551,9 +541,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="247" max="32767" attributes="0"/>
-                              <Component id="txtPriConPhone" alignment="0" pref="247" max="32767" attributes="0"/>
-                              <Component id="txtPriConName" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="225" max="32767" attributes="0"/>
+                              <Component id="txtPriConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="txtPriConName" alignment="0" pref="225" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -610,18 +600,12 @@
                 <Component class="javax.swing.JTextField" name="txtPriConPhone">
                   <Properties>
                     <Property name="text" type="java.lang.String" resourceKey="txtPriConPhone.text"/>
-                    <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new NotEmptyValidator(parent, txtPriConPhone, &quot;This cannot be empty.&quot;)" type="code"/>
-                    </Property>
                     <Property name="name" type="java.lang.String" value="txtPriConPhone" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPriConName">
                   <Properties>
                     <Property name="text" type="java.lang.String" resourceKey="txtPriConName.text"/>
-                    <Property name="inputVerifier" type="javax.swing.InputVerifier" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                      <Connection code="new NotEmptyValidator(parent, txtPriConName, &quot;This cannot be empty.&quot;)" type="code"/>
-                    </Property>
                     <Property name="name" type="java.lang.String" value="txtPriConName" noResource="true"/>
                   </Properties>
                 </Component>
@@ -641,6 +625,7 @@
             </Container>
             <Container class="javax.swing.JPanel" name="secConPanel">
               <Properties>
+                <Property name="background" type="java.awt.Color" resourceKey="secConPanel.background"/>
                 <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                   <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
                     <TitledBorder title="Secondary Contact">
@@ -663,9 +648,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="247" max="32767" attributes="0"/>
-                              <Component id="txtSecConPhone" alignment="0" pref="247" max="32767" attributes="0"/>
-                              <Component id="txtSecConName" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="txtSecConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="txtSecConName" alignment="0" pref="225" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -788,9 +773,9 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDoctorPhone" alignment="0" pref="240" max="32767" attributes="0"/>
-                                  <Component id="txtPrimaryDoctor" alignment="0" pref="240" max="32767" attributes="0"/>
-                                  <Component id="txtHospital" alignment="1" pref="240" max="32767" attributes="0"/>
+                                  <Component id="txtDoctorPhone" alignment="0" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtPrimaryDoctor" alignment="0" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtHospital" alignment="1" pref="201" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -821,7 +806,7 @@
                           <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="236" max="32767" attributes="0"/>
+                      <EmptySpace pref="235" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
