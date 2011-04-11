@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="385" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" pref="389" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -78,7 +78,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="88" max="32767" attributes="0"/>
+                              <EmptySpace pref="69" max="32767" attributes="0"/>
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -96,13 +96,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbClass" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtPhoto" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="calDOB" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="cmbGender" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtOtherName" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="txtPhoto" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="calDOB" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="cmbGender" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="txtOtherName" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="txtLastName" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" pref="280" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -150,7 +150,7 @@
                           <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="89" max="32767" attributes="0"/>
+                      <EmptySpace pref="100" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -164,7 +164,11 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="lblFirstName">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
+                <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblFirstName" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblFirstName.text"/>
                 <Property name="name" type="java.lang.String" value="lblFirstName" noResource="true"/>
               </Properties>
@@ -177,7 +181,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblLastName">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblLastName" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblLastName.text"/>
                 <Property name="name" type="java.lang.String" value="lblLastName" noResource="true"/>
               </Properties>
@@ -190,6 +198,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblOtherName">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblOtherName" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblOtherName.text"/>
                 <Property name="name" type="java.lang.String" value="lblOtherName" noResource="true"/>
               </Properties>
@@ -202,7 +215,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblGender">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
+                <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblGender" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblGender.text"/>
                 <Property name="name" type="java.lang.String" value="lblGender" noResource="true"/>
               </Properties>
@@ -220,7 +237,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblDOB">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblDOB" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblDOB.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="lblDOB.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="lblDOB" noResource="true"/>
@@ -233,6 +254,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblPhoto">
               <Properties>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblPhoto" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblPhoto.text"/>
                 <Property name="name" type="java.lang.String" value="lblPhoto" noResource="true"/>
               </Properties>
@@ -290,7 +316,11 @@
             </Component>
             <Component class="javax.swing.JLabel" name="lblClass">
               <Properties>
-                <Property name="font" type="java.awt.Font" resourceKey="lblGender.font"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
+                  <FontInfo relative="true">
+                    <Font component="lblClass" property="font" relativeSize="false" size="11"/>
+                  </FontInfo>
+                </Property>
                 <Property name="text" type="java.lang.String" resourceKey="lblClass.text"/>
                 <Property name="name" type="java.lang.String" value="lblClass" noResource="true"/>
               </Properties>
@@ -325,10 +355,10 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtEmail" alignment="0" pref="275" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" pref="275" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="1" pref="275" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="275" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="299" max="32767" attributes="0"/>
+                                  <Component id="txtPhone" alignment="0" pref="299" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="1" pref="299" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="299" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -364,7 +394,7 @@
                           <Component id="lblMailingAddress" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="87" max="32767" attributes="0"/>
+                      <EmptySpace pref="82" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -505,7 +535,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="17" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -541,9 +571,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtPriConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtPriConName" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtPriConPhone" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtPriConName" alignment="0" pref="247" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -648,9 +678,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtSecConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtSecConName" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtSecConPhone" alignment="0" pref="247" max="32767" attributes="0"/>
+                              <Component id="txtSecConName" alignment="0" pref="247" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -773,9 +803,9 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDoctorPhone" alignment="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="txtPrimaryDoctor" alignment="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="txtHospital" alignment="1" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtDoctorPhone" alignment="0" pref="240" max="32767" attributes="0"/>
+                                  <Component id="txtPrimaryDoctor" alignment="0" pref="240" max="32767" attributes="0"/>
+                                  <Component id="txtHospital" alignment="1" pref="240" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -806,7 +836,7 @@
                           <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="235" max="32767" attributes="0"/>
+                      <EmptySpace pref="240" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
