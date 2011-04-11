@@ -74,7 +74,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         String stuFirstName = txtFirstName.getText().trim();
         String stuLastName = txtLastName.getText().trim();
         String stuOtherNames = txtOtherName.getText().trim();
-        String stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
+        String stuDOB = "";
         String stuGender = cmbGender.getSelectedItem().toString();
         String stuEmail = txtEmail.getText().trim();
         String stuPhone = txtPhone.getText().trim();
@@ -89,8 +89,30 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         String stuDoctorName = txtPrimaryDoctor.getText().trim();
         String stuDoctorContact = txtDoctorPhone.getText().trim();
         String stuHospital = txtHospital.getText().trim();
+        String stuClsCode = cmbClass.getSelectedItem().toString();
 
-        if (Student.addStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital))
+        try
+        {
+            stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while reading the Date of Birth.\n"
+                    + "Kindly verify your information and try again.";
+            Utilities.showErrorMessage(rootPane, message);
+            return;
+        }
+
+        if (selectedFile == null)
+        {
+            org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap();
+
+            selectedFile = new File(ilearn.ILearnApp.class.getResource("no-image-selected.png").getFile());
+        }
+
+
+
+        if (Student.addStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
         {
             String message = "The student was successfully added. \n"
                     + "Would you like to add another?";

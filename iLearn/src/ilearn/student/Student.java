@@ -23,7 +23,7 @@ public class Student
     public static boolean addStudent(String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
             String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
             String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-            String stuDoctorName, String stuDoctorContact, String stuHospital)
+            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode)
     {
         boolean successful = false;
 
@@ -36,8 +36,8 @@ public class Student
                     + "(`stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEmail`, "
                     + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
                     + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
-                    + "`stuDoctorContact`, `stuHospital`) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                    + "`stuDoctorContact`, `stuHospital`, `stuClsCode`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
 
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
@@ -59,6 +59,8 @@ public class Student
             prep.setString(17, stuDoctorName);
             prep.setString(18, stuDoctorContact);
             prep.setString(19, stuHospital);
+            prep.setString(20, stuClsCode);
+
 
             prep.execute();
             prep.close();
