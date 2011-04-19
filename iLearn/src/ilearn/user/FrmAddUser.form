@@ -35,7 +35,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="64" max="32767" attributes="0"/>
+                      <EmptySpace pref="106" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -47,18 +47,16 @@
                           <Component id="lblFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblGroup" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblLevel" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbLevel" alignment="0" pref="257" max="32767" attributes="0"/>
-                          <Component id="cmbGroup" alignment="0" pref="257" max="32767" attributes="0"/>
-                          <Component id="txtPassword" alignment="0" pref="257" max="32767" attributes="0"/>
-                          <Component id="txtUserName" alignment="0" pref="257" max="32767" attributes="0"/>
-                          <Component id="txtFirstName" alignment="0" pref="257" max="32767" attributes="0"/>
-                          <Component id="txtLastName" alignment="1" pref="257" max="32767" attributes="0"/>
-                          <Component id="jTextField1" alignment="0" pref="257" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="cmbGroup" alignment="0" pref="242" max="32767" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" pref="242" max="32767" attributes="0"/>
+                          <Component id="txtUserName" alignment="0" pref="242" max="32767" attributes="0"/>
+                          <Component id="txtFirstName" alignment="0" pref="242" max="32767" attributes="0"/>
+                          <Component id="txtLastName" alignment="1" pref="242" max="32767" attributes="0"/>
+                          <Component id="jSpinner1" alignment="1" pref="242" max="32767" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
@@ -96,15 +94,10 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmbLevel" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jTextField1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace pref="68" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -187,29 +180,6 @@
         <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGroup.toolTipText"/>
         <Property name="name" type="java.lang.String" value="cmbGroup" noResource="true"/>
       </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbGroupActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblLevel">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblLevel.text"/>
-        <Property name="name" type="java.lang.String" value="lblLevel" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbLevel">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
-        </Property>
-        <Property name="toolTipText" type="java.lang.String" resourceKey="cmbLevel.toolTipText"/>
-        <Property name="name" type="java.lang.String" value="cmbLevel" noResource="true"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="cmdCancel">
       <Properties>
@@ -244,11 +214,9 @@
         <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
+    <Component class="javax.swing.JSpinner" name="jSpinner1">
       <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jTextField1.text"/>
-        <Property name="toolTipText" type="java.lang.String" resourceKey="jTextField1.toolTipText"/>
-        <Property name="name" type="java.lang.String" value="jTextField1" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="jSpinner1" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

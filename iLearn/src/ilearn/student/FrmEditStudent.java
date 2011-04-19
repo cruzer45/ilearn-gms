@@ -4,39 +4,27 @@
  */
 
 /*
- * FrmNewStudent.java
+ * FrmEditStudent.java
  *
- * Created on Feb 15, 2011, 9:18:09 PM
+ * Created on Apr 12, 2011, 7:29:19 PM
  */
 package ilearn.student;
 
 import ilearn.classes.Classes;
-import ilearn.kernel.ImageFilter;
 import ilearn.kernel.Utilities;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComponent;
-import javax.swing.JFileChooser;
-import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 
 /**
  *
  * @author mrogers
  */
-public class FrmNewStudent extends javax.swing.JInternalFrame
+public class FrmEditStudent extends javax.swing.JInternalFrame
 {
 
-    JComponent parent = this.getRootPane();
-    File selectedFile;
-
-    /** Creates new form FrmNewStudent */
-    public FrmNewStudent()
+    /** Creates new form FrmEditStudent */
+    public FrmEditStudent()
     {
         initComponents();
         populateLists();
@@ -68,99 +56,6 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         populateLists();
     }
 
-    @Action
-    public void save()
-    {
-        String stuFirstName = txtFirstName.getText().trim();
-        String stuLastName = txtLastName.getText().trim();
-        String stuOtherNames = txtOtherName.getText().trim();
-        String stuDOB = "";
-        String stuGender = cmbGender.getSelectedItem().toString();
-        String stuEmail = txtEmail.getText().trim();
-        String stuPhone = txtPhone.getText().trim();
-        String stuAddress1 = txtHomeAddress.getText().trim();
-        String stuAddress2 = txtMailingAddress.getText().trim();
-        String stuPCName = txtPriConName.getText().trim();
-        String stuPCPhone = txtPriConPhone.getText().trim();
-        String stuSCName = txtSecConName.getText().trim();
-        String stuPCAddress = txtSecConAddress.getText().trim();
-        String stuSCPhone = txtSecConPhone.getText().trim();
-        String stuSCAddress = txtSecConAddress.getText().trim();
-        String stuDoctorName = txtPrimaryDoctor.getText().trim();
-        String stuDoctorContact = txtDoctorPhone.getText().trim();
-        String stuHospital = txtHospital.getText().trim();
-        String stuClsCode = cmbClass.getSelectedItem().toString();
-
-        try
-        {
-            stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
-            if (selectedFile == null)
-            {
-                URL sampleImage = FrmNewStudent.class.getResource("/ilearn/resources/no-image-selected.png");
-                selectedFile = new File(sampleImage.toURI());
-            }
-        }
-        
-        catch (Exception e)
-        {
-            String message = "An error occurred while validating your input.\n"
-                    + "Kindly verify your information and try again.";
-            Utilities.showErrorMessage(rootPane, message);
-            return;
-        }
-
-        if (stuAddress2.isEmpty())
-        {
-            stuAddress2 = stuAddress1;
-        }
-
-
-        if (Student.addStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
-        {
-            String message = "The student was successfully added. \n"
-                    + "Would you like to add another?";
-            int response = Utilities.showConfirmDialog(rootPane, message);
-            if (response == JOptionPane.YES_OPTION)
-            {
-                resetForm();
-            }
-            else
-            {
-                this.dispose();
-            }
-        }
-        else
-        {
-            String message = "An error occurred while trying to add this student.\n"
-                    + "Kindly verify your information and try again.";
-            Utilities.showErrorMessage(rootPane, message);
-        }
-    }
-
-    @Action
-    public void browse()
-    {
-        JFileChooser fc = new JFileChooser();
-        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        //fc.addChoosableFileFilter(new ImageFilter());
-        fc.setFileFilter(new ImageFilter());
-
-        int returnVal = fc.showOpenDialog(rootPane);
-
-        if (returnVal == JFileChooser.APPROVE_OPTION)
-        {
-            selectedFile = fc.getSelectedFile();
-            try
-            {
-                txtPhoto.setText(selectedFile.getCanonicalPath().toString());
-            }
-            catch (IOException ex)
-            {
-                Logger.getLogger(FrmNewStudent.class.getName()).log(Level.SEVERE, "Error while selecting the file. ", ex);
-            }
-        }
-    }
-
     /** This method is called from within the constructor to
      * initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is
@@ -171,6 +66,14 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     private void initComponents() {
 
         studentTabbedPane = new javax.swing.JTabbedPane();
+        searchPanel = new javax.swing.JPanel();
+        lblSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        cmdSearch = new javax.swing.JButton();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        tblStudents = new javax.swing.JTable();
+        cmdCancel5 = new javax.swing.JButton();
+        cmdNext4 = new javax.swing.JButton();
         generalPanel = new javax.swing.JPanel();
         lblFirstName = new javax.swing.JLabel();
         txtFirstName = new javax.swing.JTextField();
@@ -234,53 +137,107 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
 
         setClosable(true);
         setIconifiable(true);
-        setResizable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmNewStudent.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditStudent.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-        addInternalFrameListener(new javax.swing.event.InternalFrameListener() {
-            public void internalFrameActivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosed(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameClosing(javax.swing.event.InternalFrameEvent evt) {
-                frameClosing(evt);
-            }
-            public void internalFrameDeactivated(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameDeiconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameIconified(javax.swing.event.InternalFrameEvent evt) {
-            }
-            public void internalFrameOpened(javax.swing.event.InternalFrameEvent evt) {
-            }
-        });
 
         studentTabbedPane.setTabLayoutPolicy(javax.swing.JTabbedPane.SCROLL_TAB_LAYOUT);
         studentTabbedPane.setName("studentTabbedPane"); // NOI18N
+
+        searchPanel.setName("searchPanel"); // NOI18N
+
+        lblSearch.setText(resourceMap.getString("lblSearch.text")); // NOI18N
+        lblSearch.setName("lblSearch"); // NOI18N
+
+        txtSearch.setText(resourceMap.getString("txtSearch.text")); // NOI18N
+        txtSearch.setName("txtSearch"); // NOI18N
+
+        cmdSearch.setText(resourceMap.getString("cmdSearch.text")); // NOI18N
+        cmdSearch.setName("cmdSearch"); // NOI18N
+
+        jScrollPane5.setName("jScrollPane5"); // NOI18N
+
+        tblStudents.setAutoCreateRowSorter(true);
+        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        tblStudents.setName("tblStudents"); // NOI18N
+        jScrollPane5.setViewportView(tblStudents);
+        tblStudents.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title0")); // NOI18N
+        tblStudents.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title1")); // NOI18N
+        tblStudents.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title2")); // NOI18N
+        tblStudents.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title3")); // NOI18N
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditStudent.class, this);
+        cmdCancel5.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel5.setName("cmdCancel5"); // NOI18N
+
+        cmdNext4.setAction(actionMap.get("next")); // NOI18N
+        cmdNext4.setName("cmdNext4"); // NOI18N
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 357, Short.MAX_VALUE)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addComponent(lblSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdSearch))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel5)))
+                .addContainerGap())
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel5)
+                    .addComponent(cmdNext4))
+                .addContainerGap())
+        );
+
+        studentTabbedPane.addTab(resourceMap.getString("searchPanel.TabConstraints.tabTitle"), resourceMap.getIcon("searchPanel.TabConstraints.tabIcon"), searchPanel); // NOI18N
 
         generalPanel.setName("generalPanel"); // NOI18N
 
         lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
         lblFirstName.setName("lblFirstName"); // NOI18N
 
-        txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
         txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
 
         lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
         lblLastName.setName("lblLastName"); // NOI18N
 
-        txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
         txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
         txtLastName.setName("txtLastName"); // NOI18N
 
         lblOtherName.setText(resourceMap.getString("lblOtherName.text")); // NOI18N
         lblOtherName.setName("lblOtherName"); // NOI18N
 
-        txtOtherName.setText(resourceMap.getString("txtOtherName.text")); // NOI18N
         txtOtherName.setToolTipText(resourceMap.getString("txtOtherName.toolTipText")); // NOI18N
         txtOtherName.setName("txtOtherName"); // NOI18N
 
@@ -302,26 +259,19 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         lblPhoto.setName("lblPhoto"); // NOI18N
 
         txtPhoto.setEditable(false);
-        txtPhoto.setText(resourceMap.getString("txtPhoto.text")); // NOI18N
         txtPhoto.setToolTipText(resourceMap.getString("txtPhoto.toolTipText")); // NOI18N
         txtPhoto.setName("txtPhoto"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmNewStudent.class, this);
         cmdBrowse.setAction(actionMap.get("browse")); // NOI18N
-        cmdBrowse.setText(resourceMap.getString("cmdBrowse.text")); // NOI18N
-        cmdBrowse.setToolTipText(resourceMap.getString("cmdBrowse.toolTipText")); // NOI18N
         cmdBrowse.setName("cmdBrowse"); // NOI18N
 
         cmdCancel1.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel1.setText(resourceMap.getString("cmdCancel1.text")); // NOI18N
         cmdCancel1.setName("cmdCancel1"); // NOI18N
 
         cmdNext1.setAction(actionMap.get("next")); // NOI18N
-        cmdNext1.setText(resourceMap.getString("cmdNext1.text")); // NOI18N
         cmdNext1.setName("cmdNext1"); // NOI18N
 
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
-        cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
 
         cmbClass.setName("cmbClass"); // NOI18N
@@ -338,7 +288,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
                         .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 88, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 103, Short.MAX_VALUE)
                         .addComponent(cmdNext1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel1))
@@ -354,13 +304,13 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                             .addComponent(lblClass))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbClass, 0, 251, Short.MAX_VALUE)
-                            .addComponent(txtPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(cmbGender, 0, 251, Short.MAX_VALUE)
-                            .addComponent(txtOtherName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 251, Short.MAX_VALUE))))
+                            .addComponent(cmbClass, 0, 266, Short.MAX_VALUE)
+                            .addComponent(txtPhoto, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(cmbGender, 0, 266, Short.MAX_VALUE)
+                            .addComponent(txtOtherName, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 266, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -396,7 +346,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblClass))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 93, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 109, Short.MAX_VALUE)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel1)
                     .addComponent(cmdNext1)
@@ -404,7 +354,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addContainerGap())
         );
 
-        studentTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+        studentTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), null, generalPanel); // NOI18N
 
         contactPanel.setName("contactPanel"); // NOI18N
 
@@ -437,14 +387,12 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         lblEmail.setText(resourceMap.getString("lblEmail.text")); // NOI18N
         lblEmail.setName("lblEmail"); // NOI18N
 
-        txtEmail.setText(resourceMap.getString("txtEmail.text")); // NOI18N
         txtEmail.setToolTipText(resourceMap.getString("txtEmail.toolTipText")); // NOI18N
         txtEmail.setName("txtEmail"); // NOI18N
 
         lblPhone.setText(resourceMap.getString("lblPhone.text")); // NOI18N
         lblPhone.setName("lblPhone"); // NOI18N
 
-        txtPhone.setText(resourceMap.getString("txtPhone.text")); // NOI18N
         txtPhone.setToolTipText(resourceMap.getString("txtPhone.toolTipText")); // NOI18N
         txtPhone.setName("txtPhone"); // NOI18N
 
@@ -469,10 +417,10 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                             .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(22, 22, 22)
                         .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)))
+                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(txtPhone, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, contactPanelLayout.createSequentialGroup()
                         .addComponent(cmdNext2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -498,14 +446,14 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                 .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel2)
                     .addComponent(cmdNext2))
                 .addContainerGap())
         );
 
-        studentTabbedPane.addTab(resourceMap.getString("contactPanel.TabConstraints.tabTitle"), resourceMap.getIcon("contactPanel.TabConstraints.tabIcon"), contactPanel); // NOI18N
+        studentTabbedPane.addTab(resourceMap.getString("contactPanel.TabConstraints.tabTitle"), null, contactPanel); // NOI18N
 
         parentPanel.setName("parentPanel"); // NOI18N
 
@@ -525,11 +473,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         lblPriConAddress.setText(resourceMap.getString("lblPriConAddress.text")); // NOI18N
         lblPriConAddress.setName("lblPriConAddress"); // NOI18N
 
-        txtPriConPhone.setText(resourceMap.getString("txtPriConPhone.text")); // NOI18N
         txtPriConPhone.setToolTipText(resourceMap.getString("txtPriConPhone.toolTipText")); // NOI18N
         txtPriConPhone.setName("txtPriConPhone"); // NOI18N
 
-        txtPriConName.setText(resourceMap.getString("txtPriConName.text")); // NOI18N
         txtPriConName.setToolTipText(resourceMap.getString("txtPriConName.toolTipText")); // NOI18N
         txtPriConName.setName("txtPriConName"); // NOI18N
 
@@ -551,9 +497,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                     .addComponent(lblPriConAddress))
                 .addGap(13, 13, 13)
                 .addGroup(primaryContactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(txtPriConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(txtPriConName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(txtPriConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(txtPriConName, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
                 .addContainerGap())
         );
         primaryContactPanelLayout.setVerticalGroup(
@@ -613,9 +559,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                     .addComponent(lblSecConAddress))
                 .addGap(13, 13, 13)
                 .addGroup(secConPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(txtSecConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
-                    .addComponent(txtSecConName, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(txtSecConPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                    .addComponent(txtSecConName, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
                 .addContainerGap())
         );
         secConPanelLayout.setVerticalGroup(
@@ -663,32 +609,29 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addComponent(primaryContactPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(secConPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addGroup(parentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel3)
                     .addComponent(cmdNext3))
                 .addContainerGap())
         );
 
-        studentTabbedPane.addTab(resourceMap.getString("parentPanel.TabConstraints.tabTitle"), resourceMap.getIcon("parentPanel.TabConstraints.tabIcon"), parentPanel); // NOI18N
+        studentTabbedPane.addTab(resourceMap.getString("parentPanel.TabConstraints.tabTitle"), null, parentPanel); // NOI18N
 
         medicalPanel.setName("medicalPanel"); // NOI18N
 
         lblPrimaryDoctor.setText(resourceMap.getString("lblPrimaryDoctor.text")); // NOI18N
         lblPrimaryDoctor.setName("lblPrimaryDoctor"); // NOI18N
 
-        txtPrimaryDoctor.setText(resourceMap.getString("txtPrimaryDoctor.text")); // NOI18N
         txtPrimaryDoctor.setToolTipText(resourceMap.getString("txtPrimaryDoctor.toolTipText")); // NOI18N
         txtPrimaryDoctor.setName("txtPrimaryDoctor"); // NOI18N
 
         lblDoctorPhone.setText(resourceMap.getString("lblDoctorPhone.text")); // NOI18N
         lblDoctorPhone.setName("lblDoctorPhone"); // NOI18N
 
-        txtDoctorPhone.setText(resourceMap.getString("txtDoctorPhone.text")); // NOI18N
         txtDoctorPhone.setToolTipText(resourceMap.getString("txtDoctorPhone.toolTipText")); // NOI18N
         txtDoctorPhone.setName("txtDoctorPhone"); // NOI18N
 
-        txtHospital.setText(resourceMap.getString("txtHospital.text")); // NOI18N
         txtHospital.setToolTipText(resourceMap.getString("txtHospital.toolTipText")); // NOI18N
         txtHospital.setName("txtHospital"); // NOI18N
 
@@ -715,9 +658,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                             .addComponent(lblHospital))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(medicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtDoctorPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(txtPrimaryDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
-                            .addComponent(txtHospital, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)))
+                            .addComponent(txtDoctorPhone, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(txtPrimaryDoctor, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)
+                            .addComponent(txtHospital, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 216, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, medicalPanelLayout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -739,39 +682,36 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                 .addGroup(medicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblHospital))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 239, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
                 .addGroup(medicalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel4)
                     .addComponent(cmdSave))
                 .addContainerGap())
         );
 
-        studentTabbedPane.addTab(resourceMap.getString("medicalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("medicalPanel.TabConstraints.tabIcon"), medicalPanel); // NOI18N
+        studentTabbedPane.addTab(resourceMap.getString("medicalPanel.TabConstraints.tabTitle"), null, medicalPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 410, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 429, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 405, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void frameClosing(javax.swing.event.InternalFrameEvent evt)//GEN-FIRST:event_frameClosing
-    {//GEN-HEADEREND:event_frameClosing
-        cancel();
-    }//GEN-LAST:event_frameClosing
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDOB;
     private javax.swing.JComboBox cmbClass;
@@ -781,17 +721,21 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdCancel2;
     private javax.swing.JButton cmdCancel3;
     private javax.swing.JButton cmdCancel4;
+    private javax.swing.JButton cmdCancel5;
     private javax.swing.JButton cmdNext1;
     private javax.swing.JButton cmdNext2;
     private javax.swing.JButton cmdNext3;
+    private javax.swing.JButton cmdNext4;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel contactPanel;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblDOB;
     private javax.swing.JLabel lblDoctorPhone;
@@ -809,14 +753,17 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblPriConName;
     private javax.swing.JLabel lblPriConPhone;
     private javax.swing.JLabel lblPrimaryDoctor;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSecConAddress;
     private javax.swing.JLabel lblSecConName;
     private javax.swing.JLabel lblSecConPhone;
     private javax.swing.JPanel medicalPanel;
     private javax.swing.JPanel parentPanel;
     private javax.swing.JPanel primaryContactPanel;
+    private javax.swing.JPanel searchPanel;
     private javax.swing.JPanel secConPanel;
     private javax.swing.JTabbedPane studentTabbedPane;
+    private javax.swing.JTable tblStudents;
     private javax.swing.JTextField txtDoctorPhone;
     private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtFirstName;
@@ -831,6 +778,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     private javax.swing.JTextField txtPriConName;
     private javax.swing.JTextField txtPriConPhone;
     private javax.swing.JTextField txtPrimaryDoctor;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextArea txtSecConAddress;
     private javax.swing.JTextField txtSecConName;
     private javax.swing.JTextField txtSecConPhone;

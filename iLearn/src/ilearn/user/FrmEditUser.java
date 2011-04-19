@@ -28,8 +28,6 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         tblUsers.setModel(User.getUserList());
         //Loads the values from the database into the combo boxes.
         cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
-        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
-
     }
 
     /** This method is called from within the constructor to
@@ -337,9 +335,8 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             txtLastName.setText(userInfo[1]);
             txtUserName.setText(userInfo[2]);
             txtPassword.setText(userInfo[3]);
-            cmbLevel.setSelectedItem(userInfo[4]);
-            cmbGroup.setSelectedItem(userInfo[5]);
-            cmbStatus.setSelectedItem(userInfo[6]);
+            cmbGroup.setSelectedItem(userInfo[4]);
+            cmbStatus.setSelectedItem(userInfo[5]);
         }
     }
 
@@ -364,10 +361,9 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         String firstName = txtFirstName.getText().trim();
         String lastName = txtLastName.getText().trim();
         String group = cmbGroup.getSelectedItem().toString();
-        String level = cmbLevel.getSelectedItem().toString();
         String status = cmbStatus.getSelectedItem().toString();
 
-        if (User.updateUser(ID, firstName, lastName, username, password, group, level, status))
+        if (User.updateUser(ID, firstName, lastName, username, password, group, status))
         {
             tblUsers.setModel(User.getUserList());
             String message = "The user's information was successfully updated.";

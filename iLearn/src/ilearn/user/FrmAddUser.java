@@ -25,7 +25,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         
         //Loads the values from the database into the combo boxes.
         cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
-        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
+        
     }
 
     /** This method is called from within the constructor to
@@ -47,13 +47,11 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         txtPassword = new javax.swing.JPasswordField();
         lblGroup = new javax.swing.JLabel();
         cmbGroup = new javax.swing.JComboBox();
-        lblLevel = new javax.swing.JLabel();
-        cmbLevel = new javax.swing.JComboBox();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jSpinner1 = new javax.swing.JSpinner();
 
         setClosable(true);
         setIconifiable(true);
@@ -97,18 +95,6 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
         cmbGroup.setName("cmbGroup"); // NOI18N
-        cmbGroup.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbGroupActionPerformed(evt);
-            }
-        });
-
-        lblLevel.setText(resourceMap.getString("lblLevel.text")); // NOI18N
-        lblLevel.setName("lblLevel"); // NOI18N
-
-        cmbLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbLevel.setToolTipText(resourceMap.getString("cmbLevel.toolTipText")); // NOI18N
-        cmbLevel.setName("cmbLevel"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddUser.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
@@ -126,9 +112,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
 
-        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
-        jTextField1.setToolTipText(resourceMap.getString("jTextField1.toolTipText")); // NOI18N
-        jTextField1.setName("jTextField1"); // NOI18N
+        jSpinner1.setName("jSpinner1"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -139,7 +123,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel))
@@ -150,17 +134,15 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                             .addComponent(lblFirstName)
                             .addComponent(lblPassword)
                             .addComponent(lblGroup)
-                            .addComponent(lblLevel)
                             .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbLevel, 0, 257, Short.MAX_VALUE)
-                            .addComponent(cmbGroup, 0, 257, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                            .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -188,13 +170,9 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                     .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLevel)
-                    .addComponent(cmbLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave)
@@ -211,11 +189,6 @@ public class FrmAddUser extends javax.swing.JInternalFrame
      * The subgroups are reloaded when the group is changed.
      * @param evt
      */
-    private void cmbGroupActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbGroupActionPerformed
-    {//GEN-HEADEREND:event_cmbGroupActionPerformed
-        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
-    }//GEN-LAST:event_cmbGroupActionPerformed
-
     @Action
     public void cancel()
     {
@@ -235,10 +208,9 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         String firstName = txtFirstName.getText().trim();
         String lastName = txtLastName.getText().trim();
         String group = cmbGroup.getSelectedItem().toString();
-        String level = cmbLevel.getSelectedItem().toString();
 
         //If the user was added successfully, it displays a message.
-        if (User.addUser(username, password, firstName, lastName, group, level))
+        if (User.addUser(username, password, firstName, lastName, group))
         {
             String message = "The user was successfully added.\n"
                     + "Would you like to add another?";
@@ -273,21 +245,18 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         txtUserName.setText("");
         txtPassword.setText("");
         cmbGroup.setSelectedIndex(0);
-        cmbLevel.setSelectedIndex(0);
         txtFirstName.grabFocus();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbGroup;
-    private javax.swing.JComboBox cmbLevel;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JSpinner jSpinner1;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGroup;
     private javax.swing.JLabel lblLastName;
-    private javax.swing.JLabel lblLevel;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JTextField txtFirstName;

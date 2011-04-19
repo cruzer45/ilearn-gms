@@ -7,6 +7,8 @@ import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
 import ilearn.classes.FrmEditClass;
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
+import ilearn.school.FrmManageSchool;
 import ilearn.staff.FrmAddStaff;
 import ilearn.staff.FrmEditStaff;
 import ilearn.user.FrmAddUser;
@@ -32,6 +34,7 @@ import javax.swing.Icon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
+import javax.swing.JOptionPane;
 
 /**
  * The application's main frame.
@@ -54,6 +57,7 @@ public class ILearnView extends FrameView
     FrmAddStaff frmAddStaff = null;
     FrmEditStaff frmEditStaff = null;
     FrmEditClass frmEditClass = null;
+    FrmManageSchool frmManageSchool = null;
     private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
 
     public ILearnView(SingleFrameApplication app)
@@ -200,13 +204,21 @@ public class ILearnView extends FrameView
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
+        logOff = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
-        manageMenu = new javax.swing.JMenu();
+        studentMenu = new javax.swing.JMenu();
+        addStudent = new javax.swing.JMenuItem();
+        editStudent = new javax.swing.JMenuItem();
+        viewStudent = new javax.swing.JMenuItem();
         classMenu = new javax.swing.JMenu();
         addClass = new javax.swing.JMenuItem();
         editClass = new javax.swing.JMenuItem();
-        studentMenu = new javax.swing.JMenu();
-        addStudent = new javax.swing.JMenuItem();
+        viewClass = new javax.swing.JMenuItem();
+        gradesMenu = new javax.swing.JMenu();
+        createAssessment = new javax.swing.JMenuItem();
+        editAssessment = new javax.swing.JMenuItem();
+        enterGrades = new javax.swing.JMenuItem();
+        manageMenu = new javax.swing.JMenu();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
         editStaff = new javax.swing.JMenuItem();
@@ -221,6 +233,7 @@ public class ILearnView extends FrameView
         userMenu = new javax.swing.JMenu();
         addUser = new javax.swing.JMenuItem();
         editUser = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -252,16 +265,38 @@ public class ILearnView extends FrameView
         fileMenu.setName("fileMenu"); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(ILearnView.class, this);
+        logOff.setAction(actionMap.get("logOut")); // NOI18N
+        logOff.setIcon(resourceMap.getIcon("logOff.icon")); // NOI18N
+        logOff.setText(resourceMap.getString("logOff.text")); // NOI18N
+        logOff.setName("logOff"); // NOI18N
+        fileMenu.add(logOff);
+
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
 
         menuBar.add(fileMenu);
 
-        manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
-        manageMenu.setName("manageMenu"); // NOI18N
+        studentMenu.setText(resourceMap.getString("studentMenu.text")); // NOI18N
+        studentMenu.setName("studentMenu"); // NOI18N
 
-        classMenu.setIcon(resourceMap.getIcon("classMenu.icon")); // NOI18N
+        addStudent.setAction(actionMap.get("showAddStudent")); // NOI18N
+        addStudent.setText(resourceMap.getString("addStudent.text")); // NOI18N
+        addStudent.setName("addStudent"); // NOI18N
+        studentMenu.add(addStudent);
+
+        editStudent.setIcon(resourceMap.getIcon("editStudent.icon")); // NOI18N
+        editStudent.setText(resourceMap.getString("editStudent.text")); // NOI18N
+        editStudent.setName("editStudent"); // NOI18N
+        studentMenu.add(editStudent);
+
+        viewStudent.setIcon(resourceMap.getIcon("viewStudent.icon")); // NOI18N
+        viewStudent.setText(resourceMap.getString("viewStudent.text")); // NOI18N
+        viewStudent.setName("viewStudent"); // NOI18N
+        studentMenu.add(viewStudent);
+
+        menuBar.add(studentMenu);
+
         classMenu.setText(resourceMap.getString("classMenu.text")); // NOI18N
         classMenu.setName("classMenu"); // NOI18N
 
@@ -277,18 +312,35 @@ public class ILearnView extends FrameView
         editClass.setName("editClass"); // NOI18N
         classMenu.add(editClass);
 
-        manageMenu.add(classMenu);
+        viewClass.setIcon(resourceMap.getIcon("viewClass.icon")); // NOI18N
+        viewClass.setText(resourceMap.getString("viewClass.text")); // NOI18N
+        viewClass.setName("viewClass"); // NOI18N
+        classMenu.add(viewClass);
 
-        studentMenu.setIcon(resourceMap.getIcon("studentMenu.icon")); // NOI18N
-        studentMenu.setText(resourceMap.getString("studentMenu.text")); // NOI18N
-        studentMenu.setName("studentMenu"); // NOI18N
+        menuBar.add(classMenu);
 
-        addStudent.setAction(actionMap.get("showAddStudent")); // NOI18N
-        addStudent.setText(resourceMap.getString("addStudent.text")); // NOI18N
-        addStudent.setName("addStudent"); // NOI18N
-        studentMenu.add(addStudent);
+        gradesMenu.setText(resourceMap.getString("gradesMenu.text")); // NOI18N
+        gradesMenu.setName("gradesMenu"); // NOI18N
 
-        manageMenu.add(studentMenu);
+        createAssessment.setIcon(resourceMap.getIcon("createAssessment.icon")); // NOI18N
+        createAssessment.setText(resourceMap.getString("createAssessment.text")); // NOI18N
+        createAssessment.setName("createAssessment"); // NOI18N
+        gradesMenu.add(createAssessment);
+
+        editAssessment.setIcon(resourceMap.getIcon("editAssessment.icon")); // NOI18N
+        editAssessment.setText(resourceMap.getString("editAssessment.text")); // NOI18N
+        editAssessment.setName("editAssessment"); // NOI18N
+        gradesMenu.add(editAssessment);
+
+        enterGrades.setIcon(resourceMap.getIcon("enterGrades.icon")); // NOI18N
+        enterGrades.setText(resourceMap.getString("enterGrades.text")); // NOI18N
+        enterGrades.setName("enterGrades"); // NOI18N
+        gradesMenu.add(enterGrades);
+
+        menuBar.add(gradesMenu);
+
+        manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
+        manageMenu.setName("manageMenu"); // NOI18N
 
         staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
         staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
@@ -368,6 +420,12 @@ public class ILearnView extends FrameView
         userMenu.add(editUser);
 
         manageMenu.add(userMenu);
+
+        jMenuItem1.setAction(actionMap.get("showManageSchool")); // NOI18N
+        jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
+        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
+        jMenuItem1.setName("jMenuItem1"); // NOI18N
+        manageMenu.add(jMenuItem1);
 
         menuBar.add(manageMenu);
 
@@ -742,7 +800,7 @@ public class ILearnView extends FrameView
     @Action
     public void showEditClass()
     {
-         //Verify if the form is already loaded
+        //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Edit Class");
         if (AlreadyLoaded == false)
         {
@@ -763,6 +821,48 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showManageSchool()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("School");
+        if (AlreadyLoaded == false)
+        {
+            frmManageSchool = new FrmManageSchool();
+            desktopPane.add(frmManageSchool);
+
+            //Load the Form
+            frmManageSchool.setVisible(true);
+            frmManageSchool.show();
+            try
+            {
+                frmManageSchool.setIcon(false);
+                frmManageSchool.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void logOut()
+    {
+        String message = "Are you sure you want to logout?";
+        int response = Utilities.showConfirmDialog(getFrame(), message);
+        if (response == JOptionPane.YES_OPTION)
+        {
+
+            for (JInternalFrame frame : desktopPane.getAllFrames())
+            {
+                frame.dispose();
+            }
+            showLoginScreen();
+            checkPrivileges();
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -772,12 +872,19 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addTimeSlot;
     private javax.swing.JMenuItem addUser;
     private javax.swing.JMenu classMenu;
+    private javax.swing.JMenuItem createAssessment;
     private javax.swing.JDesktopPane desktopPane;
+    private javax.swing.JMenuItem editAssessment;
     private javax.swing.JMenuItem editClass;
     private javax.swing.JMenuItem editStaff;
+    private javax.swing.JMenuItem editStudent;
     private javax.swing.JMenuItem editTerm;
     private javax.swing.JMenuItem editTimeSlot;
     private javax.swing.JMenuItem editUser;
+    private javax.swing.JMenuItem enterGrades;
+    private javax.swing.JMenu gradesMenu;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu manageMenu;
     private javax.swing.JMenuBar menuBar;
@@ -791,6 +898,8 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu termMenu;
     private javax.swing.JMenu timeSlotsMenu;
     private javax.swing.JMenu userMenu;
+    private javax.swing.JMenuItem viewClass;
+    private javax.swing.JMenuItem viewStudent;
     // End of variables declaration//GEN-END:variables
     private final Timer messageTimer;
     private final Timer busyIconTimer;

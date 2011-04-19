@@ -4,7 +4,6 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
-    <Property name="resizable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
     <Property name="toolTipText" type="java.lang.String" resourceKey="Form.toolTipText"/>
     <Property name="frameIcon" type="javax.swing.Icon" resourceKey="Form.frameIcon"/>
@@ -13,9 +12,6 @@
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
   </SyntheticProperties>
-  <Events>
-    <EventHandler event="internalFrameClosing" listener="javax.swing.event.InternalFrameListener" parameters="javax.swing.event.InternalFrameEvent" handler="frameClosing"/>
-  </Events>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="2"/>
     <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
@@ -31,18 +27,20 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
+          <EmptySpace min="0" pref="410" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="371" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" pref="386" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
+          <EmptySpace min="0" pref="429" max="32767" attributes="0"/>
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="389" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" pref="405" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -57,15 +55,15 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="generalPanel">
+        <Container class="javax.swing.JPanel" name="searchPanel">
           <Properties>
-            <Property name="name" type="java.lang.String" value="generalPanel" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="searchPanel" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="General">
-                <Property name="tabTitle" type="java.lang.String" resourceKey="generalPanel.TabConstraints.tabTitle"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="generalPanel.TabConstraints.tabIcon"/>
+              <JTabbedPaneConstraints tabName="Search">
+                <Property name="tabTitle" type="java.lang.String" resourceKey="searchPanel.TabConstraints.tabTitle"/>
+                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="searchPanel.TabConstraints.tabIcon"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -76,9 +74,159 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane5" alignment="0" pref="357" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtSearch" pref="227" max="32767" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdSearch" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="cmdNext4" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdCancel5" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane5" min="-2" pref="274" max="-2" attributes="0"/>
+                      <EmptySpace pref="31" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmdCancel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdNext4" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblSearch">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSearch.text"/>
+                <Property name="name" type="java.lang.String" value="lblSearch" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSearch">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="txtSearch.text"/>
+                <Property name="name" type="java.lang.String" value="txtSearch" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="cmdSearch">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="cmdSearch.text"/>
+                <Property name="name" type="java.lang.String" value="cmdSearch" noResource="true"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane5">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jScrollPane5" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="tblStudents">
+                  <Properties>
+                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="4" rowCount="0">
+                        <Column editable="true" title="Title 1" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 2" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 3" type="java.lang.Object"/>
+                        <Column editable="true" title="Title 4" type="java.lang.Object"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="0">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title resourceKey="tblStudents.columnModel.title0"/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title resourceKey="tblStudents.columnModel.title1"/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title resourceKey="tblStudents.columnModel.title2"/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title resourceKey="tblStudents.columnModel.title3"/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="tblStudents" noResource="true"/>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="cmdCancel5">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.student.FrmNewStudent" id="cancel" methodName="cancel"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="cmdCancel5" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="cmdNext4">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.student.FrmNewStudent" id="next" methodName="next"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="cmdNext4" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="generalPanel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="generalPanel" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="General">
+                <Property name="tabTitle" type="java.lang.String" resourceKey="generalPanel.TabConstraints.tabTitle"/>
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="0" name="null"/>
+                </Property>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="88" max="32767" attributes="0"/>
+                              <EmptySpace pref="103" max="32767" attributes="0"/>
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -96,13 +244,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbClass" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtPhoto" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="calDOB" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="cmbGender" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtOtherName" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="0" pref="251" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="251" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="266" max="32767" attributes="0"/>
+                                  <Component id="txtPhoto" alignment="0" pref="266" max="32767" attributes="0"/>
+                                  <Component id="calDOB" alignment="0" pref="266" max="32767" attributes="0"/>
+                                  <Component id="cmbGender" alignment="0" pref="266" max="32767" attributes="0"/>
+                                  <Component id="txtOtherName" alignment="0" pref="266" max="32767" attributes="0"/>
+                                  <Component id="txtLastName" alignment="0" pref="266" max="32767" attributes="0"/>
+                                  <Component id="txtFirstName" alignment="0" pref="266" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -150,7 +298,7 @@
                           <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="93" max="32767" attributes="0"/>
+                      <EmptySpace pref="109" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -170,7 +318,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtFirstName">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtFirstName.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtFirstName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtFirstName" noResource="true"/>
               </Properties>
@@ -183,7 +330,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtLastName">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtLastName.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtLastName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtLastName" noResource="true"/>
               </Properties>
@@ -196,7 +342,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtOtherName">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtOtherName.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtOtherName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtOtherName" noResource="true"/>
               </Properties>
@@ -241,7 +386,6 @@
             <Component class="javax.swing.JTextField" name="txtPhoto">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
-                <Property name="text" type="java.lang.String" resourceKey="txtPhoto.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtPhoto.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtPhoto" noResource="true"/>
               </Properties>
@@ -251,8 +395,6 @@
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.student.FrmNewStudent" id="browse" methodName="browse"/>
                 </Property>
-                <Property name="text" type="java.lang.String" resourceKey="cmdBrowse.text"/>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="cmdBrowse.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="cmdBrowse" noResource="true"/>
               </Properties>
             </Component>
@@ -261,7 +403,6 @@
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.student.FrmNewStudent" id="cancel" methodName="cancel"/>
                 </Property>
-                <Property name="text" type="java.lang.String" resourceKey="cmdCancel1.text"/>
                 <Property name="name" type="java.lang.String" value="cmdCancel1" noResource="true"/>
               </Properties>
             </Component>
@@ -270,7 +411,6 @@
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.student.FrmNewStudent" id="next" methodName="next"/>
                 </Property>
-                <Property name="text" type="java.lang.String" resourceKey="cmdNext1.text"/>
                 <Property name="name" type="java.lang.String" value="cmdNext1" noResource="true"/>
               </Properties>
             </Component>
@@ -279,7 +419,6 @@
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.student.FrmNewStudent" id="resetForm" methodName="resetForm"/>
                 </Property>
-                <Property name="text" type="java.lang.String" resourceKey="cmdReset.text"/>
                 <Property name="name" type="java.lang.String" value="cmdReset" noResource="true"/>
               </Properties>
             </Component>
@@ -307,7 +446,9 @@
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Contact Info">
                 <Property name="tabTitle" type="java.lang.String" resourceKey="contactPanel.TabConstraints.tabTitle"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="contactPanel.TabConstraints.tabIcon"/>
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="0" name="null"/>
+                </Property>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -315,22 +456,22 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblEmail" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblPhone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblHomeAddress" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblHomeAddress" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblMailingAddress" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtEmail" alignment="0" pref="265" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" pref="265" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="1" pref="265" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="265" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="txtPhone" alignment="0" pref="280" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="1" pref="280" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="280" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -358,15 +499,15 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblHomeAddress" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblHomeAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblMailingAddress" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblMailingAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="91" max="32767" attributes="0"/>
+                      <EmptySpace pref="107" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -441,7 +582,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtEmail.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtEmail.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtEmail" noResource="true"/>
               </Properties>
@@ -454,7 +594,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtPhone">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtPhone.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtPhone.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtPhone" noResource="true"/>
               </Properties>
@@ -485,7 +624,9 @@
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Guardian">
                 <Property name="tabTitle" type="java.lang.String" resourceKey="parentPanel.TabConstraints.tabTitle"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="parentPanel.TabConstraints.tabIcon"/>
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="0" name="null"/>
+                </Property>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -493,7 +634,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
@@ -515,7 +656,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="21" max="32767" attributes="0"/>
+                      <EmptySpace pref="37" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -550,9 +691,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtPriConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtPriConName" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" pref="240" max="32767" attributes="0"/>
+                              <Component id="txtPriConPhone" alignment="0" pref="240" max="32767" attributes="0"/>
+                              <Component id="txtPriConName" alignment="0" pref="240" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -572,8 +713,8 @@
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="lblPriConAddress" min="-2" max="-2" attributes="0"/>
-                              <Component id="jScrollPane3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPriConAddress" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="jScrollPane3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="32767" attributes="0"/>
                       </Group>
@@ -611,14 +752,12 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPriConPhone">
                   <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="txtPriConPhone.text"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtPriConPhone.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="txtPriConPhone" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPriConName">
                   <Properties>
-                    <Property name="text" type="java.lang.String" resourceKey="txtPriConName.text"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtPriConName.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="txtPriConName" noResource="true"/>
                   </Properties>
@@ -661,9 +800,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtSecConPhone" alignment="0" pref="225" max="32767" attributes="0"/>
-                              <Component id="txtSecConName" alignment="0" pref="225" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="240" max="32767" attributes="0"/>
+                              <Component id="txtSecConPhone" alignment="0" pref="240" max="32767" attributes="0"/>
+                              <Component id="txtSecConName" alignment="0" pref="240" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -772,7 +911,9 @@
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Medical">
                 <Property name="tabTitle" type="java.lang.String" resourceKey="medicalPanel.TabConstraints.tabTitle"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="medicalPanel.TabConstraints.tabIcon"/>
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                  <Image iconType="0" name="null"/>
+                </Property>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -780,10 +921,10 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblPrimaryDoctor" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDoctorPhone" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -791,9 +932,9 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDoctorPhone" alignment="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="txtPrimaryDoctor" alignment="0" pref="201" max="32767" attributes="0"/>
-                                  <Component id="txtHospital" alignment="1" pref="201" max="32767" attributes="0"/>
+                                  <Component id="txtDoctorPhone" alignment="0" pref="216" max="32767" attributes="0"/>
+                                  <Component id="txtPrimaryDoctor" alignment="0" pref="216" max="32767" attributes="0"/>
+                                  <Component id="txtHospital" alignment="1" pref="216" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -824,7 +965,7 @@
                           <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="239" max="32767" attributes="0"/>
+                      <EmptySpace pref="255" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -843,7 +984,6 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtPrimaryDoctor">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtPrimaryDoctor.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtPrimaryDoctor.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtPrimaryDoctor" noResource="true"/>
               </Properties>
@@ -856,14 +996,12 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtDoctorPhone">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtDoctorPhone.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtDoctorPhone.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtDoctorPhone" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtHospital">
               <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtHospital.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtHospital.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtHospital" noResource="true"/>
               </Properties>

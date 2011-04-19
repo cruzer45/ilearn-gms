@@ -33,8 +33,7 @@ public class UserCheck
      */
     public static boolean canAddStudent()
     {
-        if (User.getUserGroup().equals("Administration")
-                && User.getUserLevel().equals("Read Write"))
+        if (User.getUserGroup().equals("Administration"))
         {
             return true;
         }

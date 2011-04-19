@@ -25,8 +25,6 @@ public class User
     private static int loginCount = 0;
     private static String userName = "";
     private static String userGroup = "";
-    private static String userLevel = "";
-
 
     public static boolean logIn(String username, String password)
     {
@@ -36,7 +34,7 @@ public class User
 
         try
         {
-            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`, `usrLevel`, `usrStatus`, `usrTimeout` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
+            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`,  `usrStatus`, `usrTimeout` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, username);
             ResultSet rs = prep.executeQuery();
@@ -46,7 +44,6 @@ public class User
                 storedPassword = rs.getString("usrPassword");
                 userName = username;
                 userGroup = rs.getString("usrGroup");
-                userLevel = rs.getString("usrLevel");
             }
             rs.close();
             prep.close();
@@ -81,20 +78,19 @@ public class User
         return successful;
     }
 
-    public static boolean addUser(String username, String password, String firstName, String lastName, String group, String level)
+    public static boolean addUser(String username, String password, String firstName, String lastName, String group)
     {
         boolean successful = false;
 
         try
         {
-            String sql = "INSERT INTO `iLearn`.`User` (`usrFirstName`, `usrLastName`, `usrName`, `usrPassword`, `usrGroup`, `usrLevel`) VALUES (?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `iLearn`.`User` (`usrFirstName`, `usrLastName`, `usrName`, `usrPassword`, `usrGroup`) VALUES ( ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, firstName);
             prep.setString(2, lastName);
             prep.setString(3, username);
             prep.setString(4, EncryptionHandler.encryptPassword(password));
             prep.setString(5, group);
-            prep.setString(6, level);
             prep.execute();
             prep.close();
 
@@ -159,7 +155,7 @@ public class User
     public static String[] getUserInfo(String ID)
     {
         String sql = "SELECT * FROM `User` WHERE `usrID` = ?;";
-        String firstName = "", lastName = "", username = "", password = "", level = "", group = "", status = "";
+        String firstName = "", lastName = "", username = "", password = "", group = "", status = "";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -171,7 +167,6 @@ public class User
                 lastName = rs.getString("usrLastName");
                 username = rs.getString("usrName");
                 password = rs.getString("usrPassword");
-                level = rs.getString("usrLevel");
                 group = rs.getString("usrGroup");
                 status = rs.getString("usrStatus");
             }
@@ -185,15 +180,15 @@ public class User
         }
         String[] results =
         {
-            firstName, lastName, username, password, level, group, status
+            firstName, lastName, username, password, group, status
         };
         return results;
     }
 
-    public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String level, String status)
+    public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String status)
     {
         boolean successful = false;
-        String sql = "UPDATE `User` SET `usrFirstName`= ?, `usrLastName`= ?, `usrName`= ?, `usrPassword`= ?, `usrGroup`= ?, `usrLevel`= ? , `usrStatus`= ?  WHERE `usrID`= ? LIMIT 1;";
+        String sql = "UPDATE `User` SET `usrFirstName`= ?, `usrLastName`= ?, `usrName`= ?, `usrPassword`= ?, `usrGroup`= ?, `usrStatus`= ?  WHERE `usrID`= ? LIMIT 1;";
 
         String[] currentInfo = getUserInfo(ID);
         if (!currentInfo[3].equals(password))
@@ -209,9 +204,8 @@ public class User
             prep.setString(3, userName);
             prep.setString(4, password);
             prep.setString(5, group);
-            prep.setString(6, level);
-            prep.setString(7, status);
-            prep.setString(8, ID);
+            prep.setString(6, status);
+            prep.setString(7, ID);
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -287,15 +281,4 @@ public class User
     {
         return userGroup;
     }
-
-    /**
-     * @return the userLevel
-     */
-    public static String getUserLevel()
-    {
-        return userLevel;
-    }
-
-
-
-  }
+}
