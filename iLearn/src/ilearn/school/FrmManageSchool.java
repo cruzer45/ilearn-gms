@@ -15,10 +15,7 @@ import ilearn.kernel.Utilities;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.RenderedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.sql.Blob;
 import java.sql.SQLException;
@@ -26,10 +23,8 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 
@@ -342,9 +337,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                 Image img = ii.getImage();
                 Image newimg = img.getScaledInstance(320, 170, java.awt.Image.SCALE_SMOOTH);
                 ii = new ImageIcon(newimg);
-                lblImage.setIcon(ii);
-
-
+                
                 File image = new File(System.getProperty("java.io.tmpdir") + "/image.jpg");
                 BufferedImage bi = new BufferedImage(ii.getIconWidth(), ii.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g2 = bi.createGraphics();
@@ -359,12 +352,8 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                 {
                     Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
                 }
-
-
-
             }
-
-
+            lblImage.setIcon(ii);
         }
     }
 
