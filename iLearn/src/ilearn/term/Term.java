@@ -51,8 +51,15 @@ public class Term
 
     public static DefaultTableModel getTermList()
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel()
+        {
 
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
         ArrayList<String> ID = new ArrayList<String>();
         ArrayList<String> trmCodes = new ArrayList<String>();
         ArrayList<String> shortNames = new ArrayList<String>();

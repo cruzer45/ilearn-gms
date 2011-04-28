@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="248" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="254" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -90,6 +90,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editStudent">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showEditStudent" methodName="showEditStudent"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="editStudent.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="editStudent.text"/>
                 <Property name="name" type="java.lang.String" value="editStudent" noResource="true"/>
@@ -132,6 +135,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="viewClass">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showViewClass" methodName="showViewClass"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="viewClass.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="viewClass.text"/>
                 <Property name="name" type="java.lang.String" value="viewClass" noResource="true"/>
@@ -167,6 +173,12 @@
               </Properties>
             </MenuItem>
           </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="reportsMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="reportsMenu.text"/>
+            <Property name="name" type="java.lang.String" value="reportsMenu" noResource="true"/>
+          </Properties>
         </Menu>
         <Menu class="javax.swing.JMenu" name="manageMenu">
           <Properties>
@@ -354,7 +366,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="216" max="32767" attributes="0"/>
+                  <EmptySpace pref="230" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

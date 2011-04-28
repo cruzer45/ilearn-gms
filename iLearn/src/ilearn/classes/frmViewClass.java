@@ -4,27 +4,25 @@
  */
 
 /*
- * FrmEditClass.java
+ * FrmViewClass.java
  *
- * Created on Mar 28, 2011, 10:27:35 PM
+ * Created on Apr 27, 2011, 11:31:19 AM
  */
 package ilearn.classes;
 
 import ilearn.kernel.Utilities;
-import ilearn.staff.Staff;
 import java.util.ArrayList;
-import javax.swing.DefaultComboBoxModel;
 import org.jdesktop.application.Action;
 
 /**
  *
- * @author mrogers
+ * @author m.rogers
  */
-public class FrmEditClass extends javax.swing.JInternalFrame
+public class FrmViewClass extends javax.swing.JInternalFrame
 {
 
-    /** Creates new form FrmEditClass */
-    public FrmEditClass()
+    /** Creates new form FrmViewClass */
+    public FrmViewClass()
     {
         initComponents();
         populateLists();
@@ -57,19 +55,24 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         lblClassLevel = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtClassDescription = new javax.swing.JTextArea();
-        cmbHomeRoom = new javax.swing.JComboBox();
         lblClassDesc = new javax.swing.JLabel();
         lblClassCode = new javax.swing.JLabel();
-        cmbClassLevel = new javax.swing.JComboBox();
         lblStatus = new javax.swing.JLabel();
-        cmbStatus = new javax.swing.JComboBox();
-        cmdReset = new javax.swing.JButton();
-        cmdSave = new javax.swing.JButton();
         cmdCancel = new javax.swing.JButton();
+        txtClassLevel = new javax.swing.JTextField();
+        txtHomeRoom = new javax.swing.JTextField();
+        txtStatus = new javax.swing.JTextField();
+        studentsPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tblStudents = new javax.swing.JTable();
+        cmdCancel2 = new javax.swing.JButton();
+        lblTotalStudents = new javax.swing.JLabel();
+        lblTotalStudents2 = new javax.swing.JLabel();
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditClass.class);
+        setClosable(true);
+        setIconifiable(true);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmViewClass.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
-        setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
@@ -95,20 +98,12 @@ public class FrmEditClass extends javax.swing.JInternalFrame
             }
         });
         jScrollPane2.setViewportView(classTable);
-        classTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        classTable.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("classTable.columnModel.title0")); // NOI18N
-        classTable.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("classTable.columnModel.title1")); // NOI18N
-        classTable.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("classTable.columnModel.title2")); // NOI18N
-        classTable.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("classTable.columnModel.title3")); // NOI18N
-        classTable.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("classTable.columnModel.title4")); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditClass.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmViewClass.class, this);
         cmdCancel1.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel1.setText(resourceMap.getString("cmdCancel1.text")); // NOI18N
         cmdCancel1.setName("cmdCancel1"); // NOI18N
 
         cmdNext.setAction(actionMap.get("next")); // NOI18N
-        cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
         cmdNext.setName("cmdNext"); // NOI18N
 
         lblTotalClasses2.setText(resourceMap.getString("lblTotalClasses2.text")); // NOI18N
@@ -139,7 +134,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel1)
@@ -157,15 +152,16 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         lblID.setName("lblID"); // NOI18N
 
         txtID.setEditable(false);
-        txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
         txtID.setName("txtID"); // NOI18N
 
         lblHomeRoom.setText(resourceMap.getString("lblHomeRoom.text")); // NOI18N
         lblHomeRoom.setName("lblHomeRoom"); // NOI18N
 
+        txtClassCode.setEditable(false);
         txtClassCode.setToolTipText(resourceMap.getString("txtClassCode.toolTipText")); // NOI18N
         txtClassCode.setName("txtClassCode"); // NOI18N
 
+        txtClassName.setEditable(false);
         txtClassName.setToolTipText(resourceMap.getString("txtClassName.toolTipText")); // NOI18N
         txtClassName.setName("txtClassName"); // NOI18N
 
@@ -178,6 +174,8 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
         txtClassDescription.setColumns(20);
+        txtClassDescription.setEditable(false);
+        txtClassDescription.setFont(txtClassDescription.getFont());
         txtClassDescription.setLineWrap(true);
         txtClassDescription.setRows(5);
         txtClassDescription.setToolTipText(resourceMap.getString("txtClassDescription.toolTipText")); // NOI18N
@@ -185,34 +183,29 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         txtClassDescription.setName("txtClassDescription"); // NOI18N
         jScrollPane1.setViewportView(txtClassDescription);
 
-        cmbHomeRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbHomeRoom.setToolTipText(resourceMap.getString("cmbHomeRoom.toolTipText")); // NOI18N
-        cmbHomeRoom.setName("cmbHomeRoom"); // NOI18N
-
         lblClassDesc.setText(resourceMap.getString("lblClassDesc.text")); // NOI18N
         lblClassDesc.setName("lblClassDesc"); // NOI18N
 
         lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
         lblClassCode.setName("lblClassCode"); // NOI18N
 
-        cmbClassLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First", "Second", "Third", "Fourth" }));
-        cmbClassLevel.setToolTipText(resourceMap.getString("cmbClassLevel.toolTipText")); // NOI18N
-        cmbClassLevel.setName("cmbClassLevel"); // NOI18N
-
         lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
         lblStatus.setName("lblStatus"); // NOI18N
 
-        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
-        cmbStatus.setName("cmbStatus"); // NOI18N
-
-        cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
-        cmdReset.setName("cmdReset"); // NOI18N
-
-        cmdSave.setAction(actionMap.get("save")); // NOI18N
-        cmdSave.setName("cmdSave"); // NOI18N
-
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
+
+        txtClassLevel.setEditable(false);
+        txtClassLevel.setText(resourceMap.getString("txtClassLevel.text")); // NOI18N
+        txtClassLevel.setName("txtClassLevel"); // NOI18N
+
+        txtHomeRoom.setEditable(false);
+        txtHomeRoom.setText(resourceMap.getString("txtHomeRoom.text")); // NOI18N
+        txtHomeRoom.setName("txtHomeRoom"); // NOI18N
+
+        txtStatus.setEditable(false);
+        txtStatus.setText(resourceMap.getString("txtStatus.text")); // NOI18N
+        txtStatus.setName("txtStatus"); // NOI18N
 
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
@@ -221,12 +214,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
             .addGroup(detailsPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel))
+                    .addComponent(cmdCancel, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(detailsPanelLayout.createSequentialGroup()
                         .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblClassCode)
@@ -237,14 +225,14 @@ public class FrmEditClass extends javax.swing.JInternalFrame
                             .addComponent(lblStatus)
                             .addComponent(lblID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 350, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmbClassLevel, 0, 350, Short.MAX_VALUE)
-                            .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmbStatus, 0, 350, Short.MAX_VALUE))))
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtClassName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtClassCode, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtClassLevel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtHomeRoom, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                            .addComponent(txtStatus, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
@@ -261,7 +249,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassLevel)
-                    .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClassName)
@@ -272,21 +260,77 @@ public class FrmEditClass extends javax.swing.JInternalFrame
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHomeRoom))
+                    .addComponent(lblHomeRoom)
+                    .addComponent(txtHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblStatus)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 123, Short.MAX_VALUE)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
+                    .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 90, Short.MAX_VALUE)
+                .addComponent(cmdCancel)
                 .addContainerGap())
         );
 
         classTabbedPane.addTab(resourceMap.getString("detailsPanel.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
+
+        studentsPanel.setName("studentsPanel"); // NOI18N
+
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+
+        tblStudents.setAutoCreateRowSorter(true);
+        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Student ID", "First Name", "Last Name"
+            }
+        ));
+        tblStudents.setName("tblStudents"); // NOI18N
+        jScrollPane3.setViewportView(tblStudents);
+        tblStudents.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title0")); // NOI18N
+        tblStudents.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title1")); // NOI18N
+        tblStudents.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title2")); // NOI18N
+
+        cmdCancel2.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel2.setName("cmdCancel2"); // NOI18N
+
+        lblTotalStudents.setText(resourceMap.getString("lblTotalStudents.text")); // NOI18N
+        lblTotalStudents.setName("lblTotalStudents"); // NOI18N
+
+        lblTotalStudents2.setText(resourceMap.getString("lblTotalStudents2.text")); // NOI18N
+        lblTotalStudents2.setName("lblTotalStudents2"); // NOI18N
+
+        javax.swing.GroupLayout studentsPanelLayout = new javax.swing.GroupLayout(studentsPanel);
+        studentsPanel.setLayout(studentsPanelLayout);
+        studentsPanelLayout.setHorizontalGroup(
+            studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(studentsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentsPanelLayout.createSequentialGroup()
+                        .addComponent(lblTotalStudents)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTotalStudents2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(cmdCancel2))
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        studentsPanelLayout.setVerticalGroup(
+            studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentsPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel2)
+                    .addComponent(lblTotalStudents)
+                    .addComponent(lblTotalStudents2))
+                .addContainerGap())
+        );
+
+        classTabbedPane.addTab("Students", resourceMap.getIcon("studentsPanel.TabConstraints.tabIcon"), studentsPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -301,11 +345,11 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 464, Short.MAX_VALUE)
+            .addGap(0, 431, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
                     .addContainerGap()
-                    .addComponent(classTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                    .addComponent(classTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
                     .addContainerGap()))
         );
 
@@ -314,16 +358,14 @@ public class FrmEditClass extends javax.swing.JInternalFrame
 
     private void classTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_classTableMouseClicked
     {//GEN-HEADEREND:event_classTableMouseClicked
-        next();
-    }//GEN-LAST:event_classTableMouseClicked
+        if (evt.getClickCount() >= 2)
+        {
+            next();
+        }
+}//GEN-LAST:event_classTableMouseClicked
 
     private void populateLists()
     {
-        //Set the home room list
-        ArrayList<String> staffList = Staff.getStaffList();
-        staffList.add(0, "--- Select One ---");
-        cmbHomeRoom.setModel(new DefaultComboBoxModel(staffList.toArray()));
-
         //Load the table
         classTable.setModel(Classes.getClassTableModel());
         lblTotalClasses2.setText(String.valueOf(classTable.getRowCount()));
@@ -350,13 +392,19 @@ public class FrmEditClass extends javax.swing.JInternalFrame
 
             ArrayList<String> classInfo = Classes.getClassInfo(selectedClass);
 
+
             txtID.setText(selectedClass);
             txtClassCode.setText(classInfo.get(0));
             txtClassName.setText(classInfo.get(1));
             txtClassDescription.setText(classInfo.get(2));
-            cmbClassLevel.setSelectedItem(classInfo.get(3));
-            cmbHomeRoom.setSelectedItem(classInfo.get(4));
-            cmbStatus.setSelectedItem(classInfo.get(5));
+            txtClassLevel.setText(classInfo.get(3));
+            txtHomeRoom.setText(classInfo.get(4));
+            txtStatus.setText(classInfo.get(5));
+
+            //Get the list of students
+            tblStudents.setModel(Classes.getStudentList(classInfo.get(0)));
+
+            lblTotalStudents2.setText(String.valueOf(tblStudents.getRowCount()));
         }
     }
 
@@ -369,48 +417,18 @@ public class FrmEditClass extends javax.swing.JInternalFrame
             classTabbedPane.setSelectedIndex(classTabbedPane.getSelectedIndex() + 1);
         }
     }
-
-    @Action
-    public void save()
-    {
-        String code = txtClassCode.getText().trim();
-        String name = txtClassName.getText().trim();
-        String description = txtClassDescription.getText().trim();
-        String level = cmbClassLevel.getSelectedItem().toString();
-        String homeRoom = cmbHomeRoom.getSelectedItem().toString();
-        String status = cmbStatus.getSelectedItem().toString();
-        String id = txtID.getText().trim();
-
-        if (Classes.updateClass(code, name, description, level, homeRoom, status, id))
-        {
-            //reload the list
-            populateLists();
-            String message = "Succesfully updated the class' information.";
-            Utilities.showInfoMessage(rootPane, message);
-        }
-        else
-        {
-            String message = "An error occurred while updating the class' information.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists, kindly contact your system administrator.";
-            Utilities.showErrorMessage(rootPane, message);
-        }
-    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel classPanel;
     private javax.swing.JTabbedPane classTabbedPane;
     private javax.swing.JTable classTable;
-    private javax.swing.JComboBox cmbClassLevel;
-    private javax.swing.JComboBox cmbHomeRoom;
-    private javax.swing.JComboBox cmbStatus;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdCancel1;
+    private javax.swing.JButton cmdCancel2;
     private javax.swing.JButton cmdNext;
-    private javax.swing.JButton cmdReset;
-    private javax.swing.JButton cmdSave;
     private javax.swing.JPanel detailsPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblClassCode;
     private javax.swing.JLabel lblClassDesc;
     private javax.swing.JLabel lblClassLevel;
@@ -420,9 +438,16 @@ public class FrmEditClass extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblStatus;
     private javax.swing.JLabel lblTotalClasses;
     private javax.swing.JLabel lblTotalClasses2;
+    private javax.swing.JLabel lblTotalStudents;
+    private javax.swing.JLabel lblTotalStudents2;
+    private javax.swing.JPanel studentsPanel;
+    private javax.swing.JTable tblStudents;
     private javax.swing.JTextField txtClassCode;
     private javax.swing.JTextArea txtClassDescription;
+    private javax.swing.JTextField txtClassLevel;
     private javax.swing.JTextField txtClassName;
+    private javax.swing.JTextField txtHomeRoom;
     private javax.swing.JTextField txtID;
+    private javax.swing.JTextField txtStatus;
     // End of variables declaration//GEN-END:variables
 }

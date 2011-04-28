@@ -79,7 +79,15 @@ public class TimeSlots
     public static DefaultTableModel getTimeSlotTableModelList()
     {
 
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
 
         ArrayList<String> ids = new ArrayList<String>();
         ArrayList<String> codes = new ArrayList<String>();

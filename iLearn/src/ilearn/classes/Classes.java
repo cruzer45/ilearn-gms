@@ -55,7 +55,14 @@ public class Classes
 
     public static DefaultTableModel getClassTableModel()
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
         ArrayList<String> ID = new ArrayList<String>();
         ArrayList<String> code = new ArrayList<String>();
         ArrayList<String> Name = new ArrayList<String>();
@@ -175,7 +182,49 @@ public class Classes
             String message = "An error occurred while generating the list of classes.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return classes;
+    }
+
+    public static DefaultTableModel getStudentList(String classCode)
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+
+        ArrayList<String> studentID = new ArrayList<String>();
+        ArrayList<String> firstName = new ArrayList<String>();
+        ArrayList<String> lastName = new ArrayList<String>();
+
+        try
+        {
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentID.add(rs.getString("stuID"));
+                firstName.add(rs.getString("stuFirstName"));
+                lastName.add(rs.getString("stuLastName"));
+            }
+            prep.close();
+            rs.close();
+            model.addColumn("ID", studentID.toArray());
+            model.addColumn("First Name", firstName.toArray());
+            model.addColumn("Last Name", lastName.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of students for a class.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
+        return model;
     }
 }

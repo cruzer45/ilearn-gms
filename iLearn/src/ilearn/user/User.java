@@ -143,7 +143,15 @@ public class User
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, sQLException);
         }
 
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
         model.addColumn("ID", id.toArray());
         model.addColumn("Name", name.toArray());
         model.addColumn("User Name", username.toArray());

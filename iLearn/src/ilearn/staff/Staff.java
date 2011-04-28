@@ -52,7 +52,15 @@ public class Staff
 
     public static DefaultTableModel getStaffListTableModel()
     {
-        DefaultTableModel model = new DefaultTableModel();
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
 
         ArrayList<String> id = new ArrayList<String>();
         ArrayList<String> code = new ArrayList<String>();
