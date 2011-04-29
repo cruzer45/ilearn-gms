@@ -42,8 +42,8 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         staffTabbedPane = new javax.swing.JTabbedPane();
         staffPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -73,128 +73,112 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditStaff.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         staffTabbedPane.setName("staffTabbedPane"); // NOI18N
-
         staffPanel.setName("staffPanel"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
+        tblStaff.setAutoCreateRowSorter(true);
         tblStaff.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                              new Object [][]
+                              {
 
-            },
-            new String [] {
-                "ID", "Code", "Name", "DOB", "Status"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                              },
+                              new String []
+                              {
+                                  "ID", "Name", "Status"
+                              }
+                          )
+        {
+            boolean[] canEdit = new boolean []
+            {
+                false, false, false
             };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
-        tblStaff.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblStaff.setName("tblStaff"); // NOI18N
+        tblStaff.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                tblStaffMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblStaff);
         tblStaff.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblStaff.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title1")); // NOI18N
-        tblStaff.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title2")); // NOI18N
-        tblStaff.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title3")); // NOI18N
-        tblStaff.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title0")); // NOI18N
-        tblStaff.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title4")); // NOI18N
-
+        tblStaff.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title3")); // NOI18N
+        tblStaff.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStaff.columnModel.title4")); // NOI18N
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditStaff.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdNext.setAction(actionMap.get("next")); // NOI18N
         cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
         cmdNext.setName("cmdNext"); // NOI18N
-
         javax.swing.GroupLayout staffPanelLayout = new javax.swing.GroupLayout(staffPanel);
         staffPanel.setLayout(staffPanelLayout);
         staffPanelLayout.setHorizontalGroup(
             staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, staffPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 324, Short.MAX_VALUE)
-                    .addGroup(staffPanelLayout.createSequentialGroup()
-                        .addComponent(cmdNext)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 330, Short.MAX_VALUE)
+                                .addGroup(staffPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdNext)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         staffPanelLayout.setVerticalGroup(
             staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, staffPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdNext))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(staffPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdNext))
+                      .addContainerGap())
         );
-
         staffTabbedPane.addTab(resourceMap.getString("staffPanel.TabConstraints.tabTitle"), resourceMap.getIcon("staffPanel.TabConstraints.tabIcon"), staffPanel); // NOI18N
-
         detailsPanel.setName("detailsPanel"); // NOI18N
-
         lblID.setText(resourceMap.getString("lblID.text")); // NOI18N
         lblID.setName("lblID"); // NOI18N
-
         txtID.setEditable(false);
         txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
         txtID.setName("txtID"); // NOI18N
-
         lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
         lblFirstName.setName("lblFirstName"); // NOI18N
-
         lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
         lblLastName.setName("lblLastName"); // NOI18N
-
         txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
-
         txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
         txtLastName.setName("txtLastName"); // NOI18N
-
         lblStaffCode.setText(resourceMap.getString("lblStaffCode.text")); // NOI18N
         lblStaffCode.setName("lblStaffCode"); // NOI18N
-
         txtStaffCode.setToolTipText(resourceMap.getString("txtStaffCode.toolTipText")); // NOI18N
         txtStaffCode.setName("txtStaffCode"); // NOI18N
-
         lblGender.setText(resourceMap.getString("lblGender.text")); // NOI18N
         lblGender.setName("lblGender"); // NOI18N
-
         cmbGender.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Male", "Female" }));
         cmbGender.setToolTipText(resourceMap.getString("cmbGender.toolTipText")); // NOI18N
         cmbGender.setName("cmbGender"); // NOI18N
-
         lblDob.setText(resourceMap.getString("lblDob.text")); // NOI18N
         lblDob.setName("lblDob"); // NOI18N
-
         calDOB.setToolTipText(resourceMap.getString("calDOB.toolTipText")); // NOI18N
         calDOB.setName("calDOB"); // NOI18N
-
         lblNotes.setText(resourceMap.getString("lblNotes.text")); // NOI18N
         lblNotes.setName("lblNotes"); // NOI18N
-
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-
         txtNotes.setColumns(20);
         txtNotes.setLineWrap(true);
         txtNotes.setRows(5);
@@ -202,139 +186,135 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         txtNotes.setWrapStyleWord(true);
         txtNotes.setName("txtNotes"); // NOI18N
         jScrollPane2.setViewportView(txtNotes);
-
         txtEmail.setToolTipText(resourceMap.getString("txtEmail.toolTipText")); // NOI18N
         txtEmail.setName("txtEmail"); // NOI18N
-
         lblEmail.setText(resourceMap.getString("lblEmail.text")); // NOI18N
         lblEmail.setName("lblEmail"); // NOI18N
-
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-
         lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
         lblStatus.setName("lblStatus"); // NOI18N
-
         jButton1.setAction(actionMap.get("cancel")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
-
         jButton2.setAction(actionMap.get("save")); // NOI18N
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
-
         jButton3.setAction(actionMap.get("resetForm")); // NOI18N
         jButton3.setText(resourceMap.getString("jButton3.text")); // NOI18N
         jButton3.setName("jButton3"); // NOI18N
-
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(lblID)
-                        .addGap(45, 45, 45)
-                        .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE))
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblStaffCode)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblLastName)
-                            .addComponent(lblGender)
-                            .addComponent(lblDob)
-                            .addComponent(lblEmail)
-                            .addComponent(lblNotes)
-                            .addComponent(lblStatus))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbStatus, javax.swing.GroupLayout.Alignment.TRAILING, 0, 264, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(cmbGender, 0, 264, Short.MAX_VALUE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
-                            .addComponent(txtStaffCode, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
-                        .addComponent(jButton3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
+                                          .addComponent(jButton3)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 74, Short.MAX_VALUE)
+                                          .addComponent(jButton2)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(jButton1))
+                                .addGroup(detailsPanelLayout.createSequentialGroup()
+                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblStaffCode)
+                                                  .addComponent(lblFirstName)
+                                                  .addComponent(lblLastName)
+                                                  .addComponent(lblGender)
+                                                  .addComponent(lblDob)
+                                                  .addComponent(lblEmail)
+                                                  .addComponent(lblNotes)
+                                                  .addComponent(lblStatus)
+                                                  .addComponent(lblID))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                                  .addComponent(cmbStatus, javax.swing.GroupLayout.Alignment.TRAILING, 0, 247, Short.MAX_VALUE)
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                                  .addComponent(txtEmail, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                                  .addComponent(calDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                                  .addComponent(cmbGender, 0, 247, Short.MAX_VALUE)
+                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
+                                                  .addComponent(txtStaffCode, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStaffCode)
-                    .addComponent(txtStaffCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLastName)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGender)
-                    .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblDob)
-                    .addComponent(calDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEmail))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblNotes)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblID)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblStaffCode)
+                                .addComponent(txtStaffCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblFirstName)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblLastName)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblGender)
+                                .addComponent(cmbGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(lblDob)
+                                .addComponent(calDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblEmail))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblNotes)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblStatus))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jButton1)
+                                .addComponent(jButton2)
+                                .addComponent(jButton3))
+                      .addContainerGap())
         );
-
         staffTabbedPane.addTab(resourceMap.getString("detailsPanel.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(staffTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 349, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(staffTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(staffTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 393, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(staffTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                      .addContainerGap())
         );
-
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-385)/2, (screenSize.height-444)/2, 385, 444);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblStaffMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStaffMouseClicked
+    {
+        //GEN-HEADEREND:event_tblStaffMouseClicked
+        if (evt.getClickCount() >= 2)
+        {
+            next();
+        }
+    }//GEN-LAST:event_tblStaffMouseClicked
 
     @Action
     public void cancel()
@@ -354,11 +334,10 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         String notes = txtNotes.getText().trim();
         String email = txtEmail.getText().trim();
         String status = cmbStatus.getSelectedItem().toString();
-
         if (Staff.updateStaffDetails(id, code, firstName, lastName, gender, DOB, notes, email, status))
         {
             String message = "The information was successfully updated. \n"
-                    + "Would you like to continue editing?";
+                             + "Would you like to continue editing?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -373,7 +352,7 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this staff member.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -397,7 +376,6 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         {
             String id = tblStaff.getValueAt(tblStaff.getSelectedRow(), 0).toString();
             ArrayList<String> details = Staff.getStaffDetails(id);
-
             txtID.setText(details.get(0));
             txtStaffCode.setText(details.get(1));
             txtFirstName.setText(details.get(2));

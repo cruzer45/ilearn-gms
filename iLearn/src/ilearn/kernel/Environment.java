@@ -42,10 +42,10 @@ public class Environment
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(ILearnApp.getApplication().getMainFrame(),
-                    "An error occurred."
-                    + "\nCould not read the application's settings."
-                    + "\n\nKindly consult the system administrator.",
-                    "iLoan", JOptionPane.ERROR_MESSAGE);
+                                          "An error occurred."
+                                          + "\nCould not read the application's settings."
+                                          + "\n\nKindly consult the system administrator.",
+                                          "iLoan", JOptionPane.ERROR_MESSAGE);
             System.err.println("The properties file could not be read.");
             System.exit(1);
         }
@@ -58,12 +58,10 @@ public class Environment
     public static void createConnection()
     {
         getProperties();
-
         String dbDriver = EncryptionHandler.decrypt(properties.getProperty("dbDriver"));
         String dbLocation = EncryptionHandler.decrypt(properties.getProperty("dbLocation"));
         String dbUser = EncryptionHandler.decrypt(properties.getProperty("dbUser"));
         String dbPass = EncryptionHandler.decrypt(properties.getProperty("dbPass"));
-
         //Try to connect to the database
         try
         {
@@ -78,7 +76,7 @@ public class Environment
             String message = "ERROR: The driver specified could not be found.";
             Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message, cnfEx);
             message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check with your system administrator.";
+                      + "Kindly check with your system administrator.";
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().exit();
         }
@@ -87,7 +85,7 @@ public class Environment
             String message = "ERROR: Could not connect to the database.";
             Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message, sqlEx);
             message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check your connection and consult with your system administrator.";
+                      + "Kindly check your connection and consult with your system administrator.";
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().exit();
         }
@@ -96,7 +94,7 @@ public class Environment
             String message = "ERROR: Could not connect to the database.";
             Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message, e);
             message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check with your system administrator.";
+                      + "Kindly check with your system administrator.";
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().exit();
         }
@@ -110,23 +108,21 @@ public class Environment
         if (foundDBVersion < minimumDBVersion)
         {
             String message = "The database was meant to be used with another version of this application.\n"
-                    + "To protect your data, the program will now exit.";
+                             + "To protect your data, the program will now exit.";
             Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message);
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().quit(null);
         }
-
         //Check time code
         try
         {
             Date currentDate = Utilities.YMD_Formatter.parse(Utilities.YMD_Formatter.format(new Date()));
             Date expiryDate = Utilities.YMD_Formatter.parse(EncryptionHandler.decrypt(timeCode));
-
             //TODO add code to calculate date difference
             if (expiryDate.before(currentDate))
             {
                 String message = "The license has expired.\n"
-                        + "Kindly contact your provider to get a new license.";
+                                 + "Kindly contact your provider to get a new license.";
                 Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, message);
                 Utilities.showErrorMessage(null, message);
                 ILearnApp.getApplication().quit(null);
@@ -163,17 +159,15 @@ public class Environment
         long waitTime = (long) (timeout * 60 * 1000);
         TimerTask logOff = new TimerTask()
         {
-
             @Override
             public void run()
             {
                 String message = "You have been idle for " + timeout + " minutes.\n"
-                        + "The program will now close.";
+                                 + "The program will now close.";
                 Utilities.showInfoMessage(null, message);
                 ilearn.ILearnApp.getApplication().exit();
             }
         };
-
         Timer timer = new Timer();
         timer.schedule(logOff, waitTime);
     }

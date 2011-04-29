@@ -35,7 +35,6 @@ public class Utilities
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(query);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 cmbBox.addItem(rs.getString(1));
@@ -67,7 +66,6 @@ public class Utilities
      */
     public static String percent(String content)
     {
-
         return "%" + content + "%";
     }
 

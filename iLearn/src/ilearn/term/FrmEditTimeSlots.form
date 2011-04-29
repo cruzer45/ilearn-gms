@@ -31,7 +31,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="timeSlotsTabbedPane" pref="365" max="32767" attributes="0"/>
+              <Component id="timeSlotsTabbedPane" pref="375" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -40,7 +40,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="timeSlotsTabbedPane" pref="310" max="32767" attributes="0"/>
+              <Component id="timeSlotsTabbedPane" pref="313" max="32767" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -73,7 +73,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="340" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="346" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdNext" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -88,7 +88,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="222" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="229" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -218,12 +218,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtID" alignment="0" pref="282" max="32767" attributes="0"/>
-                                  <Component id="cmbStatus" alignment="0" pref="282" max="32767" attributes="0"/>
-                                  <Component id="spinnerStart" alignment="1" pref="282" max="32767" attributes="0"/>
-                                  <Component id="cmbDay" alignment="1" pref="282" max="32767" attributes="0"/>
-                                  <Component id="txtCode" alignment="0" pref="282" max="32767" attributes="0"/>
-                                  <Component id="spinnerEnd" alignment="1" pref="282" max="32767" attributes="0"/>
+                                  <Component id="txtID" alignment="0" pref="265" max="32767" attributes="0"/>
+                                  <Component id="cmbStatus" alignment="0" pref="265" max="32767" attributes="0"/>
+                                  <Component id="spinnerStart" alignment="1" pref="265" max="32767" attributes="0"/>
+                                  <Component id="cmbDay" alignment="1" pref="265" max="32767" attributes="0"/>
+                                  <Component id="txtCode" alignment="0" pref="265" max="32767" attributes="0"/>
+                                  <Component id="spinnerEnd" alignment="1" pref="265" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -269,7 +269,7 @@
                           <Component id="lblStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="83" max="32767" attributes="0"/>
+                      <EmptySpace pref="79" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>

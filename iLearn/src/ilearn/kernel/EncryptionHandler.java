@@ -46,7 +46,6 @@ public class EncryptionHandler
         try
         {
             md = MessageDigest.getInstance("SHA-512");
-
             md.update(message.getBytes());
             byte[] mb = md.digest();
             String out = "";

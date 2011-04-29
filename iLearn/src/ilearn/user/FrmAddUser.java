@@ -22,10 +22,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     public FrmAddUser()
     {
         initComponents();
-        
         //Loads the values from the database into the combo boxes.
         cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
-        
     }
 
     /** This method is called from within the constructor to
@@ -35,8 +33,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         lblFirstName = new javax.swing.JLabel();
         lblLastName = new javax.swing.JLabel();
         lblUserName = new javax.swing.JLabel();
@@ -52,7 +50,6 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         cmdReset = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jSpinner1 = new javax.swing.JSpinner();
-
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmAddUser.class);
@@ -60,126 +57,109 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
         lblFirstName.setName("lblFirstName"); // NOI18N
-
         lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
         lblLastName.setName("lblLastName"); // NOI18N
-
         lblUserName.setText(resourceMap.getString("lblUserName.text")); // NOI18N
         lblUserName.setName("lblUserName"); // NOI18N
-
         lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
         lblPassword.setName("lblPassword"); // NOI18N
-
         txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
         txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
-
         txtUserName.setText(resourceMap.getString("txtUserName.text")); // NOI18N
         txtUserName.setToolTipText(resourceMap.getString("txtUserName.toolTipText")); // NOI18N
         txtUserName.setName("txtUserName"); // NOI18N
-
         txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
         txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
         txtLastName.setName("txtLastName"); // NOI18N
-
         txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
         txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
         txtPassword.setName("txtPassword"); // NOI18N
-
         lblGroup.setText(resourceMap.getString("lblGroup.text")); // NOI18N
         lblGroup.setName("lblGroup"); // NOI18N
-
         cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
         cmbGroup.setName("cmbGroup"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddUser.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
-
         jSpinner1.setName("jSpinner1"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblLastName)
-                            .addComponent(lblUserName)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblPassword)
-                            .addComponent(lblGroup)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
-                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                            .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel))
+                                .addGroup(layout.createSequentialGroup()
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblLastName)
+                                                  .addComponent(lblUserName)
+                                                  .addComponent(lblFirstName)
+                                                  .addComponent(lblPassword)
+                                                  .addComponent(lblGroup)
+                                                  .addComponent(jLabel1))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                  .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
+                                                  .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                                  .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                                  .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
+                                                  .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblFirstName)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLastName)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblUserName)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPassword)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGroup)
-                    .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblFirstName)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblLastName)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblUserName)
+                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblPassword)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblGroup)
+                                .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(jLabel1)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-353)/2, (screenSize.height-300)/2, 353, 300);
     }// </editor-fold>//GEN-END:initComponents
@@ -208,14 +188,12 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         String firstName = txtFirstName.getText().trim();
         String lastName = txtLastName.getText().trim();
         String group = cmbGroup.getSelectedItem().toString();
-
         //If the user was added successfully, it displays a message.
         if (User.addUser(username, password, firstName, lastName, group))
         {
             String message = "The user was successfully added.\n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
-
             if (response == JOptionPane.YES_OPTION)
             {
                 resetForm();
@@ -228,8 +206,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists, kindly contact your system administrator.";
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

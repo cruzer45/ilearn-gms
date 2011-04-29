@@ -56,8 +56,8 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         lblTimeCode = new javax.swing.JLabel();
         txtCode = new javax.swing.JTextField();
         lblDay = new javax.swing.JLabel();
@@ -73,7 +73,6 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
         spinnerEnd.setEditor(de2);
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmAddTimeSlot.class);
@@ -81,95 +80,83 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         lblTimeCode.setText(resourceMap.getString("lblTimeCode.text")); // NOI18N
         lblTimeCode.setName("lblTimeCode"); // NOI18N
-
         txtCode.setText(resourceMap.getString("txtCode.text")); // NOI18N
         txtCode.setToolTipText(resourceMap.getString("txtCode.toolTipText")); // NOI18N
         txtCode.setName("txtCode"); // NOI18N
-
         lblDay.setText(resourceMap.getString("lblDay.text")); // NOI18N
         lblDay.setName("lblDay"); // NOI18N
-
         cmbDay.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" }));
         cmbDay.setToolTipText(resourceMap.getString("cmbDay.toolTipText")); // NOI18N
         cmbDay.setName("cmbDay"); // NOI18N
-
         lblEnd.setText(resourceMap.getString("lblEnd.text")); // NOI18N
         lblEnd.setName("lblEnd"); // NOI18N
-
         lblStart.setText(resourceMap.getString("lblStart.text")); // NOI18N
         lblStart.setName("lblStart"); // NOI18N
-
         spinnerStart.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
         spinnerStart.setToolTipText(resourceMap.getString("spinnerStart.toolTipText")); // NOI18N
         spinnerStart.setName("spinnerStart"); // NOI18N
-
         spinnerEnd.setModel(new SpinnerDateModel(new Date(), null, null, Calendar.HOUR_OF_DAY));
         spinnerEnd.setToolTipText(resourceMap.getString("spinnerEnd.toolTipText")); // NOI18N
         spinnerEnd.setName("spinnerEnd"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddTimeSlot.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTimeCode)
-                            .addComponent(lblDay)
-                            .addComponent(lblStart)
-                            .addComponent(lblEnd))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                            .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 292, Short.MAX_VALUE)
-                            .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
-                            .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblTimeCode)
+                                                  .addComponent(lblDay)
+                                                  .addComponent(lblStart)
+                                                  .addComponent(lblEnd))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(spinnerStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                                  .addComponent(cmbDay, javax.swing.GroupLayout.Alignment.TRAILING, 0, 292, Short.MAX_VALUE)
+                                                  .addComponent(txtCode, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)
+                                                  .addComponent(spinnerEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 292, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTimeCode)
-                    .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblDay)
-                    .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spinnerStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStart))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(spinnerEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblEnd))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblTimeCode)
+                                .addComponent(txtCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblDay)
+                                .addComponent(cmbDay, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(spinnerStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblStart))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(spinnerEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblEnd))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 14, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave))
+                      .addContainerGap())
         );
-
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-386)/2, (screenSize.height-188)/2, 386, 188);
     }// </editor-fold>//GEN-END:initComponents
@@ -185,16 +172,14 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
     {
         String code = txtCode.getText().trim();
         String day = cmbDay.getSelectedItem().toString();
-
         Date startTime1 = new Date(Date.parse(spinnerStart.getModel().getValue().toString()));
         Date endTime1 = new Date(Date.parse(spinnerEnd.getModel().getValue().toString()));
         String startTime = timeFormat2.format(startTime1);
         String endTime = timeFormat2.format(endTime1);
-
         if (TimeSlots.addTimeSlot(code, day, startTime, endTime))
         {
             String message = "The Time Slot was successfully created.\n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -208,7 +193,7 @@ public class FrmAddTimeSlot extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to add this time slot.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

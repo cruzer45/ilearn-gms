@@ -30,15 +30,24 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                      <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSubjectCode" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTeacher" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="cmbTeacher" alignment="1" pref="309" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" pref="309" max="32767" attributes="0"/>
                           <Component id="txtSubjectName" alignment="0" pref="309" max="32767" attributes="0"/>
                           <Component id="txtSubjectCode" alignment="0" pref="309" max="32767" attributes="0"/>
@@ -46,11 +55,9 @@
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
-                      <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdAdd" min="-2" max="-2" attributes="1"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdRemove" min="-2" max="-2" attributes="1"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -59,7 +66,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
+          <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblSubjectCode" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -76,17 +83,25 @@
                   <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmbTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="34" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                  </Group>
-                  <Component id="lblDays_Time" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="jScrollPane2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmdRemove" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdReset" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
           </Group>
@@ -191,13 +206,52 @@
         <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="cmdReset">
       <Properties>
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="ilearn.subject.FrmAddSubject" id="resetForm" methodName="resetForm"/>
         </Property>
-        <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
-        <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="cmdReset.text"/>
+        <Property name="name" type="java.lang.String" value="cmdReset" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="cmdAdd">
+      <Properties>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="ilearn.subject.FrmAddSubject" id="add" methodName="add"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="cmdAdd.icon"/>
+        <Property name="text" type="java.lang.String" resourceKey="cmdAdd.text"/>
+        <Property name="name" type="java.lang.String" value="cmdAdd" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="cmdRemove">
+      <Properties>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="ilearn.subject.FrmAddSubject" id="remove" methodName="remove"/>
+        </Property>
+        <Property name="icon" type="javax.swing.Icon" resourceKey="cmdRemove.icon"/>
+        <Property name="text" type="java.lang.String" resourceKey="cmdRemove.text"/>
+        <Property name="name" type="java.lang.String" value="cmdRemove" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="cmbTeacher">
+      <Properties>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="4">
+            <StringItem index="0" value="Item 1"/>
+            <StringItem index="1" value="Item 2"/>
+            <StringItem index="2" value="Item 3"/>
+            <StringItem index="3" value="Item 4"/>
+          </StringArray>
+        </Property>
+        <Property name="name" type="java.lang.String" value="cmbTeacher" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lblTeacher">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="lblTeacher.text"/>
+        <Property name="name" type="java.lang.String" value="lblTeacher" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

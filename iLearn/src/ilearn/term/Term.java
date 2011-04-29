@@ -53,7 +53,6 @@ public class Term
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -65,13 +64,11 @@ public class Term
         ArrayList<String> shortNames = new ArrayList<String>();
         ArrayList<String> longNames = new ArrayList<String>();
         ArrayList<String> status = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `trmID`, `trmCode`, `trmShortName`, `trmLongName`, `trmStatus` FROM `iLearn`.`Term` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 ID.add(rs.getString("trmID"));
@@ -88,20 +85,17 @@ public class Term
             String message = "An error occurred while getting the term list.";
             Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
         }
-
         model.addColumn("ID", ID.toArray());
         model.addColumn("Term Code", trmCodes.toArray());
         model.addColumn("Short Name", shortNames.toArray());
         model.addColumn("Long Name", longNames.toArray());
         model.addColumn("Status", status.toArray());
-
         return model;
     }
 
     public static boolean updateTerm(String ID, String trmCode, String trmShortName, String trmLongName, String status)
     {
         boolean successful = false;
-
         try
         {
             String sql = "UPDATE `Term` SET `trmCode`= ?, `trmShortName`= ?, `trmLongName`= ?, `trmStatus`=? WHERE `trmID`= ?;";
@@ -121,7 +115,6 @@ public class Term
             Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
             successful = false;
         }
-
         return successful;
     }
 }

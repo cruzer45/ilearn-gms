@@ -34,8 +34,8 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         lblTermCode = new javax.swing.JLabel();
         txtTermCode = new javax.swing.JTextField();
         lblShortName = new javax.swing.JLabel();
@@ -45,7 +45,6 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmAddTerm.class);
@@ -53,88 +52,77 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         lblTermCode.setText(resourceMap.getString("lblTermCode.text")); // NOI18N
         lblTermCode.setName("lblTermCode"); // NOI18N
-
         txtTermCode.setText(resourceMap.getString("txtTermCode.text")); // NOI18N
         txtTermCode.setToolTipText(resourceMap.getString("txtTermCode.toolTipText")); // NOI18N
         txtTermCode.setName("txtTermCode"); // NOI18N
-
         lblShortName.setText(resourceMap.getString("lblShortName.text")); // NOI18N
         lblShortName.setName("lblShortName"); // NOI18N
-
         txtShortName.setText(resourceMap.getString("txtShortName.text")); // NOI18N
         txtShortName.setToolTipText(resourceMap.getString("txtShortName.toolTipText")); // NOI18N
         txtShortName.setName("txtShortName"); // NOI18N
-
         lblLongName.setText(resourceMap.getString("lblLongName.text")); // NOI18N
         lblLongName.setName("lblLongName"); // NOI18N
-
         txtLongName.setText(resourceMap.getString("txtLongName.text")); // NOI18N
         txtLongName.setToolTipText(resourceMap.getString("txtLongName.toolTipText")); // NOI18N
         txtLongName.setName("txtLongName"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddTerm.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTermCode)
-                            .addComponent(lblShortName)
-                            .addComponent(lblLongName))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtLongName, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                            .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
-                            .addComponent(txtTermCode, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblTermCode)
+                                                  .addComponent(lblShortName)
+                                                  .addComponent(lblLongName))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(txtLongName, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                                                  .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)
+                                                  .addComponent(txtTermCode, javax.swing.GroupLayout.DEFAULT_SIZE, 296, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTermCode)
-                    .addComponent(txtTermCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblShortName)
-                    .addComponent(txtShortName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLongName)
-                    .addComponent(txtLongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblTermCode)
+                                .addComponent(txtTermCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblShortName)
+                                .addComponent(txtShortName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblLongName)
+                                .addComponent(txtLongName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-396)/2, (screenSize.height-159)/2, 396, 159);
     }// </editor-fold>//GEN-END:initComponents
@@ -151,11 +139,10 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
         String trmCode = txtTermCode.getText().trim();
         String shortName = txtShortName.getText().trim();
         String longName = txtLongName.getText().trim();
-
         if(Term.addTerm(trmCode, shortName, longName))
         {
             String message = "The term was successfully added. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -169,10 +156,9 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this term.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
-
     }
 
     @Action

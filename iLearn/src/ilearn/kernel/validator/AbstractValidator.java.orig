@@ -78,26 +78,31 @@ public abstract class AbstractValidator extends InputVerifier implements KeyList
     {
         if (!validationCriteria(c))
         {
+
             if (parent instanceof WantsValidationStatus)
             {
                 ((WantsValidationStatus) parent).validateFailed();
             }
+
             c.setBackground(Color.PINK);
             popup.setSize(0, 0);
             popup.setLocationRelativeTo(c);
             point = popup.getLocation();
             cDim = c.getSize();
             popup.setLocation(point.x - (int) cDim.getWidth() / 2,
-                              point.y + (int) cDim.getHeight() / 2);
+                    point.y + (int) cDim.getHeight() / 2);
             popup.pack();
             popup.setVisible(true);
             return false;
         }
+
         c.setBackground(Color.WHITE);
+
         if (parent instanceof WantsValidationStatus)
         {
             ((WantsValidationStatus) parent).validatePassed();
         }
+
         return true;
     }
 

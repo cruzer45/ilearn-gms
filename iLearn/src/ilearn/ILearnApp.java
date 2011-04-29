@@ -25,13 +25,10 @@ public class ILearnApp extends SingleFrameApplication
     @Override
     protected void startup()
     {
-
         show(new ILearnView(this));
-
         JFrame mainFrame = ILearnApp.getApplication().getMainFrame();
         mainFrame.addWindowListener(new WindowAdapter()
         {
-
             @Override
             public void windowClosing(WindowEvent e)
             {
@@ -39,13 +36,10 @@ public class ILearnApp extends SingleFrameApplication
                 int response = Utilities.showConfirmDialog(ILearnApp.getApplication().getMainFrame(), message);
                 if (response == JOptionPane.YES_OPTION)
                 {
-
                     shutdown();
                 }
             }
         });
-
-
     }
 
     @Override
@@ -85,7 +79,6 @@ public class ILearnApp extends SingleFrameApplication
         };
         UIManager.put("Synthetica.license.info", li);
         UIManager.put("Synthetica.license.key", "2BCF99E0-3738913D-F30B5EC9-622511CC-4F19572A");
-
         launch(ILearnApp.class, args);
     }
 }

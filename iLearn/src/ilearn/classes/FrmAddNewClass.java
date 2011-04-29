@@ -10,6 +10,7 @@
  */
 package ilearn.classes;
 
+import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
 import ilearn.staff.Staff;
 import java.util.ArrayList;
@@ -38,23 +39,29 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        lblClassLevel = new javax.swing.JLabel();
-        cmbClassLevel = new javax.swing.JComboBox();
-        lblClassCode = new javax.swing.JLabel();
-        txtClassCode = new javax.swing.JTextField();
-        lblClassName = new javax.swing.JLabel();
-        txtClassName = new javax.swing.JTextField();
-        lblClassDesc = new javax.swing.JLabel();
-        lblHomeRoom = new javax.swing.JLabel();
-        cmbHomeRoom = new javax.swing.JComboBox();
+    private void initComponents()
+    {
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        lblClassDesc = new javax.swing.JLabel();
+        lblHomeRoom = new javax.swing.JLabel();
+        txtClassCode = new javax.swing.JTextField();
+        cmbClassLevel = new javax.swing.JComboBox();
+        cmbHomeRoom = new javax.swing.JComboBox();
+        lblClassCode = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtClassDescription = new javax.swing.JTextArea();
-
+        lblClassLevel = new javax.swing.JLabel();
+        lblClassName = new javax.swing.JLabel();
+        txtClassName = new javax.swing.JTextField();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblSubjects = new javax.swing.JTable();
+        cmdDelete = new javax.swing.JButton();
+        cmdAdd = new javax.swing.JButton();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmAddNewClass.class);
@@ -62,53 +69,34 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
-        lblClassLevel.setText(resourceMap.getString("lblClassLevel.text")); // NOI18N
-        lblClassLevel.setName("lblClassLevel"); // NOI18N
-
-        cmbClassLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First", "Second", "Third", "Fourth" }));
-        cmbClassLevel.setToolTipText(resourceMap.getString("cmbClassLevel.toolTipText")); // NOI18N
-        cmbClassLevel.setName("cmbClassLevel"); // NOI18N
-
-        lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
-        lblClassCode.setName("lblClassCode"); // NOI18N
-
-        txtClassCode.setText(resourceMap.getString("txtClassCode.text")); // NOI18N
-        txtClassCode.setToolTipText(resourceMap.getString("txtClassCode.toolTipText")); // NOI18N
-        txtClassCode.setName("txtClassCode"); // NOI18N
-
-        lblClassName.setText(resourceMap.getString("lblClassName.text")); // NOI18N
-        lblClassName.setName("lblClassName"); // NOI18N
-
-        txtClassName.setText(resourceMap.getString("txtClassName.text")); // NOI18N
-        txtClassName.setToolTipText(resourceMap.getString("txtClassName.toolTipText")); // NOI18N
-        txtClassName.setName("txtClassName"); // NOI18N
-
-        lblClassDesc.setText(resourceMap.getString("lblClassDesc.text")); // NOI18N
-        lblClassDesc.setName("lblClassDesc"); // NOI18N
-
-        lblHomeRoom.setText(resourceMap.getString("lblHomeRoom.text")); // NOI18N
-        lblHomeRoom.setName("lblHomeRoom"); // NOI18N
-
-        cmbHomeRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbHomeRoom.setToolTipText(resourceMap.getString("cmbHomeRoom.toolTipText")); // NOI18N
-        cmbHomeRoom.setName("cmbHomeRoom"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddNewClass.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        jPanel1.setName("jPanel1"); // NOI18N
+        lblClassDesc.setText(resourceMap.getString("lblClassDesc.text")); // NOI18N
+        lblClassDesc.setName("lblClassDesc"); // NOI18N
+        lblHomeRoom.setText(resourceMap.getString("lblHomeRoom.text")); // NOI18N
+        lblHomeRoom.setName("lblHomeRoom"); // NOI18N
+        txtClassCode.setText(resourceMap.getString("txtClassCode.text")); // NOI18N
+        txtClassCode.setToolTipText(resourceMap.getString("txtClassCode.toolTipText")); // NOI18N
+        txtClassCode.setName("txtClassCode"); // NOI18N
+        cmbClassLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First", "Second", "Third", "Fourth" }));
+        cmbClassLevel.setToolTipText(resourceMap.getString("cmbClassLevel.toolTipText")); // NOI18N
+        cmbClassLevel.setName("cmbClassLevel"); // NOI18N
+        cmbHomeRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbHomeRoom.setToolTipText(resourceMap.getString("cmbHomeRoom.toolTipText")); // NOI18N
+        cmbHomeRoom.setName("cmbHomeRoom"); // NOI18N
+        lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
+        lblClassCode.setName("lblClassCode"); // NOI18N
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         txtClassDescription.setColumns(20);
         txtClassDescription.setLineWrap(true);
         txtClassDescription.setRows(5);
@@ -116,69 +104,140 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         txtClassDescription.setWrapStyleWord(true);
         txtClassDescription.setName("txtClassDescription"); // NOI18N
         jScrollPane1.setViewportView(txtClassDescription);
+        lblClassLevel.setText(resourceMap.getString("lblClassLevel.text")); // NOI18N
+        lblClassLevel.setName("lblClassLevel"); // NOI18N
+        lblClassName.setText(resourceMap.getString("lblClassName.text")); // NOI18N
+        lblClassName.setName("lblClassName"); // NOI18N
+        txtClassName.setText(resourceMap.getString("txtClassName.text")); // NOI18N
+        txtClassName.setToolTipText(resourceMap.getString("txtClassName.toolTipText")); // NOI18N
+        txtClassName.setName("txtClassName"); // NOI18N
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblClassCode)
+                                .addComponent(lblClassLevel)
+                                .addComponent(lblClassName)
+                                .addComponent(lblClassDesc)
+                                .addComponent(lblHomeRoom))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 268, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                                .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
+                                .addComponent(cmbClassLevel, 0, 268, Short.MAX_VALUE)
+                                .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
+                      .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClassCode)
+                                .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClassLevel)
+                                .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClassName)
+                                .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblClassDesc)
+                                .addComponent(jScrollPane1))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblHomeRoom))
+                      .addGap(19, 19, 19))
+        );
+        jTabbedPane1.addTab(resourceMap.getString("jPanel1.TabConstraints.tabTitle"), resourceMap.getIcon("jPanel1.TabConstraints.tabIcon"), jPanel1); // NOI18N
+        jPanel2.setName("jPanel2"); // NOI18N
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+        tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
+                                 new Object [][]
+                                 {
 
+                                 },
+                                 new String []
+                                 {
+                                     "ID", "Code", "Title", "Teacher"
+                                 }
+                             ));
+        tblSubjects.setName("tblSubjects"); // NOI18N
+        jScrollPane2.setViewportView(tblSubjects);
+        tblSubjects.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblSubjects.columnModel.title1")); // NOI18N
+        tblSubjects.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblSubjects.columnModel.title2")); // NOI18N
+        tblSubjects.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblSubjects.columnModel.title3")); // NOI18N
+        tblSubjects.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblSubjects.columnModel.title0")); // NOI18N
+        cmdDelete.setAction(actionMap.get("delete")); // NOI18N
+        cmdDelete.setText(resourceMap.getString("cmdDelete.text")); // NOI18N
+        cmdDelete.setName("cmdDelete"); // NOI18N
+        cmdAdd.setAction(actionMap.get("add")); // NOI18N
+        cmdAdd.setText(resourceMap.getString("cmdAdd.text")); // NOI18N
+        cmdAdd.setName("cmdAdd"); // NOI18N
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
+                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                          .addComponent(cmdAdd)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdDelete)))
+                      .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                      .addContainerGap()
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdDelete)
+                                .addComponent(cmdAdd))
+                      .addContainerGap())
+        );
+        jTabbedPane1.addTab(resourceMap.getString("jPanel2.TabConstraints.tabTitle"), resourceMap.getIcon("jPanel2.TabConstraints.tabIcon"), jPanel2); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 129, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClassCode)
-                            .addComponent(lblClassLevel)
-                            .addComponent(lblClassName)
-                            .addComponent(lblClassDesc)
-                            .addComponent(lblHomeRoom))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 294, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
-                            .addComponent(cmbClassLevel, 0, 294, Short.MAX_VALUE)
-                            .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE))))
-                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassCode)
-                    .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassLevel)
-                    .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassName)
-                    .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblClassDesc)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHomeRoom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                      .addContainerGap()
+                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, Short.MAX_VALUE)
+                      .addGap(16, 16, 16)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-411)/2, (screenSize.height-276)/2, 411, 276);
+        setBounds((screenSize.width-414)/2, (screenSize.height-337)/2, 414, 337);
     }// </editor-fold>//GEN-END:initComponents
 
     @Action
@@ -190,17 +249,15 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
-
         String code = txtClassCode.getText().trim();
         String level = cmbClassLevel.getSelectedItem().toString();
         String name = txtClassName.getText().trim();
         String description = txtClassDescription.getText().trim();
         String homeRoom = cmbHomeRoom.getSelectedItem().toString();
-
         if (Classes.addClass(code, level, name, description, homeRoom))
         {
             String message = "The class was successfully added. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -214,13 +271,16 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this class.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
 
     private void populateLists()
     {
+        ArrayList<String> levelList = Classes.getClassLevelList();
+        levelList.add(0, "--- Select One ---");
+        cmbClassLevel.setModel(new DefaultComboBoxModel(levelList.toArray()));
         //Set the home room list
         ArrayList<String> staffList = Staff.getStaffList();
         staffList.add(0, "--- Select One ---");
@@ -235,18 +295,56 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         txtClassDescription.setText("");
         txtClassName.setText("");
     }
+
+    @Action
+    public void delete()
+    {
+        if(tblSubjects.getSelectedRow() != -1)
+        {
+            String code = tblSubjects.getValueAt(tblSubjects.getSelectedRow(), 1).toString();
+            Classes.removeSubject(code);
+        }
+        else
+        {
+            String message = "Kindly select a subject to remove.";
+            Utilities.showWarningMessage(rootPane, message);
+        }
+    }
+
+    @Action
+    public void add()
+    {
+        DialogAddSubject dialogAddSubject = new DialogAddSubject(null, true);
+        dialogAddSubject.setLocationRelativeTo(this);
+        dialogAddSubject.setVisible(true);
+        loadSubjects();
+    }
+
+    private void loadSubjects()
+    {
+        tblSubjects.setModel(Classes.getSubjects());
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblSubjects);
+        tca.adjustColumns();
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbClassLevel;
     private javax.swing.JComboBox cmbHomeRoom;
+    private javax.swing.JButton cmdAdd;
     private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdDelete;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblClassCode;
     private javax.swing.JLabel lblClassDesc;
     private javax.swing.JLabel lblClassLevel;
     private javax.swing.JLabel lblClassName;
     private javax.swing.JLabel lblHomeRoom;
+    private javax.swing.JTable tblSubjects;
     private javax.swing.JTextField txtClassCode;
     private javax.swing.JTextArea txtClassDescription;
     private javax.swing.JTextField txtClassName;

@@ -27,7 +27,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 package ilearn.kernel;
 
@@ -35,33 +35,39 @@ import java.io.File;
 import javax.swing.filechooser.*;
 
 /* ImageFilter.java is used by FileChooserDemo2.java. */
-public class ImageFilter extends FileFilter {
+public class ImageFilter extends FileFilter
+{
 
     //Accept all directories and all gif, jpg, tiff, or png files.
-    public boolean accept(File f) {
-        if (f.isDirectory()) {
+    public boolean accept(File f)
+    {
+        if (f.isDirectory())
+        {
             return true;
         }
-
         String extension = ImageFilterUtils.getExtension(f);
-        if (extension != null) {
+        if (extension != null)
+        {
             if (extension.equals(ImageFilterUtils.tiff) ||
-                extension.equals(ImageFilterUtils.tif) ||
-                extension.equals(ImageFilterUtils.gif) ||
-                extension.equals(ImageFilterUtils.jpeg) ||
-                extension.equals(ImageFilterUtils.jpg) ||
-                extension.equals(ImageFilterUtils.png)) {
-                    return true;
-            } else {
+                    extension.equals(ImageFilterUtils.tif) ||
+                    extension.equals(ImageFilterUtils.gif) ||
+                    extension.equals(ImageFilterUtils.jpeg) ||
+                    extension.equals(ImageFilterUtils.jpg) ||
+                    extension.equals(ImageFilterUtils.png))
+            {
+                return true;
+            }
+            else
+            {
                 return false;
             }
         }
-
         return false;
     }
 
     //The description of this filter
-    public String getDescription() {
+    public String getDescription()
+    {
         return "Images";
     }
 }

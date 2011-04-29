@@ -26,7 +26,6 @@ public class TimeSlots
     public static boolean addTimeSlot(String code, String day, String startTime, String endTime)
     {
         boolean successful = false;
-
         try
         {
             String sql = "INSERT INTO `TimeSlots` (`hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`) VALUES (?,?, ?, ?);";
@@ -51,13 +50,11 @@ public class TimeSlots
     public static ArrayList<String> getTimeSlotList()
     {
         ArrayList<String> list = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `id`, `hrsKey` ,`hrsStatus` FROM `iLearn`.`TimeSlots` WHERE `hrsStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 String item = rs.getString("hrsKey");
@@ -65,44 +62,36 @@ public class TimeSlots
             }
             rs.close();
             prep.close();
-
         }
         catch (Exception e)
         {
             String message = "An error occurred while fetching the list of time slots.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return list;
     }
 
     public static DefaultTableModel getTimeSlotTableModelList()
     {
-
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
                 return false;
             }
         };
-
         ArrayList<String> ids = new ArrayList<String>();
         ArrayList<String> codes = new ArrayList<String>();
         ArrayList<String> days = new ArrayList<String>();
         ArrayList<String> begin = new ArrayList<String>();
         ArrayList<String> end = new ArrayList<String>();
         ArrayList<String> status = new ArrayList<String>();
-
-
         try
         {
             String sql = "SELECT `id`, `hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`, `hrsStatus` FROM `iLearn`.`TimeSlots`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 ids.add(rs.getString("id"));
@@ -114,7 +103,6 @@ public class TimeSlots
             }
             rs.close();
             prep.close();
-
             model.addColumn("ID", ids.toArray());
             model.addColumn("Code", codes.toArray());
             model.addColumn("Day", days.toArray());
@@ -127,14 +115,59 @@ public class TimeSlots
             String message = "An error occurred while fetching the list of time slots.";
             logger.log(Level.SEVERE, message, e);
         }
+        return model;
+    }
 
+    public static DefaultTableModel getActiveTimeSlotTableModelList()
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        ArrayList<String> ids = new ArrayList<String>();
+        ArrayList<String> codes = new ArrayList<String>();
+        ArrayList<String> days = new ArrayList<String>();
+        ArrayList<String> begin = new ArrayList<String>();
+        ArrayList<String> end = new ArrayList<String>();
+        ArrayList<String> status = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `id`, `hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`, `hrsStatus` FROM `iLearn`.`TimeSlots` WHERE `hrsStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                ids.add(rs.getString("id"));
+                codes.add(rs.getString("hrsKey"));
+                days.add(rs.getString("hrsDay"));
+                begin.add(timeFormat.format(rs.getTime("hrsBegin")));
+                end.add(timeFormat.format(rs.getTime("hrsEnd")));
+                status.add(rs.getString("hrsStatus"));
+            }
+            rs.close();
+            prep.close();
+            model.addColumn("ID", ids.toArray());
+            model.addColumn("Code", codes.toArray());
+            model.addColumn("Day", days.toArray());
+            model.addColumn("Start", begin.toArray());
+            model.addColumn("End", end.toArray());
+            model.addColumn("Status", status.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while fetching the list of time slots.";
+            logger.log(Level.SEVERE, message, e);
+        }
         return model;
     }
 
     public static boolean updateTimeSlot(String id, String code, String day, String startTime, String endTime, String status)
     {
         boolean successful = true;
-
         try
         {
             String sql = "UPDATE `TimeSlots` SET `hrsKey`= ?, `hrsDay`= ?, `hrsBegin`= ?, `hrsEnd`=?, `hrsStatus`=? WHERE `id`= ?;";
@@ -154,7 +187,30 @@ public class TimeSlots
             String message = "An error occurred while updating the time slots.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return successful;
+    }
+
+    public static String getTimeSlot(String slotID)
+    {
+        String slotName = "";
+        try
+        {
+            String sql = "SELECT `id`, `hrsKey` FROM `iLearn`.`TimeSlots` WHERE `id` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, slotID);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+            {
+                slotName = rs.getString("hrsKey");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while fetching the list of time slots.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return slotName;
     }
 }

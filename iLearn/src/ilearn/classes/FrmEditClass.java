@@ -37,8 +37,8 @@ public class FrmEditClass extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         classTabbedPane = new javax.swing.JTabbedPane();
         classPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -66,31 +66,30 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         cmdReset = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdCancel = new javax.swing.JButton();
-
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditClass.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         classTabbedPane.setName("classTabbedPane"); // NOI18N
-
         classPanel.setName("classPanel"); // NOI18N
-
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-
         classTable.setAutoCreateRowSorter(true);
         classTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                new Object [][]
+                                {
 
-            },
-            new String [] {
-                "ID", "Code", "Name", "Home Room", "Status"
-            }
-        ));
+                                },
+                                new String []
+                                {
+                                    "ID", "Code", "Name", "Home Room", "Status"
+                                }
+                            ));
         classTable.setName("classTable"); // NOI18N
-        classTable.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        classTable.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 classTableMouseClicked(evt);
             }
         });
@@ -101,82 +100,66 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         classTable.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("classTable.columnModel.title2")); // NOI18N
         classTable.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("classTable.columnModel.title3")); // NOI18N
         classTable.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("classTable.columnModel.title4")); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditClass.class, this);
         cmdCancel1.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel1.setText(resourceMap.getString("cmdCancel1.text")); // NOI18N
         cmdCancel1.setName("cmdCancel1"); // NOI18N
-
         cmdNext.setAction(actionMap.get("next")); // NOI18N
         cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
         cmdNext.setName("cmdNext"); // NOI18N
-
         lblTotalClasses2.setText(resourceMap.getString("lblTotalClasses2.text")); // NOI18N
         lblTotalClasses2.setName("lblTotalClasses2"); // NOI18N
-
         lblTotalClasses.setText(resourceMap.getString("lblTotalClasses.text")); // NOI18N
         lblTotalClasses.setName("lblTotalClasses"); // NOI18N
-
         javax.swing.GroupLayout classPanelLayout = new javax.swing.GroupLayout(classPanel);
         classPanel.setLayout(classPanelLayout);
         classPanelLayout.setHorizontalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(classPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
-                        .addComponent(lblTotalClasses)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTotalClasses2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
-                        .addComponent(cmdNext)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel1))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
+                                          .addComponent(lblTotalClasses)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(lblTotalClasses2)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                                          .addComponent(cmdNext)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel1))
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE))
+                      .addContainerGap())
         );
         classPanelLayout.setVerticalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel1)
-                    .addComponent(cmdNext)
-                    .addComponent(lblTotalClasses2)
-                    .addComponent(lblTotalClasses))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel1)
+                                .addComponent(cmdNext)
+                                .addComponent(lblTotalClasses2)
+                                .addComponent(lblTotalClasses))
+                      .addContainerGap())
         );
-
         classTabbedPane.addTab(resourceMap.getString("classPanel.TabConstraints.tabTitle"), resourceMap.getIcon("classPanel.TabConstraints.tabIcon"), classPanel); // NOI18N
-
         detailsPanel.setName("detailsPanel"); // NOI18N
-
         lblID.setText(resourceMap.getString("lblID.text")); // NOI18N
         lblID.setName("lblID"); // NOI18N
-
         txtID.setEditable(false);
         txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
         txtID.setName("txtID"); // NOI18N
-
         lblHomeRoom.setText(resourceMap.getString("lblHomeRoom.text")); // NOI18N
         lblHomeRoom.setName("lblHomeRoom"); // NOI18N
-
         txtClassCode.setToolTipText(resourceMap.getString("txtClassCode.toolTipText")); // NOI18N
         txtClassCode.setName("txtClassCode"); // NOI18N
-
         txtClassName.setToolTipText(resourceMap.getString("txtClassName.toolTipText")); // NOI18N
         txtClassName.setName("txtClassName"); // NOI18N
-
         lblClassName.setText(resourceMap.getString("lblClassName.text")); // NOI18N
         lblClassName.setName("lblClassName"); // NOI18N
-
         lblClassLevel.setText(resourceMap.getString("lblClassLevel.text")); // NOI18N
         lblClassLevel.setName("lblClassLevel"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         txtClassDescription.setColumns(20);
         txtClassDescription.setLineWrap(true);
         txtClassDescription.setRows(5);
@@ -184,136 +167,124 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         txtClassDescription.setWrapStyleWord(true);
         txtClassDescription.setName("txtClassDescription"); // NOI18N
         jScrollPane1.setViewportView(txtClassDescription);
-
         cmbHomeRoom.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbHomeRoom.setToolTipText(resourceMap.getString("cmbHomeRoom.toolTipText")); // NOI18N
         cmbHomeRoom.setName("cmbHomeRoom"); // NOI18N
-
         lblClassDesc.setText(resourceMap.getString("lblClassDesc.text")); // NOI18N
         lblClassDesc.setName("lblClassDesc"); // NOI18N
-
         lblClassCode.setText(resourceMap.getString("lblClassCode.text")); // NOI18N
         lblClassCode.setName("lblClassCode"); // NOI18N
-
         cmbClassLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "First", "Second", "Third", "Fourth" }));
         cmbClassLevel.setToolTipText(resourceMap.getString("cmbClassLevel.toolTipText")); // NOI18N
         cmbClassLevel.setName("cmbClassLevel"); // NOI18N
-
         lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
         lblStatus.setName("lblStatus"); // NOI18N
-
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel))
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblClassCode)
-                            .addComponent(lblClassLevel)
-                            .addComponent(lblClassName)
-                            .addComponent(lblClassDesc)
-                            .addComponent(lblHomeRoom)
-                            .addComponent(lblStatus)
-                            .addComponent(lblID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 350, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmbClassLevel, 0, 350, Short.MAX_VALUE)
-                            .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
-                            .addComponent(cmbStatus, 0, 350, Short.MAX_VALUE))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(detailsPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 136, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel))
+                                .addGroup(detailsPanelLayout.createSequentialGroup()
+                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblClassCode)
+                                                  .addComponent(lblClassLevel)
+                                                  .addComponent(lblClassName)
+                                                  .addComponent(lblClassDesc)
+                                                  .addComponent(lblHomeRoom)
+                                                  .addComponent(lblStatus)
+                                                  .addComponent(lblID))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                                  .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 350, Short.MAX_VALUE)
+                                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                                  .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                                  .addComponent(cmbClassLevel, 0, 350, Short.MAX_VALUE)
+                                                  .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 350, Short.MAX_VALUE)
+                                                  .addComponent(cmbStatus, 0, 350, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassCode)
-                    .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassLevel)
-                    .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClassName)
-                    .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblClassDesc)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblHomeRoom))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStatus)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 123, Short.MAX_VALUE)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblID)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClassCode)
+                                .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClassLevel)
+                                .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClassName)
+                                .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblClassDesc)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblHomeRoom))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblStatus)
+                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 123, Short.MAX_VALUE)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         classTabbedPane.addTab(resourceMap.getString("detailsPanel.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 460, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(classTabbedPane)
-                    .addContainerGap()))
+                      .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(classTabbedPane)
+                                .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 464, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addContainerGap()
-                    .addComponent(classTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
-                    .addContainerGap()))
+                      .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(classTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
+                                .addContainerGap()))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void classTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_classTableMouseClicked
-    {//GEN-HEADEREND:event_classTableMouseClicked
+    {
+        //GEN-HEADEREND:event_classTableMouseClicked
         next();
     }//GEN-LAST:event_classTableMouseClicked
 
@@ -323,7 +294,6 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         ArrayList<String> staffList = Staff.getStaffList();
         staffList.add(0, "--- Select One ---");
         cmbHomeRoom.setModel(new DefaultComboBoxModel(staffList.toArray()));
-
         //Load the table
         classTable.setModel(Classes.getClassTableModel());
         lblTotalClasses2.setText(String.valueOf(classTable.getRowCount()));
@@ -347,9 +317,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         if (classTable.getSelectedRow() != -1)
         {
             String selectedClass = String.valueOf(classTable.getValueAt(classTable.getSelectedRow(), 0));
-
             ArrayList<String> classInfo = Classes.getClassInfo(selectedClass);
-
             txtID.setText(selectedClass);
             txtClassCode.setText(classInfo.get(0));
             txtClassName.setText(classInfo.get(1));
@@ -380,7 +348,6 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         String homeRoom = cmbHomeRoom.getSelectedItem().toString();
         String status = cmbStatus.getSelectedItem().toString();
         String id = txtID.getText().trim();
-
         if (Classes.updateClass(code, name, description, level, homeRoom, status, id))
         {
             //reload the list
@@ -391,8 +358,8 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while updating the class' information.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists, kindly contact your system administrator.";
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

@@ -25,13 +25,11 @@ public class School
     public static ArrayList<Object> getSchoolInfo()
     {
         ArrayList<Object> school = new ArrayList<Object>();
-
         try
         {
             String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, `schPhone2`, `schAddress`, `schLogo`, `registrationCode`, `timeCode`, `dbVersion` FROM `iLearn`.`School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-
             rs.first();
             school.add(rs.getString("schName"));
             school.add(rs.getString("schShortName"));
@@ -50,7 +48,7 @@ public class School
         return school;
     }
 
-    public static boolean updateSchool1(String schName, String schShortName, String schPhone1, String schPhone2, String schAddress, File schLogo)
+    public static boolean updateSchoolInfo(String schName, String schShortName, String schPhone1, String schPhone2, String schAddress, File schLogo)
     {
         boolean successful = false;
         try

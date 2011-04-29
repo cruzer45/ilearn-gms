@@ -20,18 +20,62 @@ public class Classes
 {
 
     static final Logger logger = Logger.getLogger(Classes.class.getName());
+    private static ArrayList<String> subIDs = new ArrayList<String>();
+    private static ArrayList<String> subCodes = new ArrayList<String>();
+    private static ArrayList<String> subTeacher = new ArrayList<String>();
+    private static ArrayList<String> subTitle = new ArrayList<String>();
+
+    public static void addSubject(String subID, String subCode, String teacher, String title)
+    {
+        if (!subIDs.contains(subID))
+        {
+            subIDs.add(subID);
+            subCodes.add(subCode);
+            subTeacher.add(teacher);
+            subTitle.add(title);
+        }
+    }
+
+    public static void removeSubject(String subCode)
+    {
+        for (int i = 0; i < subCodes.size(); i++)
+        {
+            if (subCode.equals(subCodes.get(i)))
+            {
+                subCodes.remove(i);
+                subIDs.remove(i);
+                subTeacher.remove(i);
+                subTitle.remove(i);
+            }
+        }
+    }
+
+    public static DefaultTableModel getSubjects()
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        model.addColumn("ID", subIDs.toArray());
+        model.addColumn("Code", subCodes.toArray());
+        model.addColumn("Title", subTitle.toArray());
+        model.addColumn("Teacher", subTeacher.toArray());
+        return model;
+    }
 
     public static boolean addClass(String code, String level, String name, String description, String homeRoom)
     {
         boolean successful = false;
-
         if (homeRoom.equals("--- Select One ---")
                 || code.isEmpty()
                 || name.isEmpty())
         {
             return successful;
         }
-
         try
         {
             String sql = "INSERT INTO `Class` (`clsCode`, `clsName`, `clsDescription`, `clsLevel`, `clsHomeRoom`) VALUES (?, ?, ?,?, ?);";
@@ -68,13 +112,11 @@ public class Classes
         ArrayList<String> Name = new ArrayList<String>();
         ArrayList<String> HomeRoom = new ArrayList<String>();
         ArrayList<String> Status = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 ID.add(rs.getString("clsID"));
@@ -83,16 +125,13 @@ public class Classes
                 HomeRoom.add(rs.getString("clsHomeRoom"));
                 Status.add(rs.getString("clsStatus"));
             }
-
             rs.close();
             prep.close();
-
             model.addColumn("ID", ID.toArray());
             model.addColumn("Code", code.toArray());
             model.addColumn("Name", Name.toArray());
             model.addColumn("Home Room", HomeRoom.toArray());
             model.addColumn("Status", Status.toArray());
-
         }
         catch (Exception e)
         {
@@ -105,14 +144,12 @@ public class Classes
     public static ArrayList<String> getClassInfo(String classID)
     {
         ArrayList<String> info = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`, `clsDescription`, `clsLevel`, `clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` WHERE `clsID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classID);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 info.add(rs.getString("clsCode"));
@@ -136,7 +173,6 @@ public class Classes
     public static boolean updateClass(String code, String name, String description, String level, String homeRoom, String status, String id)
     {
         boolean successful = false;
-
         try
         {
             String sql = "UPDATE `Class` SET `clsCode`= ?, `clsName`= ?, `clsDescription`= ?, `clsLevel`= ?, `clsHomeRoom`= ?, `clsStatus`= ? WHERE `clsID`= ?  LIMIT 1;";
@@ -163,13 +199,11 @@ public class Classes
     public static ArrayList<String> getClassList()
     {
         ArrayList<String> classes = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `clsName` FROM `iLearn`.`Class` WHERE `clsStatus` = 'Active' ORDER BY `clsName` ASC ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-
             while (rs.next())
             {
                 classes.add(rs.getString("clsName"));
@@ -189,18 +223,15 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
                 return false;
             }
         };
-
         ArrayList<String> studentID = new ArrayList<String>();
         ArrayList<String> firstName = new ArrayList<String>();
         ArrayList<String> lastName = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
@@ -224,7 +255,29 @@ public class Classes
             String message = "An error occurred while generating the list of students for a class.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return model;
+    }
+
+    public static ArrayList<String> getClassLevelList()
+    {
+        ArrayList<String> list = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `level` FROM `iLearn`.`listClassLevels` ORDER BY `id` ASC";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                list.add(rs.getString("level"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of class levels.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return list;
     }
 }

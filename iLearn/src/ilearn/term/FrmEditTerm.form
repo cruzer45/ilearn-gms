@@ -71,7 +71,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="375" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="371" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdNExt" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -86,7 +86,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="162" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="171" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -211,18 +211,18 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="txtTermID" pref="311" max="32767" attributes="0"/>
+                                      <Component id="txtTermID" pref="281" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
-                                      <Component id="cmbStatus" pref="311" max="32767" attributes="0"/>
+                                      <Component id="cmbStatus" pref="281" max="32767" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txtLongName" alignment="0" pref="308" max="32767" attributes="0"/>
-                                          <Component id="txtShortName" alignment="0" pref="308" max="32767" attributes="0"/>
-                                          <Component id="txtTermCode" alignment="0" pref="308" max="32767" attributes="0"/>
+                                          <Component id="txtLongName" alignment="0" pref="280" max="32767" attributes="0"/>
+                                          <Component id="txtShortName" alignment="0" pref="280" max="32767" attributes="0"/>
+                                          <Component id="txtTermCode" alignment="0" pref="280" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                                   </Group>

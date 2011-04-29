@@ -256,9 +256,7 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="125" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -271,28 +269,23 @@
                                   <Component id="lblGender" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDOB" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblOtherName" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPhoto" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblClass" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="txtPhoto1" pref="151" max="32767" attributes="0"/>
-                                          <Component id="calDOB" pref="151" max="32767" attributes="0"/>
-                                          <Component id="cmbGender" pref="151" max="32767" attributes="0"/>
-                                          <Component id="txtID" alignment="0" pref="151" max="32767" attributes="0"/>
-                                          <Component id="txtFirstName" alignment="0" pref="151" max="32767" attributes="2"/>
-                                          <Component id="txtLastName" alignment="0" pref="151" max="32767" attributes="2"/>
-                                          <Component id="txtOtherName" alignment="0" pref="151" max="32767" attributes="0"/>
+                                          <Component id="txtID" alignment="0" pref="136" max="32767" attributes="0"/>
+                                          <Component id="txtFirstName" alignment="0" pref="136" max="32767" attributes="2"/>
+                                          <Component id="txtLastName" alignment="0" pref="136" max="32767" attributes="2"/>
+                                          <Component id="txtOtherName" alignment="0" pref="136" max="32767" attributes="0"/>
+                                          <Component id="txtGender" alignment="1" pref="136" max="32767" attributes="0"/>
+                                          <Component id="txtDOB" alignment="1" pref="136" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                          <Component id="cmdBrowse" max="32767" attributes="1"/>
-                                          <Component id="jScrollPane6" alignment="1" max="32767" attributes="1"/>
-                                      </Group>
+                                      <Component id="jScrollPane6" min="-2" max="-2" attributes="1"/>
                                   </Group>
-                                  <Component id="cmbClass" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtClasss" pref="288" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -305,7 +298,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
+                          <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
                                   <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -328,39 +321,25 @@
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="lblGender" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="cmbGender" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtGender" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="2" attributes="0">
-                                  <Component id="calDOB" alignment="2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDOB" alignment="2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Component id="jScrollPane6" alignment="0" min="-2" pref="151" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
-                              <Component id="lblPhoto" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
-                                  <Component id="cmdBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  <Component id="txtPhoto1" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDOB" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="txtDOB" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="jScrollPane6" min="-2" pref="162" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtClasss" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="151" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdReset" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -376,6 +355,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtFirstName">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtFirstName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtFirstName" noResource="true"/>
               </Properties>
@@ -388,6 +368,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtLastName">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtLastName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtLastName" noResource="true"/>
               </Properties>
@@ -400,6 +381,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtOtherName">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtOtherName.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtOtherName" noResource="true"/>
               </Properties>
@@ -410,43 +392,11 @@
                 <Property name="name" type="java.lang.String" value="lblGender" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JComboBox" name="cmbGender">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Male"/>
-                    <StringItem index="1" value="Female"/>
-                  </StringArray>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGender.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="cmbGender" noResource="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblDOB">
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="lblDOB.text"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="lblDOB.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="lblDOB" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="com.toedter.calendar.JDateChooser" name="calDOB">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="calDOB.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="calDOB" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPhoto">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblPhoto.text"/>
-                <Property name="name" type="java.lang.String" value="lblPhoto" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="cmdBrowse">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.student.FrmNewStudent" id="browse" methodName="browse"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdBrowse" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="cmdCancel1">
@@ -465,33 +415,10 @@
                 <Property name="name" type="java.lang.String" value="cmdNext1" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="cmdReset">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.student.FrmNewStudent" id="resetForm" methodName="resetForm"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdReset" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbClass">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmbClass" noResource="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JLabel" name="lblClass">
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="lblClass.text"/>
                 <Property name="name" type="java.lang.String" value="lblClass" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPhoto1">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtPhoto1.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtPhoto1" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblID">
@@ -530,6 +457,27 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JTextField" name="txtGender">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" resourceKey="txtGender.text"/>
+                <Property name="name" type="java.lang.String" value="txtGender" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtDOB">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" resourceKey="txtDOB.text"/>
+                <Property name="name" type="java.lang.String" value="txtDOB" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtClasss">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" resourceKey="txtClasss.text"/>
+                <Property name="name" type="java.lang.String" value="txtClasss" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="contactPanel">
@@ -629,6 +577,7 @@
                 <Component class="javax.swing.JTextArea" name="txtHomeAddress">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtHomeAddress.toolTipText"/>
@@ -651,6 +600,7 @@
                 <Component class="javax.swing.JTextArea" name="txtMailingAddress">
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="lineWrap" type="boolean" value="true"/>
                     <Property name="rows" type="int" value="5"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtMailingAddress.toolTipText"/>
@@ -674,6 +624,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtEmail">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtEmail.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtEmail" noResource="true"/>
               </Properties>
@@ -686,6 +637,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtPhone">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtPhone.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtPhone" noResource="true"/>
               </Properties>
@@ -825,6 +777,7 @@
                     <Component class="javax.swing.JTextArea" name="txtPriConAddress">
                       <Properties>
                         <Property name="columns" type="int" value="15"/>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="3"/>
                         <Property name="toolTipText" type="java.lang.String" resourceKey="txtPriConAddress.toolTipText"/>
@@ -842,12 +795,14 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPriConPhone">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtPriConPhone.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="txtPriConPhone" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtPriConName">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtPriConName.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="txtPriConName" noResource="true"/>
                   </Properties>
@@ -934,6 +889,7 @@
                     <Component class="javax.swing.JTextArea" name="txtSecConAddress">
                       <Properties>
                         <Property name="columns" type="int" value="15"/>
+                        <Property name="editable" type="boolean" value="false"/>
                         <Property name="lineWrap" type="boolean" value="true"/>
                         <Property name="rows" type="int" value="3"/>
                         <Property name="toolTipText" type="java.lang.String" resourceKey="txtSecConAddress.toolTipText"/>
@@ -951,12 +907,14 @@
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtSecConPhone">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtSecConPhone.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="txtSecConPhone" noResource="true"/>
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtSecConName">
                   <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
                     <Property name="toolTipText" type="java.lang.String" resourceKey="txtSecConName.toolTipText"/>
                     <Property name="name" type="java.lang.String" value="txtSecConName" noResource="true"/>
                   </Properties>
@@ -1025,11 +983,7 @@
                                   <Component id="txtHospital" alignment="1" pref="238" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cmdCancel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cmdCancel4" alignment="1" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1054,10 +1008,7 @@
                           <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="265" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cmdCancel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -1072,6 +1023,7 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtPrimaryDoctor">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtPrimaryDoctor.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtPrimaryDoctor" noResource="true"/>
               </Properties>
@@ -1084,12 +1036,14 @@
             </Component>
             <Component class="javax.swing.JTextField" name="txtDoctorPhone">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtDoctorPhone.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtDoctorPhone" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txtHospital">
               <Properties>
+                <Property name="editable" type="boolean" value="false"/>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="txtHospital.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="txtHospital" noResource="true"/>
               </Properties>
@@ -1098,14 +1052,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="lblHospital.text"/>
                 <Property name="name" type="java.lang.String" value="lblHospital" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="cmdSave">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.student.FrmEditStudent" id="save" methodName="save"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JButton" name="cmdCancel4">
