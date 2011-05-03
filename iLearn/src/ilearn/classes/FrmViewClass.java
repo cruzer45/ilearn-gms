@@ -62,6 +62,14 @@ public class FrmViewClass extends javax.swing.JInternalFrame
         txtClassLevel = new javax.swing.JTextField();
         txtHomeRoom = new javax.swing.JTextField();
         txtStatus = new javax.swing.JTextField();
+        cmdNext1 = new javax.swing.JButton();
+        subjectPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        tblSubjects = new javax.swing.JTable();
+        cmdCancel3 = new javax.swing.JButton();
+        lblsubjectCount = new javax.swing.JLabel();
+        lblTotalSubjects = new javax.swing.JLabel();
+        cmdNext2 = new javax.swing.JButton();
         studentsPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         tblStudents = new javax.swing.JTable();
@@ -128,7 +136,7 @@ public class FrmViewClass extends javax.swing.JInternalFrame
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel1)
@@ -182,6 +190,8 @@ public class FrmViewClass extends javax.swing.JInternalFrame
         txtStatus.setEditable(false);
         txtStatus.setText(resourceMap.getString("txtStatus.text")); // NOI18N
         txtStatus.setName("txtStatus"); // NOI18N
+        cmdNext1.setAction(actionMap.get("next")); // NOI18N
+        cmdNext1.setName("cmdNext1"); // NOI18N
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
@@ -189,7 +199,10 @@ public class FrmViewClass extends javax.swing.JInternalFrame
             .addGroup(detailsPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmdCancel, javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdNext1)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel))
                                 .addGroup(detailsPanelLayout.createSequentialGroup()
                                           .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addComponent(lblClassCode)
@@ -241,11 +254,68 @@ public class FrmViewClass extends javax.swing.JInternalFrame
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblStatus)
                                 .addComponent(txtStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 87, Short.MAX_VALUE)
-                      .addComponent(cmdCancel)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 90, Short.MAX_VALUE)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdNext1))
                       .addContainerGap())
         );
         classTabbedPane.addTab(resourceMap.getString("detailsPanel.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
+        subjectPanel.setName("subjectPanel"); // NOI18N
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
+        tblSubjects.setAutoCreateRowSorter(true);
+        tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
+                                 new Object [][]
+                                 {
+
+                                 },
+                                 new String []
+                                 {
+                                     "ID", "Code", "Title", "Teacher"
+                                 }
+                             ));
+        tblSubjects.setName("tblSubjects"); // NOI18N
+        jScrollPane4.setViewportView(tblSubjects);
+        cmdCancel3.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel3.setName("cmdCancel3"); // NOI18N
+        lblsubjectCount.setText(resourceMap.getString("lblsubjectCount.text")); // NOI18N
+        lblsubjectCount.setName("lblsubjectCount"); // NOI18N
+        lblTotalSubjects.setText(resourceMap.getString("lblTotalSubjects.text")); // NOI18N
+        lblTotalSubjects.setName("lblTotalSubjects"); // NOI18N
+        cmdNext2.setAction(actionMap.get("next")); // NOI18N
+        cmdNext2.setName("cmdNext2"); // NOI18N
+        javax.swing.GroupLayout subjectPanelLayout = new javax.swing.GroupLayout(subjectPanel);
+        subjectPanel.setLayout(subjectPanelLayout);
+        subjectPanelLayout.setHorizontalGroup(
+            subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(subjectPanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                                .addGroup(subjectPanelLayout.createSequentialGroup()
+                                          .addComponent(lblsubjectCount)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(lblTotalSubjects)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                                          .addComponent(cmdNext2)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel3)))
+                      .addContainerGap())
+        );
+        subjectPanelLayout.setVerticalGroup(
+            subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, subjectPanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel3)
+                                .addComponent(lblsubjectCount)
+                                .addComponent(lblTotalSubjects)
+                                .addComponent(cmdNext2))
+                      .addContainerGap())
+        );
+        classTabbedPane.addTab("Subjects", resourceMap.getIcon("subjectPanel.TabConstraints.tabIcon"), subjectPanel); // NOI18N
         studentsPanel.setName("studentsPanel"); // NOI18N
         jScrollPane3.setName("jScrollPane3"); // NOI18N
         tblStudents.setAutoCreateRowSorter(true);
@@ -290,7 +360,7 @@ public class FrmViewClass extends javax.swing.JInternalFrame
             studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, studentsPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 325, Short.MAX_VALUE)
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(studentsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
@@ -312,11 +382,11 @@ public class FrmViewClass extends javax.swing.JInternalFrame
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 433, Short.MAX_VALUE)
+            .addGap(0, 436, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                       .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(classTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                                .addComponent(classTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 412, Short.MAX_VALUE)
                                 .addContainerGap()))
         );
         pack();
@@ -324,7 +394,7 @@ public class FrmViewClass extends javax.swing.JInternalFrame
 
     private void classTableMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_classTableMouseClicked
     {
-        //GEN-HEADEREND:event_classTableMouseClicked
+//GEN-HEADEREND:event_classTableMouseClicked
         if (evt.getClickCount() >= 2)
         {
             next();
@@ -367,6 +437,8 @@ public class FrmViewClass extends javax.swing.JInternalFrame
             //Get the list of students
             tblStudents.setModel(Classes.getStudentList(classInfo.get(0)));
             lblTotalStudents2.setText(String.valueOf(tblStudents.getRowCount()));
+            //Get the subject information
+            tblSubjects.setModel(Classes.getSubjects(classInfo.get(0)));
         }
     }
 
@@ -386,11 +458,15 @@ public class FrmViewClass extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdCancel1;
     private javax.swing.JButton cmdCancel2;
+    private javax.swing.JButton cmdCancel3;
     private javax.swing.JButton cmdNext;
+    private javax.swing.JButton cmdNext1;
+    private javax.swing.JButton cmdNext2;
     private javax.swing.JPanel detailsPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblClassCode;
     private javax.swing.JLabel lblClassDesc;
     private javax.swing.JLabel lblClassLevel;
@@ -402,8 +478,12 @@ public class FrmViewClass extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblTotalClasses2;
     private javax.swing.JLabel lblTotalStudents;
     private javax.swing.JLabel lblTotalStudents2;
+    private javax.swing.JLabel lblTotalSubjects;
+    private javax.swing.JLabel lblsubjectCount;
     private javax.swing.JPanel studentsPanel;
+    private javax.swing.JPanel subjectPanel;
     private javax.swing.JTable tblStudents;
+    private javax.swing.JTable tblSubjects;
     private javax.swing.JTextField txtClassCode;
     private javax.swing.JTextArea txtClassDescription;
     private javax.swing.JTextField txtClassLevel;

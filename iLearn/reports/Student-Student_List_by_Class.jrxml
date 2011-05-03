@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Student-Student_List_by_Class" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="classCode" class="java.lang.String"/>
+	<queryString>
+		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, `stuDoctorContact`, `stuHospital`, `stuClsCode`, `curCode`, `curTerm`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuStatus` = 'Active' AND `stuClsCode` LIKE $P{classCode};]]>
+	</queryString>
+	<field name="stuID" class="java.lang.Long"/>
+	<field name="stuFirstName" class="java.lang.String"/>
+	<field name="stuLastName" class="java.lang.String"/>
+	<field name="stuOtherNames" class="java.lang.String"/>
+	<field name="stuDOB" class="java.sql.Date"/>
+	<field name="stuGender" class="java.lang.String"/>
+	<field name="stuEthnicity" class="java.lang.String"/>
+	<field name="stuPrimaryLanguage" class="java.lang.String"/>
+	<field name="stuEmail" class="java.lang.String"/>
+	<field name="stuPhone" class="java.lang.String"/>
+	<field name="stuPhoto" class="java.io.InputStream"/>
+	<field name="stuAddress1" class="java.lang.String"/>
+	<field name="stuAddress2" class="java.lang.String"/>
+	<field name="stuPCName" class="java.lang.String"/>
+	<field name="stuPCPhone" class="java.lang.String"/>
+	<field name="stuPCAddress" class="java.lang.String"/>
+	<field name="stuSCName" class="java.lang.String"/>
+	<field name="stuSCPhone" class="java.lang.String"/>
+	<field name="stuSCAddress" class="java.lang.String"/>
+	<field name="stuDoctorName" class="java.lang.String"/>
+	<field name="stuDoctorContact" class="java.lang.String"/>
+	<field name="stuHospital" class="java.lang.String"/>
+	<field name="stuClsCode" class="java.lang.String"/>
+	<field name="curCode" class="java.lang.String"/>
+	<field name="curTerm" class="java.lang.String"/>
+	<field name="stuStatus" class="java.lang.String"/>
+	<variable name="stuClsCode_1" class="java.lang.Integer" resetType="Group" resetGroup="Class" calculation="Count">
+		<variableExpression><![CDATA[$F{stuClsCode}]]></variableExpression>
+	</variable>
+	<group name="Class">
+		<groupExpression><![CDATA[$F{stuClsCode}]]></groupExpression>
+		<groupHeader>
+			<band height="20">
+				<textField>
+					<reportElement mode="Opaque" x="0" y="0" width="572" height="20" backcolor="#CCCCCC"/>
+					<box leftPadding="5"/>
+					<textElement verticalAlignment="Middle">
+						<font fontName="SansSerif" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Class: "+$F{stuClsCode}]]></textFieldExpression>
+				</textField>
+				<textField evaluationTime="Group" evaluationGroup="Class">
+					<reportElement x="342" y="0" width="230" height="20"/>
+					<box rightPadding="5"/>
+					<textElement textAlignment="Right" verticalAlignment="Middle">
+						<font fontName="SansSerif" isBold="true"/>
+					</textElement>
+					<textFieldExpression class="java.lang.String"><![CDATA["Total: " + $V{stuClsCode_1}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="100" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="200" height="100"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="68" width="572" height="30"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Student List by Class]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="113" splitType="Stretch">
+			<staticText>
+				<reportElement x="9" y="15" width="47" height="15"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Name:  ]]></text>
+			</staticText>
+			<image scaleImage="FillFrame">
+				<reportElement x="471" y="7" width="80" height="80"/>
+				<box>
+					<pen lineWidth="1.0"/>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<imageExpression class="java.io.InputStream"><![CDATA[$F{stuPhoto}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="9" y="0" width="47" height="15"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[ID: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="30" width="47" height="15"/>
+				<textElement verticalAlignment="Middle" markup="none">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[DOB: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="45" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuGender}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="0" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuID}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="30" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[new java.text.SimpleDateFormat("MMM d, yyyy").format($F{stuDOB})]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="45" width="47" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Gender:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="56" y="15" width="186" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuFirstName} + " " + $F{stuOtherNames}+ " " + $F{stuLastName}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="60" width="186" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuEmail}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="56" y="75" width="100" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuPhone}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="290" y="2" width="150" height="43"/>
+				<box topPadding="2"/>
+				<textElement verticalAlignment="Top">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuAddress1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="60" width="47" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Email:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="9" y="75" width="47" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Phone]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="233" y="0" width="57" height="15"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif"/>
+				</textElement>
+				<text><![CDATA[Address:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="100" width="572" height="1"/>
+			</line>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="452" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="532" y="0" width="40" height="20"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="SansSerif" size="8"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

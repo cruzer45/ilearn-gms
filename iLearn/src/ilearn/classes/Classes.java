@@ -5,6 +5,8 @@
 package ilearn.classes;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
+import ilearn.subject.Subject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -24,6 +26,14 @@ public class Classes
     private static ArrayList<String> subCodes = new ArrayList<String>();
     private static ArrayList<String> subTeacher = new ArrayList<String>();
     private static ArrayList<String> subTitle = new ArrayList<String>();
+
+    public static void resetSubjects()
+    {
+        subIDs = new ArrayList<String>();
+        subCodes = new ArrayList<String>();
+        subTeacher = new ArrayList<String>();
+        subTitle = new ArrayList<String>();
+    }
 
     public static void addSubject(String subID, String subCode, String teacher, String title)
     {
@@ -54,6 +64,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -67,6 +78,87 @@ public class Classes
         return model;
     }
 
+    public static DefaultTableModel getSubjects(String classCode)
+    {
+        resetSubjects();
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        try
+        {
+            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
+                    + "WHERE `clsCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                subIDs.add(rs.getString("subCode"));
+            }
+            rs.close();
+            prep.close();
+            for (String subID : subIDs)
+            {
+                ArrayList<String> details = Subject.getSubjectDetails(subID);
+                subCodes.add(details.get(1));
+                subTeacher.add(details.get(2));
+                subTitle.add(details.get(3));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading the class' subjects.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        model.addColumn("ID", subIDs.toArray());
+        model.addColumn("Code", subCodes.toArray());
+        model.addColumn("Title", subTitle.toArray());
+        model.addColumn("Teacher", subTeacher.toArray());
+        return model;
+    }
+
+    public static ArrayList<String> getSubjectList(String classCode)
+    {
+        ArrayList<String> subjects = new ArrayList<String>();
+        resetSubjects();
+
+        try
+        {
+            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
+                    + "WHERE `clsCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                subIDs.add(rs.getString("subCode"));
+            }
+            rs.close();
+            prep.close();
+            for (String subID : subIDs)
+            {
+                ArrayList<String> details = Subject.getSubjectDetails(subID);
+                subCodes.add(details.get(1));
+                subjects.add(details.get(1));
+                subTeacher.add(details.get(2));
+                subTitle.add(details.get(3));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading the class' subjects.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
+        return subjects;
+    }
+
     public static boolean addClass(String code, String level, String name, String description, String homeRoom)
     {
         boolean successful = false;
@@ -78,8 +170,20 @@ public class Classes
         }
         try
         {
+            //link the subjects and classes
+            String sql1 = "INSERT INTO `ClassSubjects` (`clsCode`, `subCode`) VALUES (?, ?);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
+            for (int i = 0; i < subIDs.size(); i++)
+            {
+                prep.setString(1, code);
+                prep.setString(2, subIDs.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            //Add the class data.
             String sql = "INSERT INTO `Class` (`clsCode`, `clsName`, `clsDescription`, `clsLevel`, `clsHomeRoom`) VALUES (?, ?, ?,?, ?);";
-            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, code);
             prep.setString(2, name);
             prep.setString(3, description);
@@ -101,6 +205,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -116,6 +221,57 @@ public class Classes
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                ID.add(rs.getString("clsID"));
+                code.add(rs.getString("clsCode"));
+                Name.add(rs.getString("clsName"));
+                HomeRoom.add(rs.getString("clsHomeRoom"));
+                Status.add(rs.getString("clsStatus"));
+            }
+            rs.close();
+            prep.close();
+            model.addColumn("ID", ID.toArray());
+            model.addColumn("Code", code.toArray());
+            model.addColumn("Name", Name.toArray());
+            model.addColumn("Home Room", HomeRoom.toArray());
+            model.addColumn("Status", Status.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the class table model.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
+    }
+
+    public static DefaultTableModel getClassTableModel(String criteria)
+    {
+        criteria = Utilities.percent(criteria);
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        ArrayList<String> ID = new ArrayList<String>();
+        ArrayList<String> code = new ArrayList<String>();
+        ArrayList<String> Name = new ArrayList<String>();
+        ArrayList<String> HomeRoom = new ArrayList<String>();
+        ArrayList<String> Status = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` "
+                    + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, criteria);
+            prep.setString(2, criteria);
+            prep.setString(3, criteria);
+            prep.setString(4, criteria);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
@@ -175,8 +331,26 @@ public class Classes
         boolean successful = false;
         try
         {
-            String sql = "UPDATE `Class` SET `clsCode`= ?, `clsName`= ?, `clsDescription`= ?, `clsLevel`= ?, `clsHomeRoom`= ?, `clsStatus`= ? WHERE `clsID`= ?  LIMIT 1;";
-            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            //Remove Old Subjects
+            String sql_purge = "DELETE FROM `ClassSubjects` WHERE `clsCode`= ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql_purge);
+            prep.setString(1, code);
+            prep.executeUpdate();
+            prep.close();
+            //link the subjects and classes
+            String sql_subject = "INSERT INTO `ClassSubjects` (`clsCode`, `subCode`) VALUES (?, ?);";
+            prep = Environment.getConnection().prepareStatement(sql_subject);
+            for (int i = 0; i < subIDs.size(); i++)
+            {
+                prep.setString(1, code);
+                prep.setString(2, subIDs.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            //Update the class
+            String sql_updateClass = "UPDATE `Class` SET `clsCode`= ?, `clsName`= ?, `clsDescription`= ?, `clsLevel`= ?, `clsHomeRoom`= ?, `clsStatus`= ? WHERE `clsID`= ?  LIMIT 1;";
+            prep = Environment.getConnection().prepareStatement(sql_updateClass);
             prep.setString(1, code);
             prep.setString(2, name);
             prep.setString(3, description);
@@ -223,6 +397,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {

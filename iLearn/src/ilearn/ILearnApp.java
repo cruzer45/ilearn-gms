@@ -5,9 +5,6 @@ package ilearn;
 
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.jdesktop.application.Application;
@@ -26,27 +23,18 @@ public class ILearnApp extends SingleFrameApplication
     protected void startup()
     {
         show(new ILearnView(this));
-        JFrame mainFrame = ILearnApp.getApplication().getMainFrame();
-        mainFrame.addWindowListener(new WindowAdapter()
-        {
-            @Override
-            public void windowClosing(WindowEvent e)
-            {
-                String message = "Are you sure you want to exit the program?";
-                int response = Utilities.showConfirmDialog(ILearnApp.getApplication().getMainFrame(), message);
-                if (response == JOptionPane.YES_OPTION)
-                {
-                    shutdown();
-                }
-            }
-        });
     }
 
     @Override
     protected void shutdown()
     {
-        super.shutdown();
-        Environment.closeConnection();
+        String message = "Are you sure you want to exit the program?";
+        int response = Utilities.showConfirmDialog(ILearnApp.getApplication().getMainFrame(), message);
+        if (response == JOptionPane.YES_OPTION)
+        {
+            Environment.closeConnection();
+            super.shutdown();
+        }
     }
 
     /**

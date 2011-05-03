@@ -44,8 +44,8 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        clsssTabbedPane = new javax.swing.JTabbedPane();
+        generalPanel = new javax.swing.JPanel();
         lblClassDesc = new javax.swing.JLabel();
         lblHomeRoom = new javax.swing.JLabel();
         txtClassCode = new javax.swing.JTextField();
@@ -57,7 +57,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         lblClassLevel = new javax.swing.JLabel();
         lblClassName = new javax.swing.JLabel();
         txtClassName = new javax.swing.JTextField();
-        jPanel2 = new javax.swing.JPanel();
+        subjectPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblSubjects = new javax.swing.JTable();
         cmdDelete = new javax.swing.JButton();
@@ -79,8 +79,8 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
-        jPanel1.setName("jPanel1"); // NOI18N
+        clsssTabbedPane.setName("clsssTabbedPane"); // NOI18N
+        generalPanel.setName("generalPanel"); // NOI18N
         lblClassDesc.setText(resourceMap.getString("lblClassDesc.text")); // NOI18N
         lblClassDesc.setName("lblClassDesc"); // NOI18N
         lblHomeRoom.setText(resourceMap.getString("lblHomeRoom.text")); // NOI18N
@@ -111,20 +111,20 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         txtClassName.setText(resourceMap.getString("txtClassName.text")); // NOI18N
         txtClassName.setToolTipText(resourceMap.getString("txtClassName.toolTipText")); // NOI18N
         txtClassName.setName("txtClassName"); // NOI18N
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
+        generalPanel.setLayout(generalPanelLayout);
+        generalPanelLayout.setHorizontalGroup(
+            generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblClassCode)
                                 .addComponent(lblClassLevel)
                                 .addComponent(lblClassName)
                                 .addComponent(lblClassDesc)
                                 .addComponent(lblHomeRoom))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(cmbHomeRoom, javax.swing.GroupLayout.Alignment.TRAILING, 0, 268, Short.MAX_VALUE)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
                                 .addComponent(txtClassName, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE)
@@ -132,34 +132,35 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
                                 .addComponent(txtClassCode, javax.swing.GroupLayout.DEFAULT_SIZE, 268, Short.MAX_VALUE))
                       .addContainerGap())
         );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+        generalPanelLayout.setVerticalGroup(
+            generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblClassCode)
                                 .addComponent(txtClassCode, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblClassLevel)
                                 .addComponent(cmbClassLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblClassName)
                                 .addComponent(txtClassName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblClassDesc)
                                 .addComponent(jScrollPane1))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmbHomeRoom, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblHomeRoom))
                       .addGap(19, 19, 19))
         );
-        jTabbedPane1.addTab(resourceMap.getString("jPanel1.TabConstraints.tabTitle"), resourceMap.getIcon("jPanel1.TabConstraints.tabIcon"), jPanel1); // NOI18N
-        jPanel2.setName("jPanel2"); // NOI18N
+        clsssTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+        subjectPanel.setName("subjectPanel"); // NOI18N
         jScrollPane2.setName("jScrollPane2"); // NOI18N
+        tblSubjects.setAutoCreateRowSorter(true);
         tblSubjects.setModel(new javax.swing.table.DefaultTableModel(
                                  new Object [][]
                                  {
@@ -182,32 +183,32 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         cmdAdd.setAction(actionMap.get("add")); // NOI18N
         cmdAdd.setText(resourceMap.getString("cmdAdd.text")); // NOI18N
         cmdAdd.setName("cmdAdd"); // NOI18N
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout subjectPanelLayout = new javax.swing.GroupLayout(subjectPanel);
+        subjectPanel.setLayout(subjectPanelLayout);
+        subjectPanelLayout.setHorizontalGroup(
+            subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, subjectPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                      .addGroup(subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE)
-                                .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(subjectPanelLayout.createSequentialGroup()
                                           .addComponent(cmdAdd)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdDelete)))
                       .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+        subjectPanelLayout.setVerticalGroup(
+            subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, subjectPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                      .addGroup(subjectPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdDelete)
                                 .addComponent(cmdAdd))
                       .addContainerGap())
         );
-        jTabbedPane1.addTab(resourceMap.getString("jPanel2.TabConstraints.tabTitle"), resourceMap.getIcon("jPanel2.TabConstraints.tabIcon"), jPanel2); // NOI18N
+        clsssTabbedPane.addTab(resourceMap.getString("subjectPanel.TabConstraints.tabTitle"), resourceMap.getIcon("subjectPanel.TabConstraints.tabIcon"), subjectPanel); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -215,7 +216,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                                .addComponent(clsssTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdReset)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
@@ -228,7 +229,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 251, Short.MAX_VALUE)
+                      .addComponent(clsssTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, 251, Short.MAX_VALUE)
                       .addGap(16, 16, 16)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -303,6 +304,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         {
             String code = tblSubjects.getValueAt(tblSubjects.getSelectedRow(), 1).toString();
             Classes.removeSubject(code);
+            loadSubjects();
         }
         else
         {
@@ -327,6 +329,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         tca.adjustColumns();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTabbedPane clsssTabbedPane;
     private javax.swing.JComboBox cmbClassLevel;
     private javax.swing.JComboBox cmbHomeRoom;
     private javax.swing.JButton cmdAdd;
@@ -334,16 +337,15 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdDelete;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel generalPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblClassCode;
     private javax.swing.JLabel lblClassDesc;
     private javax.swing.JLabel lblClassLevel;
     private javax.swing.JLabel lblClassName;
     private javax.swing.JLabel lblHomeRoom;
+    private javax.swing.JPanel subjectPanel;
     private javax.swing.JTable tblSubjects;
     private javax.swing.JTextField txtClassCode;
     private javax.swing.JTextArea txtClassDescription;

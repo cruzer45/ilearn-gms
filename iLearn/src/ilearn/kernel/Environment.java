@@ -16,6 +16,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JDesktopPane;
 import javax.swing.JOptionPane;
 
 /**
@@ -25,12 +26,15 @@ import javax.swing.JOptionPane;
 public class Environment
 {
 
+    static final Logger logger = Logger.getLogger(Environment.class.getName());
+
     private static String branchCode = "";
     private static String registrationCode = "";
     private static String timeCode = "";
     private static String dbVersion = "";
-    private static double  timeout = 0.17;
+    private static double timeout = 0.17;
     private static Connection dbConnection;
+    private static JDesktopPane desktopPane = null;
     static Properties properties = new Properties();
 
     public static void getProperties()
@@ -172,16 +176,33 @@ public class Environment
         timer.schedule(logOff, waitTime);
     }
 
-
     public static void closeConnection()
     {
         try
         {
             dbConnection.close();
+            String message = "Database connection closed";
+            logger.log(Level.INFO, message);
         }
         catch (SQLException ex)
         {
-            Logger.getLogger(Environment.class.getName()).log(Level.SEVERE, null, ex);
+            logger.log(Level.SEVERE, null, ex);
         }
+    }
+
+    /**
+     * @return the desktopPane
+     */
+    public static JDesktopPane getDesktopPane()
+    {
+        return desktopPane;
+    }
+
+    /**
+     * @param aDesktopPane the desktopPane to set
+     */
+    public static void setDesktopPane(JDesktopPane aDesktopPane)
+    {
+        desktopPane = aDesktopPane;
     }
 }

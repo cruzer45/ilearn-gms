@@ -740,7 +740,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
 
     private void frameClosing(javax.swing.event.InternalFrameEvent evt)//GEN-FIRST:event_frameClosing
     {
-        //GEN-HEADEREND:event_frameClosing
+//GEN-HEADEREND:event_frameClosing
         cancel();
     }//GEN-LAST:event_frameClosing
     // Variables declaration - do not modify//GEN-BEGIN:variables

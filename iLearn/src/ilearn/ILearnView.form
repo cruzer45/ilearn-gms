@@ -156,6 +156,9 @@
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="createAssessment">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showCreateAssessment" methodName="showCreateAssessment"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="createAssessment.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="createAssessment.text"/>
                 <Property name="name" type="java.lang.String" value="createAssessment" noResource="true"/>
@@ -182,16 +185,60 @@
             <Property name="text" type="java.lang.String" resourceKey="reportsMenu.text"/>
             <Property name="name" type="java.lang.String" value="reportsMenu" noResource="true"/>
           </Properties>
+          <SubComponents>
+            <Menu class="javax.swing.JMenu" name="studentReports">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="studentReports.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="studentReports.text"/>
+                <Property name="name" type="java.lang.String" value="studentReports" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="studentList">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showStudentListReport" methodName="showStudentListReport"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="studentList.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="studentList.text"/>
+                    <Property name="name" type="java.lang.String" value="studentList" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="classReports">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="classReports.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="classReports.text"/>
+                <Property name="name" type="java.lang.String" value="classReports" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="classListReport">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showClassListingReport" methodName="showClassListingReport"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="classListReport.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="classListReport.text"/>
+                    <Property name="name" type="java.lang.String" value="classListReport" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+          </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="manageMenu">
           <Properties>
-            <Property name="name" type="java.lang.String" value="manageMenu" noResource="true"/>
+            <Property name="text" type="java.lang.String" resourceKey="manageMenu.text"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="manageMenu.setText(&quot;Manage&quot;);"/>
+          </AuxValues>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="staffMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="staffMenu.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="staffMenu.text"/>
+                <Property name="name" type="java.lang.String" value="staffMenu" noResource="true"/>
                 <Property name="name" type="java.lang.String" value="staffMenu" noResource="true"/>
               </Properties>
               <SubComponents>
@@ -250,6 +297,7 @@
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="termMenu.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="termMenu.text"/>
+                <Property name="name" type="java.lang.String" value="termMenu" noResource="true"/>
                 <Property name="name" type="java.lang.String" value="termMenu" noResource="true"/>
               </Properties>
               <SubComponents>

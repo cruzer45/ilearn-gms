@@ -119,11 +119,11 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                                 .addComponent(lblAddress))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                .addComponent(txtTelephone2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                                .addComponent(txtSchoolName, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtTelephone2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtSchoolName, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -149,7 +149,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblAddress)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addContainerGap(28, Short.MAX_VALUE))
+                      .addContainerGap(34, Short.MAX_VALUE))
         );
         schoolTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
         ImagePanel.setName("ImagePanel"); // NOI18N
@@ -169,22 +169,20 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
         ImagePanelLayout.setHorizontalGroup(
             ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ImagePanelLayout.createSequentialGroup()
-                      .addGap(163, 163, 163)
-                      .addComponent(cmdBrowse)
-                      .addContainerGap())
-            .addGroup(ImagePanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 324, Short.MAX_VALUE)
-                      .addGap(14, 14, 14))
+                      .addGroup(ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(cmdBrowse)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 333, Short.MAX_VALUE))
+                      .addContainerGap())
         );
         ImagePanelLayout.setVerticalGroup(
             ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagePanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 174, Short.MAX_VALUE)
-                      .addGap(14, 14, 14)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(cmdBrowse)
-                      .addContainerGap())
+                      .addGap(19, 19, 19))
         );
         schoolTabbedPane.addTab(resourceMap.getString("ImagePanel.TabConstraints.tabTitle"), resourceMap.getIcon("ImagePanel.TabConstraints.tabIcon"), ImagePanel); // NOI18N
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
@@ -200,7 +198,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(schoolTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                                .addComponent(schoolTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                           .addComponent(cmdSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -212,7 +210,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(schoolTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
                                 .addComponent(cmdSave))
@@ -300,10 +298,10 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
             selectedFile = fc.getSelectedFile();
             imageChanged = true;
             ImageIcon ii = new ImageIcon(selectedFile.getAbsolutePath());
-            if (ii.getIconHeight() > 170 || ii.getIconWidth() > 320)
+            if (ii.getIconHeight() > 170 || ii.getIconWidth() > 170)
             {
                 Image img = ii.getImage();
-                Image newimg = img.getScaledInstance(320, 170, java.awt.Image.SCALE_SMOOTH);
+                Image newimg = img.getScaledInstance(170, 170, java.awt.Image.SCALE_SMOOTH);
                 ii = new ImageIcon(newimg);
                 File image = new File(System.getProperty("java.io.tmpdir") + "/image.jpg");
                 BufferedImage bi = new BufferedImage(ii.getIconWidth(), ii.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
@@ -313,7 +311,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                 try
                 {
                     ImageIO.write(bi, "jpg", image);
-                    selectedFile = image;
+                    //selectedFile = image;
                 }
                 catch (IOException ex)
                 {
