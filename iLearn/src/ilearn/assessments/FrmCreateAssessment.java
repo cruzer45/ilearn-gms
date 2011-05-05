@@ -14,6 +14,7 @@ import ilearn.classes.Classes;
 import ilearn.kernel.Utilities;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
 import org.jdesktop.application.Action;
 
 /**
@@ -257,8 +258,13 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     {//GEN-HEADEREND:event_cmbClassActionPerformed
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
+            System.out.println("");
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
+
+            DefaultTableModel model = Classes.getStudentList(cmbClass.getSelectedItem().toString());
+            model.addColumn("Grade");
+            tblGrades.setModel(model);
         }
     }//GEN-LAST:event_cmbClassActionPerformed
 
