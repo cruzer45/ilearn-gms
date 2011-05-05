@@ -68,6 +68,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     @Action
     public void next()
     {
+        loadStudentInfo();
         studentTabbedPane.setSelectedIndex(studentTabbedPane.getSelectedIndex() + 1);
     }
 
@@ -148,7 +149,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         catch (Exception e)
         {
             String message = "An error occurred while validating your input.\n"
-                             + "Kindly verify your information and try again.";
+                    + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
             return;
         }
@@ -157,7 +158,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
             {
                 String message = "The student's information  was successfully updated. \n"
-                                 + "Would you like to modify another another?";
+                        + "Would you like to modify another another?";
                 int response = Utilities.showConfirmDialog(rootPane, message);
                 if (response == JOptionPane.YES_OPTION)
                 {
@@ -171,16 +172,16 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             else
             {
                 String message = "An error occurred while trying to add this student.\n"
-                                 + "Kindly verify your information and try again.";
+                        + "Kindly verify your information and try again.";
                 Utilities.showErrorMessage(rootPane, message);
             }
         }
         else // If the command wasn't changed just update text values.
         {
-            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone,  stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
+            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
             {
                 String message = "The student's information  was successfully updated. \n"
-                                 + "Would you like to modify another another?";
+                        + "Would you like to modify another another?";
                 int response = Utilities.showConfirmDialog(rootPane, message);
                 if (response == JOptionPane.YES_OPTION)
                 {
@@ -194,7 +195,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             else
             {
                 String message = "An error occurred while trying to add this student.\n"
-                                 + "Kindly verify your information and try again.";
+                        + "Kindly verify your information and try again.";
                 Utilities.showErrorMessage(rootPane, message);
             }
         }
@@ -914,7 +915,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
     {
-        //GEN-HEADEREND:event_txtSearchKeyPressed
+//GEN-HEADEREND:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             search();
@@ -923,10 +924,9 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
 
     private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStudentsMouseClicked
     {
-        //GEN-HEADEREND:event_tblStudentsMouseClicked
+//GEN-HEADEREND:event_tblStudentsMouseClicked
         if (evt.getClickCount() >= 2)
         {
-            loadStudentInfo();
             next();
         }
     }//GEN-LAST:event_tblStudentsMouseClicked

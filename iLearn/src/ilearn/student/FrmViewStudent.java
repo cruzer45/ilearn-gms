@@ -61,6 +61,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
     @Action
     public void next()
     {
+        loadStudentInfo();
         studentTabbedPane.setSelectedIndex(studentTabbedPane.getSelectedIndex() + 1);
     }
 
@@ -758,7 +759,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
     {
-        //GEN-HEADEREND:event_txtSearchKeyPressed
+//GEN-HEADEREND:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             search();
@@ -767,10 +768,9 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
 
     private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStudentsMouseClicked
     {
-        //GEN-HEADEREND:event_tblStudentsMouseClicked
+//GEN-HEADEREND:event_tblStudentsMouseClicked
         if (evt.getClickCount() >= 2)
         {
-            loadStudentInfo();
             next();
         }
     }//GEN-LAST:event_tblStudentsMouseClicked
