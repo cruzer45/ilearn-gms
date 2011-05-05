@@ -13,8 +13,11 @@ package ilearn.assessments;
 import ilearn.classes.Classes;
 import ilearn.kernel.Utilities;
 import java.util.ArrayList;
+import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JComboBox;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
 import org.jdesktop.application.Action;
 
 /**
@@ -134,12 +137,12 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                             .addComponent(lblType))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbType, 0, 288, Short.MAX_VALUE)
-                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(cmbClass, 0, 288, Short.MAX_VALUE)
-                            .addComponent(cmbSubject, 0, 288, Short.MAX_VALUE))))
+                            .addComponent(cmbType, 0, 315, Short.MAX_VALUE)
+                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(cmbClass, 0, 315, Short.MAX_VALUE)
+                            .addComponent(cmbSubject, 0, 315, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -169,7 +172,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSubject)
                     .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 163, Short.MAX_VALUE)
                 .addComponent(cmdCancel1)
                 .addContainerGap())
         );
@@ -189,7 +192,6 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 "ID", "Name", "Grade"
             }
         ));
-        tblGrades.setColumnSelectionAllowed(true);
         tblGrades.setName("tblGrades"); // NOI18N
         jScrollPane1.setViewportView(tblGrades);
         tblGrades.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -212,9 +214,9 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             .addGroup(gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 371, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(14, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
-                .addContainerGap(233, Short.MAX_VALUE)
+                .addContainerGap(213, Short.MAX_VALUE)
                 .addComponent(cmdSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmdCancel)
@@ -225,7 +227,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             .addGroup(gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))
@@ -247,7 +249,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(assessmentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
+                .addComponent(assessmentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -262,9 +264,16 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
 
-            DefaultTableModel model = Classes.getStudentList(cmbClass.getSelectedItem().toString());
-            model.addColumn("Grade");
+            DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
             tblGrades.setModel(model);
+
+            JComboBox comboBox = new JComboBox(Assessment.getValidStates());
+            comboBox.setEditable(true);
+            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
+
+            // Assign the editor to the second column
+            TableColumnModel tcm = tblGrades.getColumnModel();
+            tcm.getColumn(3).setCellEditor(editor);
         }
     }//GEN-LAST:event_cmbClassActionPerformed
 

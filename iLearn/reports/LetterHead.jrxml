@@ -27,25 +27,25 @@
 	<title>
 		<band height="132" splitType="Stretch">
 			<image scaleImage="FillFrame">
-				<reportElement mode="Transparent" x="0" y="0" width="121" height="132"/>
+				<reportElement mode="Transparent" x="0" y="0" width="115" height="115"/>
 				<imageExpression class="java.io.InputStream"><![CDATA[$F{schLogo}]]></imageExpression>
 			</image>
 			<textField>
-				<reportElement x="134" y="0" width="419" height="30"/>
-				<textElement>
+				<reportElement x="134" y="0" width="419" height="38"/>
+				<textElement verticalAlignment="Middle">
 					<font fontName="SansSerif" size="24"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{schName}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="134" y="33" width="202" height="81"/>
+				<reportElement x="134" y="55" width="202" height="59"/>
 				<textElement>
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{schAddress}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="336" y="34" width="221" height="81"/>
+				<reportElement x="336" y="55" width="221" height="60"/>
 				<textElement>
 					<font fontName="SansSerif" size="8"/>
 				</textElement>
