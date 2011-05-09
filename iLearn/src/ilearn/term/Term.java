@@ -53,6 +53,7 @@ public class Term
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -116,5 +117,34 @@ public class Term
             successful = false;
         }
         return successful;
+    }
+
+    /**
+     *
+     * @Returns the ID of the current active term.
+     */
+    public static String getCurrentTerm()
+    {
+        String currentTerm = "";
+
+        try
+        {
+            String sql = "SELECT `trmID` FROM `iLearn`.`Term`  WHERE `trmStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                currentTerm = rs.getString("trmID");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the current term.";
+            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
+        }
+
+        return currentTerm;
     }
 }

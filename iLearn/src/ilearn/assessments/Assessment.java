@@ -166,4 +166,29 @@ public class Assessment
         }
         return model;
     }
+
+    public static boolean addAssessment(String assmtTerm, String assmtSubject, String assmtTeacher, String assmtTitle, String assmtType, String assmtTotalPoints)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "INSERT INTO `Assments` (`assmtTerm`, `assmtSubject`, `assmtTeacher`, `assmtTitle`, `assmtType`, `assmtTotalPoints` ) VALUES (?, ?, ?, ?, ?, ?);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtTerm);
+            prep.setString(2, assmtSubject);
+            prep.setString(3, assmtTeacher);
+            prep.setString(4, assmtTitle);
+            prep.setString(5, assmtType);
+            prep.setString(6, assmtTotalPoints);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while adding an assessment.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
 }

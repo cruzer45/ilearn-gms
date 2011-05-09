@@ -13,6 +13,7 @@ package ilearn.assessments;
 import ilearn.classes.Classes;
 import ilearn.kernel.Utilities;
 import java.util.ArrayList;
+import java.util.Date;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -58,6 +59,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         cmbSubject = new javax.swing.JComboBox();
         lblType = new javax.swing.JLabel();
         cmbType = new javax.swing.JComboBox();
+        jButton1 = new javax.swing.JButton();
         gradesPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGrades = new javax.swing.JTable();
@@ -116,6 +118,10 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
         cmbType.setName("cmbType"); // NOI18N
 
+        jButton1.setAction(actionMap.get("next")); // NOI18N
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
         generalPanelLayout.setHorizontalGroup(
@@ -123,7 +129,10 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             .addGroup(generalPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cmdCancel1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel1))
                     .addGroup(generalPanelLayout.createSequentialGroup()
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitle)
@@ -134,12 +143,12 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                             .addComponent(lblType))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbType, 0, 315, Short.MAX_VALUE)
-                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(cmbClass, 0, 315, Short.MAX_VALUE)
-                            .addComponent(cmbSubject, 0, 315, Short.MAX_VALUE))))
+                            .addComponent(cmbType, 0, 288, Short.MAX_VALUE)
+                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
+                            .addComponent(cmbClass, 0, 288, Short.MAX_VALUE)
+                            .addComponent(cmbSubject, 0, 288, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -169,8 +178,10 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSubject)
                     .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 167, Short.MAX_VALUE)
-                .addComponent(cmdCancel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel1)
+                    .addComponent(jButton1))
                 .addContainerGap())
         );
 
@@ -217,7 +228,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
                 .addContainerGap())
         );
         gradesPanelLayout.setVerticalGroup(
@@ -225,7 +236,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))
@@ -247,7 +258,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(assessmentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addComponent(assessmentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -260,18 +271,19 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         {
             System.out.println("");
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
+            classSubjects.add(0, "--- Select One ---");
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
-
-            DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
-            tblGrades.setModel(model);
-
-            JComboBox comboBox = new JComboBox(Assessment.getValidStates());
-            comboBox.setEditable(true);
-            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
-
-            // Assign the editor to the fourth column
-            TableColumnModel tcm = tblGrades.getColumnModel();
-            tcm.getColumn(3).setCellEditor(editor);
+//
+//            DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
+//            tblGrades.setModel(model);
+//
+//            JComboBox comboBox = new JComboBox(Assessment.getValidStates());
+//            comboBox.setEditable(true);
+//            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
+//
+//            // Assign the editor to the fourth column
+//            TableColumnModel tcm = tblGrades.getColumnModel();
+//            tcm.getColumn(3).setCellEditor(editor);
         }
     }//GEN-LAST:event_cmbClassActionPerformed
 
@@ -288,6 +300,10 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
     private void populateLists()
     {
+        Date today = new Date();
+        calDate.setDate(today);
+        txtMaxPoints.setText("100");
+
         ArrayList<String> assmtTypes = Assessment.getAssessmentTypes();
         cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
         cmbType.setSelectedItem("Home Work");
@@ -295,6 +311,43 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         ArrayList<String> classList = Classes.getClassList();
         classList.add(0, "--- Select One ---");
         cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+    }
+
+    @Action
+    public void next()
+    {
+        if (canEnterGrades())
+        {
+            DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
+            tblGrades.setModel(model);
+
+            JComboBox comboBox = new JComboBox(Assessment.getValidStates());
+            comboBox.setEditable(true);
+            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
+
+            // Assign the editor to the fourth column
+            TableColumnModel tcm = tblGrades.getColumnModel();
+            tcm.getColumn(3).setCellEditor(editor);
+        }
+        else
+        {
+            String message = "Kindly select the class and subject before proceeding.";
+        }
+    }
+
+    private boolean canEnterGrades()
+    {
+        boolean canProceed = false;
+
+        if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            if (!cmbSubject.getSelectedItem().toString().equals("--- Select One ---"))
+            {
+                canProceed = true;
+            }
+        }
+
+        return canProceed;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane assessmentTabbedPane;
@@ -307,6 +360,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdSave;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JPanel gradesPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblDate;

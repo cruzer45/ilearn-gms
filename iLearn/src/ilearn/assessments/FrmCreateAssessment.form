@@ -70,7 +70,11 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmdCancel1" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
@@ -82,12 +86,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbType" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtMaxPoints" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="calDate" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtTitle" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbSubject" alignment="0" pref="315" max="32767" attributes="0"/>
+                                  <Component id="cmbType" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtMaxPoints" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="calDate" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtTitle" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbSubject" alignment="0" pref="288" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -128,8 +132,11 @@
                           <Component id="lblSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="171" max="32767" attributes="0"/>
-                      <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="164" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
@@ -224,6 +231,15 @@
                 <Property name="name" type="java.lang.String" value="cmbType" noResource="true"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JButton" name="jButton1">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.assessments.FrmCreateAssessment" id="next" methodName="next"/>
+                </Property>
+                <Property name="text" type="java.lang.String" resourceKey="jButton1.text"/>
+                <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="gradesPanel">
@@ -250,7 +266,7 @@
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="375" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="371" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -261,7 +277,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane1" min="-2" pref="296" max="-2" attributes="0"/>
-                      <EmptySpace pref="25" max="32767" attributes="0"/>
+                      <EmptySpace pref="30" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
