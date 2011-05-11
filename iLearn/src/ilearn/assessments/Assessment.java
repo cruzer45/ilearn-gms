@@ -206,4 +206,66 @@ public class Assessment
         }
         return successful;
     }
+
+    public static boolean addGrades(String assmtID, ArrayList<String> stuID, ArrayList<String> grade, ArrayList<String> remarks)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "INSERT INTO `termgrade` (`grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`) VALUES (?, ?, ?, ?);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+
+            for (int i = 0; i < stuID.size(); i++)
+            {
+                prep.setString(1, stuID.get(i));
+                prep.setString(2, assmtID);
+                prep.setString(3, grade.get(i));
+                prep.setString(4, remarks.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while saving assessment grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    public static String getAssmtID(String assmtTerm, String assmtSubject, String assmtTeacher, String assmtTitle, String assmtDate, String assmtType, String assmtTotalPoints, String assmtClassID)
+    {
+        String assmtID = "";
+        try
+        {
+            String sql = "SELECT `assmtID` FROM `ilearn`.`assments` "
+                    + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
+                    + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtType);
+            prep.setString(2, assmtTitle);
+            prep.setString(3, assmtDate);
+            prep.setString(4, assmtTotalPoints);
+            prep.setString(5, assmtClassID);
+            prep.setString(6, assmtSubject);
+            prep.setString(7, assmtTerm);
+            prep.setString(8, assmtTeacher);
+
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                assmtID = rs.getString("assmtID");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the classID.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return assmtID;
+    }
 }

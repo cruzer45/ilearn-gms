@@ -392,19 +392,30 @@ public class Classes
         }
         return classes;
     }
-    
+
     public static String getClassID(String clsCode)
     {
         String classID = "";
         try
         {
             String sql = "SELECT `clsID` FROM `iLearn`.`Class` WHERE `clsCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, clsCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                classID = rs.getString("clsID");
+            }
+            rs.close();
+            prep.close();
         }
         catch (Exception e)
         {
+            String message = "An error occurred while getting the classID.";
+            logger.log(Level.SEVERE, message, e);
         }
         return classID;
-                
+
     }
 
     public static DefaultTableModel getStudentList(String classCode)

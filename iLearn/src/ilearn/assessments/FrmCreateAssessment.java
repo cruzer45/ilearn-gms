@@ -317,9 +317,29 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
                 assmtType = cmbType.getSelectedItem().toString(),
                 assmtTotalPoints = txtMaxPoints.getText().trim(),
-                assmtClassID = cmbClass.getSelectedItem().toString();
+                assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
 
-        if (Assessment.addAssessment(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID))
+        ArrayList<String> stuID = new ArrayList<String>(),
+                grade = new ArrayList<String>(),
+                remarks = new ArrayList<String>();
+
+        //get the values from the tables.
+        for (int i = 0; i < tblGrades.getRowCount(); i++)
+        {
+            stuID.add(tblGrades.getValueAt(i, 0).toString());
+            grade.add(tblGrades.getValueAt(i, 3).toString());
+            remarks.add(tblGrades.getValueAt(i, 4).toString());
+        }
+
+        //Create the assessment.
+        boolean addAssessment = Assessment.addAssessment(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID);
+        //Get the assessment ID.
+        String assmtID = Assessment.getAssmtID(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID);
+        //save the grades
+        boolean addGrades = Assessment.addGrades(assmtID, stuID, grade, remarks);
+
+
+        if (addAssessment && addGrades)
         {
             String message = "The assessment was successfully saved. \n"
                     + "Would you like to add another?";
