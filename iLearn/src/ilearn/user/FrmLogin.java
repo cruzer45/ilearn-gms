@@ -138,7 +138,7 @@ public class FrmLogin extends javax.swing.JDialog
 
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPasswordKeyPressed
     {
-        //GEN-HEADEREND:event_txtPasswordKeyPressed
+//GEN-HEADEREND:event_txtPasswordKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             login();
@@ -147,7 +147,7 @@ public class FrmLogin extends javax.swing.JDialog
 
     private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUsernameKeyPressed
     {
-        //GEN-HEADEREND:event_txtUsernameKeyPressed
+//GEN-HEADEREND:event_txtUsernameKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             txtPassword.grabFocus();
@@ -156,7 +156,7 @@ public class FrmLogin extends javax.swing.JDialog
 
     private void formWindowClosing(java.awt.event.WindowEvent evt)//GEN-FIRST:event_formWindowClosing
     {
-        //GEN-HEADEREND:event_formWindowClosing
+//GEN-HEADEREND:event_formWindowClosing
         cancel();
     }//GEN-LAST:event_formWindowClosing
 
@@ -171,7 +171,6 @@ public class FrmLogin extends javax.swing.JDialog
         int response = JOptionPane.showConfirmDialog(this, message, "iLearn", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
         {
-            this.dispose();
             ilearn.ILearnApp.getApplication().exit();
         }
     }

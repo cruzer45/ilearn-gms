@@ -23,7 +23,7 @@ public class Assessment
     static final Logger logger = Logger.getLogger(Assessment.class.getName());
     protected static final String[] validStates =
     {
-        "Absent", "Excused"
+        "Absent", "Excused", "Incomplete"
     };
 
     public static String[] getValidStates()
@@ -62,7 +62,7 @@ public class Assessment
             {
                 //Only allow the grade column to be editable.
                 boolean editable = false;
-                if (mColIndex == 3)
+                if (mColIndex == 3 || mColIndex == 4)
                 {
                     editable = true;
                 }
@@ -74,6 +74,17 @@ public class Assessment
             @Override
             public void setValueAt(Object value, int row, int column)
             {
+
+                //If they are changing the remarks column just accept the changes.
+                if (column == 4)
+                {
+                    Vector rowVector = (Vector) dataVector.elementAt(row);
+                    rowVector.setElementAt(value, column);
+                    fireTableCellUpdated(row, column);
+                    return;
+                }
+
+                //If it is the grades column only accept specific values.
                 if (isValidValue(value))
                 {
                     Vector rowVector = (Vector) dataVector.elementAt(row);
@@ -139,6 +150,7 @@ public class Assessment
         ArrayList<String> firstName = new ArrayList<String>();
         ArrayList<String> lastName = new ArrayList<String>();
         ArrayList<String> grade = new ArrayList<String>();
+        ArrayList<String> remarks = new ArrayList<String>();
         try
         {
             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
@@ -158,6 +170,7 @@ public class Assessment
             model.addColumn("First Name", firstName.toArray());
             model.addColumn("Last Name", lastName.toArray());
             model.addColumn("Grade", grade.toArray());
+            model.addColumn("Remarks", remarks.toArray());
         }
         catch (Exception e)
         {
@@ -167,19 +180,21 @@ public class Assessment
         return model;
     }
 
-    public static boolean addAssessment(String assmtTerm, String assmtSubject, String assmtTeacher, String assmtTitle, String assmtType, String assmtTotalPoints)
+    public static boolean addAssessment(String assmtTerm, String assmtSubject, String assmtTeacher, String assmtTitle, String assmtDate, String assmtType, String assmtTotalPoints, String assmtClassID)
     {
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `Assments` (`assmtTerm`, `assmtSubject`, `assmtTeacher`, `assmtTitle`, `assmtType`, `assmtTotalPoints` ) VALUES (?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `Assments` (`assmtTerm`, `assmtSubject`, `assmtTeacher`, `assmtTitle`,`assmtDate`, `assmtType`, `assmtTotalPoints` ,  `assmtClassID`) VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtTerm);
             prep.setString(2, assmtSubject);
             prep.setString(3, assmtTeacher);
             prep.setString(4, assmtTitle);
-            prep.setString(5, assmtType);
-            prep.setString(6, assmtTotalPoints);
+            prep.setString(5, assmtDate);
+            prep.setString(6, assmtType);
+            prep.setString(7, assmtTotalPoints);
+            prep.setString(8, assmtClassID);
             prep.execute();
             prep.close();
             successful = true;

@@ -392,6 +392,20 @@ public class Classes
         }
         return classes;
     }
+    
+    public static String getClassID(String clsCode)
+    {
+        String classID = "";
+        try
+        {
+            String sql = "SELECT `clsID` FROM `iLearn`.`Class` WHERE `clsCode` = ?;";
+        }
+        catch (Exception e)
+        {
+        }
+        return classID;
+                
+    }
 
     public static DefaultTableModel getStudentList(String classCode)
     {

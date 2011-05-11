@@ -12,11 +12,14 @@ package ilearn.assessments;
 
 import ilearn.classes.Classes;
 import ilearn.kernel.Utilities;
+import ilearn.staff.Staff;
+import ilearn.term.Term;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 import org.jdesktop.application.Action;
@@ -44,7 +47,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        assessmentTabbedPane = new javax.swing.JTabbedPane();
+        assmtTabbedPane = new javax.swing.JTabbedPane();
         generalPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         txtTitle = new javax.swing.JTextField();
@@ -68,12 +71,14 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
         setClosable(true);
         setIconifiable(true);
+        setMaximizable(true);
+        setResizable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmCreateAssessment.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
-        assessmentTabbedPane.setName("assessmentTabbedPane"); // NOI18N
+        assmtTabbedPane.setName("assmtTabbedPane"); // NOI18N
 
         generalPanel.setName("generalPanel"); // NOI18N
 
@@ -112,6 +117,11 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         lblSubject.setName("lblSubject"); // NOI18N
 
         cmbSubject.setName("cmbSubject"); // NOI18N
+        cmbSubject.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbSubjectActionPerformed(evt);
+            }
+        });
 
         lblType.setText(resourceMap.getString("lblType.text")); // NOI18N
         lblType.setName("lblType"); // NOI18N
@@ -143,12 +153,12 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                             .addComponent(lblType))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbType, 0, 288, Short.MAX_VALUE)
-                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(cmbClass, 0, 288, Short.MAX_VALUE)
-                            .addComponent(cmbSubject, 0, 288, Short.MAX_VALUE))))
+                            .addComponent(cmbType, 0, 315, Short.MAX_VALUE)
+                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(cmbClass, 0, 315, Short.MAX_VALUE)
+                            .addComponent(cmbSubject, 0, 315, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -178,14 +188,14 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSubject)
                     .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 175, Short.MAX_VALUE)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel1)
                     .addComponent(jButton1))
                 .addContainerGap())
         );
 
-        assessmentTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+        assmtTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
 
         gradesPanel.setName("gradesPanel"); // NOI18N
 
@@ -221,29 +231,29 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         gradesPanel.setLayout(gradesPanelLayout);
         gradesPanelLayout.setHorizontalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(gradesPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
+                .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                    .addGroup(gradesPanelLayout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE))
+                        .addComponent(cmdCancel)))
                 .addContainerGap())
         );
         gradesPanelLayout.setVerticalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave))
                 .addContainerGap())
         );
 
-        assessmentTabbedPane.addTab(resourceMap.getString("gradesPanel.TabConstraints.tabTitle"), resourceMap.getIcon("gradesPanel.TabConstraints.tabIcon"), gradesPanel); // NOI18N
+        assmtTabbedPane.addTab(resourceMap.getString("gradesPanel.TabConstraints.tabTitle"), resourceMap.getIcon("gradesPanel.TabConstraints.tabIcon"), gradesPanel); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -251,14 +261,14 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(assessmentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(assessmentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 402, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -269,7 +279,6 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     {//GEN-HEADEREND:event_cmbClassActionPerformed
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
-            System.out.println("");
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
             classSubjects.add(0, "--- Select One ---");
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
@@ -287,6 +296,11 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         }
     }//GEN-LAST:event_cmbClassActionPerformed
 
+    private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
+    {//GEN-HEADEREND:event_cmbSubjectActionPerformed
+        next();
+    }//GEN-LAST:event_cmbSubjectActionPerformed
+
     @Action
     public void Cancel()
     {
@@ -296,6 +310,42 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        String assmtTerm = Term.getCurrentTerm(),
+                assmtSubject = cmbSubject.getSelectedItem().toString(),
+                assmtTeacher = "",
+                assmtTitle = txtTitle.getText().trim(),
+                assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
+                assmtType = cmbType.getSelectedItem().toString(),
+                assmtTotalPoints = txtMaxPoints.getText().trim(),
+                assmtClassID = cmbClass.getSelectedItem().toString();
+
+        if (Assessment.addAssessment(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID))
+        {
+            String message = "The assessment was successfully saved. \n"
+                    + "Would you like to add another?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                resetForm();
+            }
+            else
+            {
+                this.dispose();
+            }
+        }
+        else
+        {
+            String message = "An error occurred while trying to save this assessment.\n"
+                    + "Kindly verify your information and try again.";
+            Utilities.showErrorMessage(rootPane, message);
+        }
+    }
+
+    private void resetForm()
+    {
+        remove(assmtTabbedPane);
+        initComponents();
+        populateLists();
     }
 
     private void populateLists()
@@ -328,10 +378,13 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             // Assign the editor to the fourth column
             TableColumnModel tcm = tblGrades.getColumnModel();
             tcm.getColumn(3).setCellEditor(editor);
+
+            assmtTabbedPane.setSelectedIndex(assmtTabbedPane.getSelectedIndex() + 1);
         }
         else
         {
             String message = "Kindly select the class and subject before proceeding.";
+            Utilities.showWarningMessage(rootPane, message);
         }
     }
 
@@ -350,7 +403,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         return canProceed;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTabbedPane assessmentTabbedPane;
+    private javax.swing.JTabbedPane assmtTabbedPane;
     private com.toedter.calendar.JDateChooser calDate;
     private javax.swing.JComboBox cmbClass;
     private javax.swing.JComboBox cmbSubject;
