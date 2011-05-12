@@ -97,6 +97,7 @@ public class Assessment
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
+                sValue = sValue.trim();
 
                 if (value instanceof String)
                 {
@@ -162,7 +163,8 @@ public class Assessment
                 studentID.add(rs.getString("stuID"));
                 firstName.add(rs.getString("stuFirstName"));
                 lastName.add(rs.getString("stuLastName"));
-                //grade.add("0");
+                grade.add(" ");
+                remarks.add(" ");
             }
             prep.close();
             rs.close();
@@ -212,7 +214,7 @@ public class Assessment
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `termgrade` (`grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`) VALUES (?, ?, ?, ?);";
+            String sql = "INSERT INTO `TermGrade` (`grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`) VALUES (?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
 
             for (int i = 0; i < stuID.size(); i++)
@@ -240,7 +242,7 @@ public class Assessment
         String assmtID = "";
         try
         {
-            String sql = "SELECT `assmtID` FROM `ilearn`.`assments` "
+            String sql = "SELECT `assmtID` FROM `iLearn`.`Assments` "
                     + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
                     + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -268,4 +270,6 @@ public class Assessment
         }
         return assmtID;
     }
+
+    
 }

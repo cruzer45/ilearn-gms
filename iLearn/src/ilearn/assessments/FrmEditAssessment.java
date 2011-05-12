@@ -28,11 +28,11 @@ import org.jdesktop.application.Action;
  *
  * @author mrogers
  */
-public class FrmCreateAssessment extends javax.swing.JInternalFrame
+public class FrmEditAssessment extends javax.swing.JInternalFrame
 {
 
     /** Creates new form FrmCreateAssessment */
-    public FrmCreateAssessment()
+    public FrmEditAssessment()
     {
         initComponents();
         populateLists();
@@ -48,6 +48,14 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     private void initComponents() {
 
         assmtTabbedPane = new javax.swing.JTabbedPane();
+        searchPanel = new javax.swing.JPanel();
+        lblSearch = new javax.swing.JLabel();
+        txtSearch = new javax.swing.JTextField();
+        cmdSearch = new javax.swing.JButton();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblSearch = new javax.swing.JTable();
+        cmdCancel2 = new javax.swing.JButton();
+        cmdNext2 = new javax.swing.JButton();
         generalPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         txtTitle = new javax.swing.JTextField();
@@ -57,12 +65,14 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         lblMaxPoints = new javax.swing.JLabel();
         lblClass = new javax.swing.JLabel();
         cmbClass = new javax.swing.JComboBox();
-        cmdCancel1 = new javax.swing.JButton();
         lblSubject = new javax.swing.JLabel();
         cmbSubject = new javax.swing.JComboBox();
         lblType = new javax.swing.JLabel();
         cmbType = new javax.swing.JComboBox();
-        jButton1 = new javax.swing.JButton();
+        cmdCancel1 = new javax.swing.JButton();
+        cmdNext = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
         gradesPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGrades = new javax.swing.JTable();
@@ -73,12 +83,95 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmCreateAssessment.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditAssessment.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
         assmtTabbedPane.setName("assmtTabbedPane"); // NOI18N
+
+        searchPanel.setName("searchPanel"); // NOI18N
+
+        lblSearch.setText(resourceMap.getString("lblSearch.text")); // NOI18N
+        lblSearch.setName("lblSearch"); // NOI18N
+
+        txtSearch.setText(resourceMap.getString("txtSearch.text")); // NOI18N
+        txtSearch.setName("txtSearch"); // NOI18N
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditAssessment.class, this);
+        cmdSearch.setAction(actionMap.get("search")); // NOI18N
+        cmdSearch.setText(resourceMap.getString("cmdSearch.text")); // NOI18N
+        cmdSearch.setName("cmdSearch"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        tblSearch.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Title", "Date", "Class", "Subject"
+            }
+        ));
+        tblSearch.setName("tblSearch"); // NOI18N
+        tblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblSearchMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblSearch);
+        tblSearch.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title0")); // NOI18N
+        tblSearch.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title1")); // NOI18N
+        tblSearch.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title2")); // NOI18N
+        tblSearch.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title3")); // NOI18N
+        tblSearch.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title4")); // NOI18N
+
+        cmdCancel2.setAction(actionMap.get("Cancel")); // NOI18N
+        cmdCancel2.setText(resourceMap.getString("cmdCancel2.text")); // NOI18N
+        cmdCancel2.setName("cmdCancel2"); // NOI18N
+
+        cmdNext2.setAction(actionMap.get("next")); // NOI18N
+        cmdNext2.setText(resourceMap.getString("cmdNext2.text")); // NOI18N
+        cmdNext2.setName("cmdNext2"); // NOI18N
+
+        javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
+        searchPanel.setLayout(searchPanelLayout);
+        searchPanelLayout.setHorizontalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                    .addGroup(searchPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel2))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
+                        .addComponent(lblSearch)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdSearch)))
+                .addContainerGap())
+        );
+        searchPanelLayout.setVerticalGroup(
+            searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(searchPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSearch)
+                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmdSearch))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel2)
+                    .addComponent(cmdNext2))
+                .addContainerGap())
+        );
+
+        assmtTabbedPane.addTab(resourceMap.getString("searchPanel.TabConstraints.tabTitle"), resourceMap.getIcon("searchPanel.TabConstraints.tabIcon"), searchPanel); // NOI18N
 
         generalPanel.setName("generalPanel"); // NOI18N
 
@@ -109,10 +202,6 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             }
         });
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmCreateAssessment.class, this);
-        cmdCancel1.setAction(actionMap.get("Cancel")); // NOI18N
-        cmdCancel1.setName("cmdCancel1"); // NOI18N
-
         lblSubject.setText(resourceMap.getString("lblSubject.text")); // NOI18N
         lblSubject.setName("lblSubject"); // NOI18N
 
@@ -128,9 +217,19 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
         cmbType.setName("cmbType"); // NOI18N
 
-        jButton1.setAction(actionMap.get("next")); // NOI18N
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
+        cmdCancel1.setAction(actionMap.get("Cancel")); // NOI18N
+        cmdCancel1.setName("cmdCancel1"); // NOI18N
+
+        cmdNext.setAction(actionMap.get("next")); // NOI18N
+        cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
+        cmdNext.setName("cmdNext"); // NOI18N
+
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jTextField1.setEditable(false);
+        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
+        jTextField1.setName("jTextField1"); // NOI18N
 
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
@@ -139,10 +238,10 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             .addGroup(generalPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel1))
+                    .addGroup(generalPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(67, 67, 67)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
                     .addGroup(generalPanelLayout.createSequentialGroup()
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitle)
@@ -158,13 +257,21 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                             .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                             .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                             .addComponent(cmbClass, 0, 288, Short.MAX_VALUE)
-                            .addComponent(cmbSubject, 0, 288, Short.MAX_VALUE))))
+                            .addComponent(cmbSubject, 0, 288, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel1)))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
                 .addContainerGap()
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
                     .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -188,10 +295,10 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSubject)
                     .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 176, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel1)
-                    .addComponent(jButton1))
+                    .addComponent(cmdNext))
                 .addContainerGap())
         );
 
@@ -300,6 +407,14 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     {//GEN-HEADEREND:event_cmbSubjectActionPerformed
         next();
     }//GEN-LAST:event_cmbSubjectActionPerformed
+
+    private void tblSearchMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblSearchMouseClicked
+    {//GEN-HEADEREND:event_tblSearchMouseClicked
+        if (evt.getClickCount() >= 2)
+        {
+            next();
+        }
+    }//GEN-LAST:event_tblSearchMouseClicked
 
     @Action
     public void Cancel()
@@ -422,6 +537,12 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
         return canProceed;
     }
+
+    @Action
+    public void search()
+    {
+        
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane assmtTabbedPane;
     private com.toedter.calendar.JDateChooser calDate;
@@ -430,19 +551,29 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     private javax.swing.JComboBox cmbType;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdCancel1;
+    private javax.swing.JButton cmdCancel2;
+    private javax.swing.JButton cmdNext;
+    private javax.swing.JButton cmdNext2;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JPanel gradesPanel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblMaxPoints;
+    private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSubject;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JLabel lblType;
+    private javax.swing.JPanel searchPanel;
     private javax.swing.JTable tblGrades;
+    private javax.swing.JTable tblSearch;
     private javax.swing.JTextField txtMaxPoints;
+    private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTitle;
     // End of variables declaration//GEN-END:variables
 }
