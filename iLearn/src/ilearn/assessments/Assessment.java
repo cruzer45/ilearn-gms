@@ -59,7 +59,6 @@ public class Assessment
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -73,7 +72,6 @@ public class Assessment
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -84,14 +82,11 @@ public class Assessment
                     editable = true;
                 }
                 return editable;
-
                 //return false;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
-
                 //If they are changing the remarks column just accept the changes.
                 if (column == 4)
                 {
@@ -100,7 +95,6 @@ public class Assessment
                     fireTableCellUpdated(row, column);
                     return;
                 }
-
                 //If it is the grades column only accept specific values.
                 if (isValidValue(value))
                 {
@@ -109,13 +103,11 @@ public class Assessment
                     fireTableCellUpdated(row, column);
                 }
             }
-
             // Protected methods
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
                 sValue = sValue.trim();
-
                 if (value instanceof String)
                 {
                     for (int i = 0; i < validStates.length; i++)
@@ -134,10 +126,8 @@ public class Assessment
                 {
                     return true;
                 }
-
                 return false;
             }
-
             protected boolean isInteger(String input)
             {
                 try
@@ -150,7 +140,6 @@ public class Assessment
                     return false;
                 }
             }
-
             protected boolean isDouble(String input)
             {
                 try
@@ -232,7 +221,6 @@ public class Assessment
         try
         {
             String sql = "UPDATE `Assments` SET `assmtType`=?, `assmtTitle`=?, `assmtDate`=?, `assmtTotalPoints`=?, `assmtClassID`=?, `assmtSubject`=? WHERE `assmtID`=? ;";
-
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtType);
             prep.setString(2, assmtTitle);
@@ -260,7 +248,6 @@ public class Assessment
         {
             String sql = "INSERT INTO `TermGrade` (`grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`) VALUES (?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-
             for (int i = 0; i < stuID.size(); i++)
             {
                 prep.setString(1, stuID.get(i));
@@ -288,7 +275,6 @@ public class Assessment
         {
             String sql = "UPDATE `termgrade` SET `grdPointsEarned`= ?, `grdRemark`= ? WHERE `grdStuID`= ? and `grdAssmtID` = ? LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-
             for (int i = 0; i < stuID.size(); i++)
             {
                 prep.setString(1, grade.get(i).trim());
@@ -315,8 +301,8 @@ public class Assessment
         try
         {
             String sql = "SELECT `assmtID` FROM `iLearn`.`Assments` "
-                    + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
-                    + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
+                         + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
+                         + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtType);
             prep.setString(2, assmtTitle);
@@ -326,7 +312,6 @@ public class Assessment
             prep.setString(6, assmtSubject);
             prep.setString(7, assmtTerm);
             prep.setString(8, assmtTeacher);
-
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
@@ -349,7 +334,6 @@ public class Assessment
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-            
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -363,7 +347,6 @@ public class Assessment
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -379,9 +362,9 @@ public class Assessment
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                    + "FROM `iLearn`.`Assments` "
-                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
-                    + "LIMIT 0, 1000;";
+                         + "FROM `iLearn`.`Assments` "
+                         + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                         + "LIMIT 0, 1000;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -421,20 +404,16 @@ public class Assessment
 
     public static ArrayList<Object> getAssessmentInfo(String assmtID)
     {
-
-
         ArrayList<Object> assmt = new ArrayList<Object>();
-
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                    + "FROM `iLearn`.`Assments` "
-                    + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
+                         + "FROM `iLearn`.`Assments` "
+                         + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             ResultSet rs = prep.executeQuery();
             rs.first();
-
             assmt.add(rs.getString("assmtID"));
             assmt.add(rs.getString("assmtType"));
             assmt.add(rs.getString("assmtTitle"));
@@ -442,7 +421,6 @@ public class Assessment
             assmt.add(rs.getString("assmtTotalPoints"));
             assmt.add(Classes.getClassCode(rs.getString("assmtClassID")));
             assmt.add(rs.getString("assmtSubject"));
-
             rs.close();
             prep.close();
         }
@@ -460,7 +438,7 @@ public class Assessment
         try
         {
             String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
-                    + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
+                         + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.setString(2, stuID);
@@ -488,12 +466,10 @@ public class Assessment
         {
             String sql = "INSERT INTO `TermGrade` (`grdStuID`, `grdAssmtID`, `grdPointsEarned` , `grdRemark`) VALUES (?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-
             prep.setString(1, stuID);
             prep.setString(2, assmtID);
             prep.setString(3, "Excused");
             prep.setString(4, " ");
-
             prep.execute();
             prep.close();
             successful = true;

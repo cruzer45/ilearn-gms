@@ -143,9 +143,7 @@ class EditableColorColumn
         ComboTableCellRenderer renderer = new ComboTableCellRenderer();
         JComboBox comboBox = new JComboBox(choices);
         comboBox.setRenderer(renderer);
-
         TableCellEditor editor = new DefaultCellEditor(comboBox);
-
         JFrame frame = new JFrame("Editable Color Table");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         TableModel model = new ColorTableModel();
@@ -153,7 +151,6 @@ class EditableColorColumn
         TableColumn column = table.getColumnModel().getColumn(1);
         column.setCellRenderer(renderer);
         column.setCellEditor(editor);
-
         JScrollPane scrollPane = new JScrollPane(table);
         frame.add(scrollPane, BorderLayout.CENTER);
         frame.setSize(400, 150);

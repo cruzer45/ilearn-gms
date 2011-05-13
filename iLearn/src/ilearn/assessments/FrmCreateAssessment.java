@@ -45,8 +45,8 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         assmtTabbedPane = new javax.swing.JTabbedPane();
         generalPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
@@ -68,7 +68,6 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         tblGrades = new javax.swing.JTable();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -77,144 +76,131 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         assmtTabbedPane.setName("assmtTabbedPane"); // NOI18N
-
         generalPanel.setName("generalPanel"); // NOI18N
-
         lblTitle.setText(resourceMap.getString("lblTitle.text")); // NOI18N
         lblTitle.setName("lblTitle"); // NOI18N
-
         txtTitle.setText(resourceMap.getString("txtTitle.text")); // NOI18N
         txtTitle.setName("txtTitle"); // NOI18N
-
         calDate.setName("calDate"); // NOI18N
-
         lblDate.setText(resourceMap.getString("lblDate.text")); // NOI18N
         lblDate.setName("lblDate"); // NOI18N
-
         txtMaxPoints.setText(resourceMap.getString("txtMaxPoints.text")); // NOI18N
         txtMaxPoints.setName("txtMaxPoints"); // NOI18N
-
         lblMaxPoints.setText(resourceMap.getString("lblMaxPoints.text")); // NOI18N
         lblMaxPoints.setName("lblMaxPoints"); // NOI18N
-
         lblClass.setText(resourceMap.getString("lblClass.text")); // NOI18N
         lblClass.setName("lblClass"); // NOI18N
-
         cmbClass.setName("cmbClass"); // NOI18N
-        cmbClass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbClass.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbClassActionPerformed(evt);
             }
         });
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmCreateAssessment.class, this);
         cmdCancel1.setAction(actionMap.get("Cancel")); // NOI18N
         cmdCancel1.setName("cmdCancel1"); // NOI18N
-
         lblSubject.setText(resourceMap.getString("lblSubject.text")); // NOI18N
         lblSubject.setName("lblSubject"); // NOI18N
-
         cmbSubject.setName("cmbSubject"); // NOI18N
-        cmbSubject.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbSubject.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbSubjectActionPerformed(evt);
             }
         });
-
         lblType.setText(resourceMap.getString("lblType.text")); // NOI18N
         lblType.setName("lblType"); // NOI18N
-
         cmbType.setName("cmbType"); // NOI18N
-
         jButton1.setAction(actionMap.get("next")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
-
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
         generalPanelLayout.setHorizontalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel1))
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle)
-                            .addComponent(lblDate)
-                            .addComponent(lblMaxPoints)
-                            .addComponent(lblClass)
-                            .addComponent(lblSubject)
-                            .addComponent(lblType))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbType, 0, 315, Short.MAX_VALUE)
-                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
-                            .addComponent(cmbClass, 0, 315, Short.MAX_VALUE)
-                            .addComponent(cmbSubject, 0, 315, Short.MAX_VALUE))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
+                                          .addComponent(jButton1)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel1))
+                                .addGroup(generalPanelLayout.createSequentialGroup()
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblTitle)
+                                                  .addComponent(lblDate)
+                                                  .addComponent(lblMaxPoints)
+                                                  .addComponent(lblClass)
+                                                  .addComponent(lblSubject)
+                                                  .addComponent(lblType))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(cmbType, 0, 315, Short.MAX_VALUE)
+                                                  .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                                                  .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                                                  .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                                                  .addComponent(cmbClass, 0, 315, Short.MAX_VALUE)
+                                                  .addComponent(cmbSubject, 0, 315, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblType)
-                    .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMaxPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblMaxPoints))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClass)
-                    .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSubject)
-                    .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel1)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblType)
+                                .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblTitle)
+                                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblDate))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(txtMaxPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblMaxPoints))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClass)
+                                .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSubject)
+                                .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 187, Short.MAX_VALUE)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel1)
+                                .addComponent(jButton1))
+                      .addContainerGap())
         );
-
         assmtTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
-
         gradesPanel.setName("gradesPanel"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         tblGrades.setAutoCreateRowSorter(true);
         tblGrades.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                               new Object [][]
+                               {
 
-            },
-            new String [] {
-                "ID", "First Name", "Last Name", "Grade", "Remark"
-            }
-        ) {
-            Class[] types = new Class [] {
+                               },
+                               new String []
+                               {
+                                   "ID", "First Name", "Last Name", "Grade", "Remark"
+                               }
+                           )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.String.class
             };
-
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
@@ -227,65 +213,60 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         tblGrades.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title3")); // NOI18N
         tblGrades.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title2")); // NOI18N
         tblGrades.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title4")); // NOI18N
-
         cmdCancel.setAction(actionMap.get("Cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         javax.swing.GroupLayout gradesPanelLayout = new javax.swing.GroupLayout(gradesPanel);
         gradesPanel.setLayout(gradesPanelLayout);
         gradesPanelLayout.setHorizontalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
-                    .addGroup(gradesPanelLayout.createSequentialGroup()
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
+                                .addGroup(gradesPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         gradesPanelLayout.setVerticalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave))
+                      .addContainerGap())
         );
-
         assmtTabbedPane.addTab(resourceMap.getString("gradesPanel.TabConstraints.tabTitle"), resourceMap.getIcon("gradesPanel.TabConstraints.tabIcon"), gradesPanel); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(assmtTabbedPane)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(assmtTabbedPane)
+                      .addContainerGap())
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmbClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbClassActionPerformed
-    {//GEN-HEADEREND:event_cmbClassActionPerformed
+    {
+        //GEN-HEADEREND:event_cmbClassActionPerformed
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
@@ -306,7 +287,8 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     }//GEN-LAST:event_cmbClassActionPerformed
 
     private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
-    {//GEN-HEADEREND:event_cmbSubjectActionPerformed
+    {
+        //GEN-HEADEREND:event_cmbSubjectActionPerformed
         next();
     }//GEN-LAST:event_cmbSubjectActionPerformed
 
@@ -320,18 +302,16 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     public void save()
     {
         String assmtTerm = Term.getCurrentTerm(),
-                assmtSubject = cmbSubject.getSelectedItem().toString(),
-                assmtTeacher = "",
-                assmtTitle = txtTitle.getText().trim(),
-                assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
-                assmtType = cmbType.getSelectedItem().toString(),
-                assmtTotalPoints = txtMaxPoints.getText().trim(),
-                assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
-
+               assmtSubject = cmbSubject.getSelectedItem().toString(),
+               assmtTeacher = "",
+               assmtTitle = txtTitle.getText().trim(),
+               assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
+               assmtType = cmbType.getSelectedItem().toString(),
+               assmtTotalPoints = txtMaxPoints.getText().trim(),
+               assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
         ArrayList<String> stuID = new ArrayList<String>(),
-                grade = new ArrayList<String>(),
-                remarks = new ArrayList<String>();
-
+        grade = new ArrayList<String>(),
+        remarks = new ArrayList<String>();
         //get the values from the tables.
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
@@ -339,19 +319,16 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
             grade.add(tblGrades.getValueAt(i, 3).toString());
             remarks.add(tblGrades.getValueAt(i, 4).toString());
         }
-
         //Create the assessment.
         boolean addAssessment = Assessment.addAssessment(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID);
         //Get the assessment ID.
         String assmtID = Assessment.getAssmtID(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID);
         //save the grades
         boolean addGrades = Assessment.addGrades(assmtID, stuID, grade, remarks);
-
-
         if (addAssessment && addGrades)
         {
             String message = "The assessment was successfully saved. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -365,7 +342,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this assessment.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -382,11 +359,9 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         Date today = new Date();
         calDate.setDate(today);
         txtMaxPoints.setText("100");
-
         ArrayList<String> assmtTypes = Assessment.getAssessmentTypes();
         cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
         cmbType.setSelectedItem("Home Work");
-
         ArrayList<String> classList = Classes.getClassList();
         classList.add(0, "--- Select One ---");
         cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
@@ -399,15 +374,12 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         {
             DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
             tblGrades.setModel(model);
-
             JComboBox comboBox = new JComboBox(Assessment.getValidStates());
             comboBox.setEditable(true);
             DefaultCellEditor editor = new DefaultCellEditor(comboBox);
-
             // Assign the editor to the fourth column
             TableColumnModel tcm = tblGrades.getColumnModel();
             tcm.getColumn(3).setCellEditor(editor);
-
             assmtTabbedPane.setSelectedIndex(assmtTabbedPane.getSelectedIndex() + 1);
         }
         else
@@ -420,7 +392,6 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     private boolean canEnterGrades()
     {
         boolean canProceed = false;
-
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
             if (!cmbSubject.getSelectedItem().toString().equals("--- Select One ---"))
@@ -428,7 +399,6 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
                 canProceed = true;
             }
         }
-
         return canProceed;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

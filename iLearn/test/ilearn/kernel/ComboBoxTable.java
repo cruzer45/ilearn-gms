@@ -31,35 +31,27 @@ public class ComboBoxTable
         catch (Exception evt)
         {
         }
-
         JFrame f = new JFrame("Combo Box Table");
         JTable tbl = new JTable(new ComboBoxTableModel());
-
         // Create the combo box editor
         JComboBox comboBox = new JComboBox(ComboBoxTableModel.getValidStates());
         comboBox.setEditable(true);
         DefaultCellEditor editor = new DefaultCellEditor(comboBox);
-
         // Assign the editor to the second column
         TableColumnModel tcm = tbl.getColumnModel();
         tcm.getColumn(2).setCellEditor(editor);
-
         // Set column widths
         tcm.getColumn(0).setPreferredWidth(200);
         tcm.getColumn(1).setPreferredWidth(100);
         tcm.getColumn(2).setPreferredWidth(150);
-
         // Set row heighht
         tbl.setRowHeight(20);
-
         tbl.setAutoResizeMode(JTable.AUTO_RESIZE_OFF);
         tbl.setPreferredScrollableViewportSize(tbl.getPreferredSize());
-
         f.getContentPane().add(new JScrollPane(tbl), "Center");
         f.pack();
         f.addWindowListener(new WindowAdapter()
         {
-
             @Override
             public void windowClosing(WindowEvent evt)
             {
@@ -134,7 +126,6 @@ class ComboBoxTableModel extends AbstractTableModel
         if (value instanceof String)
         {
             String sValue = (String) value;
-
             for (int i = 0; i < validStates.length; i++)
             {
                 if (sValue.equals(validStates[i]))
@@ -143,7 +134,6 @@ class ComboBoxTableModel extends AbstractTableModel
                 }
             }
         }
-
         return false;
     }
     protected static final int COLUMN_COUNT = 3;

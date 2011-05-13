@@ -30,8 +30,8 @@ public class ILearnApp extends SingleFrameApplication
 //        int response = Utilities.showConfirmDialog(ILearnApp.getApplication().getMainFrame(), message);
 //        if (response == JOptionPane.YES_OPTION)
 //        {
-            Environment.closeConnection();
-            super.shutdown();
+        Environment.closeConnection();
+        super.shutdown();
 //        }
     }
 

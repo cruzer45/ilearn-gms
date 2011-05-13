@@ -27,21 +27,26 @@ public class Register
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
-                Object o = getValueAt(0, columnIndex);
-                if (o == null)
+                try
+                {
+                    Object o = getValueAt(0, columnIndex);
+                    if (o == null)
+                    {
+                        return Object.class;
+                    }
+                    else
+                    {
+                        return o.getClass();
+                    }
+                }
+                catch (Exception e)
                 {
                     return Object.class;
                 }
-                else
-                {
-                    return o.getClass();
-                }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int ColIndex)
             {
@@ -53,18 +58,15 @@ public class Register
                 }
                 return editable;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
-
                 Vector rowVector = (Vector) dataVector.elementAt(row);
                 rowVector.setElementAt(value, column);
                 fireTableCellUpdated(row, column);
                 return;
             }
         };
-
         ArrayList<String> studentID = new ArrayList<String>();
         ArrayList<String> name = new ArrayList<String>();
         ArrayList<Boolean> absent = new ArrayList<Boolean>();
@@ -108,10 +110,9 @@ public class Register
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `rollcall` (`rolStuID`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `RollCall` (`rolStuID`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`) VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             String term = Term.getCurrentTerm();
-
             for (int i = 0; i < stuID.size(); i++)
             {
                 prep.setString(1, stuID.get(i));

@@ -53,7 +53,6 @@ public class Term
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -126,7 +125,6 @@ public class Term
     public static String getCurrentTerm()
     {
         String currentTerm = "";
-
         try
         {
             String sql = "SELECT `trmID` FROM `iLearn`.`Term`  WHERE `trmStatus` = 'Active';";
@@ -144,7 +142,6 @@ public class Term
             String message = "An error occurred while getting the current term.";
             Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
         }
-
         return currentTerm;
     }
 }

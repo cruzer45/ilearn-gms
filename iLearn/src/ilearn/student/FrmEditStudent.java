@@ -149,7 +149,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         catch (Exception e)
         {
             String message = "An error occurred while validating your input.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
             return;
         }
@@ -158,7 +158,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
             {
                 String message = "The student's information  was successfully updated. \n"
-                        + "Would you like to modify another another?";
+                                 + "Would you like to modify another another?";
                 int response = Utilities.showConfirmDialog(rootPane, message);
                 if (response == JOptionPane.YES_OPTION)
                 {
@@ -172,7 +172,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             else
             {
                 String message = "An error occurred while trying to add this student.\n"
-                        + "Kindly verify your information and try again.";
+                                 + "Kindly verify your information and try again.";
                 Utilities.showErrorMessage(rootPane, message);
             }
         }
@@ -181,7 +181,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode))
             {
                 String message = "The student's information  was successfully updated. \n"
-                        + "Would you like to modify another another?";
+                                 + "Would you like to modify another another?";
                 int response = Utilities.showConfirmDialog(rootPane, message);
                 if (response == JOptionPane.YES_OPTION)
                 {
@@ -195,7 +195,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             else
             {
                 String message = "An error occurred while trying to add this student.\n"
-                        + "Kindly verify your information and try again.";
+                                 + "Kindly verify your information and try again.";
                 Utilities.showErrorMessage(rootPane, message);
             }
         }

@@ -64,7 +64,6 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -83,7 +82,6 @@ public class Classes
         resetSubjects();
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -93,7 +91,7 @@ public class Classes
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                    + "WHERE `clsCode` = ?;";
+                         + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -127,11 +125,10 @@ public class Classes
     {
         ArrayList<String> subjects = new ArrayList<String>();
         resetSubjects();
-
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                    + "WHERE `clsCode` = ?;";
+                         + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -155,7 +152,6 @@ public class Classes
             String message = "An error occurred while loading the class' subjects.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return subjects;
     }
 
@@ -205,7 +201,6 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -251,7 +246,6 @@ public class Classes
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -266,7 +260,7 @@ public class Classes
         try
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` "
-                    + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
+                         + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -445,7 +439,6 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
