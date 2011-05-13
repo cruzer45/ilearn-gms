@@ -4,7 +4,10 @@
  */
 package ilearn.assessments;
 
+import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
+import ilearn.term.Term;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -221,8 +224,8 @@ public class Assessment
             {
                 prep.setString(1, stuID.get(i));
                 prep.setString(2, assmtID);
-                prep.setString(3, grade.get(i));
-                prep.setString(4, remarks.get(i));
+                prep.setString(3, grade.get(i).trim());
+                prep.setString(4, remarks.get(i).trim());
                 prep.addBatch();
             }
             prep.executeBatch();
@@ -271,5 +274,152 @@ public class Assessment
         return assmtID;
     }
 
-    
+    public static DefaultTableModel getAssessmentTable(String criteria)
+    {
+        String original = criteria;
+        criteria = Utilities.percent(criteria);
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        ArrayList<String> ID = new ArrayList<String>();
+        ArrayList<String> type = new ArrayList<String>();
+        ArrayList<String> title = new ArrayList<String>();
+        ArrayList<String> date = new ArrayList<String>();
+        ArrayList<String> cls = new ArrayList<String>();
+        ArrayList<String> subject = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
+                    + "FROM `iLearn`.`Assments` "
+                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                    + "LIMIT 0, 1000;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, criteria);
+            prep.setString(2, criteria);
+            prep.setString(3, criteria);
+            prep.setString(4, criteria);
+            prep.setString(5, criteria);
+            prep.setString(6, Classes.getClassID(original));
+            prep.setString(7, criteria);
+            prep.setString(8, criteria);
+            prep.setString(9, Term.getCurrentTerm());
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                ID.add(rs.getString("assmtID"));
+                type.add(rs.getString("assmtType"));
+                title.add(rs.getString("assmtTitle"));
+                date.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));
+                cls.add(Classes.getClassCode(rs.getString("assmtClassID")));
+                subject.add(rs.getString("assmtSubject"));
+            }
+            rs.close();
+            prep.close();
+            model.addColumn("ID", ID.toArray());
+            model.addColumn("Type", type.toArray());
+            model.addColumn("Title", title.toArray());
+            model.addColumn("Date", date.toArray());
+            model.addColumn("Class", cls.toArray());
+            model.addColumn("Subject", subject.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the Assessment table model.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
+    }
+
+    public static ArrayList<Object> getAssessmentInfo(String assmtID)
+    {
+
+
+        ArrayList<Object> assmt = new ArrayList<Object>();
+
+        try
+        {
+            String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
+                    + "FROM `iLearn`.`Assments` "
+                    + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtID);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+
+            assmt.add(rs.getString("assmtID"));
+            assmt.add(rs.getString("assmtType"));
+            assmt.add(rs.getString("assmtTitle"));
+            assmt.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));
+            assmt.add(rs.getString("assmtTotalPoints"));
+            assmt.add(Classes.getClassCode(rs.getString("assmtClassID")));
+            assmt.add(rs.getString("assmtSubject"));
+
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the Assessment table model.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return assmt;
+    }
+
+    public static ArrayList<String> getStudentGrade(String assmtID, String stuID)
+    {
+        ArrayList<String> stuGrade = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdGrade`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
+                    + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtID);
+            prep.setString(2, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                stuGrade.add(rs.getString("grdPointsEarned"));
+                stuGrade.add(rs.getString("grdRemark"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the student's grade.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return stuGrade;
+    }
+
+    public static boolean addBlankGrades(String assmtID, String stuID)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "INSERT INTO `TermGrade` (`grdStuID`, `grdAssmtID`, `grdPointsEarned` , `grdRemark`) VALUES (?, ?, ?, ?);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+
+            prep.setString(1, stuID);
+            prep.setString(2, assmtID);
+            prep.setString(3, "Excused");
+            prep.setString(4, " ");
+
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while saving assessment grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
 }

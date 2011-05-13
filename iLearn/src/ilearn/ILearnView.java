@@ -4,6 +4,7 @@
 package ilearn;
 
 import ilearn.assessments.FrmCreateAssessment;
+import ilearn.assessments.FrmEditAssessment;
 import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
 import ilearn.classes.FrmEditClass;
@@ -53,6 +54,11 @@ public class ILearnView extends FrameView
 {
 
     /**
+     * Declare class variables
+     */
+    private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
+    ResourceMap resourceMap = getResourceMap();
+    /**
      * Declare the form objects.
      */
     FrmNewStudent frmNewStudent = null;
@@ -72,9 +78,8 @@ public class ILearnView extends FrameView
     FrmEditStudent frmEditStudent = null;
     FrmViewStudent frmViewStudent = null;
     FrmEditSubject frmEditSubject = null;
-    private static final Logger logger = Logger.getLogger(ILearnView.class.getName());
     FrmCreateAssessment frmCreateAssessment = null;
-    ResourceMap resourceMap = getResourceMap();
+    FrmEditAssessment frmEditAssessment = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -273,7 +278,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -348,6 +353,7 @@ public class ILearnView extends FrameView
         createAssessment.setName("createAssessment"); // NOI18N
         gradesMenu.add(createAssessment);
 
+        editAssessment.setAction(actionMap.get("showEditAssessment")); // NOI18N
         editAssessment.setIcon(resourceMap.getIcon("editAssessment.icon")); // NOI18N
         editAssessment.setText(resourceMap.getString("editAssessment.text")); // NOI18N
         editAssessment.setName("editAssessment"); // NOI18N
@@ -394,7 +400,6 @@ public class ILearnView extends FrameView
         staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
         staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
         staffMenu.setName("staffMenu"); // NOI18N
-        staffMenu.setName("staffMenu"); // NOI18N
 
         addStaff.setAction(actionMap.get("showAddStaff")); // NOI18N
         addStaff.setIcon(resourceMap.getIcon("addStaff.icon")); // NOI18N
@@ -430,7 +435,6 @@ public class ILearnView extends FrameView
 
         termMenu.setIcon(resourceMap.getIcon("termMenu.icon")); // NOI18N
         termMenu.setText(resourceMap.getString("termMenu.text")); // NOI18N
-        termMenu.setName("termMenu"); // NOI18N
         termMenu.setName("termMenu"); // NOI18N
 
         addTerm.setAction(actionMap.get("showAddTerm")); // NOI18N
@@ -515,7 +519,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -1052,6 +1056,30 @@ public class ILearnView extends FrameView
             {
                 frmCreateAssessment.setIcon(false);
                 frmCreateAssessment.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showEditAssessment()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Assessment");
+        if (AlreadyLoaded == false)
+        {
+            frmEditAssessment = new FrmEditAssessment();
+            desktopPane.add(frmEditAssessment);
+            //Load the Form
+            frmEditAssessment.setVisible(true);
+            frmEditAssessment.show();
+            try
+            {
+                frmEditAssessment.setIcon(false);
+                frmEditAssessment.setSelected(true);
             }
             catch (Exception e)
             {

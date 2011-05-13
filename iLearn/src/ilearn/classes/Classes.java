@@ -415,7 +415,30 @@ public class Classes
             logger.log(Level.SEVERE, message, e);
         }
         return classID;
+    }
 
+    public static String getClassCode(String clsID)
+    {
+        String classCode = "";
+        try
+        {
+            String sql = "SELECT `clsCode` FROM `iLearn`.`Class` WHERE `clsID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, clsID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                classCode = rs.getString("clsCode");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the classCode.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return classCode;
     }
 
     public static DefaultTableModel getStudentList(String classCode)

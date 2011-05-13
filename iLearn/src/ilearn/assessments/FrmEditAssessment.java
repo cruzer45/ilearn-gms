@@ -11,11 +11,12 @@
 package ilearn.assessments;
 
 import ilearn.classes.Classes;
+import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
-import ilearn.staff.Staff;
 import ilearn.term.Term;
+import java.awt.event.KeyEvent;
+import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Date;
 import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -71,8 +72,8 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
         cmbType = new javax.swing.JComboBox();
         cmdCancel1 = new javax.swing.JButton();
         cmdNext = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lblID = new javax.swing.JLabel();
+        txtID = new javax.swing.JTextField();
         gradesPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblGrades = new javax.swing.JTable();
@@ -97,6 +98,11 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
 
         txtSearch.setText(resourceMap.getString("txtSearch.text")); // NOI18N
         txtSearch.setName("txtSearch"); // NOI18N
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+        });
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditAssessment.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
@@ -105,6 +111,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
 
         jScrollPane2.setName("jScrollPane2"); // NOI18N
 
+        tblSearch.setAutoCreateRowSorter(true);
         tblSearch.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -113,13 +120,16 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                 "ID", "Title", "Date", "Class", "Subject"
             }
         ));
+        tblSearch.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_OFF);
         tblSearch.setName("tblSearch"); // NOI18N
+        tblSearch.setRowSelectionAllowed(true);
         tblSearch.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblSearchMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblSearch);
+        tblSearch.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblSearch.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title0")); // NOI18N
         tblSearch.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title1")); // NOI18N
         tblSearch.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblSearch.columnModel.title2")); // NOI18N
@@ -141,7 +151,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addGroup(searchPanelLayout.createSequentialGroup()
                         .addComponent(cmdNext2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -149,7 +159,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
                         .addComponent(lblSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 221, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdSearch)))
                 .addContainerGap())
@@ -163,7 +173,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmdSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 298, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel2)
@@ -224,12 +234,12 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
         cmdNext.setText(resourceMap.getString("cmdNext.text")); // NOI18N
         cmdNext.setName("cmdNext"); // NOI18N
 
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
+        lblID.setText(resourceMap.getString("lblID.text")); // NOI18N
+        lblID.setName("lblID"); // NOI18N
 
-        jTextField1.setEditable(false);
-        jTextField1.setText(resourceMap.getString("jTextField1.text")); // NOI18N
-        jTextField1.setName("jTextField1"); // NOI18N
+        txtID.setEditable(false);
+        txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
+        txtID.setName("txtID"); // NOI18N
 
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
@@ -238,10 +248,10 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             .addGroup(generalPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(67, 67, 67)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel1))
                     .addGroup(generalPanelLayout.createSequentialGroup()
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblTitle)
@@ -249,19 +259,17 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                             .addComponent(lblMaxPoints)
                             .addComponent(lblClass)
                             .addComponent(lblSubject)
-                            .addComponent(lblType))
+                            .addComponent(lblType)
+                            .addComponent(lblID))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cmbType, 0, 288, Short.MAX_VALUE)
-                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                            .addComponent(cmbClass, 0, 288, Short.MAX_VALUE)
-                            .addComponent(cmbSubject, 0, 288, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                        .addComponent(cmdNext)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel1)))
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(cmbType, 0, 315, Short.MAX_VALUE)
+                            .addComponent(txtMaxPoints, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(calDate, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(txtTitle, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 315, Short.MAX_VALUE)
+                            .addComponent(cmbClass, 0, 315, Short.MAX_VALUE)
+                            .addComponent(cmbSubject, 0, 315, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -269,8 +277,8 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             .addGroup(generalPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
@@ -295,7 +303,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblSubject)
                     .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 148, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 161, Short.MAX_VALUE)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel1)
                     .addComponent(cmdNext))
@@ -341,7 +349,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 375, Short.MAX_VALUE)
                     .addGroup(gradesPanelLayout.createSequentialGroup()
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -375,7 +383,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -389,6 +397,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
             classSubjects.add(0, "--- Select One ---");
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
+
 //
 //            DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
 //            tblGrades.setModel(model);
@@ -402,26 +411,34 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
 //            tcm.getColumn(3).setCellEditor(editor);
         }
     }//GEN-LAST:event_cmbClassActionPerformed
-
+    
     private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
     {//GEN-HEADEREND:event_cmbSubjectActionPerformed
         next();
     }//GEN-LAST:event_cmbSubjectActionPerformed
-
+    
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblSearchMouseClicked
     {//GEN-HEADEREND:event_tblSearchMouseClicked
         if (evt.getClickCount() >= 2)
         {
-            next();
+            loadInfo();
         }
     }//GEN-LAST:event_tblSearchMouseClicked
-
+    
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
+    {//GEN-HEADEREND:event_txtSearchKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            search();
+        }
+    }//GEN-LAST:event_txtSearchKeyPressed
+    
     @Action
     public void Cancel()
     {
         Utilities.showCancelScreen(this);
     }
-
+    
     @Action
     public void save()
     {
@@ -433,7 +450,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                 assmtType = cmbType.getSelectedItem().toString(),
                 assmtTotalPoints = txtMaxPoints.getText().trim(),
                 assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
-
+        
         ArrayList<String> stuID = new ArrayList<String>(),
                 grade = new ArrayList<String>(),
                 remarks = new ArrayList<String>();
@@ -452,8 +469,8 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
         String assmtID = Assessment.getAssmtID(assmtTerm, assmtSubject, assmtTeacher, assmtTitle, assmtDate, assmtType, assmtTotalPoints, assmtClassID);
         //save the grades
         boolean addGrades = Assessment.addGrades(assmtID, stuID, grade, remarks);
-
-
+        
+        
         if (addAssessment && addGrades)
         {
             String message = "The assessment was successfully saved. \n"
@@ -475,58 +492,99 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
             Utilities.showErrorMessage(rootPane, message);
         }
     }
-
+    
     private void resetForm()
     {
         remove(assmtTabbedPane);
         initComponents();
         populateLists();
     }
-
+    
     private void populateLists()
     {
-        Date today = new Date();
-        calDate.setDate(today);
-        txtMaxPoints.setText("100");
+        String criteria = txtSearch.getText().trim();
+        tblSearch.setModel(Assessment.getAssessmentTable(criteria));
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblSearch);
+        tca.adjustColumns();
+
+//        Date today = new Date();
+//        calDate.setDate(today);
+//        txtMaxPoints.setText("100");
 
         ArrayList<String> assmtTypes = Assessment.getAssessmentTypes();
         cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
         cmbType.setSelectedItem("Home Work");
-
+        
         ArrayList<String> classList = Classes.getClassList();
         classList.add(0, "--- Select One ---");
         cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
     }
+    
+    private void loadInfo()
+    {
+        //Load the assessment info
+        String id = tblSearch.getValueAt(tblSearch.getSelectedRow(), 0).toString();
+        ArrayList<Object> assmt = Assessment.getAssessmentInfo(id);
+        txtID.setText(assmt.get(0).toString());
+        cmbType.setSelectedItem(assmt.get(1));
+        txtTitle.setText(assmt.get(2).toString());
+        try
+        {
+            calDate.setDate(Utilities.MDY_Formatter.parse(assmt.get(3).toString()));
+        }
+        catch (ParseException ex)
+        {
+        }
+        txtMaxPoints.setText(assmt.get(4).toString());
+        cmbClass.setSelectedItem(assmt.get(5).toString());
+        cmbSubject.setSelectedItem(assmt.get(6).toString());
 
+
+        //Load the grades table.
+        DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
+        tblGrades.setModel(model);
+        
+        JComboBox comboBox = new JComboBox(Assessment.getValidStates());
+        comboBox.setEditable(true);
+        DefaultCellEditor editor = new DefaultCellEditor(comboBox);
+
+        // Assign the editor to the fourth column
+        TableColumnModel tcm = tblGrades.getColumnModel();
+        tcm.getColumn(3).setCellEditor(editor);
+
+        //Get the students grades
+        for (int i = 0; i < tblGrades.getRowCount(); i++)
+        {
+            String stuID = tblGrades.getValueAt(i, 0).toString();
+            ArrayList<String> stuGrade = Assessment.getStudentGrade(assmt.get(0).toString(), stuID);
+            try
+            {
+                tblGrades.setValueAt(stuGrade.get(0), i, 3);
+                tblGrades.setValueAt(stuGrade.get(1), i, 4);
+            }
+            catch (Exception e)
+            {
+                Assessment.addBlankGrades(assmt.get(0).toString(), stuID);
+            }
+        }
+        
+        
+        next();
+    }
+    
     @Action
     public void next()
     {
-        if (canEnterGrades())
+        if (tblSearch.getSelectedRow() != -1)
         {
-            DefaultTableModel model = Assessment.getStudentList(cmbClass.getSelectedItem().toString());
-            tblGrades.setModel(model);
-
-            JComboBox comboBox = new JComboBox(Assessment.getValidStates());
-            comboBox.setEditable(true);
-            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
-
-            // Assign the editor to the fourth column
-            TableColumnModel tcm = tblGrades.getColumnModel();
-            tcm.getColumn(3).setCellEditor(editor);
-
             assmtTabbedPane.setSelectedIndex(assmtTabbedPane.getSelectedIndex() + 1);
         }
-        else
-        {
-            String message = "Kindly select the class and subject before proceeding.";
-            Utilities.showWarningMessage(rootPane, message);
-        }
     }
-
+    
     private boolean canEnterGrades()
     {
         boolean canProceed = false;
-
+        
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
             if (!cmbSubject.getSelectedItem().toString().equals("--- Select One ---"))
@@ -534,14 +592,17 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
                 canProceed = true;
             }
         }
-
+        
         return canProceed;
     }
-
+    
     @Action
     public void search()
     {
-        
+        String criteria = txtSearch.getText().trim();
+        tblSearch.setModel(Assessment.getAssessmentTable(criteria));
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblSearch);
+        tca.adjustColumns();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane assmtTabbedPane;
@@ -558,12 +619,11 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JPanel gradesPanel;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblDate;
+    private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblMaxPoints;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSubject;
@@ -572,6 +632,7 @@ public class FrmEditAssessment extends javax.swing.JInternalFrame
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTable tblGrades;
     private javax.swing.JTable tblSearch;
+    private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtMaxPoints;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtTitle;

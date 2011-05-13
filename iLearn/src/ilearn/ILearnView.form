@@ -166,6 +166,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editAssessment">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showEditAssessment" methodName="showEditAssessment"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="editAssessment.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="editAssessment.text"/>
                 <Property name="name" type="java.lang.String" value="editAssessment" noResource="true"/>
