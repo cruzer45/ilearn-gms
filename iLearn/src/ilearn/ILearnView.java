@@ -11,6 +11,7 @@ import ilearn.classes.FrmEditClass;
 import ilearn.classes.FrmViewClass;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
 import ilearn.reports.ReportViewer;
 import ilearn.school.FrmManageSchool;
@@ -80,6 +81,7 @@ public class ILearnView extends FrameView
     FrmEditSubject frmEditSubject = null;
     FrmCreateAssessment frmCreateAssessment = null;
     FrmEditAssessment frmEditAssessment = null;
+    FrmRegister frmRegister = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -230,10 +232,10 @@ public class ILearnView extends FrameView
         addClass = new javax.swing.JMenuItem();
         editClass = new javax.swing.JMenuItem();
         viewClass = new javax.swing.JMenuItem();
+        enterRollCall = new javax.swing.JMenuItem();
         gradesMenu = new javax.swing.JMenu();
         createAssessment = new javax.swing.JMenuItem();
         editAssessment = new javax.swing.JMenuItem();
-        enterGrades = new javax.swing.JMenuItem();
         reportsMenu = new javax.swing.JMenu();
         studentReports = new javax.swing.JMenu();
         studentList = new javax.swing.JMenuItem();
@@ -342,6 +344,12 @@ public class ILearnView extends FrameView
         viewClass.setName("viewClass"); // NOI18N
         classMenu.add(viewClass);
 
+        enterRollCall.setAction(actionMap.get("showRegister")); // NOI18N
+        enterRollCall.setIcon(resourceMap.getIcon("enterRollCall.icon")); // NOI18N
+        enterRollCall.setText(resourceMap.getString("enterRollCall.text")); // NOI18N
+        enterRollCall.setName("enterRollCall"); // NOI18N
+        classMenu.add(enterRollCall);
+
         menuBar.add(classMenu);
 
         gradesMenu.setText(resourceMap.getString("gradesMenu.text")); // NOI18N
@@ -358,11 +366,6 @@ public class ILearnView extends FrameView
         editAssessment.setText(resourceMap.getString("editAssessment.text")); // NOI18N
         editAssessment.setName("editAssessment"); // NOI18N
         gradesMenu.add(editAssessment);
-
-        enterGrades.setIcon(resourceMap.getIcon("enterGrades.icon")); // NOI18N
-        enterGrades.setText(resourceMap.getString("enterGrades.text")); // NOI18N
-        enterGrades.setName("enterGrades"); // NOI18N
-        gradesMenu.add(enterGrades);
 
         menuBar.add(gradesMenu);
 
@@ -1087,6 +1090,30 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showRegister()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Class Register");
+        if (AlreadyLoaded == false)
+        {
+            frmRegister = new FrmRegister();
+            desktopPane.add(frmRegister);
+            //Load the Form
+            frmRegister.setVisible(true);
+            frmRegister.show();
+            try
+            {
+                frmRegister.setIcon(false);
+                frmRegister.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1108,7 +1135,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem editTerm;
     private javax.swing.JMenuItem editTimeSlot;
     private javax.swing.JMenuItem editUser;
-    private javax.swing.JMenuItem enterGrades;
+    private javax.swing.JMenuItem enterRollCall;
     private javax.swing.JMenu gradesMenu;
     private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;

@@ -146,6 +146,16 @@
                 <Property name="name" type="java.lang.String" value="viewClass" noResource="true"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="enterRollCall">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showRegister" methodName="showRegister"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="enterRollCall.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="enterRollCall.text"/>
+                <Property name="name" type="java.lang.String" value="enterRollCall" noResource="true"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="gradesMenu">
@@ -172,13 +182,6 @@
                 <Property name="icon" type="javax.swing.Icon" resourceKey="editAssessment.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="editAssessment.text"/>
                 <Property name="name" type="java.lang.String" value="editAssessment" noResource="true"/>
-              </Properties>
-            </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="enterGrades">
-              <Properties>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="enterGrades.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="enterGrades.text"/>
-                <Property name="name" type="java.lang.String" value="enterGrades" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>

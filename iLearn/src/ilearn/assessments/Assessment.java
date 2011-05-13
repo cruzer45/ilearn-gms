@@ -61,6 +61,20 @@ public class Assessment
         {
 
             @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
+
+            @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
                 //Only allow the grade column to be editable.
@@ -212,6 +226,33 @@ public class Assessment
         return successful;
     }
 
+    public static boolean updateAssessment(String assmtID, String assmtSubject, String assmtTitle, String assmtDate, String assmtType, String assmtTotalPoints, String assmtClassID)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Assments` SET `assmtType`=?, `assmtTitle`=?, `assmtDate`=?, `assmtTotalPoints`=?, `assmtClassID`=?, `assmtSubject`=? WHERE `assmtID`=? ;";
+
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtType);
+            prep.setString(2, assmtTitle);
+            prep.setString(3, assmtDate);
+            prep.setString(4, assmtTotalPoints);
+            prep.setString(5, assmtClassID);
+            prep.setString(6, assmtSubject);
+            prep.setString(7, assmtID);
+            prep.executeUpdate();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating an assessment.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
     public static boolean addGrades(String assmtID, ArrayList<String> stuID, ArrayList<String> grade, ArrayList<String> remarks)
     {
         boolean successful = false;
@@ -235,6 +276,34 @@ public class Assessment
         catch (Exception e)
         {
             String message = "An error occurred while saving assessment grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    public static boolean updateGrades(String assmtID, ArrayList<String> stuID, ArrayList<String> grade, ArrayList<String> remarks)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `termgrade` SET `grdPointsEarned`= ?, `grdRemark`= ? WHERE `grdStuID`= ? and `grdAssmtID` = ? LIMIT 1;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+
+            for (int i = 0; i < stuID.size(); i++)
+            {
+                prep.setString(1, grade.get(i).trim());
+                prep.setString(2, remarks.get(i).trim());
+                prep.setString(3, stuID.get(i));
+                prep.setString(4, assmtID);
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating assessment grades.";
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
@@ -280,6 +349,20 @@ public class Assessment
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+            
+            @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
 
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
@@ -376,7 +459,7 @@ public class Assessment
         ArrayList<String> stuGrade = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdGrade`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
+            String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
                     + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
