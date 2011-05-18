@@ -144,4 +144,30 @@ public class Term
         }
         return currentTerm;
     }
+    /**
+    *
+    * @Returns the ID of the current active term.
+    */
+    public static String getCurrentTermName()
+    {
+        String currentTerm = "";
+        try
+        {
+            String sql = "SELECT `trmLongName` FROM `iLearn`.`Term`  WHERE `trmStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                currentTerm = rs.getString("trmLongName");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the current term.";
+            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
+        }
+        return currentTerm;
+    }
 }

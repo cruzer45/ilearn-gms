@@ -37,7 +37,7 @@ import org.jdesktop.application.Action;
 public class FrmNewStudent extends javax.swing.JInternalFrame
 {
 
-    Logger logger = Logger.getLogger(FrmNewStudent.class.getName());
+    static final Logger logger = Logger.getLogger(FrmNewStudent.class.getName());
     JComponent parent = this.getRootPane();
     File selectedFile;
 

@@ -13,6 +13,7 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
+import ilearn.reports.FrmClassGradebook;
 import ilearn.reports.ReportViewer;
 import ilearn.school.FrmManageSchool;
 import ilearn.staff.FrmAddStaff;
@@ -90,7 +91,6 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -104,7 +104,6 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -118,7 +117,6 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
-
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -240,6 +238,7 @@ public class ILearnView extends FrameView
         studentList = new javax.swing.JMenuItem();
         classReports = new javax.swing.JMenu();
         classListReport = new javax.swing.JMenuItem();
+        classGradeBook = new javax.swing.JMenuItem();
         manageMenu = new javax.swing.JMenu();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
@@ -363,6 +362,11 @@ public class ILearnView extends FrameView
         classListReport.setText(resourceMap.getString("classListReport.text")); // NOI18N
         classListReport.setName("classListReport"); // NOI18N
         classReports.add(classListReport);
+        classGradeBook.setAction(actionMap.get("showGradebookReport")); // NOI18N
+        classGradeBook.setIcon(resourceMap.getIcon("classGradeBook.icon")); // NOI18N
+        classGradeBook.setText(resourceMap.getString("classGradeBook.text")); // NOI18N
+        classGradeBook.setName("classGradeBook"); // NOI18N
+        classReports.add(classGradeBook);
         reportsMenu.add(classReports);
         menuBar.add(reportsMenu);
         manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
@@ -985,7 +989,7 @@ public class ILearnView extends FrameView
     @Action
     public void showStudentListReport()
     {
-        DialogStudentByClass dialogStudentByClass = new DialogStudentByClass(getFrame(), true);
+        DialogStudentByClass dialogStudentByClass = new DialogStudentByClass(getFrame(), false);
         dialogStudentByClass.setLocationRelativeTo(getFrame());
         dialogStudentByClass.setVisible(true);
     }
@@ -1092,6 +1096,14 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showGradebookReport()
+    {
+        FrmClassGradebook frmClassGradebook = new FrmClassGradebook(getFrame(), false);
+        frmClassGradebook.setLocationRelativeTo(getFrame());
+        frmClassGradebook.setVisible(true);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1100,6 +1112,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addTerm;
     private javax.swing.JMenuItem addTimeSlot;
     private javax.swing.JMenuItem addUser;
+    private javax.swing.JMenuItem classGradeBook;
     private javax.swing.JMenuItem classListReport;
     private javax.swing.JMenu classMenu;
     private javax.swing.JMenu classReports;

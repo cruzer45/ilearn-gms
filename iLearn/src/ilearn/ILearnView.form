@@ -228,6 +228,16 @@
                     <Property name="name" type="java.lang.String" value="classListReport" noResource="true"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="classGradeBook">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showGradebookReport" methodName="showGradebookReport"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="classGradeBook.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="classGradeBook.text"/>
+                    <Property name="name" type="java.lang.String" value="classGradeBook" noResource="true"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
           </SubComponents>

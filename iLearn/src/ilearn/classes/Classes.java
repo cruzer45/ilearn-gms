@@ -27,6 +27,9 @@ public class Classes
     private static ArrayList<String> subTeacher = new ArrayList<String>();
     private static ArrayList<String> subTitle = new ArrayList<String>();
 
+    /**
+     * This resets the list of subjects for a class.
+     */
     public static void resetSubjects()
     {
         subIDs = new ArrayList<String>();
@@ -35,6 +38,13 @@ public class Classes
         subTitle = new ArrayList<String>();
     }
 
+    /**
+     * This adds a subject to the class.
+     * @param subID
+     * @param subCode
+     * @param teacher
+     * @param title
+     */
     public static void addSubject(String subID, String subCode, String teacher, String title)
     {
         if (!subIDs.contains(subID))
@@ -46,6 +56,10 @@ public class Classes
         }
     }
 
+    /**
+     * This removes a subject from the class.
+     * @param subCode
+     */
     public static void removeSubject(String subCode)
     {
         for (int i = 0; i < subCodes.size(); i++)
@@ -60,6 +74,9 @@ public class Classes
         }
     }
 
+    /**
+     * @returns a table model containing the list of subjects for a class.
+     */
     public static DefaultTableModel getSubjects()
     {
         DefaultTableModel model = new DefaultTableModel()
@@ -77,6 +94,11 @@ public class Classes
         return model;
     }
 
+    /**
+     *
+     * @param classCode
+     * @returns a table model listing the subjects a class takes.
+     */
     public static DefaultTableModel getSubjects(String classCode)
     {
         resetSubjects();
@@ -121,6 +143,10 @@ public class Classes
         return model;
     }
 
+    /**
+     * @param classCode
+     * @returns an list of subjects that a class takes.
+     */
     public static ArrayList<String> getSubjectList(String classCode)
     {
         ArrayList<String> subjects = new ArrayList<String>();
@@ -155,6 +181,15 @@ public class Classes
         return subjects;
     }
 
+    /**
+     * This function adds a class to the database.
+     * @param code
+     * @param level
+     * @param name
+     * @param description
+     * @param homeRoom
+     * @return true of the process was successful of false if it wasn't.
+     */
     public static boolean addClass(String code, String level, String name, String description, String homeRoom)
     {
         boolean successful = false;
@@ -197,6 +232,9 @@ public class Classes
         return successful;
     }
 
+    /**
+     * @returns a table model containing a list of classes.
+     */
     public static DefaultTableModel getClassTableModel()
     {
         DefaultTableModel model = new DefaultTableModel()
@@ -241,6 +279,11 @@ public class Classes
         return model;
     }
 
+    /**
+     *
+     * @param criteria
+     * @returns a table model containing a filtered list of classes.
+     */
     public static DefaultTableModel getClassTableModel(String criteria)
     {
         criteria = Utilities.percent(criteria);
@@ -472,6 +515,60 @@ public class Classes
             logger.log(Level.SEVERE, message, e);
         }
         return model;
+    }
+
+    public static ArrayList<String> getStudentIDList(String classCode)
+    {
+        ArrayList<String> studentID = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `stuID` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentID.add(rs.getString("stuID"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of students for a class.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return studentID;
+    }
+
+    public static Object[] getStudentNameList(String classCode)
+    {
+        ArrayList<String> studentID = new ArrayList<String>();
+        ArrayList<String> stuName = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `stuID`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'Name', `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentID.add(rs.getString("stuID"));
+                stuName.add(rs.getString("Name"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of students for a class.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        Object[] stuList = new Object[]
+        {
+            studentID, stuName
+        };
+        return stuList;
     }
 
     public static ArrayList<String> getClassLevelList()
