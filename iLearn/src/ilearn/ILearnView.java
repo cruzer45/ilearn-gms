@@ -42,7 +42,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
 import javax.swing.Icon;
-import javax.swing.JDesktopPane;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JInternalFrame;
@@ -91,6 +90,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -104,6 +104,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -117,6 +118,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -688,6 +690,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the edit time slot window.
+     */
     @Action
     public void showEditTimeSlots()
     {
@@ -712,6 +717,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Add Time Slot Window
+     */
     @Action
     public void showAddTimeSlot()
     {
@@ -736,6 +744,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the add time slot window.
+     */
     @Action
     public void showAddStaff()
     {
@@ -760,6 +771,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Edit staff window.
+     */
     @Action
     public void showEditStaff()
     {
@@ -784,6 +798,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the edit class window.
+     */
     @Action
     public void showEditClass()
     {
@@ -808,6 +825,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Manage School window.
+     */
     @Action
     public void showManageSchool()
     {
@@ -832,6 +852,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the logout window.
+     */
     @Action
     public void logOut()
     {
@@ -848,6 +871,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the view class window.
+     */
     @Action
     public void showViewClass()
     {
@@ -872,6 +898,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the Edit Student window.
+     */
     @Action
     public void showEditStudent()
     {
@@ -896,6 +925,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the view student window.
+     */
     @Action
     public void showViewStudent()
     {
@@ -920,6 +952,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * shows the edit subject window.
+     */
     @Action
     public void showEditSubject()
     {
@@ -944,11 +979,9 @@ public class ILearnView extends FrameView
         }
     }
 
-    public JDesktopPane getDesktopPane()
-    {
-        return desktopPane;
-    }
-
+    /**
+     * Shows the student list report.
+     */
     @Action
     public void showStudentListReport()
     {
@@ -957,6 +990,9 @@ public class ILearnView extends FrameView
         dialogStudentByClass.setVisible(true);
     }
 
+    /**
+     * shows the class list report.
+     */
     @Action
     public void showClassListingReport()
     {
@@ -976,6 +1012,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the create assessment window.
+     */
     @Action
     public void showCreateAssessment()
     {
@@ -1000,6 +1039,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * Shows the edit assessment window.
+     */
     @Action
     public void showEditAssessment()
     {
@@ -1024,6 +1066,9 @@ public class ILearnView extends FrameView
         }
     }
 
+    /**
+     * shows the attendance register.
+     */
     @Action
     public void showRegister()
     {
