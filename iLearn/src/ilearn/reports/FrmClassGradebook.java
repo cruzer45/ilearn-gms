@@ -210,7 +210,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     if (!selectedFile.getCanonicalPath().endsWith(".xls"))
                     {
                         String filename = selectedFile.getCanonicalPath();
-                        filename = filename+".xls";
+                        filename = filename + ".xls";
                         selectedFile = new File(filename);
                     }
                 }
