@@ -11,6 +11,7 @@ import ilearn.classes.FrmEditClass;
 import ilearn.classes.FrmViewClass;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.kernel.logger.iLogger;
 import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
 import ilearn.reports.FrmClassGradebook;
@@ -91,6 +92,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -104,6 +106,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -117,6 +120,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -213,8 +217,8 @@ public class ILearnView extends FrameView
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
+
         mainPanel = new javax.swing.JPanel();
         desktopPane = new javax.swing.JDesktopPane();
         menuBar = new javax.swing.JMenuBar();
@@ -263,10 +267,13 @@ public class ILearnView extends FrameView
         statusMessageLabel = new javax.swing.JLabel();
         statusAnimationLabel = new javax.swing.JLabel();
         progressBar = new javax.swing.JProgressBar();
+
         mainPanel.setName("mainPanel"); // NOI18N
+
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(ILearnView.class);
         desktopPane.setBackground(resourceMap.getColor("desktopPane.background")); // NOI18N
         desktopPane.setName("desktopPane"); // NOI18N
+
         javax.swing.GroupLayout mainPanelLayout = new javax.swing.GroupLayout(mainPanel);
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
@@ -275,210 +282,272 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
+
         menuBar.setName("menuBar"); // NOI18N
+
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
+
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(ILearnView.class, this);
         logOff.setAction(actionMap.get("logOut")); // NOI18N
         logOff.setIcon(resourceMap.getIcon("logOff.icon")); // NOI18N
         logOff.setText(resourceMap.getString("logOff.text")); // NOI18N
         logOff.setName("logOff"); // NOI18N
         fileMenu.add(logOff);
+
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
+
         menuBar.add(fileMenu);
+
         studentMenu.setText(resourceMap.getString("studentMenu.text")); // NOI18N
         studentMenu.setName("studentMenu"); // NOI18N
+
         addStudent.setAction(actionMap.get("showAddStudent")); // NOI18N
         addStudent.setText(resourceMap.getString("addStudent.text")); // NOI18N
         addStudent.setName("addStudent"); // NOI18N
         studentMenu.add(addStudent);
+
         editStudent.setAction(actionMap.get("showEditStudent")); // NOI18N
         editStudent.setIcon(resourceMap.getIcon("editStudent.icon")); // NOI18N
         editStudent.setText(resourceMap.getString("editStudent.text")); // NOI18N
         editStudent.setName("editStudent"); // NOI18N
         studentMenu.add(editStudent);
+
         viewStudent.setAction(actionMap.get("showViewStudent")); // NOI18N
         viewStudent.setIcon(resourceMap.getIcon("viewStudent.icon")); // NOI18N
         viewStudent.setText(resourceMap.getString("viewStudent.text")); // NOI18N
         viewStudent.setName("viewStudent"); // NOI18N
         studentMenu.add(viewStudent);
+
         menuBar.add(studentMenu);
+
         classMenu.setText(resourceMap.getString("classMenu.text")); // NOI18N
         classMenu.setName("classMenu"); // NOI18N
+
         addClass.setAction(actionMap.get("showAddClass")); // NOI18N
         addClass.setIcon(resourceMap.getIcon("addClass.icon")); // NOI18N
         addClass.setText(resourceMap.getString("addClass.text")); // NOI18N
         addClass.setName("addClass"); // NOI18N
         classMenu.add(addClass);
+
         editClass.setAction(actionMap.get("showEditClass")); // NOI18N
         editClass.setIcon(resourceMap.getIcon("editClass.icon")); // NOI18N
         editClass.setText(resourceMap.getString("editClass.text")); // NOI18N
         editClass.setName("editClass"); // NOI18N
         classMenu.add(editClass);
+
         viewClass.setAction(actionMap.get("showViewClass")); // NOI18N
         viewClass.setIcon(resourceMap.getIcon("viewClass.icon")); // NOI18N
         viewClass.setText(resourceMap.getString("viewClass.text")); // NOI18N
         viewClass.setName("viewClass"); // NOI18N
         classMenu.add(viewClass);
+
         enterRollCall.setAction(actionMap.get("showRegister")); // NOI18N
         enterRollCall.setIcon(resourceMap.getIcon("enterRollCall.icon")); // NOI18N
         enterRollCall.setText(resourceMap.getString("enterRollCall.text")); // NOI18N
         enterRollCall.setName("enterRollCall"); // NOI18N
         classMenu.add(enterRollCall);
+
         menuBar.add(classMenu);
+
         gradesMenu.setText(resourceMap.getString("gradesMenu.text")); // NOI18N
         gradesMenu.setName("gradesMenu"); // NOI18N
+
         createAssessment.setAction(actionMap.get("showCreateAssessment")); // NOI18N
         createAssessment.setIcon(resourceMap.getIcon("createAssessment.icon")); // NOI18N
         createAssessment.setText(resourceMap.getString("createAssessment.text")); // NOI18N
         createAssessment.setName("createAssessment"); // NOI18N
         gradesMenu.add(createAssessment);
+
         editAssessment.setAction(actionMap.get("showEditAssessment")); // NOI18N
         editAssessment.setIcon(resourceMap.getIcon("editAssessment.icon")); // NOI18N
         editAssessment.setText(resourceMap.getString("editAssessment.text")); // NOI18N
         editAssessment.setName("editAssessment"); // NOI18N
         gradesMenu.add(editAssessment);
+
         menuBar.add(gradesMenu);
+
         reportsMenu.setText(resourceMap.getString("reportsMenu.text")); // NOI18N
         reportsMenu.setName("reportsMenu"); // NOI18N
+
         studentReports.setIcon(resourceMap.getIcon("studentReports.icon")); // NOI18N
         studentReports.setText(resourceMap.getString("studentReports.text")); // NOI18N
         studentReports.setName("studentReports"); // NOI18N
+
         studentList.setAction(actionMap.get("showStudentListReport")); // NOI18N
         studentList.setIcon(resourceMap.getIcon("studentList.icon")); // NOI18N
         studentList.setText(resourceMap.getString("studentList.text")); // NOI18N
         studentList.setName("studentList"); // NOI18N
         studentReports.add(studentList);
+
         reportsMenu.add(studentReports);
+
         classReports.setIcon(resourceMap.getIcon("classReports.icon")); // NOI18N
         classReports.setText(resourceMap.getString("classReports.text")); // NOI18N
         classReports.setName("classReports"); // NOI18N
+
         classListReport.setAction(actionMap.get("showClassListingReport")); // NOI18N
         classListReport.setIcon(resourceMap.getIcon("classListReport.icon")); // NOI18N
         classListReport.setText(resourceMap.getString("classListReport.text")); // NOI18N
         classListReport.setName("classListReport"); // NOI18N
         classReports.add(classListReport);
+
         classGradeBook.setAction(actionMap.get("showGradebookReport")); // NOI18N
         classGradeBook.setIcon(resourceMap.getIcon("classGradeBook.icon")); // NOI18N
         classGradeBook.setText(resourceMap.getString("classGradeBook.text")); // NOI18N
         classGradeBook.setName("classGradeBook"); // NOI18N
         classReports.add(classGradeBook);
+
         reportsMenu.add(classReports);
+
         menuBar.add(reportsMenu);
+
         manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
+
         staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
         staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
         staffMenu.setName("staffMenu"); // NOI18N
+
         addStaff.setAction(actionMap.get("showAddStaff")); // NOI18N
         addStaff.setIcon(resourceMap.getIcon("addStaff.icon")); // NOI18N
         addStaff.setText(resourceMap.getString("addStaff.text")); // NOI18N
         addStaff.setName("addStaff"); // NOI18N
         staffMenu.add(addStaff);
+
         editStaff.setAction(actionMap.get("showEditStaff")); // NOI18N
         editStaff.setIcon(resourceMap.getIcon("editStaff.icon")); // NOI18N
         editStaff.setText(resourceMap.getString("editStaff.text")); // NOI18N
         editStaff.setName("editStaff"); // NOI18N
         staffMenu.add(editStaff);
+
         manageMenu.add(staffMenu);
+
         subjectMenu.setIcon(resourceMap.getIcon("subjectMenu.icon")); // NOI18N
         subjectMenu.setText(resourceMap.getString("subjectMenu.text")); // NOI18N
         subjectMenu.setName("subjectMenu"); // NOI18N
+
         addSubject.setAction(actionMap.get("showAddSubject")); // NOI18N
         addSubject.setIcon(resourceMap.getIcon("addSubject.icon")); // NOI18N
         addSubject.setText(resourceMap.getString("addSubject.text")); // NOI18N
         addSubject.setName("addSubject"); // NOI18N
         subjectMenu.add(addSubject);
+
         editSubject.setAction(actionMap.get("showEditSubject")); // NOI18N
         editSubject.setIcon(resourceMap.getIcon("editSubject.icon")); // NOI18N
         editSubject.setText(resourceMap.getString("editSubject.text")); // NOI18N
         editSubject.setName("editSubject"); // NOI18N
         subjectMenu.add(editSubject);
+
         manageMenu.add(subjectMenu);
+
         termMenu.setIcon(resourceMap.getIcon("termMenu.icon")); // NOI18N
         termMenu.setText(resourceMap.getString("termMenu.text")); // NOI18N
         termMenu.setName("termMenu"); // NOI18N
+
         addTerm.setAction(actionMap.get("showAddTerm")); // NOI18N
         addTerm.setText(resourceMap.getString("addTerm.text")); // NOI18N
         addTerm.setName("addTerm"); // NOI18N
         termMenu.add(addTerm);
+
         editTerm.setAction(actionMap.get("showEditTerm")); // NOI18N
         editTerm.setText(resourceMap.getString("editTerm.text")); // NOI18N
         editTerm.setName("editTerm"); // NOI18N
         termMenu.add(editTerm);
+
         manageMenu.add(termMenu);
+
         timeSlotsMenu.setIcon(resourceMap.getIcon("timeSlotsMenu.icon")); // NOI18N
         timeSlotsMenu.setText(resourceMap.getString("timeSlotsMenu.text")); // NOI18N
         timeSlotsMenu.setName("timeSlotsMenu"); // NOI18N
+
         addTimeSlot.setAction(actionMap.get("showAddTimeSlot")); // NOI18N
         addTimeSlot.setText(resourceMap.getString("addTimeSlot.text")); // NOI18N
         addTimeSlot.setName("addTimeSlot"); // NOI18N
         timeSlotsMenu.add(addTimeSlot);
+
         editTimeSlot.setAction(actionMap.get("showEditTimeSlots")); // NOI18N
         editTimeSlot.setText(resourceMap.getString("editTimeSlot.text")); // NOI18N
         editTimeSlot.setName("editTimeSlot"); // NOI18N
         timeSlotsMenu.add(editTimeSlot);
+
         manageMenu.add(timeSlotsMenu);
+
         userMenu.setIcon(resourceMap.getIcon("userMenu.icon")); // NOI18N
         userMenu.setText(resourceMap.getString("userMenu.text")); // NOI18N
         userMenu.setName("userMenu"); // NOI18N
+
         addUser.setAction(actionMap.get("showAddUser")); // NOI18N
         addUser.setIcon(resourceMap.getIcon("addUser.icon")); // NOI18N
         addUser.setText(resourceMap.getString("addUser.text")); // NOI18N
         addUser.setName("addUser"); // NOI18N
         userMenu.add(addUser);
+
         editUser.setAction(actionMap.get("showEditUser")); // NOI18N
         editUser.setText(resourceMap.getString("editUser.text")); // NOI18N
         editUser.setName("editUser"); // NOI18N
         userMenu.add(editUser);
+
         manageMenu.add(userMenu);
+
         schoolInfo.setAction(actionMap.get("showManageSchool")); // NOI18N
         schoolInfo.setIcon(resourceMap.getIcon("schoolInfo.icon")); // NOI18N
         schoolInfo.setText(resourceMap.getString("schoolInfo.text")); // NOI18N
         schoolInfo.setName("schoolInfo"); // NOI18N
         manageMenu.add(schoolInfo);
+
         menuBar.add(manageMenu);
         manageMenu.setText("Manage");
+
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
+
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
         aboutMenuItem.setName("aboutMenuItem"); // NOI18N
         helpMenu.add(aboutMenuItem);
+
         menuBar.add(helpMenu);
+
         statusPanel.setName("statusPanel"); // NOI18N
+
         statusPanelSeparator.setName("statusPanelSeparator"); // NOI18N
+
         statusMessageLabel.setName("statusMessageLabel"); // NOI18N
+
         statusAnimationLabel.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
         statusAnimationLabel.setName("statusAnimationLabel"); // NOI18N
+
         progressBar.setName("progressBar"); // NOI18N
+
         javax.swing.GroupLayout statusPanelLayout = new javax.swing.GroupLayout(statusPanel);
         statusPanel.setLayout(statusPanelLayout);
         statusPanelLayout.setHorizontalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(statusPanelSeparator, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(statusMessageLabel)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
-                      .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(statusAnimationLabel)
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(statusMessageLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
+                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(statusAnimationLabel)
+                .addContainerGap())
         );
         statusPanelLayout.setVerticalGroup(
             statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(statusPanelLayout.createSequentialGroup()
-                      .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                      .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(statusMessageLabel)
-                                .addComponent(statusAnimationLabel)
-                                .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addGap(3, 3, 3))
+                .addComponent(statusPanelSeparator, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(statusPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(statusMessageLabel)
+                    .addComponent(statusAnimationLabel)
+                    .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3))
         );
+
         setComponent(mainPanel);
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
@@ -866,10 +935,13 @@ public class ILearnView extends FrameView
         int response = Utilities.showConfirmDialog(getFrame(), message);
         if (response == JOptionPane.YES_OPTION)
         {
+
             for (JInternalFrame frame : desktopPane.getAllFrames())
             {
                 frame.dispose();
             }
+            message = "The user successfully logged Off.";
+            iLogger.logMessage(message, "Log Off", "User");
             showLoginScreen();
             checkPrivileges();
         }

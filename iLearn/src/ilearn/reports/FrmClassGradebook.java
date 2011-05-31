@@ -26,9 +26,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
-import org.apache.poi.hssf.usermodel.HSSFCell;
-import org.apache.poi.hssf.usermodel.HSSFCellStyle;
-import org.apache.poi.hssf.usermodel.HSSFFont;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
@@ -110,11 +107,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
         lblSubject.setName("lblSubject"); // NOI18N
 
         cmbSubject.setName("cmbSubject"); // NOI18N
-        cmbSubject.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cmbSubjectActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -129,14 +121,14 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblClass)
-                        .addGap(15, 15, 15)
-                        .addComponent(cmbClass, 0, 302, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblSubject)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblClass)
+                            .addComponent(lblSubject))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbSubject, 0, 302, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cmbClass, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbSubject, 0, 270, Short.MAX_VALUE))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -160,11 +152,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
-    {
-//GEN-HEADEREND:event_cmbSubjectActionPerformed
-    }//GEN-LAST:event_cmbSubjectActionPerformed
 
     private void cmbClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbClassActionPerformed
     {
@@ -223,6 +210,10 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 classID = Classes.getClassID(cmbClass.getSelectedItem().toString());
                 subjectID = cmbSubject.getSelectedItem().toString();
             }
+            else
+            {
+                return;
+            }
         }
 
         @Override
@@ -239,7 +230,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 ArrayList<String> studentIDs = new ArrayList<String>();
                 ArrayList<String> studentNames = new ArrayList<String>();
                 //Get the list of assessments
-                String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `ilearn`.`assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY `assmtType` ASC, `assmtDate` ASC LIMIT 0, 1000;";
+                String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `iLearn`.`Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY `assmtType` ASC, `assmtDate` ASC LIMIT 0, 1000;";
                 PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
                 prep.setString(1, classID);
                 prep.setString(2, Term.getCurrentTerm());

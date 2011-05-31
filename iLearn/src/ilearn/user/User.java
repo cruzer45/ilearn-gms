@@ -7,6 +7,9 @@ package ilearn.user;
 import ilearn.kernel.EncryptionHandler;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.kernel.logger.iLogger;
+import java.net.Inet4Address;
+import java.net.InetAddress;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -26,6 +29,14 @@ public class User
     private static String userName = "";
     private static String userGroup = "";
 
+    /**
+     * This function checks to see if the given username and password matches
+     * one stored in the database.
+     * @param username
+     * @param password
+     * @return True of the username is found and the passwords match,
+     *         False if it wasn't found or the passwords don't match.
+     */
     public static boolean logIn(String username, String password)
     {
         String storedPassword = "";
@@ -48,9 +59,18 @@ public class User
             if (storedPassword.equals(encryptedPassword))
             {
                 successful = true;
+                //Log the action
+                String computername = InetAddress.getLocalHost().getHostName();
+                InetAddress[] ip = Inet4Address.getAllByName(computername);
+                String message = "SUCCESS: The user successfully logged on from " + ip[1] + ".";
+                iLogger.logMessage(message, "Log On", "User");
             }
             else
             {
+                String computername = InetAddress.getLocalHost().getHostName();
+                InetAddress[] ip = Inet4Address.getAllByName(computername);
+                String message = "ERROR: Failed to login as " + username + " from " + ip[1] + ".";
+                iLogger.logMessage(message, "Log On", "User");
                 loginCount++;
                 successful = false;
             }
@@ -60,19 +80,29 @@ public class User
             String message = "ERROR: Could not validate user information.";
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
             message = "An error occurred while validating the login information.\n"
-                      + "Kindly consult your system administrator.";
+                    + "Kindly consult your system administrator.";
             Utilities.showErrorMessage(null, message);
         }
         if (loginCount >= 3)
         {
             String message = "You have exceeded the number of failed login attempts.\n"
-                             + "The program will now exit.";
+                    + "The program will now exit.";
             Utilities.showErrorMessage(null, message);
             ilearn.ILearnApp.getApplication().exit();
         }
         return successful;
     }
 
+    /**
+     * This function adds a user to the system.
+     * @param username
+     * @param password
+     * @param firstName
+     * @param lastName
+     * @param group
+     * @returns True if the user was added to the system.
+     *          Will return false if the username already exists.
+     */
     public static boolean addUser(String username, String password, String firstName, String lastName, String group)
     {
         boolean successful = false;
@@ -88,11 +118,14 @@ public class User
             prep.execute();
             prep.close();
             successful = true;
+            //Log the action
+            String message = "SUCCESS: The user \"" + username + "\" was added to the system.";
+            iLogger.logMessage(message, "Add", "User");
         }
         catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex)
         {
             String message = "An error occurred while adding a user to the database.\n"
-                             + "This username already exists.";
+                    + "This username already exists.";
             Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, ex);
             successful = false;
             Utilities.showErrorMessage(null, message);
@@ -106,6 +139,10 @@ public class User
         return successful;
     }
 
+    /**
+     * This returns a table model containing a list of all the users.
+     * @return
+     */
     public static DefaultTableModel getUserList()
     {
         ArrayList<String> id = new ArrayList<String>();
@@ -134,6 +171,7 @@ public class User
         }
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -147,6 +185,11 @@ public class User
         return model;
     }
 
+    /**
+     * This function gets the information for a specific user.
+     * @param ID
+     * @return
+     */
     public static String[] getUserInfo(String ID)
     {
         String sql = "SELECT * FROM `User` WHERE `usrID` = ?;";
@@ -180,6 +223,18 @@ public class User
         return results;
     }
 
+    /**
+     * This method will update the information for a specified user with the values given.
+     * @param ID
+     * @param firstName
+     * @param lastName
+     * @param userName
+     * @param password
+     * @param group
+     * @param status
+     * @return True of the action was completed successfully.
+     *         False if anything went wrong.
+     */
     public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String status)
     {
         boolean successful = false;
@@ -202,6 +257,9 @@ public class User
             prep.executeUpdate();
             prep.close();
             successful = true;
+            //Log the action
+            String message = "SUCCESS: " + userName + "'s information was changed.";
+            iLogger.logMessage(message, "Update", "User");
         }
         catch (Exception e)
         {
@@ -211,6 +269,10 @@ public class User
         return successful;
     }
 
+    /**
+     * Returns a list of the different user groups.
+     * @return
+     */
     public static ArrayList<String> getUserGroups()
     {
         ArrayList<String> groups = new ArrayList<String>();
@@ -234,6 +296,11 @@ public class User
         return groups;
     }
 
+    /**
+     * Returns a list of the different levels available to a group.
+     * @param group
+     * @return
+     */
     public static ArrayList<String> getGroupLevels(String group)
     {
         ArrayList<String> levels = new ArrayList<String>();

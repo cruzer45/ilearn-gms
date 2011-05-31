@@ -12,7 +12,6 @@ package ilearn.assessments;
 
 import ilearn.classes.Classes;
 import ilearn.kernel.Utilities;
-import ilearn.staff.Staff;
 import ilearn.term.Term;
 import java.util.ArrayList;
 import java.util.Date;
@@ -266,7 +265,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
     private void cmbClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbClassActionPerformed
     {
-        //GEN-HEADEREND:event_cmbClassActionPerformed
+//GEN-HEADEREND:event_cmbClassActionPerformed
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
@@ -288,7 +287,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
 
     private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
     {
-        //GEN-HEADEREND:event_cmbSubjectActionPerformed
+//GEN-HEADEREND:event_cmbSubjectActionPerformed
         next();
     }//GEN-LAST:event_cmbSubjectActionPerformed
 
@@ -302,16 +301,16 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
     public void save()
     {
         String assmtTerm = Term.getCurrentTerm(),
-               assmtSubject = cmbSubject.getSelectedItem().toString(),
-               assmtTeacher = "",
-               assmtTitle = txtTitle.getText().trim(),
-               assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
-               assmtType = cmbType.getSelectedItem().toString(),
-               assmtTotalPoints = txtMaxPoints.getText().trim(),
-               assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
+                assmtSubject = cmbSubject.getSelectedItem().toString(),
+                assmtTeacher = "",
+                assmtTitle = txtTitle.getText().trim(),
+                assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
+                assmtType = cmbType.getSelectedItem().toString(),
+                assmtTotalPoints = txtMaxPoints.getText().trim(),
+                assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
         ArrayList<String> stuID = new ArrayList<String>(),
-        grade = new ArrayList<String>(),
-        remarks = new ArrayList<String>();
+                grade = new ArrayList<String>(),
+                remarks = new ArrayList<String>();
         //get the values from the tables.
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
@@ -328,7 +327,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         if (addAssessment && addGrades)
         {
             String message = "The assessment was successfully saved. \n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -342,7 +341,7 @@ public class FrmCreateAssessment extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this assessment.\n"
-                             + "Kindly verify your information and try again.";
+                    + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

@@ -5,6 +5,7 @@
 package ilearn.register;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.logger.iLogger;
 import ilearn.term.Term;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -27,6 +28,7 @@ public class Register
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -47,6 +49,7 @@ public class Register
                     return Object.class;
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int ColIndex)
             {
@@ -58,6 +61,7 @@ public class Register
                 }
                 return editable;
             }
+
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -127,6 +131,9 @@ public class Register
             prep.executeBatch();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "The register for class, " + date + " was added to the system.";
+            iLogger.logMessage(message, "Add", "Register");
         }
         catch (Exception e)
         {

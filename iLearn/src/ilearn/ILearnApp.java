@@ -4,6 +4,7 @@
 package ilearn;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.logger.iLogger;
 import javax.swing.UIManager;
 import org.jdesktop.application.Application;
 import org.jdesktop.application.SingleFrameApplication;
@@ -26,13 +27,10 @@ public class ILearnApp extends SingleFrameApplication
     @Override
     protected void shutdown()
     {
-//        String message = "Are you sure you want to exit the program?";
-//        int response = Utilities.showConfirmDialog(ILearnApp.getApplication().getMainFrame(), message);
-//        if (response == JOptionPane.YES_OPTION)
-//        {
+        String message = "The user successfully logged Off.";
+        iLogger.logMessage(message, "Log Off", "User");
         Environment.closeConnection();
         super.shutdown();
-//        }
     }
 
     /**

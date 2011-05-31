@@ -6,6 +6,7 @@ package ilearn.classes;
 
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.kernel.logger.iLogger;
 import ilearn.subject.Subject;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -223,6 +224,9 @@ public class Classes
             prep.execute();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "The class, \"" + code + "\" was added to the system.";
+            iLogger.logMessage(message, "Add", "Class");
         }
         catch (Exception e)
         {
@@ -398,6 +402,9 @@ public class Classes
             prep.executeUpdate();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "The class, \"" + code + "\" was modifided.";
+            iLogger.logMessage(message, "Update", "Class");
         }
         catch (Exception e)
         {

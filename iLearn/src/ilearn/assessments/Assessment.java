@@ -7,6 +7,7 @@ package ilearn.assessments;
 import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.kernel.logger.iLogger;
 import ilearn.term.Term;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -59,6 +60,7 @@ public class Assessment
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -72,6 +74,7 @@ public class Assessment
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -84,6 +87,7 @@ public class Assessment
                 return editable;
                 //return false;
             }
+
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -104,6 +108,7 @@ public class Assessment
                 }
             }
             // Protected methods
+
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
@@ -128,6 +133,7 @@ public class Assessment
                 }
                 return false;
             }
+
             protected boolean isInteger(String input)
             {
                 try
@@ -140,6 +146,7 @@ public class Assessment
                     return false;
                 }
             }
+
             protected boolean isDouble(String input)
             {
                 try
@@ -206,6 +213,9 @@ public class Assessment
             prep.execute();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "The assessment, \"" + assmtTitle + "\" was added to the system.";
+            iLogger.logMessage(message, "Add", "Assessment");
         }
         catch (Exception e)
         {
@@ -232,6 +242,9 @@ public class Assessment
             prep.executeUpdate();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "Assessment No. " + assmtID + "\" was modified.";
+            iLogger.logMessage(message, "Update", "Assessment");
         }
         catch (Exception e)
         {
@@ -273,7 +286,7 @@ public class Assessment
         boolean successful = false;
         try
         {
-            String sql = "UPDATE `termgrade` SET `grdPointsEarned`= ?, `grdRemark`= ? WHERE `grdStuID`= ? and `grdAssmtID` = ? LIMIT 1;";
+            String sql = "UPDATE `TermGrade` SET `grdPointsEarned`= ?, `grdRemark`= ? WHERE `grdStuID`= ? and `grdAssmtID` = ? LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < stuID.size(); i++)
             {
@@ -301,8 +314,8 @@ public class Assessment
         try
         {
             String sql = "SELECT `assmtID` FROM `iLearn`.`Assments` "
-                         + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
-                         + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
+                    + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
+                    + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtType);
             prep.setString(2, assmtTitle);
@@ -334,6 +347,7 @@ public class Assessment
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -347,6 +361,7 @@ public class Assessment
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -362,9 +377,9 @@ public class Assessment
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                         + "FROM `iLearn`.`Assments` "
-                         + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
-                         + "LIMIT 0, 1000;";
+                    + "FROM `iLearn`.`Assments` "
+                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                    + "LIMIT 0, 1000;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -408,8 +423,8 @@ public class Assessment
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                         + "FROM `iLearn`.`Assments` "
-                         + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
+                    + "FROM `iLearn`.`Assments` "
+                    + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             ResultSet rs = prep.executeQuery();
@@ -438,7 +453,7 @@ public class Assessment
         try
         {
             String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
-                         + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
+                    + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.setString(2, stuID);
@@ -476,7 +491,7 @@ public class Assessment
         }
         catch (Exception e)
         {
-            String message = "An error occurred while saving assessment grades.";
+            String message = "An error occurred while saving blank assessment grades.";
             logger.log(Level.SEVERE, message, e);
         }
         return successful;

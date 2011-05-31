@@ -51,6 +51,8 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     private void populateLists()
     {
         ArrayList<String> classList = Classes.getClassList();
+        classList.add(0, "--- Select One ---");
+        classList.add(1, "New Student");
         cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
     }
 
