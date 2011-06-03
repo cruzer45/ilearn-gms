@@ -59,6 +59,16 @@
                 <Property name="name" type="java.lang.String" value="logOff" noResource="true"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="changePasswordMenuItem">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showChangePassword" methodName="showChangePassword"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="changePasswordMenuItem.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="changePasswordMenuItem.text"/>
+                <Property name="name" type="java.lang.String" value="changePasswordMenuItem" noResource="true"/>
+              </Properties>
+            </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="exitMenuItem">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">

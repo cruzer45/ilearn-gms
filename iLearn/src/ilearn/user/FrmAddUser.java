@@ -33,23 +33,71 @@ public class FrmAddUser extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
-        lblFirstName = new javax.swing.JLabel();
-        lblLastName = new javax.swing.JLabel();
-        lblUserName = new javax.swing.JLabel();
-        lblPassword = new javax.swing.JLabel();
-        txtFirstName = new javax.swing.JTextField();
-        txtUserName = new javax.swing.JTextField();
-        txtLastName = new javax.swing.JTextField();
-        txtPassword = new javax.swing.JPasswordField();
-        lblGroup = new javax.swing.JLabel();
-        cmbGroup = new javax.swing.JComboBox();
+    private void initComponents() {
+
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        generalPanel = new javax.swing.JPanel();
+        lblFirstName = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        txtFirstName = new javax.swing.JTextField();
         jSpinner1 = new javax.swing.JSpinner();
+        lblPassword = new javax.swing.JLabel();
+        lblLastName = new javax.swing.JLabel();
+        txtUserName = new javax.swing.JTextField();
+        txtPassword = new javax.swing.JPasswordField();
+        lblGroup = new javax.swing.JLabel();
+        txtLastName = new javax.swing.JTextField();
+        lblUserName = new javax.swing.JLabel();
+        cmbGroup = new javax.swing.JComboBox();
+        linksPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        prevelidgeScrollPane = new javax.swing.JScrollPane();
+        prevelidgePanel = new javax.swing.JPanel();
+        StudentPanel = new javax.swing.JPanel();
+        chkAddStudent = new javax.swing.JCheckBox();
+        chkEditStudent = new javax.swing.JCheckBox();
+        chkViewStudent = new javax.swing.JCheckBox();
+        chkStudent = new javax.swing.JCheckBox();
+        classPanel = new javax.swing.JPanel();
+        chkAddClass = new javax.swing.JCheckBox();
+        chkEditClass = new javax.swing.JCheckBox();
+        chkViewClass = new javax.swing.JCheckBox();
+        chkEnterAttendance = new javax.swing.JCheckBox();
+        chkClass = new javax.swing.JCheckBox();
+        gradesPanel = new javax.swing.JPanel();
+        chkRecordGrades = new javax.swing.JCheckBox();
+        chkEditGrades = new javax.swing.JCheckBox();
+        chkGrades = new javax.swing.JCheckBox();
+        jPanel6 = new javax.swing.JPanel();
+        jCheckBox10 = new javax.swing.JCheckBox();
+        jCheckBox11 = new javax.swing.JCheckBox();
+        jCheckBox12 = new javax.swing.JCheckBox();
+        jCheckBox28 = new javax.swing.JCheckBox();
+        jCheckBox29 = new javax.swing.JCheckBox();
+        jPanel7 = new javax.swing.JPanel();
+        jCheckBox13 = new javax.swing.JCheckBox();
+        jCheckBox14 = new javax.swing.JCheckBox();
+        jCheckBox15 = new javax.swing.JCheckBox();
+        jCheckBox16 = new javax.swing.JCheckBox();
+        jCheckBox17 = new javax.swing.JCheckBox();
+        jCheckBox18 = new javax.swing.JCheckBox();
+        jCheckBox19 = new javax.swing.JCheckBox();
+        jCheckBox20 = new javax.swing.JCheckBox();
+        jCheckBox21 = new javax.swing.JCheckBox();
+        jCheckBox22 = new javax.swing.JCheckBox();
+        jCheckBox23 = new javax.swing.JCheckBox();
+        jCheckBox24 = new javax.swing.JCheckBox();
+        jCheckBox30 = new javax.swing.JCheckBox();
+        jCheckBox31 = new javax.swing.JCheckBox();
+        jCheckBox32 = new javax.swing.JCheckBox();
+        jCheckBox33 = new javax.swing.JCheckBox();
+
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmAddUser.class);
@@ -57,112 +105,747 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-        lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
-        lblFirstName.setName("lblFirstName"); // NOI18N
-        lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
-        lblLastName.setName("lblLastName"); // NOI18N
-        lblUserName.setText(resourceMap.getString("lblUserName.text")); // NOI18N
-        lblUserName.setName("lblUserName"); // NOI18N
-        lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
-        lblPassword.setName("lblPassword"); // NOI18N
-        txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
-        txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
-        txtFirstName.setName("txtFirstName"); // NOI18N
-        txtUserName.setText(resourceMap.getString("txtUserName.text")); // NOI18N
-        txtUserName.setToolTipText(resourceMap.getString("txtUserName.toolTipText")); // NOI18N
-        txtUserName.setName("txtUserName"); // NOI18N
-        txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
-        txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
-        txtLastName.setName("txtLastName"); // NOI18N
-        txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
-        txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
-        txtPassword.setName("txtPassword"); // NOI18N
-        lblGroup.setText(resourceMap.getString("lblGroup.text")); // NOI18N
-        lblGroup.setName("lblGroup"); // NOI18N
-        cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
-        cmbGroup.setName("cmbGroup"); // NOI18N
+
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddUser.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
+
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
+
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
+
+        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+
+        generalPanel.setName("generalPanel"); // NOI18N
+
+        lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
+        lblFirstName.setName("lblFirstName"); // NOI18N
+
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
+
+        txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
+        txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
+        txtFirstName.setName("txtFirstName"); // NOI18N
+
         jSpinner1.setName("jSpinner1"); // NOI18N
+
+        lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
+        lblPassword.setName("lblPassword"); // NOI18N
+
+        lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
+        lblLastName.setName("lblLastName"); // NOI18N
+
+        txtUserName.setText(resourceMap.getString("txtUserName.text")); // NOI18N
+        txtUserName.setToolTipText(resourceMap.getString("txtUserName.toolTipText")); // NOI18N
+        txtUserName.setName("txtUserName"); // NOI18N
+
+        txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
+        txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
+        txtPassword.setName("txtPassword"); // NOI18N
+
+        lblGroup.setText(resourceMap.getString("lblGroup.text")); // NOI18N
+        lblGroup.setName("lblGroup"); // NOI18N
+
+        txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
+        txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
+        txtLastName.setName("txtLastName"); // NOI18N
+
+        lblUserName.setText(resourceMap.getString("lblUserName.text")); // NOI18N
+        lblUserName.setName("lblUserName"); // NOI18N
+
+        cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
+        cmbGroup.setName("cmbGroup"); // NOI18N
+
+        javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
+        generalPanel.setLayout(generalPanelLayout);
+        generalPanelLayout.setHorizontalGroup(
+            generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLastName)
+                    .addComponent(lblUserName)
+                    .addComponent(lblFirstName)
+                    .addComponent(lblPassword)
+                    .addComponent(lblGroup)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 319, Short.MAX_VALUE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                .addContainerGap())
+        );
+        generalPanelLayout.setVerticalGroup(
+            generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(generalPanelLayout.createSequentialGroup()
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLastName)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserName)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGroup)
+                    .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(201, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+
+        linksPanel.setName("linksPanel"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name"
+            }
+        ));
+        jTable1.setColumnSelectionAllowed(true);
+        jTable1.setName("jTable1"); // NOI18N
+        jScrollPane2.setViewportView(jTable1);
+        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
+        jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
+
+        jButton1.setAction(actionMap.get("unlinkAccount")); // NOI18N
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+
+        jButton2.setAction(actionMap.get("linkAccount")); // NOI18N
+        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
+        jButton2.setName("jButton2"); // NOI18N
+
+        javax.swing.GroupLayout linksPanelLayout = new javax.swing.GroupLayout(linksPanel);
+        linksPanel.setLayout(linksPanelLayout);
+        linksPanelLayout.setHorizontalGroup(
+            linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                    .addGroup(linksPanelLayout.createSequentialGroup()
+                        .addComponent(jButton2)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1)))
+                .addContainerGap())
+        );
+        linksPanelLayout.setVerticalGroup(
+            linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
+                .addContainerGap())
+        );
+
+        jTabbedPane1.addTab(resourceMap.getString("linksPanel.TabConstraints.tabTitle"), resourceMap.getIcon("linksPanel.TabConstraints.tabIcon"), linksPanel); // NOI18N
+
+        prevelidgeScrollPane.setBorder(null);
+        prevelidgeScrollPane.setName("prevelidgeScrollPane"); // NOI18N
+
+        prevelidgePanel.setName("prevelidgePanel"); // NOI18N
+
+        StudentPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("StudentPanel.border.title"))); // NOI18N
+        StudentPanel.setName("StudentPanel"); // NOI18N
+
+        chkAddStudent.setText(resourceMap.getString("chkAddStudent.text")); // NOI18N
+        chkAddStudent.setName("chkAddStudent"); // NOI18N
+        chkAddStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAddStudentActionPerformed(evt);
+            }
+        });
+
+        chkEditStudent.setText(resourceMap.getString("chkEditStudent.text")); // NOI18N
+        chkEditStudent.setName("chkEditStudent"); // NOI18N
+        chkEditStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkEditStudentActionPerformed(evt);
+            }
+        });
+
+        chkViewStudent.setText(resourceMap.getString("chkViewStudent.text")); // NOI18N
+        chkViewStudent.setName("chkViewStudent"); // NOI18N
+        chkViewStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkViewStudentActionPerformed(evt);
+            }
+        });
+
+        chkStudent.setFont(chkStudent.getFont().deriveFont(chkStudent.getFont().getStyle() | java.awt.Font.BOLD));
+        chkStudent.setText(resourceMap.getString("chkStudent.text")); // NOI18N
+        chkStudent.setName("chkStudent"); // NOI18N
+        chkStudent.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkStudentActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout StudentPanelLayout = new javax.swing.GroupLayout(StudentPanel);
+        StudentPanel.setLayout(StudentPanelLayout);
+        StudentPanelLayout.setHorizontalGroup(
+            StudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(StudentPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(StudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(StudentPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(StudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkAddStudent)
+                            .addComponent(chkEditStudent)
+                            .addComponent(chkViewStudent)))
+                    .addComponent(chkStudent))
+                .addContainerGap(51, Short.MAX_VALUE))
+        );
+        StudentPanelLayout.setVerticalGroup(
+            StudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(StudentPanelLayout.createSequentialGroup()
+                .addComponent(chkStudent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkAddStudent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkEditStudent)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkViewStudent)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+
+        classPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("classPanel.border.title"))); // NOI18N
+        classPanel.setName("classPanel"); // NOI18N
+
+        chkAddClass.setText(resourceMap.getString("chkAddClass.text")); // NOI18N
+        chkAddClass.setName("chkAddClass"); // NOI18N
+        chkAddClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkAddClassActionPerformed(evt);
+            }
+        });
+
+        chkEditClass.setText(resourceMap.getString("chkEditClass.text")); // NOI18N
+        chkEditClass.setName("chkEditClass"); // NOI18N
+        chkEditClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkEditClassActionPerformed(evt);
+            }
+        });
+
+        chkViewClass.setText(resourceMap.getString("chkViewClass.text")); // NOI18N
+        chkViewClass.setName("chkViewClass"); // NOI18N
+        chkViewClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkViewClassActionPerformed(evt);
+            }
+        });
+
+        chkEnterAttendance.setText(resourceMap.getString("chkEnterAttendance.text")); // NOI18N
+        chkEnterAttendance.setName("chkEnterAttendance"); // NOI18N
+        chkEnterAttendance.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkEnterAttendanceActionPerformed(evt);
+            }
+        });
+
+        chkClass.setFont(chkClass.getFont().deriveFont(chkClass.getFont().getStyle() | java.awt.Font.BOLD));
+        chkClass.setText(resourceMap.getString("chkClass.text")); // NOI18N
+        chkClass.setName("chkClass"); // NOI18N
+        chkClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkClassActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout classPanelLayout = new javax.swing.GroupLayout(classPanel);
+        classPanel.setLayout(classPanelLayout);
+        classPanelLayout.setHorizontalGroup(
+            classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(classPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(classPanelLayout.createSequentialGroup()
+                        .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(classPanelLayout.createSequentialGroup()
+                                .addGap(21, 21, 21)
+                                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(chkAddClass)
+                                    .addComponent(chkEditClass)
+                                    .addComponent(chkViewClass)))
+                            .addComponent(chkClass))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(chkEnterAttendance)))
+                .addContainerGap(16, Short.MAX_VALUE))
+        );
+        classPanelLayout.setVerticalGroup(
+            classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(classPanelLayout.createSequentialGroup()
+                .addComponent(chkClass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkAddClass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkEditClass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkViewClass)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkEnterAttendance)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        gradesPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("gradesPanel.border.title"))); // NOI18N
+        gradesPanel.setName("gradesPanel"); // NOI18N
+
+        chkRecordGrades.setText(resourceMap.getString("chkRecordGrades.text")); // NOI18N
+        chkRecordGrades.setName("chkRecordGrades"); // NOI18N
+        chkRecordGrades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkRecordGradesActionPerformed(evt);
+            }
+        });
+
+        chkEditGrades.setText(resourceMap.getString("chkEditGrades.text")); // NOI18N
+        chkEditGrades.setName("chkEditGrades"); // NOI18N
+        chkEditGrades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkEditGradesActionPerformed(evt);
+            }
+        });
+
+        chkGrades.setFont(chkGrades.getFont().deriveFont(chkGrades.getFont().getStyle() | java.awt.Font.BOLD));
+        chkGrades.setText(resourceMap.getString("chkGrades.text")); // NOI18N
+        chkGrades.setName("chkGrades"); // NOI18N
+        chkGrades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkGradesActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout gradesPanelLayout = new javax.swing.GroupLayout(gradesPanel);
+        gradesPanel.setLayout(gradesPanelLayout);
+        gradesPanelLayout.setHorizontalGroup(
+            gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gradesPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(gradesPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkRecordGrades)
+                            .addComponent(chkEditGrades)))
+                    .addComponent(chkGrades))
+                .addContainerGap(40, Short.MAX_VALUE))
+        );
+        gradesPanelLayout.setVerticalGroup(
+            gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(gradesPanelLayout.createSequentialGroup()
+                .addComponent(chkGrades)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkRecordGrades)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chkEditGrades)
+                .addContainerGap(66, Short.MAX_VALUE))
+        );
+
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("jPanel6.border.title"))); // NOI18N
+        jPanel6.setName("jPanel6"); // NOI18N
+
+        jCheckBox10.setText(resourceMap.getString("jCheckBox10.text")); // NOI18N
+        jCheckBox10.setName("jCheckBox10"); // NOI18N
+
+        jCheckBox11.setText(resourceMap.getString("jCheckBox11.text")); // NOI18N
+        jCheckBox11.setName("jCheckBox11"); // NOI18N
+
+        jCheckBox12.setText(resourceMap.getString("jCheckBox12.text")); // NOI18N
+        jCheckBox12.setName("jCheckBox12"); // NOI18N
+
+        jCheckBox28.setFont(jCheckBox28.getFont().deriveFont(jCheckBox28.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox28.setText(resourceMap.getString("jCheckBox28.text")); // NOI18N
+        jCheckBox28.setName("jCheckBox28"); // NOI18N
+
+        jCheckBox29.setFont(jCheckBox29.getFont().deriveFont(jCheckBox29.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox29.setText(resourceMap.getString("jCheckBox29.text")); // NOI18N
+        jCheckBox29.setName("jCheckBox29"); // NOI18N
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox11)
+                            .addComponent(jCheckBox12)))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addComponent(jCheckBox10))
+                    .addComponent(jCheckBox28)
+                    .addComponent(jCheckBox29))
+                .addContainerGap(21, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addComponent(jCheckBox28)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox10)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox29)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox12)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("jPanel7.border.title"))); // NOI18N
+        jPanel7.setName("jPanel7"); // NOI18N
+
+        jCheckBox13.setText(resourceMap.getString("jCheckBox13.text")); // NOI18N
+        jCheckBox13.setName("jCheckBox13"); // NOI18N
+
+        jCheckBox14.setText(resourceMap.getString("jCheckBox14.text")); // NOI18N
+        jCheckBox14.setName("jCheckBox14"); // NOI18N
+
+        jCheckBox15.setFont(jCheckBox15.getFont().deriveFont(jCheckBox15.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox15.setText(resourceMap.getString("jCheckBox15.text")); // NOI18N
+        jCheckBox15.setName("jCheckBox15"); // NOI18N
+
+        jCheckBox16.setFont(jCheckBox16.getFont().deriveFont(jCheckBox16.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox16.setText(resourceMap.getString("jCheckBox16.text")); // NOI18N
+        jCheckBox16.setName("jCheckBox16"); // NOI18N
+
+        jCheckBox17.setText(resourceMap.getString("jCheckBox17.text")); // NOI18N
+        jCheckBox17.setName("jCheckBox17"); // NOI18N
+
+        jCheckBox18.setText(resourceMap.getString("jCheckBox18.text")); // NOI18N
+        jCheckBox18.setName("jCheckBox18"); // NOI18N
+
+        jCheckBox19.setFont(jCheckBox19.getFont().deriveFont(jCheckBox19.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox19.setText(resourceMap.getString("jCheckBox19.text")); // NOI18N
+        jCheckBox19.setName("jCheckBox19"); // NOI18N
+
+        jCheckBox20.setText(resourceMap.getString("jCheckBox20.text")); // NOI18N
+        jCheckBox20.setName("jCheckBox20"); // NOI18N
+
+        jCheckBox21.setText(resourceMap.getString("jCheckBox21.text")); // NOI18N
+        jCheckBox21.setName("jCheckBox21"); // NOI18N
+
+        jCheckBox22.setFont(jCheckBox22.getFont().deriveFont(jCheckBox22.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox22.setText(resourceMap.getString("jCheckBox22.text")); // NOI18N
+        jCheckBox22.setName("jCheckBox22"); // NOI18N
+
+        jCheckBox23.setText(resourceMap.getString("jCheckBox23.text")); // NOI18N
+        jCheckBox23.setName("jCheckBox23"); // NOI18N
+
+        jCheckBox24.setText(resourceMap.getString("jCheckBox24.text")); // NOI18N
+        jCheckBox24.setName("jCheckBox24"); // NOI18N
+
+        jCheckBox30.setFont(jCheckBox30.getFont().deriveFont(jCheckBox30.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox30.setText(resourceMap.getString("jCheckBox30.text")); // NOI18N
+        jCheckBox30.setName("jCheckBox30"); // NOI18N
+
+        jCheckBox31.setText(resourceMap.getString("jCheckBox31.text")); // NOI18N
+        jCheckBox31.setName("jCheckBox31"); // NOI18N
+
+        jCheckBox32.setText(resourceMap.getString("jCheckBox32.text")); // NOI18N
+        jCheckBox32.setName("jCheckBox32"); // NOI18N
+
+        jCheckBox33.setFont(jCheckBox33.getFont().deriveFont(jCheckBox33.getFont().getStyle() | java.awt.Font.BOLD));
+        jCheckBox33.setText(resourceMap.getString("jCheckBox33.text")); // NOI18N
+        jCheckBox33.setName("jCheckBox33"); // NOI18N
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox16)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox14)
+                            .addComponent(jCheckBox13)))
+                    .addComponent(jCheckBox15)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox18)
+                            .addComponent(jCheckBox17)))
+                    .addComponent(jCheckBox30)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(21, 21, 21)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox31)
+                            .addComponent(jCheckBox32))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jCheckBox22)
+                    .addComponent(jCheckBox19)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox21)
+                            .addComponent(jCheckBox20)))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(17, 17, 17)
+                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jCheckBox24)
+                            .addComponent(jCheckBox23)))
+                    .addComponent(jCheckBox33))
+                .addGap(75, 75, 75))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jCheckBox16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox14)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox17)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox18)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox30)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox32)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox31))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jCheckBox19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox20)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox21)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox22)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox24)
+                .addGap(18, 18, 18)
+                .addComponent(jCheckBox33))
+        );
+
+        javax.swing.GroupLayout prevelidgePanelLayout = new javax.swing.GroupLayout(prevelidgePanel);
+        prevelidgePanel.setLayout(prevelidgePanelLayout);
+        prevelidgePanelLayout.setHorizontalGroup(
+            prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(prevelidgePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(prevelidgePanelLayout.createSequentialGroup()
+                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(prevelidgePanelLayout.createSequentialGroup()
+                        .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(StudentPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(gradesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(classPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(7, 7, 7))))
+        );
+        prevelidgePanelLayout.setVerticalGroup(
+            prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(prevelidgePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(StudentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(classPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(gradesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(42, 42, 42))
+        );
+
+        prevelidgeScrollPane.setViewportView(prevelidgePanel);
+
+        jTabbedPane1.addTab(resourceMap.getString("prevelidgeScrollPane.TabConstraints.tabTitle"), resourceMap.getIcon("prevelidgeScrollPane.TabConstraints.tabIcon"), prevelidgeScrollPane); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                          .addComponent(cmdReset)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
-                                          .addComponent(cmdSave)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel))
-                                .addGroup(layout.createSequentialGroup()
-                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(lblLastName)
-                                                  .addComponent(lblUserName)
-                                                  .addComponent(lblFirstName)
-                                                  .addComponent(lblPassword)
-                                                  .addComponent(lblGroup)
-                                                  .addComponent(jLabel1))
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                  .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 242, Short.MAX_VALUE)
-                                                  .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                                  .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                                  .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE)
-                                                  .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 242, Short.MAX_VALUE))))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmdReset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                        .addComponent(cmdSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblFirstName)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblLastName)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUserName)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblPassword)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblGroup)
-                                .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 68, Short.MAX_VALUE)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel)
-                                .addComponent(cmdSave)
-                                .addComponent(cmdReset))
-                      .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdSave)
+                    .addComponent(cmdReset))
+                .addContainerGap())
         );
+
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-353)/2, (screenSize.height-300)/2, 353, 300);
+        setBounds((screenSize.width-459)/2, (screenSize.height-477)/2, 459, 477);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void chkStudentActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStudentActionPerformed
+    {
+//GEN-HEADEREND:event_chkStudentActionPerformed
+        boolean student = chkStudent.isSelected();
+        chkAddStudent.setSelected(student);
+        chkViewStudent.setSelected(student);
+        chkEditStudent.setSelected(student);
+    }//GEN-LAST:event_chkStudentActionPerformed
+
+    private void chkAddStudentActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkAddStudentActionPerformed
+    {
+//GEN-HEADEREND:event_chkAddStudentActionPerformed
+        if (chkAddStudent.isSelected() == true)
+        {
+            chkStudent.setSelected(true);
+        }
+    }//GEN-LAST:event_chkAddStudentActionPerformed
+
+    private void chkEditStudentActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkEditStudentActionPerformed
+    {
+//GEN-HEADEREND:event_chkEditStudentActionPerformed
+        if (chkEditStudent.isSelected() == true)
+        {
+            chkStudent.setSelected(true);
+        }
+    }//GEN-LAST:event_chkEditStudentActionPerformed
+
+    private void chkViewStudentActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkViewStudentActionPerformed
+    {
+//GEN-HEADEREND:event_chkViewStudentActionPerformed
+        if (chkViewStudent.isSelected() == true)
+        {
+            chkStudent.setSelected(true);
+        }
+    }//GEN-LAST:event_chkViewStudentActionPerformed
+
+    private void chkClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkClassActionPerformed
+    {
+//GEN-HEADEREND:event_chkClassActionPerformed
+        boolean Class = chkClass.isSelected();
+        chkAddClass.setSelected(Class);
+        chkEditClass.setSelected(Class);
+        chkViewClass.setSelected(Class);
+        chkEnterAttendance.setSelected(Class);
+    }//GEN-LAST:event_chkClassActionPerformed
+
+    private void chkAddClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkAddClassActionPerformed
+    {
+//GEN-HEADEREND:event_chkAddClassActionPerformed
+        if (chkAddClass.isSelected() == true)
+        {
+            chkClass.setSelected(true);
+        }
+    }//GEN-LAST:event_chkAddClassActionPerformed
+
+    private void chkEditClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkEditClassActionPerformed
+    {
+//GEN-HEADEREND:event_chkEditClassActionPerformed
+        if (chkEditClass.isSelected() == true)
+        {
+            chkClass.setSelected(true);
+        }
+    }//GEN-LAST:event_chkEditClassActionPerformed
+
+    private void chkViewClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkViewClassActionPerformed
+    {
+//GEN-HEADEREND:event_chkViewClassActionPerformed
+        if (chkViewClass.isSelected() == true)
+        {
+            chkClass.setSelected(true);
+        }
+    }//GEN-LAST:event_chkViewClassActionPerformed
+
+    private void chkEnterAttendanceActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkEnterAttendanceActionPerformed
+    {
+//GEN-HEADEREND:event_chkEnterAttendanceActionPerformed
+        if (chkEnterAttendance.isSelected() == true)
+        {
+            chkClass.setSelected(true);
+        }
+    }//GEN-LAST:event_chkEnterAttendanceActionPerformed
+
+    private void chkGradesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkGradesActionPerformed
+    {
+//GEN-HEADEREND:event_chkGradesActionPerformed
+        boolean grades = chkGrades.isSelected();
+        chkRecordGrades.setSelected(grades);
+        chkEditGrades.setSelected(grades);
+    }//GEN-LAST:event_chkGradesActionPerformed
+
+    private void chkRecordGradesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkRecordGradesActionPerformed
+    {
+//GEN-HEADEREND:event_chkRecordGradesActionPerformed
+        if (chkRecordGrades.isSelected() == true)
+        {
+            chkGrades.setSelected(true);
+        }
+    }//GEN-LAST:event_chkRecordGradesActionPerformed
+
+    private void chkEditGradesActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkEditGradesActionPerformed
+    {
+//GEN-HEADEREND:event_chkEditGradesActionPerformed
+        if (chkEditGrades.isSelected() == true)
+        {
+            chkGrades.setSelected(true);
+        }
+    }//GEN-LAST:event_chkEditGradesActionPerformed
 
     /**
      * This is called when the user changes the user group.
@@ -192,7 +875,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         if (User.addUser(username, password, firstName, lastName, group))
         {
             String message = "The user was successfully added.\n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -206,8 +889,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
-                             + "Kindly verify your information and try again.\n"
-                             + "If the problem persists, kindly contact your system administrator.";
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -225,18 +908,75 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         cmbGroup.setSelectedIndex(0);
         txtFirstName.grabFocus();
     }
+
+    @Action
+    public void unlinkAccount()
+    {
+    }
+
+    @Action
+    public void linkAccount()
+    {
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel StudentPanel;
+    private javax.swing.JCheckBox chkAddClass;
+    private javax.swing.JCheckBox chkAddStudent;
+    private javax.swing.JCheckBox chkClass;
+    private javax.swing.JCheckBox chkEditClass;
+    private javax.swing.JCheckBox chkEditGrades;
+    private javax.swing.JCheckBox chkEditStudent;
+    private javax.swing.JCheckBox chkEnterAttendance;
+    private javax.swing.JCheckBox chkGrades;
+    private javax.swing.JCheckBox chkRecordGrades;
+    private javax.swing.JCheckBox chkStudent;
+    private javax.swing.JCheckBox chkViewClass;
+    private javax.swing.JCheckBox chkViewStudent;
+    private javax.swing.JPanel classPanel;
     private javax.swing.JComboBox cmbGroup;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JPanel generalPanel;
+    private javax.swing.JPanel gradesPanel;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JCheckBox jCheckBox10;
+    private javax.swing.JCheckBox jCheckBox11;
+    private javax.swing.JCheckBox jCheckBox12;
+    private javax.swing.JCheckBox jCheckBox13;
+    private javax.swing.JCheckBox jCheckBox14;
+    private javax.swing.JCheckBox jCheckBox15;
+    private javax.swing.JCheckBox jCheckBox16;
+    private javax.swing.JCheckBox jCheckBox17;
+    private javax.swing.JCheckBox jCheckBox18;
+    private javax.swing.JCheckBox jCheckBox19;
+    private javax.swing.JCheckBox jCheckBox20;
+    private javax.swing.JCheckBox jCheckBox21;
+    private javax.swing.JCheckBox jCheckBox22;
+    private javax.swing.JCheckBox jCheckBox23;
+    private javax.swing.JCheckBox jCheckBox24;
+    private javax.swing.JCheckBox jCheckBox28;
+    private javax.swing.JCheckBox jCheckBox29;
+    private javax.swing.JCheckBox jCheckBox30;
+    private javax.swing.JCheckBox jCheckBox31;
+    private javax.swing.JCheckBox jCheckBox32;
+    private javax.swing.JCheckBox jCheckBox33;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGroup;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JPanel linksPanel;
+    private javax.swing.JPanel prevelidgePanel;
+    private javax.swing.JScrollPane prevelidgeScrollPane;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JPasswordField txtPassword;

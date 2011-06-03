@@ -28,6 +28,7 @@ public class User
     private static int loginCount = 0;
     private static String userName = "";
     private static String userGroup = "";
+    static final Logger logger = Logger.getLogger(User.class.getName());
 
     /**
      * This function checks to see if the given username and password matches
@@ -78,15 +79,15 @@ public class User
         catch (Exception e)
         {
             String message = "ERROR: Could not validate user information.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
             message = "An error occurred while validating the login information.\n"
-                    + "Kindly consult your system administrator.";
+                      + "Kindly consult your system administrator.";
             Utilities.showErrorMessage(null, message);
         }
         if (loginCount >= 3)
         {
             String message = "You have exceeded the number of failed login attempts.\n"
-                    + "The program will now exit.";
+                             + "The program will now exit.";
             Utilities.showErrorMessage(null, message);
             ilearn.ILearnApp.getApplication().exit();
         }
@@ -125,15 +126,15 @@ public class User
         catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex)
         {
             String message = "An error occurred while adding a user to the database.\n"
-                    + "This username already exists.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, ex);
+                             + "This username already exists.";
+            logger.log(Level.SEVERE, message, ex);
             successful = false;
             Utilities.showErrorMessage(null, message);
         }
         catch (Exception e)
         {
             String message = "An error occurred while adding a user to the database.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
             successful = false;
         }
         return successful;
@@ -167,11 +168,10 @@ public class User
         catch (SQLException sQLException)
         {
             String message = "An error occurred while getting the user list.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, sQLException);
+            logger.log(Level.SEVERE, message, sQLException);
         }
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -214,7 +214,7 @@ public class User
         catch (Exception e)
         {
             String message = "An error occurred while getting the user list.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         String[] results =
         {
@@ -264,7 +264,7 @@ public class User
         catch (Exception e)
         {
             String message = "An error occurred while updating the user's information.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         return successful;
     }
@@ -291,7 +291,7 @@ public class User
         catch (Exception e)
         {
             String message = "An error occurred while getting the user group listing.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         return groups;
     }
@@ -320,7 +320,7 @@ public class User
         catch (Exception e)
         {
             String message = "An error occurred while getting the user group levels listing.";
-            Logger.getLogger(User.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         return levels;
     }
@@ -339,5 +339,29 @@ public class User
     public static String getUserGroup()
     {
         return userGroup;
+    }
+
+    public static boolean changePassword(String userName, String password)
+    {
+        boolean successful = false;
+        String sql = "UPDATE `User` SET `usrPassword`= ?  WHERE `usrName`= ? LIMIT 1;";
+        try
+        {
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, password);
+            prep.setString(2, userName);
+            prep.executeUpdate();
+            prep.close();
+            successful = true;
+            //Log the action
+            String message = "SUCCESS: " + userName + "'s password was changed.";
+            iLogger.logMessage(message, "Update", "User");
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the user's information.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
     }
 }

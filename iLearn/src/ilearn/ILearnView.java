@@ -30,6 +30,7 @@ import ilearn.subject.FrmEditSubject;
 import ilearn.term.FrmEditTimeSlots;
 import ilearn.term.FrmAddTimeSlot;
 import ilearn.term.FrmEditTerm;
+import ilearn.user.FrmChangePassword;
 import ilearn.user.UserCheck;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -83,6 +84,7 @@ public class ILearnView extends FrameView
     FrmCreateAssessment frmCreateAssessment = null;
     FrmEditAssessment frmEditAssessment = null;
     FrmRegister frmRegister = null;
+    FrmChangePassword frmChangePassword = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -224,6 +226,7 @@ public class ILearnView extends FrameView
         menuBar = new javax.swing.JMenuBar();
         javax.swing.JMenu fileMenu = new javax.swing.JMenu();
         logOff = new javax.swing.JMenuItem();
+        changePasswordMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         studentMenu = new javax.swing.JMenu();
         addStudent = new javax.swing.JMenuItem();
@@ -296,6 +299,12 @@ public class ILearnView extends FrameView
         logOff.setText(resourceMap.getString("logOff.text")); // NOI18N
         logOff.setName("logOff"); // NOI18N
         fileMenu.add(logOff);
+
+        changePasswordMenuItem.setAction(actionMap.get("showChangePassword")); // NOI18N
+        changePasswordMenuItem.setIcon(resourceMap.getIcon("changePasswordMenuItem.icon")); // NOI18N
+        changePasswordMenuItem.setText(resourceMap.getString("changePasswordMenuItem.text")); // NOI18N
+        changePasswordMenuItem.setName("changePasswordMenuItem"); // NOI18N
+        fileMenu.add(changePasswordMenuItem);
 
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
@@ -1176,6 +1185,30 @@ public class ILearnView extends FrameView
         frmClassGradebook.setLocationRelativeTo(getFrame());
         frmClassGradebook.setVisible(true);
     }
+
+    @Action
+    public void showChangePassword()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Change Password");
+        if (AlreadyLoaded == false)
+        {
+            frmChangePassword = new FrmChangePassword();
+            desktopPane.add(frmChangePassword);
+            //Load the Form
+            frmChangePassword.setVisible(true);
+            frmChangePassword.show();
+            try
+            {
+                frmChangePassword.setIcon(false);
+                frmChangePassword.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1184,6 +1217,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addTerm;
     private javax.swing.JMenuItem addTimeSlot;
     private javax.swing.JMenuItem addUser;
+    private javax.swing.JMenuItem changePasswordMenuItem;
     private javax.swing.JMenuItem classGradeBook;
     private javax.swing.JMenuItem classListReport;
     private javax.swing.JMenu classMenu;
