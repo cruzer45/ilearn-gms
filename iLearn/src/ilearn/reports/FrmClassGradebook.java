@@ -10,7 +10,7 @@
  */
 package ilearn.reports;
 
-import ilearn.assessments.Assessment;
+import ilearn.grades.Grade;
 import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
@@ -294,7 +294,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     {
                         Row studentRow = sheet.getRow(j);
                         double stuID = studentRow.getCell(0).getNumericCellValue();
-                        ArrayList<String> stuGrade = Assessment.getStudentGrade(assmtIDs.get(i).toString(), String.valueOf(stuID));
+                        ArrayList<String> stuGrade = Grade.getStudentGrade(assmtIDs.get(i).toString(), String.valueOf(stuID));
                         try
                         {
                             String grade = stuGrade.get(0);

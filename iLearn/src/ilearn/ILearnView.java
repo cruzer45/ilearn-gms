@@ -3,8 +3,8 @@
  */
 package ilearn;
 
-import ilearn.assessments.FrmCreateAssessment;
-import ilearn.assessments.FrmEditAssessment;
+import ilearn.grades.FrmRecordGrade;
+import ilearn.grades.FrmEditGrades;
 import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
 import ilearn.classes.FrmEditClass;
@@ -81,8 +81,8 @@ public class ILearnView extends FrameView
     FrmEditStudent frmEditStudent = null;
     FrmViewStudent frmViewStudent = null;
     FrmEditSubject frmEditSubject = null;
-    FrmCreateAssessment frmCreateAssessment = null;
-    FrmEditAssessment frmEditAssessment = null;
+    FrmRecordGrade frmRecordGrade = null;
+    FrmEditGrades frmEditGrade = null;
     FrmRegister frmRegister = null;
     FrmChangePassword frmChangePassword = null;
 
@@ -285,7 +285,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -539,7 +539,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -1104,18 +1104,18 @@ public class ILearnView extends FrameView
     public void showCreateAssessment()
     {
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("Create Assessment");
+        boolean AlreadyLoaded = isLoaded("Record Grades");
         if (AlreadyLoaded == false)
         {
-            frmCreateAssessment = new FrmCreateAssessment();
-            desktopPane.add(frmCreateAssessment);
+            frmRecordGrade = new FrmRecordGrade();
+            desktopPane.add(frmRecordGrade);
             //Load the Form
-            frmCreateAssessment.setVisible(true);
-            frmCreateAssessment.show();
+            frmRecordGrade.setVisible(true);
+            frmRecordGrade.show();
             try
             {
-                frmCreateAssessment.setIcon(false);
-                frmCreateAssessment.setSelected(true);
+                frmRecordGrade.setIcon(false);
+                frmRecordGrade.setSelected(true);
             }
             catch (Exception e)
             {
@@ -1131,18 +1131,18 @@ public class ILearnView extends FrameView
     public void showEditAssessment()
     {
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("Edit Assessment");
+        boolean AlreadyLoaded = isLoaded("Edit Grades");
         if (AlreadyLoaded == false)
         {
-            frmEditAssessment = new FrmEditAssessment();
-            desktopPane.add(frmEditAssessment);
+            frmEditGrade = new FrmEditGrades();
+            desktopPane.add(frmEditGrade);
             //Load the Form
-            frmEditAssessment.setVisible(true);
-            frmEditAssessment.show();
+            frmEditGrade.setVisible(true);
+            frmEditGrade.show();
             try
             {
-                frmEditAssessment.setIcon(false);
-                frmEditAssessment.setSelected(true);
+                frmEditGrade.setIcon(false);
+                frmEditGrade.setSelected(true);
             }
             catch (Exception e)
             {
