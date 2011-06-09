@@ -74,29 +74,29 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         chkRecordGrades = new javax.swing.JCheckBox();
         chkEditGrades = new javax.swing.JCheckBox();
         chkGrades = new javax.swing.JCheckBox();
-        jPanel6 = new javax.swing.JPanel();
-        jCheckBox10 = new javax.swing.JCheckBox();
-        jCheckBox11 = new javax.swing.JCheckBox();
-        jCheckBox12 = new javax.swing.JCheckBox();
-        jCheckBox28 = new javax.swing.JCheckBox();
-        jCheckBox29 = new javax.swing.JCheckBox();
-        jPanel7 = new javax.swing.JPanel();
-        jCheckBox13 = new javax.swing.JCheckBox();
-        jCheckBox14 = new javax.swing.JCheckBox();
-        jCheckBox15 = new javax.swing.JCheckBox();
-        jCheckBox16 = new javax.swing.JCheckBox();
-        jCheckBox17 = new javax.swing.JCheckBox();
-        jCheckBox18 = new javax.swing.JCheckBox();
-        jCheckBox19 = new javax.swing.JCheckBox();
-        jCheckBox20 = new javax.swing.JCheckBox();
-        jCheckBox21 = new javax.swing.JCheckBox();
-        jCheckBox22 = new javax.swing.JCheckBox();
-        jCheckBox23 = new javax.swing.JCheckBox();
-        jCheckBox24 = new javax.swing.JCheckBox();
-        jCheckBox30 = new javax.swing.JCheckBox();
-        jCheckBox31 = new javax.swing.JCheckBox();
-        jCheckBox32 = new javax.swing.JCheckBox();
-        jCheckBox33 = new javax.swing.JCheckBox();
+        reportsPanel = new javax.swing.JPanel();
+        chkStudentList = new javax.swing.JCheckBox();
+        chkclassListing = new javax.swing.JCheckBox();
+        chkGradebook = new javax.swing.JCheckBox();
+        chkStudentReports = new javax.swing.JCheckBox();
+        chkClassReports = new javax.swing.JCheckBox();
+        managePanel = new javax.swing.JPanel();
+        chkStaff = new javax.swing.JCheckBox();
+        chkAddStaff = new javax.swing.JCheckBox();
+        chkEditStaff = new javax.swing.JCheckBox();
+        chkSubject = new javax.swing.JCheckBox();
+        chkAddSubject = new javax.swing.JCheckBox();
+        chkEditSubject = new javax.swing.JCheckBox();
+        chkTerm = new javax.swing.JCheckBox();
+        chkAddTerm = new javax.swing.JCheckBox();
+        chkEditTerm = new javax.swing.JCheckBox();
+        chkTimeSlots = new javax.swing.JCheckBox();
+        chkAddSlots = new javax.swing.JCheckBox();
+        chkEditSlots = new javax.swing.JCheckBox();
+        chkUsers = new javax.swing.JCheckBox();
+        chkAddUsers = new javax.swing.JCheckBox();
+        chkEditUsers = new javax.swing.JCheckBox();
+        chkSchool = new javax.swing.JCheckBox();
 
         setClosable(true);
         setIconifiable(true);
@@ -178,12 +178,12 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 319, Short.MAX_VALUE)
-                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
-                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE))
+                    .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 338, Short.MAX_VALUE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -212,7 +212,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(201, Short.MAX_VALUE))
+                .addContainerGap(203, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
@@ -251,7 +251,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
                     .addGroup(linksPanelLayout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addGap(18, 18, 18)
@@ -262,7 +262,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -327,7 +327,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                             .addComponent(chkEditStudent)
                             .addComponent(chkViewStudent)))
                     .addComponent(chkStudent))
-                .addContainerGap(51, Short.MAX_VALUE))
+                .addContainerGap(62, Short.MAX_VALUE))
         );
         StudentPanelLayout.setVerticalGroup(
             StudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -339,7 +339,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addComponent(chkEditStudent)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkViewStudent)
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         classPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("classPanel.border.title"))); // NOI18N
@@ -394,19 +394,14 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addContainerGap()
                 .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(classPanelLayout.createSequentialGroup()
+                        .addGap(21, 21, 21)
                         .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(classPanelLayout.createSequentialGroup()
-                                .addGap(21, 21, 21)
-                                .addGroup(classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(chkAddClass)
-                                    .addComponent(chkEditClass)
-                                    .addComponent(chkViewClass)))
-                            .addComponent(chkClass))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, classPanelLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(chkEnterAttendance)))
-                .addContainerGap(16, Short.MAX_VALUE))
+                            .addComponent(chkAddClass)
+                            .addComponent(chkEditClass)
+                            .addComponent(chkViewClass)
+                            .addComponent(chkEnterAttendance)))
+                    .addComponent(chkClass))
+                .addContainerGap(38, Short.MAX_VALUE))
         );
         classPanelLayout.setVerticalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -464,7 +459,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                             .addComponent(chkRecordGrades)
                             .addComponent(chkEditGrades)))
                     .addComponent(chkGrades))
-                .addContainerGap(40, Short.MAX_VALUE))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         gradesPanelLayout.setVerticalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -474,196 +469,211 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addComponent(chkRecordGrades)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(chkEditGrades)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
         );
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("jPanel6.border.title"))); // NOI18N
-        jPanel6.setName("jPanel6"); // NOI18N
+        reportsPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("reportsPanel.border.title"))); // NOI18N
+        reportsPanel.setName("reportsPanel"); // NOI18N
 
-        jCheckBox10.setText(resourceMap.getString("jCheckBox10.text")); // NOI18N
-        jCheckBox10.setName("jCheckBox10"); // NOI18N
+        chkStudentList.setText(resourceMap.getString("chkStudentList.text")); // NOI18N
+        chkStudentList.setName("chkStudentList"); // NOI18N
 
-        jCheckBox11.setText(resourceMap.getString("jCheckBox11.text")); // NOI18N
-        jCheckBox11.setName("jCheckBox11"); // NOI18N
+        chkclassListing.setText(resourceMap.getString("chkclassListing.text")); // NOI18N
+        chkclassListing.setName("chkclassListing"); // NOI18N
 
-        jCheckBox12.setText(resourceMap.getString("jCheckBox12.text")); // NOI18N
-        jCheckBox12.setName("jCheckBox12"); // NOI18N
+        chkGradebook.setText(resourceMap.getString("chkGradebook.text")); // NOI18N
+        chkGradebook.setName("chkGradebook"); // NOI18N
 
-        jCheckBox28.setFont(jCheckBox28.getFont().deriveFont(jCheckBox28.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox28.setText(resourceMap.getString("jCheckBox28.text")); // NOI18N
-        jCheckBox28.setName("jCheckBox28"); // NOI18N
+        chkStudentReports.setFont(chkStudentReports.getFont().deriveFont(chkStudentReports.getFont().getStyle() | java.awt.Font.BOLD));
+        chkStudentReports.setText(resourceMap.getString("chkStudentReports.text")); // NOI18N
+        chkStudentReports.setName("chkStudentReports"); // NOI18N
+        chkStudentReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkStudentReportsActionPerformed(evt);
+            }
+        });
 
-        jCheckBox29.setFont(jCheckBox29.getFont().deriveFont(jCheckBox29.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox29.setText(resourceMap.getString("jCheckBox29.text")); // NOI18N
-        jCheckBox29.setName("jCheckBox29"); // NOI18N
+        chkClassReports.setFont(chkClassReports.getFont().deriveFont(chkClassReports.getFont().getStyle() | java.awt.Font.BOLD));
+        chkClassReports.setText(resourceMap.getString("chkClassReports.text")); // NOI18N
+        chkClassReports.setName("chkClassReports"); // NOI18N
+        chkClassReports.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkClassReportsActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
-        jPanel6.setLayout(jPanel6Layout);
-        jPanel6Layout.setHorizontalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
+        javax.swing.GroupLayout reportsPanelLayout = new javax.swing.GroupLayout(reportsPanel);
+        reportsPanel.setLayout(reportsPanelLayout);
+        reportsPanelLayout.setHorizontalGroup(
+            reportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reportsPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(reportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(reportsPanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox11)
-                            .addComponent(jCheckBox12)))
-                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGroup(reportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkclassListing)
+                            .addComponent(chkGradebook)))
+                    .addGroup(reportsPanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addComponent(jCheckBox10))
-                    .addComponent(jCheckBox28)
-                    .addComponent(jCheckBox29))
-                .addContainerGap(21, Short.MAX_VALUE))
+                        .addComponent(chkStudentList))
+                    .addComponent(chkStudentReports)
+                    .addComponent(chkClassReports))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
-        jPanel6Layout.setVerticalGroup(
-            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addComponent(jCheckBox28)
+        reportsPanelLayout.setVerticalGroup(
+            reportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(reportsPanelLayout.createSequentialGroup()
+                .addComponent(chkStudentReports)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox10)
+                .addComponent(chkStudentList)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox29)
+                .addComponent(chkClassReports)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox11)
+                .addComponent(chkclassListing)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox12)
+                .addComponent(chkGradebook)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("jPanel7.border.title"))); // NOI18N
-        jPanel7.setName("jPanel7"); // NOI18N
+        managePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("managePanel.border.title"))); // NOI18N
+        managePanel.setName("managePanel"); // NOI18N
 
-        jCheckBox13.setText(resourceMap.getString("jCheckBox13.text")); // NOI18N
-        jCheckBox13.setName("jCheckBox13"); // NOI18N
+        chkStaff.setFont(chkStaff.getFont().deriveFont(chkStaff.getFont().getStyle() | java.awt.Font.BOLD));
+        chkStaff.setText(resourceMap.getString("chkStaff.text")); // NOI18N
+        chkStaff.setName("chkStaff"); // NOI18N
+        chkStaff.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                chkStaffActionPerformed(evt);
+            }
+        });
 
-        jCheckBox14.setText(resourceMap.getString("jCheckBox14.text")); // NOI18N
-        jCheckBox14.setName("jCheckBox14"); // NOI18N
+        chkAddStaff.setText(resourceMap.getString("chkAddStaff.text")); // NOI18N
+        chkAddStaff.setName("chkAddStaff"); // NOI18N
 
-        jCheckBox15.setFont(jCheckBox15.getFont().deriveFont(jCheckBox15.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox15.setText(resourceMap.getString("jCheckBox15.text")); // NOI18N
-        jCheckBox15.setName("jCheckBox15"); // NOI18N
+        chkEditStaff.setText(resourceMap.getString("chkEditStaff.text")); // NOI18N
+        chkEditStaff.setName("chkEditStaff"); // NOI18N
 
-        jCheckBox16.setFont(jCheckBox16.getFont().deriveFont(jCheckBox16.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox16.setText(resourceMap.getString("jCheckBox16.text")); // NOI18N
-        jCheckBox16.setName("jCheckBox16"); // NOI18N
+        chkSubject.setFont(chkSubject.getFont().deriveFont(chkSubject.getFont().getStyle() | java.awt.Font.BOLD));
+        chkSubject.setText(resourceMap.getString("chkSubject.text")); // NOI18N
+        chkSubject.setName("chkSubject"); // NOI18N
 
-        jCheckBox17.setText(resourceMap.getString("jCheckBox17.text")); // NOI18N
-        jCheckBox17.setName("jCheckBox17"); // NOI18N
+        chkAddSubject.setText(resourceMap.getString("chkAddSubject.text")); // NOI18N
+        chkAddSubject.setName("chkAddSubject"); // NOI18N
 
-        jCheckBox18.setText(resourceMap.getString("jCheckBox18.text")); // NOI18N
-        jCheckBox18.setName("jCheckBox18"); // NOI18N
+        chkEditSubject.setText(resourceMap.getString("chkEditSubject.text")); // NOI18N
+        chkEditSubject.setName("chkEditSubject"); // NOI18N
 
-        jCheckBox19.setFont(jCheckBox19.getFont().deriveFont(jCheckBox19.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox19.setText(resourceMap.getString("jCheckBox19.text")); // NOI18N
-        jCheckBox19.setName("jCheckBox19"); // NOI18N
+        chkTerm.setFont(chkTerm.getFont().deriveFont(chkTerm.getFont().getStyle() | java.awt.Font.BOLD));
+        chkTerm.setText(resourceMap.getString("chkTerm.text")); // NOI18N
+        chkTerm.setName("chkTerm"); // NOI18N
 
-        jCheckBox20.setText(resourceMap.getString("jCheckBox20.text")); // NOI18N
-        jCheckBox20.setName("jCheckBox20"); // NOI18N
+        chkAddTerm.setText(resourceMap.getString("chkAddTerm.text")); // NOI18N
+        chkAddTerm.setName("chkAddTerm"); // NOI18N
 
-        jCheckBox21.setText(resourceMap.getString("jCheckBox21.text")); // NOI18N
-        jCheckBox21.setName("jCheckBox21"); // NOI18N
+        chkEditTerm.setText(resourceMap.getString("chkEditTerm.text")); // NOI18N
+        chkEditTerm.setName("chkEditTerm"); // NOI18N
 
-        jCheckBox22.setFont(jCheckBox22.getFont().deriveFont(jCheckBox22.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox22.setText(resourceMap.getString("jCheckBox22.text")); // NOI18N
-        jCheckBox22.setName("jCheckBox22"); // NOI18N
+        chkTimeSlots.setFont(chkTimeSlots.getFont().deriveFont(chkTimeSlots.getFont().getStyle() | java.awt.Font.BOLD));
+        chkTimeSlots.setText(resourceMap.getString("chkTimeSlots.text")); // NOI18N
+        chkTimeSlots.setName("chkTimeSlots"); // NOI18N
 
-        jCheckBox23.setText(resourceMap.getString("jCheckBox23.text")); // NOI18N
-        jCheckBox23.setName("jCheckBox23"); // NOI18N
+        chkAddSlots.setText(resourceMap.getString("chkAddSlots.text")); // NOI18N
+        chkAddSlots.setName("chkAddSlots"); // NOI18N
 
-        jCheckBox24.setText(resourceMap.getString("jCheckBox24.text")); // NOI18N
-        jCheckBox24.setName("jCheckBox24"); // NOI18N
+        chkEditSlots.setText(resourceMap.getString("chkEditSlots.text")); // NOI18N
+        chkEditSlots.setName("chkEditSlots"); // NOI18N
 
-        jCheckBox30.setFont(jCheckBox30.getFont().deriveFont(jCheckBox30.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox30.setText(resourceMap.getString("jCheckBox30.text")); // NOI18N
-        jCheckBox30.setName("jCheckBox30"); // NOI18N
+        chkUsers.setFont(chkUsers.getFont().deriveFont(chkUsers.getFont().getStyle() | java.awt.Font.BOLD));
+        chkUsers.setText(resourceMap.getString("chkUsers.text")); // NOI18N
+        chkUsers.setName("chkUsers"); // NOI18N
 
-        jCheckBox31.setText(resourceMap.getString("jCheckBox31.text")); // NOI18N
-        jCheckBox31.setName("jCheckBox31"); // NOI18N
+        chkAddUsers.setText(resourceMap.getString("chkAddUsers.text")); // NOI18N
+        chkAddUsers.setName("chkAddUsers"); // NOI18N
 
-        jCheckBox32.setText(resourceMap.getString("jCheckBox32.text")); // NOI18N
-        jCheckBox32.setName("jCheckBox32"); // NOI18N
+        chkEditUsers.setText(resourceMap.getString("chkEditUsers.text")); // NOI18N
+        chkEditUsers.setName("chkEditUsers"); // NOI18N
 
-        jCheckBox33.setFont(jCheckBox33.getFont().deriveFont(jCheckBox33.getFont().getStyle() | java.awt.Font.BOLD));
-        jCheckBox33.setText(resourceMap.getString("jCheckBox33.text")); // NOI18N
-        jCheckBox33.setName("jCheckBox33"); // NOI18N
+        chkSchool.setFont(chkSchool.getFont().deriveFont(chkSchool.getFont().getStyle() | java.awt.Font.BOLD));
+        chkSchool.setText(resourceMap.getString("chkSchool.text")); // NOI18N
+        chkSchool.setName("chkSchool"); // NOI18N
 
-        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
-        jPanel7.setLayout(jPanel7Layout);
-        jPanel7Layout.setHorizontalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
+        javax.swing.GroupLayout managePanelLayout = new javax.swing.GroupLayout(managePanel);
+        managePanel.setLayout(managePanelLayout);
+        managePanelLayout.setHorizontalGroup(
+            managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox16)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkStaff)
+                    .addGroup(managePanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox14)
-                            .addComponent(jCheckBox13)))
-                    .addComponent(jCheckBox15)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkEditStaff)
+                            .addComponent(chkAddStaff)))
+                    .addComponent(chkSubject)
+                    .addGroup(managePanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox18)
-                            .addComponent(jCheckBox17)))
-                    .addComponent(jCheckBox30)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkEditSubject)
+                            .addComponent(chkAddSubject)))
+                    .addComponent(chkUsers)
+                    .addGroup(managePanelLayout.createSequentialGroup()
                         .addGap(21, 21, 21)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox31)
-                            .addComponent(jCheckBox32))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)
-                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox22)
-                    .addComponent(jCheckBox19)
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkEditUsers)
+                            .addComponent(chkAddUsers))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(chkTimeSlots)
+                    .addComponent(chkTerm)
+                    .addGroup(managePanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox21)
-                            .addComponent(jCheckBox20)))
-                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkEditTerm)
+                            .addComponent(chkAddTerm)))
+                    .addGroup(managePanelLayout.createSequentialGroup()
                         .addGap(17, 17, 17)
-                        .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox24)
-                            .addComponent(jCheckBox23)))
-                    .addComponent(jCheckBox33))
+                        .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(chkEditSlots)
+                            .addComponent(chkAddSlots)))
+                    .addComponent(chkSchool))
                 .addGap(75, 75, 75))
         );
-        jPanel7Layout.setVerticalGroup(
-            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jCheckBox16)
+        managePanelLayout.setVerticalGroup(
+            managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(managePanelLayout.createSequentialGroup()
+                .addComponent(chkStaff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox13)
+                .addComponent(chkAddStaff)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox14)
+                .addComponent(chkEditStaff)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox15)
+                .addComponent(chkSubject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox17)
+                .addComponent(chkAddSubject)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox18)
+                .addComponent(chkEditSubject)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox30)
+                .addComponent(chkUsers)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox32)
+                .addComponent(chkAddUsers)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox31))
-            .addGroup(jPanel7Layout.createSequentialGroup()
-                .addComponent(jCheckBox19)
+                .addComponent(chkEditUsers))
+            .addGroup(managePanelLayout.createSequentialGroup()
+                .addComponent(chkTerm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox20)
+                .addComponent(chkAddTerm)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox21)
+                .addComponent(chkEditTerm)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox22)
+                .addComponent(chkTimeSlots)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox23)
+                .addComponent(chkAddSlots)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jCheckBox24)
+                .addComponent(chkEditSlots)
                 .addGap(18, 18, 18)
-                .addComponent(jCheckBox33))
+                .addComponent(chkSchool))
         );
 
         javax.swing.GroupLayout prevelidgePanelLayout = new javax.swing.GroupLayout(prevelidgePanel);
@@ -674,16 +684,16 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                 .addContainerGap()
                 .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(prevelidgePanelLayout.createSequentialGroup()
-                        .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(managePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(prevelidgePanelLayout.createSequentialGroup()
-                        .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(StudentPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(gradesPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(gradesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(StudentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(classPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(reportsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(7, 7, 7))))
         );
         prevelidgePanelLayout.setVerticalGroup(
@@ -694,11 +704,11 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                     .addComponent(StudentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(classPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(gradesPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(gradesPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(reportsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(managePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(42, 42, 42))
         );
 
@@ -713,10 +723,10 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 433, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
                         .addComponent(cmdSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel)))
@@ -726,7 +736,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
@@ -847,6 +857,26 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         }
     }//GEN-LAST:event_chkEditGradesActionPerformed
 
+    private void chkStaffActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStaffActionPerformed
+    {//GEN-HEADEREND:event_chkStaffActionPerformed
+       boolean  staff = chkStaff.isSelected();
+       chkAddStaff.setSelected(staff);
+       chkEditStaff.setSelected(staff);
+    }//GEN-LAST:event_chkStaffActionPerformed
+
+    private void chkStudentReportsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStudentReportsActionPerformed
+    {//GEN-HEADEREND:event_chkStudentReportsActionPerformed
+        boolean studentReports = chkStudentReports.isSelected();
+        chkStudentList.setSelected(studentReports);
+    }//GEN-LAST:event_chkStudentReportsActionPerformed
+
+    private void chkClassReportsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkClassReportsActionPerformed
+    {//GEN-HEADEREND:event_chkClassReportsActionPerformed
+        boolean classReports = chkClassReports.isSelected();
+        chkclassListing.setSelected(classReports);
+        chkGradebook.setSelected(classReports);
+    }//GEN-LAST:event_chkClassReportsActionPerformed
+
     /**
      * This is called when the user changes the user group.
      * The subgroups are reloaded when the group is changed.
@@ -921,17 +951,38 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel StudentPanel;
     private javax.swing.JCheckBox chkAddClass;
+    private javax.swing.JCheckBox chkAddSlots;
+    private javax.swing.JCheckBox chkAddStaff;
     private javax.swing.JCheckBox chkAddStudent;
+    private javax.swing.JCheckBox chkAddSubject;
+    private javax.swing.JCheckBox chkAddTerm;
+    private javax.swing.JCheckBox chkAddUsers;
     private javax.swing.JCheckBox chkClass;
+    private javax.swing.JCheckBox chkClassReports;
     private javax.swing.JCheckBox chkEditClass;
     private javax.swing.JCheckBox chkEditGrades;
+    private javax.swing.JCheckBox chkEditSlots;
+    private javax.swing.JCheckBox chkEditStaff;
     private javax.swing.JCheckBox chkEditStudent;
+    private javax.swing.JCheckBox chkEditSubject;
+    private javax.swing.JCheckBox chkEditTerm;
+    private javax.swing.JCheckBox chkEditUsers;
     private javax.swing.JCheckBox chkEnterAttendance;
+    private javax.swing.JCheckBox chkGradebook;
     private javax.swing.JCheckBox chkGrades;
     private javax.swing.JCheckBox chkRecordGrades;
+    private javax.swing.JCheckBox chkSchool;
+    private javax.swing.JCheckBox chkStaff;
     private javax.swing.JCheckBox chkStudent;
+    private javax.swing.JCheckBox chkStudentList;
+    private javax.swing.JCheckBox chkStudentReports;
+    private javax.swing.JCheckBox chkSubject;
+    private javax.swing.JCheckBox chkTerm;
+    private javax.swing.JCheckBox chkTimeSlots;
+    private javax.swing.JCheckBox chkUsers;
     private javax.swing.JCheckBox chkViewClass;
     private javax.swing.JCheckBox chkViewStudent;
+    private javax.swing.JCheckBox chkclassListing;
     private javax.swing.JPanel classPanel;
     private javax.swing.JComboBox cmbGroup;
     private javax.swing.JButton cmdCancel;
@@ -941,30 +992,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     private javax.swing.JPanel gradesPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBox10;
-    private javax.swing.JCheckBox jCheckBox11;
-    private javax.swing.JCheckBox jCheckBox12;
-    private javax.swing.JCheckBox jCheckBox13;
-    private javax.swing.JCheckBox jCheckBox14;
-    private javax.swing.JCheckBox jCheckBox15;
-    private javax.swing.JCheckBox jCheckBox16;
-    private javax.swing.JCheckBox jCheckBox17;
-    private javax.swing.JCheckBox jCheckBox18;
-    private javax.swing.JCheckBox jCheckBox19;
-    private javax.swing.JCheckBox jCheckBox20;
-    private javax.swing.JCheckBox jCheckBox21;
-    private javax.swing.JCheckBox jCheckBox22;
-    private javax.swing.JCheckBox jCheckBox23;
-    private javax.swing.JCheckBox jCheckBox24;
-    private javax.swing.JCheckBox jCheckBox28;
-    private javax.swing.JCheckBox jCheckBox29;
-    private javax.swing.JCheckBox jCheckBox30;
-    private javax.swing.JCheckBox jCheckBox31;
-    private javax.swing.JCheckBox jCheckBox32;
-    private javax.swing.JCheckBox jCheckBox33;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel7;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
@@ -975,8 +1003,10 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblUserName;
     private javax.swing.JPanel linksPanel;
+    private javax.swing.JPanel managePanel;
     private javax.swing.JPanel prevelidgePanel;
     private javax.swing.JScrollPane prevelidgeScrollPane;
+    private javax.swing.JPanel reportsPanel;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JPasswordField txtPassword;

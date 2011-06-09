@@ -33,10 +33,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jTabbedPane1" alignment="0" pref="433" max="32767" attributes="0"/>
+                  <Component id="jTabbedPane1" alignment="0" pref="423" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="212" max="32767" attributes="0"/>
+                      <EmptySpace pref="170" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -50,7 +50,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jTabbedPane1" pref="389" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" pref="383" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -125,12 +125,12 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cmbGroup" alignment="0" pref="319" max="32767" attributes="0"/>
-                          <Component id="txtPassword" alignment="0" pref="319" max="32767" attributes="0"/>
-                          <Component id="txtUserName" alignment="0" pref="319" max="32767" attributes="0"/>
-                          <Component id="txtFirstName" alignment="0" pref="319" max="32767" attributes="0"/>
-                          <Component id="txtLastName" alignment="1" pref="319" max="32767" attributes="0"/>
-                          <Component id="jSpinner1" alignment="1" pref="319" max="32767" attributes="0"/>
+                          <Component id="cmbGroup" alignment="0" pref="338" max="32767" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" pref="338" max="32767" attributes="0"/>
+                          <Component id="txtUserName" alignment="0" pref="338" max="32767" attributes="0"/>
+                          <Component id="txtFirstName" alignment="0" pref="338" max="32767" attributes="0"/>
+                          <Component id="txtLastName" alignment="1" pref="338" max="32767" attributes="0"/>
+                          <Component id="jSpinner1" alignment="1" pref="338" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -168,7 +168,7 @@
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="201" max="32767" attributes="0"/>
+                      <EmptySpace pref="203" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -278,7 +278,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="404" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="398" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -293,7 +293,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="305" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="295" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -396,18 +396,18 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jPanel7" max="32767" attributes="0"/>
+                                  <Component id="managePanel" max="32767" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="StudentPanel" alignment="0" max="32767" attributes="0"/>
-                                      <Component id="gradesPanel" alignment="0" max="32767" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="gradesPanel" max="32767" attributes="0"/>
+                                      <Component id="StudentPanel" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace min="-2" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="classPanel" max="32767" attributes="2"/>
-                                      <Component id="jPanel6" alignment="0" max="32767" attributes="2"/>
+                                      <Component id="reportsPanel" alignment="0" max="32767" attributes="2"/>
                                   </Group>
                                   <EmptySpace min="7" pref="7" max="-2" attributes="0"/>
                               </Group>
@@ -424,12 +424,12 @@
                               <Component id="classPanel" min="-2" max="-2" attributes="1"/>
                           </Group>
                           <EmptySpace min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="gradesPanel" min="-2" max="-2" attributes="1"/>
-                              <Component id="jPanel6" min="-2" max="-2" attributes="1"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="gradesPanel" max="32767" attributes="1"/>
+                              <Component id="reportsPanel" alignment="0" max="32767" attributes="1"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="jPanel7" min="-2" max="-2" attributes="0"/>
+                          <Component id="managePanel" min="-2" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       </Group>
                   </Group>
@@ -467,7 +467,7 @@
                                   </Group>
                                   <Component id="chkStudent" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="51" max="32767" attributes="0"/>
+                              <EmptySpace pref="62" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -481,7 +481,7 @@
                               <Component id="chkEditStudent" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="chkViewStudent" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="29" max="32767" attributes="0"/>
+                              <EmptySpace pref="30" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -552,25 +552,17 @@
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
+                                      <EmptySpace min="21" pref="21" max="21" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="21" pref="21" max="21" attributes="0"/>
-                                              <Group type="103" groupAlignment="0" attributes="0">
-                                                  <Component id="chkAddClass" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="chkEditClass" alignment="0" min="-2" max="-2" attributes="0"/>
-                                                  <Component id="chkViewClass" alignment="0" min="-2" max="-2" attributes="0"/>
-                                              </Group>
-                                          </Group>
-                                          <Component id="chkClass" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkAddClass" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEditClass" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkViewClass" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEnterAttendance" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
-                                      <EmptySpace pref="46" max="-2" attributes="0"/>
                                   </Group>
-                                  <Group type="102" alignment="1" attributes="0">
-                                      <EmptySpace pref="21" max="-2" attributes="0"/>
-                                      <Component id="chkEnterAttendance" min="-2" max="-2" attributes="0"/>
-                                  </Group>
+                                  <Component id="chkClass" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="16" max="32767" attributes="0"/>
+                              <EmptySpace pref="38" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -674,7 +666,7 @@
                                   </Group>
                                   <Component id="chkGrades" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="40" max="32767" attributes="0"/>
+                              <EmptySpace pref="54" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -686,7 +678,7 @@
                               <Component id="chkRecordGrades" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="chkEditGrades" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="66" max="32767" attributes="0"/>
+                              <EmptySpace pref="71" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
@@ -726,7 +718,7 @@
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel6">
+                <Container class="javax.swing.JPanel" name="reportsPanel">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -734,11 +726,11 @@
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                             <EtchetBorder/>
                           </Border>
-                          <Property name="titleX" resourceKey="jPanel6.border.title"/>
+                          <Property name="titleX" resourceKey="reportsPanel.border.title"/>
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel6" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="reportsPanel" noResource="true"/>
                   </Properties>
 
                   <Layout>
@@ -750,82 +742,88 @@
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="21" pref="21" max="21" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox11" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox12" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkclassListing" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkGradebook" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="21" pref="21" max="21" attributes="0"/>
-                                      <Component id="jCheckBox10" min="-2" max="-2" attributes="0"/>
+                                      <Component id="chkStudentList" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <Component id="jCheckBox28" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox29" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkStudentReports" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkClassReports" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace pref="21" max="32767" attributes="0"/>
+                              <EmptySpace pref="44" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jCheckBox28" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkStudentReports" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox10" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkStudentList" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jCheckBox29" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkClassReports" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox11" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkclassListing" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox12" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkGradebook" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox10">
+                    <Component class="javax.swing.JCheckBox" name="chkStudentList">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox10.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox10" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkStudentList.text"/>
+                        <Property name="name" type="java.lang.String" value="chkStudentList" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox11">
+                    <Component class="javax.swing.JCheckBox" name="chkclassListing">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox11.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox11" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkclassListing.text"/>
+                        <Property name="name" type="java.lang.String" value="chkclassListing" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox12">
+                    <Component class="javax.swing.JCheckBox" name="chkGradebook">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox12.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox12" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkGradebook.text"/>
+                        <Property name="name" type="java.lang.String" value="chkGradebook" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox28">
+                    <Component class="javax.swing.JCheckBox" name="chkStudentReports">
                       <Properties>
                         <Property name="font" type="java.awt.Font" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox28" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkStudentReports" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox28.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox28" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkStudentReports.text"/>
+                        <Property name="name" type="java.lang.String" value="chkStudentReports" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkStudentReportsActionPerformed"/>
+                      </Events>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox29">
+                    <Component class="javax.swing.JCheckBox" name="chkClassReports">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox29" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkClassReports" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox29.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox29" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkClassReports.text"/>
+                        <Property name="name" type="java.lang.String" value="chkClassReports" noResource="true"/>
                       </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkClassReportsActionPerformed"/>
+                      </Events>
                     </Component>
                   </SubComponents>
                 </Container>
-                <Container class="javax.swing.JPanel" name="jPanel7">
+                <Container class="javax.swing.JPanel" name="managePanel">
                   <Properties>
                     <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
                       <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
@@ -833,11 +831,11 @@
                           <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
                             <EtchetBorder/>
                           </Border>
-                          <Property name="titleX" resourceKey="jPanel7.border.title"/>
+                          <Property name="titleX" resourceKey="managePanel.border.title"/>
                         </TitledBorder>
                       </Border>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="jPanel7" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="managePanel" noResource="true"/>
                   </Properties>
 
                   <Layout>
@@ -846,50 +844,50 @@
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox16" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkStaff" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="21" pref="21" max="21" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox14" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox13" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEditStaff" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkAddStaff" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jCheckBox15" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkSubject" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="21" pref="21" max="21" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox18" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox17" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEditSubject" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkAddSubject" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jCheckBox30" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkUsers" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="21" pref="21" max="21" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox31" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox32" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEditUsers" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkAddUsers" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
-                              <EmptySpace pref="80" max="32767" attributes="0"/>
+                              <EmptySpace pref="96" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jCheckBox22" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jCheckBox19" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkTimeSlots" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkTerm" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="17" pref="17" max="17" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox21" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox20" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEditTerm" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkAddTerm" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="102" alignment="0" attributes="0">
                                       <EmptySpace min="17" pref="17" max="17" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="jCheckBox24" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jCheckBox23" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkEditSlots" alignment="0" min="-2" max="-2" attributes="0"/>
+                                          <Component id="chkAddSlots" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <Component id="jCheckBox33" min="-2" max="-2" attributes="0"/>
+                                  <Component id="chkSchool" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
                           </Group>
@@ -898,167 +896,170 @@
                     <DimensionLayout dim="1">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jCheckBox16" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkStaff" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox13" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkAddStaff" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox14" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkEditStaff" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jCheckBox15" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkSubject" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox17" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkAddSubject" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox18" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkEditSubject" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jCheckBox30" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkUsers" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox32" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkAddUsers" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox31" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkEditUsers" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="jCheckBox19" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkTerm" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox20" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkAddTerm" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox21" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkEditTerm" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                              <Component id="jCheckBox22" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkTimeSlots" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox23" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkAddSlots" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="jCheckBox24" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkEditSlots" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="jCheckBox33" min="-2" max="-2" attributes="0"/>
+                              <Component id="chkSchool" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                     </DimensionLayout>
                   </Layout>
                   <SubComponents>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox13">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox13.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox13" noResource="true"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox14">
-                      <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox14.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox14" noResource="true"/>
-                      </Properties>
-                    </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox15">
+                    <Component class="javax.swing.JCheckBox" name="chkStaff">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox15" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkStaff" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox15.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox15" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkStaff.text"/>
+                        <Property name="name" type="java.lang.String" value="chkStaff" noResource="true"/>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="chkStaffActionPerformed"/>
+                      </Events>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="chkAddStaff">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="chkAddStaff.text"/>
+                        <Property name="name" type="java.lang.String" value="chkAddStaff" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox16">
+                    <Component class="javax.swing.JCheckBox" name="chkEditStaff">
+                      <Properties>
+                        <Property name="text" type="java.lang.String" resourceKey="chkEditStaff.text"/>
+                        <Property name="name" type="java.lang.String" value="chkEditStaff" noResource="true"/>
+                      </Properties>
+                    </Component>
+                    <Component class="javax.swing.JCheckBox" name="chkSubject">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox16" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkSubject" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox16.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox16" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkSubject.text"/>
+                        <Property name="name" type="java.lang.String" value="chkSubject" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox17">
+                    <Component class="javax.swing.JCheckBox" name="chkAddSubject">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox17.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox17" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkAddSubject.text"/>
+                        <Property name="name" type="java.lang.String" value="chkAddSubject" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox18">
+                    <Component class="javax.swing.JCheckBox" name="chkEditSubject">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox18.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox18" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkEditSubject.text"/>
+                        <Property name="name" type="java.lang.String" value="chkEditSubject" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox19">
+                    <Component class="javax.swing.JCheckBox" name="chkTerm">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox19" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkTerm" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox19.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox19" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkTerm.text"/>
+                        <Property name="name" type="java.lang.String" value="chkTerm" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox20">
+                    <Component class="javax.swing.JCheckBox" name="chkAddTerm">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox20.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox20" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkAddTerm.text"/>
+                        <Property name="name" type="java.lang.String" value="chkAddTerm" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox21">
+                    <Component class="javax.swing.JCheckBox" name="chkEditTerm">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox21.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox21" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkEditTerm.text"/>
+                        <Property name="name" type="java.lang.String" value="chkEditTerm" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox22">
+                    <Component class="javax.swing.JCheckBox" name="chkTimeSlots">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox22" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkTimeSlots" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox22.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox22" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkTimeSlots.text"/>
+                        <Property name="name" type="java.lang.String" value="chkTimeSlots" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox23">
+                    <Component class="javax.swing.JCheckBox" name="chkAddSlots">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox23.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox23" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkAddSlots.text"/>
+                        <Property name="name" type="java.lang.String" value="chkAddSlots" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox24">
+                    <Component class="javax.swing.JCheckBox" name="chkEditSlots">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox24.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox24" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkEditSlots.text"/>
+                        <Property name="name" type="java.lang.String" value="chkEditSlots" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox30">
+                    <Component class="javax.swing.JCheckBox" name="chkUsers">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox30" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkUsers" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox30.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox30" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkUsers.text"/>
+                        <Property name="name" type="java.lang.String" value="chkUsers" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox31">
+                    <Component class="javax.swing.JCheckBox" name="chkAddUsers">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox31.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox31" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkAddUsers.text"/>
+                        <Property name="name" type="java.lang.String" value="chkAddUsers" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox32">
+                    <Component class="javax.swing.JCheckBox" name="chkEditUsers">
                       <Properties>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox32.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox32" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkEditUsers.text"/>
+                        <Property name="name" type="java.lang.String" value="chkEditUsers" noResource="true"/>
                       </Properties>
                     </Component>
-                    <Component class="javax.swing.JCheckBox" name="jCheckBox33">
+                    <Component class="javax.swing.JCheckBox" name="chkSchool">
                       <Properties>
                         <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
                           <FontInfo relative="true">
-                            <Font bold="true" component="jCheckBox33" property="font" relativeSize="true" size="0"/>
+                            <Font bold="true" component="chkSchool" property="font" relativeSize="true" size="0"/>
                           </FontInfo>
                         </Property>
-                        <Property name="text" type="java.lang.String" resourceKey="jCheckBox33.text"/>
-                        <Property name="name" type="java.lang.String" value="jCheckBox33" noResource="true"/>
+                        <Property name="text" type="java.lang.String" resourceKey="chkSchool.text"/>
+                        <Property name="name" type="java.lang.String" value="chkSchool" noResource="true"/>
                       </Properties>
                     </Component>
                   </SubComponents>
