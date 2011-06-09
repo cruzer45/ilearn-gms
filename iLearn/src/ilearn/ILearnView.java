@@ -285,7 +285,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -306,7 +306,7 @@ public class ILearnView extends FrameView
         changePasswordMenuItem.setName("changePasswordMenuItem"); // NOI18N
         fileMenu.add(changePasswordMenuItem);
 
-        exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
+        exitMenuItem.setAction(actionMap.get("showExit")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
 
@@ -539,7 +539,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -1207,6 +1207,24 @@ public class ILearnView extends FrameView
             {
                 logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
+        }
+    }
+
+    @Action
+    public void showExit()
+    {
+        String message = "Are you sure you want to exit?";
+        int response = Utilities.showConfirmDialog(getFrame(), message);
+        if (response == JOptionPane.YES_OPTION)
+        {
+
+            for (JInternalFrame frame : desktopPane.getAllFrames())
+            {
+                frame.dispose();
+            }
+            message = "The user successfully logged Off.";
+            iLogger.logMessage(message, "Log Off", "User");
+            ILearnApp.getApplication().exit();
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
