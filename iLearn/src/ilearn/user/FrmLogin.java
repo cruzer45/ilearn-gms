@@ -19,10 +19,12 @@ import org.jdesktop.application.Action;
  *
  * @author mrogers
  */
-public class FrmLogin extends javax.swing.JDialog {
+public class FrmLogin extends javax.swing.JDialog
+{
 
     /** Creates new form FrmLogin */
-    public FrmLogin(java.awt.Frame parent, boolean modal) {
+    public FrmLogin(java.awt.Frame parent, boolean modal)
+    {
         super(parent, modal);
         initComponents();
     }
@@ -139,7 +141,8 @@ public class FrmLogin extends javax.swing.JDialog {
     private void txtPasswordKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtPasswordKeyPressed
     {
 //GEN-HEADEREND:event_txtPasswordKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
             login();
         }
     }//GEN-LAST:event_txtPasswordKeyPressed
@@ -147,7 +150,8 @@ public class FrmLogin extends javax.swing.JDialog {
     private void txtUsernameKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtUsernameKeyPressed
     {
 //GEN-HEADEREND:event_txtUsernameKeyPressed
-        if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
             txtPassword.grabFocus();
         }
     }//GEN-LAST:event_txtUsernameKeyPressed
@@ -162,25 +166,33 @@ public class FrmLogin extends javax.swing.JDialog {
      * Closes the window and exits the application.
      */
     @Action
-    public void cancel() {
+    public void cancel()
+    {
         String message = "Are you sure you want to close this window?\n"
-                + "That will also exit the program.";
+                         + "That will also exit the program.";
         int response = JOptionPane.showConfirmDialog(this, message, "iLearn", JOptionPane.YES_NO_OPTION);
-        if (response == JOptionPane.YES_OPTION) {
+        if (response == JOptionPane.YES_OPTION)
+        {
             ilearn.ILearnApp.getApplication().exit();
-        } else {
+        }
+        else
+        {
         }
     }
 
     @Action
-    public void login() {
+    public void login()
+    {
         String username = txtUsername.getText().trim();
         String password = String.valueOf(txtPassword.getPassword()).trim();
-        if (User.logIn(username, password)) {
+        if (User.logIn(username, password))
+        {
             this.dispose();
-        } else {
+        }
+        else
+        {
             String message = "You have enterd an incorrect username/password combination.\n"
-                    + "Kindly try again.";
+                             + "Kindly try again.";
             Utilities.showWarningMessage(null, message);
             txtPassword.grabFocus();
             txtPassword.setSelectionStart(0);

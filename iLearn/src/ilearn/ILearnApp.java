@@ -6,10 +6,7 @@ package ilearn;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
 import java.util.EventObject;
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import org.jdesktop.application.Application;
@@ -18,29 +15,35 @@ import org.jdesktop.application.SingleFrameApplication;
 /**
  * The main class of the application.
  */
-public class ILearnApp extends SingleFrameApplication {
+public class ILearnApp extends SingleFrameApplication
+{
 
     /**
      * At startup create and show the main frame of the application.
      */
     @Override
-    protected void startup() {
+    protected void startup()
+    {
         show(new ILearnView(this));
-        ILearnApp.getApplication().addExitListener(new ExitListener() {
-
-            public boolean canExit(EventObject arg0) {
+        ILearnApp.getApplication().addExitListener(new ExitListener()
+        {
+            public boolean canExit(EventObject arg0)
+            {
                 return exitMethod();
             }
-
-            public void willExit(EventObject arg0) {
+            public void willExit(EventObject arg0)
+            {
             }
-
-            private boolean exitMethod() {
+            private boolean exitMethod()
+            {
                 String message = "Are you sure you want to exit?";
                 int response = Utilities.showConfirmDialog(null, message);
-                if (response == JOptionPane.YES_OPTION) {
+                if (response == JOptionPane.YES_OPTION)
+                {
                     return true;
-                } else {
+                }
+                else
+                {
                     return false;
                 }
             }
@@ -48,7 +51,8 @@ public class ILearnApp extends SingleFrameApplication {
     }
 
     @Override
-    protected void shutdown() {
+    protected void shutdown()
+    {
         String message = "The user successfully logged Off.";
         iLogger.logMessage(message, "Log Off", "User");
         Environment.closeConnection();
@@ -61,22 +65,26 @@ public class ILearnApp extends SingleFrameApplication {
      * builder, so this additional configuration is not needed.
      */
     @Override
-    protected void configureWindow(java.awt.Window root) {
+    protected void configureWindow(java.awt.Window root)
+    {
     }
 
     /**
      * A convenient static getter for the application instance.
      * @return the instance of ILearnApp
      */
-    public static ILearnApp getApplication() {
+    public static ILearnApp getApplication()
+    {
         return Application.getInstance(ILearnApp.class);
     }
 
     /**
      * Main method launching the application.
      */
-    public static void main(String[] args) {
-        String[] li = {
+    public static void main(String[] args)
+    {
+        String[] li =
+        {
             "Licensee=Maurice Rogers", "LicenseRegistrationNumber=------", "Product=Synthetica", "LicenseType=Non Commercial", "ExpireDate=--.--.----", "MaxVersion=2.999.999"
         };
         UIManager.put("Synthetica.license.info", li);
