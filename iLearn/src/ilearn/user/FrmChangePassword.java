@@ -171,8 +171,8 @@ public class FrmChangePassword extends javax.swing.JInternalFrame
                 else // If it doesn't get added tell the user something went wrong.
                 {
                     String message = "An error occurred while changing your password.\n"
-                            + "Kindly verify your information and try again.\n"
-                            + "If the problem persists, kindly contact your system administrator.";
+                                     + "Kindly verify your information and try again.\n"
+                                     + "If the problem persists, kindly contact your system administrator.";
                     Utilities.showErrorMessage(rootPane, message);
                 }
                 return;
@@ -180,7 +180,7 @@ public class FrmChangePassword extends javax.swing.JInternalFrame
             else
             {
                 String message = "The passwords you have entered doesn't match.\n"
-                        + "Kindly try again.";
+                                 + "Kindly try again.";
                 Utilities.showWarningMessage(rootPane, message);
                 return;
             }
@@ -188,13 +188,13 @@ public class FrmChangePassword extends javax.swing.JInternalFrame
         else
         {
             String message = "The password you have entered doesn't match your currently saved password.\n"
-                    + "Kindly try again.";
+                             + "Kindly try again.";
             Utilities.showWarningMessage(rootPane, message);
             tryCounter++;
             if (tryCounter >= 3)
             {
                 message = "You have failed to enter the correct password three times.\n"
-                        + "The application will now exit.";
+                          + "The application will now exit.";
                 Utilities.showErrorMessage(rootPane, message);
                 ilearn.ILearnApp.getApplication().exit();
             }

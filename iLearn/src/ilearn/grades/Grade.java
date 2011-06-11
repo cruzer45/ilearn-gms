@@ -60,7 +60,6 @@ public class Grade
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -74,7 +73,6 @@ public class Grade
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -87,7 +85,6 @@ public class Grade
                 return editable;
                 //return false;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -108,7 +105,6 @@ public class Grade
                 }
             }
             // Protected methods
-
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
@@ -133,7 +129,6 @@ public class Grade
                 }
                 return false;
             }
-
             protected boolean isInteger(String input)
             {
                 try
@@ -146,7 +141,6 @@ public class Grade
                     return false;
                 }
             }
-
             protected boolean isDouble(String input)
             {
                 try
@@ -314,8 +308,8 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID` FROM `iLearn`.`Assments` "
-                    + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
-                    + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
+                         + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
+                         + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtType);
             prep.setString(2, assmtTitle);
@@ -347,7 +341,6 @@ public class Grade
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -361,7 +354,6 @@ public class Grade
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -377,9 +369,9 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                    + "FROM `iLearn`.`Assments` "
-                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
-                    + "LIMIT 0, 1000;";
+                         + "FROM `iLearn`.`Assments` "
+                         + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                         + "LIMIT 0, 1000;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -423,8 +415,8 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                    + "FROM `iLearn`.`Assments` "
-                    + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
+                         + "FROM `iLearn`.`Assments` "
+                         + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             ResultSet rs = prep.executeQuery();
@@ -453,7 +445,7 @@ public class Grade
         try
         {
             String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
-                    + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
+                         + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.setString(2, stuID);
