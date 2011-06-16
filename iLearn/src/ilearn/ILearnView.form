@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="552" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -260,6 +260,16 @@
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="manageMenu.setText(&quot;Manage&quot;);"/>
           </AuxValues>
           <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="schoolInfo">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showManageSchool" methodName="showManageSchool"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="schoolInfo.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="schoolInfo.text"/>
+                <Property name="name" type="java.lang.String" value="schoolInfo" noResource="true"/>
+              </Properties>
+            </MenuItem>
             <Menu class="javax.swing.JMenu" name="staffMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="staffMenu.icon"/>
@@ -400,16 +410,25 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <MenuItem class="javax.swing.JMenuItem" name="schoolInfo">
+            <Menu class="javax.swing.JMenu" name="utilitiesMenu">
               <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.ILearnView" id="showManageSchool" methodName="showManageSchool"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="schoolInfo.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="schoolInfo.text"/>
-                <Property name="name" type="java.lang.String" value="schoolInfo" noResource="true"/>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="utilitiesMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="utilitiesMenu.text"/>
+                <Property name="name" type="java.lang.String" value="utilitiesMenu" noResource="true"/>
               </Properties>
-            </MenuItem>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="importExcellClassRegister">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showImportExcellClassRegister" methodName="showImportExcellClassRegister"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="importExcellClassRegister.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="importExcellClassRegister.text"/>
+                    <Property name="name" type="java.lang.String" value="importExcellClassRegister" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
@@ -450,7 +469,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="630" max="32767" attributes="0"/>
+                  <EmptySpace pref="616" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

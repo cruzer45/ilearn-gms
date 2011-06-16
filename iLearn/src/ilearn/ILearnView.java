@@ -32,6 +32,7 @@ import ilearn.term.FrmAddTimeSlot;
 import ilearn.term.FrmEditTerm;
 import ilearn.user.FrmChangePassword;
 import ilearn.user.UserCheck;
+import ilearn.utils.FrmExcellClassListImporter;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
 import org.jdesktop.application.SingleFrameApplication;
@@ -85,6 +86,7 @@ public class ILearnView extends FrameView
     FrmEditGrades frmEditGrade = null;
     FrmRegister frmRegister = null;
     FrmChangePassword frmChangePassword = null;
+    FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -244,6 +246,7 @@ public class ILearnView extends FrameView
         classListReport = new javax.swing.JMenuItem();
         classGradeBook = new javax.swing.JMenuItem();
         manageMenu = new javax.swing.JMenu();
+        schoolInfo = new javax.swing.JMenuItem();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
         editStaff = new javax.swing.JMenuItem();
@@ -259,7 +262,8 @@ public class ILearnView extends FrameView
         userMenu = new javax.swing.JMenu();
         addUser = new javax.swing.JMenuItem();
         editUser = new javax.swing.JMenuItem();
-        schoolInfo = new javax.swing.JMenuItem();
+        utilitiesMenu = new javax.swing.JMenu();
+        importExcellClassRegister = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
         statusPanel = new javax.swing.JPanel();
@@ -279,7 +283,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
         menuBar.setName("menuBar"); // NOI18N
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
@@ -379,6 +383,11 @@ public class ILearnView extends FrameView
         reportsMenu.add(classReports);
         menuBar.add(reportsMenu);
         manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
+        schoolInfo.setAction(actionMap.get("showManageSchool")); // NOI18N
+        schoolInfo.setIcon(resourceMap.getIcon("schoolInfo.icon")); // NOI18N
+        schoolInfo.setText(resourceMap.getString("schoolInfo.text")); // NOI18N
+        schoolInfo.setName("schoolInfo"); // NOI18N
+        manageMenu.add(schoolInfo);
         staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
         staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
         staffMenu.setName("staffMenu"); // NOI18N
@@ -444,11 +453,15 @@ public class ILearnView extends FrameView
         editUser.setName("editUser"); // NOI18N
         userMenu.add(editUser);
         manageMenu.add(userMenu);
-        schoolInfo.setAction(actionMap.get("showManageSchool")); // NOI18N
-        schoolInfo.setIcon(resourceMap.getIcon("schoolInfo.icon")); // NOI18N
-        schoolInfo.setText(resourceMap.getString("schoolInfo.text")); // NOI18N
-        schoolInfo.setName("schoolInfo"); // NOI18N
-        manageMenu.add(schoolInfo);
+        utilitiesMenu.setIcon(resourceMap.getIcon("utilitiesMenu.icon")); // NOI18N
+        utilitiesMenu.setText(resourceMap.getString("utilitiesMenu.text")); // NOI18N
+        utilitiesMenu.setName("utilitiesMenu"); // NOI18N
+        importExcellClassRegister.setAction(actionMap.get("showImportExcellClassRegister")); // NOI18N
+        importExcellClassRegister.setIcon(resourceMap.getIcon("importExcellClassRegister.icon")); // NOI18N
+        importExcellClassRegister.setText(resourceMap.getString("importExcellClassRegister.text")); // NOI18N
+        importExcellClassRegister.setName("importExcellClassRegister"); // NOI18N
+        utilitiesMenu.add(importExcellClassRegister);
+        manageMenu.add(utilitiesMenu);
         menuBar.add(manageMenu);
         manageMenu.setText("Manage");
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
@@ -471,7 +484,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(statusMessageLabel)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
                       .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(statusAnimationLabel)
@@ -492,8 +505,6 @@ public class ILearnView extends FrameView
         setMenuBar(menuBar);
         setStatusBar(statusPanel);
     }// </editor-fold>//GEN-END:initComponents
-
-
 
     /**
      * Shows the Add Student Window
@@ -1158,6 +1169,30 @@ public class ILearnView extends FrameView
             ILearnApp.getApplication().exit();
         }
     }
+
+    @Action
+    public void showImportExcellClassRegister()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Import Excel Class Register");
+        if (AlreadyLoaded == false)
+        {
+            frmExcellClassListImporter = new FrmExcellClassListImporter();
+            desktopPane.add(frmExcellClassListImporter);
+            //Load the Form
+            frmExcellClassListImporter.setVisible(true);
+            frmExcellClassListImporter.show();
+            try
+            {
+                frmExcellClassListImporter.setIcon(false);
+                frmExcellClassListImporter.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1183,6 +1218,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem editUser;
     private javax.swing.JMenuItem enterRollCall;
     private javax.swing.JMenu gradesMenu;
+    private javax.swing.JMenuItem importExcellClassRegister;
     private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu manageMenu;
@@ -1201,6 +1237,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu termMenu;
     private javax.swing.JMenu timeSlotsMenu;
     private javax.swing.JMenu userMenu;
+    private javax.swing.JMenu utilitiesMenu;
     private javax.swing.JMenuItem viewClass;
     private javax.swing.JMenuItem viewStudent;
     // End of variables declaration//GEN-END:variables
