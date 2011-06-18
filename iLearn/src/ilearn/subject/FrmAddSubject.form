@@ -37,27 +37,29 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="cmdAdd" min="-2" max="-2" attributes="1"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="cmdRemove" min="-2" max="-2" attributes="1"/>
+                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblSubjectCode" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblTeacher" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" alignment="1" pref="309" max="32767" attributes="0"/>
                           <Component id="cmbTeacher" alignment="1" pref="309" max="32767" attributes="0"/>
+                          <Component id="jSpinner1" alignment="1" pref="309" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" alignment="0" pref="309" max="32767" attributes="0"/>
                           <Component id="txtSubjectName" alignment="0" pref="309" max="32767" attributes="0"/>
                           <Component id="txtSubjectCode" alignment="0" pref="309" max="32767" attributes="0"/>
-                          <Component id="jScrollPane2" alignment="1" pref="309" max="32767" attributes="0"/>
                       </Group>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="cmdAdd" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cmdRemove" min="-2" max="-2" attributes="1"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -84,6 +86,11 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmbTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -97,7 +104,7 @@
                   <Component id="cmdRemove" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdAdd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
+              <EmptySpace pref="33" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -238,12 +245,7 @@
     <Component class="javax.swing.JComboBox" name="cmbTeacher">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
-          </StringArray>
+          <StringArray count="0"/>
         </Property>
         <Property name="name" type="java.lang.String" value="cmbTeacher" noResource="true"/>
       </Properties>
@@ -252,6 +254,20 @@
       <Properties>
         <Property name="text" type="java.lang.String" resourceKey="lblTeacher.text"/>
         <Property name="name" type="java.lang.String" value="lblTeacher" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="jSpinner1">
+      <Properties>
+        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+          <SpinnerModel initial="3" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+        </Property>
+        <Property name="name" type="java.lang.String" value="jSpinner1" noResource="true"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
+        <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

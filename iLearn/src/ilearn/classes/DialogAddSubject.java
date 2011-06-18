@@ -170,11 +170,15 @@ public class DialogAddSubject extends javax.swing.JDialog
     {
         if (tblResults.getSelectedRow() != -1)
         {
-            String id = tblResults.getValueAt(tblResults.getSelectedRow(), 0).toString();
-            String code = tblResults.getValueAt(tblResults.getSelectedRow(), 1).toString();
-            String teacher = tblResults.getValueAt(tblResults.getSelectedRow(), 2).toString();
-            String title = tblResults.getValueAt(tblResults.getSelectedRow(), 3).toString();
-            Classes.addSubject(id, code, title, teacher);
+
+            for (int rowID : tblResults.getSelectedRows())
+            {
+                String id = tblResults.getValueAt(rowID, 0).toString();
+                String code = tblResults.getValueAt(rowID, 1).toString();
+                String teacher = tblResults.getValueAt(rowID, 2).toString();
+                String title = tblResults.getValueAt(rowID, 3).toString();
+                Classes.addSubject(id, code, title, teacher);
+            }
             this.dispose();
         }
         else

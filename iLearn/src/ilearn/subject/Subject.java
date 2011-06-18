@@ -145,6 +145,7 @@ public class Subject
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -156,11 +157,12 @@ public class Subject
         ArrayList<String> staffCode = new ArrayList<String>();
         ArrayList<String> name = new ArrayList<String>();
         ArrayList<String> description = new ArrayList<String>();
+        ArrayList<Integer> credits = new ArrayList<Integer>();
         ArrayList<String> status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subStatus` FROM `iLearn`.`Subject` "
-                         + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
+            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `iLearn`.`Subject` "
+                    + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -176,6 +178,7 @@ public class Subject
                 name.add(rs.getString("subName"));
                 description.add(rs.getString("subDescription"));
                 status.add(rs.getString("subStatus"));
+                credits.add(rs.getInt("subCredits"));
             }
             rs.close();
             prep.close();
@@ -189,6 +192,7 @@ public class Subject
         model.addColumn("Code", code.toArray());
         model.addColumn("Name", name.toArray());
         model.addColumn("Teacher", staffCode.toArray());
+        model.addColumn("Credits", credits.toArray());
         model.addColumn("Status", status.toArray());
         return model;
     }

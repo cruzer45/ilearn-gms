@@ -87,13 +87,13 @@
                                   <Component id="lblType" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbType" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtMaxPoints" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="calDate" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtTitle" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbSubject" alignment="0" pref="315" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Component id="cmbType" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="calDate" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtTitle" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbSubject" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="spinnerMaxPoints" alignment="1" pref="288" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -121,8 +121,8 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtMaxPoints" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblMaxPoints" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="spinnerMaxPoints" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -134,7 +134,7 @@
                           <Component id="lblSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="202" max="32767" attributes="0"/>
+                      <EmptySpace pref="195" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -166,12 +166,6 @@
               <Properties>
                 <Property name="text" type="java.lang.String" resourceKey="lblDate.text"/>
                 <Property name="name" type="java.lang.String" value="lblDate" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtMaxPoints">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtMaxPoints.text"/>
-                <Property name="name" type="java.lang.String" value="txtMaxPoints" noResource="true"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="lblMaxPoints">
@@ -214,7 +208,9 @@
             <Component class="javax.swing.JComboBox" name="cmbSubject">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="--- Select A Class ---"/>
+                  </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbSubject" noResource="true"/>
               </Properties>
@@ -245,6 +241,14 @@
                 <Property name="name" type="java.lang.String" value="jButton1" noResource="true"/>
               </Properties>
             </Component>
+            <Component class="javax.swing.JSpinner" name="spinnerMaxPoints">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="100" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="spinnerMaxPoints" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
         <Container class="javax.swing.JPanel" name="gradesPanel">
@@ -266,7 +270,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="375" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="371" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -281,7 +285,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="341" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="345" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>

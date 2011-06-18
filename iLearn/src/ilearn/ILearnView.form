@@ -219,6 +219,16 @@
                     <Property name="name" type="java.lang.String" value="studentList" noResource="true"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="studentsRepeating">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showRepeatingStudents" methodName="showRepeatingStudents"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="studentsRepeating.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="studentsRepeating.text"/>
+                    <Property name="name" type="java.lang.String" value="studentsRepeating" noResource="true"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="classReports">

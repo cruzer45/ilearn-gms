@@ -1,0 +1,1 @@
+UPDATE Student SET stuStatus = 'Active';

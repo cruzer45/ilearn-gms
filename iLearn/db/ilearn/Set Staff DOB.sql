@@ -1,0 +1,1 @@
+UPDATE Staff SET staDOB = NOW();

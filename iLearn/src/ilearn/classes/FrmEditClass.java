@@ -404,7 +404,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
     {
-        //GEN-HEADEREND:event_txtSearchKeyPressed
+//GEN-HEADEREND:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             search();
@@ -451,6 +451,9 @@ public class FrmEditClass extends javax.swing.JInternalFrame
             cmbStatus.setSelectedItem(classInfo.get(5));
             //Get the subject information
             tblSubjects.setModel(Classes.getSubjects(classInfo.get(0)));
+            lblTotalSubjects.setText(String.valueOf(tblSubjects.getRowCount()));
+            TableColumnAdjuster tca = new TableColumnAdjuster(tblSubjects);
+            tca.adjustColumns();
         }
     }
 
@@ -484,8 +487,8 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while updating the class' information.\n"
-                             + "Kindly verify your information and try again.\n"
-                             + "If the problem persists, kindly contact your system administrator.";
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -528,6 +531,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         tblSubjects.setModel(Classes.getSubjects());
         TableColumnAdjuster tca = new TableColumnAdjuster(tblSubjects);
         tca.adjustColumns();
+        lblTotalSubjects.setText(String.valueOf(tblSubjects.getRowCount()));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel classPanel;

@@ -33,7 +33,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="412" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" pref="438" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -42,7 +42,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="378" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" pref="422" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -78,7 +78,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="129" max="32767" attributes="0"/>
+                              <EmptySpace pref="155" max="32767" attributes="0"/>
                               <Component id="cmdNext1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -93,15 +93,15 @@
                                   <Component id="lblClass" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblPhoto" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPhoto" pref="140" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="140" max="32767" attributes="0"/>
-                                  <Component id="calDOB" pref="140" max="32767" attributes="2"/>
-                                  <Component id="cmbGender" alignment="0" pref="140" max="32767" attributes="2"/>
-                                  <Component id="txtOtherName" alignment="0" pref="140" max="32767" attributes="2"/>
-                                  <Component id="txtFirstName" alignment="0" pref="140" max="32767" attributes="2"/>
-                                  <Component id="txtLastName" alignment="1" pref="140" max="32767" attributes="2"/>
+                                  <Component id="txtPhoto" pref="166" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="166" max="32767" attributes="0"/>
+                                  <Component id="calDOB" pref="166" max="32767" attributes="2"/>
+                                  <Component id="cmbGender" alignment="0" pref="166" max="32767" attributes="2"/>
+                                  <Component id="txtOtherName" alignment="0" pref="166" max="32767" attributes="2"/>
+                                  <Component id="txtFirstName" alignment="0" pref="166" max="32767" attributes="2"/>
+                                  <Component id="txtLastName" alignment="1" pref="166" max="32767" attributes="2"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">
@@ -110,7 +110,7 @@
                               </Group>
                           </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -153,14 +153,12 @@
                           <Component id="jScrollPane5" min="-2" pref="150" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblPhoto" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="txtPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmdBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="txtPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPhoto" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="115" max="32767" attributes="0"/>
+                      <EmptySpace pref="159" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -220,9 +218,10 @@
             <Component class="javax.swing.JComboBox" name="cmbGender">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="2">
-                    <StringItem index="0" value="Male"/>
-                    <StringItem index="1" value="Female"/>
+                  <StringArray count="3">
+                    <StringItem index="0" value="--- Select One ---"/>
+                    <StringItem index="1" value="Male"/>
+                    <StringItem index="2" value="Female"/>
                   </StringArray>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGender.toolTipText"/>
@@ -356,10 +355,10 @@
                               </Group>
                               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="txtEmail" alignment="0" pref="306" max="32767" attributes="0"/>
-                                  <Component id="txtPhone" alignment="0" pref="306" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="1" pref="306" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="306" max="32767" attributes="0"/>
+                                  <Component id="txtEmail" alignment="0" pref="332" max="32767" attributes="0"/>
+                                  <Component id="txtPhone" alignment="0" pref="332" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="1" pref="332" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="332" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -395,7 +394,7 @@
                           <Component id="lblMailingAddress" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace pref="124" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -544,7 +543,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="10" max="32767" attributes="0"/>
+                      <EmptySpace pref="54" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -579,9 +578,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane3" pref="266" max="32767" attributes="0"/>
-                              <Component id="txtPriConPhone" alignment="0" pref="266" max="32767" attributes="0"/>
-                              <Component id="txtPriConName" alignment="0" pref="266" max="32767" attributes="0"/>
+                              <Component id="jScrollPane3" pref="292" max="32767" attributes="0"/>
+                              <Component id="txtPriConPhone" alignment="0" pref="292" max="32767" attributes="0"/>
+                              <Component id="txtPriConName" alignment="0" pref="292" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -690,9 +689,9 @@
                           </Group>
                           <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="jScrollPane4" alignment="0" pref="266" max="32767" attributes="0"/>
-                              <Component id="txtSecConPhone" alignment="0" pref="266" max="32767" attributes="0"/>
-                              <Component id="txtSecConName" alignment="0" pref="266" max="32767" attributes="0"/>
+                              <Component id="jScrollPane4" alignment="0" pref="292" max="32767" attributes="0"/>
+                              <Component id="txtSecConPhone" alignment="0" pref="292" max="32767" attributes="0"/>
+                              <Component id="txtSecConName" alignment="0" pref="292" max="32767" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                       </Group>
@@ -793,15 +792,15 @@
             </Component>
           </SubComponents>
         </Container>
-        <Container class="javax.swing.JPanel" name="medicalPanel">
+        <Container class="javax.swing.JPanel" name="otherPanel">
           <Properties>
-            <Property name="name" type="java.lang.String" value="medicalPanel" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="otherPanel" noResource="true"/>
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Medical">
-                <Property name="tabTitle" type="java.lang.String" resourceKey="medicalPanel.TabConstraints.tabTitle"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="medicalPanel.TabConstraints.tabIcon"/>
+              <JTabbedPaneConstraints tabName="Other">
+                <Property name="tabTitle" type="java.lang.String" resourceKey="otherPanel.TabConstraints.tabTitle"/>
+                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="otherPanel.TabConstraints.tabIcon"/>
               </JTabbedPaneConstraints>
             </Constraint>
           </Constraints>
@@ -812,17 +811,22 @@
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Component id="medicalPanel" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblPrimaryDoctor" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblDoctorPhone" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblHospital" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSpecialNeeds" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblFeederSchool" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblPSEGrade" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblRepeating" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblNotes" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtDoctorPhone" alignment="0" pref="253" max="32767" attributes="0"/>
-                                  <Component id="txtPrimaryDoctor" alignment="0" pref="253" max="32767" attributes="0"/>
-                                  <Component id="txtHospital" alignment="1" pref="253" max="32767" attributes="0"/>
+                                  <Component id="chkIsPepeating" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jScrollPane6" pref="303" max="32767" attributes="0"/>
+                                  <Component id="txtPSEGrades" alignment="0" pref="303" max="32767" attributes="0"/>
+                                  <Component id="txtFeederSchool" alignment="0" pref="303" max="32767" attributes="0"/>
+                                  <Component id="txtSpecialNeeds" alignment="0" pref="303" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -840,20 +844,32 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPrimaryDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPrimaryDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblFeederSchool" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtFeederSchool" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblDoctorPhone" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtDoctorPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblPSEGrade" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtPSEGrades" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblRepeating" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="chkIsPepeating" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="228" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSpecialNeeds" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSpecialNeeds" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblNotes" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane6" min="-2" pref="94" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="medicalPanel" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="16" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -864,45 +880,6 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblPrimaryDoctor">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblPrimaryDoctor.text"/>
-                <Property name="name" type="java.lang.String" value="lblPrimaryDoctor" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtPrimaryDoctor">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtPrimaryDoctor.text"/>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtPrimaryDoctor.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtPrimaryDoctor" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblDoctorPhone">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblDoctorPhone.text"/>
-                <Property name="name" type="java.lang.String" value="lblDoctorPhone" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtDoctorPhone">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtDoctorPhone.text"/>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtDoctorPhone.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtDoctorPhone" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtHospital">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="txtHospital.text"/>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtHospital.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtHospital" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblHospital">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblHospital.text"/>
-                <Property name="name" type="java.lang.String" value="lblHospital" noResource="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="cmdSave">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
@@ -917,6 +894,179 @@
                   <action class="ilearn.student.FrmNewStudent" id="cancel" methodName="cancel"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmdCancel4" noResource="true"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JPanel" name="medicalPanel">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder title="Medical Info">
+                      <Border PropertyName="innerBorder" info="org.netbeans.modules.form.compat2.border.EtchedBorderInfo">
+                        <EtchetBorder/>
+                      </Border>
+                      <Property name="titleX" resourceKey="medicalPanel.border.title"/>
+                    </TitledBorder>
+                  </Border>
+                </Property>
+                <Property name="name" type="java.lang.String" value="medicalPanel" noResource="true"/>
+              </Properties>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblPrimaryDoctor" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblDoctorPhone" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospital" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="txtDoctorPhone" alignment="0" pref="235" max="32767" attributes="0"/>
+                              <Component id="txtPrimaryDoctor" alignment="0" pref="235" max="32767" attributes="0"/>
+                              <Component id="txtHospital" alignment="1" pref="235" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPrimaryDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPrimaryDoctor" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblDoctorPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtDoctorPhone" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="txtHospital" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblHospital" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblPrimaryDoctor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblPrimaryDoctor.text"/>
+                    <Property name="name" type="java.lang.String" value="lblPrimaryDoctor" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtDoctorPhone">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="txtDoctorPhone.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtDoctorPhone.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtDoctorPhone" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtPrimaryDoctor">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="txtPrimaryDoctor.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtPrimaryDoctor.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtPrimaryDoctor" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblHospital">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblHospital.text"/>
+                    <Property name="name" type="java.lang.String" value="lblHospital" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblDoctorPhone">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblDoctorPhone.text"/>
+                    <Property name="name" type="java.lang.String" value="lblDoctorPhone" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtHospital">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="txtHospital.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtHospital.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtHospital" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="lblFeederSchool">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblFeederSchool.text"/>
+                <Property name="name" type="java.lang.String" value="lblFeederSchool" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblPSEGrade">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblPSEGrade.text"/>
+                <Property name="name" type="java.lang.String" value="lblPSEGrade" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblRepeating">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblRepeating.text"/>
+                <Property name="name" type="java.lang.String" value="lblRepeating" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblSpecialNeeds">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSpecialNeeds.text"/>
+                <Property name="name" type="java.lang.String" value="lblSpecialNeeds" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblNotes">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblNotes.text"/>
+                <Property name="name" type="java.lang.String" value="lblNotes" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtFeederSchool">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="txtFeederSchool.text"/>
+                <Property name="name" type="java.lang.String" value="txtFeederSchool" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtPSEGrades">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="txtPSEGrades.text"/>
+                <Property name="name" type="java.lang.String" value="txtPSEGrades" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSpecialNeeds">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="txtSpecialNeeds.text"/>
+                <Property name="name" type="java.lang.String" value="txtSpecialNeeds" noResource="true"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane6">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jScrollPane6" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtNotes">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="name" type="java.lang.String" value="txtNotes" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JCheckBox" name="chkIsPepeating">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="chkIsPepeating.text"/>
+                <Property name="name" type="java.lang.String" value="chkIsPepeating" noResource="true"/>
               </Properties>
             </Component>
           </SubComponents>

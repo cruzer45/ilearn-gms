@@ -92,6 +92,7 @@ public class Classes
         model.addColumn("Code", subCodes.toArray());
         model.addColumn("Title", subTitle.toArray());
         model.addColumn("Teacher", subTeacher.toArray());
+
         return model;
     }
 
@@ -419,12 +420,12 @@ public class Classes
         ArrayList<String> classes = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `clsName` FROM `iLearn`.`Class` WHERE `clsStatus` = 'Active' ORDER BY `clsName` ASC ;";
+            String sql = "SELECT `clsCode`,`clsName` FROM `iLearn`.`Class` WHERE `clsStatus` = 'Active' ORDER BY `clsName` ASC ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                classes.add(rs.getString("clsName"));
+                classes.add(rs.getString("clsCode"));
             }
             rs.close();
             prep.close();

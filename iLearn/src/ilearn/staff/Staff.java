@@ -73,7 +73,7 @@ public class Staff
                 id.add(rs.getString("staID"));
                 code.add(rs.getString("staCode"));
                 name.add(rs.getString("staFirstName") + " " + rs.getString("staLastName"));
-                DOB.add(rs.getDate("staDOB"));
+//                DOB.add(rs.getDate("staDOB"));
                 Status.add(rs.getString("staStatus"));
             }
             rs.close();
@@ -103,15 +103,15 @@ public class Staff
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                details.add(rs.getString("staID"));
-                details.add(rs.getString("staCode"));
-                details.add(rs.getString("staFirstName"));
-                details.add(rs.getString("staLastName"));
-                details.add(rs.getString("staGender"));
-                details.add(rs.getString("staDOB"));
-                details.add(rs.getString("staNotes"));
-                details.add(rs.getString("staEmail"));
-                details.add(rs.getString("staStatus"));
+                details.add(rs.getString("staID"));//0
+                details.add(rs.getString("staCode"));//1
+                details.add(rs.getString("staFirstName"));//2
+                details.add(rs.getString("staLastName"));//3
+                details.add(rs.getString("staGender"));//4
+                details.add(rs.getString("staDOB"));//5
+                details.add(rs.getString("staNotes"));//6
+                details.add(rs.getString("staEmail"));//7
+                details.add(rs.getString("staStatus"));//8
             }
             rs.close();
             prep.close();
@@ -157,7 +157,7 @@ public class Staff
         ArrayList<String> staffList = new ArrayList<String>();
         try
         {
-            String sql = "SELECT  CONCAT_WS( ' ', `staFirstName`, `staLastName`) AS Name  FROM `iLearn`.`Staff` WHERE `staStatus` = 'Active';";
+            String sql = "SELECT  CONCAT_WS( ' ', `staFirstName`, `staLastName`) AS Name  FROM `iLearn`.`Staff` WHERE `staStatus` = 'Active' ORDER BY Name Asc;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
