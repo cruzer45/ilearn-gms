@@ -50,8 +50,6 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
         cmbClass = new javax.swing.JComboBox();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblStudents = new javax.swing.JTable();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblStudents1 = new javax.swing.JTable();
         cmdCancel = new javax.swing.JButton();
         cmbSave = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
@@ -90,11 +88,11 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
 
             },
             new String [] {
-                "ID", "Name", "Absent", "Demerit", "Tardy", "Remarks"
+                "ID", "Name", "Present", "Demerit", "Tardy", "Remarks"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.Boolean.class, java.lang.Integer.class, java.lang.Boolean.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -110,35 +108,7 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
         tblStudents.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title2")); // NOI18N
         tblStudents.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title3")); // NOI18N
         tblStudents.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title4")); // NOI18N
-
-        jScrollPane2.setName("jScrollPane1"); // NOI18N
-
-        tblStudents1.setAutoCreateRowSorter(true);
-        tblStudents1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "ID", "Name", "Absent", "Demerit", "Tardy", "Remarks"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        tblStudents1.setColumnSelectionAllowed(true);
-        tblStudents1.setName("tblStudents"); // NOI18N
-        jScrollPane2.setViewportView(tblStudents1);
-        tblStudents1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        tblStudents1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title0")); // NOI18N
-        tblStudents1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title1")); // NOI18N
-        tblStudents1.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title2")); // NOI18N
-        tblStudents1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title3")); // NOI18N
-        tblStudents1.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title4")); // NOI18N
+        tblStudents.getColumnModel().getColumn(5).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title5")); // NOI18N
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditRegister.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
@@ -172,10 +142,10 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
                         .addGap(3, 3, 3)
                         .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
-                                .addComponent(cmbClass, 0, 326, Short.MAX_VALUE)
+                                .addComponent(cmbClass, 0, 336, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton1))
-                            .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))))
+                            .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(
@@ -191,7 +161,7 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
                     .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
@@ -255,10 +225,14 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
                 remarks.add(Remark);
             }
         }
-        if (Register.addRegister(date, stuID, absent, demerit, tardy, remarks, clsCode))
+
+        boolean wipeRegister = Register.wipeRegister(clsCode, date);
+        boolean addRegister = Register.addRegister(date, stuID, absent, demerit, tardy, remarks, clsCode);
+ 
+        if (wipeRegister && addRegister)
         {
-            String message = "The assessment was successfully saved. \n"
-                    + "Would you like to add another?";
+            String message = "The register was successfully updated. \n"
+                    + "Would you like to edit another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -299,8 +273,6 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
             String message = "Kindly select a class first.";
             Utilities.showWarningMessage(rootPane, message);
         }
-
-
     }
 
     private void resetForm()
@@ -313,6 +285,31 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
     @Action
     public void loadRegister()
     {
+        loadStudentList();
+        String clsCode = cmbClass.getSelectedItem().toString();
+        String date = Utilities.YMD_Formatter.format(calDate.getDate());
+        ArrayList<Object> register = Register.getClassRegister(clsCode, date);
+        ArrayList<String> stuID = (ArrayList<String>) register.get(0);
+        ArrayList<Boolean> absent = (ArrayList<Boolean>) register.get(1);
+        ArrayList<Boolean> tardy = (ArrayList<Boolean>) register.get(2);
+        ArrayList<Integer> demerit = (ArrayList<Integer>) register.get(3);
+        ArrayList<String> remark = (ArrayList<String>) register.get(4);
+
+        for (int i = 0; i < stuID.size(); i++)
+        {
+            String currID = stuID.get(i);
+            for (int j = 0; j < tblStudents.getRowCount(); j++)
+            {
+                String tblID = tblStudents.getValueAt(j, 0).toString();
+                if (currID.equals(tblID))
+                {
+                    tblStudents.setValueAt(absent.get(i), j, 2);
+                    tblStudents.setValueAt(demerit.get(i), j, 3);
+                    tblStudents.setValueAt(tardy.get(i), j, 4);
+                    tblStudents.setValueAt(remark.get(i), j, 5);
+                }
+            }
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDate;
@@ -321,11 +318,9 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblDate;
     private javax.swing.JTable tblStudents;
-    private javax.swing.JTable tblStudents1;
     private javax.swing.JPanel wrapperPanel;
     // End of variables declaration//GEN-END:variables
 }

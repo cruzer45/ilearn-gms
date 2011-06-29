@@ -12,6 +12,7 @@ import ilearn.classes.FrmViewClass;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
+import ilearn.register.FrmEditRegister;
 import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
 import ilearn.reports.FrmClassGradebook;
@@ -30,6 +31,7 @@ import ilearn.subject.FrmAddSubject;
 import ilearn.subject.FrmEditSubject;
 import ilearn.term.FrmEditTimeSlots;
 import ilearn.term.FrmAddTimeSlot;
+import ilearn.term.FrmCloseTerm;
 import ilearn.term.FrmEditTerm;
 import ilearn.user.FrmChangePassword;
 import ilearn.user.UserCheck;
@@ -87,6 +89,8 @@ public class ILearnView extends FrameView
     FrmEditGrades frmEditGrade = null;
     FrmRegister frmRegister = null;
     FrmChangePassword frmChangePassword = null;
+    FrmEditRegister frmEditRegister = null;
+    FrmCloseTerm frmCloseTerm = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -97,6 +101,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -110,6 +115,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -123,6 +129,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -260,6 +267,7 @@ public class ILearnView extends FrameView
         termMenu = new javax.swing.JMenu();
         addTerm = new javax.swing.JMenuItem();
         editTerm = new javax.swing.JMenuItem();
+        closeTerm = new javax.swing.JMenuItem();
         timeSlotsMenu = new javax.swing.JMenu();
         addTimeSlot = new javax.swing.JMenuItem();
         editTimeSlot = new javax.swing.JMenuItem();
@@ -290,7 +298,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -348,6 +356,7 @@ public class ILearnView extends FrameView
         enterAttendance.setName("enterAttendance"); // NOI18N
         attendanceMenu.add(enterAttendance);
 
+        editAttendance.setAction(actionMap.get("showEditAttendance")); // NOI18N
         editAttendance.setIcon(resourceMap.getIcon("editAttendance.icon")); // NOI18N
         editAttendance.setText(resourceMap.getString("editAttendance.text")); // NOI18N
         editAttendance.setName("editAttendance"); // NOI18N
@@ -495,6 +504,12 @@ public class ILearnView extends FrameView
         editTerm.setName("editTerm"); // NOI18N
         termMenu.add(editTerm);
 
+        closeTerm.setAction(actionMap.get("showCloseTerm")); // NOI18N
+        closeTerm.setIcon(resourceMap.getIcon("closeTerm.icon")); // NOI18N
+        closeTerm.setText(resourceMap.getString("closeTerm.text")); // NOI18N
+        closeTerm.setName("closeTerm"); // NOI18N
+        termMenu.add(closeTerm);
+
         manageMenu.add(termMenu);
 
         timeSlotsMenu.setIcon(resourceMap.getIcon("timeSlotsMenu.icon")); // NOI18N
@@ -573,7 +588,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -1289,6 +1304,54 @@ public class ILearnView extends FrameView
     {
         ReportLoader.showRepeatingStudents();
     }
+
+    @Action
+    public void showEditAttendance()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Class Register");
+        if (AlreadyLoaded == false)
+        {
+            frmEditRegister = new FrmEditRegister();
+            desktopPane.add(frmEditRegister);
+            //Load the Form
+            frmEditRegister.setVisible(true);
+            frmEditRegister.show();
+            try
+            {
+                frmEditRegister.setIcon(false);
+                frmEditRegister.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showCloseTerm()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Close Term");
+        if (AlreadyLoaded == false)
+        {
+            frmCloseTerm = new FrmCloseTerm();
+            desktopPane.add(frmCloseTerm);
+            //Load the Form
+            frmCloseTerm.setVisible(true);
+            frmCloseTerm.show();
+            try
+            {
+                frmCloseTerm.setIcon(false);
+                frmCloseTerm.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1303,6 +1366,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem classListReport;
     private javax.swing.JMenu classMenu;
     private javax.swing.JMenu classReports;
+    private javax.swing.JMenuItem closeTerm;
     private javax.swing.JMenuItem createAssessment;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem editAssessment;

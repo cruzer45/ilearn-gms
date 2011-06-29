@@ -28,6 +28,7 @@ public class Register
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -48,6 +49,7 @@ public class Register
                     return Object.class;
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int ColIndex)
             {
@@ -59,6 +61,7 @@ public class Register
                 }
                 return editable;
             }
+
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -136,6 +139,70 @@ public class Register
         catch (Exception e)
         {
             String message = "An error occurred while saving the register.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    public static ArrayList<Object> getClassRegister(String clsCode, String date)
+    {
+        ArrayList<Object> register = new ArrayList<Object>();
+        ArrayList<String> stuID = new ArrayList<String>();
+        ArrayList<Boolean> absent = new ArrayList<Boolean>();
+        ArrayList<Boolean> tardy = new ArrayList<Boolean>();
+        ArrayList<Integer> demerit = new ArrayList<Integer>();
+        ArrayList<String> remark = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `rolID`, `rolStuID`, `rolClsCode`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`, `rolStatus`"
+                    + " FROM `iLearn`.`RollCall`"
+                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, clsCode);
+            prep.setString(2, date);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                stuID.add(rs.getString("rolStuID"));
+                absent.add(rs.getBoolean("rolAbsent"));
+                tardy.add(rs.getBoolean("rolTardy"));
+                demerit.add(rs.getInt("rolDemerit"));
+                remark.add(rs.getString("rolRemark"));
+            }
+            rs.close();
+            prep.close();
+            register.add(stuID);
+            register.add(absent);
+            register.add(tardy);
+            register.add(demerit);
+            register.add(remark);
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading the register.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return register;
+    }
+
+    public static boolean wipeRegister(String clsCode, String date)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "DELETE "
+                    + " FROM `iLearn`.`RollCall`"
+                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, clsCode);
+            prep.setString(2, date);
+            prep.executeUpdate();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while clearing the register.";
             logger.log(Level.SEVERE, message, e);
         }
         return successful;

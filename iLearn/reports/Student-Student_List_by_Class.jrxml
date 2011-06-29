@@ -8,7 +8,7 @@
 	</parameter>
 	<parameter name="classCode" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, `stuDoctorContact`, `stuHospital`, `stuClsCode`, `curCode`, `curTerm`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuStatus` = 'Active' AND `stuClsCode` LIKE $P{classCode};]]>
+		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` FROM `iLearn`.`Student` WHERE `stuStatus` = 'Active' AND `stuClsCode` LIKE $P{classCode};]]>
 	</queryString>
 	<field name="stuID" class="java.lang.Long"/>
 	<field name="stuFirstName" class="java.lang.String"/>
@@ -33,8 +33,6 @@
 	<field name="stuDoctorContact" class="java.lang.String"/>
 	<field name="stuHospital" class="java.lang.String"/>
 	<field name="stuClsCode" class="java.lang.String"/>
-	<field name="curCode" class="java.lang.String"/>
-	<field name="curTerm" class="java.lang.String"/>
 	<field name="stuStatus" class="java.lang.String"/>
 	<variable name="stuClsCode_1" class="java.lang.Integer" resetType="Group" resetGroup="Class" calculation="Count">
 		<variableExpression><![CDATA[$F{stuClsCode}]]></variableExpression>

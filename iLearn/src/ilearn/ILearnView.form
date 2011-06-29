@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -138,6 +138,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editAttendance">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showEditAttendance" methodName="showEditAttendance"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="editAttendance.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="editAttendance.text"/>
                 <Property name="name" type="java.lang.String" value="editAttendance" noResource="true"/>
@@ -379,6 +382,16 @@
                     <Property name="name" type="java.lang.String" value="editTerm" noResource="true"/>
                   </Properties>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="closeTerm">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showCloseTerm" methodName="showCloseTerm"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="closeTerm.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="closeTerm.text"/>
+                    <Property name="name" type="java.lang.String" value="closeTerm" noResource="true"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="timeSlotsMenu">
@@ -495,7 +508,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="616" max="32767" attributes="0"/>
+                  <EmptySpace pref="630" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

@@ -248,7 +248,7 @@ public class FrmRegister extends javax.swing.JInternalFrame
         }
         if (Register.addRegister(date, stuID, absent, demerit, tardy, remarks, clsCode))
         {
-            String message = "The assessment was successfully saved. \n"
+            String message = "The register was successfully saved. \n"
                     + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
