@@ -24,11 +24,11 @@ import org.jdesktop.application.Action;
  *
  * @author m.rogers
  */
-public class FrmRegister extends javax.swing.JInternalFrame
+public class FrmEditRegister extends javax.swing.JInternalFrame
 {
 
     /** Creates new form FrmRegister */
-    public FrmRegister()
+    public FrmEditRegister()
     {
         initComponents();
         populateLists();
@@ -54,12 +54,13 @@ public class FrmRegister extends javax.swing.JInternalFrame
         tblStudents1 = new javax.swing.JTable();
         cmdCancel = new javax.swing.JButton();
         cmbSave = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmRegister.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditRegister.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
@@ -139,7 +140,7 @@ public class FrmRegister extends javax.swing.JInternalFrame
         tblStudents1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title3")); // NOI18N
         tblStudents1.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title4")); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmRegister.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditRegister.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
@@ -148,6 +149,10 @@ public class FrmRegister extends javax.swing.JInternalFrame
         cmbSave.setText(resourceMap.getString("cmbSave.text")); // NOI18N
         cmbSave.setName("cmbSave"); // NOI18N
 
+        jButton1.setAction(actionMap.get("loadRegister")); // NOI18N
+        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
+        jButton1.setName("jButton1"); // NOI18N
+
         javax.swing.GroupLayout wrapperPanelLayout = new javax.swing.GroupLayout(wrapperPanel);
         wrapperPanel.setLayout(wrapperPanelLayout);
         wrapperPanelLayout.setHorizontalGroup(
@@ -155,19 +160,22 @@ public class FrmRegister extends javax.swing.JInternalFrame
             .addGroup(wrapperPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(lblDate)
-                        .addGap(6, 6, 6)
-                        .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
-                    .addGroup(wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(lblClass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbClass, 0, 515, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
                     .addGroup(wrapperPanelLayout.createSequentialGroup()
                         .addComponent(cmbSave)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
+                        .addComponent(cmdCancel))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperPanelLayout.createSequentialGroup()
+                        .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblDate)
+                            .addComponent(lblClass))
+                        .addGap(3, 3, 3)
+                        .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
+                                .addComponent(cmbClass, 0, 326, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jButton1))
+                            .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 455, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(
@@ -180,7 +188,8 @@ public class FrmRegister extends javax.swing.JInternalFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblClass)
-                    .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -207,10 +216,10 @@ public class FrmRegister extends javax.swing.JInternalFrame
     private void cmbClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbClassActionPerformed
     {
 //GEN-HEADEREND:event_cmbClassActionPerformed
-        if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
-        {
-            loadStudentList();
-        }
+//        if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
+//        {
+//            loadStudentList();
+//        }
     }//GEN-LAST:event_cmbClassActionPerformed
 
     @Action
@@ -278,16 +287,39 @@ public class FrmRegister extends javax.swing.JInternalFrame
 
     private void loadStudentList()
     {
-        DefaultTableModel model = Register.getStudentList(cmbClass.getSelectedItem().toString());
-        tblStudents.setModel(model);
-        TableColumnAdjuster tca = new TableColumnAdjuster(tblStudents);
-        tca.adjustColumns();
+        if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            DefaultTableModel model = Register.getStudentList(cmbClass.getSelectedItem().toString());
+            tblStudents.setModel(model);
+            TableColumnAdjuster tca = new TableColumnAdjuster(tblStudents);
+            tca.adjustColumns();
+        }
+        else
+        {
+            String message = "Kindly select a class first.";
+            Utilities.showWarningMessage(rootPane, message);
+        }
+
+
+    }
+
+    private void resetForm()
+    {
+        remove(wrapperPanel);
+        initComponents();
+        populateLists();
+    }
+
+    @Action
+    public void loadRegister()
+    {
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDate;
     private javax.swing.JComboBox cmbClass;
     private javax.swing.JButton cmbSave;
     private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblClass;
@@ -296,11 +328,4 @@ public class FrmRegister extends javax.swing.JInternalFrame
     private javax.swing.JTable tblStudents1;
     private javax.swing.JPanel wrapperPanel;
     // End of variables declaration//GEN-END:variables
-
-    private void resetForm()
-    {
-        remove(wrapperPanel);
-        initComponents();
-        populateLists();
-    }
 }

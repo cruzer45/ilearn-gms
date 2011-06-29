@@ -106,12 +106,12 @@ public class Register
         return model;
     }
 
-    public static boolean addRegister(String date, ArrayList<String> stuID, ArrayList<Boolean> absent, ArrayList<Integer> demerit, ArrayList<Boolean> tardy, ArrayList<String> remarks)
+    public static boolean addRegister(String date, ArrayList<String> stuID, ArrayList<Boolean> absent, ArrayList<Integer> demerit, ArrayList<Boolean> tardy, ArrayList<String> remarks, String clsCode)
     {
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `RollCall` (`rolStuID`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`) VALUES (?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `RollCall` (`rolStuID`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`, `rolClsCode`) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             String term = Term.getCurrentTerm();
             for (int i = 0; i < stuID.size(); i++)
@@ -123,6 +123,7 @@ public class Register
                 prep.setBoolean(5, tardy.get(i));
                 prep.setInt(6, demerit.get(i));
                 prep.setString(7, remarks.get(i));
+                prep.setString(8, clsCode);
                 prep.addBatch();
             }
             prep.executeBatch();
