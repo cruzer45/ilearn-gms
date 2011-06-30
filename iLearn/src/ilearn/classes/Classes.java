@@ -92,7 +92,6 @@ public class Classes
         model.addColumn("Code", subCodes.toArray());
         model.addColumn("Title", subTitle.toArray());
         model.addColumn("Teacher", subTeacher.toArray());
-
         return model;
     }
 
@@ -486,7 +485,7 @@ public class Classes
         return classCode;
     }
 
-    public static DefaultTableModel getStudentList(String classCode)
+    public static DefaultTableModel getStudentTableModel(String classCode)
     {
         DefaultTableModel model = new DefaultTableModel()
         {

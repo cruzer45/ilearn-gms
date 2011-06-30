@@ -435,7 +435,7 @@ public class FrmViewClass extends javax.swing.JInternalFrame
             txtHomeRoom.setText(classInfo.get(4));
             txtStatus.setText(classInfo.get(5));
             //Get the list of students
-            tblStudents.setModel(Classes.getStudentList(classInfo.get(0)));
+            tblStudents.setModel(Classes.getStudentTableModel(classInfo.get(0)));
             lblTotalStudents2.setText(String.valueOf(tblStudents.getRowCount()));
             //Get the subject information
             tblSubjects.setModel(Classes.getSubjects(classInfo.get(0)));

@@ -145,7 +145,6 @@ public class Subject
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -162,7 +161,7 @@ public class Subject
         try
         {
             String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `iLearn`.`Subject` "
-                    + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
+                         + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -224,6 +223,30 @@ public class Subject
             logger.log(Level.SEVERE, message, e);
         }
         return details;
+    }
+
+    public static String getSubjectID(String subCode)
+    {
+        String subID = "";
+        try
+        {
+            String sql = "SELECT `subID` FROM `iLearn`.`Subject` WHERE `subCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, subCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                subID = rs.getString("subID");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving subject details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return subID;
     }
 
     public static void getSubjectHours(String subCode)

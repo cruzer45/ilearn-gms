@@ -337,7 +337,7 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         if (Staff.updateStaffDetails(id, code, firstName, lastName, gender, DOB, notes, email, status))
         {
             String message = "The information was successfully updated. \n"
-                    + "Would you like to continue editing?";
+                             + "Would you like to continue editing?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -352,7 +352,7 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this staff member.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -381,7 +381,6 @@ public class FrmEditStaff extends javax.swing.JInternalFrame
             txtFirstName.setText(details.get(2));
             txtLastName.setText(details.get(3));
             cmbGender.setSelectedItem(details.get(4));
-
             txtNotes.setText(details.get(6));
             txtEmail.setText(details.get(7));
             cmbStatus.setSelectedItem(details.get(8));

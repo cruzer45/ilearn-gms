@@ -28,7 +28,6 @@ public class Register
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -49,7 +48,6 @@ public class Register
                     return Object.class;
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int ColIndex)
             {
@@ -61,7 +59,6 @@ public class Register
                 }
                 return editable;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -155,8 +152,8 @@ public class Register
         try
         {
             String sql = "SELECT `rolID`, `rolStuID`, `rolClsCode`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`, `rolStatus`"
-                    + " FROM `iLearn`.`RollCall`"
-                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+                         + " FROM `iLearn`.`RollCall`"
+                         + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             prep.setString(2, date);
@@ -191,8 +188,8 @@ public class Register
         try
         {
             String sql = "DELETE "
-                    + " FROM `iLearn`.`RollCall`"
-                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+                         + " FROM `iLearn`.`RollCall`"
+                         + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             prep.setString(2, date);

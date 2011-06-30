@@ -307,6 +307,14 @@ public class FrmClassGradebook extends javax.swing.JDialog
                                 style.setFont(font);
                                 studentRow.getCell(startcolumn + i).setCellStyle(style);
                             }
+                            if (grade.equals("Absent"))
+                            {
+                                CellStyle style = wb.createCellStyle();
+                                Font font = wb.createFont();
+                                font.setColor(HSSFColor.RED.index);
+                                style.setFont(font);
+                                studentRow.getCell(startcolumn + i).setCellStyle(style);
+                            }
                             try
                             {
                                 double maxPoints = Double.valueOf(assmtTotalPoints.get(i));

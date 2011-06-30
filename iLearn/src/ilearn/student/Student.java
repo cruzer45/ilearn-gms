@@ -25,22 +25,22 @@ public class Student
     static final Logger logger = Logger.getLogger(Student.class.getName());
 
     public static boolean addStudent(String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
-            String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
-            String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
+                                     String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
+                                     String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
+                                     String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
+                                     String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
     {
         boolean successful = false;
         try
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "INSERT INTO `Student` "
-                    + "(`stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEmail`, "
-                    + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
-                    + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
-                    + "`stuDoctorContact`, `stuHospital`, `stuClsCode`, `stuPSEGrade`, "
-                    + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                         + "(`stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEmail`, "
+                         + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
+                         + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
+                         + "`stuDoctorContact`, `stuHospital`, `stuClsCode`, `stuPSEGrade`, "
+                         + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`) "
+                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -84,7 +84,6 @@ public class Student
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -98,11 +97,11 @@ public class Student
         try
         {
             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuClsCode` FROM `iLearn`.`Student` "
-                    + "WHERE ( `stuID` LIKE ?  OR "
-                    + "`stuFirstName` LIKE ?  OR "
-                    + "`stuLastName` LIKE ?  OR "
-                    + "`stuOtherNames` LIKE ?  OR "
-                    + "`stuClsCode` LIKE ? ) AND `stuStatus` = 'Active';";
+                         + "WHERE ( `stuID` LIKE ?  OR "
+                         + "`stuFirstName` LIKE ?  OR "
+                         + "`stuLastName` LIKE ?  OR "
+                         + "`stuOtherNames` LIKE ?  OR "
+                         + "`stuClsCode` LIKE ? ) AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -138,11 +137,11 @@ public class Student
         try
         {
             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`,"
-                    + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
-                    + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
-                    + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
-                    + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`"
-                    + "FROM `iLearn`.`Student` WHERE `stuID` = ?;";
+                         + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
+                         + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
+                         + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
+                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`"
+                         + "FROM `iLearn`.`Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             ResultSet rs = prep.executeQuery();
@@ -189,18 +188,66 @@ public class Student
         return studentInfo;
     }
 
+    public static String getStudentClass(String stuID)
+    {
+        String stuClass = "";
+        try
+        {
+            String sql = "SELECT `stuID` , `stuClsCode` FROM `iLearn`.`Student` WHERE `stuID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                stuClass = (rs.getString("stuClsCode"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the student information.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return stuClass;
+    }
+
+    public static String getStudentName(String stuID)
+    {
+        String studentName = "";
+        try
+        {
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName` FROM `iLearn`.`Student` WHERE `stuID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentName = rs.getString("stuFirstName") + " " + rs.getString("stuLastName");
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the student information.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return studentName;
+    }
+
     public static boolean updateStudent(String stuID, String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
-            String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
-            String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
+                                        String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
+                                        String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
+                                        String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
+                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
     {
         boolean successful = false;
         try
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuPhoto` = ? ,`stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                    + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -241,16 +288,16 @@ public class Student
     }
 
     public static boolean updateStudent(String stuID, String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
-            String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
-            String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
+                                        String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
+                                        String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
+                                        String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
+                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
     {
         boolean successful = false;
         try
         {
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                    + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);

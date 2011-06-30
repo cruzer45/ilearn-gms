@@ -170,7 +170,6 @@ public class DialogAddSubject extends javax.swing.JDialog
     {
         if (tblResults.getSelectedRow() != -1)
         {
-
             for (int rowID : tblResults.getSelectedRows())
             {
                 String id = tblResults.getValueAt(rowID, 0).toString();

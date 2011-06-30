@@ -31,7 +31,7 @@ public class ReportLoader
         catch (Exception exception)
         {
             String message = "An error occurred while generating a report.";
-           logger.log(Level.SEVERE, message, exception);
+            logger.log(Level.SEVERE, message, exception);
         }
     }
 }

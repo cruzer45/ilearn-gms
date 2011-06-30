@@ -41,8 +41,8 @@ public class FrmRegister extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         wrapperPanel = new javax.swing.JPanel();
         lblClass = new javax.swing.JLabel();
         lblDate = new javax.swing.JLabel();
@@ -54,7 +54,6 @@ public class FrmRegister extends javax.swing.JInternalFrame
         tblStudents1 = new javax.swing.JTable();
         cmdCancel = new javax.swing.JButton();
         cmbSave = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -63,40 +62,39 @@ public class FrmRegister extends javax.swing.JInternalFrame
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         wrapperPanel.setName("wrapperPanel"); // NOI18N
-
         lblClass.setText(resourceMap.getString("lblClass.text")); // NOI18N
         lblClass.setName("lblClass"); // NOI18N
-
         lblDate.setText(resourceMap.getString("lblDate.text")); // NOI18N
         lblDate.setName("lblDate"); // NOI18N
-
         calDate.setName("calDate"); // NOI18N
-
         cmbClass.setName("cmbClass"); // NOI18N
-        cmbClass.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbClass.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbClassActionPerformed(evt);
             }
         });
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         tblStudents.setAutoCreateRowSorter(true);
         tblStudents.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                 new Object [][]
+                                 {
 
-            },
-            new String [] {
-                "ID", "Name", "Absent", "Demerit", "Tardy", "Remarks"
-            }
-        ) {
-            Class[] types = new Class [] {
+                                 },
+                                 new String []
+                                 {
+                                     "ID", "Name", "Absent", "Demerit", "Tardy", "Remarks"
+                                 }
+                             )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
-
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
@@ -109,23 +107,25 @@ public class FrmRegister extends javax.swing.JInternalFrame
         tblStudents.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title2")); // NOI18N
         tblStudents.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title3")); // NOI18N
         tblStudents.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title4")); // NOI18N
-
         jScrollPane2.setName("jScrollPane1"); // NOI18N
-
         tblStudents1.setAutoCreateRowSorter(true);
         tblStudents1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                  new Object [][]
+                                  {
 
-            },
-            new String [] {
-                "ID", "Name", "Absent", "Demerit", "Tardy", "Remarks"
-            }
-        ) {
-            Class[] types = new Class [] {
+                                  },
+                                  new String []
+                                  {
+                                      "ID", "Name", "Absent", "Demerit", "Tardy", "Remarks"
+                                  }
+                              )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Integer.class, java.lang.Integer.class, java.lang.String.class
             };
-
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
@@ -138,58 +138,54 @@ public class FrmRegister extends javax.swing.JInternalFrame
         tblStudents1.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title2")); // NOI18N
         tblStudents1.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title3")); // NOI18N
         tblStudents1.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblStudents.columnModel.title4")); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmRegister.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmbSave.setAction(actionMap.get("save")); // NOI18N
         cmbSave.setText(resourceMap.getString("cmbSave.text")); // NOI18N
         cmbSave.setName("cmbSave"); // NOI18N
-
         javax.swing.GroupLayout wrapperPanelLayout = new javax.swing.GroupLayout(wrapperPanel);
         wrapperPanel.setLayout(wrapperPanelLayout);
         wrapperPanelLayout.setHorizontalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(lblDate)
-                        .addGap(6, 6, 6)
-                        .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
-                    .addGroup(wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(lblClass)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmbClass, 0, 515, Short.MAX_VALUE))
-                    .addGroup(wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(cmbSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperPanelLayout.createSequentialGroup()
+                                          .addComponent(lblDate)
+                                          .addGap(6, 6, 6)
+                                          .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                                .addGroup(wrapperPanelLayout.createSequentialGroup()
+                                          .addComponent(lblClass)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmbClass, 0, 515, Short.MAX_VALUE))
+                                .addGroup(wrapperPanelLayout.createSequentialGroup()
+                                          .addComponent(cmbSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblDate))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblClass)
-                    .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmbSave))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblDate))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClass)
+                                .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmbSave))
+                      .addContainerGap())
         );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -200,7 +196,6 @@ public class FrmRegister extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(wrapperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -249,7 +244,7 @@ public class FrmRegister extends javax.swing.JInternalFrame
         if (Register.addRegister(date, stuID, absent, demerit, tardy, remarks, clsCode))
         {
             String message = "The register was successfully saved. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -263,7 +258,7 @@ public class FrmRegister extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this assessment.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

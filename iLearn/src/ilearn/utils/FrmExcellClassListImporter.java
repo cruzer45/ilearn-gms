@@ -139,20 +139,14 @@ public class FrmExcellClassListImporter extends javax.swing.JInternalFrame
             Workbook wb = WorkbookFactory.create(inputStream);
             //Get the # of sheets
             int noOfSheets = wb.getNumberOfSheets();
-
             //Loop through each sheet
-
             for (int i = 0; i < noOfSheets; i++)
             {
                 Sheet sheet = wb.getSheetAt(i);
-
                 //Get # of rows
                 String sheetName = sheet.getSheetName();
                 int noOfRows = sheet.getLastRowNum();
-
-                
-
-                 Row row = sheet.getRow(2);
+                Row row = sheet.getRow(2);
                 Cell cell = row.getCell(3);
                 if (cell == null)
                 {
@@ -161,8 +155,6 @@ public class FrmExcellClassListImporter extends javax.swing.JInternalFrame
                 cell.setCellType(Cell.CELL_TYPE_STRING);
                 cell.setCellValue("a test");
             }
-
-
         }
         catch (Exception ex)
         {

@@ -487,8 +487,8 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while updating the class' information.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists, kindly contact your system administrator.";
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

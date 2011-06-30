@@ -56,6 +56,32 @@ public class Grade
         return list;
     }
 
+    public static ArrayList<Integer> getAssessmentList(String clsCode, String subjectID)
+    {
+        ArrayList<Integer> assmtIDs = new ArrayList<Integer>();
+        try
+        {
+            String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `iLearn`.`Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
+            prep.setString(1, clsCode);
+            prep.setString(2, Term.getCurrentTerm());
+            prep.setString(3, subjectID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                assmtIDs.add(rs.getInt("assmtID"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of assessments for a class and subject.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return assmtIDs;
+    }
+
     public static DefaultTableModel getStudentList(String classCode)
     {
         DefaultTableModel model = new DefaultTableModel()
@@ -429,13 +455,13 @@ public class Grade
             prep.setString(1, assmtID);
             ResultSet rs = prep.executeQuery();
             rs.first();
-            assmt.add(rs.getString("assmtID"));
-            assmt.add(rs.getString("assmtType"));
-            assmt.add(rs.getString("assmtTitle"));
-            assmt.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));
-            assmt.add(rs.getString("assmtTotalPoints"));
-            assmt.add(Classes.getClassCode(rs.getString("assmtClassID")));
-            assmt.add(rs.getString("assmtSubject"));
+            assmt.add(rs.getString("assmtID"));//0
+            assmt.add(rs.getString("assmtType"));//1
+            assmt.add(rs.getString("assmtTitle"));//2
+            assmt.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));//3
+            assmt.add(rs.getString("assmtTotalPoints"));//4
+            assmt.add(Classes.getClassCode(rs.getString("assmtClassID")));//5
+            assmt.add(rs.getString("assmtSubject"));//5
             rs.close();
             prep.close();
         }
@@ -495,5 +521,66 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    public static ArrayList<Object> checkAllGrades()
+    {
+        ArrayList<Object> results = new ArrayList<Object>();
+        try
+        {
+            //Get list of classes
+            ArrayList<String> classes = Classes.getClassList();
+            for (String cls : classes)
+            {
+                System.out.println("Now doing class: " + cls);
+                //Get all students in a class.
+                ArrayList<String> studentList = Classes.getStudentIDList(cls);
+                //Get list of all subjects for class
+                ArrayList<String> subjects = Classes.getSubjectList(cls);
+                for (String sub : subjects)
+                {
+                    String clsID = Classes.getClassID(cls);
+                    System.out.println("\tNow doing subject: " + sub);
+                    //Get all assessments for a subject
+                    ArrayList<Integer> assmtList = getAssessmentList(clsID, sub);
+                    for (Integer assmt : assmtList)
+                    {
+                        System.out.println("\t\tNow doing assmt: " + assmt);
+                        for (String stuID : studentList)
+                        {
+                            System.out.println("\t\t\tNow checking: " + stuID);
+                            ArrayList<String> stuGrade = getStudentGrade(String.valueOf(assmt), stuID);
+                            try
+                            {
+                                String grade = stuGrade.get(0);
+                                if ((grade.equals("Excused")) || (grade.equals("Incomplete")) || (grade.equals("Absent")))
+                                {
+                                    String[] missingGrade =
+                                    {
+                                        stuID, String.valueOf(assmt)
+                                    };
+                                    results.add(missingGrade);
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                String[] missingGrade =
+                                {
+                                    stuID, String.valueOf(assmt)
+                                };
+                                results.add(missingGrade);
+                            }
+                        }
+                    }
+                    //get list of students and make sure they have a grade for each assessment
+                }
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while checking for missing grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return results;
     }
 }
