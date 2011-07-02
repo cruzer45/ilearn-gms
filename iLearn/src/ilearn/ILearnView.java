@@ -12,6 +12,7 @@ import ilearn.classes.FrmViewClass;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
+import ilearn.promotion.FrmPromoteStudents;
 import ilearn.register.FrmEditRegister;
 import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
@@ -91,6 +92,7 @@ public class ILearnView extends FrameView
     FrmChangePassword frmChangePassword = null;
     FrmEditRegister frmEditRegister = null;
     FrmCloseTerm frmCloseTerm = null;
+    FrmPromoteStudents frmPromoteStudents = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -101,7 +103,6 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -115,7 +116,6 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -129,7 +129,6 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
-
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -257,6 +256,8 @@ public class ILearnView extends FrameView
         addClass = new javax.swing.JMenuItem();
         editClass = new javax.swing.JMenuItem();
         viewClass = new javax.swing.JMenuItem();
+        promoteMenu = new javax.swing.JMenu();
+        assignPromotions = new javax.swing.JMenuItem();
         schoolInfo = new javax.swing.JMenuItem();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
@@ -409,6 +410,15 @@ public class ILearnView extends FrameView
         viewClass.setName("viewClass"); // NOI18N
         classMenu.add(viewClass);
         manageMenu.add(classMenu);
+        promoteMenu.setIcon(resourceMap.getIcon("promoteMenu.icon")); // NOI18N
+        promoteMenu.setText(resourceMap.getString("promoteMenu.text")); // NOI18N
+        promoteMenu.setName("promoteMenu"); // NOI18N
+        assignPromotions.setAction(actionMap.get("showPromoteStudents")); // NOI18N
+        assignPromotions.setIcon(resourceMap.getIcon("assignPromotions.icon")); // NOI18N
+        assignPromotions.setText(resourceMap.getString("assignPromotions.text")); // NOI18N
+        assignPromotions.setName("assignPromotions"); // NOI18N
+        promoteMenu.add(assignPromotions);
+        manageMenu.add(promoteMenu);
         schoolInfo.setAction(actionMap.get("showManageSchool")); // NOI18N
         schoolInfo.setIcon(resourceMap.getIcon("schoolInfo.icon")); // NOI18N
         schoolInfo.setText(resourceMap.getString("schoolInfo.text")); // NOI18N
@@ -490,7 +500,6 @@ public class ILearnView extends FrameView
         importExcellClassRegister.setAction(actionMap.get("showImportExcellClassRegister")); // NOI18N
         importExcellClassRegister.setIcon(resourceMap.getIcon("importExcellClassRegister.icon")); // NOI18N
         importExcellClassRegister.setText(resourceMap.getString("importExcellClassRegister.text")); // NOI18N
-        importExcellClassRegister.setEnabled(false);
         importExcellClassRegister.setName("importExcellClassRegister"); // NOI18N
         utilitiesMenu.add(importExcellClassRegister);
         manageMenu.add(utilitiesMenu);
@@ -1279,6 +1288,30 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showPromoteStudents()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Promote By Class");
+        if (AlreadyLoaded == false)
+        {
+            frmPromoteStudents = new FrmPromoteStudents();
+            desktopPane.add(frmPromoteStudents);
+            //Load the Form
+            frmPromoteStudents.setVisible(true);
+            frmPromoteStudents.show();
+            try
+            {
+                frmPromoteStudents.setIcon(false);
+                frmPromoteStudents.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1287,6 +1320,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem addTerm;
     private javax.swing.JMenuItem addTimeSlot;
     private javax.swing.JMenuItem addUser;
+    private javax.swing.JMenuItem assignPromotions;
     private javax.swing.JMenu attendanceMenu;
     private javax.swing.JMenuItem changePasswordMenuItem;
     private javax.swing.JMenuItem classGradeBook;
@@ -1313,6 +1347,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu manageMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JProgressBar progressBar;
+    private javax.swing.JMenu promoteMenu;
     private javax.swing.JMenu reportsMenu;
     private javax.swing.JMenuItem schoolInfo;
     private javax.swing.JMenu staffMenu;

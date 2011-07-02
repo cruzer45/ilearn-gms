@@ -289,6 +289,25 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="promoteMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="promoteMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="promoteMenu.text"/>
+                <Property name="name" type="java.lang.String" value="promoteMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="assignPromotions">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showPromoteStudents" methodName="showPromoteStudents"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="assignPromotions.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="assignPromotions.text"/>
+                    <Property name="name" type="java.lang.String" value="assignPromotions" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <MenuItem class="javax.swing.JMenuItem" name="schoolInfo">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
