@@ -25,6 +25,8 @@ import org.jdesktop.application.Action;
 public class FrmEditClass extends javax.swing.JInternalFrame
 {
 
+    String validationText = "";
+
     /** Creates new form FrmEditClass */
     public FrmEditClass()
     {
@@ -533,6 +535,32 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         tca.adjustColumns();
         lblTotalSubjects.setText(String.valueOf(tblSubjects.getRowCount()));
     }
+
+    private boolean passedValidation()
+    {
+        boolean passed = true;
+        validationText = "";
+        String code = txtClassCode.getText().trim();
+        String name = txtClassName.getText().trim();
+        String homeRoom = cmbHomeRoom.getSelectedItem().toString();
+        if (code.isEmpty())
+        {
+            passed = false;
+            validationText += "Kindly assign a code before saving.";
+        }
+        if (name.isEmpty())
+        {
+            passed = false;
+            validationText += "Kindly assign a name before saving.";
+        }
+        if (homeRoom.isEmpty())
+        {
+            passed = false;
+            validationText += "Kindly select a home room before saving.";
+        }
+        return passed;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel classPanel;
     private javax.swing.JTabbedPane classTabbedPane;

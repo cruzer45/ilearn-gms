@@ -32,6 +32,8 @@ import org.jdesktop.application.Action;
 public class FrmEditGrades extends javax.swing.JInternalFrame
 {
 
+    String validationText = "";
+
     /** Creates new form FrmCreateAssessment */
     public FrmEditGrades()
     {
@@ -398,7 +400,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             // Assign the editor to the fourth column
             TableColumnModel tcm = tblGrades.getColumnModel();
             tcm.getColumn(3).setCellEditor(editor);
-            //Get the grades and if the class changed.
+            //Get the grades if the class changed.
             getStudentGrades();
         }
     }//GEN-LAST:event_cmbClassActionPerformed
@@ -436,6 +438,11 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        if (!passedValidation())
+        {
+            Utilities.showWarningMessage(rootPane, validationText);
+            return;
+        }
         String assmtTerm = Term.getCurrentTerm(),
                assmtSubject = cmbSubject.getSelectedItem().toString(),
                assmtTeacher = "",
@@ -584,6 +591,28 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
         tblSearch.setModel(Grade.getAssessmentTable(criteria));
         TableColumnAdjuster tca = new TableColumnAdjuster(tblSearch);
         tca.adjustColumns();
+    }
+
+    private boolean passedValidation()
+    {
+        boolean inputValid = true;
+        validationText = "";
+        if (cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            validationText = validationText + "Kindly select a Class before saving.\n";
+            inputValid = false;
+        }
+        if (cmbSubject.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            validationText = validationText + "Kindly select a Subject before saving.\n";
+            inputValid = false;
+        }
+        if (txtTitle.getText().trim().isEmpty())
+        {
+            validationText = validationText + "Kindly enter a title for the assignment.\n";
+            inputValid = false;
+        }
+        return inputValid;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane assmtTabbedPane;

@@ -25,6 +25,8 @@ import org.jdesktop.application.Action;
 public class FrmAddNewClass extends javax.swing.JInternalFrame
 {
 
+    String validationText = "";
+
     /** Creates new form FrmAddNewClass */
     public FrmAddNewClass()
     {
@@ -250,6 +252,11 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        if (!passedValidation())
+        {
+            Utilities.showWarningMessage(rootPane, validationText);
+            return;
+        }
         String code = txtClassCode.getText().trim();
         String level = cmbClassLevel.getSelectedItem().toString();
         String name = txtClassName.getText().trim();
@@ -300,7 +307,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
     @Action
     public void delete()
     {
-        if(tblSubjects.getSelectedRow() != -1)
+        if (tblSubjects.getSelectedRow() != -1)
         {
             String code = tblSubjects.getValueAt(tblSubjects.getSelectedRow(), 1).toString();
             Classes.removeSubject(code);
@@ -327,6 +334,31 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         tblSubjects.setModel(Classes.getSubjects());
         TableColumnAdjuster tca = new TableColumnAdjuster(tblSubjects);
         tca.adjustColumns();
+    }
+
+    private boolean passedValidation()
+    {
+        boolean passed = true;
+        validationText = "";
+        String code = txtClassCode.getText().trim();
+        String name = txtClassName.getText().trim();
+        String homeRoom = cmbHomeRoom.getSelectedItem().toString();
+        if (code.isEmpty())
+        {
+            passed = false;
+            validationText += "Kindly assign a code before saving.";
+        }
+        if (name.isEmpty())
+        {
+            passed = false;
+            validationText += "Kindly assign a name before saving.";
+        }
+        if (homeRoom.isEmpty())
+        {
+            passed = false;
+            validationText += "Kindly select a home room before saving.";
+        }
+        return passed;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane clsssTabbedPane;

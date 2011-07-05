@@ -25,13 +25,8 @@ public class Test
 //        InetAddress[] ip = Inet4Address.getAllByName(computername);
 //        String message = "SUCCESS: The user successfully logged on from " + ip[1] + ".";
 //        System.out.println(message);
-
-
         Calendar cal = Calendar.getInstance();
         System.out.println(cal.get(Calendar.YEAR));
-        
-
-
         System.exit(0);
     }
 }

@@ -11,7 +11,6 @@
 package ilearn.promotion;
 
 import ilearn.classes.Classes;
-import ilearn.grades.Grade;
 import ilearn.kernel.Utilities;
 import java.util.ArrayList;
 import javax.swing.DefaultCellEditor;
@@ -94,6 +93,7 @@ public class FrmPromoteStudents extends javax.swing.JInternalFrame
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
         cmdSave.setAction(actionMap.get("save")); // NOI18N
+        cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
         cmdLoadClass.setAction(actionMap.get("loadClass")); // NOI18N
         cmdLoadClass.setName("cmdLoadClass"); // NOI18N
@@ -126,7 +126,7 @@ public class FrmPromoteStudents extends javax.swing.JInternalFrame
                                 .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmdLoadClass))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -138,7 +138,7 @@ public class FrmPromoteStudents extends javax.swing.JInternalFrame
 
     private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStudentsMouseClicked
     {
-        //GEN-HEADEREND:event_tblStudentsMouseClicked
+//GEN-HEADEREND:event_tblStudentsMouseClicked
         clearClasses();
     }//GEN-LAST:event_tblStudentsMouseClicked
 

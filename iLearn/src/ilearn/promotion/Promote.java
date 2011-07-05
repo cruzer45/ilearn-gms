@@ -28,7 +28,6 @@ public class Promote
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -42,7 +41,6 @@ public class Promote
                 return o.getClass();
 //                }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -64,7 +62,6 @@ public class Promote
                 return editable;
                 //return false;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -84,7 +81,6 @@ public class Promote
                     fireTableCellUpdated(row, column);
                 }
             }
-
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;

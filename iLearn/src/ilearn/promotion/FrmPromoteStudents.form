@@ -55,7 +55,7 @@
                   <Component id="cmdLoadClass" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jScrollPane1" pref="397" max="32767" attributes="0"/>
+              <Component id="jScrollPane1" pref="401" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -151,6 +151,7 @@
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="ilearn.classes.FrmPromoteStudents" id="save" methodName="save"/>
         </Property>
+        <Property name="text" type="java.lang.String" resourceKey="cmdSave.text"/>
         <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
       </Properties>
     </Component>

@@ -33,10 +33,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="clsssTabbedPane" alignment="0" pref="388" max="32767" attributes="0"/>
+                  <Component id="clsssTabbedPane" alignment="0" pref="378" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="132" max="32767" attributes="0"/>
+                      <EmptySpace pref="99" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -124,11 +124,11 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="cmbHomeRoom" alignment="1" pref="268" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="1" pref="268" max="32767" attributes="0"/>
-                          <Component id="txtClassName" alignment="0" pref="268" max="32767" attributes="0"/>
-                          <Component id="cmbClassLevel" alignment="0" pref="268" max="32767" attributes="0"/>
-                          <Component id="txtClassCode" alignment="0" pref="268" max="32767" attributes="0"/>
+                          <Component id="cmbHomeRoom" alignment="1" pref="288" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="1" pref="288" max="32767" attributes="0"/>
+                          <Component id="txtClassName" alignment="0" pref="288" max="32767" attributes="0"/>
+                          <Component id="cmbClassLevel" alignment="0" pref="288" max="32767" attributes="0"/>
+                          <Component id="txtClassCode" alignment="0" pref="288" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -155,7 +155,7 @@
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblClassDesc" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane1" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" pref="87" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -283,7 +283,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="359" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="353" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdAdd" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -298,7 +298,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="167" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="163" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdDelete" alignment="3" min="-2" max="-2" attributes="0"/>
