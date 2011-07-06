@@ -31,7 +31,7 @@ public class InactivityListener implements ActionListener, AWTEventListener
 
     public final static long KEY_EVENTS = AWTEvent.KEY_EVENT_MASK;
     public final static long MOUSE_EVENTS =
-            AWTEvent.MOUSE_MOTION_EVENT_MASK + AWTEvent.MOUSE_EVENT_MASK;
+        AWTEvent.MOUSE_MOTION_EVENT_MASK + AWTEvent.MOUSE_EVENT_MASK;
     public final static long USER_EVENTS = KEY_EVENTS + MOUSE_EVENTS;
     private Action action;
     private int interval;

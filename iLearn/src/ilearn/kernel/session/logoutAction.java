@@ -35,7 +35,6 @@ public class logoutAction extends AbstractAction
         }
         String message = "The user successfully logged Off.";
         iLogger.logMessage(message, "Log Off", "User");
-
         FrmLogin frmLogin = new FrmLogin(Environment.getMainFrame(), true);
         frmLogin.setLocationRelativeTo(Environment.getMainFrame());
         frmLogin.setVisible(true);

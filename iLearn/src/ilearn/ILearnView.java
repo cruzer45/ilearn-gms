@@ -105,7 +105,6 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -119,7 +118,6 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -133,7 +131,6 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
-
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -175,7 +172,6 @@ public class ILearnView extends FrameView
         Environment.setMainFrame(getFrame());
         showLoginScreen();
         //checkPrivileges();
-
         javax.swing.Action logout = (javax.swing.Action) new logoutAction();
         InactivityListener listener = new InactivityListener(logout, 1);
         listener.start();
