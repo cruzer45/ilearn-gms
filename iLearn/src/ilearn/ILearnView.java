@@ -3,6 +3,7 @@
  */
 package ilearn;
 
+import ilearn.kernel.session.logoutAction;
 import ilearn.grades.FrmRecordGrade;
 import ilearn.grades.FrmEditGrades;
 import ilearn.term.FrmAddTerm;
@@ -12,6 +13,7 @@ import ilearn.classes.FrmViewClass;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
+import ilearn.kernel.session.InactivityListener;
 import ilearn.promotion.FrmPromoteStudents;
 import ilearn.register.FrmEditRegister;
 import ilearn.register.FrmRegister;
@@ -103,6 +105,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -116,6 +119,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -129,6 +133,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -167,8 +172,13 @@ public class ILearnView extends FrameView
         });
         Environment.createConnection();
         Environment.setDesktopPane(desktopPane);
+        Environment.setMainFrame(getFrame());
         showLoginScreen();
         //checkPrivileges();
+
+        javax.swing.Action logout = (javax.swing.Action) new logoutAction();
+        InactivityListener listener = new InactivityListener(logout, 1);
+        listener.start();
     }
 
     /**

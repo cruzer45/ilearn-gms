@@ -17,6 +17,7 @@ import java.util.TimerTask;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDesktopPane;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 /**
@@ -34,6 +35,7 @@ public class Environment
     private static double timeout = 0.17;
     private static Connection dbConnection;
     private static JDesktopPane desktopPane = null;
+    private static JFrame mainFrame = null;
     static Properties properties = new Properties();
 
     public static void getProperties()
@@ -204,5 +206,21 @@ public class Environment
     public static void setDesktopPane(JDesktopPane aDesktopPane)
     {
         desktopPane = aDesktopPane;
+    }
+
+    /**
+     * @return the mainFrame
+     */
+    public static JFrame getMainFrame()
+    {
+        return mainFrame;
+    }
+
+    /**
+     * @param aMainFrame the mainFrame to set
+     */
+    public static void setMainFrame(JFrame aMainFrame)
+    {
+        mainFrame = aMainFrame;
     }
 }
