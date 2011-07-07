@@ -139,7 +139,7 @@ public class FrmPromoteStudents extends javax.swing.JInternalFrame
     private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStudentsMouseClicked
     {
 //GEN-HEADEREND:event_tblStudentsMouseClicked
-        clearClasses();
+        
     }//GEN-LAST:event_tblStudentsMouseClicked
 
     @Action

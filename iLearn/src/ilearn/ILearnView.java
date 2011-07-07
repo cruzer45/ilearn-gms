@@ -37,6 +37,7 @@ import ilearn.term.FrmAddTimeSlot;
 import ilearn.term.FrmCloseTerm;
 import ilearn.term.FrmEditTerm;
 import ilearn.user.FrmChangePassword;
+import ilearn.user.User;
 import ilearn.user.UserCheck;
 import ilearn.utils.FrmExcellClassListImporter;
 import org.jdesktop.application.Action;
@@ -105,6 +106,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -118,6 +120,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -131,6 +134,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -172,9 +176,15 @@ public class ILearnView extends FrameView
         Environment.setMainFrame(getFrame());
         showLoginScreen();
         //checkPrivileges();
-        javax.swing.Action logout = (javax.swing.Action) new logoutAction();
-        InactivityListener listener = new InactivityListener(logout, 1);
-        listener.start();
+
+        //Start the timer.
+        int timeout = User.getTimeout();
+        if (timeout != 0)
+        {
+            javax.swing.Action logout = (javax.swing.Action) new logoutAction();
+            InactivityListener listener = new InactivityListener(logout, timeout);
+            listener.start();
+        }
     }
 
     /**

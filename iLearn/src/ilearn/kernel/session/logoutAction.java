@@ -5,6 +5,7 @@
 package ilearn.kernel.session;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.user.FrmLogin;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,8 @@ public class logoutAction extends AbstractAction
 
     public void actionPerformed(ActionEvent e)
     {
-        System.out.println("Action called");
+        String message = "You have been logged out due to inactivity.";
+        Utilities.showInfoMessage(null, message);
         showLoginScreen();
     }
 
