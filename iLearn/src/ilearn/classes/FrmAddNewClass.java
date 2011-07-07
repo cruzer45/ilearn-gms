@@ -265,7 +265,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         if (Classes.addClass(code, level, name, description, homeRoom))
         {
             String message = "The class was successfully added. \n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -279,7 +279,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this class.\n"
-                             + "Kindly verify your information and try again.";
+                    + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -343,6 +343,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         String code = txtClassCode.getText().trim();
         String name = txtClassName.getText().trim();
         String homeRoom = cmbHomeRoom.getSelectedItem().toString();
+        String level = cmbClassLevel.getSelectedItem().toString();
         if (code.isEmpty())
         {
             passed = false;
@@ -353,10 +354,15 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
             passed = false;
             validationText += "Kindly assign a name before saving.";
         }
-        if (homeRoom.isEmpty())
+        if (homeRoom.isEmpty() || homeRoom.equals("--- Select One ---"))
         {
             passed = false;
             validationText += "Kindly select a home room before saving.";
+        }
+        if (level.isEmpty() || level.equals("--- Select One ---"))
+        {
+            passed = false;
+            validationText += "Kindly select a class level before saving.";
         }
         return passed;
     }
