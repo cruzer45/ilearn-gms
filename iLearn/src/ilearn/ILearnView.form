@@ -318,16 +318,6 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <MenuItem class="javax.swing.JMenuItem" name="schoolInfo">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.ILearnView" id="showManageSchool" methodName="showManageSchool"/>
-                </Property>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="schoolInfo.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="schoolInfo.text"/>
-                <Property name="name" type="java.lang.String" value="schoolInfo" noResource="true"/>
-              </Properties>
-            </MenuItem>
             <Menu class="javax.swing.JMenu" name="staffMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="staffMenu.icon"/>
@@ -411,16 +401,6 @@
                     <Property name="name" type="java.lang.String" value="editTerm" noResource="true"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="closeTerm">
-                  <Properties>
-                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                      <action class="ilearn.ILearnView" id="showCloseTerm" methodName="showCloseTerm"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="closeTerm.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="closeTerm.text"/>
-                    <Property name="name" type="java.lang.String" value="closeTerm" noResource="true"/>
-                  </Properties>
-                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="timeSlotsMenu">
@@ -485,16 +465,41 @@
                 <Property name="name" type="java.lang.String" value="utilitiesMenu" noResource="true"/>
               </Properties>
               <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="importExcellClassRegister">
+                <Menu class="javax.swing.JMenu" name="midTerm">
                   <Properties>
-                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                      <action class="ilearn.ILearnView" id="showImportExcellClassRegister" methodName="showImportExcellClassRegister"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="importExcellClassRegister.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="importExcellClassRegister.text"/>
-                    <Property name="name" type="java.lang.String" value="importExcellClassRegister" noResource="true"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="midTerm.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="midTerm.text"/>
+                    <Property name="name" type="java.lang.String" value="midTerm" noResource="true"/>
                   </Properties>
-                </MenuItem>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="calculateMidTerm">
+                      <Properties>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="calculateMidTerm.icon"/>
+                        <Property name="text" type="java.lang.String" resourceKey="calculateMidTerm.text"/>
+                        <Property name="name" type="java.lang.String" value="calculateMidTerm" noResource="true"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
+                <Menu class="javax.swing.JMenu" name="endOfTerm">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="endOfTerm.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="endOfTerm.text"/>
+                    <Property name="name" type="java.lang.String" value="endOfTerm" noResource="true"/>
+                  </Properties>
+                  <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="closeTerm">
+                      <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="showCloseTerm" methodName="showCloseTerm"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="closeTerm.icon"/>
+                        <Property name="text" type="java.lang.String" resourceKey="closeTerm.text"/>
+                        <Property name="name" type="java.lang.String" value="closeTerm" noResource="true"/>
+                      </Properties>
+                    </MenuItem>
+                  </SubComponents>
+                </Menu>
               </SubComponents>
             </Menu>
           </SubComponents>

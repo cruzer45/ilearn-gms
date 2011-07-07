@@ -27,6 +27,7 @@ import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -265,7 +266,8 @@ public class FrmClassGradebook extends javax.swing.JDialog
 //                row.createCell(5).setCellValue("Total Points");
 //                row.createCell(6).setCellValue("Course Grade");
 //                row.createCell(7).setCellValue("Exam");
-                int startcolumn = 2; //This is the column the assessments will start to print.
+                int startColumn = 2; //This is the column the assessments will start to print.
+                int finishColumn = 0;
                 Row maxGradeRow = sheet.createRow(4);
                 maxGradeRow.createCell(1).setCellValue("Total Points");
                 //Print The student List.
@@ -278,9 +280,10 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 //Print the assessments
                 for (int i = 0; i < assmtIDs.size(); i++)
                 {
+                    finishColumn = startColumn + i;
                     Row titleRow = sheet.getRow(3);
-                    titleRow.createCell(startcolumn + i).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
-                    maxGradeRow.createCell(startcolumn + i).setCellValue(assmtTotalPoints.get(i));
+                    titleRow.createCell(startColumn + i).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
+                    maxGradeRow.createCell(startColumn + i).setCellValue(assmtTotalPoints.get(i));
                     //for each student get their grade
                     for (int j = 5; j < (sheet.getLastRowNum() + 1); j++)
                     {
@@ -290,57 +293,83 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         try
                         {
                             String grade = stuGrade.get(0);
-                            studentRow.createCell(startcolumn + i).setCellValue(grade);
-                            if (grade.equals("Excused"))
-                            {
-                                CellStyle style = wb.createCellStyle();
-                                Font font = wb.createFont();
-                                font.setColor(HSSFColor.LIGHT_BLUE.index);
-                                style.setFont(font);
-                                studentRow.getCell(startcolumn + i).setCellStyle(style);
-                            }
-                            if (grade.equals("Incomplete"))
-                            {
-                                CellStyle style = wb.createCellStyle();
-                                Font font = wb.createFont();
-                                font.setColor(HSSFColor.RED.index);
-                                style.setFont(font);
-                                studentRow.getCell(startcolumn + i).setCellStyle(style);
-                            }
-                            if (grade.equals("Absent"))
-                            {
-                                CellStyle style = wb.createCellStyle();
-                                Font font = wb.createFont();
-                                font.setColor(HSSFColor.RED.index);
-                                style.setFont(font);
-                                studentRow.getCell(startcolumn + i).setCellStyle(style);
-                            }
+                            Cell gradeCell = studentRow.createCell(startColumn + i);
+                            gradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
                             try
                             {
                                 double maxPoints = Double.valueOf(assmtTotalPoints.get(i));
                                 double assmtGrade = Double.valueOf(grade);
+                                gradeCell.setCellValue(assmtGrade);
                                 if ((assmtGrade / maxPoints) < .7)
                                 {
                                     CellStyle style = wb.createCellStyle();
                                     Font font = wb.createFont();
                                     font.setColor(HSSFColor.RED.index);
                                     style.setFont(font);
-                                    studentRow.getCell(startcolumn + i).setCellStyle(style);
+                                    studentRow.getCell(startColumn + i).setCellStyle(style);
                                 }
                             }
                             catch (NumberFormatException numberFormatException)
                             {
+                                gradeCell.setCellValue(grade);
+                                if (grade.equals("Excused"))
+                                {
+                                    CellStyle style = wb.createCellStyle();
+                                    Font font = wb.createFont();
+                                    font.setColor(HSSFColor.LIGHT_BLUE.index);
+                                    style.setFont(font);
+                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+                                }
+                                if (grade.equals("Incomplete"))
+                                {
+                                    CellStyle style = wb.createCellStyle();
+                                    Font font = wb.createFont();
+                                    font.setColor(HSSFColor.RED.index);
+                                    style.setFont(font);
+                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+                                }
+                                if (grade.equals("Absent"))
+                                {
+                                    CellStyle style = wb.createCellStyle();
+                                    Font font = wb.createFont();
+                                    font.setColor(HSSFColor.RED.index);
+                                    style.setFont(font);
+                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+                                }
                             }
                         }
                         catch (Exception e)
                         {
-                            studentRow.createCell(startcolumn + i).setCellValue("Missing");
+                            studentRow.createCell(startColumn + i).setCellValue("Missing");
                             CellStyle style = wb.createCellStyle();
                             Font font = wb.createFont();
                             font.setColor(HSSFColor.RED.index);
                             style.setFont(font);
-                            studentRow.getCell(startcolumn + i).setCellStyle(style);
+                            studentRow.getCell(startColumn + i).setCellStyle(style);
                         }
+                    }
+                }
+                //Calculate the averages
+                String totalPointsCell = "";
+                Row titleRow = sheet.getRow(3);
+                titleRow.createCell(finishColumn + 1).setCellValue("Average");
+                for (int j = 4; j < (sheet.getLastRowNum() + 1); j++)
+                {
+                    Row studentRow = sheet.getRow(j);
+                    CellReference cellRefStart = new CellReference(studentRow.getRowNum(), startColumn);
+                    CellReference cellRefEnd = new CellReference(studentRow.getRowNum(), finishColumn);
+                    if (totalPointsCell.isEmpty())
+                    {
+                        CellReference totalMaxPoints = new CellReference(studentRow.getRowNum(), finishColumn + 1);
+                        totalPointsCell = totalMaxPoints.formatAsString();
+                    }
+                    if (j == 4)
+                    {
+                        studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + "))");
+                    }
+                    else
+                    {
+                        studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
                     }
                 }
                 setMessage("Saving the file.");

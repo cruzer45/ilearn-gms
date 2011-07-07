@@ -265,7 +265,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         if (Classes.addClass(code, level, name, description, homeRoom))
         {
             String message = "The class was successfully added. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -279,7 +279,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this class.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

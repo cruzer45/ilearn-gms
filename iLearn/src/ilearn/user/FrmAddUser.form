@@ -375,7 +375,7 @@
           </Properties>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Previlidges">
+              <JTabbedPaneConstraints tabName="Privileges">
                 <Property name="tabTitle" type="java.lang.String" resourceKey="prevelidgeScrollPane.TabConstraints.tabTitle"/>
                 <Property name="tabIcon" type="javax.swing.Icon" resourceKey="prevelidgeScrollPane.TabConstraints.tabIcon"/>
               </JTabbedPaneConstraints>

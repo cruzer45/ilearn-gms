@@ -814,7 +814,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
 
     private void chkStaffActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStaffActionPerformed
     {
-        //GEN-HEADEREND:event_chkStaffActionPerformed
+//GEN-HEADEREND:event_chkStaffActionPerformed
         boolean  staff = chkStaff.isSelected();
         chkAddStaff.setSelected(staff);
         chkEditStaff.setSelected(staff);
@@ -822,14 +822,14 @@ public class FrmAddUser extends javax.swing.JInternalFrame
 
     private void chkStudentReportsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStudentReportsActionPerformed
     {
-        //GEN-HEADEREND:event_chkStudentReportsActionPerformed
+//GEN-HEADEREND:event_chkStudentReportsActionPerformed
         boolean studentReports = chkStudentReports.isSelected();
         chkStudentList.setSelected(studentReports);
     }//GEN-LAST:event_chkStudentReportsActionPerformed
 
     private void chkClassReportsActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkClassReportsActionPerformed
     {
-        //GEN-HEADEREND:event_chkClassReportsActionPerformed
+//GEN-HEADEREND:event_chkClassReportsActionPerformed
         boolean classReports = chkClassReports.isSelected();
         chkclassListing.setSelected(classReports);
         chkGradebook.setSelected(classReports);

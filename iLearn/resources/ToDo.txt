@@ -1,0 +1,5 @@
+Fix Add and Edit user screens to handle advanced privileges.
+
+Calculate mid term and final grades.
+
+Generate Report Cards Function

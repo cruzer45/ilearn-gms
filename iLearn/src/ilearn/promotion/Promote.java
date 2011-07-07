@@ -31,7 +31,6 @@ public class Promote
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -52,7 +51,6 @@ public class Promote
                     return Object.class;
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -73,7 +71,6 @@ public class Promote
                 }
                 return editable;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -93,7 +90,6 @@ public class Promote
                     fireTableCellUpdated(row, column);
                 }
             }
-
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
@@ -158,7 +154,6 @@ public class Promote
             String sqlSelect = "SELECT `proID`, `proTermID`, `proStudID`, `proNewClsCode` FROM `iLearn`.`Promotion` ORDER BY `proTermID`;";
             String sqlUpdate = "UPDATE `Student` SET `stuClsCode`= ? WHERE `stuID`=? LIMIT 1;";
             String sqlEmptyTable = "TRUNCATE `Promotion`;";
-
             //load the promotions
             PreparedStatement prep = Environment.getConnection().prepareStatement(sqlSelect);
             ResultSet rs = prep.executeQuery();
@@ -168,7 +163,6 @@ public class Promote
                 NewClass.add(rs.getString("proNewClsCode"));
             }
             rs.close();
-
             //promote the students
             prep = Environment.getConnection().prepareStatement(sqlUpdate);
             for (int i = 0; i < ID.size(); i++)
@@ -178,7 +172,6 @@ public class Promote
                 prep.addBatch();
             }
             prep.executeBatch();
-
             //empty the promotions table
             prep = Environment.getConnection().prepareStatement(sqlEmptyTable);
             prep.execute();
