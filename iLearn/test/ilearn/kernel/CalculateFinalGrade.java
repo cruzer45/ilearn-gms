@@ -22,7 +22,7 @@ public class CalculateFinalGrade
     {
         Environment.createConnection();
         ArrayList<Object> results = Grade.checkAllGrades();
-        if (results.size() != 0)
+        if (!results.isEmpty())
         {
             for (Object missingGrade : results)
             {

@@ -4,31 +4,28 @@
  */
 
 /*
- * FrmCloseTerm.java
+ * FrmCalculateMidTerms.java
  *
- * Created on Jun 29, 2011, 9:07:57 AM
+ * Created on Jul 7, 2011, 9:49:34 PM
  */
-package ilearn.term;
+package ilearn.utils;
 
 import ilearn.grades.Grade;
-import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.student.Student;
-import ilearn.utils.FrmMidTermErrors;
 import java.util.ArrayList;
-import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.Task;
 
 /**
  *
- * @author m.rogers
+ * @author mrogers
  */
-public class FrmCloseTerm extends javax.swing.JInternalFrame
+public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
 {
 
-    /** Creates new form FrmCloseTerm */
-    public FrmCloseTerm()
+    /** Creates new form FrmCalculateMidTerms */
+    public FrmCalculateMidTerms()
     {
         initComponents();
     }
@@ -42,34 +39,31 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmCloseTerm.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmCalculateMidTerms.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+7));
-        jLabel1.setForeground(resourceMap.getColor("jLabel1.foreground")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-
-        jLabel2.setForeground(resourceMap.getColor("jLabel2.foreground")); // NOI18N
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel2.setName("jLabel2"); // NOI18N
-
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmCloseTerm.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmCalculateMidTerms.class, this);
         jButton1.setAction(actionMap.get("cancel")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
 
-        jButton2.setAction(actionMap.get("closeSemester")); // NOI18N
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+
+        jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD, jLabel2.getFont().getSize()+4));
+        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
+        jLabel2.setName("jLabel2"); // NOI18N
+
+        jButton2.setAction(actionMap.get("generateMidTerms")); // NOI18N
         jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
         jButton2.setName("jButton2"); // NOI18N
 
@@ -80,8 +74,8 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 528, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -92,13 +86,13 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
+                    .addComponent(jButton1)
+                    .addComponent(jButton2))
                 .addContainerGap())
         );
 
@@ -112,26 +106,17 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
     }
 
     @Action
-    public Task closeSemester()
+    public Task generateMidTerms()
     {
-        String message = "Kindly confirm that you want to close the semester.";
-        int response = Utilities.showConfirmDialog(rootPane, message);
-        if (response == JOptionPane.YES_OPTION)
-        {
-            return new CloseSemesterTask(org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class));
-        }
-        else
-        {
-            return null;
-        }
+        return new GenerateMidTermsTask(org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class));
     }
 
-    private class CloseSemesterTask extends org.jdesktop.application.Task<Object, Void>
+    private class GenerateMidTermsTask extends org.jdesktop.application.Task<Object, Void>
     {
 
         String warnings = "Cannot close the term due to the following issue(s):\n\n";
 
-        CloseSemesterTask(org.jdesktop.application.Application app)
+        GenerateMidTermsTask(org.jdesktop.application.Application app)
         {
             super(app);
         }
@@ -139,17 +124,24 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
         @Override
         protected Object doInBackground()
         {
-            setMessage("Running pre-close checks.");
+            setMessage("Running pre-generation checks.");
             setMessage("Checking grades");
             boolean gradesOk = checkGrades();
             if (!gradesOk)
             {
                 return false;
             }
-            setMessage("Calculating final grades.");
             setProgress(1, 0, 3);
-            setMessage("Closing Grades");
+            setMessage("Calculating mid-term grades.");
+            boolean calculateMidTerms = Grade.calculateMidTerms();
+            if (!calculateMidTerms)
+            {
+                return false;
+            }
             setProgress(2, 0, 3);
+
+            setMessage("Saving Grades");
+            
             setMessage("Closing Register");
             setProgress(3, 0, 3);
             return true;  // return your result
@@ -165,7 +157,7 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
                 String[] missing = (String[]) missingGrade;
                 String studentName = Student.getStudentName(missing[0]);
                 ArrayList<Object> assmt = Grade.getAssessmentInfo(missing[1]);
-                message += studentName + " from " + Student.getStudentClass(missing[0]) + " is a missing grade for the " + assmt.get(1) + " titled \"" + assmt.get(2) + "\" given on " + assmt.get(3) + ".\n";
+                message += studentName + " is missing a grade for the " + assmt.get(1) + " titled \"" + assmt.get(2) + "\" given on " + assmt.get(3) + "\n";
                 gradesOk = false;
             }
             warnings += message;
@@ -175,18 +167,6 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
         @Override
         protected void succeeded(Object result)
         {
-            if (result == Boolean.TRUE)
-            {
-                String message = "The term was successfully closed.";
-                Utilities.showInfoMessage(rootPane, message);
-                return;
-            }
-            else
-            {
-                FrmMidTermErrors frmMidTermErrors = new FrmMidTermErrors(null, true, warnings);
-                frmMidTermErrors.setLocationRelativeTo(Environment.getMainFrame());
-                frmMidTermErrors.setVisible(true);
-            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
