@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MidTerm_Report" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Java\\iLearn\\reports\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT `Student`.*, `Grade`.*
+FROM `Grade`
+INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID
+WHERE `Grade`.graStatus = 'Active']]>
+	</queryString>
+	<field name="stuID" class="java.lang.Long"/>
+	<field name="stuSSN" class="java.lang.Long"/>
+	<field name="stuFirstName" class="java.lang.String"/>
+	<field name="stuLastName" class="java.lang.String"/>
+	<field name="stuOtherNames" class="java.lang.String"/>
+	<field name="stuDOB" class="java.sql.Date"/>
+	<field name="stuGender" class="java.lang.String"/>
+	<field name="stuEthnicity" class="java.lang.String"/>
+	<field name="stuPrimaryLanguage" class="java.lang.String"/>
+	<field name="stuEmail" class="java.lang.String"/>
+	<field name="stuPhone" class="java.lang.String"/>
+	<field name="stuPhoto" class="java.lang.Object"/>
+	<field name="stuAddress1" class="java.lang.String"/>
+	<field name="stuAddress2" class="java.lang.String"/>
+	<field name="stuPCName" class="java.lang.String"/>
+	<field name="stuPCPhone" class="java.lang.String"/>
+	<field name="stuPCAddress" class="java.lang.String"/>
+	<field name="stuSCName" class="java.lang.String"/>
+	<field name="stuSCPhone" class="java.lang.String"/>
+	<field name="stuSCAddress" class="java.lang.String"/>
+	<field name="stuDoctorName" class="java.lang.String"/>
+	<field name="stuDoctorContact" class="java.lang.String"/>
+	<field name="stuHospital" class="java.lang.String"/>
+	<field name="stuPSEGrade" class="java.lang.String"/>
+	<field name="stuFeederSchool" class="java.lang.String"/>
+	<field name="stuRepeating" class="java.lang.Boolean"/>
+	<field name="stuSpecialNeeds" class="java.lang.String"/>
+	<field name="stuNotes" class="java.lang.String"/>
+	<field name="stuClsCode" class="java.lang.String"/>
+	<field name="stuStatus" class="java.lang.String"/>
+	<field name="graID" class="java.lang.Long"/>
+	<field name="graStuID" class="java.lang.Integer"/>
+	<field name="graClsCode" class="java.lang.String"/>
+	<field name="graSubCode" class="java.lang.String"/>
+	<field name="graTrmCode" class="java.lang.String"/>
+	<field name="graMid" class="java.lang.Double"/>
+	<field name="graFinal" class="java.lang.Double"/>
+	<field name="graGPA" class="java.lang.Double"/>
+	<field name="graLetterGrade" class="java.lang.String"/>
+	<field name="graRemark" class="java.lang.String"/>
+	<field name="graStatus" class="java.lang.String"/>
+	<group name="Student" isStartNewPage="true">
+		<groupExpression><![CDATA[$F{stuID}]]></groupExpression>
+		<groupHeader>
+			<band height="81">
+				<staticText>
+					<reportElement x="0" y="20" width="59" height="20"/>
+					<textElement/>
+					<text><![CDATA[Name:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="59" y="20" width="206" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{stuFirstName}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="0" width="59" height="20"/>
+					<textElement/>
+					<text><![CDATA[Student ID:]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="59" y="0" width="206" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.Long"><![CDATA[$F{stuID}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="0" y="57" width="100" height="20"/>
+					<textElement/>
+					<text><![CDATA[Subject]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="118" y="57" width="100" height="20"/>
+					<textElement/>
+					<text><![CDATA[Grade]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="414" y="57" width="158" height="20"/>
+					<textElement/>
+					<text><![CDATA[Remark]]></text>
+				</staticText>
+				<textField>
+					<reportElement x="414" y="0" width="100" height="20"/>
+					<textElement/>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{stuClsCode}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement x="372" y="0" width="42" height="20"/>
+					<textElement/>
+					<text><![CDATA[Class:]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="236" y="57" width="100" height="20"/>
+					<textElement/>
+					<text><![CDATA[Letter Grade]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="354" y="57" width="42" height="20"/>
+					<textElement/>
+					<text><![CDATA[G.P.A]]></text>
+				</staticText>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="120" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="572" height="100"/>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
+			</subreport>
+			<staticText>
+				<reportElement x="0" y="77" width="572" height="34"/>
+				<textElement textAlignment="Center" verticalAlignment="Bottom">
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Mid-Term Report Card]]></text>
+			</staticText>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="27" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{graSubCode}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="118" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{graMid}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="414" y="0" width="158" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{graRemark}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="236" y="0" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{graLetterGrade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="354" y="0" width="42" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Double"><![CDATA[$F{graGPA}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

@@ -8,6 +8,7 @@ import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
+import ilearn.student.Student;
 import ilearn.term.Term;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -94,7 +95,6 @@ public class Grade
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -108,7 +108,6 @@ public class Grade
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -121,7 +120,6 @@ public class Grade
                 return editable;
                 //return false;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -142,7 +140,6 @@ public class Grade
                 }
             }
             // Protected methods
-
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
@@ -167,7 +164,6 @@ public class Grade
                 }
                 return false;
             }
-
             protected boolean isInteger(String input)
             {
                 try
@@ -180,7 +176,6 @@ public class Grade
                     return false;
                 }
             }
-
             protected boolean isDouble(String input)
             {
                 try
@@ -348,8 +343,8 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID` FROM `iLearn`.`Assments` "
-                    + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
-                    + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
+                         + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
+                         + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtType);
             prep.setString(2, assmtTitle);
@@ -381,7 +376,6 @@ public class Grade
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -395,7 +389,6 @@ public class Grade
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -411,9 +404,9 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                    + "FROM `iLearn`.`Assments` "
-                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
-                    + "LIMIT 0, 1000;";
+                         + "FROM `iLearn`.`Assments` "
+                         + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                         + "LIMIT 0, 1000;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -457,8 +450,8 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                    + "FROM `iLearn`.`Assments` "
-                    + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
+                         + "FROM `iLearn`.`Assments` "
+                         + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             ResultSet rs = prep.executeQuery();
@@ -487,7 +480,7 @@ public class Grade
         try
         {
             String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
-                    + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
+                         + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.setString(2, stuID);
@@ -599,21 +592,22 @@ public class Grade
         {
             //resetGrades
             resetGrades();
+            String currentTerm = Term.getCurrentTerm();
             //Get list of classes
             ArrayList<String> classes = Classes.getClassList();
             for (String cls : classes) // loop classes
             {
-                System.out.println("Now doing class: " + cls);
+                //System.out.println("Now doing class: " + cls);
                 //Get all students in a class.
                 ArrayList<String> studentList = Classes.getStudentIDList(cls);
                 //Get list of all subjects for class
                 ArrayList<String> subjects = Classes.getSubjectList(cls);
                 for (String sub : subjects) // loop subjects
                 {
-                    System.out.println("\tNow doing subject: " + sub);
+                    // System.out.println("\tNow doing subject: " + sub);
                     for (String stuID : studentList) // loop students
                     {
-                        System.out.println("\t\tNow doing student: " + stuID);
+                        // System.out.println("\t\tNow doing student: " + stuID);
                         double subGrades = 0.0;
                         double subTotal = 0.0;
                         String clsID = Classes.getClassID(cls);
@@ -621,7 +615,7 @@ public class Grade
                         ArrayList<Integer> assmtList = getAssessmentList(clsID, sub);
                         for (Integer assmtID : assmtList) // loop assessmenst
                         {
-                            System.out.println("\t\t\tNow doing assmt: " + assmtID);
+                            // System.out.println("\t\t\tNow doing assmt: " + assmtID);
                             ArrayList<Object> assmtInfo = getAssessmentInfo(assmtID.toString());
                             ArrayList<String> stuGrade = getStudentGrade(String.valueOf(assmtID), stuID);
                             try
@@ -640,7 +634,8 @@ public class Grade
                         {
                             grade = (subGrades / subTotal) * 100;
                         }
-                        System.out.println("Student No " + stuID + " got a " + grade + " for Subject " + sub);
+                        addFinalGrade(stuID, sub, currentTerm, grade);
+                        //System.out.println("Student No " + stuID + " got a " + grade + " for Subject " + sub);
                     }// end loop student
                     //get list of students and make sure they have a grade for each assessment
                 }// end loop subjects
@@ -666,17 +661,17 @@ public class Grade
             ArrayList<String> classes = Classes.getClassList();
             for (String cls : classes) // loop classes
             {
-                System.out.println("Now doing class: " + cls);
+                //System.out.println("Now doing class: " + cls);
                 //Get all students in a class.
                 ArrayList<String> studentList = Classes.getStudentIDList(cls);
                 //Get list of all subjects for class
                 ArrayList<String> subjects = Classes.getSubjectList(cls);
                 for (String sub : subjects) // loop subjects
                 {
-                    System.out.println("\tNow doing subject: " + sub);
+                    //  System.out.println("\tNow doing subject: " + sub);
                     for (String stuID : studentList) // loop students
                     {
-                        System.out.println("\t\tNow doing student: " + stuID);
+                        //    System.out.println("\t\tNow doing student: " + stuID);
                         double subGrades = 0.0;
                         double subTotal = 0.0;
                         String clsID = Classes.getClassID(cls);
@@ -684,7 +679,7 @@ public class Grade
                         ArrayList<Integer> assmtList = getAssessmentList(clsID, sub);
                         for (Integer assmtID : assmtList) // loop assessmenst
                         {
-                            System.out.println("\t\t\tNow doing assmt: " + assmtID);
+                            //System.out.println("\t\t\tNow doing assmt: " + assmtID);
                             ArrayList<Object> assmtInfo = getAssessmentInfo(assmtID.toString());
                             ArrayList<String> stuGrade = getStudentGrade(String.valueOf(assmtID), stuID);
                             try
@@ -704,11 +699,12 @@ public class Grade
                             grade = (subGrades / subTotal) * 100;
                         }
                         addMidTermGrade(stuID, sub, currentTerm, grade);
-                        System.out.println("Student No " + stuID + " got a " + grade + " for Subject " + sub);
+                        // System.out.println("Student No " + stuID + " got a " + grade + " for Subject " + sub);
                     }// end loop student
                     //get list of students and make sure they have a grade for each assessment
                 }// end loop subjects
             }// end loop classes
+            successful = true;
         }
         catch (Exception e)
         {
@@ -718,13 +714,13 @@ public class Grade
         return successful;
     }
 
-    private static boolean saveMidTerms()
+    public static boolean saveMidTerms()
     {
         boolean successful = false;
         try
         {
             String sql = "INSERT INTO `Grade` (`graStuID`, `graSubCode`, `graTrmCode`, `graMid`, `graFinal`, `graGPA`, `graLetterGrade`, `graRemark`) "
-                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < graStuID.size(); i++)
             {
@@ -741,6 +737,7 @@ public class Grade
             prep.executeBatch();
             prep.close();
             successful = true;
+            updateStudentClasses();
         }
         catch (Exception e)
         {
@@ -750,23 +747,48 @@ public class Grade
         return successful;
     }
 
+    public static boolean saveFinalGrades()
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Grade` SET `graFinal`= ? "
+                         + " WHERE `graStuID`= ? AND `graSubCode` = ? AND `graTrmCode` = ?; ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < graStuID.size(); i++)
+            {
+                prep.setString(1, graFinal.get(i));
+                prep.setString(2, graStuID.get(i));
+                prep.setString(3, graSubCode.get(i));
+                prep.setString(4, graTrmCode.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            updateStudentClasses();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while saving final grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
     private static void addFinalGrade(String stuID, String subCode, String TrmCode, double finalGrade)
     {
         graStuID.add(stuID);
         graSubCode.add(subCode);
-        graTrmCode.add(Term.getCurrentTerm());
-        graMid.add("0.0");
+        graTrmCode.add(TrmCode);
         graFinal.add(String.valueOf(finalGrade));
-        graGPA.add(" ");
-        graLetterGrade.add(" ");
-        graRemark.add(" ");
     }
 
     private static void addMidTermGrade(String stuID, String subCode, String TrmCode, double midTermGrade)
     {
         graStuID.add(stuID);
         graSubCode.add(subCode);
-        graTrmCode.add(Term.getCurrentTerm());
+        graTrmCode.add(TrmCode);
         graMid.add(String.valueOf(midTermGrade));
         graFinal.add("0.0");
         graGPA.add(" ");
@@ -784,5 +806,42 @@ public class Grade
         graGPA = new ArrayList<String>();
         graLetterGrade = new ArrayList<String>();
         graRemark = new ArrayList<String>();
+    }
+
+    private static void updateStudentClasses()
+    {
+        try
+        {
+            ArrayList<String> stuIDs = new ArrayList<String>();
+            ArrayList<String> stuCls = new ArrayList<String>();
+            String sql = "SELECT DISTINCT `graStuID` FROM `Grade` WHERE `graStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                stuIDs.add(rs.getString("graStuID"));
+            }
+            rs.close();
+            for (String stuID : stuIDs)
+            {
+                stuCls.add(Student.getStudentClass(stuID));
+            }
+            sql = "UPDATE `Grade` SET `graClsCode`= ? "
+                  + "WHERE `graStuID`= ? AND `graStatus` = 'Active' LIMIT 1;";
+            prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < stuIDs.size(); i++)
+            {
+                prep.setString(1, stuCls.get(i));
+                prep.setString(2, stuIDs.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating student classes in Grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
     }
 }

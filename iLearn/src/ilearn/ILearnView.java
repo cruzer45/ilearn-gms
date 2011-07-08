@@ -40,6 +40,7 @@ import ilearn.term.FrmEditTerm;
 import ilearn.user.FrmChangePassword;
 import ilearn.user.User;
 import ilearn.user.UserCheck;
+import ilearn.utils.FrmCalculateMidTerms;
 import ilearn.utils.FrmExcellClassListImporter;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -98,6 +99,7 @@ public class ILearnView extends FrameView
     FrmCloseTerm frmCloseTerm = null;
     FrmAssignPromotions frmAssignPromotions = null;
     FrmPromote frmPromote = null;
+    FrmCalculateMidTerms frmCalculateMidTerms = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -108,7 +110,6 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -122,7 +123,6 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
-
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -136,7 +136,6 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
-
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -514,6 +513,7 @@ public class ILearnView extends FrameView
         midTerm.setIcon(resourceMap.getIcon("midTerm.icon")); // NOI18N
         midTerm.setText(resourceMap.getString("midTerm.text")); // NOI18N
         midTerm.setName("midTerm"); // NOI18N
+        calculateMidTerm.setAction(actionMap.get("showCalculateMidTerms")); // NOI18N
         calculateMidTerm.setIcon(resourceMap.getIcon("calculateMidTerm.icon")); // NOI18N
         calculateMidTerm.setText(resourceMap.getString("calculateMidTerm.text")); // NOI18N
         calculateMidTerm.setName("calculateMidTerm"); // NOI18N
@@ -1355,6 +1355,30 @@ public class ILearnView extends FrameView
             {
                 frmPromote.setIcon(false);
                 frmPromote.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showCalculateMidTerms()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Generate Mid-Terms");
+        if (AlreadyLoaded == false)
+        {
+            frmCalculateMidTerms = new FrmCalculateMidTerms();
+            desktopPane.add(frmCalculateMidTerms);
+            //Load the Form
+            frmCalculateMidTerms.setVisible(true);
+            frmCalculateMidTerms.show();
+            try
+            {
+                frmCalculateMidTerms.setIcon(false);
+                frmCalculateMidTerms.setSelected(true);
             }
             catch (Exception e)
             {

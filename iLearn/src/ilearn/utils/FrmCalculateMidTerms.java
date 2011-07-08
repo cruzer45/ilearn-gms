@@ -11,6 +11,7 @@
 package ilearn.utils;
 
 import ilearn.grades.Grade;
+import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.student.Student;
 import java.util.ArrayList;
@@ -37,65 +38,58 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jButton1 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
-
+    private void initComponents()
+    {
+        cmdCancel = new javax.swing.JButton();
+        lblWarning2 = new javax.swing.JLabel();
+        lblWarning = new javax.swing.JLabel();
+        cmdGenerate = new javax.swing.JButton();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmCalculateMidTerms.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmCalculateMidTerms.class, this);
-        jButton1.setAction(actionMap.get("cancel")); // NOI18N
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
-
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-
-        jLabel2.setFont(jLabel2.getFont().deriveFont(jLabel2.getFont().getStyle() | java.awt.Font.BOLD, jLabel2.getFont().getSize()+4));
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setName("jLabel2"); // NOI18N
-
-        jButton2.setAction(actionMap.get("generateMidTerms")); // NOI18N
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
-
+        cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
+        cmdCancel.setName("cmdCancel"); // NOI18N
+        lblWarning2.setText(resourceMap.getString("lblWarning2.text")); // NOI18N
+        lblWarning2.setName("lblWarning2"); // NOI18N
+        lblWarning.setFont(lblWarning.getFont().deriveFont(lblWarning.getFont().getStyle() | java.awt.Font.BOLD, lblWarning.getFont().getSize()+4));
+        lblWarning.setText(resourceMap.getString("lblWarning.text")); // NOI18N
+        lblWarning.setName("lblWarning"); // NOI18N
+        cmdGenerate.setAction(actionMap.get("generateMidTerms")); // NOI18N
+        cmdGenerate.setText(resourceMap.getString("cmdGenerate.text")); // NOI18N
+        cmdGenerate.setName("cmdGenerate"); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblWarning)
+                                .addComponent(lblWarning2, javax.swing.GroupLayout.DEFAULT_SIZE, 410, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(cmdGenerate)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(lblWarning)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addComponent(lblWarning2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdGenerate))
+                      .addGap(20, 20, 20))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -114,7 +108,7 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
     private class GenerateMidTermsTask extends org.jdesktop.application.Task<Object, Void>
     {
 
-        String warnings = "Cannot close the term due to the following issue(s):\n\n";
+        String warnings = "Cannot generate mid-term reports due to the following issue(s):\n\n";
 
         GenerateMidTermsTask(org.jdesktop.application.Application app)
         {
@@ -136,13 +130,17 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
             boolean calculateMidTerms = Grade.calculateMidTerms();
             if (!calculateMidTerms)
             {
+                warnings += "An error occurred while calculating the grades.\n";
                 return false;
             }
             setProgress(2, 0, 3);
-
             setMessage("Saving Grades");
-            
-            setMessage("Closing Register");
+            boolean saveMidTerms = Grade.saveMidTerms();
+            if (!saveMidTerms)
+            {
+                warnings += "An error occurred while saving the grades.\n";
+                return false;
+            }
             setProgress(3, 0, 3);
             return true;  // return your result
         }
@@ -167,12 +165,24 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
         @Override
         protected void succeeded(Object result)
         {
+            if (result == Boolean.TRUE)
+            {
+                String message = "The mid-term grades were successfully generated.";
+                Utilities.showInfoMessage(rootPane, message);
+                return;
+            }
+            else
+            {
+                FrmMidTermErrors frmMidTermErrors = new FrmMidTermErrors(null, true, warnings);
+                frmMidTermErrors.setLocationRelativeTo(Environment.getMainFrame());
+                frmMidTermErrors.setVisible(true);
+            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdGenerate;
+    private javax.swing.JLabel lblWarning;
+    private javax.swing.JLabel lblWarning2;
     // End of variables declaration//GEN-END:variables
 }
