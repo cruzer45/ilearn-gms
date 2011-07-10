@@ -17,7 +17,9 @@ import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JDialog;
 import org.jdesktop.application.Action;
+import org.jdesktop.application.Task;
 
 /**
  *
@@ -118,29 +120,53 @@ public class DialogStudentByClass extends javax.swing.JDialog
     }
 
     @Action
-    public void run()
+    public Task run()
     {
-        String report = "reports/Student-Student_List_by_Class.jasper";
-        String title = "Report - Student List by Class";
-        String classCode = cmbClass.getSelectedItem().toString();
-        if (classCode.equals("All"))
+        return new RunTask(org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class), this);
+    }
+
+    private class RunTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        JDialog currentDialog;
+
+        RunTask(org.jdesktop.application.Application app, JDialog current)
         {
-            classCode = "%";
+            super(app);
+            currentDialog = current;
         }
-        // Second, create a map of parameters to pass to the report.
-        Map parameters = new HashMap();
-        parameters.put("SUBREPORT_DIR", "reports/");
-        parameters.put("classCode", classCode);
-        try
+
+        @Override
+        protected Object doInBackground()
         {
-            ReportViewer.generateReport(report, parameters, title);
+            String report = "reports/Student-Student_List_by_Class.jasper";
+            String title = "Report - Student List by Class";
+            String classCode = cmbClass.getSelectedItem().toString();
+            if (classCode.equals("All"))
+            {
+                classCode = "%";
+            }
+            // Second, create a map of parameters to pass to the report.
+            Map parameters = new HashMap();
+            parameters.put("SUBREPORT_DIR", "reports/");
+            parameters.put("classCode", classCode);
+            try
+            {
+                ReportViewer.generateReport(report, parameters, title);
+            }
+            catch (Exception exception)
+            {
+                String message = "An error occurred while generating a report.";
+                Logger.getLogger(DialogStudentByClass.class.getName()).log(Level.SEVERE, message, exception);
+            }
+            return null;  // return your result
         }
-        catch (Exception exception)
+
+        @Override
+        protected void succeeded(Object result)
         {
-            String message = "An error occurred while generating a report.";
-            Logger.getLogger(DialogStudentByClass.class.getName()).log(Level.SEVERE, message, exception);
+            currentDialog.dispose();
         }
-        this.dispose();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbClass;

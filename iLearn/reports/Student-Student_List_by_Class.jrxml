@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="classCode" class="java.lang.String"/>
 	<queryString>
@@ -37,10 +37,10 @@
 	<variable name="stuClsCode_1" class="java.lang.Integer" resetType="Group" resetGroup="Class" calculation="Count">
 		<variableExpression><![CDATA[$F{stuClsCode}]]></variableExpression>
 	</variable>
-	<group name="Class">
+	<group name="Class" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{stuClsCode}]]></groupExpression>
 		<groupHeader>
-			<band height="20">
+			<band height="27">
 				<textField>
 					<reportElement mode="Opaque" x="0" y="0" width="572" height="20" backcolor="#CCCCCC"/>
 					<box leftPadding="5"/>
@@ -67,14 +67,14 @@
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="100" splitType="Stretch">
+		<band height="125" splitType="Prevent">
 			<subreport>
 				<reportElement x="0" y="0" width="200" height="100"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement x="0" y="68" width="572" height="30"/>
+				<reportElement x="0" y="93" width="572" height="30"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="SansSerif" size="14" isBold="true"/>
 				</textElement>

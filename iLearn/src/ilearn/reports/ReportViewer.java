@@ -33,7 +33,7 @@ public class ReportViewer
         }
     }
 
-    public static void generateReport(String reportLocation, Map parameters,  String reportTitle)
+    public static void generateReport(String reportLocation, Map parameters, String reportTitle)
     {
         try
         {

@@ -46,7 +46,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     File selectedFile;
     boolean imageChanged = false;
     boolean infoAlreadyLoaded = false;
-    String invalidText = "";
+    String warning = "";
 
     /** Creates new form FrmEditStudent */
     public FrmEditStudent()
@@ -134,7 +134,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     {
         if (!passesValidation())
         {
-            Utilities.showWarningMessage(rootPane, invalidText);
+            Utilities.showWarningMessage(rootPane, warning);
             return;
         }
         String stuID = txtID.getText().toString();
@@ -163,6 +163,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         boolean stuRepeating = chkRepeating.isSelected();
         String stuSpecialNeeds = txtSpecialNeeds.getText().trim();
         String stuNotes = txtNotes.getText().trim();
+        String ssn = txtSSN.getText().trim();
         try
         {
             stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
@@ -181,7 +182,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         }
         if (imageChanged) // If the image was changed the run the command that takes an image file.
         {
-            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes))
+            if (Student.updateStudentPhoto(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
             {
                 String message = "The student's information  was successfully updated. \n"
                                  + "Would you like to modify another another?";
@@ -204,7 +205,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         }
         else // If the image wasn't changed just update text values.
         {
-            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes))
+            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
             {
                 String message = "The student's information  was successfully updated. \n"
                                  + "Would you like to modify another another?";
@@ -230,30 +231,35 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private boolean passesValidation()
     {
         boolean inputValid = true;
-        invalidText = "";
+        warning = "";
         if (txtFirstName.getText().trim().isEmpty())
         {
-            invalidText = invalidText + "Student's First Name cannot be empty.\n";
+            warning = warning + "Student's First Name cannot be empty.\n";
             inputValid = false;
         }
         if (txtLastName.getText().trim().isEmpty())
         {
-            invalidText = invalidText + "Student's Last Name cannot be empty.\n";
+            warning = warning + "Student's Last Name cannot be empty.\n";
             inputValid = false;
         }
         if (Utilities.YMD_Formatter.format(calDOB.getDate()).equals(Utilities.YMD_Formatter.format(new Date())))
         {
-            invalidText = invalidText + "You need to enter the student's date of Birth.\n";
+            warning = warning + "You need to enter the student's date of Birth.\n";
             inputValid = false;
         }
         if (cmbGender.getSelectedItem().toString().equals("--- Select One ---"))
         {
-            invalidText = invalidText + "You need to select the student's gender.\n";
+            warning = warning + "You need to select the student's gender.\n";
             inputValid = false;
         }
         if (cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
-            invalidText = invalidText + "You need to select the student's class.\n";
+            warning = warning + "You need to select the student's class.\n";
+            inputValid = false;
+        }
+        if (txtSSN.getText().trim().equals("000000000"))
+        {
+            warning = warning + "You need to enter the student's Social Security Number.\n";
             inputValid = false;
         }
         return inputValid;
@@ -298,6 +304,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             chkRepeating.setSelected(Boolean.valueOf(studentInfo.get(25).toString()));
             txtSpecialNeeds.setText(studentInfo.get(26).toString());
             txtNotes.setText(studentInfo.get(27).toString());
+            txtSSN.setText(studentInfo.get(29).toString());
             try
             {
                 calDOB.setDate(Utilities.YMD_Formatter.parse(studentInfo.get(4).toString()));
@@ -417,8 +424,8 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         cmdCancel3 = new javax.swing.JButton();
         cmdNext3 = new javax.swing.JButton();
         otherPanel = new javax.swing.JPanel();
-        cmdSave = new javax.swing.JButton();
-        cmdCancel4 = new javax.swing.JButton();
+        cmdSave1 = new javax.swing.JButton();
+        cmdCancel6 = new javax.swing.JButton();
         medicalPanel = new javax.swing.JPanel();
         lblPrimaryDoctor = new javax.swing.JLabel();
         txtDoctorPhone = new javax.swing.JTextField();
@@ -437,6 +444,8 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         jScrollPane7 = new javax.swing.JScrollPane();
         txtNotes = new javax.swing.JTextArea();
         chkRepeating = new javax.swing.JCheckBox();
+        lblSSN = new javax.swing.JLabel();
+        txtSSN = new javax.swing.JFormattedTextField();
         txtPhoto.setEditable(false);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditStudent.class);
         txtPhoto.setToolTipText(resourceMap.getString("txtPhoto.toolTipText")); // NOI18N
@@ -911,10 +920,10 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         );
         studentTabbedPane.addTab(resourceMap.getString("parentPanel.TabConstraints.tabTitle"), resourceMap.getIcon("parentPanel.TabConstraints.tabIcon"), parentPanel); // NOI18N
         otherPanel.setName("otherPanel"); // NOI18N
-        cmdSave.setAction(actionMap.get("save")); // NOI18N
-        cmdSave.setName("cmdSave"); // NOI18N
-        cmdCancel4.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel4.setName("cmdCancel4"); // NOI18N
+        cmdSave1.setAction(actionMap.get("save")); // NOI18N
+        cmdSave1.setName("cmdSave1"); // NOI18N
+        cmdCancel6.setAction(actionMap.get("cancel")); // NOI18N
+        cmdCancel6.setName("cmdCancel6"); // NOI18N
         medicalPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("medicalPanel.border.title"))); // NOI18N
         medicalPanel.setName("medicalPanel"); // NOI18N
         lblPrimaryDoctor.setText(resourceMap.getString("lblPrimaryDoctor.text")); // NOI18N
@@ -978,11 +987,14 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         txtSpecialNeeds.setName("txtSpecialNeeds"); // NOI18N
         jScrollPane7.setName("jScrollPane7"); // NOI18N
         txtNotes.setColumns(20);
-        txtNotes.setRows(5);
+        txtNotes.setRows(4);
         txtNotes.setName("txtNotes"); // NOI18N
         jScrollPane7.setViewportView(txtNotes);
-        chkRepeating.setText(resourceMap.getString("chkRepeating.text")); // NOI18N
         chkRepeating.setName("chkRepeating"); // NOI18N
+        lblSSN.setText(resourceMap.getString("lblSSN.text")); // NOI18N
+        lblSSN.setName("lblSSN"); // NOI18N
+        txtSSN.setText(resourceMap.getString("txtSSN.text")); // NOI18N
+        txtSSN.setName("txtSSN"); // NOI18N
         javax.swing.GroupLayout otherPanelLayout = new javax.swing.GroupLayout(otherPanel);
         otherPanel.setLayout(otherPanelLayout);
         otherPanelLayout.setHorizontalGroup(
@@ -991,30 +1003,36 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addContainerGap()
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(medicalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, otherPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdSave1)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel6))
                                 .addGroup(otherPanelLayout.createSequentialGroup()
                                           .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addComponent(lblSpecialNeeds)
                                                   .addComponent(lblFeederSchool)
                                                   .addComponent(lblPSEGrade)
                                                   .addComponent(lblRepeating)
-                                                  .addComponent(lblNotes))
+                                                  .addComponent(lblNotes)
+                                                  .addComponent(lblSSN))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(chkRepeating)
+                                                  .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                                   .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                                                  .addComponent(chkRepeating)
                                                   .addComponent(txtPSEGrades, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                                   .addComponent(txtFeederSchool, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                                                  .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, otherPanelLayout.createSequentialGroup()
-                                          .addComponent(cmdSave)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel4)))
+                                                  .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         otherPanelLayout.setVerticalGroup(
             otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(otherPanelLayout.createSequentialGroup()
                       .addContainerGap()
+                      .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSSN)
+                                .addComponent(txtSSN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblFeederSchool)
                                 .addComponent(txtFeederSchool, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -1033,13 +1051,13 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblNotes)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addGap(9, 9, 9)
                       .addComponent(medicalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel4)
-                                .addComponent(cmdSave))
+                                .addComponent(cmdCancel6)
+                                .addComponent(cmdSave1))
                       .addContainerGap())
         );
         studentTabbedPane.addTab("Other", resourceMap.getIcon("otherPanel.TabConstraints.tabIcon"), otherPanel); // NOI18N
@@ -1089,14 +1107,14 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdCancel1;
     private javax.swing.JButton cmdCancel2;
     private javax.swing.JButton cmdCancel3;
-    private javax.swing.JButton cmdCancel4;
     private javax.swing.JButton cmdCancel5;
+    private javax.swing.JButton cmdCancel6;
     private javax.swing.JButton cmdNext1;
     private javax.swing.JButton cmdNext2;
     private javax.swing.JButton cmdNext3;
     private javax.swing.JButton cmdNext4;
     private javax.swing.JButton cmdReset;
-    private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdSave1;
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel contactPanel;
     private javax.swing.JPanel generalPanel;
@@ -1132,6 +1150,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblRepeating;
     private javax.swing.JLabel lblResults;
     private javax.swing.JLabel lblResults2;
+    private javax.swing.JLabel lblSSN;
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblSecConAddress;
     private javax.swing.JLabel lblSecConName;
@@ -1164,6 +1183,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private javax.swing.JTextField txtPriConName;
     private javax.swing.JTextField txtPriConPhone;
     private javax.swing.JTextField txtPrimaryDoctor;
+    private javax.swing.JFormattedTextField txtSSN;
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextArea txtSecConAddress;
     private javax.swing.JTextField txtSecConName;

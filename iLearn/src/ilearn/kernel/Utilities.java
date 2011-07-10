@@ -97,6 +97,13 @@ public class Utilities
         return total;
     }
 
+    public static String roundDouble(double value)
+    {
+        DecimalFormat df = new DecimalFormat("###0.00");
+        String total = df.format(value);
+        return total;
+    }
+
     public static int showConfirmDialog(Component rootpane, String message)
     {
         return JOptionPane.showConfirmDialog(rootpane, message, "iLearn", JOptionPane.YES_NO_OPTION);

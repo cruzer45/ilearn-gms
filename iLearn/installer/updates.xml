@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updateDescriptor baseUrl="">
-  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_0.exe" newVersion="1.0" newMediaFileId="20" fileSize="55509504" bundledJre="" archive="false">
+  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_0.exe" newVersion="1.0" newMediaFileId="20" fileSize="55552512" bundledJre="" archive="false">
     <comment />
   </entry>
-  <entry targetMediaFileId="21" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_unix_1_0.sh" newVersion="1.0" newMediaFileId="21" fileSize="54811195" bundledJre="" archive="false">
+  <entry targetMediaFileId="21" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_unix_1_0.sh" newVersion="1.0" newMediaFileId="21" fileSize="54854043" bundledJre="" archive="false">
     <comment />
   </entry>
 </updateDescriptor>

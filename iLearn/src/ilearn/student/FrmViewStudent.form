@@ -47,7 +47,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" max="-2" attributes="0"/>
-              <Component id="studentTabbedPane" pref="416" max="32767" attributes="0"/>
+              <Component id="studentTabbedPane" max="32767" attributes="0"/>
               <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -114,7 +114,7 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jScrollPane5" min="-2" pref="274" max="-2" attributes="0"/>
-                      <EmptySpace pref="42" max="32767" attributes="0"/>
+                      <EmptySpace pref="48" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel5" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext4" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -547,7 +547,7 @@
                           <Component id="lblMailingAddress" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Component id="jScrollPane2" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="118" max="32767" attributes="0"/>
+                      <EmptySpace pref="124" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -698,7 +698,7 @@
                       <Component id="primaryContactPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="secConPanel" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="48" max="32767" attributes="0"/>
+                      <EmptySpace pref="54" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext3" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -971,6 +971,11 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="medicalPanel" alignment="0" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="cmdSave1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdCancel6" min="-2" max="-2" attributes="0"/>
+                          </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblSpecialNeeds" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -978,20 +983,17 @@
                                   <Component id="lblPSEGrade" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblRepeating" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblNotes" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSSN" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="txtSSN" alignment="0" pref="273" max="32767" attributes="0"/>
                                   <Component id="jScrollPane7" alignment="0" pref="273" max="32767" attributes="0"/>
                                   <Component id="txtPSEGrades" alignment="0" pref="273" max="32767" attributes="0"/>
                                   <Component id="txtFeederSchool" alignment="0" pref="273" max="32767" attributes="0"/>
                                   <Component id="txtSpecialNeeds" alignment="0" pref="273" max="32767" attributes="0"/>
                                   <Component id="txtRepeating" alignment="0" pref="273" max="32767" attributes="0"/>
                               </Group>
-                          </Group>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cmdCancel4" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
@@ -1001,6 +1003,11 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSSN" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSSN" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblFeederSchool" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1024,14 +1031,14 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="lblNotes" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane7" alignment="0" min="-2" pref="94" max="-2" attributes="0"/>
+                          <Component id="jScrollPane7" alignment="0" min="-2" pref="70" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="medicalPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdCancel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdCancel6" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdSave1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -1039,20 +1046,20 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="cmdSave">
+            <Component class="javax.swing.JButton" name="cmdSave1">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.student.FrmNewStudent" id="save" methodName="save"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="cmdSave1" noResource="true"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JButton" name="cmdCancel4">
+            <Component class="javax.swing.JButton" name="cmdCancel6">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.student.FrmNewStudent" id="cancel" methodName="cancel"/>
                 </Property>
-                <Property name="name" type="java.lang.String" value="cmdCancel4" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="cmdCancel6" noResource="true"/>
               </Properties>
             </Component>
             <Container class="javax.swing.JPanel" name="medicalPanel">
@@ -1217,12 +1224,25 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="editable" type="boolean" value="false"/>
-                    <Property name="rows" type="int" value="5"/>
+                    <Property name="rows" type="int" value="4"/>
                     <Property name="name" type="java.lang.String" value="txtNotes" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="lblSSN">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSSN.text"/>
+                <Property name="name" type="java.lang.String" value="lblSSN" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JFormattedTextField" name="txtSSN">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" resourceKey="txtSSN.text"/>
+                <Property name="name" type="java.lang.String" value="txtSSN" noResource="true"/>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JTextField" name="txtRepeating">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>

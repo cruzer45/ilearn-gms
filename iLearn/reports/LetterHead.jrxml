@@ -25,7 +25,7 @@
 	<field name="schAddress" class="java.lang.String"/>
 	<field name="schLogo" class="java.io.InputStream"/>
 	<title>
-		<band height="132" splitType="Stretch">
+		<band height="119" splitType="Stretch">
 			<image scaleImage="FillFrame">
 				<reportElement mode="Transparent" x="0" y="0" width="115" height="115"/>
 				<imageExpression class="java.io.InputStream"><![CDATA[$F{schLogo}]]></imageExpression>

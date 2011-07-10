@@ -224,6 +224,143 @@ public class Grade
         return model;
     }
 
+    public static DefaultTableModel getMidTermGrades(String stuID)
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                //Only allow the remarks column to be editable.
+                boolean editable = false;
+                if (mColIndex == 3)
+                {
+                    editable = true;
+                }
+                return editable;
+            }
+            @Override
+            public void setValueAt(Object value, int row, int column)
+            {
+                //If they are changing the remarks column just accept the changes.
+                if (column == 3)
+                {
+                    Vector rowVector = (Vector) dataVector.elementAt(row);
+                    rowVector.setElementAt(value, column);
+                    fireTableCellUpdated(row, column);
+                    return;
+                }
+            }
+        };
+        ArrayList<String> graID = new ArrayList<String>();
+        ArrayList<String> subject = new ArrayList<String>();
+        ArrayList<String> grade = new ArrayList<String>();
+        ArrayList<String> remarks = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `Student`.`stuID`, `Subject`.`subName`,`graMid`,`graRemark`, `graID` "
+                         + "FROM `Grade` "
+                         + "INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID "
+                         + "INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
+                         + "WHERE `Grade`.graStatus = 'Active' AND `stuID` =  ? "
+                         + "ORDER BY `stuClsCode`,`stuID`, `Subject`.subName;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                graID.add(rs.getString("graID"));
+                subject.add(rs.getString("subName"));
+                grade.add(Utilities.roundDouble(rs.getDouble("graMid")));
+                remarks.add(rs.getString("graRemark"));
+            }
+            prep.close();
+            rs.close();
+            model.addColumn("ID", graID.toArray());
+            model.addColumn("Subject", subject.toArray());
+            model.addColumn("Grade", grade.toArray());
+            model.addColumn("Remarks", remarks.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading the mid term grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
+    }
+
+    public static DefaultTableModel searchMidTermList(String criteria)
+    {
+        criteria = Utilities.percent(criteria);
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        ArrayList<String> studentID = new ArrayList<String>();
+        ArrayList<String> stuName = new ArrayList<String>();
+        ArrayList<String> clsCode = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT DISTINCT `Student`.`stuID`,CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) AS `Name`,`Student`.`stuClsCode`"
+                         + "FROM `Grade` "
+                         + "INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID "
+                         + "WHERE `Grade`.graStatus = 'Active' AND ((stuID LIKE ?) OR (CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) LIKE ?) OR (stuClsCode LIKE ?)) "
+                         + "ORDER BY `stuClsCode`,`stuID`";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, criteria);
+            prep.setString(2, criteria);
+            prep.setString(3, criteria);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentID.add(rs.getString("stuID"));
+                stuName.add(rs.getString("Name"));
+                clsCode.add(rs.getString("stuClsCode"));
+            }
+            prep.close();
+            rs.close();
+            model.addColumn("ID", studentID.toArray());
+            model.addColumn("Name", stuName.toArray());
+            model.addColumn("Class", clsCode.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while searching the mid term grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
+    }
+
     public static boolean addAssessment(String assmtTerm, String assmtSubject, String assmtTeacher, String assmtTitle, String assmtDate, String assmtType, String assmtTotalPoints, String assmtClassID)
     {
         boolean successful = false;
@@ -533,7 +670,7 @@ public class Grade
             ArrayList<String> classes = Classes.getClassList();
             for (String cls : classes)
             {
-                //System.out.println("Now doing class: " + cls);
+                System.out.println("Now doing class: " + cls);
                 //Get all students in a class.
                 ArrayList<String> studentList = Classes.getStudentIDList(cls);
                 //Get list of all subjects for class
@@ -541,20 +678,20 @@ public class Grade
                 for (String sub : subjects)
                 {
                     String clsID = Classes.getClassID(cls);
-                    //System.out.println("\tNow doing subject: " + sub);
+                    System.out.println("\tNow doing subject: " + sub);
                     //Get all assessments for a subject
                     ArrayList<Integer> assmtList = getAssessmentList(clsID, sub);
                     for (Integer assmt : assmtList)
                     {
-                        // System.out.println("\t\tNow doing assmt: " + assmt);
+                        System.out.println("\t\tNow doing assmt: " + assmt);
                         for (String stuID : studentList)
                         {
-                            //  System.out.println("\t\t\tNow checking: " + stuID);
+                            System.out.println("\t\t\tNow checking student: " + stuID);
                             ArrayList<String> stuGrade = getStudentGrade(String.valueOf(assmt), stuID);
                             try
                             {
                                 String grade = stuGrade.get(0);
-                                if ((grade.equals("Excused")) || (grade.equals("Incomplete")) || (grade.equals("Absent")))
+                                if ((grade.equals("Excused")) || (grade.equals("Incomplete")) || (grade.equals("Absent")) || (grade.equals("")) || (grade.equals(" ")))
                                 {
                                     String[] missingGrade =
                                     {
@@ -827,7 +964,7 @@ public class Grade
                 stuCls.add(Student.getStudentClass(stuID));
             }
             sql = "UPDATE `Grade` SET `graClsCode`= ? "
-                  + "WHERE `graStuID`= ? AND `graStatus` = 'Active' LIMIT 1;";
+                  + "WHERE `graStuID`= ? AND `graStatus` = 'Active';";
             prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < stuIDs.size(); i++)
             {
@@ -843,5 +980,30 @@ public class Grade
             String message = "An error occurred while updating student classes in Grades.";
             logger.log(Level.SEVERE, message, e);
         }
+    }
+
+    public static boolean updateRemarks(ArrayList<String> graID, ArrayList<String> remarks)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Grade` SET `graRemark`= ? WHERE `graID`= ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < graID.size(); i++)
+            {
+                prep.setString(1, remarks.get(i));
+                prep.setString(2, graID.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating mid term remarks.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
     }
 }

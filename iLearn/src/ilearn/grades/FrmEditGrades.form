@@ -72,7 +72,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="375" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="371" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdNext2" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtSearch" pref="239" max="32767" attributes="0"/>
+                              <Component id="txtSearch" pref="221" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdSearch" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -100,7 +100,7 @@
                           <Component id="cmdSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="311" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="318" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -255,13 +255,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtID" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbType" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtMaxPoints" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="calDate" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtTitle" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbSubject" alignment="0" pref="315" max="32767" attributes="0"/>
+                                  <Component id="txtID" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbType" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtMaxPoints" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="calDate" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtTitle" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbSubject" alignment="0" pref="288" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -307,7 +307,7 @@
                           <Component id="lblSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmbSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="177" max="32767" attributes="0"/>
+                      <EmptySpace pref="168" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="cmdNext" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -452,7 +452,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="375" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="371" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -467,7 +467,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="342" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="346" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -493,10 +493,9 @@
                   <Properties>
                     <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="5" rowCount="0">
+                      <Table columnCount="4" rowCount="0">
                         <Column editable="true" title="ID" type="java.lang.Integer"/>
-                        <Column editable="true" title="First Name" type="java.lang.String"/>
-                        <Column editable="true" title="Last Name" type="java.lang.String"/>
+                        <Column editable="true" title="Name" type="java.lang.String"/>
                         <Column editable="true" title="Grade" type="java.lang.Object"/>
                         <Column editable="true" title="Remark" type="java.lang.String"/>
                       </Table>
@@ -510,11 +509,6 @@
                         </Column>
                         <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
                           <Title resourceKey="tblGrades.columnModel.title1"/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title resourceKey="tblGrades.columnModel.title3"/>
                           <Editor/>
                           <Renderer/>
                         </Column>

@@ -15,12 +15,31 @@ import java.util.logging.Logger;
  */
 public class ReportLoader
 {
-    static final Logger logger =  Logger.getLogger(DialogStudentByClass.class.getName());
+
+    static final Logger logger = Logger.getLogger(DialogStudentByClass.class.getName());
 
     public static void showRepeatingStudents()
     {
         String report = "reports/List_of_Repeating_Students.jasper";
         String title = "Report - Student Currently Repeating";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showMidTermReports()
+    {
+        String report = "reports/MidTerm_Report.jasper";
+        String title = "Report - Mid-Term Report Cards";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");

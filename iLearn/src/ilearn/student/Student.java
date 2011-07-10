@@ -28,7 +28,7 @@ public class Student
                                      String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
                                      String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
                                      String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                     String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
+                                     String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN)
     {
         boolean successful = false;
         try
@@ -39,8 +39,8 @@ public class Student
                          + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
                          + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
                          + "`stuDoctorContact`, `stuHospital`, `stuClsCode`, `stuPSEGrade`, "
-                         + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`) "
-                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?);";
+                         + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`) "
+                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -67,6 +67,7 @@ public class Student
             prep.setBoolean(23, stuRepeating);
             prep.setString(24, stuSpecialNeeds);
             prep.setString(25, stuNotes);
+            prep.setString(26, stuSSN);//Added Jul 8, 2011
             prep.execute();
             prep.close();
             successful = true;
@@ -101,6 +102,7 @@ public class Student
                          + "`stuFirstName` LIKE ?  OR "
                          + "`stuLastName` LIKE ?  OR "
                          + "`stuOtherNames` LIKE ?  OR "
+                         + "`stuSSN` LIKE ? OR"
                          + "`stuClsCode` LIKE ? ) AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
@@ -108,6 +110,7 @@ public class Student
             prep.setString(3, criteria);
             prep.setString(4, criteria);
             prep.setString(5, criteria);
+            prep.setString(6, criteria);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
@@ -140,7 +143,7 @@ public class Student
                          + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
                          + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
                          + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
-                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`"
+                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`"
                          + "FROM `iLearn`.`Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
@@ -176,6 +179,7 @@ public class Student
                 studentInfo.add(rs.getString("stuSpecialNeeds"));//26
                 studentInfo.add(rs.getString("stuNotes"));//27
                 studentInfo.add(rs.getString("stuStatus"));//28
+                studentInfo.add(rs.getString("stuSSN"));//29   Added Jul 8 2011
             }
             prep.close();
             rs.close();
@@ -236,18 +240,18 @@ public class Student
         return studentName;
     }
 
-    public static boolean updateStudent(String stuID, String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
-                                        String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
-                                        String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-                                        String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
+    public static boolean updateStudentPhoto(String stuID, String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
+            String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
+            String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
+            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
+            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN)
     {
         boolean successful = false;
         try
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuPhoto` = ? ,`stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -274,7 +278,8 @@ public class Student
             prep.setBoolean(23, stuRepeating);
             prep.setString(24, stuSpecialNeeds);
             prep.setString(25, stuNotes);
-            prep.setString(26, stuID);
+            prep.setString(26, stuSSN);
+            prep.setString(27, stuID);
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -291,13 +296,13 @@ public class Student
                                         String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
                                         String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
                                         String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes)
+                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN)
     {
         boolean successful = false;
         try
         {
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -323,7 +328,8 @@ public class Student
             prep.setBoolean(22, stuRepeating);
             prep.setString(23, stuSpecialNeeds);
             prep.setString(24, stuNotes);
-            prep.setString(25, stuID);
+            prep.setString(25, stuSSN);
+            prep.setString(26, stuID);
             prep.executeUpdate();
             prep.close();
             successful = true;

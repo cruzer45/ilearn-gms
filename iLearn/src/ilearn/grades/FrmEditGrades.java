@@ -179,7 +179,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmdSearch))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
@@ -294,7 +294,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblSubject)
                                 .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 164, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 168, Short.MAX_VALUE)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel1)
                                 .addComponent(cmdNext))
@@ -311,13 +311,13 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
                                },
                                new String []
                                {
-                                   "ID", "First Name", "Last Name", "Grade", "Remark"
+                                   "ID", "Name", "Grade", "Remark"
                                }
                            )
         {
             Class[] types = new Class []
             {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class
             };
             public Class getColumnClass(int columnIndex)
             {
@@ -330,9 +330,8 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
         tblGrades.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         tblGrades.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title0")); // NOI18N
         tblGrades.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title1")); // NOI18N
-        tblGrades.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title3")); // NOI18N
-        tblGrades.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title2")); // NOI18N
-        tblGrades.getColumnModel().getColumn(4).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title4")); // NOI18N
+        tblGrades.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title2")); // NOI18N
+        tblGrades.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title4")); // NOI18N
         cmdCancel.setAction(actionMap.get("Cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
@@ -357,7 +356,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 342, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -378,7 +377,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 426, Short.MAX_VALUE)
+                      .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                       .addContainerGap())
         );
         pack();
