@@ -5,6 +5,7 @@
 package ilearn.staff;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -92,6 +93,51 @@ public class Staff
         return model;
     }
 
+    public static DefaultTableModel searchStaffListTableModel(String criteria)
+    {
+        criteria = Utilities.percent(criteria);
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        ArrayList<String> id = new ArrayList<String>();
+        ArrayList<String> code = new ArrayList<String>();
+        ArrayList<String> name = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`,`staDOB` "
+                         + "FROM `iLearn`.`Staff` "
+                         + "WHERE (`staID` LIKE ? OR `staCode` LIKE ? OR `staFirstName` LIKE ? OR `staLastName` LIKE ?) AND `staStatus` =  'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, criteria);
+            prep.setString(2, criteria);
+            prep.setString(3, criteria);
+            prep.setString(4, criteria);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                id.add(rs.getString("staID"));
+                code.add(rs.getString("staCode"));
+                name.add(rs.getString("staFirstName") + " " + rs.getString("staLastName"));
+            }
+            rs.close();
+            prep.close();
+            model.addColumn("ID", id.toArray());
+            model.addColumn("Code", code.toArray());
+            model.addColumn("Name", name.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the staff list table model.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
+    }
+
     public static ArrayList<String> getStaffDetails(String id)
     {
         ArrayList<String> details = new ArrayList<String>();
@@ -162,7 +208,7 @@ public class Staff
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                staffList.add(rs.getString("Name") );
+                staffList.add(rs.getString("Name"));
             }
         }
         catch (Exception e)

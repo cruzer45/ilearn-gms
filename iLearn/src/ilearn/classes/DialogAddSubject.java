@@ -182,7 +182,7 @@ public class DialogAddSubject extends javax.swing.JDialog
         }
         else
         {
-            String message = "Kindly select a subject before clicking remove.";
+            String message = "Kindly select a subject before clicking add.";
             Utilities.showWarningMessage(rootPane, message);
         }
     }

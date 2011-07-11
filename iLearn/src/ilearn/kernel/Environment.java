@@ -106,6 +106,9 @@ public class Environment
         }
     }
 
+    /*
+     * This will
+     */
     public static void checkAppInfo()
     {
         //Check DB Version
@@ -178,6 +181,9 @@ public class Environment
         timer.schedule(logOff, waitTime);
     }
 
+    /*
+     * Closes the database connection
+     */
     public static void closeConnection()
     {
         try

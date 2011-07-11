@@ -6,6 +6,7 @@
  */
 package ilearn.user;
 
+import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -54,9 +55,9 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         cmbGroup = new javax.swing.JComboBox();
         linksPanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        tblLinks = new javax.swing.JTable();
+        cmdUnlink = new javax.swing.JButton();
+        cmdLink = new javax.swing.JButton();
         prevelidgeScrollPane = new javax.swing.JScrollPane();
         prevelidgePanel = new javax.swing.JPanel();
         StudentPanel = new javax.swing.JPanel();
@@ -123,6 +124,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
         txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(5), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setName("jSpinner1"); // NOI18N
         lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
         lblPassword.setName("lblPassword"); // NOI18N
@@ -159,12 +161,12 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                 .addComponent(jLabel1))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 338, Short.MAX_VALUE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 338, Short.MAX_VALUE))
+                                .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 301, Short.MAX_VALUE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -193,33 +195,33 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addContainerGap(203, Short.MAX_VALUE))
+                      .addContainerGap(201, Short.MAX_VALUE))
         );
         jTabbedPane1.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
         linksPanel.setName("linksPanel"); // NOI18N
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-                             new Object [][]
-                             {
+        tblLinks.setModel(new javax.swing.table.DefaultTableModel(
+                              new Object [][]
+                              {
 
-                             },
-                             new String []
-                             {
-                                 "ID", "Name"
-                             }
-                         ));
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.setName("jTable1"); // NOI18N
-        jScrollPane2.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        jTable1.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("jTable1.columnModel.title0")); // NOI18N
-        jTable1.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("jTable1.columnModel.title1")); // NOI18N
-        jButton1.setAction(actionMap.get("unlinkAccount")); // NOI18N
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
-        jButton2.setAction(actionMap.get("linkAccount")); // NOI18N
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
+                              },
+                              new String []
+                              {
+                                  "ID", "Name"
+                              }
+                          ));
+        tblLinks.setColumnSelectionAllowed(true);
+        tblLinks.setName("tblLinks"); // NOI18N
+        jScrollPane2.setViewportView(tblLinks);
+        tblLinks.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tblLinks.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title0")); // NOI18N
+        tblLinks.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title1")); // NOI18N
+        cmdUnlink.setAction(actionMap.get("unlinkAccount")); // NOI18N
+        cmdUnlink.setText(resourceMap.getString("cmdUnlink.text")); // NOI18N
+        cmdUnlink.setName("cmdUnlink"); // NOI18N
+        cmdLink.setAction(actionMap.get("linkAccount")); // NOI18N
+        cmdLink.setText(resourceMap.getString("cmdLink.text")); // NOI18N
+        cmdLink.setName("cmdLink"); // NOI18N
         javax.swing.GroupLayout linksPanelLayout = new javax.swing.GroupLayout(linksPanel);
         linksPanel.setLayout(linksPanelLayout);
         linksPanelLayout.setHorizontalGroup(
@@ -227,22 +229,22 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 398, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
                                 .addGroup(linksPanelLayout.createSequentialGroup()
-                                          .addComponent(jButton2)
+                                          .addComponent(cmdLink)
                                           .addGap(18, 18, 18)
-                                          .addComponent(jButton1)))
+                                          .addComponent(cmdUnlink)))
                       .addContainerGap())
         );
         linksPanelLayout.setVerticalGroup(
             linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 295, Short.MAX_VALUE)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 305, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jButton1)
-                                .addComponent(jButton2))
+                                .addComponent(cmdUnlink)
+                                .addComponent(cmdLink))
                       .addContainerGap())
         );
         jTabbedPane1.addTab(resourceMap.getString("linksPanel.TabConstraints.tabTitle"), resourceMap.getIcon("linksPanel.TabConstraints.tabIcon"), linksPanel); // NOI18N
@@ -302,7 +304,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                                   .addComponent(chkEditStudent)
                                                   .addComponent(chkViewStudent)))
                                 .addComponent(chkStudent))
-                      .addContainerGap(62, Short.MAX_VALUE))
+                      .addContainerGap(97, Short.MAX_VALUE))
         );
         StudentPanelLayout.setVerticalGroup(
             StudentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +381,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                                   .addComponent(chkViewClass)
                                                   .addComponent(chkEnterAttendance)))
                                 .addComponent(chkClass))
-                      .addContainerGap(38, Short.MAX_VALUE))
+                      .addContainerGap(64, Short.MAX_VALUE))
         );
         classPanelLayout.setVerticalGroup(
             classPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -438,7 +440,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                                   .addComponent(chkRecordGrades)
                                                   .addComponent(chkEditGrades)))
                                 .addComponent(chkGrades))
-                      .addContainerGap(54, Short.MAX_VALUE))
+                      .addContainerGap(86, Short.MAX_VALUE))
         );
         gradesPanelLayout.setVerticalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -495,7 +497,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                           .addComponent(chkStudentList))
                                 .addComponent(chkStudentReports)
                                 .addComponent(chkClassReports))
-                      .addContainerGap(44, Short.MAX_VALUE))
+                      .addContainerGap(74, Short.MAX_VALUE))
         );
         reportsPanelLayout.setVerticalGroup(
             reportsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -509,7 +511,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                       .addComponent(chkclassListing)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(chkGradebook)
-                      .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                      .addContainerGap(14, Short.MAX_VALUE))
         );
         managePanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("managePanel.border.title"))); // NOI18N
         managePanel.setName("managePanel"); // NOI18N
@@ -583,7 +585,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                           .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addComponent(chkEditUsers)
                                                   .addComponent(chkAddUsers))))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 179, Short.MAX_VALUE)
                       .addGroup(managePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(chkTimeSlots)
                                 .addComponent(chkTerm)
@@ -651,9 +653,12 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                                   .addComponent(StudentPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(classPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                  .addComponent(reportsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                          .addGap(7, 7, 7))))
+                                                  .addGroup(prevelidgePanelLayout.createSequentialGroup()
+                                                          .addComponent(reportsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                          .addGap(7, 7, 7))
+                                                  .addGroup(prevelidgePanelLayout.createSequentialGroup()
+                                                          .addComponent(classPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                          .addContainerGap())))))
         );
         prevelidgePanelLayout.setVerticalGroup(
             prevelidgePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -668,7 +673,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                 .addComponent(reportsPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(managePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addGap(42, 42, 42))
+                      .addContainerGap())
         );
         prevelidgeScrollPane.setViewportView(prevelidgePanel);
         jTabbedPane1.addTab(resourceMap.getString("prevelidgeScrollPane.TabConstraints.tabTitle"), resourceMap.getIcon("prevelidgeScrollPane.TabConstraints.tabIcon"), prevelidgeScrollPane); // NOI18N
@@ -679,10 +684,10 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
+                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdReset)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 170, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 194, Short.MAX_VALUE)
                                           .addComponent(cmdSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdCancel)))
@@ -692,7 +697,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
+                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 389, Short.MAX_VALUE)
                       .addGap(18, 18, 18)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -701,7 +706,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                       .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-459)/2, (screenSize.height-477)/2, 459, 477);
+        setBounds((screenSize.width-441)/2, (screenSize.height-477)/2, 441, 477);
     }// </editor-fold>//GEN-END:initComponents
 
     private void chkStudentActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStudentActionPerformed
@@ -815,7 +820,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     private void chkStaffActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_chkStaffActionPerformed
     {
 //GEN-HEADEREND:event_chkStaffActionPerformed
-        boolean  staff = chkStaff.isSelected();
+        boolean staff = chkStaff.isSelected();
         chkAddStaff.setSelected(staff);
         chkEditStaff.setSelected(staff);
     }//GEN-LAST:event_chkStaffActionPerformed
@@ -863,7 +868,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         if (User.addUser(username, password, firstName, lastName, group))
         {
             String message = "The user was successfully added.\n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -877,8 +882,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
-                             + "Kindly verify your information and try again.\n"
-                             + "If the problem persists, kindly contact your system administrator.";
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -905,6 +910,17 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     @Action
     public void linkAccount()
     {
+        FrmLinkStaff frmLinkStaff = new FrmLinkStaff(null, true);
+        frmLinkStaff.setLocationRelativeTo(this);
+        frmLinkStaff.setVisible(true);
+        loadLinkedAccounts();
+    }
+
+    private void loadLinkedAccounts()
+    {
+        tblLinks.setModel(User.getStaffLinks());
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblLinks);
+        tca.adjustColumns();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel StudentPanel;
@@ -944,17 +960,16 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     private javax.swing.JPanel classPanel;
     private javax.swing.JComboBox cmbGroup;
     private javax.swing.JButton cmdCancel;
+    private javax.swing.JButton cmdLink;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdUnlink;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JPanel gradesPanel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGroup;
     private javax.swing.JLabel lblLastName;
@@ -965,6 +980,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     private javax.swing.JPanel prevelidgePanel;
     private javax.swing.JScrollPane prevelidgeScrollPane;
     private javax.swing.JPanel reportsPanel;
+    private javax.swing.JTable tblLinks;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JPasswordField txtPassword;

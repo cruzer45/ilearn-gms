@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="4.1.5" transformSequenceNumber="2">
   <directoryPresets config="/home/mrogers/Projects/Java/iLearn/resources/images" />
-  <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="iLearn" publisher="Maurice Rogers, Chris Agular" publisherWeb="http://mauricerogers.com" version="1.0" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" keepModificationTimes="false" shortName="iLearn" publisher="Maurice Rogers, Chris Agular" publisherWeb="http://mauricerogers.com" version="1.01" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false">
       <principalLanguage id="en" customLocalizationFile="" />
       <additionalLanguages />
@@ -18,8 +18,8 @@
     <roots />
     <mountPoints>
       <mountPoint id="23" root="" location="conf" mode="755" />
-      <mountPoint id="17" root="" location="" mode="755" />
       <mountPoint id="63" root="" location="reports" mode="755" />
+      <mountPoint id="17" root="" location="" mode="755" />
     </mountPoints>
     <entries>
       <dirEntry mountPoint="23" file="/home/mrogers/Projects/Java/iLearn/conf" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
@@ -27,12 +27,15 @@
           <entry location=".svn" fileType="regular" />
         </exclude>
       </dirEntry>
-      <dirEntry mountPoint="17" file="/home/mrogers/Projects/Java/iLearn/dist" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
-        <exclude />
-      </dirEntry>
-      <dirEntry mountPoint="63" file="/home/mrogers/Projects/Java/iLearn/reports" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="*.jasper" dirMode="755">
+      <dirEntry mountPoint="63" file="/home/mrogers/Projects/Java/iLearn/reports" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="*.jrxml" dirMode="755">
         <exclude>
           <entry location=".svn" fileType="regular" />
+          <entry location=".directory" fileType="regular" />
+        </exclude>
+      </dirEntry>
+      <dirEntry mountPoint="17" file="/home/mrogers/Projects/Java/iLearn/dist" overwrite="4" shared="false" mode="644" uninstallMode="0" excludeSuffixes="" dirMode="755">
+        <exclude>
+          <entry location="README.TXT" fileType="regular" />
         </exclude>
       </dirEntry>
     </entries>
@@ -340,6 +343,14 @@
         <scriptLines />
       </installerScript>
     </unixInstaller>
+    <macosFolder name="Mac OS X Folder" id="104" mediaFileName="" installDir="iLearn" overridePrincipalLanguage="false" requires64bit="false" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" customInstallBaseDir="" createUninstallIcon="true" contentFilesType="1" downloadURL="">
+      <excludedLaunchers />
+      <excludedComponents />
+      <excludedBeans />
+      <overriddenPrincipalLanguage id="en" customLocalizationFile="" />
+      <exclude />
+      <variables />
+    </macosFolder>
   </mediaSets>
   <buildIds buildAll="true" />
 </install4j>

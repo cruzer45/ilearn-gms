@@ -1,15 +1,25 @@
-Fix Add and Edit user screens to handle advanced privileges.
+FEATURE / CHANGE REQUESTS
+================================================================================
 
-Calculate mid term and final grades.
+0%      Fix Add and Edit user screens to handle advanced privileges and linking.
+50%     Calculate mid term and final grades.
+50%     Generate Report Cards Function
+0%      Add Detention Module (5 demerits = 1 Detention) Auto Detention.
+0%      Add Demerit Module (to be tied into detention module).
+0%      Filter Promotion Lists to only a higher class level.
+0%      Students who are not promoted are set as repeating.
+0%      Add Student Status field to edit student.
+0%      Add Year to the student id.
+0%      Users will be linked to staff members.
+0%      H.O.D.s will be linked to all users they oversee.
+0%      Class Ranking Report.
+0%      Include timeout field to "Edit User."
 
-Generate Report Cards Function
 
+DELIVERABLES
+================================================================================
 
-Add Detention Module    (5 demerits = 1 Detention).
-Add Demerit Module (to be tied into detention module).
-Filter Promotion Lists to only a higher class level.
-Students who are not promoted are set as repeating.
-Add Student Status field to edit student.
-Add Year to the student id.
-Users will be linked to staff members
-HODs will be linked to 
+- Get Sample report card
+- Get Sample ID Card
+- Get Sample Transcript
+-

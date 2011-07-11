@@ -1,0 +1,6 @@
+Version 1.01
+
+-   Fixed error at login screen where IP array would return an error on Win XP
+    machines with only an Ethernet Card.
+
+- 

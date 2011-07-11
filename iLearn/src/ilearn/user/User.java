@@ -8,7 +8,6 @@ import ilearn.kernel.EncryptionHandler;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
-import java.net.Inet4Address;
 import java.net.InetAddress;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -30,6 +29,9 @@ public class User
     private static String userGroup = "";
     private static int timeout = 0;
     static final Logger logger = Logger.getLogger(User.class.getName());
+    private static ArrayList<String> staID = new ArrayList<String>();
+    private static ArrayList<String> staCode = new ArrayList<String>();
+    private static ArrayList<String> staName = new ArrayList<String>();
 
     /**
      * This function checks to see if the given username and password matches
@@ -64,15 +66,15 @@ public class User
                 successful = true;
                 //Log the action
                 String computername = InetAddress.getLocalHost().getHostName();
-                InetAddress[] ip = Inet4Address.getAllByName(computername);
-                String message = "SUCCESS: The user successfully logged on from " + ip[1] + ".";
+                String IP = InetAddress.getLocalHost().getHostAddress();
+                String message = "SUCCESS: The user successfully logged on from " + IP + ".";
                 iLogger.logMessage(message, "Log On", "User");
             }
             else
             {
                 String computername = InetAddress.getLocalHost().getHostName();
-                InetAddress[] ip = Inet4Address.getAllByName(computername);
-                String message = "ERROR: Failed to login as " + username + " from " + ip[1] + ".";
+                String IP = InetAddress.getLocalHost().getHostAddress();
+                String message = "ERROR: Failed to login as " + username + " from " + IP + ".";
                 iLogger.logMessage(message, "Log On", "User");
                 loginCount++;
                 successful = false;
@@ -343,6 +345,13 @@ public class User
         return userGroup;
     }
 
+    /**
+     * Changes a specified user's password.
+     *
+     * @param userName
+     * @param password
+     * @return True if the change operation was successful.
+     */
     public static boolean changePassword(String userName, String password)
     {
         boolean successful = false;
@@ -373,5 +382,58 @@ public class User
     public static int getTimeout()
     {
         return timeout;
+    }
+
+    public static ArrayList<String> getPermittedClasses()
+    {
+        ArrayList<String> classList = new ArrayList<String>();
+        try
+        {
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the list of permitted classes.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return classList;
+    }
+
+    public static void addStaffLink(String staffID, String staffCode, String staffName)
+    {
+        if (!staID.contains(staffID))
+        {
+            staID.add(staffID);
+            staCode.add(staffCode);
+            staName.add(staffName);
+        }
+    }
+
+    public static DefaultTableModel getStaffLinks()
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        model.addColumn("Staff ID", staID.toArray());
+        model.addColumn("Staff Code", staCode.toArray());
+        model.addColumn("Staff Name", staName.toArray());
+        return model;
     }
 }
