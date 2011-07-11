@@ -16,6 +16,8 @@ FEATURE / CHANGE REQUESTS
 0%      Include timeout field to "Edit User."
 0%      Include Manage School menu option
 0%      Add Simple class list report.
+0%      Add Student ID Report.
+0%      Add class Rank report.
 
 
 DELIVERABLES
