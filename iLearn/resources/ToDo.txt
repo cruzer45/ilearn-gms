@@ -14,6 +14,8 @@ FEATURE / CHANGE REQUESTS
 0%      H.O.D.s will be linked to all users they oversee.
 0%      Class Ranking Report.
 0%      Include timeout field to "Edit User."
+0%      Include Manage School menu option
+0%      Add Simple class list report.
 
 
 DELIVERABLES
