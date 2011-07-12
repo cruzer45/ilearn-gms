@@ -1,7 +1,7 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
-25%      Fix Add and Edit user screens to handle advanced privileges and linking.
+25%     Fix Add and Edit user screens to handle advanced privileges and linking.
 25%     Users will be linked to staff members.
 50%     Calculate mid term and final grades.
 50%     Generate Report Cards Function
@@ -12,11 +12,12 @@ FEATURE / CHANGE REQUESTS
 0%      Add Student Status field to edit student.
 0%      Add Year to the student id.
 0%      H.O.D.s will be linked to all users they oversee.
-100%    Class Ranking Report.
 0%      Include timeout field to "Edit User."
+0%      Add Student ID Report.
+0%      Add title and assessment date to the Excel GradeBook export
+100%    Class Ranking Report.
 100%    Include Manage School menu option
 100%    Add Simple class list report.
-0%      Add Student ID Report.
 100%    Add class Rank report.
 
 
