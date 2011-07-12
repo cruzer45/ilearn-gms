@@ -268,12 +268,16 @@ public class ILearnView extends FrameView
         studentReports = new javax.swing.JMenu();
         studentList = new javax.swing.JMenuItem();
         studentsRepeating = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         classReports = new javax.swing.JMenu();
         classListReport = new javax.swing.JMenuItem();
         classGradeBook = new javax.swing.JMenuItem();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        reportCardsMenu = new javax.swing.JMenu();
+        midTermReports = new javax.swing.JMenuItem();
+        classRankReport = new javax.swing.JMenuItem();
+        jSeparator1 = new javax.swing.JPopupMenu.Separator();
+        endOfYearReports = new javax.swing.JMenuItem();
+        termRanking = new javax.swing.JMenuItem();
         manageMenu = new javax.swing.JMenu();
         classMenu = new javax.swing.JMenu();
         addClass = new javax.swing.JMenuItem();
@@ -282,6 +286,7 @@ public class ILearnView extends FrameView
         promoteMenu = new javax.swing.JMenu();
         assignPromotions = new javax.swing.JMenuItem();
         promoteStudents = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
         editStaff = new javax.swing.JMenuItem();
@@ -404,6 +409,11 @@ public class ILearnView extends FrameView
         studentsRepeating.setText(resourceMap.getString("studentsRepeating.text")); // NOI18N
         studentsRepeating.setName("studentsRepeating"); // NOI18N
         studentReports.add(studentsRepeating);
+        jMenuItem1.setAction(actionMap.get("showStudentListByClass")); // NOI18N
+        jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
+        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
+        jMenuItem1.setName("jMenuItem1"); // NOI18N
+        studentReports.add(jMenuItem1);
         reportsMenu.add(studentReports);
         classReports.setIcon(resourceMap.getIcon("classReports.icon")); // NOI18N
         classReports.setText(resourceMap.getString("classReports.text")); // NOI18N
@@ -419,19 +429,31 @@ public class ILearnView extends FrameView
         classGradeBook.setName("classGradeBook"); // NOI18N
         classReports.add(classGradeBook);
         reportsMenu.add(classReports);
-        jMenu1.setIcon(resourceMap.getIcon("jMenu1.icon")); // NOI18N
-        jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
-        jMenu1.setName("jMenu1"); // NOI18N
-        jMenuItem1.setAction(actionMap.get("showMidTermReports")); // NOI18N
-        jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
-        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
-        jMenuItem1.setName("jMenuItem1"); // NOI18N
-        jMenu1.add(jMenuItem1);
-        jMenuItem2.setIcon(resourceMap.getIcon("jMenuItem2.icon")); // NOI18N
-        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
-        jMenuItem2.setName("jMenuItem2"); // NOI18N
-        jMenu1.add(jMenuItem2);
-        reportsMenu.add(jMenu1);
+        reportCardsMenu.setIcon(resourceMap.getIcon("reportCardsMenu.icon")); // NOI18N
+        reportCardsMenu.setText(resourceMap.getString("reportCardsMenu.text")); // NOI18N
+        reportCardsMenu.setName("reportCardsMenu"); // NOI18N
+        midTermReports.setAction(actionMap.get("showMidTermReports")); // NOI18N
+        midTermReports.setIcon(resourceMap.getIcon("midTermReports.icon")); // NOI18N
+        midTermReports.setText(resourceMap.getString("midTermReports.text")); // NOI18N
+        midTermReports.setName("midTermReports"); // NOI18N
+        reportCardsMenu.add(midTermReports);
+        classRankReport.setAction(actionMap.get("showMidTermClassRankReport")); // NOI18N
+        classRankReport.setIcon(resourceMap.getIcon("classRankReport.icon")); // NOI18N
+        classRankReport.setText(resourceMap.getString("classRankReport.text")); // NOI18N
+        classRankReport.setName("classRankReport"); // NOI18N
+        reportCardsMenu.add(classRankReport);
+        jSeparator1.setName("jSeparator1"); // NOI18N
+        reportCardsMenu.add(jSeparator1);
+        endOfYearReports.setIcon(resourceMap.getIcon("endOfYearReports.icon")); // NOI18N
+        endOfYearReports.setText(resourceMap.getString("endOfYearReports.text")); // NOI18N
+        endOfYearReports.setName("endOfYearReports"); // NOI18N
+        reportCardsMenu.add(endOfYearReports);
+        termRanking.setAction(actionMap.get("showTermEndRanking")); // NOI18N
+        termRanking.setIcon(resourceMap.getIcon("termRanking.icon")); // NOI18N
+        termRanking.setText(resourceMap.getString("termRanking.text")); // NOI18N
+        termRanking.setName("termRanking"); // NOI18N
+        reportCardsMenu.add(termRanking);
+        reportsMenu.add(reportCardsMenu);
         menuBar.add(reportsMenu);
         manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
         classMenu.setIcon(resourceMap.getIcon("classMenu.icon")); // NOI18N
@@ -467,6 +489,11 @@ public class ILearnView extends FrameView
         promoteStudents.setName("promoteStudents"); // NOI18N
         promoteMenu.add(promoteStudents);
         manageMenu.add(promoteMenu);
+        jMenuItem4.setAction(actionMap.get("showManageSchool")); // NOI18N
+        jMenuItem4.setIcon(resourceMap.getIcon("jMenuItem4.icon")); // NOI18N
+        jMenuItem4.setText(resourceMap.getString("jMenuItem4.text")); // NOI18N
+        jMenuItem4.setName("jMenuItem4"); // NOI18N
+        manageMenu.add(jMenuItem4);
         staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
         staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
         staffMenu.setName("staffMenu"); // NOI18N
@@ -1432,11 +1459,6 @@ public class ILearnView extends FrameView
             ReportLoader.showMidTermReports();
             return null;  // return your result
         }
-
-        @Override
-        protected void succeeded(Object result)
-        {
-        }
     }
 
     @Action
@@ -1462,6 +1484,75 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public Task showMidTermClassRankReport()
+    {
+        return new ShowMidTermClassRankReportTask(getApplication());
+    }
+
+    private class ShowMidTermClassRankReportTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowMidTermClassRankReportTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showMidTermClassRankingReport();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public Task showTermEndRanking()
+    {
+        return new ShowTermEndRankingTask(getApplication());
+    }
+
+    private class ShowTermEndRankingTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowTermEndRankingTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showTermEndClassRankingReport();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public Task showStudentListByClass()
+    {
+        return new ShowStudentListByClassTask(getApplication());
+    }
+
+    private class ShowStudentListByClassTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowStudentListByClassTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showStudentsByClass();
+            return null;  // return your result
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addStaff;
@@ -1477,6 +1568,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem classGradeBook;
     private javax.swing.JMenuItem classListReport;
     private javax.swing.JMenu classMenu;
+    private javax.swing.JMenuItem classRankReport;
     private javax.swing.JMenu classReports;
     private javax.swing.JMenuItem closeTerm;
     private javax.swing.JMenuItem createAssessment;
@@ -1491,20 +1583,23 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem editTimeSlot;
     private javax.swing.JMenuItem editUser;
     private javax.swing.JMenu endOfTerm;
+    private javax.swing.JMenuItem endOfYearReports;
     private javax.swing.JMenuItem enterAttendance;
     private javax.swing.JMenu gradesMenu;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;
     private javax.swing.JMenu manageMenu;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu midTerm;
+    private javax.swing.JMenuItem midTermReports;
     private javax.swing.JProgressBar progressBar;
     private javax.swing.JMenu promoteMenu;
     private javax.swing.JMenuItem promoteStudents;
+    private javax.swing.JMenu reportCardsMenu;
     private javax.swing.JMenu reportsMenu;
     private javax.swing.JMenu staffMenu;
     private javax.swing.JLabel statusAnimationLabel;
@@ -1516,6 +1611,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem studentsRepeating;
     private javax.swing.JMenu subjectMenu;
     private javax.swing.JMenu termMenu;
+    private javax.swing.JMenuItem termRanking;
     private javax.swing.JMenu timeSlotsMenu;
     private javax.swing.JMenu userMenu;
     private javax.swing.JMenu utilitiesMenu;

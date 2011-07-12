@@ -868,7 +868,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         if (User.addUser(username, password, firstName, lastName, group))
         {
             String message = "The user was successfully added.\n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -882,8 +882,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists, kindly contact your system administrator.";
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

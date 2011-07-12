@@ -53,4 +53,58 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
+    public static void showMidTermClassRankingReport()
+    {
+        String report = "reports/Class_Ranking_MidTerm.jasper";
+        String title = "Report - Mid-Term Class Rank";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showTermEndClassRankingReport()
+    {
+        String report = "reports/Class_Ranking_TermEnd.jasper";
+        String title = "Report - Term End Class Rank";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showStudentsByClass()
+    {
+        String report = "reports/Student_Class_List.jasper";
+        String title = "Report - Student List by Class";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
 }
