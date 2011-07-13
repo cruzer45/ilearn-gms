@@ -58,12 +58,12 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         txtPassword = new javax.swing.JPasswordField();
         lblGroup = new javax.swing.JLabel();
         cmbGroup = new javax.swing.JComboBox();
-        lblLevel = new javax.swing.JLabel();
-        cmbLevel = new javax.swing.JComboBox();
         lblStatis = new javax.swing.JLabel();
         cmbStatus = new javax.swing.JComboBox();
         cmdCancel2 = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
+        lblTimeout = new javax.swing.JLabel();
+        spinnerTimeout = new javax.swing.JSpinner();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditUser.class);
@@ -127,14 +127,14 @@ public class FrmEditUser extends javax.swing.JInternalFrame
                                           .addComponent(cmdNext)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdCancel))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
                       .addContainerGap())
         );
         userPanelLayout.setVerticalGroup(
             userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -170,18 +170,6 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
         cmbGroup.setName("cmbGroup"); // NOI18N
-        cmbGroup.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cmbGroupActionPerformed(evt);
-            }
-        });
-        lblLevel.setText(resourceMap.getString("lblLevel.text")); // NOI18N
-        lblLevel.setName("lblLevel"); // NOI18N
-        cmbLevel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        cmbLevel.setToolTipText(resourceMap.getString("cmbLevel.toolTipText")); // NOI18N
-        cmbLevel.setName("cmbLevel"); // NOI18N
         lblStatis.setText(resourceMap.getString("lblStatis.text")); // NOI18N
         lblStatis.setName("lblStatis"); // NOI18N
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Disabled", " " }));
@@ -191,6 +179,10 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         cmdCancel2.setName("cmdCancel2"); // NOI18N
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
+        lblTimeout.setText(resourceMap.getString("lblTimeout.text")); // NOI18N
+        lblTimeout.setName("lblTimeout"); // NOI18N
+        spinnerTimeout.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(15), Integer.valueOf(0), null, Integer.valueOf(1)));
+        spinnerTimeout.setName("spinnerTimeout"); // NOI18N
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
@@ -209,19 +201,19 @@ public class FrmEditUser extends javax.swing.JInternalFrame
                                                   .addComponent(lblFirstName)
                                                   .addComponent(lblPassword)
                                                   .addComponent(lblGroup)
-                                                  .addComponent(lblLevel)
                                                   .addComponent(lblID)
+                                                  .addComponent(lblTimeout)
                                                   .addComponent(lblStatis))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(cmbStatus, 0, 269, Short.MAX_VALUE)
-                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                                                  .addComponent(cmbLevel, 0, 269, Short.MAX_VALUE)
-                                                  .addComponent(cmbGroup, 0, 269, Short.MAX_VALUE)
-                                                  .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                                                  .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
-                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))))
+                                                  .addComponent(cmbStatus, 0, 250, Short.MAX_VALUE)
+                                                  .addComponent(spinnerTimeout, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                                  .addComponent(cmbGroup, 0, 250, Short.MAX_VALUE)
+                                                  .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                                  .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
@@ -253,13 +245,13 @@ public class FrmEditUser extends javax.swing.JInternalFrame
                                 .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblLevel)
-                                .addComponent(cmbLevel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(spinnerTimeout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblTimeout))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblStatis)
                                 .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
                                 .addComponent(cmdSave))
@@ -272,35 +264,29 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                       .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
                       .addContainerGap())
         );
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
-        setBounds((screenSize.width-390)/2, (screenSize.height-361)/2, 390, 361);
+        setBounds((screenSize.width-390)/2, (screenSize.height-385)/2, 390, 385);
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblUsersMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblUsersMouseClicked
     {
-        //GEN-HEADEREND:event_tblUsersMouseClicked
+//GEN-HEADEREND:event_tblUsersMouseClicked
         if (tblUsers.getSelectedRow() != -1)
         {
             loadSelectedUser();
             next();
         }
     }//GEN-LAST:event_tblUsersMouseClicked
-
-    private void cmbGroupActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbGroupActionPerformed
-    {
-        //GEN-HEADEREND:event_cmbGroupActionPerformed
-        cmbLevel.setModel(new DefaultComboBoxModel(User.getGroupLevels(cmbGroup.getSelectedItem().toString()).toArray()));
-    }//GEN-LAST:event_cmbGroupActionPerformed
 
     private void loadSelectedUser()
     {
@@ -315,6 +301,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             txtPassword.setText(userInfo[3]);
             cmbGroup.setSelectedItem(userInfo[4]);
             cmbStatus.setSelectedItem(userInfo[5]);
+            spinnerTimeout.setValue(Integer.valueOf(userInfo[6]));
         }
     }
 
@@ -340,7 +327,8 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         String lastName = txtLastName.getText().trim();
         String group = cmbGroup.getSelectedItem().toString();
         String status = cmbStatus.getSelectedItem().toString();
-        if (User.updateUser(ID, firstName, lastName, username, password, group, status))
+        String timeout = spinnerTimeout.getValue().toString();
+        if (User.updateUser(ID, firstName, lastName, username, password, group, status, timeout))
         {
             tblUsers.setModel(User.getUserList());
             String message = "The user's information was successfully updated.";
@@ -356,7 +344,6 @@ public class FrmEditUser extends javax.swing.JInternalFrame
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbGroup;
-    private javax.swing.JComboBox cmbLevel;
     private javax.swing.JComboBox cmbStatus;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdCancel2;
@@ -368,10 +355,11 @@ public class FrmEditUser extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblGroup;
     private javax.swing.JLabel lblID;
     private javax.swing.JLabel lblLastName;
-    private javax.swing.JLabel lblLevel;
     private javax.swing.JLabel lblPassword;
     private javax.swing.JLabel lblStatis;
+    private javax.swing.JLabel lblTimeout;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JSpinner spinnerTimeout;
     private javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtID;

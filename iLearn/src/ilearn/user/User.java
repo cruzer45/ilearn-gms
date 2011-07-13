@@ -197,7 +197,7 @@ public class User
     public static String[] getUserInfo(String ID)
     {
         String sql = "SELECT * FROM `User` WHERE `usrID` = ?;";
-        String firstName = "", lastName = "", username = "", password = "", group = "", status = "";
+        String firstName = "", lastName = "", username = "", password = "", group = "", status = "", usrtimeout = "";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -211,6 +211,7 @@ public class User
                 password = rs.getString("usrPassword");
                 group = rs.getString("usrGroup");
                 status = rs.getString("usrStatus");
+                usrtimeout = rs.getString("usrTimeout");
             }
             rs.close();
             prep.close();
@@ -222,7 +223,7 @@ public class User
         }
         String[] results =
         {
-            firstName, lastName, username, password, group, status
+            firstName, lastName, username, password, group, status, usrtimeout
         };
         return results;
     }
@@ -239,10 +240,10 @@ public class User
      * @return True of the action was completed successfully.
      *         False if anything went wrong.
      */
-    public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String status)
+    public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String status, String usrTimeOut)
     {
         boolean successful = false;
-        String sql = "UPDATE `User` SET `usrFirstName`= ?, `usrLastName`= ?, `usrName`= ?, `usrPassword`= ?, `usrGroup`= ?, `usrStatus`= ?  WHERE `usrID`= ? LIMIT 1;";
+        String sql = "UPDATE `User` SET `usrFirstName`= ?, `usrLastName`= ?, `usrName`= ?, `usrPassword`= ?, `usrGroup`= ?, `usrStatus`= ? , `usrTimeout` = ? WHERE `usrID`= ? LIMIT 1;";
         String[] currentInfo = getUserInfo(ID);
         if (!currentInfo[3].equals(password))
         {
@@ -257,7 +258,8 @@ public class User
             prep.setString(4, password);
             prep.setString(5, group);
             prep.setString(6, status);
-            prep.setString(7, ID);
+            prep.setString(7, usrTimeOut);
+            prep.setString(8, ID);
             prep.executeUpdate();
             prep.close();
             successful = true;

@@ -5,6 +5,7 @@ FEATURE / CHANGE REQUESTS
 25%     Users will be linked to staff members.
 50%     Calculate mid term and final grades.
 50%     Generate Report Cards Function
+50%     Add Student ID Report.
 0%      Add Detention Module (5 demerits = 1 Detention) Auto Detention.
 0%      Add Demerit Module (to be tied into detention module).
 0%      Filter Promotion Lists to only a higher class level.
@@ -12,9 +13,10 @@ FEATURE / CHANGE REQUESTS
 0%      Add Student Status field to edit student.
 0%      Add Year to the student id.
 0%      H.O.D.s will be linked to all users they oversee.
-0%      Include timeout field to "Edit User."
-0%      Add Student ID Report.
-0%      Add title and assessment date to the Excel GradeBook export
+100%    Include timeout field to "Edit User."
+100%    Add check to see if grade entered for student is more than the maximum points.
+100%    Add title and assessment date to the Excel Grade Book export
+100%    Add Minimum, maximum and average functions to class grade book. 
 100%    Class Ranking Report.
 100%    Include Manage School menu option
 100%    Add Simple class list report.

@@ -22,6 +22,7 @@ import java.io.IOException;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
@@ -218,7 +219,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 ArrayList<Integer> assmtIDs = new ArrayList<Integer>();
                 ArrayList<String> assmtTypes = new ArrayList<String>();
                 ArrayList<String> assmtTitles = new ArrayList<String>();
-                ArrayList<String> assmtDates = new ArrayList<String>();
+                ArrayList<Date> assmtDates = new ArrayList<Date>();
                 ArrayList<Integer> assmtTotalPoints = new ArrayList<Integer>();
                 ArrayList<String> studentIDs = new ArrayList<String>();
                 ArrayList<String> studentNames = new ArrayList<String>();
@@ -235,6 +236,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     assmtTypes.add(rs.getString("assmtType"));
                     assmtTitles.add(rs.getString("assmtTitle"));
                     assmtTotalPoints.add(rs.getInt("assmtTotalPoints"));
+                    assmtDates.add(rs.getDate("assmtDate"));
                 }
                 rs.close();
                 prep.close();
@@ -246,7 +248,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 CreationHelper createHelper = wb.getCreationHelper();
                 Sheet sheet = wb.createSheet(classCode + " Gradebook");
                 setMessage("Creating Gradebook.");
-                Row row = sheet.createRow((short) 0);
+                Row row = sheet.createRow(0);
                 Cell cell = row.createCell(0);
                 cell.setCellValue("Gradebook");
                 row = sheet.createRow(1);
@@ -268,12 +270,17 @@ public class FrmClassGradebook extends javax.swing.JDialog
 //                row.createCell(7).setCellValue("Exam");
                 int startColumn = 2; //This is the column the assessments will start to print.
                 int finishColumn = 0;
-                Row maxGradeRow = sheet.createRow(4);
+                int studentStartRow = 7;
+                Row maxGradeRow = sheet.createRow(6);
                 maxGradeRow.createCell(1).setCellValue("Total Points");
+                Row titleRow = sheet.createRow(4);
+                titleRow.createCell(1).setCellValue("Title");
+                Row dateRow = sheet.createRow(5);
+                dateRow.createCell(1).setCellValue("Date");
                 //Print The student List.
                 for (int i = 0; i < studentIDs.size(); i++)
                 {
-                    Row studentRow = sheet.createRow(5 + i);
+                    Row studentRow = sheet.createRow(i + studentStartRow);
                     studentRow.createCell(0).setCellValue(Integer.valueOf(studentIDs.get(i)));
                     studentRow.createCell(1).setCellValue(studentNames.get(i));
                 }
@@ -281,11 +288,17 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 for (int i = 0; i < assmtIDs.size(); i++)
                 {
                     finishColumn = startColumn + i;
-                    Row titleRow = sheet.getRow(3);
-                    titleRow.createCell(startColumn + i).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
+                    Row typeRow = sheet.getRow(3);
+                    typeRow.createCell(startColumn + i).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
                     maxGradeRow.createCell(startColumn + i).setCellValue(assmtTotalPoints.get(i));
+                    titleRow.createCell(startColumn + i).setCellValue(assmtTitles.get(i));
+                    Cell dateCell = dateRow.createCell(startColumn + i);
+                    dateCell.setCellValue(new Date(assmtDates.get(i).getTime()));
+                    CellStyle cellStyle = wb.createCellStyle();
+                    cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("MMM d, yyyy"));
+                    dateCell.setCellStyle(cellStyle);
                     //for each student get their grade
-                    for (int j = 5; j < (sheet.getLastRowNum() + 1); j++)
+                    for (int j = 7; j < (sheet.getLastRowNum() + 1); j++)
                     {
                         Row studentRow = sheet.getRow(j);
                         double stuID = studentRow.getCell(0).getNumericCellValue();
@@ -349,11 +362,11 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         }
                     }
                 }
-                //Calculate the averages
+                //Calculate student averages
                 String totalPointsCell = "";
-                Row titleRow = sheet.getRow(3);
+                titleRow = sheet.getRow(3);
                 titleRow.createCell(finishColumn + 1).setCellValue("Average");
-                for (int j = 4; j < (sheet.getLastRowNum() + 1); j++)
+                for (int j = 6; j <= sheet.getLastRowNum(); j++)
                 {
                     Row studentRow = sheet.getRow(j);
                     CellReference cellRefStart = new CellReference(studentRow.getRowNum(), startColumn);
@@ -363,7 +376,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         CellReference totalMaxPoints = new CellReference(studentRow.getRowNum(), finishColumn + 1);
                         totalPointsCell = totalMaxPoints.formatAsString();
                     }
-                    if (j == 4)
+                    if (j == 6)
                     {
                         studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + "))");
                     }
@@ -371,6 +384,21 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     {
                         studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
                     }
+                }
+                //calculate assessment minimum , maximum and average
+                Row minRow = sheet.createRow(8 + studentIDs.size());
+                Row avgRow = sheet.createRow(9 + studentIDs.size());
+                Row maxRow = sheet.createRow(10 + studentIDs.size());
+                minRow.createCell(1).setCellValue("Minimum");
+                avgRow.createCell(1).setCellValue("Average");
+                maxRow.createCell(1).setCellValue("Maximum");
+                for (int i = 2; i <= finishColumn; i++)
+                {
+                    CellReference cellRefStart = new CellReference(7, i);
+                    CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
+                    minRow.createCell(i).setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    avgRow.createCell(i).setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    maxRow.createCell(i).setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
                 }
                 setMessage("Saving the file.");
                 // Write the output to a file

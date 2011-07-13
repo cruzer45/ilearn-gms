@@ -275,17 +275,6 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
             classSubjects.add(0, "--- Select One ---");
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
-//
-//            DefaultTableModel model = Grade.getStudentTableModel(cmbClass.getSelectedItem().toString());
-//            tblGrades.setModel(model);
-//
-//            JComboBox comboBox = new JComboBox(Grade.getValidStates());
-//            comboBox.setEditable(true);
-//            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
-//
-//            // Assign the editor to the fourth column
-//            TableColumnModel tcm = tblGrades.getColumnModel();
-//            tcm.getColumn(3).setCellEditor(editor);
         }
     }//GEN-LAST:event_cmbClassActionPerformed
 
@@ -308,6 +297,15 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         {
             Utilities.showWarningMessage(rootPane, validationText);
             return;
+        }
+        if (!gradesOK())
+        {
+            gradesText += "Is this correct?";
+            int response = Utilities.showConfirmDialog(rootPane, gradesText);
+            if (response != JOptionPane.YES_OPTION)
+            {
+                return;
+            }
         }
         String assmtTerm = Term.getCurrentTerm(),
                assmtSubject = cmbSubject.getSelectedItem().toString(),
@@ -396,14 +394,24 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
 
     private boolean gradesOK()
     {
-        //TODO Finish this method to check if grades are entered properly.
-        boolean gradesokay = true;
-        //get the values from the tables.
+        boolean gradesOK = true;
+        gradesText = "";
+        int totalPoints = (Integer) spinnerMaxPoints.getValue();
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
-            int grade = Integer.valueOf(tblGrades.getValueAt(i, 3).toString());
+            String points = tblGrades.getValueAt(i, 3).toString().trim();
+            String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
+            if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))
+            {
+                int grade = Integer.valueOf(points);
+                if (grade > totalPoints)
+                {
+                    gradesOK = false;
+                    gradesText += (name + " has a grade that is greater than the maximum points.\n");
+                }
+            }
         }
-        return gradesokay;
+        return gradesOK;
     }
 
     private boolean passedValidation()

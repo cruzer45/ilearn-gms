@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ID_Cards" language="groovy" columnCount="2" pageWidth="612" pageHeight="792" columnWidth="270" leftMargin="36" rightMargin="36" topMargin="36" bottomMargin="36">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="ValidToDate" class="java.util.Date"/>
+	<queryString>
+		<![CDATA[SELECT `stuID`,`stuFirstName`,`stuLastName`,`stuOtherNames`,`stuDOB`,`stuGender`,`stuClsCode`,`stuPhoto`
+FROM `Student`
+WHERE `stuStatus` = 'Active'
+ORDER BY `stuClsCode`, `stuID`]]>
+	</queryString>
+	<field name="stuID" class="java.lang.Long"/>
+	<field name="stuFirstName" class="java.lang.String"/>
+	<field name="stuLastName" class="java.lang.String"/>
+	<field name="stuOtherNames" class="java.lang.String"/>
+	<field name="stuDOB" class="java.sql.Date"/>
+	<field name="stuGender" class="java.lang.String"/>
+	<field name="stuClsCode" class="java.lang.String"/>
+	<field name="stuPhoto" class="java.io.InputStream"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="176" splitType="Stretch">
+			<image scaleImage="FillFrame">
+				<reportElement x="0" y="0" width="272" height="176"/>
+				<imageExpression class="java.lang.String"><![CDATA["/home/mrogers/Projects/Java/iLearn/resources/images/Sample-Card-BG.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="9" y="69" width="42" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[ID:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="69" width="72" height="20"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{stuID}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="89" width="42" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Name:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="89" width="160" height="20"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuFirstName} + " "+ $F{stuLastName}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="109" width="42" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[DOB:]]></text>
+			</staticText>
+			<textField pattern="MMM d, yyyy">
+				<reportElement x="51" y="109" width="100" height="20"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$F{stuDOB}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="129" width="42" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Class:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="51" y="129" width="100" height="20"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuClsCode}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="9" y="149" width="42" height="20"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Expires:]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="51" y="149" width="100" height="20"/>
+				<box leftPadding="3"/>
+				<textElement verticalAlignment="Middle"/>
+				<textFieldExpression class="java.util.Date"><![CDATA[$P{ValidToDate}]]></textFieldExpression>
+			</textField>
+			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
+				<reportElement x="182" y="14" width="79" height="95"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<imageExpression class="java.io.InputStream"><![CDATA[$F{stuPhoto}]]></imageExpression>
+			</image>
+		</band>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

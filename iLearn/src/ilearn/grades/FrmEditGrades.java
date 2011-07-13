@@ -33,6 +33,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
 {
 
     String validationText = "";
+    String gradesText = "";
 
     /** Creates new form FrmCreateAssessment */
     public FrmEditGrades()
@@ -442,6 +443,15 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             Utilities.showWarningMessage(rootPane, validationText);
             return;
         }
+        if (!gradesOK())
+        {
+            gradesText += "Is this correct?";
+            int response = Utilities.showConfirmDialog(rootPane, gradesText);
+            if (response != JOptionPane.YES_OPTION)
+            {
+                return;
+            }
+        }
         String assmtTerm = Term.getCurrentTerm(),
                assmtSubject = cmbSubject.getSelectedItem().toString(),
                assmtTeacher = "",
@@ -612,6 +622,28 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             inputValid = false;
         }
         return inputValid;
+    }
+
+    private boolean gradesOK()
+    {
+        boolean gradesOK = true;
+        gradesText = "";
+        int totalPoints = Integer.valueOf(txtMaxPoints.getText());
+        for (int i = 0; i < tblGrades.getRowCount(); i++)
+        {
+            String points = tblGrades.getValueAt(i, 3).toString().trim();
+            String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
+            if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))
+            {
+                int grade = Integer.valueOf(points);
+                if (grade > totalPoints)
+                {
+                    gradesOK = false;
+                    gradesText += (name + " has a grade that is greater than the maximum points.\n");
+                }
+            }
+        }
+        return gradesOK;
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTabbedPane assmtTabbedPane;
