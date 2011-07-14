@@ -9,12 +9,14 @@ package ilearn.kernel;
  *
  * @author mrogers
  */
-public class DateTest {
+public class DateTest
+{
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args)
+    {
         System.out.println(new java.text.SimpleDateFormat("MMM d yyyy  h:mm a").format(new java.util.Date()));
     }
 

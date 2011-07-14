@@ -7,7 +7,7 @@ FEATURE / CHANGE REQUESTS
 50%     Generate Report Cards Function
 50%     Add Student ID Report.
 0%      Add Detention Module (5 demerits = 1 Detention) Auto Detention.
-0%      Add Demerit Module (to be tied into detention module).
+50%     Add Demerit Module (to be tied into detention module).
 0%      Add Demerits and Term field to report cards.
 0%      Filter Promotion Lists to only a higher class level.
 0%      Students who are not promoted are set as repeating.

@@ -44,4 +44,31 @@ public class Demerits
         }
         return demeritReasons;
     }
+
+    public static boolean addDemerit(String demStuID, String demDate, String demStaCode, String demClsCode, String demTermID, String demerits, String demRemarks)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "INSERT INTO `Demerits` (`demStuID`, `demDate`, `demStaCode`, `demClsCode`, `demTermID`, `demerits`, `demRemarks`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, demStuID);
+            prep.setString(2, demDate);
+            prep.setString(3, demStaCode);
+            prep.setString(4, demClsCode);
+            prep.setString(5, demTermID);
+            prep.setString(6, demerits);
+            prep.setString(7, demRemarks);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while saving a demerit.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
 }
