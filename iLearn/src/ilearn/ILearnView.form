@@ -186,6 +186,24 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="demeritsMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="demeritsMenu.text"/>
+            <Property name="name" type="java.lang.String" value="demeritsMenu" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="recordDemerits">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showRecordDemerits" methodName="showRecordDemerits"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="recordDemerits.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="recordDemerits.text"/>
+                <Property name="name" type="java.lang.String" value="recordDemerits" noResource="true"/>
+              </Properties>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="reportsMenu">
           <Properties>
             <Property name="text" type="java.lang.String" resourceKey="reportsMenu.text"/>
