@@ -228,6 +228,30 @@ public class User
         return results;
     }
 
+    public static String getUserID(String usrName)
+    {
+        String usrID = "";
+        try
+        {
+            String sql = "SELECT `usrID` FROM `User` WHERE `usrName` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, usrName);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                usrID = rs.getString("usrID");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the user ID.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return usrID;
+    }
+
     /**
      * This method will update the information for a specified user with the values given.
      * @param ID
@@ -391,6 +415,12 @@ public class User
         ArrayList<String> classList = new ArrayList<String>();
         try
         {
+            //get the user
+            String usrID = getUserID(userName);
+            //get all linked accounts
+            getStaffLinks(usrID);
+            //get all subjects associated with that account.
+            //get all clases that take that subject
         }
         catch (Exception e)
         {
@@ -398,6 +428,13 @@ public class User
             logger.log(Level.SEVERE, message, e);
         }
         return classList;
+    }
+
+    public static void resetStaffLinks()
+    {
+        staID = new ArrayList<String>();
+        staCode = new ArrayList<String>();
+        staName = new ArrayList<String>();
     }
 
     public static void addStaffLink(String staffID, String staffCode, String staffName)
@@ -410,7 +447,17 @@ public class User
         }
     }
 
-    public static DefaultTableModel getStaffLinks()
+    public static void removeStaffLink(String staffID, String staffCode, String staffName)
+    {
+        if (staID.contains(staffID))
+        {
+            staID.remove(staffID);
+            staCode.remove(staffCode);
+            staName.remove(staffName);
+        }
+    }
+
+    public static DefaultTableModel loadStaffLinks()
     {
         DefaultTableModel model = new DefaultTableModel()
         {
@@ -437,5 +484,53 @@ public class User
         model.addColumn("Staff Code", staCode.toArray());
         model.addColumn("Staff Name", staName.toArray());
         return model;
+    }
+
+    public static boolean saveStaffLinks(String usrID)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "INSERT INTO `User_Staff` (`userID`, `staID`) VALUES (?, ?);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            for (String staff : staID)
+            {
+                prep.setString(1, usrID);
+                prep.setString(2, staff);
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while saving the staff links.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    private static void getStaffLinks(String usrID)
+    {
+        try
+        {
+            resetStaffLinks();
+            String sql = "SELECT `staID` FROM `iLearn`.`User_Staff` WHERE `userID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, usrID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                staID.add(rs.getString("staID"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the staff links.";
+            logger.log(Level.SEVERE, message, e);
+        }
     }
 }

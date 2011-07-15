@@ -244,14 +244,14 @@ public class Student
             String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
             String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
             String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN)
+            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus)
     {
         boolean successful = false;
         try
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuPhoto` = ? ,`stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ?, `stuStatus` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -279,7 +279,8 @@ public class Student
             prep.setString(24, stuSpecialNeeds);
             prep.setString(25, stuNotes);
             prep.setString(26, stuSSN);
-            prep.setString(27, stuID);
+            prep.setString(27, stuStatus);
+            prep.setString(28, stuID);
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -296,13 +297,13 @@ public class Student
                                         String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
                                         String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
                                         String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN)
+                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus)
     {
         boolean successful = false;
         try
         {
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? , `stuStatus` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -329,7 +330,8 @@ public class Student
             prep.setString(23, stuSpecialNeeds);
             prep.setString(24, stuNotes);
             prep.setString(25, stuSSN);
-            prep.setString(26, stuID);
+            prep.setString(26, stuStatus);
+            prep.setString(27, stuID);
             prep.executeUpdate();
             prep.close();
             successful = true;

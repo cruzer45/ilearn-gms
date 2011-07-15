@@ -10,7 +10,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="800" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="1" pref="800" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -202,6 +202,16 @@
                 <Property name="name" type="java.lang.String" value="recordDemerits" noResource="true"/>
               </Properties>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="editDemerits">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showEditDemerits" methodName="showEditDemerits"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="editDemerits.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="editDemerits.text"/>
+                <Property name="name" type="java.lang.String" value="editDemerits" noResource="true"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="reportsMenu">
@@ -325,6 +335,64 @@
                     <Property name="icon" type="javax.swing.Icon" resourceKey="termRanking.icon"/>
                     <Property name="text" type="java.lang.String" resourceKey="termRanking.text"/>
                     <Property name="name" type="java.lang.String" value="termRanking" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="demeritReports">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="demeritReports.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="demeritReports.text"/>
+                <Property name="name" type="java.lang.String" value="demeritReports" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="demeritsByCass">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showDemeritsByClass" methodName="showDemeritsByClass"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="demeritsByCass.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="demeritsByCass.text"/>
+                    <Property name="name" type="java.lang.String" value="demeritsByCass" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="demeritsByStudent">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showDemeritByStudent" methodName="showDemeritByStudent"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="demeritsByStudent.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="demeritsByStudent.text"/>
+                    <Property name="name" type="java.lang.String" value="demeritsByStudent" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="statisticsReports">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="statisticsReports.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="statisticsReports.text"/>
+                <Property name="name" type="java.lang.String" value="statisticsReports" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="classSizeDistribution">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showClassSizeDistriburionReport" methodName="showClassSizeDistriburionReport"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="classSizeDistribution.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="classSizeDistribution.text"/>
+                    <Property name="name" type="java.lang.String" value="classSizeDistribution" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="genderDistribution">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showGenderDistribution" methodName="showGenderDistribution"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="genderDistribution.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="genderDistribution.text"/>
+                    <Property name="name" type="java.lang.String" value="genderDistribution" noResource="true"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>

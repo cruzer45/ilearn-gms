@@ -11,10 +11,10 @@ FEATURE / CHANGE REQUESTS
 0%      Add Demerits and Term field to report cards.
 0%      Filter Promotion Lists to only a higher class level.
 0%      Students who are not promoted are set as repeating.
-0%      Add Student Status field to edit student.
 0%      Add Year to the student id.
 0%      H.O.D.s will be linked to all users they oversee.
 0%      Add check if term grades were already calculated before calculating term grades.
+100%    Add Student Status field to edit student.
 100%    Include timeout field to "Edit User."
 100%    Add check to see if grade entered for student is more than the maximum points.
 100%    Add title and assessment date to the Excel Grade Book export

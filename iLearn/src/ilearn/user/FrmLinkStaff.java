@@ -54,6 +54,7 @@ public class FrmLinkStaff extends javax.swing.JDialog
         setModal(true);
         setName("Form"); // NOI18N
         jScrollPane1.setName("jScrollPane1"); // NOI18N
+        tblStaff.setAutoCreateRowSorter(true);
         tblStaff.setModel(new javax.swing.table.DefaultTableModel(
                               new Object [][]
                               {
@@ -64,7 +65,6 @@ public class FrmLinkStaff extends javax.swing.JDialog
                                   "ID", "Code", "Name"
                               }
                           ));
-        tblStaff.setColumnSelectionAllowed(true);
         tblStaff.setName("tblStaff"); // NOI18N
         jScrollPane1.setViewportView(tblStaff);
         tblStaff.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
@@ -96,6 +96,7 @@ public class FrmLinkStaff extends javax.swing.JDialog
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(lblResults1)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -109,8 +110,7 @@ public class FrmLinkStaff extends javax.swing.JDialog
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addComponent(cmdSearch))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))
+                                          .addComponent(cmdSearch)))
                       .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -122,8 +122,8 @@ public class FrmLinkStaff extends javax.swing.JDialog
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmdSearch))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
                                 .addComponent(lblResults1)
@@ -164,7 +164,7 @@ public class FrmLinkStaff extends javax.swing.JDialog
     private void populateLists()
     {
         String criteria = txtSearch.getText().trim();
-        tblStaff.setModel(Staff.searchStaffListTableModel(criteria));
+        tblStaff.setModel(Staff.searchStaffList(criteria));
         TableColumnAdjuster tca = new TableColumnAdjuster(tblStaff);
         tca.adjustColumns();
         lblResults.setText(String.valueOf(tblStaff.getRowCount()));
@@ -173,6 +173,11 @@ public class FrmLinkStaff extends javax.swing.JDialog
     @Action
     public void search()
     {
+        String criteria = txtSearch.getText().trim();
+        tblStaff.setModel(Staff.searchStaffList(criteria));
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblStaff);
+        tca.adjustColumns();
+        lblResults.setText(String.valueOf(tblStaff.getRowCount()));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdCancel;

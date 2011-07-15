@@ -10,6 +10,7 @@ import ilearn.term.FrmAddTerm;
 import ilearn.classes.FrmAddNewClass;
 import ilearn.classes.FrmEditClass;
 import ilearn.classes.FrmViewClass;
+import ilearn.demerits.FrmEditDemeritStudent;
 import ilearn.demerits.FrmRecordDemeritStudent;
 import ilearn.grades.FrmEditMidTerms;
 import ilearn.kernel.Environment;
@@ -22,6 +23,7 @@ import ilearn.register.FrmEditRegister;
 import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
 import ilearn.reports.FrmClassGradebook;
+import ilearn.reports.FrmDemeritsByStudent;
 import ilearn.reports.ReportLoader;
 import ilearn.reports.ReportViewer;
 import ilearn.school.FrmManageSchool;
@@ -105,6 +107,8 @@ public class ILearnView extends FrameView
     FrmCalculateMidTerms frmCalculateMidTerms = null;
     FrmEditMidTerms frmEditMidTerms = null;
     FrmRecordDemeritStudent frmRecordDemeritStudent = null;
+    FrmEditDemeritStudent frmEditDemeritStudent = null;
+    FrmDemeritsByStudent frmDemeritsByStudent = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -268,6 +272,7 @@ public class ILearnView extends FrameView
         jMenuItem3 = new javax.swing.JMenuItem();
         demeritsMenu = new javax.swing.JMenu();
         recordDemerits = new javax.swing.JMenuItem();
+        editDemerits = new javax.swing.JMenuItem();
         reportsMenu = new javax.swing.JMenu();
         studentReports = new javax.swing.JMenu();
         studentList = new javax.swing.JMenuItem();
@@ -282,6 +287,12 @@ public class ILearnView extends FrameView
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         endOfYearReports = new javax.swing.JMenuItem();
         termRanking = new javax.swing.JMenuItem();
+        demeritReports = new javax.swing.JMenu();
+        demeritsByCass = new javax.swing.JMenuItem();
+        demeritsByStudent = new javax.swing.JMenuItem();
+        statisticsReports = new javax.swing.JMenu();
+        classSizeDistribution = new javax.swing.JMenuItem();
+        genderDistribution = new javax.swing.JMenuItem();
         manageMenu = new javax.swing.JMenu();
         classMenu = new javax.swing.JMenu();
         addClass = new javax.swing.JMenuItem();
@@ -326,7 +337,7 @@ public class ILearnView extends FrameView
         mainPanel.setLayout(mainPanelLayout);
         mainPanelLayout.setHorizontalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 800, Short.MAX_VALUE)
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -405,6 +416,11 @@ public class ILearnView extends FrameView
         recordDemerits.setText(resourceMap.getString("recordDemerits.text")); // NOI18N
         recordDemerits.setName("recordDemerits"); // NOI18N
         demeritsMenu.add(recordDemerits);
+        editDemerits.setAction(actionMap.get("showEditDemerits")); // NOI18N
+        editDemerits.setIcon(resourceMap.getIcon("editDemerits.icon")); // NOI18N
+        editDemerits.setText(resourceMap.getString("editDemerits.text")); // NOI18N
+        editDemerits.setName("editDemerits"); // NOI18N
+        demeritsMenu.add(editDemerits);
         menuBar.add(demeritsMenu);
         reportsMenu.setText(resourceMap.getString("reportsMenu.text")); // NOI18N
         reportsMenu.setName("reportsMenu"); // NOI18N
@@ -466,6 +482,34 @@ public class ILearnView extends FrameView
         termRanking.setName("termRanking"); // NOI18N
         reportCardsMenu.add(termRanking);
         reportsMenu.add(reportCardsMenu);
+        demeritReports.setIcon(resourceMap.getIcon("demeritReports.icon")); // NOI18N
+        demeritReports.setText(resourceMap.getString("demeritReports.text")); // NOI18N
+        demeritReports.setName("demeritReports"); // NOI18N
+        demeritsByCass.setAction(actionMap.get("showDemeritsByClass")); // NOI18N
+        demeritsByCass.setIcon(resourceMap.getIcon("demeritsByCass.icon")); // NOI18N
+        demeritsByCass.setText(resourceMap.getString("demeritsByCass.text")); // NOI18N
+        demeritsByCass.setName("demeritsByCass"); // NOI18N
+        demeritReports.add(demeritsByCass);
+        demeritsByStudent.setAction(actionMap.get("showDemeritByStudent")); // NOI18N
+        demeritsByStudent.setIcon(resourceMap.getIcon("demeritsByStudent.icon")); // NOI18N
+        demeritsByStudent.setText(resourceMap.getString("demeritsByStudent.text")); // NOI18N
+        demeritsByStudent.setName("demeritsByStudent"); // NOI18N
+        demeritReports.add(demeritsByStudent);
+        reportsMenu.add(demeritReports);
+        statisticsReports.setIcon(resourceMap.getIcon("statisticsReports.icon")); // NOI18N
+        statisticsReports.setText(resourceMap.getString("statisticsReports.text")); // NOI18N
+        statisticsReports.setName("statisticsReports"); // NOI18N
+        classSizeDistribution.setAction(actionMap.get("showClassSizeDistriburionReport")); // NOI18N
+        classSizeDistribution.setIcon(resourceMap.getIcon("classSizeDistribution.icon")); // NOI18N
+        classSizeDistribution.setText(resourceMap.getString("classSizeDistribution.text")); // NOI18N
+        classSizeDistribution.setName("classSizeDistribution"); // NOI18N
+        statisticsReports.add(classSizeDistribution);
+        genderDistribution.setAction(actionMap.get("showGenderDistribution")); // NOI18N
+        genderDistribution.setIcon(resourceMap.getIcon("genderDistribution.icon")); // NOI18N
+        genderDistribution.setText(resourceMap.getString("genderDistribution.text")); // NOI18N
+        genderDistribution.setName("genderDistribution"); // NOI18N
+        statisticsReports.add(genderDistribution);
+        reportsMenu.add(statisticsReports);
         menuBar.add(reportsMenu);
         manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
         classMenu.setIcon(resourceMap.getIcon("classMenu.icon")); // NOI18N
@@ -1570,7 +1614,7 @@ public class ILearnView extends FrameView
     public void showRecordDemerits()
     {
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("Record Demerit ");
+        boolean AlreadyLoaded = isLoaded("Record Demerit");
         if (AlreadyLoaded == false)
         {
             frmRecordDemeritStudent = new FrmRecordDemeritStudent();
@@ -1587,6 +1631,123 @@ public class ILearnView extends FrameView
             {
                 logger.log(Level.SEVERE, "Error displaying the form.", e);
             }
+        }
+    }
+
+    @Action
+    public void showEditDemerits()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Demerit");
+        if (AlreadyLoaded == false)
+        {
+            frmEditDemeritStudent = new FrmEditDemeritStudent();
+            desktopPane.add(frmEditDemeritStudent);
+            //Load the Form
+            frmEditDemeritStudent.setVisible(true);
+            frmEditDemeritStudent.show();
+            try
+            {
+                frmEditDemeritStudent.setIcon(false);
+                frmEditDemeritStudent.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public Task showClassSizeDistriburionReport()
+    {
+        return new ShowClassSizeDistriburionReportTask(getApplication());
+    }
+
+    private class ShowClassSizeDistriburionReportTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowClassSizeDistriburionReportTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showClassSizeDistribution();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public Task showDemeritsByClass()
+    {
+        return new ShowDemeritsByClassTask(getApplication());
+    }
+
+    private class ShowDemeritsByClassTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowDemeritsByClassTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showDemeritsByClass();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public void showDemeritByStudent()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Student Demerits");
+        if (AlreadyLoaded == false)
+        {
+            frmDemeritsByStudent = new FrmDemeritsByStudent();
+            desktopPane.add(frmDemeritsByStudent);
+            //Load the Form
+            frmDemeritsByStudent.setVisible(true);
+            frmDemeritsByStudent.show();
+            try
+            {
+                frmDemeritsByStudent.setIcon(false);
+                frmDemeritsByStudent.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public Task showGenderDistribution()
+    {
+        return new ShowGenderDistributionTask(getApplication());
+    }
+
+    private class ShowGenderDistributionTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowGenderDistributionTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showGenderBreakdown();
+            return null;  // return your result
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1606,13 +1767,18 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu classMenu;
     private javax.swing.JMenuItem classRankReport;
     private javax.swing.JMenu classReports;
+    private javax.swing.JMenuItem classSizeDistribution;
     private javax.swing.JMenuItem closeTerm;
     private javax.swing.JMenuItem createAssessment;
+    private javax.swing.JMenu demeritReports;
+    private javax.swing.JMenuItem demeritsByCass;
+    private javax.swing.JMenuItem demeritsByStudent;
     private javax.swing.JMenu demeritsMenu;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem editAssessment;
     private javax.swing.JMenuItem editAttendance;
     private javax.swing.JMenuItem editClass;
+    private javax.swing.JMenuItem editDemerits;
     private javax.swing.JMenuItem editStaff;
     private javax.swing.JMenuItem editStudent;
     private javax.swing.JMenuItem editSubject;
@@ -1622,6 +1788,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu endOfTerm;
     private javax.swing.JMenuItem endOfYearReports;
     private javax.swing.JMenuItem enterAttendance;
+    private javax.swing.JMenuItem genderDistribution;
     private javax.swing.JMenu gradesMenu;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem3;
@@ -1640,6 +1807,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu reportCardsMenu;
     private javax.swing.JMenu reportsMenu;
     private javax.swing.JMenu staffMenu;
+    private javax.swing.JMenu statisticsReports;
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;

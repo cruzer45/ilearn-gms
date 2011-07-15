@@ -19,3 +19,13 @@ Version 1.1
     points.
 
 -   Include timeout field to "Edit User."
+
+-   Added class size distribution report.
+
+-   Added gender breakdown report.
+
+-   Added demerit module.
+
+-   Add Demerits Reports.
+
+-   Add Student Status field to edit student.

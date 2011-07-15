@@ -137,6 +137,16 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             Utilities.showWarningMessage(rootPane, warning);
             return;
         }
+        String stuStatus = cmbStatus.getSelectedItem().toString();
+        if (stuStatus.equals("Inactive"))
+        {
+            String message = "Are you sure you want to make this student inactive?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response != JOptionPane.YES_OPTION)
+            {
+                return;
+            }
+        }
         String stuID = txtID.getText().toString();
         String stuFirstName = txtFirstName.getText().trim();
         String stuLastName = txtLastName.getText().trim();
@@ -180,9 +190,9 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             Utilities.showErrorMessage(rootPane, message);
             return;
         }
-        if (imageChanged) // If the image was changed the run the command that takes an image file.
+        if (imageChanged) // If the image was changed then run the command that takes an image file.
         {
-            if (Student.updateStudentPhoto(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
+            if (Student.updateStudentPhoto(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuStatus))
             {
                 String message = "The student's information  was successfully updated. \n"
                                  + "Would you like to modify another another?";
@@ -205,7 +215,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         }
         else // If the image wasn't changed just update text values.
         {
-            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
+            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuStatus))
             {
                 String message = "The student's information  was successfully updated. \n"
                                  + "Would you like to modify another another?";
@@ -305,6 +315,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             txtSpecialNeeds.setText(studentInfo.get(26).toString());
             txtNotes.setText(studentInfo.get(27).toString());
             txtSSN.setText(studentInfo.get(29).toString());
+            cmbStatus.setSelectedItem(studentInfo.get(28).toString());
             try
             {
                 calDOB.setDate(Utilities.YMD_Formatter.parse(studentInfo.get(4).toString()));
@@ -391,6 +402,8 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         txtID = new javax.swing.JTextField();
         jScrollPane6 = new javax.swing.JScrollPane();
         lblImage = new javax.swing.JLabel();
+        lblStatus = new javax.swing.JLabel();
+        cmbStatus = new javax.swing.JComboBox();
         contactPanel = new javax.swing.JPanel();
         lblHomeAddress = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -542,7 +555,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                                 .addComponent(cmdSearch))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
                       .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel5)
                                 .addComponent(cmdNext4)
@@ -603,6 +616,10 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         lblImage.setText(resourceMap.getString("lblImage.text")); // NOI18N
         lblImage.setName("lblImage"); // NOI18N
         jScrollPane6.setViewportView(lblImage);
+        lblStatus.setText(resourceMap.getString("lblStatus.text")); // NOI18N
+        lblStatus.setName("lblStatus"); // NOI18N
+        cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
+        cmbStatus.setName("cmbStatus"); // NOI18N
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
         generalPanelLayout.setHorizontalGroup(
@@ -625,7 +642,8 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                                                   .addComponent(lblDOB)
                                                   .addComponent(lblOtherName)
                                                   .addComponent(lblPhoto)
-                                                  .addComponent(lblClass))
+                                                  .addComponent(lblClass)
+                                                  .addComponent(lblStatus))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addGroup(generalPanelLayout.createSequentialGroup()
@@ -641,7 +659,8 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                                                   .addComponent(cmdBrowse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                                                   .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                                  .addComponent(cmbClass, 0, 288, Short.MAX_VALUE))))
+                                                  .addComponent(cmbClass, 0, 288, Short.MAX_VALUE)
+                                                  .addComponent(cmbStatus, 0, 288, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -687,7 +706,11 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblClass))
-                      .addGap(124, 124, 124)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblStatus)
+                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addGap(103, 103, 103)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel1)
                                 .addComponent(cmdNext1)
@@ -772,7 +795,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
                       .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
                                 .addComponent(cmdNext2))
@@ -912,7 +935,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addComponent(primaryContactPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(secConPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                       .addGroup(parentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel3)
                                 .addComponent(cmdNext3))
@@ -1074,7 +1097,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 415, Short.MAX_VALUE)
+                      .addComponent(studentTabbedPane)
                       .addContainerGap())
         );
         pack();
@@ -1103,6 +1126,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private javax.swing.JCheckBox chkRepeating;
     private javax.swing.JComboBox cmbClass;
     private javax.swing.JComboBox cmbGender;
+    private javax.swing.JComboBox cmbStatus;
     private javax.swing.JButton cmdBrowse;
     private javax.swing.JButton cmdCancel1;
     private javax.swing.JButton cmdCancel2;
@@ -1156,6 +1180,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblSecConName;
     private javax.swing.JLabel lblSecConPhone;
     private javax.swing.JLabel lblSpecialNeeds;
+    private javax.swing.JLabel lblStatus;
     private javax.swing.JPanel medicalPanel;
     private javax.swing.JPanel otherPanel;
     private javax.swing.JPanel parentPanel;

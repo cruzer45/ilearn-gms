@@ -93,7 +93,7 @@ public class Staff
         return model;
     }
 
-    public static DefaultTableModel searchStaffListTableModel(String criteria)
+    public static DefaultTableModel searchStaffList(String criteria)
     {
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
