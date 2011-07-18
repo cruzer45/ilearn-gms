@@ -189,7 +189,6 @@ public class ReportLoader
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");
         parameters.put("CardBG", "c:/Java/iLearn/resources/images/Sample-Card-BG.png");
-        
         try
         {
             ReportViewer.generateReport(report, parameters, title);
