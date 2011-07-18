@@ -143,7 +143,7 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
             selectedFile = fc.getSelectedFile();
             try
             {
-                txtPhoto.setText(selectedFile.getCanonicalPath().toString());
+                txtBackground.setText(selectedFile.getCanonicalPath().toString());
             }
             catch (IOException ex)
             {
