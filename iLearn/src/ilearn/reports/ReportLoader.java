@@ -180,4 +180,24 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
+    public static void printIDCards()
+    {
+        String report = "reports/ID_Cards.jasper";
+        String title = "Print Student ID Cards";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        parameters.put("CardBG", "c:/Java/iLearn/resources/images/Sample-Card-BG.png");
+        
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
 }

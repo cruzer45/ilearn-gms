@@ -1,8 +1,8 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
-25%     Fix Add and Edit user screens to handle advanced privileges and linking.
-25%     Users will be linked to staff members.
+30%     Fix Add and Edit user screens to handle advanced privileges and linking.
+100%    Users will be linked to staff members.
 50%     Calculate mid term and final grades.
 50%     Generate Report Cards Function
 50%     Add Student ID Report.

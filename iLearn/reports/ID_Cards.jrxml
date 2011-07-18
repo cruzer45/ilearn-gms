@@ -4,6 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="ValidToDate" class="java.util.Date"/>
+	<parameter name="CardBG" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT `stuID`,`stuFirstName`,`stuLastName`,`stuOtherNames`,`stuDOB`,`stuGender`,`stuClsCode`,`stuPhoto`
 FROM `Student`
@@ -34,7 +35,7 @@ ORDER BY `stuClsCode`, `stuID`]]>
 		<band height="176" splitType="Stretch">
 			<image scaleImage="FillFrame">
 				<reportElement x="0" y="0" width="272" height="176"/>
-				<imageExpression class="java.lang.String"><![CDATA["/home/mrogers/Projects/Java/iLearn/resources/images/Sample-Card-BG.png"]]></imageExpression>
+				<imageExpression class="java.lang.String"><![CDATA[$P{CardBG}]]></imageExpression>
 			</image>
 			<staticText>
 				<reportElement x="9" y="69" width="42" height="20"/>
