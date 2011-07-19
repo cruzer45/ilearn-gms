@@ -42,7 +42,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
     public void save()
     {
         String subCode = txtSubjectCode.getText().trim(),
-               subStaffCode = Staff.getStaffCode(cmbTeacher.getSelectedItem().toString()),
+               subStaffCode = Staff.getStaffCodeFromName(cmbTeacher.getSelectedItem().toString()),
                subName = txtSubjectName.getText().trim(),
                subDescription = txtDescription.getText().trim(),
                subStatus = cmbStatus.getSelectedItem().toString(),

@@ -8,6 +8,8 @@ import ilearn.kernel.EncryptionHandler;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
+import ilearn.staff.Staff;
+import ilearn.subject.Subject;
 import java.net.InetAddress;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,9 +31,11 @@ public class User
     private static String userGroup = "";
     private static int timeout = 0;
     static final Logger logger = Logger.getLogger(User.class.getName());
-    private static ArrayList<String> staID = new ArrayList<String>();
-    private static ArrayList<String> staCode = new ArrayList<String>();
-    private static ArrayList<String> staName = new ArrayList<String>();
+    private static ArrayList<String> staIDs = new ArrayList<String>();
+    private static ArrayList<String> staCodes = new ArrayList<String>();
+    private static ArrayList<String> staNames = new ArrayList<String>();
+    private static ArrayList<String> permittedSubjects = new ArrayList<String>();
+    private static ArrayList<String> permittedClasses = new ArrayList<String>();
 
     /**
      * This function checks to see if the given username and password matches
@@ -410,9 +414,8 @@ public class User
         return timeout;
     }
 
-    public static ArrayList<String> getPermittedClasses()
+    public static void getPermittedListItems()
     {
-        ArrayList<String> classList = new ArrayList<String>();
         try
         {
             //get the user
@@ -420,40 +423,60 @@ public class User
             //get all linked accounts
             getStaffLinks(usrID);
             //get all subjects associated with that account.
-            //get all clases that take that subject
+            for (String staff : staIDs)
+            {
+                String staCode = Staff.getStaffCodeFromID(staff);
+                ArrayList<String> staffSubjects = Staff.getStaffSubjectsID(staCode);
+                for (String subject : staffSubjects)
+                {
+                    String subCode = Subject.getSubjectCode(subject);
+                    if (!permittedSubjects.contains(subCode))
+                    {
+                        permittedSubjects.add(subCode);
+                    }
+                    //get all clases that take that subject
+                    ArrayList<String> classesforSubject = Subject.getClassesForSubject(subject);
+                    for (String clscode : classesforSubject)
+                    {
+                        if (!permittedClasses.contains(clscode))
+                        {
+                            permittedClasses.add(clscode);
+                        }
+                    }
+                }
+            }
         }
         catch (Exception e)
         {
             String message = "An error occurred while getting the list of permitted classes.";
             logger.log(Level.SEVERE, message, e);
         }
-        return classList;
     }
 
     public static void resetStaffLinks()
     {
-        staID = new ArrayList<String>();
-        staCode = new ArrayList<String>();
-        staName = new ArrayList<String>();
+        staIDs = new ArrayList<String>();
+        staCodes = new ArrayList<String>();
+        staNames = new ArrayList<String>();
     }
 
     public static void addStaffLink(String staffID, String staffCode, String staffName)
     {
-        if (!staID.contains(staffID))
+        if (!staIDs.contains(staffID))
         {
-            staID.add(staffID);
-            staCode.add(staffCode);
-            staName.add(staffName);
+            staIDs.add(staffID);
+            staCodes.add(staffCode);
+            staNames.add(staffName);
         }
     }
 
     public static void removeStaffLink(String staffID, String staffCode, String staffName)
     {
-        if (staID.contains(staffID))
+        if (staIDs.contains(staffID))
         {
-            staID.remove(staffID);
-            staCode.remove(staffCode);
-            staName.remove(staffName);
+            staIDs.remove(staffID);
+            staCodes.remove(staffCode);
+            staNames.remove(staffName);
         }
     }
 
@@ -480,9 +503,9 @@ public class User
                 return false;
             }
         };
-        model.addColumn("Staff ID", staID.toArray());
-        model.addColumn("Staff Code", staCode.toArray());
-        model.addColumn("Staff Name", staName.toArray());
+        model.addColumn("Staff ID", staIDs.toArray());
+        model.addColumn("Staff Code", staCodes.toArray());
+        model.addColumn("Staff Name", staNames.toArray());
         return model;
     }
 
@@ -493,7 +516,7 @@ public class User
         {
             String sql = "INSERT INTO `User_Staff` (`userID`, `staID`) VALUES (?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-            for (String staff : staID)
+            for (String staff : staIDs)
             {
                 prep.setString(1, usrID);
                 prep.setString(2, staff);
@@ -522,7 +545,7 @@ public class User
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                staID.add(rs.getString("staID"));
+                staIDs.add(rs.getString("staID"));
             }
             rs.close();
             prep.close();
@@ -532,5 +555,21 @@ public class User
             String message = "An error occurred while getting the staff links.";
             logger.log(Level.SEVERE, message, e);
         }
+    }
+
+    /**
+     * @return the permittedSubjects
+     */
+    public static ArrayList<String> getPermittedSubjects()
+    {
+        return permittedSubjects;
+    }
+
+    /**
+     * @return the permittedClasses
+     */
+    public static ArrayList<String> getPermittedClasses()
+    {
+        return permittedClasses;
     }
 }

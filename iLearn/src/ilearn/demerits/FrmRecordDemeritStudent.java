@@ -273,7 +273,7 @@ public class FrmRecordDemeritStudent extends javax.swing.JInternalFrame
 
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblSearchMouseClicked
     {
-        //GEN-HEADEREND:event_tblSearchMouseClicked
+//GEN-HEADEREND:event_tblSearchMouseClicked
         if (evt.getClickCount() >= 2 && tblSearch.getSelectedRow() != -1)
         {
             next();
@@ -316,7 +316,7 @@ public class FrmRecordDemeritStudent extends javax.swing.JInternalFrame
         }
         String demStuID = txtID.getText().trim();
         String demDate = Utilities.YMD_Formatter.format(calDate.getDate());
-        String demStaCode = Staff.getStaffCode(cmbStaff.getSelectedItem().toString());
+        String demStaCode = Staff.getStaffCodeFromName(cmbStaff.getSelectedItem().toString());
         String demClsCode = Student.getStudentClass(demStuID);
         String demTermID = Term.getCurrentTerm();
         String demerits = spinnerDemerits.getValue().toString();

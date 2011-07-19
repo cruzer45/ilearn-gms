@@ -219,7 +219,7 @@ public class Staff
         return staffList;
     }
 
-    public static String getStaffCode(String teacherName)
+    public static String getStaffCodeFromName(String teacherName)
     {
         String name = "";
         try
@@ -261,5 +261,75 @@ public class Staff
             logger.log(Level.SEVERE, message, e);
         }
         return name;
+    }
+
+    public static String getStaffID(String staCode)
+    {
+        String staID = "";
+        try
+        {
+            String sql = "SELECT `staID` FROM Staff WHERE `staCode` = ?";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, staCode);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+            staID = rs.getString("staID");
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the staff ID.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return staID;
+    }
+
+    public static String getStaffCodeFromID(String staID)
+    {
+        String staCode = "";
+        try
+        {
+            String sql = "SELECT `staCode` FROM Staff WHERE `staID` = ?";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, staID);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+            staCode = rs.getString("staCode");
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the staff ID.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return staCode;
+    }
+
+    public static ArrayList<String> getStaffSubjectsID(String staffCode)
+    {
+        ArrayList<String> staffSubjects = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `subID`,`subCode`,`subStaffCode`,`subName`,`subDescription`,`subCredits`,`subStatus` "
+                         + " FROM `Subject` "
+                         + "WHERE `subStaffCode` = ? AND `subStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, staffCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                staffSubjects.add(rs.getString("subID"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the subjects a staff member teaches.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return staffSubjects;
     }
 }

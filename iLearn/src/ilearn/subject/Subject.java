@@ -249,6 +249,30 @@ public class Subject
         return subID;
     }
 
+    public static String getSubjectCode(String subID)
+    {
+        String subCode = "";
+        try
+        {
+            String sql = "SELECT `subCode` FROM `iLearn`.`Subject` WHERE `subID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, subID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                subCode = rs.getString("subID");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving subject code.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return subCode;
+    }
+
     public static void getSubjectHours(String subCode)
     {
         resetHours();
@@ -274,5 +298,29 @@ public class Subject
             String message = "An error occurred while retrieving subject hours.";
             logger.log(Level.SEVERE, message, e);
         }
+    }
+
+    public static ArrayList<String> getClassesForSubject(String subID)
+    {
+        ArrayList<String> classesforSubject = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `clsCode` FROM `ClassSubjects` WHERE `subCode` = ?";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, subID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                classesforSubject.add(rs.getString("clsCode"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving classes that take a specific subject.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return classesforSubject;
     }
 }

@@ -330,7 +330,7 @@ public class FrmEditDemeritStudent extends javax.swing.JInternalFrame
         }
         String demID = txtID.getText().trim();
         String demDate = Utilities.YMD_Formatter.format(calDate.getDate());
-        String demStaCode = Staff.getStaffCode(cmbStaff.getSelectedItem().toString());
+        String demStaCode = Staff.getStaffCodeFromName(cmbStaff.getSelectedItem().toString());
         String demerits = spinnerDemerits.getValue().toString();
         String demRemarks = cmbRemarks.getSelectedItem().toString().trim();
         String demStatus = cmbStatus.getSelectedItem().toString().trim();
