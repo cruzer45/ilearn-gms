@@ -11,19 +11,19 @@
 package ilearn.reports;
 
 import ilearn.kernel.ImageFilter;
+import ilearn.kernel.Utilities;
 import ilearn.student.FrmNewStudent;
-import java.awt.Graphics2D;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.imageio.ImageIO;
-import javax.swing.ImageIcon;
 import javax.swing.JComponent;
 import javax.swing.JFileChooser;
 import org.jdesktop.application.Action;
+import org.jdesktop.application.Task;
 
 /**
  *
@@ -41,6 +41,7 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
     public FrmPrintIDCards()
     {
         initComponents();
+        populateLists();
     }
 
     /** This method is called from within the constructor to
@@ -60,9 +61,13 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
         cmdCancel = new javax.swing.JButton();
         cmdGenerate = new javax.swing.JButton();
 
+        setClosable(true);
+        setIconifiable(true);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmPrintIDCards.class);
+        setTitle(resourceMap.getString("Form.title")); // NOI18N
+        setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmPrintIDCards.class);
         lblBackground.setText(resourceMap.getString("lblBackground.text")); // NOI18N
         lblBackground.setName("lblBackground"); // NOI18N
 
@@ -79,9 +84,11 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
 
         calExpire.setName("calExpire"); // NOI18N
 
+        cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
 
+        cmdGenerate.setAction(actionMap.get("generateIDCards")); // NOI18N
         cmdGenerate.setText(resourceMap.getString("cmdGenerate.text")); // NOI18N
         cmdGenerate.setName("cmdGenerate"); // NOI18N
 
@@ -120,7 +127,7 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
                     .addComponent(txtBackground, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cmdBrowse)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdGenerate))
@@ -130,12 +137,16 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void populateLists()
+    {
+        calExpire.setDate(new Date());
+    }
+
     @Action
     public void browse()
     {
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        //fc.addChoosableFileFilter(new ImageFilter());
         fc.setFileFilter(new ImageFilter());
         int returnVal = fc.showOpenDialog(rootPane);
         if (returnVal == JFileChooser.APPROVE_OPTION)
@@ -150,6 +161,53 @@ public class FrmPrintIDCards extends javax.swing.JInternalFrame
                 Logger.getLogger(FrmNewStudent.class.getName()).log(Level.SEVERE, "Error while selecting the file. ", ex);
             }
         }
+    }
+
+    @Action
+    public Task generateIDCards()
+    {
+        return new GenerateIDCardsTask(org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class));
+    }
+
+    private class GenerateIDCardsTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        Date exipreDate;
+        String background;
+
+        GenerateIDCardsTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+            exipreDate = calExpire.getDate();
+            background = txtBackground.getText().trim();
+
+            if (background.isEmpty())
+            {
+                URL sampleImage = FrmPrintIDCards.class.getResource("/ilearn/resources/Sample-Card-BG.png");
+                try
+                {
+                    selectedFile = new File(sampleImage.toURI());
+                    background = selectedFile.getCanonicalPath().toString();
+                }
+                catch (Exception ex)
+                {
+                }
+            }
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.printIDCards(exipreDate, background);
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public void cancel()
+    {
+        Utilities.showCancelScreen(this);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calExpire;

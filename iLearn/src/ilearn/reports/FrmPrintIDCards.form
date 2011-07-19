@@ -2,6 +2,10 @@
 
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
+    <Property name="closable" type="boolean" value="true"/>
+    <Property name="iconifiable" type="boolean" value="true"/>
+    <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
+    <Property name="frameIcon" type="javax.swing.Icon" resourceKey="Form.frameIcon"/>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
   </Properties>
   <SyntheticProperties>
@@ -62,7 +66,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="cmdBrowse" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="30" max="32767" attributes="0"/>
+              <EmptySpace pref="32" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdGenerate" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -107,12 +111,18 @@
     </Component>
     <Component class="javax.swing.JButton" name="cmdCancel">
       <Properties>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="ilearn.reports.FrmPrintIDCards" id="cancel" methodName="cancel"/>
+        </Property>
         <Property name="text" type="java.lang.String" resourceKey="cmdCancel.text"/>
         <Property name="name" type="java.lang.String" value="cmdCancel" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="cmdGenerate">
       <Properties>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="ilearn.reports.FrmPrintIDCards" id="generateIDCards" methodName="generateIDCards"/>
+        </Property>
         <Property name="text" type="java.lang.String" resourceKey="cmdGenerate.text"/>
         <Property name="name" type="java.lang.String" value="cmdGenerate" noResource="true"/>
       </Properties>

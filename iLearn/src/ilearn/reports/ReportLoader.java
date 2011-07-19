@@ -4,6 +4,7 @@
  */
 package ilearn.reports;
 
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -181,14 +182,15 @@ public class ReportLoader
         }
     }
 
-    public static void printIDCards()
+    public static void printIDCards(Date date, String background)
     {
         String report = "reports/ID_Cards.jasper";
         String title = "Print Student ID Cards";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");
-        parameters.put("CardBG", "c:/Java/iLearn/resources/images/Sample-Card-BG.png");
+        parameters.put("CardBG", background);
+        parameters.put("ValidToDate", date);
         try
         {
             ReportViewer.generateReport(report, parameters, title);

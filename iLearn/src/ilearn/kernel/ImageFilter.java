@@ -28,7 +28,6 @@
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
-
 package ilearn.kernel;
 
 import java.io.File;
@@ -48,12 +47,10 @@ public class ImageFilter extends FileFilter
         String extension = ImageFilterUtils.getExtension(f);
         if (extension != null)
         {
-            if (extension.equals(ImageFilterUtils.tiff) ||
-                    extension.equals(ImageFilterUtils.tif) ||
-                    extension.equals(ImageFilterUtils.gif) ||
-                    extension.equals(ImageFilterUtils.jpeg) ||
-                    extension.equals(ImageFilterUtils.jpg) ||
-                    extension.equals(ImageFilterUtils.png))
+            if (extension.equals(ImageFilterUtils.gif)
+                    || extension.equals(ImageFilterUtils.jpeg)
+                    || extension.equals(ImageFilterUtils.jpg)
+                    || extension.equals(ImageFilterUtils.png))
             {
                 return true;
             }

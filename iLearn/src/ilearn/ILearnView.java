@@ -24,6 +24,7 @@ import ilearn.register.FrmRegister;
 import ilearn.reports.DialogStudentByClass;
 import ilearn.reports.FrmClassGradebook;
 import ilearn.reports.FrmDemeritsByStudent;
+import ilearn.reports.FrmPrintIDCards;
 import ilearn.reports.ReportLoader;
 import ilearn.reports.ReportViewer;
 import ilearn.school.FrmManageSchool;
@@ -109,6 +110,7 @@ public class ILearnView extends FrameView
     FrmRecordDemeritStudent frmRecordDemeritStudent = null;
     FrmEditDemeritStudent frmEditDemeritStudent = null;
     FrmDemeritsByStudent frmDemeritsByStudent = null;
+    FrmPrintIDCards frmPrintIDCards = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -1865,25 +1867,26 @@ public class ILearnView extends FrameView
     }
 
     @Action
-    public Task showStudentIDCards()
+    public void showStudentIDCards()
     {
-        return new ShowStudentIDCardsTask(getApplication());
-    }
-
-    private class ShowStudentIDCardsTask extends org.jdesktop.application.Task<Object, Void>
-    {
-
-        ShowStudentIDCardsTask(org.jdesktop.application.Application app)
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Print ID Cards");
+        if (AlreadyLoaded == false)
         {
-            super(app);
-        }
-
-        @Override
-        protected Object doInBackground()
-        {
-             setMessage("Loading reporting engine.");
-            ReportLoader.printIDCards();
-            return null;  // return your result
+            frmPrintIDCards = new FrmPrintIDCards();
+            desktopPane.add(frmPrintIDCards);
+            //Load the Form
+            frmPrintIDCards.setVisible(true);
+            frmPrintIDCards.show();
+            try
+            {
+                frmPrintIDCards.setIcon(false);
+                frmPrintIDCards.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -34,7 +34,14 @@ ORDER BY `stuClsCode`, `stuID`]]>
 	<detail>
 		<band height="176" splitType="Stretch">
 			<image scaleImage="FillFrame">
-				<reportElement x="0" y="0" width="272" height="176"/>
+				<reportElement x="1" y="4" width="265" height="170"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
 				<imageExpression class="java.lang.String"><![CDATA[$P{CardBG}]]></imageExpression>
 			</image>
 			<staticText>
@@ -93,7 +100,7 @@ ORDER BY `stuClsCode`, `stuID`]]>
 				<textFieldExpression class="java.util.Date"><![CDATA[$P{ValidToDate}]]></textFieldExpression>
 			</textField>
 			<image scaleImage="RetainShape" hAlign="Center" vAlign="Middle">
-				<reportElement x="182" y="14" width="79" height="95"/>
+				<reportElement x="180" y="8" width="79" height="95"/>
 				<box>
 					<pen lineWidth="0.0"/>
 					<topPen lineWidth="0.0"/>
