@@ -2,7 +2,7 @@ FEATURE / CHANGE REQUESTS
 ================================================================================
 
 30%     Fix Add and Edit user screens to handle advanced privileges and linking.
-100%    Users will be linked to staff members.
+10%     Load Appropriate list items for classes and subjects.
 50%     Calculate mid term and final grades.
 50%     Generate Report Cards Function
 0%      Add Detention Module (5 demerits = 1 Detention) Auto Detention.
@@ -13,6 +13,7 @@ FEATURE / CHANGE REQUESTS
 0%      Add Year to the student id.
 0%      H.O.D.s will be linked to all users they oversee.
 0%      Add check if term grades were already calculated before calculating term grades.
+100%    Users will be linked to staff members.
 100%    Add Student ID Report.
 100%    Add Student Status field to edit student.
 100%    Include timeout field to "Edit User."

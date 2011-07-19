@@ -1,5 +1,7 @@
 Version 1.1
 
+-   Users will be linked to staff members.
+
 -   Add Student ID Report.
 
 -   Fixed error at login screen where IP array would return an error on Win XP

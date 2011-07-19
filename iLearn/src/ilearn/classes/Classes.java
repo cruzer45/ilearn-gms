@@ -8,6 +8,7 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.subject.Subject;
+import ilearn.user.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -599,5 +600,37 @@ public class Classes
             logger.log(Level.SEVERE, message, e);
         }
         return list;
+    }
+
+    public static ArrayList<String> getPermittedSubjects(String classCode)
+    {
+        ArrayList<String> subjects = new ArrayList<String>();
+        resetSubjects();
+        try
+        {
+            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
+                         + "WHERE `clsCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                String subID = rs.getString("subCode");
+                String subCode = Subject.getSubjectCode(subID);
+                ArrayList<String> permittedSubjects = User.getPermittedSubjects();
+                if (!permittedSubjects.contains(subCode))
+                {
+                    subIDs.add(subCode);
+                }
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading the class' subjects.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return subjects;
     }
 }
