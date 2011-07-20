@@ -174,14 +174,14 @@
                 <Property name="name" type="java.lang.String" value="editAssessment" noResource="true"/>
               </Properties>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="editMidTerms">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.ILearnView" id="showEditMidTerms" methodName="showEditMidTerms"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem3.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="jMenuItem3.text"/>
-                <Property name="name" type="java.lang.String" value="jMenuItem3" noResource="true"/>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="editMidTerms.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="editMidTerms.text"/>
+                <Property name="name" type="java.lang.String" value="editMidTerms" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -485,14 +485,14 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem4">
+            <MenuItem class="javax.swing.JMenuItem" name="manageSchool">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.ILearnView" id="showManageSchool" methodName="showManageSchool"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem4.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="jMenuItem4.text"/>
-                <Property name="name" type="java.lang.String" value="jMenuItem4" noResource="true"/>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="manageSchool.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="manageSchool.text"/>
+                <Property name="name" type="java.lang.String" value="manageSchool" noResource="true"/>
               </Properties>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="staffMenu">

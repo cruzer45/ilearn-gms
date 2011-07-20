@@ -89,13 +89,13 @@ public class User
             String message = "ERROR: Could not validate user information.";
             logger.log(Level.SEVERE, message, e);
             message = "An error occurred while validating the login information.\n"
-                      + "Kindly consult your system administrator.";
+                    + "Kindly consult your system administrator.";
             Utilities.showErrorMessage(null, message);
         }
         if (loginCount >= 3)
         {
             String message = "You have exceeded the number of failed login attempts.\n"
-                             + "The program will now exit.";
+                    + "The program will now exit.";
             Utilities.showErrorMessage(null, message);
             ilearn.ILearnApp.getApplication().exit();
         }
@@ -134,7 +134,7 @@ public class User
         catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex)
         {
             String message = "An error occurred while adding a user to the database.\n"
-                             + "This username already exists.";
+                    + "This username already exists.";
             logger.log(Level.SEVERE, message, ex);
             successful = false;
             Utilities.showErrorMessage(null, message);
@@ -180,6 +180,7 @@ public class User
         }
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -484,6 +485,7 @@ public class User
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -497,6 +499,7 @@ public class User
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {

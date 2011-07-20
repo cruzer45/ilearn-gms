@@ -30,7 +30,7 @@ import org.jdesktop.application.Action;
  */
 public class FrmRecordGrade extends javax.swing.JInternalFrame
 {
-    
+
     String validationText = "";
     String gradesText = "";
 
@@ -273,7 +273,6 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
 //GEN-HEADEREND:event_cmbClassActionPerformed
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
-            
             ArrayList<String> classSubjects = new ArrayList<String>();
             if (User.getUserGroup().equals("Administration"))
             {
@@ -283,24 +282,23 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             {
                 classSubjects.addAll(Classes.getPermittedSubjects(cmbClass.getSelectedItem().toString()));
             }
-            
             classSubjects.add(0, "--- Select One ---");
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
         }
     }//GEN-LAST:event_cmbClassActionPerformed
-    
+
     private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
     {
 //GEN-HEADEREND:event_cmbSubjectActionPerformed
         next();
     }//GEN-LAST:event_cmbSubjectActionPerformed
-    
+
     @Action
     public void Cancel()
     {
         Utilities.showCancelScreen(this);
     }
-    
+
     @Action
     public void save()
     {
@@ -319,16 +317,16 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             }
         }
         String assmtTerm = Term.getCurrentTerm(),
-                assmtSubject = cmbSubject.getSelectedItem().toString(),
-                assmtTeacher = "",
-                assmtTitle = txtTitle.getText().trim(),
-                assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
-                assmtType = cmbType.getSelectedItem().toString(),
-                assmtTotalPoints = String.valueOf(spinnerMaxPoints.getValue()),
-                assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
+               assmtSubject = cmbSubject.getSelectedItem().toString(),
+               assmtTeacher = "",
+               assmtTitle = txtTitle.getText().trim(),
+               assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
+               assmtType = cmbType.getSelectedItem().toString(),
+               assmtTotalPoints = String.valueOf(spinnerMaxPoints.getValue()),
+               assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
         ArrayList<String> stuID = new ArrayList<String>(),
-                grade = new ArrayList<String>(),
-                remarks = new ArrayList<String>();
+        grade = new ArrayList<String>(),
+        remarks = new ArrayList<String>();
         //get the values from the tables.
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
@@ -345,7 +343,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         if (addAssessment && addGrades)
         {
             String message = "The assessment was successfully saved. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -359,18 +357,18 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this assessment.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
-    
+
     private void resetForm()
     {
         remove(assmtTabbedPane);
         initComponents();
         populateLists();
     }
-    
+
     private void populateLists()
     {
         Date today = new Date();
@@ -379,7 +377,6 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         ArrayList<String> assmtTypes = Grade.getAssessmentTypes();
         cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
         cmbType.setSelectedItem("Home Work");
-        
         ArrayList<String> classList = new ArrayList<String>();
         if (User.getUserGroup().equals("Administration"))
         {
@@ -394,7 +391,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
         }
     }
-    
+
     @Action
     public void next()
     {
@@ -413,7 +410,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         tcm.getColumn(3).setCellEditor(editor);
         assmtTabbedPane.setSelectedIndex(assmtTabbedPane.getSelectedIndex() + 1);
     }
-    
+
     private boolean gradesOK()
     {
         boolean gradesOK = true;
@@ -435,7 +432,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         }
         return gradesOK;
     }
-    
+
     private boolean passedValidation()
     {
         boolean inputValid = true;

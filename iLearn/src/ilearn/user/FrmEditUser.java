@@ -10,6 +10,7 @@
  */
 package ilearn.user;
 
+import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
 import javax.swing.DefaultComboBoxModel;
 import org.jdesktop.application.Action;
@@ -20,6 +21,8 @@ import org.jdesktop.application.Action;
  */
 public class FrmEditUser extends javax.swing.JInternalFrame
 {
+
+    String warnings = "";
 
     /** Creates new form FrmEditUser */
     public FrmEditUser()
@@ -37,8 +40,8 @@ public class FrmEditUser extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
+
         userTabbedPane = new javax.swing.JTabbedPane();
         userPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -64,6 +67,12 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         cmdSave = new javax.swing.JButton();
         lblTimeout = new javax.swing.JLabel();
         spinnerTimeout = new javax.swing.JSpinner();
+        linksPanel = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblLinks = new javax.swing.JTable();
+        cmdUnlink = new javax.swing.JButton();
+        cmdLink = new javax.swing.JButton();
+
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditUser.class);
@@ -71,37 +80,35 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
+
         userTabbedPane.setName("userTabbedPane"); // NOI18N
+
         userPanel.setName("userPanel"); // NOI18N
+
         jScrollPane1.setName("jScrollPane1"); // NOI18N
+
         tblUsers.setAutoCreateRowSorter(true);
         tblUsers.setModel(new javax.swing.table.DefaultTableModel(
-                              new Object [][]
-                              {
+            new Object [][] {
 
-                              },
-                              new String []
-                              {
-                                  "ID", "Name", "User Name", "Status"
-                              }
-                          )
-        {
-            boolean[] canEdit = new boolean []
-            {
+            },
+            new String [] {
+                "ID", "Name", "User Name", "Status"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
                 false, false, false, true
             };
-            public boolean isCellEditable(int rowIndex, int columnIndex)
-            {
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
         tblUsers.setToolTipText(resourceMap.getString("tblUsers.toolTipText")); // NOI18N
         tblUsers.setColumnSelectionAllowed(true);
         tblUsers.setName("tblUsers"); // NOI18N
-        tblUsers.addMouseListener(new java.awt.event.MouseAdapter()
-        {
-            public void mouseClicked(java.awt.event.MouseEvent evt)
-            {
+        tblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblUsersMouseClicked(evt);
             }
         });
@@ -111,169 +118,246 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         tblUsers.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblUsers.columnModel.title1")); // NOI18N
         tblUsers.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblUsers.columnModel.title2")); // NOI18N
         tblUsers.getColumnModel().getColumn(3).setHeaderValue(resourceMap.getString("tblUsers.columnModel.title3")); // NOI18N
+
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditUser.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
+
         cmdNext.setAction(actionMap.get("next")); // NOI18N
         cmdNext.setName("cmdNext"); // NOI18N
+
         javax.swing.GroupLayout userPanelLayout = new javax.swing.GroupLayout(userPanel);
         userPanel.setLayout(userPanelLayout);
         userPanelLayout.setHorizontalGroup(
             userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(userPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userPanelLayout.createSequentialGroup()
-                                          .addComponent(cmdNext)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel))
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userPanelLayout.createSequentialGroup()
+                        .addComponent(cmdNext)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE))
+                .addContainerGap())
         );
         userPanelLayout.setVerticalGroup(
             userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addGroup(userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel)
-                                .addComponent(cmdNext))
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdNext))
+                .addContainerGap())
         );
+
         userTabbedPane.addTab("User", resourceMap.getIcon("userPanel.TabConstraints.tabIcon"), userPanel); // NOI18N
+
         detailsPanel.setName("detailsPanel"); // NOI18N
+
         lblID.setText(resourceMap.getString("lblID.text")); // NOI18N
         lblID.setName("lblID"); // NOI18N
+
         lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
         lblFirstName.setName("lblFirstName"); // NOI18N
+
         lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
         lblLastName.setName("lblLastName"); // NOI18N
+
         lblUserName.setText(resourceMap.getString("lblUserName.text")); // NOI18N
         lblUserName.setName("lblUserName"); // NOI18N
+
         lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
         lblPassword.setName("lblPassword"); // NOI18N
+
         txtID.setEditable(false);
         txtID.setText(resourceMap.getString("txtID.text")); // NOI18N
         txtID.setToolTipText(resourceMap.getString("txtID.toolTipText")); // NOI18N
         txtID.setName("txtID"); // NOI18N
+
         txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
+
         txtUserName.setToolTipText(resourceMap.getString("txtUserName.toolTipText")); // NOI18N
         txtUserName.setName("txtUserName"); // NOI18N
+
         txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
         txtLastName.setName("txtLastName"); // NOI18N
+
         txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
         txtPassword.setName("txtPassword"); // NOI18N
+
         lblGroup.setText(resourceMap.getString("lblGroup.text")); // NOI18N
         lblGroup.setName("lblGroup"); // NOI18N
-        cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
         cmbGroup.setName("cmbGroup"); // NOI18N
+
         lblStatis.setText(resourceMap.getString("lblStatis.text")); // NOI18N
         lblStatis.setName("lblStatis"); // NOI18N
+
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Disabled", " " }));
         cmbStatus.setToolTipText(resourceMap.getString("cmbStatus.toolTipText")); // NOI18N
         cmbStatus.setName("cmbStatus"); // NOI18N
+
         cmdCancel2.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel2.setName("cmdCancel2"); // NOI18N
+
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
+
         lblTimeout.setText(resourceMap.getString("lblTimeout.text")); // NOI18N
         lblTimeout.setName("lblTimeout"); // NOI18N
+
         spinnerTimeout.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(15), Integer.valueOf(0), null, Integer.valueOf(1)));
         spinnerTimeout.setName("spinnerTimeout"); // NOI18N
+
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
-                                          .addComponent(cmdSave)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel2))
-                                .addGroup(detailsPanelLayout.createSequentialGroup()
-                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(lblLastName)
-                                                  .addComponent(lblUserName)
-                                                  .addComponent(lblFirstName)
-                                                  .addComponent(lblPassword)
-                                                  .addComponent(lblGroup)
-                                                  .addComponent(lblID)
-                                                  .addComponent(lblTimeout)
-                                                  .addComponent(lblStatis))
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(cmbStatus, 0, 250, Short.MAX_VALUE)
-                                                  .addComponent(spinnerTimeout, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                                  .addComponent(cmbGroup, 0, 250, Short.MAX_VALUE)
-                                                  .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                                  .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE))))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
+                        .addComponent(cmdSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel2))
+                    .addGroup(detailsPanelLayout.createSequentialGroup()
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblLastName)
+                            .addComponent(lblUserName)
+                            .addComponent(lblFirstName)
+                            .addComponent(lblPassword)
+                            .addComponent(lblGroup)
+                            .addComponent(lblID)
+                            .addComponent(lblTimeout)
+                            .addComponent(lblStatis))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(cmbStatus, 0, 269, Short.MAX_VALUE)
+                            .addComponent(spinnerTimeout, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .addComponent(cmbGroup, 0, 269, Short.MAX_VALUE)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE)
+                            .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 269, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblID)
-                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblFirstName)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblLastName)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUserName)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblPassword)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblGroup)
-                                .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(spinnerTimeout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(lblTimeout))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblStatis)
-                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
-                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel2)
-                                .addComponent(cmdSave))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblID)
+                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLastName)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserName)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGroup)
+                    .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(spinnerTimeout, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTimeout))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblStatis)
+                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel2)
+                    .addComponent(cmdSave))
+                .addContainerGap())
         );
+
         userTabbedPane.addTab("Details", resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
+
+        linksPanel.setName("linksPanel"); // NOI18N
+
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+
+        tblLinks.setAutoCreateRowSorter(true);
+        tblLinks.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ID", "Name"
+            }
+        ));
+        tblLinks.setName("tblLinks"); // NOI18N
+        jScrollPane2.setViewportView(tblLinks);
+
+        cmdUnlink.setAction(actionMap.get("unlinkAccount")); // NOI18N
+        cmdUnlink.setName("cmdUnlink"); // NOI18N
+
+        cmdLink.setAction(actionMap.get("linkAccount")); // NOI18N
+        cmdLink.setName("cmdLink"); // NOI18N
+
+        javax.swing.GroupLayout linksPanelLayout = new javax.swing.GroupLayout(linksPanel);
+        linksPanel.setLayout(linksPanelLayout);
+        linksPanelLayout.setHorizontalGroup(
+            linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 329, Short.MAX_VALUE)
+                    .addGroup(linksPanelLayout.createSequentialGroup()
+                        .addComponent(cmdLink)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmdUnlink)))
+                .addContainerGap())
+        );
+        linksPanelLayout.setVerticalGroup(
+            linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 246, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdUnlink)
+                    .addComponent(cmdLink))
+                .addContainerGap())
+        );
+
+        userTabbedPane.addTab("Links", resourceMap.getIcon("linksPanel.TabConstraints.tabIcon"), linksPanel); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 334, Short.MAX_VALUE)
+                .addContainerGap())
         );
+
         java.awt.Dimension screenSize = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
         setBounds((screenSize.width-390)/2, (screenSize.height-385)/2, 390, 385);
     }// </editor-fold>//GEN-END:initComponents
@@ -320,6 +404,11 @@ public class FrmEditUser extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        if (!passedValidation())
+        {
+            Utilities.showWarningMessage(rootPane, warnings);
+            return;
+        }
         String ID = txtID.getText();
         String username = txtUserName.getText().trim();
         String password = String.valueOf(txtPassword.getPassword()).trim();
@@ -342,15 +431,79 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             Utilities.showErrorMessage(rootPane, message);
         }
     }
+
+    @Action
+    public void unlinkAccount()
+    {
+        for (int row : tblLinks.getSelectedRows())
+        {
+            String staffID = tblLinks.getValueAt(row, 0).toString();
+            String staffCode = tblLinks.getValueAt(row, 1).toString();
+            String staffName = tblLinks.getValueAt(row, 2).toString();
+            User.removeStaffLink(staffID, staffCode, staffName);
+        }
+        loadLinkedAccounts();
+    }
+
+    @Action
+    public void linkAccount()
+    {
+        FrmLinkStaff frmLinkStaff = new FrmLinkStaff(null, true);
+        frmLinkStaff.setLocationRelativeTo(this);
+        frmLinkStaff.setVisible(true);
+        loadLinkedAccounts();
+    }
+
+    private void loadLinkedAccounts()
+    {
+        tblLinks.setModel(User.loadStaffLinks());
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblLinks);
+        tca.adjustColumns();
+    }
+
+    private boolean passedValidation()
+    {
+        boolean passed = true;
+        warnings = "";
+        String username = txtUserName.getText().trim();
+        String password = String.valueOf(txtPassword.getPassword()).trim();
+        String firstName = txtFirstName.getText().trim();
+        String lastName = txtLastName.getText().trim();
+        String group = cmbGroup.getSelectedItem().toString();
+        if (username.isEmpty())
+        {
+            warnings += "Username cannot be empty.\n";
+            passed = false;
+        }
+        if (password.isEmpty())
+        {
+            warnings += "Password cannot be empty.\n";
+            passed = false;
+        }
+        if (firstName.isEmpty())
+        {
+            warnings += "First Name cannot be empty.\n";
+            passed = false;
+        }
+        if (lastName.isEmpty())
+        {
+            warnings += "Last Name cannot be empty.\n";
+            passed = false;
+        }
+        return passed;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbGroup;
     private javax.swing.JComboBox cmbStatus;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdCancel2;
+    private javax.swing.JButton cmdLink;
     private javax.swing.JButton cmdNext;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdUnlink;
     private javax.swing.JPanel detailsPanel;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblFirstName;
     private javax.swing.JLabel lblGroup;
     private javax.swing.JLabel lblID;
@@ -359,7 +512,9 @@ public class FrmEditUser extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblStatis;
     private javax.swing.JLabel lblTimeout;
     private javax.swing.JLabel lblUserName;
+    private javax.swing.JPanel linksPanel;
     private javax.swing.JSpinner spinnerTimeout;
+    private javax.swing.JTable tblLinks;
     private javax.swing.JTable tblUsers;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtID;
