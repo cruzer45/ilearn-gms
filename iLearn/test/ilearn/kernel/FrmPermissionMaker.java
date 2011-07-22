@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmPermissionMaker.java
  *
  * Created on Jul 22, 2011, 10:03:19 AM
