@@ -38,10 +38,10 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="userTabbedPane" alignment="0" pref="374" max="32767" attributes="0"/>
+                  <Component id="userTabbedPane" alignment="0" pref="364" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="153" max="32767" attributes="0"/>
+                      <EmptySpace pref="111" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -55,7 +55,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="userTabbedPane" pref="312" max="32767" attributes="0"/>
+              <Component id="userTabbedPane" pref="306" max="32767" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -130,12 +130,12 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="cmbGroup" alignment="0" pref="260" max="32767" attributes="0"/>
-                          <Component id="txtPassword" alignment="0" pref="260" max="32767" attributes="0"/>
-                          <Component id="txtUserName" alignment="0" pref="260" max="32767" attributes="0"/>
-                          <Component id="txtFirstName" alignment="0" pref="260" max="32767" attributes="0"/>
-                          <Component id="txtLastName" alignment="1" pref="260" max="32767" attributes="0"/>
-                          <Component id="jSpinner1" alignment="1" pref="260" max="32767" attributes="0"/>
+                          <Component id="cmbGroup" alignment="0" pref="279" max="32767" attributes="0"/>
+                          <Component id="txtPassword" alignment="0" pref="279" max="32767" attributes="0"/>
+                          <Component id="txtUserName" alignment="0" pref="279" max="32767" attributes="0"/>
+                          <Component id="txtFirstName" alignment="0" pref="279" max="32767" attributes="0"/>
+                          <Component id="txtLastName" alignment="1" pref="279" max="32767" attributes="0"/>
+                          <Component id="jSpinner1" alignment="1" pref="279" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -174,7 +174,7 @@
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jSpinner1" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="112" max="32767" attributes="0"/>
+                      <EmptySpace pref="115" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -262,6 +262,9 @@
                 <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGroup.toolTipText"/>
                 <Property name="name" type="java.lang.String" value="cmbGroup" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbGroupActionPerformed"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -284,7 +287,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="345" max="32767" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" pref="339" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdLink" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -299,7 +302,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="228" max="32767" attributes="0"/>
+                      <Component id="jScrollPane2" pref="218" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdUnlink" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -393,7 +396,7 @@
             <Component class="it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree" name="tree">
               <Properties>
                 <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                  <TreeModel code="Menu&#xa; Student&#xa;  Add Student&#xa;  Edit Student&#xa;  View Student&#xa; Attendance&#xa;  Enter Attendance&#xa;  Edit Attendance&#xa; Grades&#xa;  Create Assessment&#xa;  Edit Assessment&#xa;  Edit Mid Terms&#xa; Demerits&#xa;  Record Demerits&#xa;  Edit Demerits&#xa; Reports&#xa;  Student Reports &#xa;   Student List&#xa;   Repeating Students&#xa;   Students By Class&#xa;   Student ID Cards&#xa;  Class Reports &#xa;   Class List Report&#xa;   Class Report Grade Book&#xa;  Report Cards Menu&#xa;   Mid-Term Reports&#xa;   Mid Term Class Rank Report&#xa;   Term-End Report&#xa;   Term End Ranking&#xa;  Demerit Reports&#xa;   Demerits By Class&#xa;   Demerits By Student&#xa;  Statistical Reports&#xa;   Class Size Distribution&#xa;   Gender Distribution&#xa; Manage&#xa;  Class&#xa;   Add Class&#xa;   Edit Class&#xa;   View Class&#xa;  Promotions&#xa;   Assign Promotions&#xa;   Promote Students&#xa;  School&#xa;  Staff&#xa;   Add Staff&#xa;   Edit Staff&#xa;  Subjects&#xa;   Add Subjects &#xa;   Edit Subjects&#xa;  Term&#xa;   Add Term&#xa;   Edit Term&#xa;  Time Slots&#xa;   Add Time Slot&#xa;   Edit Time Slot&#xa;  User Menu&#xa;   Add User&#xa;   Edit User&#xa;  Utilities Menu&#xa;   Mid Term&#xa;    Calculate Mid Term Grades&#xa;   End Of Term&#xa;    Calculate End of Term Grades&#xa;    Close Term"/>
+                  <TreeModel code="Menu&#xa; Student&#xa;  Add Student&#xa;  Edit Student&#xa;  View Student&#xa; Attendance&#xa;  Enter Attendance&#xa;  Edit Attendance&#xa; Grades&#xa;  Create Assessment&#xa;  Edit Assessment&#xa;  Edit Mid Terms&#xa; Demerits&#xa;  Record Demerits&#xa;  Edit Demerits&#xa; Reports&#xa;  Student Reports &#xa;   Student List&#xa;   Repeating Students&#xa;   Students By Class&#xa;   Student ID Cards&#xa;  Class Reports&#xa;   Class List Report&#xa;   Class Grade Book&#xa;  Report Cards Menu&#xa;   Mid-Term Reports&#xa;   Mid-Term Class Ranking&#xa;   Term End Report&#xa;   Term End Ranking&#xa;  Demerit Reports&#xa;   Demerits By Class&#xa;   Demerits By Student&#xa;  Statistical Reports&#xa;   Class Size Distribution&#xa;   Gender Distribution&#xa; Manage&#xa;  Class&#xa;   Add Class&#xa;   Edit Class&#xa;   View Class&#xa;  Promotions&#xa;   Assign Promotions&#xa;   Promote Students&#xa;  School&#xa;  Staff&#xa;   Add Staff&#xa;   Edit Staff&#xa;  Subjects&#xa;   Add Subjects &#xa;   Edit Subjects&#xa;  Term&#xa;   Add Term&#xa;   Edit Term&#xa;  Time Slots&#xa;   Add Time Slot&#xa;   Edit Time Slot&#xa;  User Menu&#xa;   Add User&#xa;   Edit User&#xa;  Utilities Menu&#xa;   Mid Term&#xa;    Calculate Mid Term Grades&#xa;   End Of Term&#xa;    Calculate End of Term Grades&#xa;    Close Term"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="tree" noResource="true"/>
               </Properties>

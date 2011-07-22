@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -88,6 +88,9 @@
             <Property name="text" type="java.lang.String" resourceKey="studentMenu.text"/>
             <Property name="name" type="java.lang.String" value="studentMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="addStudent">
               <Properties>
@@ -97,6 +100,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="addStudent.text"/>
                 <Property name="name" type="java.lang.String" value="addStudent" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editStudent">
               <Properties>
@@ -107,6 +113,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="editStudent.text"/>
                 <Property name="name" type="java.lang.String" value="editStudent" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="viewStudent">
               <Properties>
@@ -117,6 +126,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="viewStudent.text"/>
                 <Property name="name" type="java.lang.String" value="viewStudent" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -125,6 +137,9 @@
             <Property name="text" type="java.lang.String" resourceKey="attendanceMenu.text"/>
             <Property name="name" type="java.lang.String" value="attendanceMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="enterAttendance">
               <Properties>
@@ -135,6 +150,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="enterAttendance.text"/>
                 <Property name="name" type="java.lang.String" value="enterAttendance" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editAttendance">
               <Properties>
@@ -145,6 +163,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="editAttendance.text"/>
                 <Property name="name" type="java.lang.String" value="editAttendance" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -153,6 +174,9 @@
             <Property name="text" type="java.lang.String" resourceKey="gradesMenu.text"/>
             <Property name="name" type="java.lang.String" value="gradesMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="createAssessment">
               <Properties>
@@ -163,6 +187,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="createAssessment.text"/>
                 <Property name="name" type="java.lang.String" value="createAssessment" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editAssessment">
               <Properties>
@@ -173,6 +200,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="editAssessment.text"/>
                 <Property name="name" type="java.lang.String" value="editAssessment" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editMidTerms">
               <Properties>
@@ -183,6 +213,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="editMidTerms.text"/>
                 <Property name="name" type="java.lang.String" value="editMidTerms" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -191,6 +224,9 @@
             <Property name="text" type="java.lang.String" resourceKey="demeritsMenu.text"/>
             <Property name="name" type="java.lang.String" value="demeritsMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="recordDemerits">
               <Properties>
@@ -201,6 +237,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="recordDemerits.text"/>
                 <Property name="name" type="java.lang.String" value="recordDemerits" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editDemerits">
               <Properties>
@@ -211,6 +250,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="editDemerits.text"/>
                 <Property name="name" type="java.lang.String" value="editDemerits" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -219,6 +261,9 @@
             <Property name="text" type="java.lang.String" resourceKey="reportsMenu.text"/>
             <Property name="name" type="java.lang.String" value="reportsMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="studentReports">
               <Properties>
@@ -226,6 +271,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="studentReports.text"/>
                 <Property name="name" type="java.lang.String" value="studentReports" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="studentList">
                   <Properties>
@@ -236,6 +284,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="studentList.text"/>
                     <Property name="name" type="java.lang.String" value="studentList" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="studentsRepeating">
                   <Properties>
@@ -246,6 +297,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="studentsRepeating.text"/>
                     <Property name="name" type="java.lang.String" value="studentsRepeating" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="studentListByClass">
                   <Properties>
@@ -256,6 +310,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="studentListByClass.text"/>
                     <Property name="name" type="java.lang.String" value="studentListByClass" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="studentIDCards">
                   <Properties>
@@ -266,6 +323,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="studentIDCards.text"/>
                     <Property name="name" type="java.lang.String" value="studentIDCards" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -275,6 +335,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="classReports.text"/>
                 <Property name="name" type="java.lang.String" value="classReports" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="classListReport">
                   <Properties>
@@ -285,6 +348,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="classListReport.text"/>
                     <Property name="name" type="java.lang.String" value="classListReport" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="classGradeBook">
                   <Properties>
@@ -295,6 +361,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="classGradeBook.text"/>
                     <Property name="name" type="java.lang.String" value="classGradeBook" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -304,6 +373,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="reportCardsMenu.text"/>
                 <Property name="name" type="java.lang.String" value="reportCardsMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="midTermReports">
                   <Properties>
@@ -314,6 +386,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="midTermReports.text"/>
                     <Property name="name" type="java.lang.String" value="midTermReports" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="classRankReport">
                   <Properties>
@@ -324,18 +399,27 @@
                     <Property name="text" type="java.lang.String" resourceKey="classRankReport.text"/>
                     <Property name="name" type="java.lang.String" value="classRankReport" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator1">
                   <Properties>
                     <Property name="name" type="java.lang.String" value="jSeparator1" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="endOfYearReports">
+                <MenuItem class="javax.swing.JMenuItem" name="termEndReports">
                   <Properties>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="endOfYearReports.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="endOfYearReports.text"/>
-                    <Property name="name" type="java.lang.String" value="endOfYearReports" noResource="true"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="termEndReports.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="termEndReports.text"/>
+                    <Property name="name" type="java.lang.String" value="termEndReports" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="termRanking">
                   <Properties>
@@ -346,6 +430,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="termRanking.text"/>
                     <Property name="name" type="java.lang.String" value="termRanking" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -355,6 +442,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="demeritReports.text"/>
                 <Property name="name" type="java.lang.String" value="demeritReports" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="demeritsByCass">
                   <Properties>
@@ -365,6 +455,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="demeritsByCass.text"/>
                     <Property name="name" type="java.lang.String" value="demeritsByCass" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="demeritsByStudent">
                   <Properties>
@@ -375,6 +468,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="demeritsByStudent.text"/>
                     <Property name="name" type="java.lang.String" value="demeritsByStudent" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -384,6 +480,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="statisticsReports.text"/>
                 <Property name="name" type="java.lang.String" value="statisticsReports" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="classSizeDistribution">
                   <Properties>
@@ -394,6 +493,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="classSizeDistribution.text"/>
                     <Property name="name" type="java.lang.String" value="classSizeDistribution" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="genderDistribution">
                   <Properties>
@@ -404,6 +506,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="genderDistribution.text"/>
                     <Property name="name" type="java.lang.String" value="genderDistribution" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -415,6 +520,7 @@
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="manageMenu.setText(&quot;Manage&quot;);"/>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
           <SubComponents>
             <Menu class="javax.swing.JMenu" name="classMenu">
@@ -423,6 +529,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="classMenu.text"/>
                 <Property name="name" type="java.lang.String" value="classMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="addClass">
                   <Properties>
@@ -433,6 +542,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="addClass.text"/>
                     <Property name="name" type="java.lang.String" value="addClass" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="editClass">
                   <Properties>
@@ -443,6 +555,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="editClass.text"/>
                     <Property name="name" type="java.lang.String" value="editClass" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="viewClass">
                   <Properties>
@@ -453,6 +568,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="viewClass.text"/>
                     <Property name="name" type="java.lang.String" value="viewClass" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -462,6 +580,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="promoteMenu.text"/>
                 <Property name="name" type="java.lang.String" value="promoteMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="assignPromotions">
                   <Properties>
@@ -472,6 +593,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="assignPromotions.text"/>
                     <Property name="name" type="java.lang.String" value="assignPromotions" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="promoteStudents">
                   <Properties>
@@ -482,6 +606,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="promoteStudents.text"/>
                     <Property name="name" type="java.lang.String" value="promoteStudents" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -494,6 +621,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="manageSchool.text"/>
                 <Property name="name" type="java.lang.String" value="manageSchool" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <Menu class="javax.swing.JMenu" name="staffMenu">
               <Properties>
@@ -501,6 +631,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="staffMenu.text"/>
                 <Property name="name" type="java.lang.String" value="staffMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="addStaff">
                   <Properties>
@@ -511,6 +644,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="addStaff.text"/>
                     <Property name="name" type="java.lang.String" value="addStaff" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="editStaff">
                   <Properties>
@@ -521,6 +657,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="editStaff.text"/>
                     <Property name="name" type="java.lang.String" value="editStaff" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -530,6 +669,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="subjectMenu.text"/>
                 <Property name="name" type="java.lang.String" value="subjectMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="addSubject">
                   <Properties>
@@ -540,6 +682,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="addSubject.text"/>
                     <Property name="name" type="java.lang.String" value="addSubject" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="editSubject">
                   <Properties>
@@ -550,6 +695,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="editSubject.text"/>
                     <Property name="name" type="java.lang.String" value="editSubject" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -558,6 +706,9 @@
                 <Property name="icon" type="javax.swing.Icon" resourceKey="termMenu.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="termMenu.text"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="addTerm">
                   <Properties>
@@ -567,6 +718,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="addTerm.text"/>
                     <Property name="name" type="java.lang.String" value="addTerm" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="editTerm">
                   <Properties>
@@ -576,6 +730,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="editTerm.text"/>
                     <Property name="name" type="java.lang.String" value="editTerm" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -585,6 +742,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="timeSlotsMenu.text"/>
                 <Property name="name" type="java.lang.String" value="timeSlotsMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="addTimeSlot">
                   <Properties>
@@ -594,6 +754,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="addTimeSlot.text"/>
                     <Property name="name" type="java.lang.String" value="addTimeSlot" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="editTimeSlot">
                   <Properties>
@@ -603,6 +766,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="editTimeSlot.text"/>
                     <Property name="name" type="java.lang.String" value="editTimeSlot" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -612,6 +778,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="userMenu.text"/>
                 <Property name="name" type="java.lang.String" value="userMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <MenuItem class="javax.swing.JMenuItem" name="addUser">
                   <Properties>
@@ -622,6 +791,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="addUser.text"/>
                     <Property name="name" type="java.lang.String" value="addUser" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="editUser">
                   <Properties>
@@ -631,6 +803,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="editUser.text"/>
                     <Property name="name" type="java.lang.String" value="editUser" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -640,6 +815,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="utilitiesMenu.text"/>
                 <Property name="name" type="java.lang.String" value="utilitiesMenu" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
               <SubComponents>
                 <Menu class="javax.swing.JMenu" name="midTerm">
                   <Properties>
@@ -647,6 +825,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="midTerm.text"/>
                     <Property name="name" type="java.lang.String" value="midTerm" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="calculateMidTerm">
                       <Properties>
@@ -657,6 +838,9 @@
                         <Property name="text" type="java.lang.String" resourceKey="calculateMidTerm.text"/>
                         <Property name="name" type="java.lang.String" value="calculateMidTerm" noResource="true"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                      </AuxValues>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
@@ -666,6 +850,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="endOfTerm.text"/>
                     <Property name="name" type="java.lang.String" value="endOfTerm" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                   <SubComponents>
                     <MenuItem class="javax.swing.JMenuItem" name="closeTerm">
                       <Properties>
@@ -676,6 +863,9 @@
                         <Property name="text" type="java.lang.String" resourceKey="closeTerm.text"/>
                         <Property name="name" type="java.lang.String" value="closeTerm" noResource="true"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                      </AuxValues>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
@@ -721,7 +911,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="616" max="32767" attributes="0"/>
+                  <EmptySpace pref="630" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

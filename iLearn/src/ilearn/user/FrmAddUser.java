@@ -9,6 +9,7 @@ package ilearn.user;
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
 import it.cnr.imaa.essi.lablib.gui.checkboxtree.TreeCheckingModel.CheckingMode;
+import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.tree.TreePath;
@@ -37,8 +38,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
+
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
@@ -63,159 +64,191 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         cmdLink = new javax.swing.JButton();
         previlegePane = new javax.swing.JScrollPane();
         tree = new it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree();
+
         setClosable(true);
         setIconifiable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmAddUser.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmAddUser.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
         setPreferredSize(new java.awt.Dimension(400, 380));
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmAddUser.class, this);
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmAddUser.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
+
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(resourceMap.getString("cmdSave.text")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
+
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
+
         userTabbedPane.setName("userTabbedPane"); // NOI18N
+
         generalPanel.setName("generalPanel"); // NOI18N
+
         lblFirstName.setText(resourceMap.getString("lblFirstName.text")); // NOI18N
         lblFirstName.setName("lblFirstName"); // NOI18N
+
         jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
         jLabel1.setName("jLabel1"); // NOI18N
+
         txtFirstName.setText(resourceMap.getString("txtFirstName.text")); // NOI18N
         txtFirstName.setToolTipText(resourceMap.getString("txtFirstName.toolTipText")); // NOI18N
         txtFirstName.setName("txtFirstName"); // NOI18N
+
         jSpinner1.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(5), Integer.valueOf(0), null, Integer.valueOf(1)));
         jSpinner1.setName("jSpinner1"); // NOI18N
+
         lblPassword.setText(resourceMap.getString("lblPassword.text")); // NOI18N
         lblPassword.setName("lblPassword"); // NOI18N
+
         lblLastName.setText(resourceMap.getString("lblLastName.text")); // NOI18N
         lblLastName.setName("lblLastName"); // NOI18N
+
         txtUserName.setText(resourceMap.getString("txtUserName.text")); // NOI18N
         txtUserName.setToolTipText(resourceMap.getString("txtUserName.toolTipText")); // NOI18N
         txtUserName.setName("txtUserName"); // NOI18N
+
         txtPassword.setText(resourceMap.getString("txtPassword.text")); // NOI18N
         txtPassword.setToolTipText(resourceMap.getString("txtPassword.toolTipText")); // NOI18N
         txtPassword.setName("txtPassword"); // NOI18N
+
         lblGroup.setText(resourceMap.getString("lblGroup.text")); // NOI18N
         lblGroup.setName("lblGroup"); // NOI18N
+
         txtLastName.setText(resourceMap.getString("txtLastName.text")); // NOI18N
         txtLastName.setToolTipText(resourceMap.getString("txtLastName.toolTipText")); // NOI18N
         txtLastName.setName("txtLastName"); // NOI18N
+
         lblUserName.setText(resourceMap.getString("lblUserName.text")); // NOI18N
         lblUserName.setName("lblUserName"); // NOI18N
+
         cmbGroup.setModel(new javax.swing.DefaultComboBoxModel(new String[] { " " }));
         cmbGroup.setToolTipText(resourceMap.getString("cmbGroup.toolTipText")); // NOI18N
         cmbGroup.setName("cmbGroup"); // NOI18N
+        cmbGroup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbGroupActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
         generalPanelLayout.setHorizontalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblLastName)
-                                .addComponent(lblUserName)
-                                .addComponent(lblFirstName)
-                                .addComponent(lblPassword)
-                                .addComponent(lblGroup)
-                                .addComponent(jLabel1))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 260, Short.MAX_VALUE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblLastName)
+                    .addComponent(lblUserName)
+                    .addComponent(lblFirstName)
+                    .addComponent(lblPassword)
+                    .addComponent(lblGroup)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 279, Short.MAX_VALUE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblFirstName)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblLastName)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblUserName)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblPassword)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblGroup)
-                                .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(jLabel1)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addContainerGap(112, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblFirstName)
+                    .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblLastName)
+                    .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblUserName)
+                    .addComponent(txtUserName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblPassword)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblGroup)
+                    .addComponent(cmbGroup, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(115, Short.MAX_VALUE))
         );
+
         userTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+
         linksPanel.setName("linksPanel"); // NOI18N
+
         jScrollPane2.setName("jScrollPane2"); // NOI18N
+
         tblLinks.setAutoCreateRowSorter(true);
         tblLinks.setModel(new javax.swing.table.DefaultTableModel(
-                              new Object [][]
-                              {
+            new Object [][] {
 
-                              },
-                              new String []
-                              {
-                                  "ID", "Name"
-                              }
-                          ));
+            },
+            new String [] {
+                "ID", "Name"
+            }
+        ));
         tblLinks.setName("tblLinks"); // NOI18N
         jScrollPane2.setViewportView(tblLinks);
         tblLinks.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         tblLinks.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title0")); // NOI18N
         tblLinks.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title1")); // NOI18N
+
         cmdUnlink.setAction(actionMap.get("unlinkAccount")); // NOI18N
         cmdUnlink.setText(resourceMap.getString("cmdUnlink.text")); // NOI18N
         cmdUnlink.setName("cmdUnlink"); // NOI18N
+
         cmdLink.setAction(actionMap.get("linkAccount")); // NOI18N
         cmdLink.setText(resourceMap.getString("cmdLink.text")); // NOI18N
         cmdLink.setName("cmdLink"); // NOI18N
+
         javax.swing.GroupLayout linksPanelLayout = new javax.swing.GroupLayout(linksPanel);
         linksPanel.setLayout(linksPanelLayout);
         linksPanelLayout.setHorizontalGroup(
             linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-                                .addGroup(linksPanelLayout.createSequentialGroup()
-                                          .addComponent(cmdLink)
-                                          .addGap(18, 18, 18)
-                                          .addComponent(cmdUnlink)))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                    .addGroup(linksPanelLayout.createSequentialGroup()
+                        .addComponent(cmdLink)
+                        .addGap(18, 18, 18)
+                        .addComponent(cmdUnlink)))
+                .addContainerGap())
         );
         linksPanelLayout.setVerticalGroup(
             linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdUnlink)
-                                .addComponent(cmdLink))
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdUnlink)
+                    .addComponent(cmdLink))
+                .addContainerGap())
         );
+
         userTabbedPane.addTab(resourceMap.getString("linksPanel.TabConstraints.tabTitle"), resourceMap.getIcon("linksPanel.TabConstraints.tabIcon"), linksPanel); // NOI18N
+
         previlegePane.setName("previlegePane"); // NOI18N
+
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Menu");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Student");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Add Student");
@@ -259,15 +292,15 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Class Reports");
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class List Report");
         treeNode3.add(treeNode4);
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class Report Grade Book");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class Grade Book");
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Report Cards Menu");
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid-Term Reports");
         treeNode3.add(treeNode4);
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid Term Class Rank Report");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid-Term Class Ranking");
         treeNode3.add(treeNode4);
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Term-End Report");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Term End Report");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Term End Ranking");
         treeNode3.add(treeNode4);
@@ -348,43 +381,99 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         tree.setName("tree"); // NOI18N
         previlegePane.setViewportView(tree);
+
         userTabbedPane.addTab(resourceMap.getString("previlegePane.TabConstraints.tabTitle"), resourceMap.getIcon("previlegePane.TabConstraints.tabIcon"), previlegePane); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                          .addComponent(cmdReset)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
-                                          .addComponent(cmdSave)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel)))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmdReset)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                        .addComponent(cmdSave)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
-                      .addGap(18, 18, 18)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel)
-                                .addComponent(cmdSave)
-                                .addComponent(cmdReset))
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdSave)
+                    .addComponent(cmdReset))
+                .addContainerGap())
         );
+
         setBounds(0, 0, 400, 400);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void cmbGroupActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbGroupActionPerformed
+    {//GEN-HEADEREND:event_cmbGroupActionPerformed
+        if (cmbGroup.getSelectedItem().toString().equals("Administration"))
+        {
+            String permission = User.administrationString;
+            tree.expandAll();
+            for (int i = 0; i < tree.getRowCount(); i++)
+            {
+                TreePath currPath = tree.getPathForRow(i);
+                String currentPath = currPath.getLastPathComponent().toString();
+                if (previligeAvailable(currentPath, permission))
+                {
+                    tree.addCheckingPath(currPath);
+                }
+            }
+        }
+        else if (cmbGroup.getSelectedItem().toString().equals("Teachers"))
+        {
+            String permission = User.teacherString;
+            tree.expandAll();
+            for (int i = 0; i < tree.getRowCount(); i++)
+            {
+                TreePath currPath = tree.getPathForRow(i);
+                String currentPath = currPath.getLastPathComponent().toString();
+                if (previligeAvailable(currentPath, permission))
+                {
+                    tree.addCheckingPath(currPath);
+                }
+            }
+        }
+    }//GEN-LAST:event_cmbGroupActionPerformed
+
+    private boolean previligeAvailable(String currentPath, String permissionString)
+    {
+
+
+        String[] prevList = permissionString.split("\\|");
+        for (String prevItem : prevList)
+        {
+            String[] split = prevItem.split("-");
+            String item = split[0];
+
+
+            if (item.equals(currentPath) && (split[1].equalsIgnoreCase("True"))) //if the prevelige matches the row set check the path.
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     private void populateLists()
     {
         tree.getCheckingModel().setCheckingMode(CheckingMode.PROPAGATE_PRESERVING_CHECK);
         //Loads the values from the database into the combo boxes.
-        cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
+        ArrayList<String> userGroups = User.getUserGroups();
+        userGroups.add(0, "--- Select One ---");
+        cmbGroup.setModel(new DefaultComboBoxModel(userGroups.toArray()));
         User.resetStaffLinks();
     }
 
@@ -425,7 +514,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         if (userAdded && linksSaved)
         {
             String message = "The user was successfully added.\n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -439,8 +528,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
-                             + "Kindly verify your information and try again.\n"
-                             + "If the problem persists, kindly contact your system administrator.";
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -514,6 +603,11 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             warnings += "Last Name cannot be empty.\n";
             passed = false;
         }
+        if (group.equals("--- Select One ---"))
+        {
+            warnings += "Kindly select a group to which the user will belong.\n";
+            passed = false;
+        }
         return passed;
     }
 
@@ -524,7 +618,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         for (int i = 1; i < tree.getRowCount(); i++)
         {
             TreePath currentPath = tree.getPathForRow(i);
-            boolean isselected = tree.isRowSelected(i);
+            boolean isselected = tree.isPathChecked(currentPath);
             String currentPrev = (currentPath.getLastPathComponent() + "-" + isselected);
             permissions += currentPrev + "|";
         }

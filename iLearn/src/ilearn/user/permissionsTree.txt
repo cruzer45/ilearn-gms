@@ -21,11 +21,11 @@ Menu
    Student ID Cards
   Class Reports
    Class List Report
-   Class Report Grade Book
+   Class Grade Book
   Report Cards Menu
    Mid-Term Reports
-   Mid Term Class Rank Report
-   Term-End Report
+   Mid-Term Class Ranking
+   Term End Report
    Term End Ranking
   Demerit Reports
    Demerits By Class

@@ -1,0 +1,146 @@
+<?xml version="1.1" encoding="UTF-8" ?>
+
+<Form version="1.7" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jSplitPane1" alignment="1" pref="380" max="32767" attributes="0"/>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="cmdLoad" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace pref="183" max="32767" attributes="0"/>
+                      <Component id="cmdGenerate" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="cmdClose" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jSplitPane1" pref="283" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="cmdClose" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdGenerate" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdLoad" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JSplitPane" name="jSplitPane1">
+      <Properties>
+        <Property name="dividerLocation" type="int" value="200"/>
+        <Property name="orientation" type="int" value="0"/>
+        <Property name="name" type="java.lang.String" value="jSplitPane1" noResource="true"/>
+      </Properties>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
+              <JSplitPaneConstraints position="left"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree" name="tree">
+              <Properties>
+                <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
+                  <TreeModel code="Menu&#xa; Student&#xa;  Add Student&#xa;  Edit Student&#xa;  View Student&#xa; Attendance&#xa;  Enter Attendance&#xa;  Edit Attendance&#xa; Grades&#xa;  Create Assessment&#xa;  Edit Assessment&#xa;  Edit Mid Terms&#xa; Demerits&#xa;  Record Demerits&#xa;  Edit Demerits&#xa; Reports&#xa;  Student Reports &#xa;   Student List&#xa;   Repeating Students&#xa;   Students By Class&#xa;   Student ID Cards&#xa;  Class Reports&#xa;   Class List Report&#xa;   Class Grade Book&#xa;  Report Cards Menu&#xa;   Mid-Term Reports&#xa;   Mid-Term Class Ranking&#xa;   Term End Report&#xa;   Term End Ranking&#xa;  Demerit Reports&#xa;   Demerits By Class&#xa;   Demerits By Student&#xa;  Statistical Reports&#xa;   Class Size Distribution&#xa;   Gender Distribution&#xa; Manage&#xa;  Class&#xa;   Add Class&#xa;   Edit Class&#xa;   View Class&#xa;  Promotions&#xa;   Assign Promotions&#xa;   Promote Students&#xa;  School&#xa;  Staff&#xa;   Add Staff&#xa;   Edit Staff&#xa;  Subjects&#xa;   Add Subjects &#xa;   Edit Subjects&#xa;  Term&#xa;   Add Term&#xa;   Edit Term&#xa;  Time Slots&#xa;   Add Time Slot&#xa;   Edit Time Slot&#xa;  User Menu&#xa;   Add User&#xa;   Edit User&#xa;  Utilities Menu&#xa;   Mid Term&#xa;    Calculate Mid Term Grades&#xa;   End Of Term&#xa;    Calculate End of Term Grades&#xa;    Close Term"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="tree" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+          </AuxValues>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
+              <JSplitPaneConstraints position="right"/>
+            </Constraint>
+          </Constraints>
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+          <SubComponents>
+            <Component class="javax.swing.JTextArea" name="txtPermission">
+              <Properties>
+                <Property name="columns" type="int" value="20"/>
+                <Property name="rows" type="int" value="5"/>
+                <Property name="name" type="java.lang.String" value="txtPermission" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JButton" name="cmdClose">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Close"/>
+        <Property name="name" type="java.lang.String" value="cmdClose" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdCloseActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="cmdGenerate">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Generate"/>
+        <Property name="name" type="java.lang.String" value="cmdGenerate" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdGenerateActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="cmdLoad">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Load"/>
+        <Property name="name" type="java.lang.String" value="cmdLoad" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmdLoadActionPerformed"/>
+      </Events>
+    </Component>
+  </SubComponents>
+</Form>

@@ -16,8 +16,5 @@
             <config-files/>
             <config-file-groups/>
         </spring-data>
-        <swingapp xmlns="http://www.netbeans.org/ns/form-swingapp/1">
-            <application-class name="ilearn.ILearnApp"/>
-        </swingapp>
     </configuration>
 </project>
