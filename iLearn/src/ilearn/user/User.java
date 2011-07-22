@@ -29,6 +29,7 @@ public class User
     private static int loginCount = 0;
     private static String userName = "";
     private static String userGroup = "";
+    private static String permissions = "";
     private static int timeout = 0;
     static final Logger logger = Logger.getLogger(User.class.getName());
     private static ArrayList<String> staIDs = new ArrayList<String>();
@@ -52,7 +53,7 @@ public class User
         boolean successful = false;
         try
         {
-            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`,  `usrStatus`, `usrTimeout` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
+            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`,  `usrStatus`, `usrTimeout`, `usrPermissions` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, username);
             ResultSet rs = prep.executeQuery();
@@ -62,6 +63,7 @@ public class User
                 userName = username;
                 userGroup = rs.getString("usrGroup");
                 timeout = rs.getInt("usrTimeout");
+                permissions = rs.getString("usrPermissions");
             }
             rs.close();
             prep.close();
@@ -112,18 +114,19 @@ public class User
      * @returns True if the user was added to the system.
      *          Will return false if the username already exists.
      */
-    public static boolean addUser(String username, String password, String firstName, String lastName, String group)
+    public static boolean addUser(String username, String password, String firstName, String lastName, String group, String permission)
     {
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `iLearn`.`User` (`usrFirstName`, `usrLastName`, `usrName`, `usrPassword`, `usrGroup`) VALUES ( ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `iLearn`.`User` (`usrFirstName`, `usrLastName`, `usrName`, `usrPassword`, `usrGroup`, `usrPermissions`) VALUES ( ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, firstName);
             prep.setString(2, lastName);
             prep.setString(3, username);
             prep.setString(4, EncryptionHandler.encryptPassword(password));
             prep.setString(5, group);
+            prep.setString(6, permission);
             prep.execute();
             prep.close();
             successful = true;
@@ -202,7 +205,7 @@ public class User
     public static String[] getUserInfo(String ID)
     {
         String sql = "SELECT * FROM `User` WHERE `usrID` = ?;";
-        String firstName = "", lastName = "", username = "", password = "", group = "", status = "", usrtimeout = "";
+        String firstName = "", lastName = "", username = "", password = "", group = "", status = "", usrtimeout = "", userPermission = "";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -217,6 +220,7 @@ public class User
                 group = rs.getString("usrGroup");
                 status = rs.getString("usrStatus");
                 usrtimeout = rs.getString("usrTimeout");
+                userPermission = rs.getString("usrPermissions");
             }
             rs.close();
             prep.close();
@@ -228,7 +232,7 @@ public class User
         }
         String[] results =
         {
-            firstName, lastName, username, password, group, status, usrtimeout
+            firstName, lastName, username, password, group, status, usrtimeout, userPermission
         };
         return results;
     }
@@ -574,5 +578,31 @@ public class User
     public static ArrayList<String> getPermittedClasses()
     {
         return permittedClasses;
+    }
+
+    /**
+     * @return the permissions
+     */
+    public static String getPermissions()
+    {
+        return permissions;
+    }
+
+    public static boolean previligeAvailable(String currentPath)
+    {
+        String[] prevList = getPermissions().split("\\|");
+        for (String prevItem : prevList)
+        {
+            String[] split = prevItem.split("-");
+            String item = split[0];
+
+            System.out.println(item + " vs " + currentPath);
+
+            if (item.equals(currentPath) && (split[1].equalsIgnoreCase("True"))) //if the prevelige matches the row set check the path.
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

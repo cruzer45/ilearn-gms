@@ -8,8 +8,10 @@ package ilearn.user;
 
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
+import it.cnr.imaa.essi.lablib.gui.checkboxtree.TreeCheckingModel.CheckingMode;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.tree.TreePath;
 import org.jdesktop.application.Action;
 
 /**
@@ -60,7 +62,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         cmdUnlink = new javax.swing.JButton();
         cmdLink = new javax.swing.JButton();
         previlegePane = new javax.swing.JScrollPane();
-        checkboxTreePrivileges = new it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree();
+        tree = new it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree();
 
         setClosable(true);
         setIconifiable(true);
@@ -241,16 +243,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         previlegePane.setName("previlegePane"); // NOI18N
 
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Menu");
-        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("File");
-        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Logout");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Change Passwprd");
-        treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Exit");
-        treeNode2.add(treeNode3);
-        treeNode1.add(treeNode2);
-        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Student");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Add Student");
+        javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Student");
+        javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Add Student");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Student");
         treeNode2.add(treeNode3);
@@ -377,9 +371,9 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
-        checkboxTreePrivileges.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
-        checkboxTreePrivileges.setName("checkboxTreePrivileges"); // NOI18N
-        previlegePane.setViewportView(checkboxTreePrivileges);
+        tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        tree.setName("tree"); // NOI18N
+        previlegePane.setViewportView(tree);
 
         userTabbedPane.addTab(resourceMap.getString("previlegePane.TabConstraints.tabTitle"), resourceMap.getIcon("previlegePane.TabConstraints.tabIcon"), previlegePane); // NOI18N
 
@@ -417,6 +411,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
 
     private void populateLists()
     {
+        tree.getCheckingModel().setCheckingMode(CheckingMode.PROPAGATE_PRESERVING_CHECK);
         //Loads the values from the database into the combo boxes.
         cmbGroup.setModel(new DefaultComboBoxModel(User.getUserGroups().toArray()));
         User.resetStaffLinks();
@@ -452,13 +447,14 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         String lastName = txtLastName.getText().trim();
         String group = cmbGroup.getSelectedItem().toString();
         //If the user was added successfully, it displays a message.
-        boolean userAdded = User.addUser(username, password, firstName, lastName, group);
+        String permissions = getPermissions();
+        boolean userAdded = User.addUser(username, password, firstName, lastName, group, permissions);
         String usrID = User.getUserID(username);
         boolean linksSaved = User.saveStaffLinks(usrID);
         if (userAdded && linksSaved)
         {
             String message = "The user was successfully added.\n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -472,8 +468,8 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         else // If it doesn't get added tell the user something went wrong.
         {
             String message = "An error occurred while adding this user.\n"
-                             + "Kindly verify your information and try again.\n"
-                             + "If the problem persists, kindly contact your system administrator.";
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -549,8 +545,21 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         }
         return passed;
     }
+
+    private String getPermissions()
+    {
+        tree.expandAll();
+        String permissions = "";
+        for (int i = 0; i < tree.getRowCount(); i++)
+        {
+            TreePath currentPath = tree.getPathForRow(i);
+            boolean isselected = tree.isRowSelected(i);
+            String currentPrev = (currentPath.getLastPathComponent() + "-" + isselected);
+            permissions += currentPrev + "|";
+        }
+        return permissions;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree checkboxTreePrivileges;
     private javax.swing.JComboBox cmbGroup;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdLink;
@@ -569,6 +578,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
     private javax.swing.JPanel linksPanel;
     private javax.swing.JScrollPane previlegePane;
     private javax.swing.JTable tblLinks;
+    private it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree tree;
     private javax.swing.JTextField txtFirstName;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JPasswordField txtPassword;
