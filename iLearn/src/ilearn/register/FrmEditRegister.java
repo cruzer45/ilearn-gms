@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmRegister.java
  *
  * Created on May 13, 2011, 10:44:19 AM
@@ -124,7 +119,7 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
             .addGroup(wrapperPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 506, Short.MAX_VALUE)
                                 .addGroup(wrapperPanelLayout.createSequentialGroup()
                                           .addComponent(cmbSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -136,10 +131,10 @@ public class FrmEditRegister extends javax.swing.JInternalFrame
                                           .addGap(3, 3, 3)
                                           .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
-                                                          .addComponent(cmbClass, 0, 336, Short.MAX_VALUE)
+                                                          .addComponent(cmbClass, 0, 337, Short.MAX_VALUE)
                                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                           .addComponent(jButton1))
-                                                  .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 463, Short.MAX_VALUE))))
+                                                  .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 466, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(

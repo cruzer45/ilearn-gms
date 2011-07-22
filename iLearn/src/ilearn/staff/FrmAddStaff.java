@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmAddStaff.java
  *
  * Created on Mar 23, 2011, 11:29:13 AM

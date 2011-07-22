@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmEditTerm.java
  *
  * Created on Mar 8, 2011, 10:13:40 PM
@@ -247,7 +242,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
 
     private void tblTermsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblTermsMouseClicked
     {
-        //GEN-HEADEREND:event_tblTermsMouseClicked
+//GEN-HEADEREND:event_tblTermsMouseClicked
         if (evt.getClickCount() >= 2)
         {
             if (tblTerms.getSelectedRow() != -1)

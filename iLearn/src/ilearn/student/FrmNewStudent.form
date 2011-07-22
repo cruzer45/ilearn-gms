@@ -95,13 +95,13 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txtPhoto" pref="166" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="166" max="32767" attributes="0"/>
-                                  <Component id="calDOB" pref="166" max="32767" attributes="2"/>
-                                  <Component id="cmbGender" alignment="0" pref="166" max="32767" attributes="2"/>
-                                  <Component id="txtOtherName" alignment="0" pref="166" max="32767" attributes="2"/>
-                                  <Component id="txtFirstName" alignment="0" pref="166" max="32767" attributes="2"/>
-                                  <Component id="txtLastName" alignment="1" pref="166" max="32767" attributes="2"/>
+                                  <Component id="txtPhoto" pref="181" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="181" max="32767" attributes="0"/>
+                                  <Component id="calDOB" pref="181" max="32767" attributes="2"/>
+                                  <Component id="cmbGender" alignment="0" pref="181" max="32767" attributes="2"/>
+                                  <Component id="txtOtherName" alignment="0" pref="181" max="32767" attributes="2"/>
+                                  <Component id="txtFirstName" alignment="0" pref="181" max="32767" attributes="2"/>
+                                  <Component id="txtLastName" alignment="1" pref="181" max="32767" attributes="2"/>
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" max="-2" attributes="0">

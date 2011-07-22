@@ -279,13 +279,13 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="txtPhoto1" pref="136" max="32767" attributes="0"/>
-                                          <Component id="calDOB" pref="136" max="32767" attributes="0"/>
-                                          <Component id="cmbGender" pref="136" max="32767" attributes="0"/>
-                                          <Component id="txtID" alignment="0" pref="136" max="32767" attributes="0"/>
-                                          <Component id="txtFirstName" alignment="0" pref="136" max="32767" attributes="2"/>
-                                          <Component id="txtLastName" alignment="0" pref="136" max="32767" attributes="2"/>
-                                          <Component id="txtOtherName" alignment="0" pref="136" max="32767" attributes="0"/>
+                                          <Component id="txtPhoto1" pref="151" max="32767" attributes="0"/>
+                                          <Component id="calDOB" pref="151" max="32767" attributes="0"/>
+                                          <Component id="cmbGender" pref="151" max="32767" attributes="0"/>
+                                          <Component id="txtID" alignment="0" pref="151" max="32767" attributes="0"/>
+                                          <Component id="txtFirstName" alignment="0" pref="151" max="32767" attributes="2"/>
+                                          <Component id="txtLastName" alignment="0" pref="151" max="32767" attributes="2"/>
+                                          <Component id="txtOtherName" alignment="0" pref="151" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">

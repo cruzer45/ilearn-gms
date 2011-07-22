@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * DialogAddSubject.java
  *
  * Created on Apr 29, 2011, 2:33:30 AM

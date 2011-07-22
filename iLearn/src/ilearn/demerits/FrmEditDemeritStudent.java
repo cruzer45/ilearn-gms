@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmRecordDemeritStudent.java
  *
  * Created on Jul 13, 2011, 8:44:43 PM

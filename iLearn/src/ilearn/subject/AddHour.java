@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * AddHour.java
  *
  * Created on Apr 28, 2011, 10:18:37 PM
@@ -105,7 +100,7 @@ public class AddHour extends javax.swing.JDialog
 
     private void tblTimeSlotsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblTimeSlotsMouseClicked
     {
-        //GEN-HEADEREND:event_tblTimeSlotsMouseClicked
+//GEN-HEADEREND:event_tblTimeSlotsMouseClicked
         if (evt.getClickCount() >= 2)
         {
             add();

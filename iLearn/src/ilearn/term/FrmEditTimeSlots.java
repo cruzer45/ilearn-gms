@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmEditTimeSlots.java
  *
  * Created on Mar 19, 2011, 7:54:27 AM
@@ -278,7 +273,7 @@ public class FrmEditTimeSlots extends javax.swing.JInternalFrame
 
     private void tblTimeSlotsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblTimeSlotsMouseClicked
     {
-        //GEN-HEADEREND:event_tblTimeSlotsMouseClicked
+//GEN-HEADEREND:event_tblTimeSlotsMouseClicked
         if (evt.getClickCount() >= 2)
         {
             next();

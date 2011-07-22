@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * DialogStudentByClass.java
  *
  * Created on May 1, 2011, 1:37:20 AM

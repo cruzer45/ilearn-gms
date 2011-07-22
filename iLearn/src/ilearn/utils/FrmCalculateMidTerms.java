@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmCalculateMidTerms.java
  *
  * Created on Jul 7, 2011, 9:49:34 PM

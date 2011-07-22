@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmPrintIDCards.java
  *
  * Created on Jul 18, 2011, 11:40:18 AM
@@ -15,7 +10,6 @@ import ilearn.kernel.Utilities;
 import ilearn.student.FrmNewStudent;
 import java.io.File;
 import java.io.IOException;
-import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.Date;
 import java.util.logging.Level;

@@ -41,14 +41,14 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txtLongName" alignment="0" pref="296" max="32767" attributes="0"/>
-                          <Component id="txtShortName" alignment="0" pref="296" max="32767" attributes="0"/>
-                          <Component id="txtTermCode" alignment="0" pref="296" max="32767" attributes="0"/>
+                          <Component id="txtLongName" alignment="0" pref="280" max="32767" attributes="0"/>
+                          <Component id="txtShortName" alignment="0" pref="280" max="32767" attributes="0"/>
+                          <Component id="txtTermCode" alignment="0" pref="280" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="81" max="32767" attributes="0"/>
+                      <EmptySpace pref="114" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>

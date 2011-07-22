@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmNewStudent.java
  *
  * Created on Feb 15, 2011, 9:18:09 PM

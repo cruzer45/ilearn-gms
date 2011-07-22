@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmChangePassword.java
  *
  * Created on Jun 2, 2011, 4:28:49 PM

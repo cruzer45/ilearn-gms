@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmAddTimeSlot.java
  *
  * Created on Mar 13, 2011, 3:37:00 PM

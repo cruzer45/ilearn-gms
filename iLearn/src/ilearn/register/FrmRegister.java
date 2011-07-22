@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmRegister.java
  *
  * Created on May 13, 2011, 10:44:19 AM
@@ -152,15 +147,15 @@ public class FrmRegister extends javax.swing.JInternalFrame
             .addGroup(wrapperPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 564, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 505, Short.MAX_VALUE)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, wrapperPanelLayout.createSequentialGroup()
                                           .addComponent(lblDate)
                                           .addGap(6, 6, 6)
-                                          .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE))
+                                          .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE))
                                 .addGroup(wrapperPanelLayout.createSequentialGroup()
                                           .addComponent(lblClass)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addComponent(cmbClass, 0, 515, Short.MAX_VALUE))
+                                          .addComponent(cmbClass, 0, 456, Short.MAX_VALUE))
                                 .addGroup(wrapperPanelLayout.createSequentialGroup()
                                           .addComponent(cmbSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -179,7 +174,7 @@ public class FrmRegister extends javax.swing.JInternalFrame
                                 .addComponent(lblClass)
                                 .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 336, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)

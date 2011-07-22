@@ -1,0 +1,65 @@
+Menu
+ Student
+  Add Student
+  Edit Student
+  View Student
+ Attendance
+  Enter Attendance
+  Edit Attendance
+ Grades
+  Create Assessment
+  Edit Assessment
+  Edit Mid Terms
+ Demerits
+  Record Demerits
+  Edit Demerits
+ Reports
+  Student Reports 
+   Student List
+   Repeating Students
+   Students By Class
+   Student ID Cards
+  Class Reports
+   Class List Report
+   Class Report Grade Book
+  Report Cards Menu
+   Mid-Term Reports
+   Mid Term Class Rank Report
+   Term-End Report
+   Term End Ranking
+  Demerit Reports
+   Demerits By Class
+   Demerits By Student
+  Statistical Reports
+   Class Size Distribution
+   Gender Distribution
+ Manage
+  Class
+   Add Class
+   Edit Class
+   View Class
+  Promotions
+   Assign Promotions
+   Promote Students
+  School
+  Staff
+   Add Staff
+   Edit Staff
+  Subjects
+   Add Subjects 
+   Edit Subjects
+  Term
+   Add Term
+   Edit Term
+  Time Slots
+   Add Time Slot
+   Edit Time Slot
+  User Menu
+   Add User
+   Edit User
+  Utilities Menu
+   Mid Term
+    Calculate Mid Term Grades
+   End Of Term
+    Calculate End of Term Grades
+    Close Term

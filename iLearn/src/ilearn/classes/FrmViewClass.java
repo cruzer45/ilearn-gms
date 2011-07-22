@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmViewClass.java
  *
  * Created on Apr 27, 2011, 11:31:19 AM

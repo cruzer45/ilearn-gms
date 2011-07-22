@@ -1,21 +1,14 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmDemeritsByStudent.java
  *
  * Created on Jul 14, 2011, 11:55:35 PM
  */
 package ilearn.reports;
 
-import ilearn.ILearnApp;
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
 import ilearn.student.Student;
 import java.awt.event.KeyEvent;
-import javax.swing.JDialog;
 import javax.swing.JInternalFrame;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.Task;
@@ -137,7 +130,7 @@ public class FrmDemeritsByStudent extends javax.swing.JInternalFrame
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
     {
-        //GEN-HEADEREND:event_txtSearchKeyPressed
+//GEN-HEADEREND:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             search();
@@ -146,7 +139,7 @@ public class FrmDemeritsByStudent extends javax.swing.JInternalFrame
 
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblSearchMouseClicked
     {
-        //GEN-HEADEREND:event_tblSearchMouseClicked
+//GEN-HEADEREND:event_tblSearchMouseClicked
         if (evt.getClickCount() >= 2)
         {
             loadReport();

@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmCloseTerm.java
  *
  * Created on Jun 29, 2011, 9:07:57 AM

@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmEditClass.java
  *
  * Created on Mar 28, 2011, 10:27:35 PM
@@ -560,7 +555,6 @@ public class FrmEditClass extends javax.swing.JInternalFrame
         }
         return passed;
     }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel classPanel;
     private javax.swing.JTabbedPane classTabbedPane;

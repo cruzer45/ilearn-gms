@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmAddNewClass.java
  *
  * Created on Feb 21, 2011, 9:58:49 PM

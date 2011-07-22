@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmReportViewer.java
  *
  * Created on Feb 17, 2010, 2:47:00 PM
@@ -13,7 +8,6 @@ package ilearn.reports;
 import ilearn.kernel.Environment;
 import java.awt.BorderLayout;
 import java.awt.Container;
-import java.sql.Connection;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -38,11 +32,6 @@ public class FrmReportViewer extends javax.swing.JInternalFrame
         initComponents();
         setBounds(10, 10, 600, 500);
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-    }
-
-    public FrmReportViewer(String fileName)
-    {
-        this(fileName, null);
     }
 
     public FrmReportViewer(String fileName, Map parameter)

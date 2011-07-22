@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmCreateAssessment.java
  *
  * Created on Apr 30, 2011, 7:41:29 PM

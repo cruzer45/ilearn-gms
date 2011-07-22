@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmAssignPromotions.java
  *
  * Created on Jun 30, 2011, 6:25:00 PM

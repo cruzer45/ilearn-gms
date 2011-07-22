@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmPromote.java
  *
  * Created on Jul 7, 2011, 11:08:24 AM
@@ -40,13 +35,13 @@ public class FrmPromote extends javax.swing.JInternalFrame
         lblCancel = new javax.swing.JButton();
         lblPromote = new javax.swing.JButton();
         setClosable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmPromote.class);
-        setForeground(resourceMap.getColor("jLabel2.foreground")); // NOI18N
         setIconifiable(true);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmPromote.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
+        setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
         lblWarning.setFont(lblWarning.getFont().deriveFont(lblWarning.getFont().getStyle() | java.awt.Font.BOLD, lblWarning.getFont().getSize()+5));
-        lblWarning.setForeground(resourceMap.getColor("jLabel2.foreground")); // NOI18N
+        lblWarning.setForeground(resourceMap.getColor("lblWarning.foreground")); // NOI18N
         lblWarning.setText(resourceMap.getString("lblWarning.text")); // NOI18N
         lblWarning.setName("lblWarning"); // NOI18N
         lblWarning2.setForeground(resourceMap.getColor("lblWarning2.foreground")); // NOI18N
@@ -68,7 +63,7 @@ public class FrmPromote extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblWarning2, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                                .addComponent(lblWarning2, javax.swing.GroupLayout.DEFAULT_SIZE, 326, Short.MAX_VALUE)
                                 .addComponent(lblWarning)
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                           .addComponent(lblPromote)
@@ -83,7 +78,7 @@ public class FrmPromote extends javax.swing.JInternalFrame
                       .addComponent(lblWarning)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addComponent(lblWarning2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblCancel)
                                 .addComponent(lblPromote))

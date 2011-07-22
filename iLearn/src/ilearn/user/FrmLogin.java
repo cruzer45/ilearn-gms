@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmLogin.java
  *
  * Created on Mar 1, 2011, 7:46:53 PM

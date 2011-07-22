@@ -42,10 +42,10 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="spinnerStart" alignment="1" pref="292" max="32767" attributes="0"/>
-                          <Component id="cmbDay" alignment="1" pref="292" max="32767" attributes="0"/>
-                          <Component id="txtCode" alignment="0" pref="292" max="32767" attributes="0"/>
-                          <Component id="spinnerEnd" alignment="1" pref="292" max="32767" attributes="0"/>
+                          <Component id="spinnerStart" alignment="1" pref="279" max="32767" attributes="0"/>
+                          <Component id="cmbDay" alignment="1" pref="279" max="32767" attributes="0"/>
+                          <Component id="txtCode" alignment="0" pref="279" max="32767" attributes="0"/>
+                          <Component id="spinnerEnd" alignment="1" pref="279" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -81,7 +81,7 @@
                   <Component id="spinnerEnd" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblEnd" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="unrelated" pref="14" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>

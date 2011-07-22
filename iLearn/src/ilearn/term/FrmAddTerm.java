@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmAddTerm.java
  *
  * Created on Mar 8, 2011, 9:06:01 PM

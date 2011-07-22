@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmEditMidTerms.java
  *
  * Created on Jul 9, 2011, 7:36:34 AM
@@ -15,7 +10,6 @@ import ilearn.kernel.Utilities;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.table.TableColumn;
-import javax.swing.table.TableColumnModel;
 import org.jdesktop.application.Action;
 
 /**
@@ -281,7 +275,7 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
 
     private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
     {
-        //GEN-HEADEREND:event_txtSearchKeyPressed
+//GEN-HEADEREND:event_txtSearchKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER)
         {
             search();
@@ -290,7 +284,7 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
 
     private void tblSearchMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblSearchMouseClicked
     {
-        //GEN-HEADEREND:event_tblSearchMouseClicked
+//GEN-HEADEREND:event_tblSearchMouseClicked
         if (evt.getClickCount() >= 2)
         {
             loadInfo();

@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmManageSchool.java
  *
  * Created on Apr 18, 2011, 9:48:01 PM

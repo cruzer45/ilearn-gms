@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmEditStaff.java
  *
  * Created on Mar 23, 2011, 2:12:07 PM

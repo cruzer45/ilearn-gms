@@ -3,9 +3,9 @@
 <Form version="1.5" maxVersion="1.7" type="org.netbeans.modules.form.forminfo.JInternalFrameFormInfo">
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
-    <Property name="foreground" type="java.awt.Color" resourceKey="jLabel2.foreground"/>
     <Property name="iconifiable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
+    <Property name="frameIcon" type="javax.swing.Icon" resourceKey="Form.frameIcon"/>
     <Property name="name" type="java.lang.String" value="Form" noResource="true"/>
   </Properties>
   <SyntheticProperties>
@@ -29,7 +29,7 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblWarning2" alignment="0" pref="303" max="32767" attributes="0"/>
+                  <Component id="lblWarning2" alignment="0" pref="326" max="32767" attributes="0"/>
                   <Component id="lblWarning" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="lblPromote" min="-2" max="-2" attributes="0"/>
@@ -48,7 +48,7 @@
               <Component id="lblWarning" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Component id="lblWarning2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="16" max="32767" attributes="0"/>
+              <EmptySpace pref="21" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="lblCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblPromote" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -66,7 +66,7 @@
             <Font bold="true" component="lblWarning" property="font" relativeSize="true" size="5"/>
           </FontInfo>
         </Property>
-        <Property name="foreground" type="java.awt.Color" resourceKey="jLabel2.foreground"/>
+        <Property name="foreground" type="java.awt.Color" resourceKey="lblWarning.foreground"/>
         <Property name="text" type="java.lang.String" resourceKey="lblWarning.text"/>
         <Property name="name" type="java.lang.String" value="lblWarning" noResource="true"/>
       </Properties>
