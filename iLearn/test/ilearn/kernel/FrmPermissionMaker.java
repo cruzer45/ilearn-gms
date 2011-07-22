@@ -32,8 +32,8 @@ public class FrmPermissionMaker extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tree = new it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree();
@@ -42,15 +42,11 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         cmdClose = new javax.swing.JButton();
         cmdGenerate = new javax.swing.JButton();
         cmdLoad = new javax.swing.JButton();
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jSplitPane1.setName("jSplitPane1"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Menu");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Student");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Add Student");
@@ -183,81 +179,80 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         tree.setName("tree"); // NOI18N
         jScrollPane1.setViewportView(tree);
-
         jSplitPane1.setLeftComponent(jScrollPane1);
-
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-
         txtPermission.setColumns(20);
         txtPermission.setRows(5);
         txtPermission.setName("txtPermission"); // NOI18N
         jScrollPane2.setViewportView(txtPermission);
-
         jSplitPane1.setRightComponent(jScrollPane2);
-
         cmdClose.setText("Close");
         cmdClose.setName("cmdClose"); // NOI18N
-        cmdClose.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmdClose.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmdCloseActionPerformed(evt);
             }
         });
-
         cmdGenerate.setText("Generate");
         cmdGenerate.setName("cmdGenerate"); // NOI18N
-        cmdGenerate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmdGenerate.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmdGenerateActionPerformed(evt);
             }
         });
-
         cmdLoad.setText("Load");
         cmdLoad.setName("cmdLoad"); // NOI18N
-        cmdLoad.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmdLoad.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmdLoadActionPerformed(evt);
             }
         });
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(cmdLoad)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
-                        .addComponent(cmdGenerate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdClose)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addComponent(cmdLoad)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                                          .addComponent(cmdGenerate)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmdClose)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdClose)
-                    .addComponent(cmdGenerate)
-                    .addComponent(cmdLoad))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdClose)
+                                .addComponent(cmdGenerate)
+                                .addComponent(cmdLoad))
+                      .addContainerGap())
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cmdCloseActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmdCloseActionPerformed
-    {//GEN-HEADEREND:event_cmdCloseActionPerformed
+    {
+//GEN-HEADEREND:event_cmdCloseActionPerformed
         System.exit(0);
     }//GEN-LAST:event_cmdCloseActionPerformed
 
     private void cmdGenerateActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmdGenerateActionPerformed
-    {//GEN-HEADEREND:event_cmdGenerateActionPerformed
+    {
+//GEN-HEADEREND:event_cmdGenerateActionPerformed
         tree.expandAll();
         String permissions = "";
         for (int i = 1; i < tree.getRowCount(); i++)
@@ -271,15 +266,14 @@ public class FrmPermissionMaker extends javax.swing.JFrame
     }//GEN-LAST:event_cmdGenerateActionPerformed
 
     private void cmdLoadActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmdLoadActionPerformed
-    {//GEN-HEADEREND:event_cmdLoadActionPerformed
-
+    {
+//GEN-HEADEREND:event_cmdLoadActionPerformed
         if (txtPermission.getText().trim().isEmpty())
         {
             String message = "Kindly enter a permission string to parse before loading";
             Utilities.showWarningMessage(rootPane, message);
             return;
         }
-
         tree.expandAll();
         for (int i = 0; i < tree.getRowCount(); i++)
         {
@@ -289,24 +283,29 @@ public class FrmPermissionMaker extends javax.swing.JFrame
             {
                 tree.addCheckingPath(currPath);
             }
+            else
+            {
+                tree.removeCheckingPath(currPath);
+            }
         }
     }//GEN-LAST:event_cmdLoadActionPerformed
 
     private boolean previligeAvailable(String currentPath)
     {
         String privileges = txtPermission.getText().trim();
-
         String[] prevList = privileges.split("\\|");
         for (String prevItem : prevList)
         {
             String[] split = prevItem.split("-");
             String item = split[0];
-
             System.out.println(item + " vs " + currentPath);
-
             if (item.equals(currentPath) && (split[1].equalsIgnoreCase("True"))) //if the prevelige matches the row set check the path.
             {
                 return true;
+            }
+            else if (item.equals(currentPath) && (split[1].equalsIgnoreCase("false")))
+            {
+                return false;
             }
         }
         return false;
@@ -319,7 +318,6 @@ public class FrmPermissionMaker extends javax.swing.JFrame
     {
         java.awt.EventQueue.invokeLater(new Runnable()
         {
-
             public void run()
             {
                 new FrmPermissionMaker().setVisible(true);

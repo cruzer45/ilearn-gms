@@ -164,7 +164,7 @@ public class FrmLogin extends javax.swing.JDialog
     public void cancel()
     {
         String message = "Are you sure you want to close this window?\n"
-                + "That will also exit the program.";
+                         + "That will also exit the program.";
         int response = JOptionPane.showConfirmDialog(this, message, "iLearn", JOptionPane.YES_NO_OPTION);
         if (response == JOptionPane.YES_OPTION)
         {
@@ -188,7 +188,7 @@ public class FrmLogin extends javax.swing.JDialog
         else
         {
             String message = "You have enterd an incorrect username/password combination.\n"
-                    + "Kindly try again.";
+                             + "Kindly try again.";
             Utilities.showWarningMessage(null, message);
             txtPassword.grabFocus();
             txtPassword.setSelectionStart(0);

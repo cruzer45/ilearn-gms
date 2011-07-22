@@ -442,7 +442,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -454,7 +454,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -466,7 +466,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -478,7 +478,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -490,7 +490,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -502,7 +502,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -514,7 +514,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -526,7 +526,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -538,7 +538,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -550,7 +550,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -562,7 +562,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -574,7 +574,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -586,7 +586,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -598,7 +598,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -610,7 +610,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -622,7 +622,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -634,7 +634,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -646,7 +646,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -658,7 +658,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -670,7 +670,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -682,7 +682,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -694,7 +694,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -706,7 +706,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
