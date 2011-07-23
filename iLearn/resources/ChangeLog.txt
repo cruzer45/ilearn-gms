@@ -1,6 +1,12 @@
 Version 1.1
 
+-   Load Appropriate list items for classes and subjects.
+
+-   Fix Add and Edit user screens to handle advanced permissions and linking.
+
 -   Users will be linked to staff members.
+
+-   H.O.D.s will be linked to all users they oversee.
 
 -   Add Student ID Report.
 
