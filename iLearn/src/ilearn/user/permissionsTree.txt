@@ -23,8 +23,8 @@ Menu
    Class List Report
    Class Grade Book
   Report Cards Menu
-   Mid-Term Reports
-   Mid-Term Class Ranking
+   Mid Term Reports
+   Mid Term Class Ranking
    Term End Report
    Term End Ranking
   Demerit Reports

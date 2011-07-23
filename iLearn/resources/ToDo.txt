@@ -1,7 +1,7 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
-30%     Fix Add and Edit user screens to handle advanced privileges and linking.
+50%     Fix Add and Edit user screens to handle advanced permissions and linking.
 10%     Load Appropriate list items for classes and subjects.
 50%     Calculate mid term and final grades.
 50%     Generate Report Cards Function

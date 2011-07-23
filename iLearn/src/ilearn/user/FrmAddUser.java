@@ -134,12 +134,12 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                                 .addComponent(jLabel1))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 279, Short.MAX_VALUE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
-                                .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
+                                .addComponent(cmbGroup, javax.swing.GroupLayout.Alignment.LEADING, 0, 260, Short.MAX_VALUE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(txtUserName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
+                                .addComponent(jSpinner1, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -169,7 +169,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(jLabel1)
                                 .addComponent(jSpinner1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addContainerGap(115, Short.MAX_VALUE))
+                      .addContainerGap(112, Short.MAX_VALUE))
         );
         userTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
         linksPanel.setName("linksPanel"); // NOI18N
@@ -182,14 +182,16 @@ public class FrmAddUser extends javax.swing.JInternalFrame
                               },
                               new String []
                               {
-                                  "ID", "Name"
+                                  "ID", "Code", "Name"
                               }
                           ));
+        tblLinks.setColumnSelectionAllowed(true);
         tblLinks.setName("tblLinks"); // NOI18N
         jScrollPane2.setViewportView(tblLinks);
         tblLinks.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
         tblLinks.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title0")); // NOI18N
-        tblLinks.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title1")); // NOI18N
+        tblLinks.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title2")); // NOI18N
+        tblLinks.getColumnModel().getColumn(2).setHeaderValue(resourceMap.getString("tblLinks.columnModel.title1")); // NOI18N
         cmdUnlink.setAction(actionMap.get("unlinkAccount")); // NOI18N
         cmdUnlink.setText(resourceMap.getString("cmdUnlink.text")); // NOI18N
         cmdUnlink.setName("cmdUnlink"); // NOI18N
@@ -203,7 +205,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
                                 .addGroup(linksPanelLayout.createSequentialGroup()
                                           .addComponent(cmdLink)
                                           .addGap(18, 18, 18)
@@ -214,7 +216,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdUnlink)
@@ -270,9 +272,9 @@ public class FrmAddUser extends javax.swing.JInternalFrame
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Report Cards Menu");
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid-Term Reports");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid Term Reports");
         treeNode3.add(treeNode4);
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid-Term Class Ranking");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid Term Class Ranking");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Term End Report");
         treeNode3.add(treeNode4);
@@ -363,10 +365,10 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
+                                .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdReset)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
                                           .addComponent(cmdSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdCancel)))
@@ -376,7 +378,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 306, Short.MAX_VALUE)
+                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 312, Short.MAX_VALUE)
                       .addGap(18, 18, 18)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -398,7 +400,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             {
                 TreePath currPath = tree.getPathForRow(i);
                 String currentPath = currPath.getLastPathComponent().toString();
-                if (previligeAvailable(currentPath, permission))
+                if (User.previligeAvailable(currentPath, permission))
                 {
                     tree.addCheckingPath(currPath);
                 }
@@ -416,7 +418,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             {
                 TreePath currPath = tree.getPathForRow(i);
                 String currentPath = currPath.getLastPathComponent().toString();
-                if (previligeAvailable(currentPath, permission))
+                if (User.previligeAvailable(currentPath, permission))
                 {
                     tree.addCheckingPath(currPath);
                 }
@@ -427,21 +429,6 @@ public class FrmAddUser extends javax.swing.JInternalFrame
             }
         }
     }//GEN-LAST:event_cmbGroupActionPerformed
-
-    private boolean previligeAvailable(String currentPath, String permissionString)
-    {
-        String[] prevList = permissionString.split("\\|");
-        for (String prevItem : prevList)
-        {
-            String[] split = prevItem.split("-");
-            String item = split[0];
-            if (item.equals(currentPath) && (split[1].equalsIgnoreCase("True"))) //if the prevelige matches the row set check the path.
-            {
-                return true;
-            }
-        }
-        return false;
-    }
 
     private void populateLists()
     {

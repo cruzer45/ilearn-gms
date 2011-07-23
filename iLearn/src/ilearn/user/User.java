@@ -34,9 +34,8 @@ public class User
     private static ArrayList<String> permittedSubjects = new ArrayList<String>();
     private static ArrayList<String> permittedClasses = new ArrayList<String>();
     //PREDEFINED PERMISSION STRING
-    public static final String administrationString = "Student-true|Add Student-true|Edit Student-true|View Student-true|Attendance-true|Enter Attendance-true|Edit Attendance-true|Grades-true|Create Assessment-true|Edit Assessment-true|Edit Mid Terms-true|Demerits-true|Record Demerits-true|Edit Demerits-true|Reports-true|Student Reports-true|Student List-true|Repeating Students-true|Students By Class-true|Student ID Cards-true|Class Reports-true|Class List Report-true|Class Grade Book-true|Report Cards Menu-true|Mid-Term Reports-true|Mid-Term Class Ranking-true|Term End Report-true|Term End Ranking-true|Demerit Reports-true|Demerits By Class-true|Demerits By Student-true|Statistical Reports-true|Class Size Distribution-true|Gender Distribution-true|Manage-true|Class-true|Add Class-true|Edit Class-true|View Class-true|Promotions-true|Assign Promotions-true|Promote Students-true|School-true|Staff-true|Add Staff-true|Edit Staff-true|Subjects-true|Add Subjects-true|Edit Subjects-true|Term-true|Add Term-true|Edit Term-true|Time Slots-true|Add Time Slot-true|Edit Time Slot-true|User Menu-true|Add User-true|Edit User-true|Utilities Menu-true|Mid Term-true|Calculate Mid Term Grades-true|End Of Term-true|Calculate End of Term Grades-true|Close Term-true|";
+    public static final String administrationString = "Student-true|Add Student-true|Edit Student-true|View Student-true|Attendance-true|Enter Attendance-true|Edit Attendance-true|Grades-true|Create Assessment-true|Edit Assessment-true|Edit Mid Terms-true|Demerits-true|Record Demerits-true|Edit Demerits-true|Reports-true|Student Reports-true|Student List-true|Repeating Students-true|Students By Class-true|Student ID Cards-true|Class Reports-true|Class List Report-true|Class Grade Book-true|Report Cards Menu-true|Mid Term Reports-true|Mid Term Class Ranking-true|Term End Report-true|Term End Ranking-true|Demerit Reports-true|Demerits By Class-true|Demerits By Student-true|Statistical Reports-true|Class Size Distribution-true|Gender Distribution-true|Manage-true|Class-true|Add Class-true|Edit Class-true|View Class-true|Promotions-true|Assign Promotions-true|Promote Students-true|School-true|Staff-true|Add Staff-true|Edit Staff-true|Subjects-true|Add Subjects-true|Edit Subjects-true|Term-true|Add Term-true|Edit Term-true|Time Slots-true|Add Time Slot-true|Edit Time Slot-true|User Menu-true|Add User-true|Edit User-true|Utilities Menu-true|Mid Term-true|Calculate Mid Term Grades-true|End Of Term-true|Calculate End of Term Grades-true|Close Term-true|";
     public static final String teacherString = "Student-true|Add Student-false|Edit Student-false|View Student-true|Attendance-true|Enter Attendance-true|Edit Attendance-true|Grades-true|Create Assessment-true|Edit Assessment-true|Edit Mid Terms-true|Demerits-true|Record Demerits-true|Edit Demerits-true|Reports-false|Student Reports-false|Student List-false|Repeating Students-false|Students By Class-false|Student ID Cards-false|Class Reports-false|Class List Report-false|Class Grade Book-true|Report Cards Menu-false|Mid-Term Reports-false|Mid-Term Class Ranking-false|Term End Report-false|Term End Ranking-false|Demerit Reports-false|Demerits By Class-false|Demerits By Student-false|Statistical Reports-false|Class Size Distribution-false|Gender Distribution-false|Manage-false|Class-false|Add Class-false|Edit Class-false|View Class-false|Promotions-false|Assign Promotions-false|Promote Students-false|School-false|Staff-false|Add Staff-false|Edit Staff-false|Subjects-false|Add Subjects-false|Edit Subjects-false|Term-false|Add Term-false|Edit Term-false|Time Slots-false|Add Time Slot-false|Edit Time Slot-false|User Menu-false|Add User-false|Edit User-false|Utilities Menu-false|Mid Term-false|Calculate Mid Term Grades-false|End Of Term-false|Calculate End of Term Grades-false|Close Term-false|";
-
 
     /**
      * This function checks to see if the given username and password matches
@@ -91,13 +90,13 @@ public class User
             String message = "ERROR: Could not validate user information.";
             logger.log(Level.SEVERE, message, e);
             message = "An error occurred while validating the login information.\n"
-                      + "Kindly consult your system administrator.";
+                    + "Kindly consult your system administrator.";
             Utilities.showErrorMessage(null, message);
         }
         if (loginCount >= 3)
         {
             String message = "You have exceeded the number of failed login attempts.\n"
-                             + "The program will now exit.";
+                    + "The program will now exit.";
             Utilities.showErrorMessage(null, message);
             ilearn.ILearnApp.getApplication().exit();
         }
@@ -137,7 +136,7 @@ public class User
         catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException ex)
         {
             String message = "An error occurred while adding a user to the database.\n"
-                             + "This username already exists.";
+                    + "This username already exists.";
             logger.log(Level.SEVERE, message, ex);
             successful = false;
             Utilities.showErrorMessage(null, message);
@@ -183,6 +182,7 @@ public class User
         }
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -212,14 +212,14 @@ public class User
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                firstName = rs.getString("usrFirstName");
-                lastName = rs.getString("usrLastName");
-                username = rs.getString("usrName");
-                password = rs.getString("usrPassword");
-                group = rs.getString("usrGroup");
-                status = rs.getString("usrStatus");
-                usrtimeout = rs.getString("usrTimeout");
-                userPermission = rs.getString("usrPermissions");
+                firstName = rs.getString("usrFirstName");//0
+                lastName = rs.getString("usrLastName");//1
+                username = rs.getString("usrName");//2
+                password = rs.getString("usrPassword");//3
+                group = rs.getString("usrGroup");//4
+                status = rs.getString("usrStatus");//5
+                usrtimeout = rs.getString("usrTimeout");//6
+                userPermission = rs.getString("usrPermissions");//7
             }
             rs.close();
             prep.close();
@@ -272,10 +272,10 @@ public class User
      * @return True of the action was completed successfully.
      *         False if anything went wrong.
      */
-    public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String status, String usrTimeOut)
+    public static boolean updateUser(String ID, String firstName, String lastName, String userName, String password, String group, String status, String usrTimeOut, String usrPermission)
     {
         boolean successful = false;
-        String sql = "UPDATE `User` SET `usrFirstName`= ?, `usrLastName`= ?, `usrName`= ?, `usrPassword`= ?, `usrGroup`= ?, `usrStatus`= ? , `usrTimeout` = ? WHERE `usrID`= ? LIMIT 1;";
+        String sql = "UPDATE `User` SET `usrFirstName`= ?, `usrLastName`= ?, `usrName`= ?, `usrPassword`= ?, `usrGroup`= ?, `usrStatus`= ? , `usrTimeout` = ? , `usrPermissions` = ? WHERE `usrID`= ? LIMIT 1;";
         String[] currentInfo = getUserInfo(ID);
         if (!currentInfo[3].equals(password))
         {
@@ -291,7 +291,8 @@ public class User
             prep.setString(5, group);
             prep.setString(6, status);
             prep.setString(7, usrTimeOut);
-            prep.setString(8, ID);
+            prep.setString(8, usrPermission);
+            prep.setString(9, ID);
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -488,19 +489,28 @@ public class User
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
-                Object o = getValueAt(0, columnIndex);
-                if (o == null)
+                try
+                {
+                    Object o = getValueAt(0, columnIndex);
+                    if (o == null)
+                    {
+                        return Object.class;
+                    }
+                    else
+                    {
+                        return o.getClass();
+                    }
+                }
+                catch (Exception e)
                 {
                     return Object.class;
                 }
-                else
-                {
-                    return o.getClass();
-                }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -518,8 +528,11 @@ public class User
         boolean successful = false;
         try
         {
+            String deleteSQL = "DELETE FROM `User_Staff` WHERE `userID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(deleteSQL);
+            prep.execute();
             String sql = "INSERT INTO `User_Staff` (`userID`, `staID`) VALUES (?, ?);";
-            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep = Environment.getConnection().prepareStatement(sql);
             for (String staff : staIDs)
             {
                 prep.setString(1, usrID);
@@ -538,7 +551,7 @@ public class User
         return successful;
     }
 
-    private static void getStaffLinks(String usrID)
+    public static void getStaffLinks(String usrID)
     {
         try
         {
@@ -553,6 +566,12 @@ public class User
             }
             rs.close();
             prep.close();
+            for (String staID : staIDs)
+            {
+                ArrayList<String> details = Staff.getStaffDetails(staID);
+                staCodes.add(details.get(1));
+                staNames.add(details.get(2) + " " + details.get(3));
+            }
         }
         catch (Exception e)
         {
@@ -588,6 +607,21 @@ public class User
     public static boolean previligeAvailable(String currentPath)
     {
         String[] prevList = getPermissions().split("\\|");
+        for (String prevItem : prevList)
+        {
+            String[] split = prevItem.split("-");
+            String item = split[0];
+            if (item.equals(currentPath) && (split[1].equalsIgnoreCase("True"))) //if the prevelige matches the row set check the path.
+            {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean previligeAvailable(String currentPath, String permissionString)
+    {
+        String[] prevList = permissionString.split("\\|");
         for (String prevItem : prevList)
         {
             String[] split = prevItem.split("-");

@@ -32,508 +32,546 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="userTabbedPane" pref="364" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="wrapperPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="userTabbedPane" pref="349" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-          </Group>
+          <Component id="wrapperPanel" alignment="0" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Container class="javax.swing.JTabbedPane" name="userTabbedPane">
+    <Container class="javax.swing.JPanel" name="wrapperPanel">
       <Properties>
-        <Property name="name" type="java.lang.String" value="userTabbedPane" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="wrapperPanel" noResource="true"/>
       </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="userTabbedPane" alignment="0" pref="374" max="32767" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace pref="153" max="32767" attributes="0"/>
+                          <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cmdCancel2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="userTabbedPane" pref="318" max="32767" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="cmdReset" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
       <SubComponents>
-        <Container class="javax.swing.JPanel" name="userPanel">
+        <Container class="javax.swing.JTabbedPane" name="userTabbedPane">
           <Properties>
-            <Property name="name" type="java.lang.String" value="userPanel" noResource="true"/>
+            <Property name="name" type="java.lang.String" value="userTabbedPane" noResource="true"/>
           </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="User">
-                <Property name="tabTitle" type="java.lang.String" value="User"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="userPanel.TabConstraints.tabIcon"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmdNext" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Component id="jScrollPane1" alignment="0" pref="339" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="261" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdNext" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
+          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
           <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+            <Container class="javax.swing.JPanel" name="userPanel">
               <Properties>
-                <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="userPanel" noResource="true"/>
               </Properties>
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="User">
+                    <Property name="tabTitle" type="java.lang.String" value="User"/>
+                    <Property name="tabIcon" type="javax.swing.Icon" resourceKey="userPanel.TabConstraints.tabIcon"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
 
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane1" alignment="0" pref="345" max="32767" attributes="0"/>
+                              <Component id="cmdNext" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" pref="234" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Component id="cmdNext" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
               <SubComponents>
-                <Component class="javax.swing.JTable" name="tblUsers">
+                <Container class="javax.swing.JScrollPane" name="jScrollPane1">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="4" rowCount="0">
-                        <Column editable="false" title="ID" type="java.lang.Object"/>
-                        <Column editable="false" title="Name" type="java.lang.Object"/>
-                        <Column editable="false" title="User Name" type="java.lang.Object"/>
-                        <Column editable="true" title="Status" type="java.lang.Object"/>
-                      </Table>
-                    </Property>
-                    <Property name="toolTipText" type="java.lang.String" resourceKey="tblUsers.toolTipText"/>
-                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
-                      <TableColumnModel selectionModel="1">
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title resourceKey="tblUsers.columnModel.title0"/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title resourceKey="tblUsers.columnModel.title1"/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title resourceKey="tblUsers.columnModel.title2"/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                          <Title resourceKey="tblUsers.columnModel.title3"/>
-                          <Editor/>
-                          <Renderer/>
-                        </Column>
-                      </TableColumnModel>
-                    </Property>
-                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
-                    <Property name="name" type="java.lang.String" value="tblUsers" noResource="true"/>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
+                    <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblUsersMouseClicked"/>
-                  </Events>
-                </Component>
-              </SubComponents>
-            </Container>
-            <Component class="javax.swing.JButton" name="cmdCancel">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.user.FrmResetPassword" id="cancel" methodName="cancel"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdCancel" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="cmdNext">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.user.FrmResetPassword" id="next" methodName="next"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdNext" noResource="true"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="detailsPanel">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="detailsPanel" noResource="true"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Details">
-                <Property name="tabTitle" type="java.lang.String" value="Details"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="detailsPanel.TabConstraints.tabIcon"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
 
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                              <Component id="cmdCancel2" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblUserName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblGroup" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblID" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblTimeout" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblStatis" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmbStatus" alignment="0" pref="279" max="32767" attributes="0"/>
-                                  <Component id="spinnerTimeout" alignment="0" pref="279" max="32767" attributes="0"/>
-                                  <Component id="txtID" alignment="0" pref="279" max="32767" attributes="0"/>
-                                  <Component id="cmbGroup" alignment="0" pref="279" max="32767" attributes="0"/>
-                                  <Component id="txtPassword" alignment="0" pref="279" max="32767" attributes="0"/>
-                                  <Component id="txtUserName" alignment="0" pref="279" max="32767" attributes="0"/>
-                                  <Component id="txtLastName" alignment="1" pref="279" max="32767" attributes="0"/>
-                                  <Component id="txtFirstName" alignment="0" pref="279" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblUserName" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtUserName" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbGroup" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="spinnerTimeout" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTimeout" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblStatis" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="70" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdCancel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="lblID">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblID.text"/>
-                <Property name="name" type="java.lang.String" value="lblID" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblFirstName">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblFirstName.text"/>
-                <Property name="name" type="java.lang.String" value="lblFirstName" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblLastName">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblLastName.text"/>
-                <Property name="name" type="java.lang.String" value="lblLastName" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblUserName">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblUserName.text"/>
-                <Property name="name" type="java.lang.String" value="lblUserName" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblPassword">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblPassword.text"/>
-                <Property name="name" type="java.lang.String" value="lblPassword" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtID">
-              <Properties>
-                <Property name="editable" type="boolean" value="false"/>
-                <Property name="text" type="java.lang.String" resourceKey="txtID.text"/>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtID.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtID" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtFirstName">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtFirstName.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtFirstName" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtUserName">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtUserName.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtUserName" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txtLastName">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtLastName.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtLastName" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JPasswordField" name="txtPassword">
-              <Properties>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="txtPassword.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="txtPassword" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblGroup">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblGroup.text"/>
-                <Property name="name" type="java.lang.String" value="lblGroup" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbGroup">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="1">
-                    <StringItem index="0" value=" "/>
-                  </StringArray>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGroup.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="cmbGroup" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblStatis">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblStatis.text"/>
-                <Property name="name" type="java.lang.String" value="lblStatis" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JComboBox" name="cmbStatus">
-              <Properties>
-                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="3">
-                    <StringItem index="0" value="Active"/>
-                    <StringItem index="1" value="Disabled"/>
-                    <StringItem index="2" value=" "/>
-                  </StringArray>
-                </Property>
-                <Property name="toolTipText" type="java.lang.String" resourceKey="cmbStatus.toolTipText"/>
-                <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="cmdCancel2">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.user.FrmResetPassword" id="cancel" methodName="cancel"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdCancel2" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="cmdSave">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.user.FrmResetPassword" id="save" methodName="save"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="lblTimeout">
-              <Properties>
-                <Property name="text" type="java.lang.String" resourceKey="lblTimeout.text"/>
-                <Property name="name" type="java.lang.String" value="lblTimeout" noResource="true"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JSpinner" name="spinnerTimeout">
-              <Properties>
-                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-                  <SpinnerModel initial="15" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="spinnerTimeout" noResource="true"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JPanel" name="linksPanel">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="linksPanel" noResource="true"/>
-          </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Links">
-                <Property name="tabTitle" type="java.lang.String" value="Links"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="linksPanel.TabConstraints.tabIcon"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane2" alignment="0" pref="339" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmdLink" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="cmdUnlink" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" pref="261" max="32767" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdUnlink" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdLink" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-              <Properties>
-                <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
-              </Properties>
-              <AuxValues>
-                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-              </AuxValues>
-
-              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-              <SubComponents>
-                <Component class="javax.swing.JTable" name="tblLinks">
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tblUsers">
+                      <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="4" rowCount="0">
+                            <Column editable="false" title="ID" type="java.lang.Object"/>
+                            <Column editable="false" title="Name" type="java.lang.Object"/>
+                            <Column editable="false" title="User Name" type="java.lang.Object"/>
+                            <Column editable="true" title="Status" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="toolTipText" type="java.lang.String" resourceKey="tblUsers.toolTipText"/>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="1">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblUsers.columnModel.title0"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblUsers.columnModel.title1"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblUsers.columnModel.title2"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblUsers.columnModel.title3"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="name" type="java.lang.String" value="tblUsers" noResource="true"/>
+                        <Property name="selectionModel" type="javax.swing.ListSelectionModel" editor="org.netbeans.modules.form.editors2.JTableSelectionModelEditor">
+                          <JTableSelectionModel selectionMode="0"/>
+                        </Property>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                      <Events>
+                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblUsersMouseClicked"/>
+                      </Events>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="cmdNext">
                   <Properties>
-                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
-                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                      <Table columnCount="2" rowCount="0">
-                        <Column editable="true" title="ID" type="java.lang.Object"/>
-                        <Column editable="true" title="Name" type="java.lang.Object"/>
-                      </Table>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.user.FrmResetPassword" id="next" methodName="next"/>
                     </Property>
-                    <Property name="name" type="java.lang.String" value="tblLinks" noResource="true"/>
-                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
-                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
-                    </Property>
+                    <Property name="name" type="java.lang.String" value="cmdNext" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
-            <Component class="javax.swing.JButton" name="cmdUnlink">
+            <Container class="javax.swing.JPanel" name="detailsPanel">
               <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.user.FrmEditUser" id="unlinkAccount" methodName="unlinkAccount"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdUnlink" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="detailsPanel" noResource="true"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JButton" name="cmdLink">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.user.FrmEditUser" id="linkAccount" methodName="linkAccount"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdLink" noResource="true"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
-        <Container class="javax.swing.JScrollPane" name="previlegePane">
-          <Properties>
-            <Property name="name" type="java.lang.String" value="previlegePane" noResource="true"/>
-          </Properties>
-          <AuxValues>
-            <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-          </AuxValues>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
-              <JTabbedPaneConstraints tabName="Permissions">
-                <Property name="tabTitle" type="java.lang.String" value="Permissions"/>
-                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="previlegePane.TabConstraints.tabIcon"/>
-              </JTabbedPaneConstraints>
-            </Constraint>
-          </Constraints>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Details">
+                    <Property name="tabTitle" type="java.lang.String" value="Details"/>
+                    <Property name="tabIcon" type="javax.swing.Icon" resourceKey="detailsPanel.TabConstraints.tabIcon"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
 
-          <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-          <SubComponents>
-            <Component class="it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree" name="tree">
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblLastName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblUserName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblFirstName" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblPassword" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblGroup" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblID" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTimeout" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblStatis" alignment="0" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="cmbStatus" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="spinnerTimeout" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="txtID" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="cmbGroup" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="txtPassword" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="txtUserName" alignment="0" pref="260" max="32767" attributes="0"/>
+                              <Component id="txtLastName" alignment="1" pref="260" max="32767" attributes="0"/>
+                              <Component id="txtFirstName" alignment="0" pref="260" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblID" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtID" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtFirstName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtLastName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtUserName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtPassword" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbGroup" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="spinnerTimeout" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblTimeout" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="lblStatis" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmbStatus" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace pref="62" max="32767" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblID">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblID.text"/>
+                    <Property name="name" type="java.lang.String" value="lblID" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblFirstName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblFirstName.text"/>
+                    <Property name="name" type="java.lang.String" value="lblFirstName" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblLastName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblLastName.text"/>
+                    <Property name="name" type="java.lang.String" value="lblLastName" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblUserName">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblUserName.text"/>
+                    <Property name="name" type="java.lang.String" value="lblUserName" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblPassword">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblPassword.text"/>
+                    <Property name="name" type="java.lang.String" value="lblPassword" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtID">
+                  <Properties>
+                    <Property name="editable" type="boolean" value="false"/>
+                    <Property name="text" type="java.lang.String" resourceKey="txtID.text"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtID.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtID" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtFirstName">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtFirstName.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtFirstName" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtUserName">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtUserName.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtUserName" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JTextField" name="txtLastName">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtLastName.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtLastName" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JPasswordField" name="txtPassword">
+                  <Properties>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtPassword.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtPassword" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblGroup">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblGroup.text"/>
+                    <Property name="name" type="java.lang.String" value="lblGroup" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbGroup">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="1">
+                        <StringItem index="0" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="cmbGroup.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="cmbGroup" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblStatis">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblStatis.text"/>
+                    <Property name="name" type="java.lang.String" value="lblStatis" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JComboBox" name="cmbStatus">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                      <StringArray count="3">
+                        <StringItem index="0" value="Active"/>
+                        <StringItem index="1" value="Disabled"/>
+                        <StringItem index="2" value=" "/>
+                      </StringArray>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="cmbStatus.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="cmbStatus" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JLabel" name="lblTimeout">
+                  <Properties>
+                    <Property name="text" type="java.lang.String" resourceKey="lblTimeout.text"/>
+                    <Property name="name" type="java.lang.String" value="lblTimeout" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JSpinner" name="spinnerTimeout">
+                  <Properties>
+                    <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                      <SpinnerModel initial="15" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="spinnerTimeout" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JPanel" name="linksPanel">
               <Properties>
-                <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
-                  <TreeModel code="Menu&#xa; Student&#xa;  Add Student&#xa;  Edit Student&#xa;  View Student&#xa; Attendance&#xa;  Enter Attendance&#xa;  Edit Attendance&#xa; Grades&#xa;  Create Assessment&#xa;  Edit Assessment&#xa;  Edit Mid Terms&#xa; Demerits&#xa;  Record Demerits&#xa;  Edit Demerits&#xa; Reports&#xa;  Student Reports &#xa;   Student List&#xa;   Repeating Students&#xa;   Students By Class&#xa;   Student ID Cards&#xa;  Class Reports&#xa;   Class List Report&#xa;   Class Grade Book&#xa;  Report Cards Menu&#xa;   Mid-Term Reports&#xa;   Mid-Term Class Ranking&#xa;   Term End Report&#xa;   Term End Ranking&#xa;  Demerit Reports&#xa;   Demerits By Class&#xa;   Demerits By Student&#xa;  Statistical Reports&#xa;   Class Size Distribution&#xa;   Gender Distribution&#xa; Manage&#xa;  Class&#xa;   Add Class&#xa;   Edit Class&#xa;   View Class&#xa;  Promotions&#xa;   Assign Promotions&#xa;   Promote Students&#xa;  School&#xa;  Staff&#xa;   Add Staff&#xa;   Edit Staff&#xa;  Subjects&#xa;   Add Subjects &#xa;   Edit Subjects&#xa;  Term&#xa;   Add Term&#xa;   Edit Term&#xa;  Time Slots&#xa;   Add Time Slot&#xa;   Edit Time Slot&#xa;  User Menu&#xa;   Add User&#xa;   Edit User&#xa;  Utilities Menu&#xa;   Mid Term&#xa;    Calculate Mid Term Grades&#xa;   End Of Term&#xa;    Calculate End of Term Grades&#xa;    Close Term"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="tree" noResource="true"/>
+                <Property name="name" type="java.lang.String" value="linksPanel" noResource="true"/>
               </Properties>
-            </Component>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Links">
+                    <Property name="tabTitle" type="java.lang.String" value="Links"/>
+                    <Property name="tabIcon" type="javax.swing.Icon" resourceKey="linksPanel.TabConstraints.tabIcon"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout>
+                <DimensionLayout dim="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jScrollPane2" alignment="0" pref="345" max="32767" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cmdLink" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="cmdUnlink" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+                <DimensionLayout dim="1">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" pref="234" max="32767" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="cmdUnlink" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="cmdLink" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                </DimensionLayout>
+              </Layout>
+              <SubComponents>
+                <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+                  <Properties>
+                    <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+                  </AuxValues>
+
+                  <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+                  <SubComponents>
+                    <Component class="javax.swing.JTable" name="tblLinks">
+                      <Properties>
+                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                        <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                          <Table columnCount="3" rowCount="0">
+                            <Column editable="true" title="ID" type="java.lang.Object"/>
+                            <Column editable="true" title="Code" type="java.lang.Object"/>
+                            <Column editable="true" title="Name" type="java.lang.Object"/>
+                          </Table>
+                        </Property>
+                        <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                          <TableColumnModel selectionModel="3">
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblLinks.columnModel.title0"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblLinks.columnModel.title2"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                            <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                              <Title resourceKey="tblLinks.columnModel.title1"/>
+                              <Editor/>
+                              <Renderer/>
+                            </Column>
+                          </TableColumnModel>
+                        </Property>
+                        <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                        <Property name="name" type="java.lang.String" value="tblLinks" noResource="true"/>
+                        <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                          <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                        </Property>
+                      </Properties>
+                    </Component>
+                  </SubComponents>
+                </Container>
+                <Component class="javax.swing.JButton" name="cmdUnlink">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.user.FrmEditUser" id="unlinkAccount" methodName="unlinkAccount"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="cmdUnlink" noResource="true"/>
+                  </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="cmdLink">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.user.FrmEditUser" id="linkAccount" methodName="linkAccount"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="cmdLink" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Container class="javax.swing.JScrollPane" name="previlegePane">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="previlegePane" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+                  <JTabbedPaneConstraints tabName="Permissions">
+                    <Property name="tabTitle" type="java.lang.String" value="Permissions"/>
+                    <Property name="tabIcon" type="javax.swing.Icon" resourceKey="previlegePane.TabConstraints.tabIcon"/>
+                  </JTabbedPaneConstraints>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree" name="tree">
+                  <Properties>
+                    <Property name="model" type="javax.swing.tree.TreeModel" editor="org.netbeans.modules.form.editors2.TreeModelEditor">
+                      <TreeModel code="Menu&#xa; Student&#xa;  Add Student&#xa;  Edit Student&#xa;  View Student&#xa; Attendance&#xa;  Enter Attendance&#xa;  Edit Attendance&#xa; Grades&#xa;  Create Assessment&#xa;  Edit Assessment&#xa;  Edit Mid Terms&#xa; Demerits&#xa;  Record Demerits&#xa;  Edit Demerits&#xa; Reports&#xa;  Student Reports &#xa;   Student List&#xa;   Repeating Students&#xa;   Students By Class&#xa;   Student ID Cards&#xa;  Class Reports&#xa;   Class List Report&#xa;   Class Grade Book&#xa;  Report Cards Menu&#xa;   Mid Term Reports&#xa;   Mid Term Class Ranking&#xa;   Term End Report&#xa;   Term End Ranking&#xa;  Demerit Reports&#xa;   Demerits By Class&#xa;   Demerits By Student&#xa;  Statistical Reports&#xa;   Class Size Distribution&#xa;   Gender Distribution&#xa; Manage&#xa;  Class&#xa;   Add Class&#xa;   Edit Class&#xa;   View Class&#xa;  Promotions&#xa;   Assign Promotions&#xa;   Promote Students&#xa;  School&#xa;  Staff&#xa;   Add Staff&#xa;   Edit Staff&#xa;  Subjects&#xa;   Add Subjects &#xa;   Edit Subjects&#xa;  Term&#xa;   Add Term&#xa;   Edit Term&#xa;  Time Slots&#xa;   Add Time Slot&#xa;   Edit Time Slot&#xa;  User Menu&#xa;   Add User&#xa;   Edit User&#xa;  Utilities Menu&#xa;   Mid Term&#xa;    Calculate Mid Term Grades&#xa;   End Of Term&#xa;    Calculate End of Term Grades&#xa;    Close Term"/>
+                    </Property>
+                    <Property name="name" type="java.lang.String" value="tree" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
           </SubComponents>
         </Container>
+        <Component class="javax.swing.JButton" name="cmdReset">
+          <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="ilearn.user.FrmEditUser" id="reset" methodName="reset"/>
+            </Property>
+            <Property name="text" type="java.lang.String" resourceKey="cmdReset.text"/>
+            <Property name="name" type="java.lang.String" value="cmdReset" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="cmdCancel2">
+          <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="ilearn.user.FrmResetPassword" id="cancel" methodName="cancel"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cmdCancel2" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JButton" name="cmdSave">
+          <Properties>
+            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+              <action class="ilearn.user.FrmResetPassword" id="save" methodName="save"/>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cmdSave" noResource="true"/>
+          </Properties>
+        </Component>
       </SubComponents>
     </Container>
   </SubComponents>
