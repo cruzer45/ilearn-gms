@@ -257,7 +257,7 @@ public class FrmAddNewClass extends javax.swing.JInternalFrame
         String name = txtClassName.getText().trim();
         String description = txtClassDescription.getText().trim();
         String homeRoom = cmbHomeRoom.getSelectedItem().toString();
-        if (Classes.addClass(code, level, name, description, homeRoom))
+        if (Classes.saveClass(code, level, name, description, homeRoom))
         {
             String message = "The class was successfully added. \n"
                              + "Would you like to add another?";

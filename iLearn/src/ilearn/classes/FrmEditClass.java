@@ -494,7 +494,7 @@ public class FrmEditClass extends javax.swing.JInternalFrame
     public void search()
     {
         String criteria = txtSearch.getText().trim();
-        classTable.setModel(Classes.getClassTableModel(criteria));
+        classTable.setModel(Classes.searchClass(criteria));
         lblTotalClasses2.setText(String.valueOf(classTable.getRowCount()));
     }
 

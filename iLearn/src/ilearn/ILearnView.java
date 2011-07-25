@@ -343,9 +343,10 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
         menuBar.setName("menuBar"); // NOI18N
+        fileMenu.setMnemonic('F');
         fileMenu.setText(resourceMap.getString("fileMenu.text")); // NOI18N
         fileMenu.setName("fileMenu"); // NOI18N
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(ILearnView.class, this);
@@ -363,6 +364,7 @@ public class ILearnView extends FrameView
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
         menuBar.add(fileMenu);
+        studentMenu.setMnemonic('s');
         studentMenu.setText(resourceMap.getString("studentMenu.text")); // NOI18N
         studentMenu.setName("studentMenu"); // NOI18N
         addStudent.setAction(actionMap.get("showAddStudent")); // NOI18N
@@ -380,6 +382,7 @@ public class ILearnView extends FrameView
         viewStudent.setName("viewStudent"); // NOI18N
         studentMenu.add(viewStudent);
         menuBar.add(studentMenu);
+        attendanceMenu.setMnemonic('A');
         attendanceMenu.setText(resourceMap.getString("attendanceMenu.text")); // NOI18N
         attendanceMenu.setName("attendanceMenu"); // NOI18N
         enterAttendance.setAction(actionMap.get("showRegister")); // NOI18N
@@ -393,6 +396,7 @@ public class ILearnView extends FrameView
         editAttendance.setName("editAttendance"); // NOI18N
         attendanceMenu.add(editAttendance);
         menuBar.add(attendanceMenu);
+        gradesMenu.setMnemonic('g');
         gradesMenu.setText(resourceMap.getString("gradesMenu.text")); // NOI18N
         gradesMenu.setName("gradesMenu"); // NOI18N
         createAssessment.setAction(actionMap.get("showCreateAssessment")); // NOI18N
@@ -411,6 +415,7 @@ public class ILearnView extends FrameView
         editMidTerms.setName("editMidTerms"); // NOI18N
         gradesMenu.add(editMidTerms);
         menuBar.add(gradesMenu);
+        demeritsMenu.setMnemonic('D');
         demeritsMenu.setText(resourceMap.getString("demeritsMenu.text")); // NOI18N
         demeritsMenu.setName("demeritsMenu"); // NOI18N
         recordDemerits.setAction(actionMap.get("showRecordDemerits")); // NOI18N
@@ -424,6 +429,7 @@ public class ILearnView extends FrameView
         editDemerits.setName("editDemerits"); // NOI18N
         demeritsMenu.add(editDemerits);
         menuBar.add(demeritsMenu);
+        reportsMenu.setMnemonic('r');
         reportsMenu.setText(resourceMap.getString("reportsMenu.text")); // NOI18N
         reportsMenu.setName("reportsMenu"); // NOI18N
         studentReports.setIcon(resourceMap.getIcon("studentReports.icon")); // NOI18N
@@ -518,6 +524,7 @@ public class ILearnView extends FrameView
         statisticsReports.add(genderDistribution);
         reportsMenu.add(statisticsReports);
         menuBar.add(reportsMenu);
+        manageMenu.setMnemonic('m');
         manageMenu.setText(resourceMap.getString("manageMenu.text")); // NOI18N
         classMenu.setIcon(resourceMap.getIcon("classMenu.icon")); // NOI18N
         classMenu.setText(resourceMap.getString("classMenu.text")); // NOI18N
@@ -645,6 +652,7 @@ public class ILearnView extends FrameView
         manageMenu.add(utilitiesMenu);
         menuBar.add(manageMenu);
         manageMenu.setText("Manage");
+        helpMenu.setMnemonic('H');
         helpMenu.setText(resourceMap.getString("helpMenu.text")); // NOI18N
         helpMenu.setName("helpMenu"); // NOI18N
         aboutMenuItem.setAction(actionMap.get("showAboutBox")); // NOI18N
@@ -665,7 +673,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(statusMessageLabel)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
                       .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(statusAnimationLabel)

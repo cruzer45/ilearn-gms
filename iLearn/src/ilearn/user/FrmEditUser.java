@@ -512,6 +512,11 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             User.getStaffLinks(selectedUser);
             tblLinks.setModel(User.loadStaffLinks());
         }
+        else
+        {
+            String message = "Kindly select a user before proceeding.";
+            Utilities.showWarningMessage(rootPane, message);
+        }
     }
 
     private void loadPermissions(String permission)
@@ -541,6 +546,10 @@ public class FrmEditUser extends javax.swing.JInternalFrame
     @Action
     public void next()
     {
+        if (userTabbedPane.getSelectedIndex() == 0)
+        {
+            loadSelectedUser();
+        }
         userTabbedPane.setSelectedIndex(userTabbedPane.getSelectedIndex() + 1);
     }
 
@@ -572,8 +581,8 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while updating the user's information.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists, kindly contact your system administrator.";
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

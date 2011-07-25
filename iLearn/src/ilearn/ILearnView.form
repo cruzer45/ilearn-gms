@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -41,6 +41,7 @@
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="fileMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="70"/>
             <Property name="text" type="java.lang.String" resourceKey="fileMenu.text"/>
             <Property name="name" type="java.lang.String" value="fileMenu" noResource="true"/>
           </Properties>
@@ -85,6 +86,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="studentMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="115"/>
             <Property name="text" type="java.lang.String" resourceKey="studentMenu.text"/>
             <Property name="name" type="java.lang.String" value="studentMenu" noResource="true"/>
           </Properties>
@@ -134,6 +136,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="attendanceMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="65"/>
             <Property name="text" type="java.lang.String" resourceKey="attendanceMenu.text"/>
             <Property name="name" type="java.lang.String" value="attendanceMenu" noResource="true"/>
           </Properties>
@@ -171,6 +174,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="gradesMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="103"/>
             <Property name="text" type="java.lang.String" resourceKey="gradesMenu.text"/>
             <Property name="name" type="java.lang.String" value="gradesMenu" noResource="true"/>
           </Properties>
@@ -221,6 +225,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="demeritsMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="68"/>
             <Property name="text" type="java.lang.String" resourceKey="demeritsMenu.text"/>
             <Property name="name" type="java.lang.String" value="demeritsMenu" noResource="true"/>
           </Properties>
@@ -258,6 +263,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="reportsMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="114"/>
             <Property name="text" type="java.lang.String" resourceKey="reportsMenu.text"/>
             <Property name="name" type="java.lang.String" value="reportsMenu" noResource="true"/>
           </Properties>
@@ -516,6 +522,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="manageMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="109"/>
             <Property name="text" type="java.lang.String" resourceKey="manageMenu.text"/>
           </Properties>
           <AuxValues>
@@ -875,6 +882,7 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="helpMenu">
           <Properties>
+            <Property name="mnemonic" type="int" value="72"/>
             <Property name="text" type="java.lang.String" resourceKey="helpMenu.text"/>
             <Property name="name" type="java.lang.String" value="helpMenu" noResource="true"/>
           </Properties>
@@ -911,7 +919,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="630" max="32767" attributes="0"/>
+                  <EmptySpace pref="616" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

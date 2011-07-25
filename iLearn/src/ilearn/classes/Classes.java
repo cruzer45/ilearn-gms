@@ -188,7 +188,7 @@ public class Classes
      * @param homeRoom
      * @return true of the process was successful of false if it wasn't.
      */
-    public static boolean addClass(String code, String level, String name, String description, String homeRoom)
+    public static boolean saveClass(String code, String level, String name, String description, String homeRoom)
     {
         boolean successful = false;
         if (homeRoom.equals("--- Select One ---")
@@ -285,7 +285,7 @@ public class Classes
      * @param criteria
      * @returns a table model containing a filtered list of classes.
      */
-    public static DefaultTableModel getClassTableModel(String criteria)
+    public static DefaultTableModel searchClass(String criteria)
     {
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
@@ -335,6 +335,11 @@ public class Classes
         return model;
     }
 
+    /**
+     *
+     * @param classID
+     * @return theinformation for a class wrapped in a String ArrayList
+     */
     public static ArrayList<String> getClassInfo(String classID)
     {
         ArrayList<String> info = new ArrayList<String>();
@@ -364,6 +369,17 @@ public class Classes
         return info;
     }
 
+    /**
+     *
+     * @param code
+     * @param name
+     * @param description
+     * @param level
+     * @param homeRoom
+     * @param status
+     * @param id
+     * @return a true if the new information for the class was successfully committed.
+     */
     public static boolean updateClass(String code, String name, String description, String level, String homeRoom, String status, String id)
     {
         boolean successful = false;
