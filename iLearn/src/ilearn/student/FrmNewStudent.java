@@ -128,7 +128,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         {
             stuAddress2 = stuAddress1;
         }
-        if (Student.addStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
+        if (Student.saveStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
         {
             String message = "The student was successfully added. \n"
                              + "Would you like to add another?";

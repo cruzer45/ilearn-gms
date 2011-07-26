@@ -259,6 +259,25 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
             </MenuItem>
+            <Menu class="javax.swing.JMenu" name="detentionsMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="detentionsMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="detentionsMenu.text"/>
+                <Property name="name" type="java.lang.String" value="detentionsMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showRecordDetention" methodName="showRecordDetention"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem1.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jMenuItem1.text"/>
+                    <Property name="name" type="java.lang.String" value="jMenuItem1" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="reportsMenu">

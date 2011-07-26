@@ -20,7 +20,7 @@ public class Student
 
     static final Logger logger = Logger.getLogger(Student.class.getName());
 
-    public static boolean addStudent(String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
+    public static boolean saveStudent(String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
                                      String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
                                      String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
                                      String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
