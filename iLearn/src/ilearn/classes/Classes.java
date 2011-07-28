@@ -79,6 +79,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -102,6 +103,7 @@ public class Classes
         resetSubjects();
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -111,7 +113,7 @@ public class Classes
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -152,7 +154,7 @@ public class Classes
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -240,6 +242,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -290,6 +293,7 @@ public class Classes
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -304,7 +308,7 @@ public class Classes
         try
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` "
-                         + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
+                    + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -321,24 +325,26 @@ public class Classes
             }
             rs.close();
             prep.close();
-            model.addColumn("ID", ID.toArray());
-            model.addColumn("Code", code.toArray());
-            model.addColumn("Name", Name.toArray());
-            model.addColumn("Home Room", HomeRoom.toArray());
-            model.addColumn("Status", Status.toArray());
         }
         catch (Exception e)
         {
             String message = "An error occurred while generating the class table model.";
             logger.log(Level.SEVERE, message, e);
         }
+
+        model.addColumn("ID", ID.toArray());
+        model.addColumn("Code", code.toArray());
+        model.addColumn("Name", Name.toArray());
+        model.addColumn("Home Room", HomeRoom.toArray());
+        model.addColumn("Status", Status.toArray());
+
         return model;
     }
 
     /**
      *
      * @param classID
-     * @return theinformation for a class wrapped in a String ArrayList
+     * @return the information for a class wrapped in a String ArrayList
      */
     public static ArrayList<String> getClassInfo(String classID)
     {
@@ -502,6 +508,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -621,7 +628,7 @@ public class Classes
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();

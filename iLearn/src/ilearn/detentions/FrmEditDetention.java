@@ -12,7 +12,6 @@ package ilearn.detentions;
 
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
-import ilearn.student.Student;
 import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
@@ -23,13 +22,13 @@ import org.jdesktop.application.Action;
  *
  * @author mrogers
  */
-public class FrmRecordDetention extends javax.swing.JInternalFrame
+public class FrmEditDetention extends javax.swing.JInternalFrame
 {
 
     String warnings = "";
 
     /** Creates new form FrmRecordDetention */
-    public FrmRecordDetention()
+    public FrmEditDetention()
     {
         initComponents();
         populateLists();
@@ -48,7 +47,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         detentionTabbedPane = new javax.swing.JTabbedPane();
         searchPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblStudents = new javax.swing.JTable();
+        tblDetentions = new javax.swing.JTable();
         cmdNext = new javax.swing.JButton();
         lblSearch = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
@@ -65,14 +64,16 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         jScrollPane2 = new javax.swing.JScrollPane();
         txtRemarks = new javax.swing.JTextArea();
         calDate = new com.toedter.calendar.JDateChooser();
+        jComboBox1 = new javax.swing.JComboBox();
+        jLabel1 = new javax.swing.JLabel();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Record Detention");
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmRecordDetention.class);
+        setTitle("Edit Detention");
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmEditDetention.class);
         setFrameIcon(resourceMap.getIcon("frameIcon")); // NOI18N
 
         wrapperPanel.setName("wrapperPanel"); // NOI18N
@@ -83,27 +84,26 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
 
         jScrollPane1.setName("jScrollPane1"); // NOI18N
 
-        tblStudents.setAutoCreateRowSorter(true);
-        tblStudents.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetentions.setAutoCreateRowSorter(true);
+        tblDetentions.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "First Name", "Last Name", "Class"
+                "ID", "Name", "Date", "Punishment"
             }
         ));
-        tblStudents.setName("tblStudents"); // NOI18N
-        tblStudents.addMouseListener(new java.awt.event.MouseAdapter() {
+        tblDetentions.setName("tblDetentions"); // NOI18N
+        tblDetentions.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tblStudentsMouseClicked(evt);
+                tblDetentionsMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tblStudents);
-        tblStudents.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        jScrollPane1.setViewportView(tblDetentions);
+        tblDetentions.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmRecordDetention.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmEditDetention.class, this);
         cmdNext.setAction(actionMap.get("next")); // NOI18N
-        cmdNext.setText("Next");
         cmdNext.setName("cmdNext"); // NOI18N
 
         lblSearch.setText("Search:");
@@ -112,7 +112,6 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         txtSearch.setName("txtSearch"); // NOI18N
 
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
-        cmdSearch.setText("Search");
         cmdSearch.setName("cmdSearch"); // NOI18N
 
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
@@ -141,7 +140,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(cmdSearch))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 160, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(cmdNext)
                 .addContainerGap())
@@ -185,6 +184,12 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
 
         calDate.setName("calDate"); // NOI18N
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
+        jComboBox1.setName("jComboBox1"); // NOI18N
+
+        jLabel1.setText("Status:");
+        jLabel1.setName("jLabel1"); // NOI18N
+
         javax.swing.GroupLayout detentionPanelLayout = new javax.swing.GroupLayout(detentionPanel);
         detentionPanel.setLayout(detentionPanelLayout);
         detentionPanelLayout.setHorizontalGroup(
@@ -192,22 +197,24 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
             .addGroup(detentionPanelLayout.createSequentialGroup()
                 .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(detentionPanelLayout.createSequentialGroup()
+                        .addGap(12, 12, 12)
+                        .addComponent(lblDate))
+                    .addGroup(detentionPanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lblID)
                             .addComponent(lblName)
                             .addComponent(lblType)
-                            .addComponent(lblRemarks))
+                            .addComponent(lblRemarks)
+                            .addComponent(jLabel1))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.TRAILING, 0, 241, Short.MAX_VALUE)
                             .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                             .addComponent(cmbType, 0, 241, Short.MAX_VALUE)
                             .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
                             .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
-                    .addGroup(detentionPanelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblDate)))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         detentionPanelLayout.setVerticalGroup(
@@ -233,21 +240,22 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
                 .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lblRemarks)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         detentionTabbedPane.addTab("Detention", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/clock_red.png")), detentionPanel); // NOI18N
 
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
 
         cmdSave.setAction(actionMap.get("save")); // NOI18N
-        cmdSave.setText("Save");
         cmdSave.setName("cmdSave"); // NOI18N
 
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
-        cmdReset.setText("Reset");
         cmdReset.setName("cmdReset"); // NOI18N
 
         javax.swing.GroupLayout wrapperPanelLayout = new javax.swing.GroupLayout(wrapperPanel);
@@ -270,8 +278,8 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(detentionTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(detentionTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdSave)
@@ -293,14 +301,14 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStudentsMouseClicked
-    {//GEN-HEADEREND:event_tblStudentsMouseClicked
+    private void tblDetentionsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblDetentionsMouseClicked
+    {//GEN-HEADEREND:event_tblDetentionsMouseClicked
         if (evt.getClickCount() >= 2)
         {
-            loadSelectedUser();
+            loadSelectedDetention();
             next();
         }
-    }//GEN-LAST:event_tblStudentsMouseClicked
+    }//GEN-LAST:event_tblDetentionsMouseClicked
 
     @Action
     public void cancel()
@@ -321,7 +329,6 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
     {
         calDate.setDate(new Date());
         ArrayList<String> detionTypes = Detention.getDetentionTypes();
-        detionTypes.add("--- Select One ---");
         cmbType.setModel(new DefaultComboBoxModel(detionTypes.toArray()));
     }
 
@@ -340,8 +347,8 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         boolean detentionAdded = Detention.saveDetention(stuID, detDate, detPunishment, detRemark);
         if (detentionAdded)
         {
-            String message = "The detention was successfully added to the student's file. \n"
-                    + "Would you like to add another?";
+            String message = "The detention was successfully updated. \n"
+                    + "Would you like to edit another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -354,7 +361,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         }
         else
         {
-            String message = "An error occurred while trying to save this entry.\n"
+            String message = "An error occurred while trying to update this entry.\n"
                     + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
@@ -374,7 +381,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
             warnings += "Kindly select a student before proceeding.\n";
             passed = false;
         }
-        if (type.isEmpty() || type.equals("--- Select One ---"))
+        if (type.isEmpty())
         {
             warnings += "Kindly select a type of detention before proceeding.\n"
                     + "You may choose one from the predefined list.";
@@ -389,27 +396,38 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         return passed;
     }
 
-    private void loadSelectedUser()
+    private void loadSelectedDetention()
     {
-        if (tblStudents.getSelectedRow() != -1)
+        if (tblDetentions.getSelectedRow() != -1)
         {
-            txtID.setText(tblStudents.getValueAt(tblStudents.getSelectedRow(), 0).toString());
-            String name = tblStudents.getValueAt(tblStudents.getSelectedRow(), 1).toString() + " " + tblStudents.getValueAt(tblStudents.getSelectedRow(), 2).toString();
+            String detID = tblDetentions.getValueAt(tblDetentions.getSelectedRow(), 0).toString();
+            txtID.setText(detID);
+            String name = tblDetentions.getValueAt(tblDetentions.getSelectedRow(), 1).toString();
             txtName.setText(name);
+            ArrayList<String> detDetails = Detention.getDetentionDetails(detID);
+            cmbType.setSelectedItem(detDetails.get(2));
+            txtRemarks.setText(detDetails.get(3));
+            try
+            {
+                calDate.setDate(Utilities.MDY_Formatter.parse(detDetails.get(1)));
+            }
+            catch (Exception e)
+            {
+            }
         }
     }
 
     @Action
     public void next()
     {
-        if (tblStudents.getSelectedRow() != -1)
+        if (tblDetentions.getSelectedRow() != -1)
         {
-            loadSelectedUser();
+            loadSelectedDetention();
             detentionTabbedPane.setSelectedIndex(detentionTabbedPane.getSelectedIndex() + 1);
         }
         else
         {
-            String message = "Kindly select a student before proceeding";
+            String message = "Kindly select a detention before proceeding";
             Utilities.showWarningMessage(rootPane, message);
         }
     }
@@ -418,8 +436,8 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
     public void search()
     {
         String criteria = txtSearch.getText().trim();
-        tblStudents.setModel(Student.searchStudents(criteria));
-        TableColumnAdjuster tca = new TableColumnAdjuster(tblStudents);
+        tblDetentions.setModel(Detention.searchDetentions(criteria));
+        TableColumnAdjuster tca = new TableColumnAdjuster(tblDetentions);
         tca.adjustColumns();
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -432,6 +450,8 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel detentionPanel;
     private javax.swing.JTabbedPane detentionTabbedPane;
+    private javax.swing.JComboBox jComboBox1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDate;
@@ -441,7 +461,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblSearch;
     private javax.swing.JLabel lblType;
     private javax.swing.JPanel searchPanel;
-    private javax.swing.JTable tblStudents;
+    private javax.swing.JTable tblDetentions;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextArea txtRemarks;

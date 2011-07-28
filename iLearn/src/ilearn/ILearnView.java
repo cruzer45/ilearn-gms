@@ -12,6 +12,7 @@ import ilearn.classes.FrmEditClass;
 import ilearn.classes.FrmViewClass;
 import ilearn.demerits.FrmEditDemeritStudent;
 import ilearn.demerits.FrmRecordDemeritStudent;
+import ilearn.detentions.FrmEditDetention;
 import ilearn.detentions.FrmRecordDetention;
 import ilearn.grades.FrmEditMidTerms;
 import ilearn.kernel.Environment;
@@ -113,6 +114,7 @@ public class ILearnView extends FrameView
     FrmDemeritsByStudent frmDemeritsByStudent = null;
     FrmPrintIDCards frmPrintIDCards = null;
     FrmRecordDetention frmRecordDetention = null;
+    FrmEditDetention frmEditDetention = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -123,6 +125,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -136,6 +139,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -149,6 +153,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -277,7 +282,8 @@ public class ILearnView extends FrameView
         recordDemerits = new javax.swing.JMenuItem();
         editDemerits = new javax.swing.JMenuItem();
         detentionsMenu = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        recordDetention = new javax.swing.JMenuItem();
+        editDetention = new javax.swing.JMenuItem();
         reportsMenu = new javax.swing.JMenu();
         studentReports = new javax.swing.JMenu();
         studentList = new javax.swing.JMenuItem();
@@ -373,6 +379,8 @@ public class ILearnView extends FrameView
         fileMenu.add(changePasswordMenuItem);
 
         exitMenuItem.setAction(actionMap.get("quit")); // NOI18N
+        exitMenuItem.setIcon(resourceMap.getIcon("exitMenuItem.icon")); // NOI18N
+        exitMenuItem.setText(resourceMap.getString("exitMenuItem.text")); // NOI18N
         exitMenuItem.setName("exitMenuItem"); // NOI18N
         fileMenu.add(exitMenuItem);
 
@@ -463,11 +471,17 @@ public class ILearnView extends FrameView
         detentionsMenu.setText(resourceMap.getString("detentionsMenu.text")); // NOI18N
         detentionsMenu.setName("detentionsMenu"); // NOI18N
 
-        jMenuItem1.setAction(actionMap.get("showRecordDetention")); // NOI18N
-        jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
-        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
-        jMenuItem1.setName("jMenuItem1"); // NOI18N
-        detentionsMenu.add(jMenuItem1);
+        recordDetention.setAction(actionMap.get("showRecordDetention")); // NOI18N
+        recordDetention.setIcon(resourceMap.getIcon("recordDetention.icon")); // NOI18N
+        recordDetention.setText(resourceMap.getString("recordDetention.text")); // NOI18N
+        recordDetention.setName("recordDetention"); // NOI18N
+        detentionsMenu.add(recordDetention);
+
+        editDetention.setAction(actionMap.get("showEditDetention")); // NOI18N
+        editDetention.setIcon(resourceMap.getIcon("editDetention.icon")); // NOI18N
+        editDetention.setText(resourceMap.getString("editDetention.text")); // NOI18N
+        editDetention.setName("editDetention"); // NOI18N
+        detentionsMenu.add(editDetention);
 
         demeritsMenu.add(detentionsMenu);
 
@@ -1960,7 +1974,7 @@ public class ILearnView extends FrameView
         boolean AlreadyLoaded = isLoaded("Record Detention");
         if (AlreadyLoaded == false)
         {
-            frmRecordDetention= new FrmRecordDetention();
+            frmRecordDetention = new FrmRecordDetention();
             desktopPane.add(frmRecordDetention);
             //Load the Form
             frmRecordDetention.setVisible(true);
@@ -1969,6 +1983,30 @@ public class ILearnView extends FrameView
             {
                 frmRecordDetention.setIcon(false);
                 frmRecordDetention.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showEditDetention()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Detention");
+        if (AlreadyLoaded == false)
+        {
+            frmEditDetention = new FrmEditDetention();
+            desktopPane.add(frmEditDetention);
+            //Load the Form
+            frmEditDetention.setVisible(true);
+            frmEditDetention.show();
+            try
+            {
+                frmEditDetention.setIcon(false);
+                frmEditDetention.setSelected(true);
             }
             catch (Exception e)
             {
@@ -2006,6 +2044,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem editAttendance;
     private static javax.swing.JMenuItem editClass;
     private static javax.swing.JMenuItem editDemerits;
+    private javax.swing.JMenuItem editDetention;
     private static javax.swing.JMenuItem editMidTerms;
     private static javax.swing.JMenuItem editStaff;
     private static javax.swing.JMenuItem editStudent;
@@ -2017,7 +2056,6 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem enterAttendance;
     private static javax.swing.JMenuItem genderDistribution;
     private static javax.swing.JMenu gradesMenu;
-    private javax.swing.JMenuItem jMenuItem1;
     private static javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;
@@ -2030,6 +2068,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenu promoteMenu;
     private static javax.swing.JMenuItem promoteStudents;
     private static javax.swing.JMenuItem recordDemerits;
+    private javax.swing.JMenuItem recordDetention;
     private static javax.swing.JMenu reportCardsMenu;
     private static javax.swing.JMenu reportsMenu;
     private static javax.swing.JMenu staffMenu;
