@@ -37,7 +37,7 @@ public class ILearnApp extends SingleFrameApplication
             private boolean exitMethod()
             {
                 String message = "Are you sure you want to exit?";
-                int response = Utilities.showConfirmDialog(null, message);
+                int response = Utilities.showConfirmDialog(Environment.getMainFrame(), message);
                 if (response == JOptionPane.YES_OPTION)
                 {
                     return true;

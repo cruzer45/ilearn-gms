@@ -213,7 +213,6 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
         cmdCancel3 = new javax.swing.JButton();
         cmdNext3 = new javax.swing.JButton();
         otherPanel = new javax.swing.JPanel();
-        cmdSave1 = new javax.swing.JButton();
         cmdCancel6 = new javax.swing.JButton();
         medicalPanel = new javax.swing.JPanel();
         lblPrimaryDoctor = new javax.swing.JLabel();
@@ -236,7 +235,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
         txtSSN = new javax.swing.JFormattedTextField();
         txtRepeating = new javax.swing.JTextField();
         txtPhoto.setEditable(false);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmViewStudent.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmViewStudent.class);
         txtPhoto.setToolTipText(resourceMap.getString("txtPhoto.toolTipText")); // NOI18N
         txtPhoto.setName("txtPhoto"); // NOI18N
         setClosable(true);
@@ -259,7 +258,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                 txtSearchKeyPressed(evt);
             }
         });
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmViewStudent.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmViewStudent.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
         cmdSearch.setText(resourceMap.getString("cmdSearch.text")); // NOI18N
         cmdSearch.setName("cmdSearch"); // NOI18N
@@ -413,12 +412,12 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addGroup(generalPanelLayout.createSequentialGroup()
                                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                  .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                                                  .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                                                  .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
-                                                                  .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
+                                                                  .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                                                  .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                                                  .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                                                  .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
                                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                           .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                   .addComponent(txtClasss, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))))
@@ -700,8 +699,6 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
         );
         studentTabbedPane.addTab(resourceMap.getString("parentPanel.TabConstraints.tabTitle"), resourceMap.getIcon("parentPanel.TabConstraints.tabIcon"), parentPanel); // NOI18N
         otherPanel.setName("otherPanel"); // NOI18N
-        cmdSave1.setAction(actionMap.get("save")); // NOI18N
-        cmdSave1.setName("cmdSave1"); // NOI18N
         cmdCancel6.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel6.setName("cmdCancel6"); // NOI18N
         medicalPanel.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), resourceMap.getString("medicalPanel.border.title"))); // NOI18N
@@ -793,10 +790,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                       .addContainerGap()
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(medicalPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, otherPanelLayout.createSequentialGroup()
-                                          .addComponent(cmdSave1)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel6))
+                                .addComponent(cmdCancel6, javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(otherPanelLayout.createSequentialGroup()
                                           .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addComponent(lblSpecialNeeds)
@@ -845,9 +839,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                       .addGap(9, 9, 9)
                       .addComponent(medicalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                      .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel6)
-                                .addComponent(cmdSave1))
+                      .addComponent(cmdCancel6)
                       .addContainerGap())
         );
         studentTabbedPane.addTab("Other", resourceMap.getIcon("otherPanel.TabConstraints.tabIcon"), otherPanel); // NOI18N
@@ -897,7 +889,6 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdNext2;
     private javax.swing.JButton cmdNext3;
     private javax.swing.JButton cmdNext4;
-    private javax.swing.JButton cmdSave1;
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel contactPanel;
     private javax.swing.JPanel generalPanel;

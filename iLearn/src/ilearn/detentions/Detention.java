@@ -54,26 +54,23 @@ public class Detention
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
                 return false;
             }
         };
-
         ArrayList<String> IDs = new ArrayList<String>();
         ArrayList<String> dates = new ArrayList<String>();
         ArrayList<String> names = new ArrayList<String>();
         ArrayList<String> punishments = new ArrayList<String>();
-
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'name' "
-                    + " FROM `Detention` "
-                    + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
-                    + "WHERE `detStatus` = 'Active' AND "
-                    + "(`detID` LIKE ? OR `detPunishment` LIKE ? OR CONCAT_WS(' ',`stuFirstName`, `stuLastName`) LIKE ?)";
+                         + " FROM `Detention` "
+                         + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
+                         + "WHERE `detStatus` = 'Active' AND "
+                         + "(`detID` LIKE ? OR `detPunishment` LIKE ? OR CONCAT_WS(' ',`stuFirstName`, `stuLastName`) LIKE ?)";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -94,12 +91,76 @@ public class Detention
             String message = "An error occurred while generating the search results for detentions.";
             logger.log(Level.SEVERE, message, e);
         }
-
         model.addColumn("ID", IDs.toArray());
         model.addColumn("Name", names.toArray());
         model.addColumn("Date", dates.toArray());
         model.addColumn("Punishment", punishments.toArray());
+        return model;
+    }
 
+    public static DefaultTableModel getPendingDetentionsTable()
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                //Only allow the grade column to be editable.
+                boolean editable = false;
+                if (mColIndex == 4 || mColIndex == 5)
+                {
+                    editable = true;
+                }
+                return editable;
+            }
+        };
+        ArrayList<String> IDs = new ArrayList<String>();
+        ArrayList<String> dates = new ArrayList<String>();
+        ArrayList<String> names = new ArrayList<String>();
+        ArrayList<String> punishments = new ArrayList<String>();
+        ArrayList<Boolean> served = new ArrayList<Boolean>();
+        try
+        {
+            String sql = "SELECT `detID`,`detDate`,`detPunishment`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'name' "
+                         + " FROM `Detention` "
+                         + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
+                         + "WHERE `detStatus` = 'Active' AND `detServed` = 'false'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                IDs.add(rs.getString("detID"));
+                dates.add(Utilities.MDY_Formatter.format(rs.getDate("detDate")));
+                names.add(rs.getString("name"));
+                punishments.add(rs.getString("detPunishment"));
+                served.add(false);
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the search results for detentions.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        model.addColumn("ID", IDs.toArray());
+        model.addColumn("Name", names.toArray());
+        model.addColumn("Date", dates.toArray());
+        model.addColumn("Punishment", punishments.toArray());
+        model.addColumn("Served", served.toArray());
         return model;
     }
 
@@ -130,8 +191,8 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, `detRemark` "
-                    + " FROM `Detention` "
-                    + " WHERE `detStatus` = 'Active' AND `detID` = ?";
+                         + " FROM `Detention` "
+                         + " WHERE `detStatus` = 'Active' AND `detID` = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, detID);
             ResultSet rs = prep.executeQuery();
@@ -149,5 +210,54 @@ public class Detention
             logger.log(Level.SEVERE, message, e);
         }
         return detDetails;
+    }
+
+    public static boolean updateDetention(String detID, String detDate, String detPunishment, String detRemark, String detStatus)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Detention` SET `detDate`= ?, `detPunishment`= ?, `detRemark`= ?, `detStatus`= ? WHERE `detID`= ? ;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, detDate);
+            prep.setString(2, detPunishment);
+            prep.setString(3, detRemark);
+            prep.setString(4, detStatus);
+            prep.setString(5, detID);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the detention.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    public static boolean updateServedDetentions(ArrayList<String> IDs, String date)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Detention` SET `detServed`= '1', `detServedDate`= ? WHERE `detID`= ? ;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            for (String id : IDs)
+            {
+                prep.setString(1, date);
+                prep.setString(2, id);
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the detentions.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
     }
 }

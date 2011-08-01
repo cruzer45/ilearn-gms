@@ -261,35 +261,44 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
             </MenuItem>
-            <Menu class="javax.swing.JMenu" name="detentionsMenu">
+          </SubComponents>
+        </Menu>
+        <Menu class="javax.swing.JMenu" name="detentionsMenu">
+          <Properties>
+            <Property name="text" type="java.lang.String" resourceKey="detentionsMenu.text"/>
+            <Property name="name" type="java.lang.String" value="detentionsMenu" noResource="true"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="recordDetention">
               <Properties>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="detentionsMenu.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="detentionsMenu.text"/>
-                <Property name="name" type="java.lang.String" value="detentionsMenu" noResource="true"/>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showRecordDetention" methodName="showRecordDetention"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="recordDetention.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="recordDetention.text"/>
+                <Property name="name" type="java.lang.String" value="recordDetention" noResource="true"/>
               </Properties>
-              <SubComponents>
-                <MenuItem class="javax.swing.JMenuItem" name="recordDetention">
-                  <Properties>
-                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                      <action class="ilearn.ILearnView" id="showRecordDetention" methodName="showRecordDetention"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="recordDetention.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="recordDetention.text"/>
-                    <Property name="name" type="java.lang.String" value="recordDetention" noResource="true"/>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="editDetention">
-                  <Properties>
-                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                      <action class="ilearn.ILearnView" id="showEditDetention" methodName="showEditDetention"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="editDetention.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="editDetention.text"/>
-                    <Property name="name" type="java.lang.String" value="editDetention" noResource="true"/>
-                  </Properties>
-                </MenuItem>
-              </SubComponents>
-            </Menu>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="editDetention">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showEditDetention" methodName="showEditDetention"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="editDetention.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="editDetention.text"/>
+                <Property name="name" type="java.lang.String" value="editDetention" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="recordServedDetention">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showRecordServedDetention" methodName="showRecordServedDetention"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="recordServedDetention.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="recordServedDetention.text"/>
+                <Property name="name" type="java.lang.String" value="recordServedDetention" noResource="true"/>
+              </Properties>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="reportsMenu">

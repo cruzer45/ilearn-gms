@@ -288,7 +288,7 @@ public class UserCheck
 
     public static boolean canSeeReportCards()
     {
-        if (User.previligeAvailable("Report Cards"))
+        if (User.previligeAvailable("Report Cards Menu"))
         {
             return true;
         }
@@ -300,7 +300,7 @@ public class UserCheck
 
     public static boolean canSeeMidTermReports()
     {
-        if (User.previligeAvailable("Mid-Term Reports"))
+        if (User.previligeAvailable("Mid Term Reports"))
         {
             return true;
         }
@@ -312,7 +312,7 @@ public class UserCheck
 
     public static boolean canSeeMidTermClassRanking()
     {
-        if (User.previligeAvailable("Mid-Term Class Ranking"))
+        if (User.previligeAvailable("Mid Term Class Ranking"))
         {
             return true;
         }
@@ -324,7 +324,7 @@ public class UserCheck
 
     public static boolean canSeeTermEndReport()
     {
-        if (User.previligeAvailable("Term-End Report"))
+        if (User.previligeAvailable("Term End Report"))
         {
             return true;
         }

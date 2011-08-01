@@ -99,7 +99,7 @@ public class Utilities
 
     public static String roundDouble(double value)
     {
-        DecimalFormat df = new DecimalFormat("###0.00");
+        DecimalFormat df = new DecimalFormat("#,##0.00");
         String total = df.format(value);
         return total;
     }

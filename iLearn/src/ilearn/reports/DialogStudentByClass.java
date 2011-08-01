@@ -134,6 +134,7 @@ public class DialogStudentByClass extends javax.swing.JDialog
         @Override
         protected Object doInBackground()
         {
+            setMessage("Loading reporting engine.");
             String report = "reports/Student-Student_List_by_Class.jasper";
             String title = "Report - Student List by Class";
             String classCode = cmbClass.getSelectedItem().toString();

@@ -42,8 +42,8 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         wrapperPanel = new javax.swing.JPanel();
         detentionTabbedPane = new javax.swing.JTabbedPane();
         searchPanel = new javax.swing.JPanel();
@@ -68,217 +68,185 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         setTitle("Record Detention");
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmRecordDetention.class);
         setFrameIcon(resourceMap.getIcon("frameIcon")); // NOI18N
-
         wrapperPanel.setName("wrapperPanel"); // NOI18N
-
         detentionTabbedPane.setName("detentionTabbedPane"); // NOI18N
-
         searchPanel.setName("searchPanel"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         tblStudents.setAutoCreateRowSorter(true);
         tblStudents.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                 new Object [][]
+                                 {
 
-            },
-            new String [] {
-                "ID", "First Name", "Last Name", "Class"
-            }
-        ));
+                                 },
+                                 new String []
+                                 {
+                                     "ID", "First Name", "Last Name", "Class"
+                                 }
+                             ));
         tblStudents.setName("tblStudents"); // NOI18N
-        tblStudents.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tblStudents.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 tblStudentsMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblStudents);
         tblStudents.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmRecordDetention.class, this);
         cmdNext.setAction(actionMap.get("next")); // NOI18N
-        cmdNext.setText("Next");
         cmdNext.setName("cmdNext"); // NOI18N
-
         lblSearch.setText("Search:");
         lblSearch.setName("lblSearch"); // NOI18N
-
         txtSearch.setName("txtSearch"); // NOI18N
-
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
-        cmdSearch.setText("Search");
         cmdSearch.setName("cmdSearch"); // NOI18N
-
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
-                        .addComponent(lblSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdSearch))
-                    .addComponent(cmdNext))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 311, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
+                                          .addComponent(lblSearch)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 167, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmdSearch))
+                                .addComponent(cmdNext))
+                      .addContainerGap())
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(cmdNext)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSearch)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmdSearch))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addComponent(cmdNext)
+                      .addContainerGap())
         );
-
         detentionTabbedPane.addTab("Search Student", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/find.png")), searchPanel); // NOI18N
-
         detentionPanel.setName("detentionPanel"); // NOI18N
-
         lblID.setText("ID:");
         lblID.setName("lblID"); // NOI18N
-
         lblName.setText("Name:");
         lblName.setName("lblName"); // NOI18N
-
         lblDate.setText("Date:");
         lblDate.setName("lblDate"); // NOI18N
-
         lblType.setText("Type:");
         lblType.setName("lblType"); // NOI18N
-
         lblRemarks.setText("Remarks:");
         lblRemarks.setName("lblRemarks"); // NOI18N
-
         txtID.setEditable(false);
         txtID.setName("txtID"); // NOI18N
-
         txtName.setEditable(false);
         txtName.setName("txtName"); // NOI18N
-
         cmbType.setEditable(true);
         cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "" }));
         cmbType.setName("cmbType"); // NOI18N
-
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-
         txtRemarks.setColumns(20);
         txtRemarks.setRows(5);
         txtRemarks.setName("txtRemarks"); // NOI18N
         jScrollPane2.setViewportView(txtRemarks);
-
         calDate.setName("calDate"); // NOI18N
-
         javax.swing.GroupLayout detentionPanelLayout = new javax.swing.GroupLayout(detentionPanel);
         detentionPanel.setLayout(detentionPanelLayout);
         detentionPanelLayout.setHorizontalGroup(
             detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detentionPanelLayout.createSequentialGroup()
-                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detentionPanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblID)
-                            .addComponent(lblName)
-                            .addComponent(lblType)
-                            .addComponent(lblRemarks))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(cmbType, 0, 241, Short.MAX_VALUE)
-                            .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
-                    .addGroup(detentionPanelLayout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(lblDate)))
-                .addContainerGap())
+                      .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(detentionPanelLayout.createSequentialGroup()
+                                          .addContainerGap()
+                                          .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblID)
+                                                  .addComponent(lblName)
+                                                  .addComponent(lblType)
+                                                  .addComponent(lblRemarks))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                                  .addComponent(cmbType, 0, 241, Short.MAX_VALUE)
+                                                  .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                                  .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 241, Short.MAX_VALUE)))
+                                .addGroup(detentionPanelLayout.createSequentialGroup()
+                                          .addGap(12, 12, 12)
+                                          .addComponent(lblDate)))
+                      .addContainerGap())
         );
         detentionPanelLayout.setVerticalGroup(
             detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detentionPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblDate)
-                    .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblType)
-                    .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblRemarks)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(42, Short.MAX_VALUE))
+                      .addContainerGap()
+                      .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblID)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblName)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(lblDate)
+                                .addComponent(calDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblType)
+                                .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detentionPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblRemarks)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addContainerGap(42, Short.MAX_VALUE))
         );
-
         detentionTabbedPane.addTab("Detention", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/clock_red.png")), detentionPanel); // NOI18N
-
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
-        cmdSave.setText("Save");
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
-        cmdReset.setText("Reset");
         cmdReset.setName("cmdReset"); // NOI18N
-
         javax.swing.GroupLayout wrapperPanelLayout = new javax.swing.GroupLayout(wrapperPanel);
         wrapperPanel.setLayout(wrapperPanelLayout);
         wrapperPanelLayout.setHorizontalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(detentionTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
-                    .addGroup(wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(detentionTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                                .addGroup(wrapperPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 119, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(detentionTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(detentionTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -289,12 +257,12 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(wrapperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblStudentsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblStudentsMouseClicked
-    {//GEN-HEADEREND:event_tblStudentsMouseClicked
+    {
+//GEN-HEADEREND:event_tblStudentsMouseClicked
         if (evt.getClickCount() >= 2)
         {
             loadSelectedUser();
@@ -341,7 +309,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         if (detentionAdded)
         {
             String message = "The detention was successfully added to the student's file. \n"
-                    + "Would you like to add another?";
+                             + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -355,7 +323,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this entry.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
@@ -364,11 +332,9 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
     {
         warnings = "";
         boolean passed = true;
-
         String id = txtID.getText().trim();
         String type = cmbType.getSelectedItem().toString().trim();
         String remark = txtRemarks.getText().trim();
-
         if (id.isEmpty())
         {
             warnings += "Kindly select a student before proceeding.\n";
@@ -377,7 +343,7 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
         if (type.isEmpty() || type.equals("--- Select One ---"))
         {
             warnings += "Kindly select a type of detention before proceeding.\n"
-                    + "You may choose one from the predefined list.";
+                        + "You may choose one from the predefined list.";
             passed = false;
         }
         if (remark.isEmpty())
@@ -385,7 +351,6 @@ public class FrmRecordDetention extends javax.swing.JInternalFrame
             warnings += "Kindly enter the reason the student recieved this dention in the remarks feild.";
             passed = false;
         }
-
         return passed;
     }
 

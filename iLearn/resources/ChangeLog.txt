@@ -1,5 +1,11 @@
 Version 1.1
 
+-   Add Demerits and Term field to report cards.
+
+-   Add Demerit Module (to be tied into detention module).
+
+-   Add Detention Module (5 demerits = 1 Detention) Auto Detention.
+
 -   Load Appropriate list items for classes and subjects.
 
 -   Fix Add and Edit user screens to handle advanced permissions and linking.

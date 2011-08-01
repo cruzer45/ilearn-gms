@@ -275,12 +275,12 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="txtID" alignment="0" pref="136" max="32767" attributes="0"/>
-                                          <Component id="txtFirstName" alignment="0" pref="136" max="32767" attributes="2"/>
-                                          <Component id="txtLastName" alignment="0" pref="136" max="32767" attributes="2"/>
-                                          <Component id="txtOtherName" alignment="0" pref="136" max="32767" attributes="0"/>
-                                          <Component id="txtGender" alignment="1" pref="136" max="32767" attributes="0"/>
-                                          <Component id="txtDOB" alignment="1" pref="136" max="32767" attributes="0"/>
+                                          <Component id="txtID" alignment="0" pref="151" max="32767" attributes="0"/>
+                                          <Component id="txtFirstName" alignment="0" pref="151" max="32767" attributes="2"/>
+                                          <Component id="txtLastName" alignment="0" pref="151" max="32767" attributes="2"/>
+                                          <Component id="txtOtherName" alignment="0" pref="151" max="32767" attributes="0"/>
+                                          <Component id="txtGender" alignment="1" pref="151" max="32767" attributes="0"/>
+                                          <Component id="txtDOB" alignment="1" pref="151" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jScrollPane6" min="-2" max="-2" attributes="1"/>
@@ -971,11 +971,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Component id="medicalPanel" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Component id="cmdSave1" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="cmdCancel6" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="cmdCancel6" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="lblSpecialNeeds" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -1036,28 +1032,17 @@
                       <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                       <Component id="medicalPanel" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cmdCancel6" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmdSave1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
+                      <Component id="cmdCancel6" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="cmdSave1">
-              <Properties>
-                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.student.FrmNewStudent" id="save" methodName="save"/>
-                </Property>
-                <Property name="name" type="java.lang.String" value="cmdSave1" noResource="true"/>
-              </Properties>
-            </Component>
             <Component class="javax.swing.JButton" name="cmdCancel6">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                  <action class="ilearn.student.FrmNewStudent" id="cancel" methodName="cancel"/>
+                  <action class="ilearn.student.FrmViewStudent" id="cancel" methodName="cancel"/>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmdCancel6" noResource="true"/>
               </Properties>
