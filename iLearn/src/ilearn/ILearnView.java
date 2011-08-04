@@ -285,23 +285,25 @@ public class ILearnView extends FrameView
         editDetention = new javax.swing.JMenuItem();
         recordServedDetention = new javax.swing.JMenuItem();
         reportsMenu = new javax.swing.JMenu();
-        studentReports = new javax.swing.JMenu();
-        studentList = new javax.swing.JMenuItem();
-        studentsRepeating = new javax.swing.JMenuItem();
-        studentListByClass = new javax.swing.JMenuItem();
-        studentIDCards = new javax.swing.JMenuItem();
         classReports = new javax.swing.JMenu();
         classListReport = new javax.swing.JMenuItem();
         classGradeBook = new javax.swing.JMenuItem();
+        demeritReports = new javax.swing.JMenu();
+        demeritsByCass = new javax.swing.JMenuItem();
+        demeritsByStudent = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         reportCardsMenu = new javax.swing.JMenu();
         midTermReports = new javax.swing.JMenuItem();
         classRankReport = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         termEndReports = new javax.swing.JMenuItem();
         termRanking = new javax.swing.JMenuItem();
-        demeritReports = new javax.swing.JMenu();
-        demeritsByCass = new javax.swing.JMenuItem();
-        demeritsByStudent = new javax.swing.JMenuItem();
+        studentReports = new javax.swing.JMenu();
+        studentList = new javax.swing.JMenuItem();
+        studentsRepeating = new javax.swing.JMenuItem();
+        studentListByClass = new javax.swing.JMenuItem();
+        studentIDCards = new javax.swing.JMenuItem();
         statisticsReports = new javax.swing.JMenu();
         classSizeDistribution = new javax.swing.JMenuItem();
         genderDistribution = new javax.swing.JMenuItem();
@@ -462,30 +464,6 @@ public class ILearnView extends FrameView
         reportsMenu.setMnemonic('r');
         reportsMenu.setText(resourceMap.getString("reportsMenu.text")); // NOI18N
         reportsMenu.setName("reportsMenu"); // NOI18N
-        studentReports.setIcon(resourceMap.getIcon("studentReports.icon")); // NOI18N
-        studentReports.setText(resourceMap.getString("studentReports.text")); // NOI18N
-        studentReports.setName("studentReports"); // NOI18N
-        studentList.setAction(actionMap.get("showStudentListReport")); // NOI18N
-        studentList.setIcon(resourceMap.getIcon("studentList.icon")); // NOI18N
-        studentList.setText(resourceMap.getString("studentList.text")); // NOI18N
-        studentList.setName("studentList"); // NOI18N
-        studentReports.add(studentList);
-        studentsRepeating.setAction(actionMap.get("showRepeatingStudents")); // NOI18N
-        studentsRepeating.setIcon(resourceMap.getIcon("studentsRepeating.icon")); // NOI18N
-        studentsRepeating.setText(resourceMap.getString("studentsRepeating.text")); // NOI18N
-        studentsRepeating.setName("studentsRepeating"); // NOI18N
-        studentReports.add(studentsRepeating);
-        studentListByClass.setAction(actionMap.get("showStudentListByClass")); // NOI18N
-        studentListByClass.setIcon(resourceMap.getIcon("studentListByClass.icon")); // NOI18N
-        studentListByClass.setText(resourceMap.getString("studentListByClass.text")); // NOI18N
-        studentListByClass.setName("studentListByClass"); // NOI18N
-        studentReports.add(studentListByClass);
-        studentIDCards.setAction(actionMap.get("showStudentIDCards")); // NOI18N
-        studentIDCards.setIcon(resourceMap.getIcon("studentIDCards.icon")); // NOI18N
-        studentIDCards.setText(resourceMap.getString("studentIDCards.text")); // NOI18N
-        studentIDCards.setName("studentIDCards"); // NOI18N
-        studentReports.add(studentIDCards);
-        reportsMenu.add(studentReports);
         classReports.setIcon(resourceMap.getIcon("classReports.icon")); // NOI18N
         classReports.setText(resourceMap.getString("classReports.text")); // NOI18N
         classReports.setName("classReports"); // NOI18N
@@ -500,6 +478,29 @@ public class ILearnView extends FrameView
         classGradeBook.setName("classGradeBook"); // NOI18N
         classReports.add(classGradeBook);
         reportsMenu.add(classReports);
+        demeritReports.setIcon(resourceMap.getIcon("demeritReports.icon")); // NOI18N
+        demeritReports.setText(resourceMap.getString("demeritReports.text")); // NOI18N
+        demeritReports.setName("demeritReports"); // NOI18N
+        demeritsByCass.setAction(actionMap.get("showDemeritsByClass")); // NOI18N
+        demeritsByCass.setIcon(resourceMap.getIcon("demeritsByCass.icon")); // NOI18N
+        demeritsByCass.setText(resourceMap.getString("demeritsByCass.text")); // NOI18N
+        demeritsByCass.setName("demeritsByCass"); // NOI18N
+        demeritReports.add(demeritsByCass);
+        demeritsByStudent.setAction(actionMap.get("showDemeritByStudent")); // NOI18N
+        demeritsByStudent.setIcon(resourceMap.getIcon("demeritsByStudent.icon")); // NOI18N
+        demeritsByStudent.setText(resourceMap.getString("demeritsByStudent.text")); // NOI18N
+        demeritsByStudent.setName("demeritsByStudent"); // NOI18N
+        demeritReports.add(demeritsByStudent);
+        reportsMenu.add(demeritReports);
+        jMenu1.setIcon(resourceMap.getIcon("jMenu1.icon")); // NOI18N
+        jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
+        jMenu1.setName("jMenu1"); // NOI18N
+        jMenuItem1.setAction(actionMap.get("showDetentionReport")); // NOI18N
+        jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
+        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
+        jMenuItem1.setName("jMenuItem1"); // NOI18N
+        jMenu1.add(jMenuItem1);
+        reportsMenu.add(jMenu1);
         reportCardsMenu.setIcon(resourceMap.getIcon("reportCardsMenu.icon")); // NOI18N
         reportCardsMenu.setText(resourceMap.getString("reportCardsMenu.text")); // NOI18N
         reportCardsMenu.setName("reportCardsMenu"); // NOI18N
@@ -525,20 +526,30 @@ public class ILearnView extends FrameView
         termRanking.setName("termRanking"); // NOI18N
         reportCardsMenu.add(termRanking);
         reportsMenu.add(reportCardsMenu);
-        demeritReports.setIcon(resourceMap.getIcon("demeritReports.icon")); // NOI18N
-        demeritReports.setText(resourceMap.getString("demeritReports.text")); // NOI18N
-        demeritReports.setName("demeritReports"); // NOI18N
-        demeritsByCass.setAction(actionMap.get("showDemeritsByClass")); // NOI18N
-        demeritsByCass.setIcon(resourceMap.getIcon("demeritsByCass.icon")); // NOI18N
-        demeritsByCass.setText(resourceMap.getString("demeritsByCass.text")); // NOI18N
-        demeritsByCass.setName("demeritsByCass"); // NOI18N
-        demeritReports.add(demeritsByCass);
-        demeritsByStudent.setAction(actionMap.get("showDemeritByStudent")); // NOI18N
-        demeritsByStudent.setIcon(resourceMap.getIcon("demeritsByStudent.icon")); // NOI18N
-        demeritsByStudent.setText(resourceMap.getString("demeritsByStudent.text")); // NOI18N
-        demeritsByStudent.setName("demeritsByStudent"); // NOI18N
-        demeritReports.add(demeritsByStudent);
-        reportsMenu.add(demeritReports);
+        studentReports.setIcon(resourceMap.getIcon("studentReports.icon")); // NOI18N
+        studentReports.setText(resourceMap.getString("studentReports.text")); // NOI18N
+        studentReports.setName("studentReports"); // NOI18N
+        studentList.setAction(actionMap.get("showStudentListReport")); // NOI18N
+        studentList.setIcon(resourceMap.getIcon("studentList.icon")); // NOI18N
+        studentList.setText(resourceMap.getString("studentList.text")); // NOI18N
+        studentList.setName("studentList"); // NOI18N
+        studentReports.add(studentList);
+        studentsRepeating.setAction(actionMap.get("showRepeatingStudents")); // NOI18N
+        studentsRepeating.setIcon(resourceMap.getIcon("studentsRepeating.icon")); // NOI18N
+        studentsRepeating.setText(resourceMap.getString("studentsRepeating.text")); // NOI18N
+        studentsRepeating.setName("studentsRepeating"); // NOI18N
+        studentReports.add(studentsRepeating);
+        studentListByClass.setAction(actionMap.get("showStudentListByClass")); // NOI18N
+        studentListByClass.setIcon(resourceMap.getIcon("studentListByClass.icon")); // NOI18N
+        studentListByClass.setText(resourceMap.getString("studentListByClass.text")); // NOI18N
+        studentListByClass.setName("studentListByClass"); // NOI18N
+        studentReports.add(studentListByClass);
+        studentIDCards.setAction(actionMap.get("showStudentIDCards")); // NOI18N
+        studentIDCards.setIcon(resourceMap.getIcon("studentIDCards.icon")); // NOI18N
+        studentIDCards.setText(resourceMap.getString("studentIDCards.text")); // NOI18N
+        studentIDCards.setName("studentIDCards"); // NOI18N
+        studentReports.add(studentIDCards);
+        reportsMenu.add(studentReports);
         statisticsReports.setIcon(resourceMap.getIcon("statisticsReports.icon")); // NOI18N
         statisticsReports.setText(resourceMap.getString("statisticsReports.text")); // NOI18N
         statisticsReports.setName("statisticsReports"); // NOI18N
@@ -1934,6 +1945,29 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public Task showDetentionReport()
+    {
+        return new ShowDetentionReportTask(getApplication());
+    }
+
+    private class ShowDetentionReportTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowDetentionReportTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showDetentionReport();
+            return null;  // return your result
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private static javax.swing.JMenuItem addStaff;
@@ -1976,6 +2010,8 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem enterAttendance;
     private static javax.swing.JMenuItem genderDistribution;
     private static javax.swing.JMenu gradesMenu;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenuItem jMenuItem1;
     private static javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;

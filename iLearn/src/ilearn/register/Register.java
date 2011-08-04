@@ -200,4 +200,24 @@ public class Register
         }
         return successful;
     }
+
+    public static boolean closeRegister()
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `RollCall` SET `rolStatus` = 'Closed' "
+                         + " WHERE `rolStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while closing the assessments.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
 }

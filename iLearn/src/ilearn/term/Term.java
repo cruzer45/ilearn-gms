@@ -15,6 +15,8 @@ import javax.swing.table.DefaultTableModel;
 public class Term
 {
 
+    static final Logger logger = Logger.getLogger(Term.class.getName());
+
     /**
      * This function tries to add a term to the system.
      * @param trmCode - The short code for the term.
@@ -39,8 +41,7 @@ public class Term
         catch (Exception e)
         {
             String message = "An error occurred while adding a term to the database.";
-            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
-            successful = false;
+            logger.log(Level.SEVERE, message, e);
         }
         return successful;
     }
@@ -49,6 +50,7 @@ public class Term
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -79,7 +81,7 @@ public class Term
         catch (Exception e)
         {
             String message = "An error occurred while getting the term list.";
-            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         model.addColumn("ID", ID.toArray());
         model.addColumn("Term Code", trmCodes.toArray());
@@ -108,8 +110,7 @@ public class Term
         catch (Exception e)
         {
             String message = "An error occurred while updating the term info.";
-            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
-            successful = false;
+            logger.log(Level.SEVERE, message, e);
         }
         return successful;
     }
@@ -136,14 +137,15 @@ public class Term
         catch (Exception e)
         {
             String message = "An error occurred while getting the current term.";
-            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         return currentTerm;
     }
+
     /**
-    *
-    * @Returns the ID of the current active term.
-    */
+     *
+     * @Returns the ID of the current active term.
+     */
     public static String getCurrentTermName()
     {
         String currentTerm = "";
@@ -162,8 +164,30 @@ public class Term
         catch (Exception e)
         {
             String message = "An error occurred while getting the current term.";
-            Logger.getLogger(Term.class.getName()).log(Level.SEVERE, message, e);
+            logger.log(Level.SEVERE, message, e);
         }
         return currentTerm;
+    }
+
+    public static boolean closeTerm()
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Term` SET `trmStatus` = 'Closed' WHERE `trmStatus` = 'Active'";
+            String sql2 = "UPDATE `TermGrade` SET `grdStatus` = 'Closed' WHERE `grdStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql2);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while closing the assessments.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
     }
 }

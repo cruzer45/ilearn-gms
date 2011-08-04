@@ -6,6 +6,7 @@ package ilearn.detentions;
 
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.kernel.logger.iLogger;
 import ilearn.student.Student;
 import ilearn.term.Term;
 import java.sql.PreparedStatement;
@@ -40,6 +41,9 @@ public class Detention
             prep.execute();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "A detention was added to the system for " + stuID;
+            iLogger.logMessage(message, "Add", "Detention");
         }
         catch (Exception e)
         {
@@ -54,6 +58,7 @@ public class Detention
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -67,10 +72,10 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'name' "
-                         + " FROM `Detention` "
-                         + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
-                         + "WHERE `detStatus` = 'Active' AND "
-                         + "(`detID` LIKE ? OR `detPunishment` LIKE ? OR CONCAT_WS(' ',`stuFirstName`, `stuLastName`) LIKE ?)";
+                    + " FROM `Detention` "
+                    + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
+                    + "WHERE `detStatus` = 'Active' AND "
+                    + "(`detID` LIKE ? OR `detPunishment` LIKE ? OR CONCAT_WS(' ',`stuFirstName`, `stuLastName`) LIKE ?)";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -102,6 +107,7 @@ public class Detention
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -115,6 +121,7 @@ public class Detention
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -135,9 +142,9 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'name' "
-                         + " FROM `Detention` "
-                         + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
-                         + "WHERE `detStatus` = 'Active' AND `detServed` = 'false'";
+                    + " FROM `Detention` "
+                    + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
+                    + "WHERE `detStatus` = 'Active' AND `detServed` = 'false'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -191,8 +198,8 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, `detRemark` "
-                         + " FROM `Detention` "
-                         + " WHERE `detStatus` = 'Active' AND `detID` = ?";
+                    + " FROM `Detention` "
+                    + " WHERE `detStatus` = 'Active' AND `detID` = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, detID);
             ResultSet rs = prep.executeQuery();
@@ -227,6 +234,9 @@ public class Detention
             prep.execute();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "A detention was updated: " + detID;
+            iLogger.logMessage(message, "Update", "Detention");
         }
         catch (Exception e)
         {
@@ -243,8 +253,10 @@ public class Detention
         {
             String sql = "UPDATE `Detention` SET `detServed`= '1', `detServedDate`= ? WHERE `detID`= ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            String IDSet = "";
             for (String id : IDs)
             {
+                IDSet += id + ", ";
                 prep.setString(1, date);
                 prep.setString(2, id);
                 prep.addBatch();
@@ -252,10 +264,33 @@ public class Detention
             prep.executeBatch();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "Detentions marked as served: " + IDSet;
+            iLogger.logMessage(message, "Update", "Detention");
         }
         catch (Exception e)
         {
             String message = "An error occurred while updating the detentions.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    public static boolean closeDetentions()
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Detention` SET `detStatus` = 'Closed' "
+                    + " WHERE `detStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while closing the detentions.";
             logger.log(Level.SEVERE, message, e);
         }
         return successful;

@@ -1,0 +1,2 @@
+UPDATE `TermGrade` SET `grdPointsEarned` = '70'
+WHERE `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete' OR `grdPointsEarned` = 'Excused' OR `grdPointsEarned` = ''

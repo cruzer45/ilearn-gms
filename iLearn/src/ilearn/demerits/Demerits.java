@@ -2,6 +2,7 @@ package ilearn.demerits;
 
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.kernel.logger.iLogger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -24,8 +25,8 @@ public class Demerits
         try
         {
             String sql = "SELECT `reason` "
-                         + "FROM `listDemeritReasons` "
-                         + "ORDER BY `reason` ASC;";
+                    + "FROM `listDemeritReasons` "
+                    + "ORDER BY `reason` ASC;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -49,7 +50,7 @@ public class Demerits
         try
         {
             String sql = "INSERT INTO `Demerits` (`demStuID`, `demDate`, `demStaCode`, `demClsCode`, `demTermID`, `demerits`, `demRemarks`) "
-                         + "VALUES (?, ?, ?, ?, ?, ?, ?);";
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, demStuID);
             prep.setString(2, demDate);
@@ -61,6 +62,9 @@ public class Demerits
             prep.execute();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "A demerit was added to the system for " + demStuID;
+            iLogger.logMessage(message, "Add", "Demerit");
         }
         catch (Exception e)
         {
@@ -76,9 +80,9 @@ public class Demerits
         try
         {
             String sql = "UPDATE `Demerits` "
-                         + "SET `demDate`=?, `demStaCode`=?, `demerits`= ?, "
-                         + "`demRemarks`=?,`demStatus`=? "
-                         + "WHERE `demID`=? LIMIT 1;";
+                    + "SET `demDate`=?, `demStaCode`=?, `demerits`= ?, "
+                    + "`demRemarks`=?,`demStatus`=? "
+                    + "WHERE `demID`=? LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, demDate);
             prep.setString(2, demStaCode);
@@ -89,6 +93,9 @@ public class Demerits
             prep.execute();
             prep.close();
             successful = true;
+            //Log the Action
+            String message = "Demerit " +demID+ " was updated.";
+            iLogger.logMessage(message, "Update", "Demerit");
         }
         catch (Exception e)
         {
@@ -103,6 +110,7 @@ public class Demerits
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -116,6 +124,7 @@ public class Demerits
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -129,11 +138,11 @@ public class Demerits
             ArrayList<String> staff = new ArrayList<String>();
             ArrayList<String> date = new ArrayList<String>();
             String sql = "SELECT CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) AS 'Name', `Demerits`.*, CONCAT_WS(' ',`Staff`.`staFirstName`,`Staff`.`staLastName`) AS 'Staff' "
-                         + "FROM `Demerits`  "
-                         + "INNER JOIN `Student` ON `Demerits`.`demStuID` = `Student`.`stuID` "
-                         + "INNER JOIN `Staff` ON `Demerits`.`demStaCode` = `Staff`.`staCode` "
-                         + "WHERE `Demerits`.`demStatus` = 'Active' AND "
-                         + "(CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) LIKE ? OR `demStuID` LIKE ? OR `demDate` LIKE ? OR `demClsCode` LIKE ?)";
+                    + "FROM `Demerits`  "
+                    + "INNER JOIN `Student` ON `Demerits`.`demStuID` = `Student`.`stuID` "
+                    + "INNER JOIN `Staff` ON `Demerits`.`demStaCode` = `Staff`.`staCode` "
+                    + "WHERE `Demerits`.`demStatus` = 'Active' AND "
+                    + "(CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) LIKE ? OR `demStuID` LIKE ? OR `demDate` LIKE ? OR `demClsCode` LIKE ?)";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -168,8 +177,8 @@ public class Demerits
         try
         {
             String sql = "SELECT `demID`,`demStuID`,`demDate`,`demStaCode`,`demClsCode`,`demTermID`,`demerits`,`demRemarks`,`demStatus` "
-                         + " FROM `Demerits` "
-                         + " WHERE `demID` = ?";
+                    + " FROM `Demerits` "
+                    + " WHERE `demID` = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, demID);
             ResultSet rs = prep.executeQuery();
@@ -194,5 +203,25 @@ public class Demerits
             logger.log(Level.SEVERE, message, e);
         }
         return demeritInfo;
+    }
+
+    public static boolean closeDemerits()
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Demerits` SET `demStatus` = 'Closed' "
+                    + " WHERE `demStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while closing the demerits.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
     }
 }
