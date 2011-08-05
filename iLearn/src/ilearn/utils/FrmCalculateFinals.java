@@ -17,11 +17,11 @@ import org.jdesktop.application.Task;
  *
  * @author mrogers
  */
-public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
+public class FrmCalculateFinals extends javax.swing.JInternalFrame
 {
 
     /** Creates new form FrmCalculateMidTerms */
-    public FrmCalculateMidTerms()
+    public FrmCalculateFinals()
     {
         initComponents();
     }
@@ -41,15 +41,16 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
         cmdGenerate = new javax.swing.JButton();
         setClosable(true);
         setIconifiable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmCalculateMidTerms.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmCalculateFinals.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmCalculateMidTerms.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmCalculateFinals.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
         lblWarning2.setText(resourceMap.getString("lblWarning2.text")); // NOI18N
+        lblWarning2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         lblWarning2.setName("lblWarning2"); // NOI18N
         lblWarning.setFont(lblWarning.getFont().deriveFont(lblWarning.getFont().getStyle() | java.awt.Font.BOLD, lblWarning.getFont().getSize()+4));
         lblWarning.setText(resourceMap.getString("lblWarning.text")); // NOI18N

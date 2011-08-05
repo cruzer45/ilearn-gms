@@ -920,6 +920,21 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
                   <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="calculateFinals">
+                      <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="showCalculateFinals" methodName="showCalculateFinals"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="calculateFinals.icon"/>
+                        <Property name="text" type="java.lang.String" resourceKey="calculateFinals.text"/>
+                        <Property name="name" type="java.lang.String" value="calculateFinals" noResource="true"/>
+                      </Properties>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JPopupMenu$Separator" name="jSeparator2">
+                      <Properties>
+                        <Property name="name" type="java.lang.String" value="jSeparator2" noResource="true"/>
+                      </Properties>
+                    </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="closeTerm">
                       <Properties>
                         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">

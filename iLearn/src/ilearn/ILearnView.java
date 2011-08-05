@@ -15,7 +15,7 @@ import ilearn.demerits.FrmRecordDemerit;
 import ilearn.detentions.FrmEditDetention;
 import ilearn.detentions.FrmRecordDetention;
 import ilearn.detentions.FrmRecordServedDetention;
-import ilearn.grades.FrmEditMidTerms;
+import ilearn.grades.FrmEditRemarks;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
@@ -49,6 +49,7 @@ import ilearn.user.FrmChangePassword;
 import ilearn.user.User;
 import ilearn.user.UserCheck;
 import ilearn.utils.FrmCalculateMidTerms;
+import ilearn.utils.FrmCalculateFinals;
 import ilearn.utils.FrmExcellClassListImporter;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.ResourceMap;
@@ -109,7 +110,7 @@ public class ILearnView extends FrameView
     FrmAssignPromotions frmAssignPromotions = null;
     FrmPromote frmPromote = null;
     FrmCalculateMidTerms frmCalculateMidTerms = null;
-    FrmEditMidTerms frmEditMidTerms = null;
+    FrmEditRemarks frmEditRemarks = null;
     FrmRecordDemerit frmRecordDemerit = null;
     FrmEditDemerit frmEditDemerit = null;
     FrmDemeritsByStudent frmDemeritsByStudent = null;
@@ -117,6 +118,7 @@ public class ILearnView extends FrameView
     FrmRecordDetention frmRecordDetention = null;
     FrmEditDetention frmEditDetention = null;
     FrmRecordServedDetention frmRecordServedDetention = null;
+    FrmCalculateFinals frmCalculateFinals = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
 
     public ILearnView(SingleFrameApplication app)
@@ -335,6 +337,8 @@ public class ILearnView extends FrameView
         midTerm = new javax.swing.JMenu();
         calculateMidTerm = new javax.swing.JMenuItem();
         endOfTerm = new javax.swing.JMenu();
+        calculateFinals = new javax.swing.JMenuItem();
+        jSeparator2 = new javax.swing.JPopupMenu.Separator();
         closeTerm = new javax.swing.JMenuItem();
         javax.swing.JMenu helpMenu = new javax.swing.JMenu();
         javax.swing.JMenuItem aboutMenuItem = new javax.swing.JMenuItem();
@@ -684,6 +688,13 @@ public class ILearnView extends FrameView
         endOfTerm.setIcon(resourceMap.getIcon("endOfTerm.icon")); // NOI18N
         endOfTerm.setText(resourceMap.getString("endOfTerm.text")); // NOI18N
         endOfTerm.setName("endOfTerm"); // NOI18N
+        calculateFinals.setAction(actionMap.get("showCalculateFinals")); // NOI18N
+        calculateFinals.setIcon(resourceMap.getIcon("calculateFinals.icon")); // NOI18N
+        calculateFinals.setText(resourceMap.getString("calculateFinals.text")); // NOI18N
+        calculateFinals.setName("calculateFinals"); // NOI18N
+        endOfTerm.add(calculateFinals);
+        jSeparator2.setName("jSeparator2"); // NOI18N
+        endOfTerm.add(jSeparator2);
         closeTerm.setAction(actionMap.get("showCloseTerm")); // NOI18N
         closeTerm.setIcon(resourceMap.getIcon("closeTerm.icon")); // NOI18N
         closeTerm.setText(resourceMap.getString("closeTerm.text")); // NOI18N
@@ -1612,7 +1623,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showMidTermReports();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1620,18 +1631,18 @@ public class ILearnView extends FrameView
     public void showEditMidTerms()
     {
         //Verify if the form is already loaded
-        boolean AlreadyLoaded = isLoaded("Edit Mid-Term Grades");
+        boolean AlreadyLoaded = isLoaded("Edit Grade Remarks");
         if (AlreadyLoaded == false)
         {
-            frmEditMidTerms = new FrmEditMidTerms();
-            desktopPane.add(frmEditMidTerms);
+            frmEditRemarks = new FrmEditRemarks();
+            desktopPane.add(frmEditRemarks);
             //Load the Form
-            frmEditMidTerms.setVisible(true);
-            frmEditMidTerms.show();
+            frmEditRemarks.setVisible(true);
+            frmEditRemarks.show();
             try
             {
-                frmEditMidTerms.setIcon(false);
-                frmEditMidTerms.setSelected(true);
+                frmEditRemarks.setIcon(false);
+                frmEditRemarks.setSelected(true);
             }
             catch (Exception e)
             {
@@ -1659,7 +1670,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showMidTermClassRankingReport();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1682,7 +1693,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showTermEndClassRankingReport();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1705,7 +1716,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showStudentsByClass();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1776,7 +1787,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showClassSizeDistribution();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1799,7 +1810,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showDemeritsByClass();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1846,7 +1857,7 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showGenderBreakdown();
-            return null;  // return your result
+            return null;
         }
     }
 
@@ -1965,7 +1976,31 @@ public class ILearnView extends FrameView
         {
             setMessage("Loading reporting engine.");
             ReportLoader.showDetentionReport();
-            return null;  // return your result
+            return null;
+        }
+    }
+
+    @Action
+    public void showCalculateFinals()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Generate Finals");
+        if (AlreadyLoaded == false)
+        {
+            frmCalculateFinals = new FrmCalculateFinals();
+            desktopPane.add(frmCalculateFinals);
+            //Load the Form
+            frmCalculateFinals.setVisible(true);
+            frmCalculateFinals.show();
+            try
+            {
+                frmCalculateFinals.setIcon(false);
+                frmCalculateFinals.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1978,6 +2013,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem addUser;
     private static javax.swing.JMenuItem assignPromotions;
     private static javax.swing.JMenu attendanceMenu;
+    private javax.swing.JMenuItem calculateFinals;
     private static javax.swing.JMenuItem calculateMidTerm;
     private javax.swing.JMenuItem changePasswordMenuItem;
     private static javax.swing.JMenuItem classGradeBook;
@@ -2013,6 +2049,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private static javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator2;
     private javax.swing.JMenuItem logOff;
     private javax.swing.JPanel mainPanel;
     private static javax.swing.JMenu manageMenu;

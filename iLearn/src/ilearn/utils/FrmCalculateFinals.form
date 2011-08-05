@@ -29,12 +29,12 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblWarning2" alignment="0" pref="422" max="32767" attributes="0"/>
-                  <Component id="lblWarning1" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWarning" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblWarning2" alignment="0" pref="396" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
-                      <Component id="lblCloseTerm" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdGenerate" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                      <Component id="lblCancel" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace min="-2" max="-2" attributes="0"/>
@@ -44,57 +44,55 @@
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblWarning1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
-              <Component id="lblWarning2" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
+              <Component id="lblWarning" min="-2" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+              <Component id="lblWarning2" min="-2" pref="50" max="-2" attributes="0"/>
+              <EmptySpace type="unrelated" max="32767" attributes="1"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCloseTerm" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cmdGenerate" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblWarning1">
+    <Component class="javax.swing.JButton" name="cmdCancel">
       <Properties>
-        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
-          <FontInfo relative="true">
-            <Font bold="true" component="lblWarning1" property="font" relativeSize="true" size="7"/>
-          </FontInfo>
+        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+          <action class="ilearn.utils.FrmCalculateMidTerms" id="cancel" methodName="cancel"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" resourceKey="lblWarning1.foreground"/>
-        <Property name="text" type="java.lang.String" resourceKey="lblWarning1.text"/>
-        <Property name="name" type="java.lang.String" value="lblWarning1" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="cmdCancel.text"/>
+        <Property name="name" type="java.lang.String" value="cmdCancel" noResource="true"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="lblWarning2">
       <Properties>
-        <Property name="foreground" type="java.awt.Color" resourceKey="lblWarning2.foreground"/>
         <Property name="text" type="java.lang.String" resourceKey="lblWarning2.text"/>
         <Property name="verticalAlignment" type="int" value="1"/>
         <Property name="name" type="java.lang.String" value="lblWarning2" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="lblCancel">
+    <Component class="javax.swing.JLabel" name="lblWarning">
       <Properties>
-        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-          <action class="ilearn.term.FrmCloseTerm" id="cancel" methodName="cancel"/>
+        <Property name="font" type="java.awt.Font" noResource="true" editor="org.netbeans.modules.form.editors2.FontEditor">
+          <FontInfo relative="true">
+            <Font bold="true" component="lblWarning" property="font" relativeSize="true" size="4"/>
+          </FontInfo>
         </Property>
-        <Property name="text" type="java.lang.String" resourceKey="lblCancel.text"/>
-        <Property name="name" type="java.lang.String" value="lblCancel" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="lblWarning.text"/>
+        <Property name="name" type="java.lang.String" value="lblWarning" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="lblCloseTerm">
+    <Component class="javax.swing.JButton" name="cmdGenerate">
       <Properties>
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-          <action class="ilearn.term.FrmCloseTerm" id="closeSemester" methodName="closeSemester"/>
+          <action class="ilearn.utils.FrmCalculateMidTerms" id="generateMidTerms" methodName="generateMidTerms"/>
         </Property>
-        <Property name="text" type="java.lang.String" resourceKey="lblCloseTerm.text"/>
-        <Property name="name" type="java.lang.String" value="lblCloseTerm" noResource="true"/>
+        <Property name="text" type="java.lang.String" resourceKey="cmdGenerate.text"/>
+        <Property name="name" type="java.lang.String" value="cmdGenerate" noResource="true"/>
       </Properties>
     </Component>
   </SubComponents>

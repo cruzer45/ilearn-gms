@@ -13,7 +13,7 @@ import ilearn.kernel.Utilities;
 import ilearn.promotion.Promote;
 import ilearn.register.Register;
 import ilearn.student.Student;
-import ilearn.utils.FrmMidTermErrors;
+import ilearn.utils.FrmErrors;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
@@ -39,68 +39,61 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-
+    private void initComponents()
+    {
+        lblWarning1 = new javax.swing.JLabel();
+        lblWarning2 = new javax.swing.JLabel();
+        lblCancel = new javax.swing.JButton();
+        lblCloseTerm = new javax.swing.JButton();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmCloseTerm.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
-        jLabel1.setFont(jLabel1.getFont().deriveFont(jLabel1.getFont().getStyle() | java.awt.Font.BOLD, jLabel1.getFont().getSize()+7));
-        jLabel1.setForeground(resourceMap.getColor("jLabel1.foreground")); // NOI18N
-        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
-        jLabel1.setName("jLabel1"); // NOI18N
-
-        jLabel2.setForeground(resourceMap.getColor("jLabel2.foreground")); // NOI18N
-        jLabel2.setText(resourceMap.getString("jLabel2.text")); // NOI18N
-        jLabel2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
-        jLabel2.setName("jLabel2"); // NOI18N
-
+        lblWarning1.setFont(lblWarning1.getFont().deriveFont(lblWarning1.getFont().getStyle() | java.awt.Font.BOLD, lblWarning1.getFont().getSize()+7));
+        lblWarning1.setForeground(resourceMap.getColor("lblWarning1.foreground")); // NOI18N
+        lblWarning1.setText(resourceMap.getString("lblWarning1.text")); // NOI18N
+        lblWarning1.setName("lblWarning1"); // NOI18N
+        lblWarning2.setForeground(resourceMap.getColor("lblWarning2.foreground")); // NOI18N
+        lblWarning2.setText(resourceMap.getString("lblWarning2.text")); // NOI18N
+        lblWarning2.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        lblWarning2.setName("lblWarning2"); // NOI18N
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmCloseTerm.class, this);
-        jButton1.setAction(actionMap.get("cancel")); // NOI18N
-        jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
-        jButton1.setName("jButton1"); // NOI18N
-
-        jButton2.setAction(actionMap.get("closeSemester")); // NOI18N
-        jButton2.setText(resourceMap.getString("jButton2.text")); // NOI18N
-        jButton2.setName("jButton2"); // NOI18N
-
+        lblCancel.setAction(actionMap.get("cancel")); // NOI18N
+        lblCancel.setText(resourceMap.getString("lblCancel.text")); // NOI18N
+        lblCancel.setName("lblCancel"); // NOI18N
+        lblCloseTerm.setAction(actionMap.get("closeSemester")); // NOI18N
+        lblCloseTerm.setText(resourceMap.getString("lblCloseTerm.text")); // NOI18N
+        lblCloseTerm.setName("lblCloseTerm"); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
-                    .addComponent(jLabel1)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton1)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblWarning2, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                                .addComponent(lblWarning1)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(lblCloseTerm)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(lblCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton1))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(lblWarning1)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addComponent(lblWarning2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblCloseTerm)
+                                .addComponent(lblCancel))
+                      .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -148,25 +141,60 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             //TODO ensure that promotions are registered.
             setProgress(1, 0, 8);
             setMessage("Closing Assessments");
-            Grade.closeAssessments();
+            boolean closeAssessments = Grade.closeAssessments();
+            if (!closeAssessments)
+            {
+                warnings += "An error occurred while closing the assessments.\n";
+                return false;
+            }
             setProgress(2, 0, 8);
             setMessage("Closing Demerits");
-            Demerits.closeDemerits();
+            boolean closeDemerits = Demerits.closeDemerits();
+            if (!closeDemerits)
+            {
+                warnings += "An error occurred while closing the demerits.\n";
+                return false;
+            }
             setProgress(3, 0, 8);
             setMessage("Closing Detentions");
-            Detention.closeDetentions();
+            boolean closeDetentions = Detention.closeDetentions();
+            if (!closeDetentions)
+            {
+                warnings += "An error occurred while closing the detentions.\n";
+                return false;
+            }
             setProgress(4, 0, 8);
             setMessage("Closing Grades");
-            Grade.closeGrades();
+            boolean closeGrades = Grade.closeGrades();
+            if (!closeGrades)
+            {
+                warnings += "An error occurred while closing the grades.\n";
+                return false;
+            }
             setProgress(5, 0, 8);
-            setMessage("Promoting Students");
-            Promote.promoteStudents();
-            setProgress(6, 0, 8);
             setMessage("Closing Attendance Registers");
-            Register.closeRegister();
+            boolean closeRegister = Register.closeRegister();
+            if (!closeRegister)
+            {
+                warnings += "An error occurred while closing the register.\n";
+                return false;
+            }
+            setProgress(6, 0, 8);
+            setMessage("Promoting Students");
+            boolean promoteStudents = Promote.promoteStudents();
+            if (!promoteStudents)
+            {
+                warnings += "An error occurred while promoting the students.\n";
+                return false;
+            }
             setProgress(7, 0, 8);
             setMessage("Closing Term");
-            Term.closeTerm();
+            boolean closeTerm = Term.closeTerm();
+            if (!closeTerm)
+            {
+                warnings += "An error occurred while closing the term.\n";
+                return false;
+            }
             setProgress(8, 0, 8);
             return true;  // return your result
         }
@@ -200,16 +228,16 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             }
             else
             {
-                FrmMidTermErrors frmMidTermErrors = new FrmMidTermErrors(null, true, warnings);
-                frmMidTermErrors.setLocationRelativeTo(Environment.getMainFrame());
-                frmMidTermErrors.setVisible(true);
+                FrmErrors frmErrors = new FrmErrors(null, true, warnings);
+                frmErrors.setLocationRelativeTo(Environment.getMainFrame());
+                frmErrors.setVisible(true);
             }
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JButton lblCancel;
+    private javax.swing.JButton lblCloseTerm;
+    private javax.swing.JLabel lblWarning1;
+    private javax.swing.JLabel lblWarning2;
     // End of variables declaration//GEN-END:variables
 }

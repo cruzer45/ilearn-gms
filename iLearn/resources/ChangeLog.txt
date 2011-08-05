@@ -1,5 +1,7 @@
 Version 1.1
 
+-   Added close term sub functions.
+
 -   Add Demerits and Term field to report cards.
 
 -   Add Demerit Module (to be tied into detention module).

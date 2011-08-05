@@ -1,5 +1,5 @@
 /*
- * FrmEditMidTerms.java
+ * FrmEditRemarks.java
  *
  * Created on Jul 9, 2011, 7:36:34 AM
  */
@@ -16,11 +16,11 @@ import org.jdesktop.application.Action;
  *
  * @author mrogers
  */
-public class FrmEditMidTerms extends javax.swing.JInternalFrame
+public class FrmEditRemarks extends javax.swing.JInternalFrame
 {
 
-    /** Creates new form FrmEditMidTerms */
-    public FrmEditMidTerms()
+    /** Creates new form FrmEditRemarks */
+    public FrmEditRemarks()
     {
         initComponents();
     }
@@ -56,7 +56,7 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
         txtClass = new javax.swing.JTextField();
         setClosable(true);
         setIconifiable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditMidTerms.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmEditRemarks.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
@@ -72,7 +72,7 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
                 txtSearchKeyPressed(evt);
             }
         });
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditMidTerms.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmEditRemarks.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
         cmdSearch.setName("cmdSearch"); // NOI18N
         jScrollPane2.setName("jScrollPane2"); // NOI18N
@@ -98,7 +98,6 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
             }
         });
         tblSearch.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
-        tblSearch.setColumnSelectionAllowed(true);
         tblSearch.setName("tblSearch"); // NOI18N
         tblSearch.addMouseListener(new java.awt.event.MouseAdapter()
         {
@@ -177,8 +176,9 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
                 return types [columnIndex];
             }
         });
-        tblGrades.setColumnSelectionAllowed(true);
+        tblGrades.setCellSelectionEnabled(false);
         tblGrades.setName("tblGrades"); // NOI18N
+        tblGrades.setRowSelectionAllowed(true);
         jScrollPane1.setViewportView(tblGrades);
         tblGrades.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
         tblGrades.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("tblGrades.columnModel.title1")); // NOI18N
@@ -295,7 +295,7 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
     public void search()
     {
         String criteria = txtSearch.getText().trim();
-        tblSearch.setModel(Grade.searchMidTermList(criteria));
+        tblSearch.setModel(Grade.searchGradeList(criteria));
         TableColumnAdjuster tca = new TableColumnAdjuster(tblSearch);
         tca.adjustColumns();
     }
@@ -336,7 +336,7 @@ public class FrmEditMidTerms extends javax.swing.JInternalFrame
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
             String grID = tblGrades.getValueAt(i, 0).toString();
-            String rem = tblGrades.getValueAt(i, 3).toString();
+            String rem = tblGrades.getValueAt(i, 4).toString();
             if (!rem.isEmpty())
             {
                 graID.add(grID);

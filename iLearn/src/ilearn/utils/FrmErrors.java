@@ -1,5 +1,5 @@
 /*
- * FrmMidTermErrors.java
+ * FrmErrors.java
  *
  * Created on Jul 7, 2011, 9:50:02 PM
  */
@@ -11,11 +11,11 @@ import org.jdesktop.application.Action;
  *
  * @author mrogers
  */
-public class FrmMidTermErrors extends javax.swing.JDialog
+public class FrmErrors extends javax.swing.JDialog
 {
 
-    /** Creates new form FrmMidTermErrors */
-    public FrmMidTermErrors(java.awt.Frame parent, boolean modal, String errors)
+    /** Creates new form FrmErrors */
+    public FrmErrors(java.awt.Frame parent, boolean modal, String errors)
     {
         super(parent, modal);
         initComponents();
@@ -37,7 +37,7 @@ public class FrmMidTermErrors extends javax.swing.JDialog
         jTextArea1 = new javax.swing.JTextArea();
         jButton1 = new javax.swing.JButton();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmMidTermErrors.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmErrors.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setModal(true);
         setName("Form"); // NOI18N
@@ -52,7 +52,7 @@ public class FrmMidTermErrors extends javax.swing.JDialog
         jTextArea1.setRows(5);
         jTextArea1.setName("jTextArea1"); // NOI18N
         jScrollPane1.setViewportView(jTextArea1);
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmMidTermErrors.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmErrors.class, this);
         jButton1.setAction(actionMap.get("close")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N

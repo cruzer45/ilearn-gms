@@ -58,7 +58,6 @@ public class Detention
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -72,10 +71,10 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'name' "
-                    + " FROM `Detention` "
-                    + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
-                    + "WHERE `detStatus` = 'Active' AND "
-                    + "(`detID` LIKE ? OR `detPunishment` LIKE ? OR CONCAT_WS(' ',`stuFirstName`, `stuLastName`) LIKE ?)";
+                         + " FROM `Detention` "
+                         + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
+                         + "WHERE `detStatus` = 'Active' AND "
+                         + "(`detID` LIKE ? OR `detPunishment` LIKE ? OR CONCAT_WS(' ',`stuFirstName`, `stuLastName`) LIKE ?)";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -107,7 +106,6 @@ public class Detention
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -121,7 +119,6 @@ public class Detention
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -142,9 +139,9 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'name' "
-                    + " FROM `Detention` "
-                    + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
-                    + "WHERE `detStatus` = 'Active' AND `detServed` = 'false'";
+                         + " FROM `Detention` "
+                         + " INNER JOIN `Student` ON `Detention`.`detStuID` = `Student`.`stuID` "
+                         + "WHERE `detStatus` = 'Active' AND `detServed` = 'false'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -198,8 +195,8 @@ public class Detention
         try
         {
             String sql = "SELECT `detID`,`detDate`,`detPunishment`, `detRemark` "
-                    + " FROM `Detention` "
-                    + " WHERE `detStatus` = 'Active' AND `detID` = ?";
+                         + " FROM `Detention` "
+                         + " WHERE `detStatus` = 'Active' AND `detID` = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, detID);
             ResultSet rs = prep.executeQuery();
@@ -282,7 +279,7 @@ public class Detention
         try
         {
             String sql = "UPDATE `Detention` SET `detStatus` = 'Closed' "
-                    + " WHERE `detStatus` = 'Active'";
+                         + " WHERE `detStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.execute();
             prep.close();
