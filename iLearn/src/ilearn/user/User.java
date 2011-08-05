@@ -527,6 +527,7 @@ public class User
         {
             String deleteSQL = "DELETE FROM `User_Staff` WHERE `userID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(deleteSQL);
+            prep.setString(1, usrID);
             prep.execute();
             String sql = "INSERT INTO `User_Staff` (`userID`, `staID`) VALUES (?, ?);";
             prep = Environment.getConnection().prepareStatement(sql);
