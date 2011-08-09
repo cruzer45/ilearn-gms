@@ -1,0 +1,1 @@
+UPDATE `User` SET `usrStatus` = 'Active' WHERE `usrStatus` = 'Locked';

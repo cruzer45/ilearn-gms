@@ -452,6 +452,9 @@
                 </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="termEndReports">
                   <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showFinalReportCard" methodName="showFinalReportCard"/>
+                    </Property>
                     <Property name="icon" type="javax.swing.Icon" resourceKey="termEndReports.icon"/>
                     <Property name="text" type="java.lang.String" resourceKey="termEndReports.text"/>
                     <Property name="name" type="java.lang.String" value="termEndReports" noResource="true"/>
@@ -872,6 +875,26 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="lockUsers">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showLockUsers" methodName="showLockUsers"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="lockUsers.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="lockUsers.text"/>
+                    <Property name="name" type="java.lang.String" value="lockUsers" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="unlockUsers">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showUnlockUsers" methodName="showUnlockUsers"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="unlockUsers.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="unlockUsers.text"/>
+                    <Property name="name" type="java.lang.String" value="unlockUsers" noResource="true"/>
+                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>

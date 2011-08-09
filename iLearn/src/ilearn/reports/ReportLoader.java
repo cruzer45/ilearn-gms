@@ -197,10 +197,29 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
     public static void showDetentionReport()
     {
         String report = "reports/Dention_List.jasper";
         String title = "Detention Report";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showTermEndReport()
+    {
+        String report = "reports/FinalGrade_Report.jasper";
+        String title = "TErm End Report Card";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");

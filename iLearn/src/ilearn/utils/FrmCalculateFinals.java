@@ -123,7 +123,7 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
             }
             setProgress(1, 0, 3);
             setMessage("Calculating mid-term grades.");
-            boolean calculateMidTerms = Grade.calculateMidTerms();
+            boolean calculateMidTerms = Grade.calculateFinalGrade();
             if (!calculateMidTerms)
             {
                 warnings += "An error occurred while calculating the grades.\n";
@@ -131,7 +131,7 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
             }
             setProgress(2, 0, 3);
             setMessage("Saving Grades");
-            boolean saveMidTerms = Grade.saveMidTerms();
+            boolean saveMidTerms = Grade.saveFinalGrades();
             if (!saveMidTerms)
             {
                 warnings += "An error occurred while saving the grades.\n";
@@ -163,7 +163,7 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
         {
             if (result == Boolean.TRUE)
             {
-                String message = "The mid-term grades were successfully generated.";
+                String message = "The Term grades were successfully generated.";
                 Utilities.showInfoMessage(rootPane, message);
                 return;
             }
