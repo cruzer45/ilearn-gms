@@ -1,5 +1,6 @@
 package ilearn.grades;
 
+import com.lowagie.text.Anchor;
 import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
@@ -1058,5 +1059,70 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    private static void updateFinalGPA()
+    {
+        try
+        {
+            ArrayList<String> gradeIDs = new ArrayList<String>();
+            ArrayList<Double> grades = new ArrayList<Double>();
+            ArrayList<String> GPAs = new ArrayList<String>();
+            ArrayList<String> Letters = new ArrayList<String>();
+            String sql = "SELECT `graID`, `graFinal`  FROM `Grade` WHERE `graStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                gradeIDs.add(rs.getString("graStuID"));
+                grades.add(rs.getDouble("graFinal"));
+            }
+            rs.close();
+            for (String graID : gradeIDs)
+            {
+            }
+            sql = "UPDATE `Grade` SET `graClsCode`= ? "
+                    + "WHERE `graStuID`= ? AND `graStatus` = 'Active';";
+            prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < gradeIDs.size(); i++)
+            {
+                prep.setString(1, GPAs.get(i));
+                prep.setString(2, gradeIDs.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating GPA and Letter grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
+
+    private static ArrayList<String> getGPA(double grade)
+    {
+        ArrayList<String> gpa = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT * FROM `GPA_Lookup` WHERE `gradeMin` <= ? AND `gradeNext` > ?";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setDouble(1, grade);
+            prep.setDouble(2, grade);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                gpa.add(rs.getString(""));
+                gpa.add(rs.getString(""));
+                gpa.add(rs.getString(""));
+            }
+
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while looking up the GPA and Letter grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return gpa;
     }
 }
