@@ -1,6 +1,5 @@
 package ilearn.grades;
 
-import com.lowagie.text.Anchor;
 import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
@@ -520,7 +519,6 @@ public class Grade
 
     public static DefaultTableModel getAssessmentTable(String criteria)
     {
-        String original = criteria;
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
@@ -528,14 +526,21 @@ public class Grade
             @Override
             public Class getColumnClass(int columnIndex)
             {
-                Object o = getValueAt(0, columnIndex);
-                if (o == null)
+                try
+                {
+                    Object o = getValueAt(0, columnIndex);
+                    if (o == null)
+                    {
+                        return Object.class;
+                    }
+                    else
+                    {
+                        return o.getClass();
+                    }
+                }
+                catch (Exception e)
                 {
                     return Object.class;
-                }
-                else
-                {
-                    return o.getClass();
                 }
             }
 
@@ -553,9 +558,10 @@ public class Grade
         ArrayList<String> subject = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
+            String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` , `clsCode` "
                     + "FROM `iLearn`.`Assments` "
-                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                    + "INNER JOIN `Class` ON `Assments`.`assmtClassID` = `Class`.`clsID` "
+                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ? OR `clsCode` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
                     + "LIMIT 0, 1000;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
@@ -563,10 +569,11 @@ public class Grade
             prep.setString(3, criteria);
             prep.setString(4, criteria);
             prep.setString(5, criteria);
-            prep.setString(6, Classes.getClassID(original));
+            prep.setString(6, criteria);
             prep.setString(7, criteria);
             prep.setString(8, criteria);
-            prep.setString(9, Term.getCurrentTerm());
+            prep.setString(9, criteria);
+            prep.setString(10, Term.getCurrentTerm());
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
@@ -574,17 +581,18 @@ public class Grade
                 type.add(rs.getString("assmtType"));
                 title.add(rs.getString("assmtTitle"));
                 date.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));
-                cls.add(Classes.getClassCode(rs.getString("assmtClassID")));
+                cls.add(rs.getString("clsCode"));
                 subject.add(rs.getString("assmtSubject"));
             }
             rs.close();
             prep.close();
             model.addColumn("ID", ID.toArray());
+            model.addColumn("Class", cls.toArray());
+            model.addColumn("Subject", subject.toArray());
             model.addColumn("Type", type.toArray());
             model.addColumn("Title", title.toArray());
             model.addColumn("Date", date.toArray());
-            model.addColumn("Class", cls.toArray());
-            model.addColumn("Subject", subject.toArray());
+
         }
         catch (Exception e)
         {
@@ -887,8 +895,9 @@ public class Grade
             }
             prep.executeBatch();
             prep.close();
-            successful = true;
             updateStudentClasses();
+            updateMidTermGPA();
+            successful = true;
         }
         catch (Exception e)
         {
@@ -917,6 +926,7 @@ public class Grade
             prep.executeBatch();
             prep.close();
             updateStudentClasses();
+            updateFinalGPA();
             successful = true;
         }
         catch (Exception e)
@@ -1068,7 +1078,8 @@ public class Grade
             ArrayList<String> gradeIDs = new ArrayList<String>();
             ArrayList<Double> grades = new ArrayList<Double>();
             ArrayList<String> GPAs = new ArrayList<String>();
-            ArrayList<String> Letters = new ArrayList<String>();
+            ArrayList<String> letters = new ArrayList<String>();
+            ArrayList<String> remarks = new ArrayList<String>();
             String sql = "SELECT `graID`, `graFinal`  FROM `Grade` WHERE `graStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
@@ -1078,16 +1089,68 @@ public class Grade
                 grades.add(rs.getDouble("graFinal"));
             }
             rs.close();
-            for (String graID : gradeIDs)
+            for (double grade : grades)
             {
+                ArrayList<String> gpa = getGPA(grade);
+                GPAs.add(gpa.get(0));
+                letters.add(gpa.get(1));
+                remarks.add(gpa.get(2));
             }
-            sql = "UPDATE `Grade` SET `graClsCode`= ? "
-                    + "WHERE `graStuID`= ? AND `graStatus` = 'Active';";
+            sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
+                    + " WHERE `graID`= ?;";
             prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < gradeIDs.size(); i++)
             {
                 prep.setString(1, GPAs.get(i));
-                prep.setString(2, gradeIDs.get(i));
+                prep.setString(2, letters.get(i));
+                prep.setString(3, remarks.get(i));
+                prep.setString(4, gradeIDs.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating GPA and Letter grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
+
+    private static void updateMidTermGPA()
+    {
+        try
+        {
+            ArrayList<String> gradeIDs = new ArrayList<String>();
+            ArrayList<Double> grades = new ArrayList<Double>();
+            ArrayList<String> GPAs = new ArrayList<String>();
+            ArrayList<String> letters = new ArrayList<String>();
+            ArrayList<String> remarks = new ArrayList<String>();
+            String sql = "SELECT `graID`, `graMid` FROM `Grade` WHERE `graStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                gradeIDs.add(rs.getString("graID"));
+                grades.add(rs.getDouble("graMid"));
+            }
+            rs.close();
+            for (double grade : grades)
+            {
+                ArrayList<String> gpa = getGPA(grade);
+                GPAs.add(gpa.get(0));
+                letters.add(gpa.get(1));
+                remarks.add(gpa.get(2));
+            }
+            sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
+                    + " WHERE `graID`= ?;";
+            prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < gradeIDs.size(); i++)
+            {
+                prep.setString(1, GPAs.get(i));
+                prep.setString(2, letters.get(i));
+                prep.setString(3, remarks.get(i));
+                prep.setString(4, gradeIDs.get(i));
                 prep.addBatch();
             }
             prep.executeBatch();
@@ -1105,18 +1168,17 @@ public class Grade
         ArrayList<String> gpa = new ArrayList<String>();
         try
         {
-            String sql = "SELECT * FROM `GPA_Lookup` WHERE `gradeMin` <= ? AND `gradeNext` > ?";
+            String sql = "SELECT `gradeLetter`,`gpa`,`remark`  FROM `GPA_Lookup` WHERE `gradeMin` <= ? AND `gradeNext` > ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setDouble(1, grade);
             prep.setDouble(2, grade);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                gpa.add(rs.getString(""));
-                gpa.add(rs.getString(""));
-                gpa.add(rs.getString(""));
+                gpa.add(rs.getString("gpa"));//0
+                gpa.add(rs.getString("gradeLetter"));//1
+                gpa.add(rs.getString("remark"));//2
             }
-
         }
         catch (Exception e)
         {
