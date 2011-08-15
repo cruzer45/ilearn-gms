@@ -35,7 +35,7 @@ public class ReportLoader
 
     public static void showMidTermReports()
     {
-        String report = "reports/MidTerm_Report.jasper";
+        String report = "reports/MidTerm_Report_WIth_GPA.jasper";
         String title = "Report - Mid-Term Report Cards";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
@@ -218,7 +218,7 @@ public class ReportLoader
 
     public static void showTermEndReport()
     {
-        String report = "reports/FinalGrade_Report.jasper";
+        String report = "reports/FinalGrade_Report_with_GPA.jasper";
         String title = "TErm End Report Card";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
