@@ -1,11 +1,11 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
-50%     Generate Report Cards Function
 0%      Filter Promotion Lists to only a higher class level.
 0%      Students who are not promoted are set as repeating.
 0%      Add Year to the student id.
-0%      Add check if term grades were already calculated before calculating term grades.
+100%    Add check if term grades were already calculated before calculating term grades.
+100%    Generate Report Cards Function
 100%    Calculate mid term and final grades.
 100%    Add Demerits and Term field to report cards.
 100%    Add Demerit Module (to be tied into detention module).

@@ -64,8 +64,8 @@ public class iLogger
         try
         {
             String sql = "SELECT `logID` "
-                    + " FROM `Log_Actions` "
-                    + " WHERE `logAction` = ? AND `logTrmCode` = ? ";
+                         + " FROM `Log_Actions` "
+                         + " WHERE `logAction` = ? AND `logTrmCode` = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, action);
             prep.setString(2, Term.getCurrentTerm());
@@ -87,7 +87,6 @@ public class iLogger
             String mess = "An error occurred while determining of the action has already been run.";
             logger.log(Level.SEVERE, mess, e);
         }
-
         return actionRun;
     }
 }
