@@ -49,6 +49,7 @@ public class Staff
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -94,6 +95,7 @@ public class Staff
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -106,8 +108,8 @@ public class Staff
         try
         {
             String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`,`staDOB` "
-                         + "FROM `iLearn`.`Staff` "
-                         + "WHERE (`staID` LIKE ? OR `staCode` LIKE ? OR `staFirstName` LIKE ? OR `staLastName` LIKE ?) AND `staStatus` =  'Active';";
+                    + "FROM `iLearn`.`Staff` "
+                    + "WHERE (`staID` LIKE ? OR `staCode` LIKE ? OR `staFirstName` LIKE ? OR `staLastName` LIKE ?) AND `staStatus` =  'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -308,9 +310,9 @@ public class Staff
         ArrayList<String> staffSubjects = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `subID`,`subCode`,`subStaffCode`,`subName`,`subDescription`,`subCredits`,`subStatus` "
-                         + " FROM `Subject` "
-                         + "WHERE `subStaffCode` = ? AND `subStatus` = 'Active'";
+            String sql = "SELECT `subID` "
+                    + " FROM `Subject` "
+                    + "WHERE `subStaffCode` = ? AND `subStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, staffCode);
             ResultSet rs = prep.executeQuery();

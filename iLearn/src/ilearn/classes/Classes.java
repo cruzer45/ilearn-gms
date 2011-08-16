@@ -79,6 +79,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -102,6 +103,7 @@ public class Classes
         resetSubjects();
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -111,7 +113,7 @@ public class Classes
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -152,7 +154,7 @@ public class Classes
         try
         {
             String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -240,6 +242,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -290,6 +293,7 @@ public class Classes
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -304,7 +308,7 @@ public class Classes
         try
         {
             String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` "
-                         + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
+                    + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -502,6 +506,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -617,22 +622,21 @@ public class Classes
     public static ArrayList<String> getPermittedSubjects(String classCode)
     {
         ArrayList<String> subjects = new ArrayList<String>();
-        resetSubjects();
+        ArrayList<String> permittedSubjects = User.getPermittedSubjects();
         try
         {
-            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+            String sql = "SELECT `subCode` FROM `iLearn`.`ClassSubjects` "
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                String subID = rs.getString("subCode");
+                String subID = rs.getString("subCode"); //This table actually stores the ID and not the code.
                 String subCode = Subject.getSubjectCode(subID);
-                ArrayList<String> permittedSubjects = User.getPermittedSubjects();
-                if (!permittedSubjects.contains(subCode))
+                if (permittedSubjects.contains(subCode))
                 {
-                    subIDs.add(subCode);
+                    subjects.add(subCode);
                 }
             }
             rs.close();

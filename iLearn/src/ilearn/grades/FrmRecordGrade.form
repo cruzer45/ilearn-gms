@@ -88,12 +88,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="cmbType" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="calDate" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="txtTitle" alignment="1" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="cmbSubject" alignment="0" pref="315" max="32767" attributes="0"/>
-                                  <Component id="spinnerMaxPoints" alignment="1" pref="315" max="32767" attributes="0"/>
+                                  <Component id="cmbType" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="calDate" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtTitle" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbSubject" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="spinnerMaxPoints" alignment="1" pref="288" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -270,7 +270,7 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane1" alignment="0" pref="375" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="371" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -285,7 +285,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane1" pref="353" max="32767" attributes="0"/>
+                      <Component id="jScrollPane1" pref="364" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>

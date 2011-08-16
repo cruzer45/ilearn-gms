@@ -256,7 +256,7 @@ public class Subject
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                subCode = rs.getString("subID");
+                subCode = rs.getString("subCode");
             }
             rs.close();
             prep.close();
