@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class User
 {
-
+    
     private static int loginCount = 0;
     private static String userName = "";
     private static String userGroup = "";
@@ -184,7 +184,7 @@ public class User
         }
         DefaultTableModel model = new DefaultTableModel()
         {
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -237,7 +237,7 @@ public class User
         };
         return results;
     }
-
+    
     public static String getUserID(String usrName)
     {
         String usrID = "";
@@ -420,7 +420,7 @@ public class User
     {
         return timeout;
     }
-
+    
     public static void getPermittedListItems()
     {
         try
@@ -459,14 +459,14 @@ public class User
             logger.log(Level.SEVERE, message, e);
         }
     }
-
+    
     public static void resetStaffLinks()
     {
         staIDs = new ArrayList<String>();
         staCodes = new ArrayList<String>();
         staNames = new ArrayList<String>();
     }
-
+    
     public static void addStaffLink(String staffID, String staffCode, String staffName)
     {
         if (!staIDs.contains(staffID))
@@ -476,7 +476,7 @@ public class User
             staNames.add(staffName);
         }
     }
-
+    
     public static void removeStaffLink(String staffID, String staffCode, String staffName)
     {
         if (staIDs.contains(staffID))
@@ -486,12 +486,12 @@ public class User
             staNames.remove(staffName);
         }
     }
-
+    
     public static DefaultTableModel loadStaffLinks()
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
+            
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -512,7 +512,7 @@ public class User
                     return Object.class;
                 }
             }
-
+            
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -524,7 +524,7 @@ public class User
         model.addColumn("Staff Name", staNames.toArray());
         return model;
     }
-
+    
     public static boolean saveStaffLinks(String usrID)
     {
         boolean successful = false;
@@ -553,7 +553,7 @@ public class User
         }
         return successful;
     }
-
+    
     public static void getStaffLinks(String usrID)
     {
         try
@@ -606,7 +606,7 @@ public class User
     {
         return permissions;
     }
-
+    
     public static boolean previligeAvailable(String currentPath)
     {
         String[] prevList = getPermissions().split("\\|");
@@ -621,7 +621,7 @@ public class User
         }
         return false;
     }
-
+    
     public static boolean previligeAvailable(String currentPath, String permissionString)
     {
         String[] prevList = permissionString.split("\\|");
@@ -636,7 +636,7 @@ public class User
         }
         return false;
     }
-
+    
     public static boolean lockUsers()
     {
         boolean successful = false;
@@ -655,7 +655,7 @@ public class User
         }
         return successful;
     }
-
+    
     public static boolean unlockUsers()
     {
         boolean successful = false;

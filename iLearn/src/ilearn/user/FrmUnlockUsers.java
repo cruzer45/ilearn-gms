@@ -109,7 +109,7 @@ public class FrmUnlockUsers extends javax.swing.JInternalFrame
         @Override
         protected Object doInBackground()
         {
-            boolean lockUsers = User.lockUsers();
+            boolean lockUsers = User.unlockUsers();
             return lockUsers;  // return your result
         }
 
