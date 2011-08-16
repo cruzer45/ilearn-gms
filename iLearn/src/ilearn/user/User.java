@@ -99,7 +99,8 @@ public class User
             String message = "You have exceeded the number of failed login attempts.\n"
                     + "The program will now exit.";
             Utilities.showErrorMessage(null, message);
-            ilearn.ILearnApp.getApplication().exit();
+            Environment.closeConnection();
+            System.exit(0);
         }
         return successful;
     }
