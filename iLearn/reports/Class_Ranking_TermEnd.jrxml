@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Class_Ranking" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C:/Users/Chris/Documents/NetBeansProjects/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT `graStuID` AS 'Student ID',`graClsCode` AS 'Class', AVG(`graFinal`) AS 'Average', CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'Name', `trmShortName` AS 'Term'
@@ -20,6 +20,7 @@ ORDER BY `graClsCode` DESC]]>
 	<field name="Average" class="java.lang.Double"/>
 	<field name="Name" class="java.lang.String"/>
 	<field name="Term" class="java.lang.String"/>
+	<sortField name="Average" order="Descending"/>
 	<group name="ClassGroup" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{Class}]]></groupExpression>
 		<groupHeader>
@@ -45,7 +46,7 @@ ORDER BY `graClsCode` DESC]]>
 			<textField>
 				<reportElement x="0" y="100" width="572" height="25"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="20" isBold="false"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Term} + " Mid-Term Class Ranking: "+ $F{Class}]]></textFieldExpression>
 			</textField>

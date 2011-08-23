@@ -224,11 +224,12 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
             warning = warning + "You need to select the student's class.\n";
             inputValid = false;
         }
-        if (txtSSN.getText().trim().equals("000000000"))
-        {
-            warning = warning + "You need to enter the student's Social Security Number.\n";
-            inputValid = false;
-        }
+        //ToDo add social security handling.
+//        if (txtSSN.getText().trim().equals("000000000"))
+//        {
+//            warning = warning + "You need to enter the student's Social Security Number.\n";
+//            inputValid = false;
+//        }
         return inputValid;
     }
 

@@ -138,7 +138,6 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             {
                 return false;
             }
-            //TODO ensure that promotions are registered.
             setProgress(1, 0, 8);
             setMessage("Closing Assessments");
             boolean closeAssessments = Grade.closeAssessments();
@@ -222,7 +221,7 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             if (result == Boolean.TRUE)
             {
                 String message = "The term was successfully closed.\n\n"
-                                 + "Don't forget to create a new term.";
+                        + "Don't forget to create a new term.";
                 Utilities.showInfoMessage(rootPane, message);
                 return;
             }
