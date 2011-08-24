@@ -7,6 +7,7 @@ package ilearn.user;
 
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
+import it.cnr.imaa.essi.lablib.gui.checkboxtree.TreeCheckingModel.CheckingMode;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.tree.TreePath;
 import org.jdesktop.application.Action;
@@ -525,6 +526,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
 
     private void populateLists()
     {
+        tree.getCheckingModel().setCheckingMode(CheckingMode.PROPAGATE_PRESERVING_UNCHECK);
         tblUsers.setModel(User.getUserList());
         TableColumnAdjuster tca = new TableColumnAdjuster(tblUsers);
         tca.adjustColumns();
@@ -629,8 +631,8 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while updating the user's information.\n"
-                             + "Kindly verify your information and try again.\n"
-                             + "If the problem persists, kindly contact your system administrator.";
+                    + "Kindly verify your information and try again.\n"
+                    + "If the problem persists, kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

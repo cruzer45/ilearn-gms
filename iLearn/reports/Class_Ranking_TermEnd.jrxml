@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:/Users/Chris/Documents/NetBeansProjects/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT `graStuID` AS 'Student ID',`graClsCode` AS 'Class', AVG(`graFinal`) AS 'Average', CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'Name', `trmShortName` AS 'Term'

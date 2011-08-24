@@ -1,0 +1,1 @@
+UPDATE `Student` SET `stuFirstName`=(@temp:=`stuFirstName`), `stuFirstName` = `stuLastName`, `stuLastName` = @temp;

@@ -472,7 +472,7 @@ public class FrmAddUser extends javax.swing.JInternalFrame
 
     private void populateLists()
     {
-        tree.getCheckingModel().setCheckingMode(CheckingMode.PROPAGATE_PRESERVING_CHECK);
+        tree.getCheckingModel().setCheckingMode(CheckingMode.PROPAGATE_PRESERVING_UNCHECK);
         //Loads the values from the database into the combo boxes.
         ArrayList<String> userGroups = User.getUserGroups();
         userGroups.add(0, "--- Select One ---");
