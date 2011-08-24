@@ -27,8 +27,8 @@ public class FrmPermissionMaker extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
+
         jSplitPane1 = new javax.swing.JSplitPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tree = new it.cnr.imaa.essi.lablib.gui.checkboxtree.CheckboxTree();
@@ -37,11 +37,15 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         cmdClose = new javax.swing.JButton();
         cmdGenerate = new javax.swing.JButton();
         cmdLoad = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
         jSplitPane1.setDividerLocation(200);
         jSplitPane1.setOrientation(javax.swing.JSplitPane.VERTICAL_SPLIT);
         jSplitPane1.setName("jSplitPane1"); // NOI18N
+
         jScrollPane1.setName("jScrollPane1"); // NOI18N
+
         javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Menu");
         javax.swing.tree.DefaultMutableTreeNode treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Student");
         javax.swing.tree.DefaultMutableTreeNode treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Add Student");
@@ -58,11 +62,11 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Grades");
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Create Assessment");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Record Grade");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Assessment");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Grade");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Mid Terms");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Report Card Remarks");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Demerits");
@@ -70,16 +74,18 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Demerits");
         treeNode2.add(treeNode3);
-        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Detention");
-        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Add Detention");
-        treeNode3.add(treeNode4);
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Edit Detention");
-        treeNode3.add(treeNode4);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Detention");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Add Detention");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Detention");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Record Served Detention");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Reports");
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Student Reports");
-        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Student List");
+        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Student List");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Repeating Students");
         treeNode3.add(treeNode4);
@@ -163,6 +169,10 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Edit User");
         treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Lock User");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Unlock User");
+        treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Utilities Menu");
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid Term");
@@ -180,68 +190,71 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         tree.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
         tree.setName("tree"); // NOI18N
         jScrollPane1.setViewportView(tree);
+
         jSplitPane1.setLeftComponent(jScrollPane1);
+
         jScrollPane2.setName("jScrollPane2"); // NOI18N
+
         txtPermission.setColumns(20);
         txtPermission.setRows(5);
         txtPermission.setName("txtPermission"); // NOI18N
         jScrollPane2.setViewportView(txtPermission);
+
         jSplitPane1.setRightComponent(jScrollPane2);
+
         cmdClose.setText("Close");
         cmdClose.setName("cmdClose"); // NOI18N
-        cmdClose.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmdClose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdCloseActionPerformed(evt);
             }
         });
+
         cmdGenerate.setText("Generate");
         cmdGenerate.setName("cmdGenerate"); // NOI18N
-        cmdGenerate.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmdGenerate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdGenerateActionPerformed(evt);
             }
         });
+
         cmdLoad.setText("Load");
         cmdLoad.setName("cmdLoad"); // NOI18N
-        cmdLoad.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmdLoad.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmdLoadActionPerformed(evt);
             }
         });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                          .addComponent(cmdLoad)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
-                                          .addComponent(cmdGenerate)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addComponent(cmdClose)))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 380, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmdLoad)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 210, Short.MAX_VALUE)
+                        .addComponent(cmdGenerate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cmdClose)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdClose)
-                                .addComponent(cmdGenerate)
-                                .addComponent(cmdLoad))
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 283, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdClose)
+                    .addComponent(cmdGenerate)
+                    .addComponent(cmdLoad))
+                .addContainerGap())
         );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -319,6 +332,7 @@ public class FrmPermissionMaker extends javax.swing.JFrame
     {
         java.awt.EventQueue.invokeLater(new Runnable()
         {
+
             public void run()
             {
                 new FrmPermissionMaker().setVisible(true);

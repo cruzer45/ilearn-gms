@@ -7,15 +7,16 @@ Menu
   Enter Attendance
   Edit Attendance
  Grades
-  Create Assessment
-  Edit Assessment
-  Edit Mid Terms
+  Record Grade
+  Edit Grade
+  Edit Report Card Remarks
  Demerits
   Record Demerits
   Edit Demerits
-  Detention
-   Add Detention
-   Edit Detention
+ Detention
+  Add Detention
+  Edit Detention
+  Record Served Detention
  Reports
   Student Reports 
    Student List
@@ -60,6 +61,8 @@ Menu
   User Menu
    Add User
    Edit User
+   Lock User
+   Unlock User
   Utilities Menu
    Mid Term
     Calculate Mid Term Grades

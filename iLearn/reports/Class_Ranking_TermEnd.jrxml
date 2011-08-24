@@ -48,7 +48,7 @@ ORDER BY `graClsCode` DESC]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Term} + " Mid-Term Class Ranking: "+ $F{Class}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Term} + " Final Class Ranking: "+ $F{Class}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
