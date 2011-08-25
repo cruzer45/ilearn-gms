@@ -43,10 +43,10 @@ public class Environment
         catch (Exception e)
         {
             JOptionPane.showMessageDialog(ILearnApp.getApplication().getMainFrame(),
-                    "An error occurred."
-                    + "\nCould not read the application's settings."
-                    + "\n\nKindly consult the system administrator.",
-                    "iLoan", JOptionPane.ERROR_MESSAGE);
+                                          "An error occurred."
+                                          + "\nCould not read the application's settings."
+                                          + "\n\nKindly consult the system administrator.",
+                                          "iLoan", JOptionPane.ERROR_MESSAGE);
             String message = "The properties file could not be read.";
             logger.log(Level.SEVERE, message, e);
             System.exit(1);
@@ -78,7 +78,7 @@ public class Environment
             String message = "ERROR: The driver specified could not be found.";
             logger.log(Level.SEVERE, message, cnfEx);
             message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check with your system administrator.";
+                      + "Kindly check with your system administrator.";
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().exit();
         }
@@ -87,7 +87,7 @@ public class Environment
             String message = "ERROR: Could not connect to the database.";
             logger.log(Level.SEVERE, message, sqlEx);
             message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check your connection and consult with your system administrator.";
+                      + "Kindly check your connection and consult with your system administrator.";
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().exit();
         }
@@ -96,7 +96,7 @@ public class Environment
             String message = "ERROR: Could not connect to the database.";
             logger.log(Level.SEVERE, message, e);
             message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check with your system administrator.";
+                      + "Kindly check with your system administrator.";
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().exit();
         }
@@ -113,7 +113,7 @@ public class Environment
         if (foundDBVersion < minimumDBVersion)
         {
             String message = "The database was meant to be used with another version of this application.\n"
-                    + "To protect your data, the program will now exit.";
+                             + "To protect your data, the program will now exit.";
             logger.log(Level.SEVERE, message);
             Utilities.showErrorMessage(null, message);
             ILearnApp.getApplication().quit(null);
@@ -127,7 +127,7 @@ public class Environment
             if (expiryDate.before(currentDate))
             {
                 String message = "The license has expired.\n"
-                        + "Kindly contact your provider to get a new license.";
+                                 + "Kindly contact your provider to get a new license.";
                 logger.log(Level.SEVERE, message);
                 Utilities.showErrorMessage(null, message);
                 ILearnApp.getApplication().quit(null);
@@ -164,12 +164,11 @@ public class Environment
         long waitTime = (long) (timeout * 60 * 1000);
         TimerTask logOff = new TimerTask()
         {
-
             @Override
             public void run()
             {
                 String message = "You have been idle for " + timeout + " minutes.\n"
-                        + "The program will now close.";
+                                 + "The program will now close.";
                 Utilities.showInfoMessage(null, message);
                 ilearn.ILearnApp.getApplication().exit();
             }

@@ -465,10 +465,24 @@ public class UserCheck
             return false;
         }
     }
-    
+
     public static boolean canRecordServedDetention()
     {
-    if (User.previligeAvailable("Record Served Detention"))
+        if (User.previligeAvailable("Record Served Detention"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    /*
+
+    public static boolean canSeeStudent()
+    {
+    if (User.previligeAvailable("Manage"))
     {
     return true;
     }
@@ -478,8 +492,6 @@ public class UserCheck
     }
     }
 
-    /*
-        
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -491,7 +503,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -503,7 +515,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -515,7 +527,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -527,7 +539,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -539,7 +551,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -551,7 +563,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -563,7 +575,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -575,7 +587,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -587,7 +599,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -599,7 +611,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -611,7 +623,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -623,7 +635,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -635,7 +647,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -647,7 +659,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -659,7 +671,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -671,7 +683,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -683,7 +695,7 @@ public class UserCheck
     return false;
     }
     }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))
@@ -695,19 +707,7 @@ public class UserCheck
     return false;
     }
     }
-    
-    public static boolean canSeeStudent()
-    {
-    if (User.previligeAvailable("Manage"))
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }
-    
+
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))

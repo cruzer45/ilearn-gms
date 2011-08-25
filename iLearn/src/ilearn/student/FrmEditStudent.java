@@ -15,7 +15,6 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.sql.Blob;
 import java.sql.SQLException;
 import java.text.ParseException;
@@ -174,8 +173,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
             if (selectedFile == null && imageChanged)
             {
-                URL sampleImage = FrmNewStudent.class.getResource("/ilearn/resources/no-image-selected.png");
-                selectedFile = new File(sampleImage.toURI());
+                selectedFile = new File("images/no-image-selected.png");
             }
         }
         catch (Exception e)
@@ -262,11 +260,11 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             warning = warning + "You need to select the student's class.\n";
             inputValid = false;
         }
-        if (txtSSN.getText().trim().equals("000000000"))
-        {
-            warning = warning + "You need to enter the student's Social Security Number.\n";
-            inputValid = false;
-        }
+//        if (txtSSN.getText().trim().equals("000000000"))
+//        {
+//            warning = warning + "You need to enter the student's Social Security Number.\n";
+//            inputValid = false;
+//        }
         return inputValid;
     }
 

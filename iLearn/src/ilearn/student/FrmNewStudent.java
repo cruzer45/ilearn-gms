@@ -13,7 +13,6 @@ import java.awt.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.logging.Level;
@@ -113,13 +112,12 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
             stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
             if (selectedFile == null)
             {
-                URL sampleImage = FrmNewStudent.class.getResource("/ilearn/resources/no-image-selected.png");
-                selectedFile = new File(sampleImage.toURI());
+                selectedFile = new File("images/no-image-selected.png");
             }
         }
         catch (Exception e)
         {
-            String message = "An error occurred while validating your input.\n"
+            String message = "An error occurred while preparing to add the student.\n"
                              + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
             return;
