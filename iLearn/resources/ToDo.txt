@@ -25,7 +25,9 @@ FEATURE / CHANGE REQUESTS
 100%    Add Simple class list report.
 100%    Add class Rank report.
 0%      Add Weightings.
-0%      Include teacher Grade Book Report. (Grades by Teacher). 
+0%      Include teacher Grade Book Report. (Grades by Teacher).
+0%      Attendance Form - Remove Demerit field, separate names (Last Name, First Name),place Tardy Field next to Absent.
+0%      Record Grades Form - Automatically accept Input when Enter Key is pressed. 
 
 
 DELIVERABLES
