@@ -24,6 +24,8 @@ FEATURE / CHANGE REQUESTS
 100%    Include Manage School menu option
 100%    Add Simple class list report.
 100%    Add class Rank report.
+0%      Add Weightings.
+0%      Include teacher Grade Book Report. (Grades by Teacher). 
 
 
 DELIVERABLES
