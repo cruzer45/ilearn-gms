@@ -1,0 +1,13 @@
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Attention');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Books');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Classwork');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Demerit Card');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Equipment');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Manners');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Neatness');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Obedience');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Promptness');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Reverence');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Silence');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Truthfulness');
+INSERT INTO `listdemeritreasons` (`reason`) VALUES ('Other');

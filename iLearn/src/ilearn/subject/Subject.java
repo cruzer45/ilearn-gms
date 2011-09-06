@@ -59,7 +59,7 @@ public class Subject
         hourCodes = new ArrayList<String>();
     }
 
-    public static boolean addSubject(String subCode, String subStaffCode, String subName, String subDescription)
+    public static boolean addSubject(String subCode, String subStaffCode, String subName, String subDescription, String subCreditHours)
     {
         boolean successful = false;
         try
@@ -76,12 +76,13 @@ public class Subject
             prep.executeBatch();
             prep.close();
             //Save the subject Info.
-            sql = "INSERT INTO `Subject` (`subCode`, `subStaffCode`, `subName`, `subDescription`) VALUES (?, ?, ?, ?);";
+            sql = "INSERT INTO `Subject` (`subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`) VALUES (?, ?, ?, ?, ?);";
             prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subCode);
             prep.setString(2, subStaffCode);
             prep.setString(3, subName);
             prep.setString(4, subDescription);
+            prep.setString(5, subCreditHours);
             prep.execute();
             prep.close();
             successful = true;
@@ -94,7 +95,7 @@ public class Subject
         return successful;
     }
 
-    public static boolean updateSubject(String subCode, String subStaffCode, String subName, String subDescription, String subStatus, String subID)
+    public static boolean updateSubject(String subCode, String subStaffCode, String subName, String subDescription, String subCredits, String subStatus, String subID)
     {
         boolean successful = false;
         try
@@ -116,14 +117,15 @@ public class Subject
             prep.executeBatch();
             prep.close();
             //Save the subject Info.
-            String sql3 = "UPDATE `Subject` SET `subCode`= ?, `subStaffCode`= ?, `subName`= ?, `subDescription`= ?, `subStatus`= ? WHERE `subID`= ? ;";
+            String sql3 = "UPDATE `Subject` SET `subCode`= ?, `subStaffCode`= ?, `subName`= ?, `subDescription`= ?, `subStatus`= ? , `subCredits` = ? WHERE `subID`= ? ;";
             prep = Environment.getConnection().prepareStatement(sql3);
             prep.setString(1, subCode);
             prep.setString(2, subStaffCode);
             prep.setString(3, subName);
             prep.setString(4, subDescription);
             prep.setString(5, subStatus);
-            prep.setString(6, subID);
+            prep.setString(6, subCredits);
+            prep.setString(7, subID);
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -141,6 +143,7 @@ public class Subject
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -157,7 +160,7 @@ public class Subject
         try
         {
             String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `iLearn`.`Subject` "
-                         + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
+                    + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);

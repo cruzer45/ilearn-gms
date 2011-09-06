@@ -1,4 +1,13 @@
-Version 1.1
+Version 1.5.3
+
+-   Ordered Gradebook report by date.
+-   Added sql query to pre-populate demerit reasons.
+-   Fixed bug where you wouldn't be able to edit subject credits.
+
+
+Version 1.5
+
+-   Ordered Grade Book report by date
 
 -   Added log and checker for one a term functions.
 

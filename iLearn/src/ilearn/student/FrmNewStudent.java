@@ -119,6 +119,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         {
             String message = "An error occurred while preparing to add the student.\n"
                              + "Kindly verify your information and try again.";
+            logger.log(Level.SEVERE, message, e);
             Utilities.showErrorMessage(rootPane, message);
             return;
         }
