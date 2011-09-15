@@ -24,6 +24,7 @@ public class Register
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -44,6 +45,7 @@ public class Register
                     return Object.class;
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int ColIndex)
             {
@@ -55,6 +57,7 @@ public class Register
                 }
                 return editable;
             }
+
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -67,7 +70,6 @@ public class Register
         ArrayList<String> studentID = new ArrayList<String>();
         ArrayList<String> name = new ArrayList<String>();
         ArrayList<Boolean> absent = new ArrayList<Boolean>();
-        ArrayList<Integer> demerit = new ArrayList<Integer>();
         ArrayList<Boolean> tardy = new ArrayList<Boolean>();
         ArrayList<String> remark = new ArrayList<String>();
         try
@@ -81,7 +83,6 @@ public class Register
                 studentID.add(rs.getString("stuID"));
                 name.add(rs.getString("Name"));
                 absent.add(false);
-                demerit.add(0);
                 tardy.add(false);
                 remark.add(" ");
             }
@@ -90,7 +91,6 @@ public class Register
             model.addColumn("ID", studentID.toArray());
             model.addColumn("Name", name.toArray());
             model.addColumn("Absent", absent.toArray());
-            model.addColumn("Demerit", demerit.toArray());
             model.addColumn("Tardy", tardy.toArray());
             model.addColumn("Remark", remark.toArray());
         }
@@ -102,12 +102,12 @@ public class Register
         return model;
     }
 
-    public static boolean addRegister(String date, ArrayList<String> stuID, ArrayList<Boolean> absent, ArrayList<Integer> demerit, ArrayList<Boolean> tardy, ArrayList<String> remarks, String clsCode)
+    public static boolean addRegister(String date, ArrayList<String> stuID, ArrayList<Boolean> absent, ArrayList<Boolean> tardy, ArrayList<String> remarks, String clsCode)
     {
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `RollCall` (`rolStuID`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`, `rolClsCode`) VALUES (?, ?, ?, ?, ?, ?, ?,?);";
+            String sql = "INSERT INTO `RollCall` (`rolStuID`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`,  `rolRemark`, `rolClsCode`) VALUES (?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             String term = Term.getCurrentTerm();
             for (int i = 0; i < stuID.size(); i++)
@@ -117,9 +117,8 @@ public class Register
                 prep.setString(3, date);
                 prep.setBoolean(4, absent.get(i));
                 prep.setBoolean(5, tardy.get(i));
-                prep.setInt(6, demerit.get(i));
-                prep.setString(7, remarks.get(i));
-                prep.setString(8, clsCode);
+                prep.setString(6, remarks.get(i));
+                prep.setString(7, clsCode);
                 prep.addBatch();
             }
             prep.executeBatch();
@@ -143,13 +142,12 @@ public class Register
         ArrayList<String> stuID = new ArrayList<String>();
         ArrayList<Boolean> absent = new ArrayList<Boolean>();
         ArrayList<Boolean> tardy = new ArrayList<Boolean>();
-        ArrayList<Integer> demerit = new ArrayList<Integer>();
         ArrayList<String> remark = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `rolID`, `rolStuID`, `rolClsCode`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolDemerit`, `rolRemark`, `rolStatus`"
-                         + " FROM `iLearn`.`RollCall`"
-                         + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+            String sql = "SELECT `rolID`, `rolStuID`, `rolClsCode`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolRemark`, `rolStatus`"
+                    + " FROM `iLearn`.`RollCall`"
+                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             prep.setString(2, date);
@@ -159,7 +157,6 @@ public class Register
                 stuID.add(rs.getString("rolStuID"));
                 absent.add(rs.getBoolean("rolAbsent"));
                 tardy.add(rs.getBoolean("rolTardy"));
-                demerit.add(rs.getInt("rolDemerit"));
                 remark.add(rs.getString("rolRemark"));
             }
             rs.close();
@@ -167,7 +164,6 @@ public class Register
             register.add(stuID);
             register.add(absent);
             register.add(tardy);
-            register.add(demerit);
             register.add(remark);
         }
         catch (Exception e)
@@ -184,8 +180,8 @@ public class Register
         try
         {
             String sql = "DELETE "
-                         + " FROM `iLearn`.`RollCall`"
-                         + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+                    + " FROM `iLearn`.`RollCall`"
+                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             prep.setString(2, date);
@@ -207,7 +203,7 @@ public class Register
         try
         {
             String sql = "UPDATE `RollCall` SET `rolStatus` = 'Closed' "
-                         + " WHERE `rolStatus` = 'Active'";
+                    + " WHERE `rolStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.execute();
             prep.close();

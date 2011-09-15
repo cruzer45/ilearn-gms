@@ -478,68 +478,67 @@ public class UserCheck
         }
     }
 
+    public static boolean canSeeAttendanceReport()
+    {
+        if (User.previligeAvailable("Attendance Reports"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static boolean canSeeAttendanceSummary()
+    {
+        if (User.previligeAvailable("Attendance Summary"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static boolean canSeeAttendanceDetails()
+    {
+        if (User.previligeAvailable("Attendance Details"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static boolean canSeeDemeritSummaryTeacher()
+    {
+        if (User.previligeAvailable("Demerit Summary by Teacher"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public static boolean canSeeDemeritSummaryStudent()
+    {
+        if (User.previligeAvailable("Demerit Summary by Student"))
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
     /*
-
-    public static boolean canSeeStudent()
-    {
-    if (User.previligeAvailable("Manage"))
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }
-
-    public static boolean canSeeStudent()
-    {
-    if (User.previligeAvailable("Manage"))
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }
-
-    public static boolean canSeeStudent()
-    {
-    if (User.previligeAvailable("Manage"))
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }
-
-    public static boolean canSeeStudent()
-    {
-    if (User.previligeAvailable("Manage"))
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }
-
-    public static boolean canSeeStudent()
-    {
-    if (User.previligeAvailable("Manage"))
-    {
-    return true;
-    }
-    else
-    {
-    return false;
-    }
-    }
-
     public static boolean canSeeStudent()
     {
     if (User.previligeAvailable("Manage"))

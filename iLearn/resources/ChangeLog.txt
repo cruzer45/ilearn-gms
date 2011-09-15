@@ -1,7 +1,19 @@
 Version 1.5.3
 
+-   Attendance Form - Remove Demerit field, separate names (Last Name, First Name),place Tardy Field next to Absent.
+
+-   Added Attendance summary report.
+
+-   Added a demerit summary by teacher report.
+
+-   Added a demerit summary by student report.
+
+-   Added class size to the class list report.
+
 -   Ordered Gradebook report by date.
+
 -   Added sql query to pre-populate demerit reasons.
+
 -   Fixed bug where you wouldn't be able to edit subject credits.
 
 

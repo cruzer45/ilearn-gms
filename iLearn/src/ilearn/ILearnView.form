@@ -320,6 +320,44 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
           </AuxValues>
           <SubComponents>
+            <Menu class="javax.swing.JMenu" name="attendanceReports">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="attendanceReports.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="attendanceReports.text"/>
+                <Property name="name" type="java.lang.String" value="attendanceReports" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="attendanceSummary">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAttendanceSummary" methodName="showAttendanceSummary"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="attendanceSummary.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="attendanceSummary.text"/>
+                    <Property name="name" type="java.lang.String" value="attendanceSummary" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="attendanceDetail">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAttendanceDetail" methodName="showAttendanceDetail"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="attendanceDetail.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="attendanceDetail.text"/>
+                    <Property name="name" type="java.lang.String" value="attendanceDetail" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <Menu class="javax.swing.JMenu" name="classReports">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="classReports.icon"/>
@@ -368,6 +406,32 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
               <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="demeritSummaryStudent">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showDemeritSummary" methodName="showDemeritSummary"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="demeritSummaryStudent.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="demeritSummaryStudent.text"/>
+                    <Property name="name" type="java.lang.String" value="demeritSummaryStudent" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="demeritSummaryTeacher">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showDemeritSummaryByTeacher" methodName="showDemeritSummaryByTeacher"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="demeritSummaryTeacher.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="demeritSummaryTeacher.text"/>
+                    <Property name="name" type="java.lang.String" value="demeritSummaryTeacher" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="demeritsByCass">
                   <Properties>
                     <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
