@@ -333,8 +333,14 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Reports");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Attendance Reports");
+        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Attendance Summary");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Attendance Details");
+        treeNode3.add(treeNode4);
+        treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Student Reports");
-        javax.swing.tree.DefaultMutableTreeNode treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Student List");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Student List");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Repeating Students");
         treeNode3.add(treeNode4);
@@ -360,6 +366,10 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Demerit Reports");
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Demerit Summary by Student");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Demerit Summary by Teacher");
+        treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Demerits By Class");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Demerits By Student");

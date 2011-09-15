@@ -18,6 +18,9 @@ Menu
   Edit Detention
   Record Served Detention
  Reports
+  Attendance Reports
+   Attendance Summary
+   Attendance Details
   Student Reports 
    Student List
    Repeating Students
@@ -32,6 +35,8 @@ Menu
    Term End Report
    Term End Ranking
   Demerit Reports
+   Demerit Summary by Student
+   Demerit Summary by Teacher
    Demerits By Class
    Demerits By Student
   Statistical Reports

@@ -1,5 +1,6 @@
 package ilearn.reports;
 
+import ilearn.classes.Classes;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -123,6 +124,25 @@ public class ReportLoader
         }
     }
 
+    public static void showClassListingReport()
+    {
+        Classes.recalculateClassSize();
+        String report = "reports/Class_List.jasper";
+        String title = "Report - Class List";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            Logger.getLogger(DialogStudentByClass.class.getName()).log(Level.SEVERE, message, exception);
+        }
+    }
+
     public static void showDemeritsByClass()
     {
         String report = "reports/Demerit_Report.jasper";
@@ -149,6 +169,42 @@ public class ReportLoader
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");
         parameters.put("stuID", stuID);
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showDemeritSummaryByStudent()
+    {
+        String report = "reports/DemeritsByStudent_Summary.jasper";
+        String title = "Report - Demerits Summary by Student";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showDemeritSummaryByTeacher()
+    {
+        String report = "reports/DemeritSummary_Teacher.jasper";
+        String title = "Report - Demerits Summary by Teacher";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
         try
         {
             ReportViewer.generateReport(report, parameters, title);
@@ -219,7 +275,41 @@ public class ReportLoader
     public static void showTermEndReport()
     {
         String report = "reports/FinalGrade_Report_with_GPA.jasper";
-        String title = "TErm End Report Card";
+        String title = "Term End Report Card";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+    public static void showAttendanceSummary()
+    {
+        String report = "reports/AttendanceReport-Summary.jasper";
+        String title = "Attendance Summary Report";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+    public static void showAttendanceDetail()
+    {
+        String report = "reports/AttendanceReportDetail.jasper";
+        String title = "Attendance Detail Report";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");

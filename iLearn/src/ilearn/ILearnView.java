@@ -3,6 +3,7 @@
  */
 package ilearn;
 
+import ilearn.classes.Classes;
 import ilearn.kernel.session.logoutAction;
 import ilearn.grades.FrmRecordGrade;
 import ilearn.grades.FrmEditGrades;
@@ -291,10 +292,15 @@ public class ILearnView extends FrameView
         editDetention = new javax.swing.JMenuItem();
         recordServedDetention = new javax.swing.JMenuItem();
         reportsMenu = new javax.swing.JMenu();
+        attendanceReports = new javax.swing.JMenu();
+        attendanceSummary = new javax.swing.JMenuItem();
+        attendanceDetail = new javax.swing.JMenuItem();
         classReports = new javax.swing.JMenu();
         classListReport = new javax.swing.JMenuItem();
         classGradeBook = new javax.swing.JMenuItem();
         demeritReports = new javax.swing.JMenu();
+        demeritSummaryStudent = new javax.swing.JMenuItem();
+        demeritSummaryTeacher = new javax.swing.JMenuItem();
         demeritsByCass = new javax.swing.JMenuItem();
         demeritsByStudent = new javax.swing.JMenuItem();
         detentionMenu = new javax.swing.JMenu();
@@ -474,6 +480,20 @@ public class ILearnView extends FrameView
         reportsMenu.setMnemonic('r');
         reportsMenu.setText(resourceMap.getString("reportsMenu.text")); // NOI18N
         reportsMenu.setName("reportsMenu"); // NOI18N
+        attendanceReports.setIcon(resourceMap.getIcon("attendanceReports.icon")); // NOI18N
+        attendanceReports.setText(resourceMap.getString("attendanceReports.text")); // NOI18N
+        attendanceReports.setName("attendanceReports"); // NOI18N
+        attendanceSummary.setAction(actionMap.get("showAttendanceSummary")); // NOI18N
+        attendanceSummary.setIcon(resourceMap.getIcon("attendanceSummary.icon")); // NOI18N
+        attendanceSummary.setText(resourceMap.getString("attendanceSummary.text")); // NOI18N
+        attendanceSummary.setName("attendanceSummary"); // NOI18N
+        attendanceReports.add(attendanceSummary);
+        attendanceDetail.setAction(actionMap.get("showAttendanceDetail")); // NOI18N
+        attendanceDetail.setIcon(resourceMap.getIcon("attendanceDetail.icon")); // NOI18N
+        attendanceDetail.setText(resourceMap.getString("attendanceDetail.text")); // NOI18N
+        attendanceDetail.setName("attendanceDetail"); // NOI18N
+        attendanceReports.add(attendanceDetail);
+        reportsMenu.add(attendanceReports);
         classReports.setIcon(resourceMap.getIcon("classReports.icon")); // NOI18N
         classReports.setText(resourceMap.getString("classReports.text")); // NOI18N
         classReports.setName("classReports"); // NOI18N
@@ -491,6 +511,16 @@ public class ILearnView extends FrameView
         demeritReports.setIcon(resourceMap.getIcon("demeritReports.icon")); // NOI18N
         demeritReports.setText(resourceMap.getString("demeritReports.text")); // NOI18N
         demeritReports.setName("demeritReports"); // NOI18N
+        demeritSummaryStudent.setAction(actionMap.get("showDemeritSummary")); // NOI18N
+        demeritSummaryStudent.setIcon(resourceMap.getIcon("demeritSummaryStudent.icon")); // NOI18N
+        demeritSummaryStudent.setText(resourceMap.getString("demeritSummaryStudent.text")); // NOI18N
+        demeritSummaryStudent.setName("demeritSummaryStudent"); // NOI18N
+        demeritReports.add(demeritSummaryStudent);
+        demeritSummaryTeacher.setAction(actionMap.get("showDemeritSummaryByTeacher")); // NOI18N
+        demeritSummaryTeacher.setIcon(resourceMap.getIcon("demeritSummaryTeacher.icon")); // NOI18N
+        demeritSummaryTeacher.setText(resourceMap.getString("demeritSummaryTeacher.text")); // NOI18N
+        demeritSummaryTeacher.setName("demeritSummaryTeacher"); // NOI18N
+        demeritReports.add(demeritSummaryTeacher);
         demeritsByCass.setAction(actionMap.get("showDemeritsByClass")); // NOI18N
         demeritsByCass.setIcon(resourceMap.getIcon("demeritsByCass.icon")); // NOI18N
         demeritsByCass.setText(resourceMap.getString("demeritsByCass.text")); // NOI18N
@@ -940,6 +970,10 @@ public class ILearnView extends FrameView
         recordServedDetention.setEnabled(UserCheck.canRecordServedDetention());
         //REPORTS MENU
         reportsMenu.setEnabled(UserCheck.canSeeReports());
+        //ATTENDACE REPORTS
+        attendanceReports.setEnabled(UserCheck.canSeeAttendanceReport());
+        attendanceSummary.setEnabled(UserCheck.canSeeAttendanceSummary());
+        attendanceDetail.setEnabled(UserCheck.canSeeAttendanceDetails());
         //STUDENT REPORTS
         studentReports.setEnabled(UserCheck.canSeeStudentReports());
         studentList.setEnabled(UserCheck.canSeeStudentList());
@@ -958,6 +992,8 @@ public class ILearnView extends FrameView
         termRanking.setEnabled(UserCheck.canSeeTermEndRanking());
         //DEMERITS
         demeritReports.setEnabled(UserCheck.canSeeDemeritReports());
+        demeritSummaryStudent.setEnabled(UserCheck.canSeeDemeritSummaryStudent());
+        demeritSummaryTeacher.setEnabled(UserCheck.canSeeDemeritSummaryTeacher());
         demeritsByCass.setEnabled(UserCheck.canSeeDemeritsByClass());
         demeritsByStudent.setEnabled(UserCheck.canSeeDemeritsByStudent());
         //STATISTICAL REPORTS
@@ -1328,21 +1364,25 @@ public class ILearnView extends FrameView
      * shows the class list report.
      */
     @Action
-    public void showClassListingReport()
+    public Task showClassListingReport()
     {
-        String report = "reports/Class_List.jasper";
-        String title = "Report - Class List";
-        // Second, create a map of parameters to pass to the report.
-        Map parameters = new HashMap();
-        parameters.put("SUBREPORT_DIR", "reports/");
-        try
+        return new ShowClassListingReportTask(getApplication());
+    }
+
+    private class ShowClassListingReportTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowClassListingReportTask(org.jdesktop.application.Application app)
         {
-            ReportViewer.generateReport(report, parameters, title);
+            super(app);
         }
-        catch (Exception exception)
+
+        @Override
+        protected Object doInBackground()
         {
-            String message = "An error occurred while generating a report.";
-            Logger.getLogger(DialogStudentByClass.class.getName()).log(Level.SEVERE, message, exception);
+            setMessage("Loading reporting engine.");
+            ReportLoader.showClassListingReport();
+            return null;  // return your result
         }
     }
 
@@ -2096,6 +2136,98 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public Task showDemeritSummary()
+    {
+        return new ShowDemeritSummaryTask(getApplication());
+    }
+
+    private class ShowDemeritSummaryTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowDemeritSummaryTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showDemeritSummaryByStudent();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public Task showDemeritSummaryByTeacher()
+    {
+        return new ShowDemeritSummaryByTeacherTask(getApplication());
+    }
+
+    private class ShowDemeritSummaryByTeacherTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowDemeritSummaryByTeacherTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showDemeritSummaryByTeacher();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public Task showAttendanceSummary()
+    {
+        return new ShowAttendanceSummaryTask(getApplication());
+    }
+
+    private class ShowAttendanceSummaryTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowAttendanceSummaryTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showAttendanceSummary();
+            return null;  // return your result
+        }
+    }
+
+    @Action
+    public Task showAttendanceDetail()
+    {
+        return new ShowAttendanceDetailTask(getApplication());
+    }
+
+    private class ShowAttendanceDetailTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowAttendanceDetailTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showAttendanceDetail();
+            return null;  // return your result
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private static javax.swing.JMenuItem addStaff;
@@ -2105,7 +2237,10 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem addTimeSlot;
     private static javax.swing.JMenuItem addUser;
     private static javax.swing.JMenuItem assignPromotions;
+    private static javax.swing.JMenuItem attendanceDetail;
     private static javax.swing.JMenu attendanceMenu;
+    private static javax.swing.JMenu attendanceReports;
+    private static javax.swing.JMenuItem attendanceSummary;
     private static javax.swing.JMenuItem calculateFinals;
     private static javax.swing.JMenuItem calculateMidTerm;
     private javax.swing.JMenuItem changePasswordMenuItem;
@@ -2117,6 +2252,8 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem classSizeDistribution;
     private static javax.swing.JMenuItem closeTerm;
     private static javax.swing.JMenu demeritReports;
+    private static javax.swing.JMenuItem demeritSummaryStudent;
+    private static javax.swing.JMenuItem demeritSummaryTeacher;
     private static javax.swing.JMenuItem demeritsByCass;
     private static javax.swing.JMenuItem demeritsByStudent;
     private static javax.swing.JMenu demeritsMenu;

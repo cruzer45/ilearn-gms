@@ -644,4 +644,68 @@ public class Classes
         }
         return subjects;
     }
+
+    public static int getClassSize(String clsCode)
+    {
+        int classSize = 0;
+        try
+        {
+            String sql = "SELECT COUNT(`stuID`) as ClassSize FROM `Student` "
+                         + "WHERE `stuStatus` = 'Active' AND `stuClsCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, clsCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                classSize = rs.getInt("ClassSize");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the class size.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return classSize;
+    }
+
+    private static boolean setClassSize(String cls, int size)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Class` SET `clsSize`= ? WHERE `clsCode`= ? LIMIT 1;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setInt(1, size);
+            prep.setString(2, cls);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the class size.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
+    public static void recalculateClassSize()
+    {
+        try
+        {
+            ArrayList<String> classes = getClassList();
+            for (String cls : classes)
+            {
+                int size = getClassSize(cls);
+                setClassSize(cls, size);
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the class sizes.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
 }
