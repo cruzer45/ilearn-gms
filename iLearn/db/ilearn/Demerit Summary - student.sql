@@ -1,5 +1,5 @@
-SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `stuClsCode`, COUNT(`demID`) AS 'Count'
+SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `stuClsCode`, SUM(`demerits`) AS 'Demerits'
 FROM `Demerits`
 INNER JOIN `Student` ON `Demerits`.`demStuID` = `Student`.`stuID`
-where `demStatus` = 'Active'
+WHERE `demStatus` = 'Active'
 GROUP BY `demStuID`

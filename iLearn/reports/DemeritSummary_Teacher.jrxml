@@ -4,10 +4,10 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT CONCAT_WS(' ',`staFirstName`,`staLastName`) AS 'Staff', CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `stuClsCode`, COUNT(`demID`) AS 'Count'
+		<![CDATA[SELECT CONCAT_WS(' ',`staFirstName`,`staLastName`) AS 'Staff', CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `stuClsCode`, sum(`demerits`) AS 'Demerits'
 FROM `Demerits`
 INNER JOIN `Student` ON `Demerits`.`demStuID` = `Student`.`stuID`
 INNER JOIN `Staff` ON `Staff`.`staCode` = `Demerits`.`demStaCode`
@@ -18,9 +18,9 @@ order by CONCAT_WS(' ',`staFirstName`,`staLastName`) asc , COUNT(`demID`) desc]]
 	<field name="Staff" class="java.lang.String"/>
 	<field name="Name" class="java.lang.String"/>
 	<field name="stuClsCode" class="java.lang.String"/>
-	<field name="Count" class="java.lang.Long"/>
-	<variable name="Count_1" class="java.lang.Integer" resetType="Group" resetGroup="Staff" calculation="Sum">
-		<variableExpression><![CDATA[$F{Count}]]></variableExpression>
+	<field name="Demerits" class="java.math.BigDecimal"/>
+	<variable name="Sum_of_demerits" class="java.lang.Integer" resetType="Group" resetGroup="Staff" calculation="Sum">
+		<variableExpression><![CDATA[$F{Demerits}]]></variableExpression>
 	</variable>
 	<group name="Staff">
 		<groupExpression><![CDATA[$F{Staff}]]></groupExpression>
@@ -50,7 +50,7 @@ order by CONCAT_WS(' ',`staFirstName`,`staLastName`) asc , COUNT(`demID`) desc]]
 					<textElement textAlignment="Right" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{Staff} +" Total: "+ $V{Count_1}]]></textFieldExpression>
+					<textFieldExpression class="java.lang.String"><![CDATA[$F{Staff} +" Total: "+ $V{Sum_of_demerits}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -119,7 +119,7 @@ order by CONCAT_WS(' ',`staFirstName`,`staLastName`) asc , COUNT(`demID`) desc]]
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Count]]></text>
+				<text><![CDATA[Demerits]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -159,7 +159,7 @@ order by CONCAT_WS(' ',`staFirstName`,`staLastName`) asc , COUNT(`demID`) desc]]
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{Count}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{Demerits}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>

@@ -4,10 +4,10 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `stuClsCode`, COUNT(`demID`) AS 'Count'
+		<![CDATA[SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `stuClsCode`,  sum(`demerits`) AS 'Demerits'
 FROM `Demerits`
 INNER JOIN `Student` ON `Demerits`.`demStuID` = `Student`.`stuID`
 where `demStatus` = 'Active'
@@ -15,8 +15,8 @@ GROUP BY `demStuID`]]>
 	</queryString>
 	<field name="Name" class="java.lang.String"/>
 	<field name="stuClsCode" class="java.lang.String"/>
-	<field name="Count" class="java.lang.Long"/>
-	<sortField name="Count" order="Descending"/>
+	<field name="Demerits" class="java.math.BigDecimal"/>
+	<sortField name="Demerits" order="Descending"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -32,7 +32,7 @@ GROUP BY `demStuID`]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[Demerit Summary]]></text>
+				<text><![CDATA[Demerits Recieved By Students - Summary]]></text>
 			</staticText>
 		</band>
 	</title>
@@ -81,7 +81,7 @@ GROUP BY `demStuID`]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Count]]></text>
+				<text><![CDATA[Demerits]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -121,7 +121,7 @@ GROUP BY `demStuID`]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Long"><![CDATA[$F{Count}]]></textFieldExpression>
+				<textFieldExpression class="java.lang.Long"><![CDATA[$F{Demerits}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
