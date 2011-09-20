@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["C:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT
@@ -112,7 +112,7 @@ ORDER BY
 			<textField>
 				<reportElement x="0" y="100" width="572" height="25"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font size="20"/>
+					<font size="14" isBold="true"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA["Class List: " + $F{stuClsCode}]]></textFieldExpression>
 			</textField>
