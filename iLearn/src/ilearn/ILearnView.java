@@ -3,7 +3,6 @@
  */
 package ilearn;
 
-import ilearn.classes.Classes;
 import ilearn.kernel.session.logoutAction;
 import ilearn.grades.FrmRecordGrade;
 import ilearn.grades.FrmEditGrades;
@@ -30,7 +29,6 @@ import ilearn.reports.FrmClassGradebook;
 import ilearn.reports.FrmDemeritsByStudent;
 import ilearn.reports.FrmPrintIDCards;
 import ilearn.reports.ReportLoader;
-import ilearn.reports.ReportViewer;
 import ilearn.school.FrmManageSchool;
 import ilearn.staff.FrmAddStaff;
 import ilearn.staff.FrmEditStaff;
@@ -62,8 +60,6 @@ import org.jdesktop.application.Task;
 import org.jdesktop.application.TaskMonitor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.Timer;
