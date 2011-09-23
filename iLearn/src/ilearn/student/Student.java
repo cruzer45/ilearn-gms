@@ -24,7 +24,7 @@ public class Student
                                       String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
                                       String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
                                       String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                      String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN)
+                                      String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, boolean stuNonBelizean)
     {
         boolean successful = false;
         try
@@ -35,8 +35,8 @@ public class Student
                          + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
                          + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
                          + "`stuDoctorContact`, `stuHospital`, `stuClsCode`, `stuPSEGrade`, "
-                         + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`) "
-                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?);";
+                         + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`) "
+                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? );";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -64,6 +64,7 @@ public class Student
             prep.setString(24, stuSpecialNeeds);
             prep.setString(25, stuNotes);
             prep.setString(26, stuSSN);//Added Jul 8, 2011
+            prep.setBoolean(27, stuNonBelizean);
             prep.execute();
             prep.close();
             successful = true;
@@ -139,7 +140,7 @@ public class Student
                          + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
                          + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
                          + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
-                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`"
+                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`"
                          + "FROM `iLearn`.`Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
@@ -176,6 +177,7 @@ public class Student
                 studentInfo.add(rs.getString("stuNotes"));//27
                 studentInfo.add(rs.getString("stuStatus"));//28
                 studentInfo.add(rs.getString("stuSSN"));//29   Added Jul 8 2011
+                studentInfo.add(rs.getBoolean("stuNonBelizean"));//30
             }
             prep.close();
             rs.close();
@@ -240,14 +242,14 @@ public class Student
             String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
             String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
             String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus)
+            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus, boolean stuNonBelizean)
     {
         boolean successful = false;
         try
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuPhoto` = ? ,`stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ?, `stuStatus` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ?, `stuStatus` = ?, `stuNonBelizean` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -276,7 +278,8 @@ public class Student
             prep.setString(25, stuNotes);
             prep.setString(26, stuSSN);
             prep.setString(27, stuStatus);
-            prep.setString(28, stuID);
+            prep.setBoolean(28, stuNonBelizean);
+            prep.setString(29, stuID);
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -293,13 +296,13 @@ public class Student
                                         String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
                                         String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
                                         String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus)
+                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus, boolean stuNonBelizean)
     {
         boolean successful = false;
         try
         {
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? , `stuStatus` = ? WHERE `stuID`= ?;";
+                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? , `stuStatus` = ?, `stuNonBelizean` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -327,7 +330,8 @@ public class Student
             prep.setString(24, stuNotes);
             prep.setString(25, stuSSN);
             prep.setString(26, stuStatus);
-            prep.setString(27, stuID);
+            prep.setBoolean(27, stuNonBelizean);
+            prep.setString(28, stuID);
             prep.executeUpdate();
             prep.close();
             successful = true;

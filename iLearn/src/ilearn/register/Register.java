@@ -24,7 +24,6 @@ public class Register
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -45,7 +44,6 @@ public class Register
                     return Object.class;
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int ColIndex)
             {
@@ -57,7 +55,6 @@ public class Register
                 }
                 return editable;
             }
-
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -146,8 +143,8 @@ public class Register
         try
         {
             String sql = "SELECT `rolID`, `rolStuID`, `rolClsCode`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolRemark`, `rolStatus`"
-                    + " FROM `iLearn`.`RollCall`"
-                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+                         + " FROM `iLearn`.`RollCall`"
+                         + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             prep.setString(2, date);
@@ -180,8 +177,8 @@ public class Register
         try
         {
             String sql = "DELETE "
-                    + " FROM `iLearn`.`RollCall`"
-                    + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
+                         + " FROM `iLearn`.`RollCall`"
+                         + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             prep.setString(2, date);
@@ -203,7 +200,7 @@ public class Register
         try
         {
             String sql = "UPDATE `RollCall` SET `rolStatus` = 'Closed' "
-                    + " WHERE `rolStatus` = 'Active'";
+                         + " WHERE `rolStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.execute();
             prep.close();
@@ -215,5 +212,35 @@ public class Register
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    public static boolean checkRegister(String clsCode, String date)
+    {
+        boolean entriesExists = false;
+        try
+        {
+            int count = 0;
+            String sql = "SELECT COUNT(`rolID`) AS 'Count' "
+                         + " FROM `RollCall` "
+                         + " WHERE `rolClsCode` = ? AND `rolDate` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, clsCode);
+            prep.setString(2, date);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                count = rs.getInt("Count");
+            }
+            if (count > 0)
+            {
+                entriesExists = true;
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while checking if the register already has entries.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return entriesExists;
     }
 }

@@ -100,6 +100,15 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
             txtSpecialNeeds.setText(studentInfo.get(26).toString());
             txtNotes.setText(studentInfo.get(27).toString());
             txtSSN.setText(studentInfo.get(29).toString());
+            boolean stuNonBelizean = Boolean.valueOf(studentInfo.get(30).toString());
+            if (stuNonBelizean)
+            {
+                txtNonBelizean.setText("Yes");
+            }
+            else
+            {
+                txtNonBelizean.setText("No");
+            }
             try
             {
                 txtDOB.setText(Utilities.MDY_Formatter.format(Utilities.YMD_Formatter.parse(studentInfo.get(4).toString())));
@@ -234,6 +243,8 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
         lblSSN = new javax.swing.JLabel();
         txtSSN = new javax.swing.JFormattedTextField();
         txtRepeating = new javax.swing.JTextField();
+        lblNonBelizean = new javax.swing.JLabel();
+        txtNonBelizean = new javax.swing.JTextField();
         txtPhoto.setEditable(false);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmViewStudent.class);
         txtPhoto.setToolTipText(resourceMap.getString("txtPhoto.toolTipText")); // NOI18N
@@ -412,12 +423,12 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addGroup(generalPanelLayout.createSequentialGroup()
                                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                                  .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                                                  .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                                                  .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
-                                                                  .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                                                                  .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                                                  .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                                                  .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)
+                                                                  .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE))
                                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                           .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                                   .addComponent(txtClasss, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))))
@@ -782,6 +793,11 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
         txtRepeating.setEditable(false);
         txtRepeating.setText(resourceMap.getString("txtRepeating.text")); // NOI18N
         txtRepeating.setName("txtRepeating"); // NOI18N
+        lblNonBelizean.setText(resourceMap.getString("lblNonBelizean.text")); // NOI18N
+        lblNonBelizean.setName("lblNonBelizean"); // NOI18N
+        txtNonBelizean.setEditable(false);
+        txtNonBelizean.setText(resourceMap.getString("txtNonBelizean.text")); // NOI18N
+        txtNonBelizean.setName("txtNonBelizean"); // NOI18N
         javax.swing.GroupLayout otherPanelLayout = new javax.swing.GroupLayout(otherPanel);
         otherPanel.setLayout(otherPanelLayout);
         otherPanelLayout.setHorizontalGroup(
@@ -806,7 +822,12 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                                                   .addComponent(txtPSEGrades, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                                   .addComponent(txtFeederSchool, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                                   .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                                                  .addComponent(txtRepeating, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))))
+                                                  .addGroup(otherPanelLayout.createSequentialGroup()
+                                                          .addComponent(txtRepeating, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(lblNonBelizean)
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(txtNonBelizean, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)))))
                       .addContainerGap())
         );
         otherPanelLayout.setVerticalGroup(
@@ -827,7 +848,9 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblRepeating)
-                                .addComponent(txtRepeating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(txtRepeating, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblNonBelizean)
+                                .addComponent(txtNonBelizean, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblSpecialNeeds)
@@ -912,6 +935,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblMailingAddress;
+    private javax.swing.JLabel lblNonBelizean;
     private javax.swing.JLabel lblNotes;
     private javax.swing.JLabel lblOtherName;
     private javax.swing.JLabel lblPSEGrade;
@@ -949,6 +973,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtLastName;
     private javax.swing.JTextArea txtMailingAddress;
+    private javax.swing.JTextField txtNonBelizean;
     private javax.swing.JTextArea txtNotes;
     private javax.swing.JTextField txtOtherName;
     private javax.swing.JTextField txtPSEGrades;

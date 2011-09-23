@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updateDescriptor baseUrl="">
-  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_5_2.exe" newVersion="1.5.2" newMediaFileId="20" fileSize="56164352" bundledJre="" archive="false">
+  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_5_4.exe" newVersion="1.5.4" newMediaFileId="20" fileSize="56023552" bundledJre="" archive="false">
     <comment />
   </entry>
-  <entry targetMediaFileId="21" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_unix_1_5_2.sh" newVersion="1.5.2" newMediaFileId="21" fileSize="55464181" bundledJre="" archive="false">
+  <entry targetMediaFileId="21" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_unix_1_5_4.sh" newVersion="1.5.4" newMediaFileId="21" fileSize="55323122" bundledJre="" archive="false">
     <comment />
   </entry>
-  <entry targetMediaFileId="104" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_macos_1_5_2.dmg" newVersion="1.5.2" newMediaFileId="104" fileSize="55918592" bundledJre="" archive="false">
+  <entry targetMediaFileId="104" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_macos_1_5_4.dmg" newVersion="1.5.4" newMediaFileId="104" fileSize="55779328" bundledJre="" archive="false">
     <comment />
   </entry>
 </updateDescriptor>

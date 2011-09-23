@@ -107,6 +107,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         String stuSpecialNeeds = txtSpecialNeeds.getText().trim();
         String stuNotes = txtNotes.getText().trim();
         String ssn = txtSSN.getText().trim();
+        boolean stuNonBelizean = chkNonBelizean.isSelected();
         try
         {
             stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
@@ -127,7 +128,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         {
             stuAddress2 = stuAddress1;
         }
-        if (Student.saveStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn))
+        if (Student.saveStudent(stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuNonBelizean))
         {
             String message = "The student was successfully added. \n"
                              + "Would you like to add another?";
@@ -318,10 +319,12 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         chkIsPepeating = new javax.swing.JCheckBox();
         lblSSN = new javax.swing.JLabel();
         txtSSN = new javax.swing.JFormattedTextField();
+        lblNonBelizean = new javax.swing.JLabel();
+        chkNonBelizean = new javax.swing.JCheckBox();
         setClosable(true);
         setIconifiable(true);
         setResizable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmNewStudent.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmNewStudent.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setToolTipText(resourceMap.getString("Form.toolTipText")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
@@ -379,7 +382,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         lblDOB.setName("lblDOB"); // NOI18N
         calDOB.setToolTipText(resourceMap.getString("calDOB.toolTipText")); // NOI18N
         calDOB.setName("calDOB"); // NOI18N
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmNewStudent.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmNewStudent.class, this);
         cmdBrowse.setAction(actionMap.get("browse")); // NOI18N
         cmdBrowse.setText(resourceMap.getString("cmdBrowse.text")); // NOI18N
         cmdBrowse.setToolTipText(resourceMap.getString("cmdBrowse.toolTipText")); // NOI18N
@@ -480,7 +483,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                                 .addComponent(txtPhoto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmdBrowse)
                                 .addComponent(lblPhoto))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 159, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel1)
                                 .addComponent(cmdNext1)
@@ -567,7 +570,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                       .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 125, Short.MAX_VALUE)
                       .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
                                 .addComponent(cmdNext2))
@@ -709,7 +712,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                       .addComponent(primaryContactPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(secConPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 54, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
                       .addGroup(parentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel3)
                                 .addComponent(cmdNext3))
@@ -787,11 +790,16 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
         txtNotes.setRows(4);
         txtNotes.setName("txtNotes"); // NOI18N
         jScrollPane7.setViewportView(txtNotes);
+        chkIsPepeating.setText(resourceMap.getString("chkIsPepeating.text")); // NOI18N
         chkIsPepeating.setName("chkIsPepeating"); // NOI18N
         lblSSN.setText(resourceMap.getString("lblSSN.text")); // NOI18N
         lblSSN.setName("lblSSN"); // NOI18N
         txtSSN.setText(resourceMap.getString("txtSSN.text")); // NOI18N
         txtSSN.setName("txtSSN"); // NOI18N
+        lblNonBelizean.setText(resourceMap.getString("lblNonBelizean.text")); // NOI18N
+        lblNonBelizean.setName("lblNonBelizean"); // NOI18N
+        chkNonBelizean.setText(resourceMap.getString("chkNonBelizean.text")); // NOI18N
+        chkNonBelizean.setName("chkNonBelizean"); // NOI18N
         javax.swing.GroupLayout otherPanelLayout = new javax.swing.GroupLayout(otherPanel);
         otherPanel.setLayout(otherPanelLayout);
         otherPanelLayout.setHorizontalGroup(
@@ -806,20 +814,25 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                                           .addComponent(cmdCancel6))
                                 .addGroup(otherPanelLayout.createSequentialGroup()
                                           .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(lblSpecialNeeds)
                                                   .addComponent(lblFeederSchool)
                                                   .addComponent(lblPSEGrade)
                                                   .addComponent(lblRepeating)
-                                                  .addComponent(lblNotes)
-                                                  .addComponent(lblSSN))
+                                                  .addComponent(lblSSN)
+                                                  .addComponent(lblSpecialNeeds)
+                                                  .addComponent(lblNotes))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                                                  .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
                                                   .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                                                  .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                                                  .addComponent(chkIsPepeating)
+                                                  .addGroup(otherPanelLayout.createSequentialGroup()
+                                                          .addComponent(chkIsPepeating)
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(lblNonBelizean)
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(chkNonBelizean))
                                                   .addComponent(txtPSEGrades, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                                                  .addComponent(txtFeederSchool, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
-                                                  .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))))
+                                                  .addComponent(txtFeederSchool, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         otherPanelLayout.setVerticalGroup(
@@ -840,7 +853,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblRepeating)
-                                .addComponent(chkIsPepeating))
+                                .addComponent(chkIsPepeating)
+                                .addComponent(lblNonBelizean)
+                                .addComponent(chkNonBelizean))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblSpecialNeeds)
@@ -849,9 +864,9 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblNotes)
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addGap(9, 9, 9)
+                      .addGap(15, 15, 15)
                       .addComponent(medicalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel6)
                                 .addComponent(cmdSave1))
@@ -871,7 +886,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 422, Short.MAX_VALUE)
+                      .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 423, Short.MAX_VALUE)
                       .addContainerGap())
         );
         pack();
@@ -885,6 +900,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDOB;
     private javax.swing.JCheckBox chkIsPepeating;
+    private javax.swing.JCheckBox chkNonBelizean;
     private javax.swing.JComboBox cmbClass;
     private javax.swing.JComboBox cmbGender;
     private javax.swing.JButton cmdBrowse;
@@ -917,6 +933,7 @@ public class FrmNewStudent extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblMailingAddress;
+    private javax.swing.JLabel lblNonBelizean;
     private javax.swing.JLabel lblNotes;
     private javax.swing.JLabel lblOtherName;
     private javax.swing.JLabel lblPSEGrade;
