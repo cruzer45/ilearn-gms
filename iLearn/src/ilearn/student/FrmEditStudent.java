@@ -168,6 +168,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         String stuSpecialNeeds = txtSpecialNeeds.getText().trim();
         String stuNotes = txtNotes.getText().trim();
         String ssn = txtSSN.getText().trim();
+        boolean stuNonBelizean = chkNonBelizean.isSelected();
         try
         {
             stuDOB = Utilities.YMD_Formatter.format(calDOB.getDate());
@@ -185,7 +186,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         }
         if (imageChanged) // If the image was changed then run the command that takes an image file.
         {
-            if (Student.updateStudentPhoto(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuStatus))
+            if (Student.updateStudentPhoto(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, selectedFile, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuStatus, stuNonBelizean))
             {
                 String message = "The student's information  was successfully updated. \n"
                                  + "Would you like to modify another another?";
@@ -208,7 +209,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         }
         else // If the image wasn't changed just update text values.
         {
-            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuStatus))
+            if (Student.updateStudent(stuID, stuFirstName, stuLastName, stuOtherNames, stuDOB, stuGender, stuEmail, stuPhone, stuAddress1, stuAddress2, stuPCName, stuPCPhone, stuSCName, stuPCAddress, stuSCPhone, stuSCAddress, stuDoctorName, stuDoctorContact, stuHospital, stuClsCode, stuPSEGrade, stuFeederSchool, stuRepeating, stuSpecialNeeds, stuNotes, ssn, stuStatus, stuNonBelizean))
             {
                 String message = "The student's information  was successfully updated. \n"
                                  + "Would you like to modify another another?";
@@ -308,6 +309,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             txtSpecialNeeds.setText(studentInfo.get(26).toString());
             txtNotes.setText(studentInfo.get(27).toString());
             txtSSN.setText(studentInfo.get(29).toString());
+            chkNonBelizean.setSelected(Boolean.valueOf(studentInfo.get(30).toString()));
             cmbStatus.setSelectedItem(studentInfo.get(28).toString());
             try
             {
@@ -452,8 +454,10 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         chkRepeating = new javax.swing.JCheckBox();
         lblSSN = new javax.swing.JLabel();
         txtSSN = new javax.swing.JFormattedTextField();
+        chkNonBelizean = new javax.swing.JCheckBox();
+        lblNonBelizean = new javax.swing.JLabel();
         txtPhoto.setEditable(false);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmEditStudent.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmEditStudent.class);
         txtPhoto.setToolTipText(resourceMap.getString("txtPhoto.toolTipText")); // NOI18N
         txtPhoto.setName("txtPhoto"); // NOI18N
         setClosable(true);
@@ -476,7 +480,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                 txtSearchKeyPressed(evt);
             }
         });
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmEditStudent.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmEditStudent.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
         cmdSearch.setText(resourceMap.getString("cmdSearch.text")); // NOI18N
         cmdSearch.setName("cmdSearch"); // NOI18N
@@ -548,7 +552,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                                 .addComponent(cmdSearch))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                       .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel5)
                                 .addComponent(cmdNext4)
@@ -788,7 +792,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(lblMailingAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 120, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 132, Short.MAX_VALUE)
                       .addGroup(contactPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
                                 .addComponent(cmdNext2))
@@ -928,7 +932,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addComponent(primaryContactPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(secConPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                       .addGroup(parentPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel3)
                                 .addComponent(cmdNext3))
@@ -1006,11 +1010,16 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
         txtNotes.setRows(4);
         txtNotes.setName("txtNotes"); // NOI18N
         jScrollPane7.setViewportView(txtNotes);
+        chkRepeating.setText(resourceMap.getString("chkRepeating.text")); // NOI18N
         chkRepeating.setName("chkRepeating"); // NOI18N
         lblSSN.setText(resourceMap.getString("lblSSN.text")); // NOI18N
         lblSSN.setName("lblSSN"); // NOI18N
         txtSSN.setText(resourceMap.getString("txtSSN.text")); // NOI18N
         txtSSN.setName("txtSSN"); // NOI18N
+        chkNonBelizean.setText(resourceMap.getString("chkNonBelizean.text")); // NOI18N
+        chkNonBelizean.setName("chkNonBelizean"); // NOI18N
+        lblNonBelizean.setText(resourceMap.getString("lblNonBelizean.text")); // NOI18N
+        lblNonBelizean.setName("lblNonBelizean"); // NOI18N
         javax.swing.GroupLayout otherPanelLayout = new javax.swing.GroupLayout(otherPanel);
         otherPanel.setLayout(otherPanelLayout);
         otherPanelLayout.setHorizontalGroup(
@@ -1033,12 +1042,17 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                                                   .addComponent(lblSSN))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                                   .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                                                  .addComponent(chkRepeating)
+                                                  .addGroup(otherPanelLayout.createSequentialGroup()
+                                                          .addComponent(chkRepeating)
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(lblNonBelizean)
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(chkNonBelizean))
                                                   .addComponent(txtPSEGrades, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
                                                   .addComponent(txtFeederSchool, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
-                                                  .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))))
+                                                  .addComponent(txtSpecialNeeds, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE)
+                                                  .addComponent(txtSSN, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         otherPanelLayout.setVerticalGroup(
@@ -1059,7 +1073,9 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblRepeating)
-                                .addComponent(chkRepeating))
+                                .addComponent(chkRepeating)
+                                .addComponent(chkNonBelizean)
+                                .addComponent(lblNonBelizean))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblSpecialNeeds)
@@ -1070,7 +1086,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
                                 .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addGap(9, 9, 9)
                       .addComponent(medicalPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                       .addGroup(otherPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel6)
                                 .addComponent(cmdSave1))
@@ -1090,7 +1106,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(studentTabbedPane)
+                      .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
                       .addContainerGap())
         );
         pack();
@@ -1116,6 +1132,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     }//GEN-LAST:event_tblStudentsMouseClicked
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDOB;
+    private javax.swing.JCheckBox chkNonBelizean;
     private javax.swing.JCheckBox chkRepeating;
     private javax.swing.JComboBox cmbClass;
     private javax.swing.JComboBox cmbGender;
@@ -1155,6 +1172,7 @@ public class FrmEditStudent extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblImage;
     private javax.swing.JLabel lblLastName;
     private javax.swing.JLabel lblMailingAddress;
+    private javax.swing.JLabel lblNonBelizean;
     private javax.swing.JLabel lblNotes;
     private javax.swing.JLabel lblOtherName;
     private javax.swing.JLabel lblPSEGrade;
