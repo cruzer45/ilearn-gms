@@ -1,0 +1,1 @@
+select CONCAT_WS(' ',`stuFirstName`,`stuLastName`) , `stuClsCode` , 

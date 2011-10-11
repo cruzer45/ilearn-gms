@@ -289,6 +289,7 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
     public static void showAttendanceSummary()
     {
         String report = "reports/AttendanceReport-Summary.jasper";
@@ -306,10 +307,29 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
     public static void showAttendanceDetail()
     {
         String report = "reports/AttendanceReportDetail.jasper";
         String title = "Attendance Detail Report";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+
+    public static void showNationalityReport()
+    {
+        String report = "reports/Non-Belizean Students.jasper";
+        String title = "Nationality Report";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");
