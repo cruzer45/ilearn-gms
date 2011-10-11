@@ -294,6 +294,7 @@ public class ILearnView extends FrameView
         classReports = new javax.swing.JMenu();
         classListReport = new javax.swing.JMenuItem();
         classGradeBook = new javax.swing.JMenuItem();
+        nationalityReport = new javax.swing.JMenuItem();
         demeritReports = new javax.swing.JMenu();
         demeritSummaryStudent = new javax.swing.JMenuItem();
         demeritSummaryTeacher = new javax.swing.JMenuItem();
@@ -367,7 +368,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
         menuBar.setName("menuBar"); // NOI18N
         fileMenu.setMnemonic('F');
@@ -503,6 +504,11 @@ public class ILearnView extends FrameView
         classGradeBook.setText(resourceMap.getString("classGradeBook.text")); // NOI18N
         classGradeBook.setName("classGradeBook"); // NOI18N
         classReports.add(classGradeBook);
+        nationalityReport.setAction(actionMap.get("showNationalityReport")); // NOI18N
+        nationalityReport.setIcon(resourceMap.getIcon("nationalityReport.icon")); // NOI18N
+        nationalityReport.setText(resourceMap.getString("nationalityReport.text")); // NOI18N
+        nationalityReport.setName("nationalityReport"); // NOI18N
+        classReports.add(nationalityReport);
         reportsMenu.add(classReports);
         demeritReports.setIcon(resourceMap.getIcon("demeritReports.icon")); // NOI18N
         demeritReports.setText(resourceMap.getString("demeritReports.text")); // NOI18N
@@ -768,7 +774,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(statusMessageLabel)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
                       .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(statusAnimationLabel)
@@ -2224,6 +2230,29 @@ public class ILearnView extends FrameView
             return null;  // return your result
         }
     }
+
+    @Action
+    public Task showNationalityReport()
+    {
+        return new ShowNationalityReportTask(getApplication());
+    }
+
+    private class ShowNationalityReportTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        ShowNationalityReportTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            setMessage("Loading reporting engine.");
+            ReportLoader.showNationalityReport();
+            return null;  // return your result
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private static javax.swing.JMenuItem addStaff;
@@ -2283,6 +2312,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuBar menuBar;
     private static javax.swing.JMenu midTerm;
     private static javax.swing.JMenuItem midTermReports;
+    private javax.swing.JMenuItem nationalityReport;
     private javax.swing.JProgressBar progressBar;
     private static javax.swing.JMenu promoteMenu;
     private static javax.swing.JMenuItem promoteStudents;
