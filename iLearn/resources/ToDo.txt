@@ -1,6 +1,13 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
+Report 1
+    -  Gender , Village, District, SSN, DOB , 
+Age Distribution report per class (Semis)
+
+0%      Have students listed by first name then last name.
+
+
 0%      Filter Promotion Lists to only a higher class level.
 0%      Students who are not promoted are set as repeating.
 0%      Add Year to the student id.

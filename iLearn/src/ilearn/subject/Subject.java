@@ -321,4 +321,28 @@ public class Subject
         }
         return classesforSubject;
     }
+    
+    public static String getSubjectTeacher(String subCode)
+    {
+        String teacher = "";
+        try
+        {
+            String sql = "SELECT `subStaffCode` FROM `iLearn`.`Subject` WHERE `subCode` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, subCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                teacher = rs.getString("subStaffCode");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving subject details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return teacher;
+    }
 }

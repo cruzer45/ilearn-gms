@@ -1,24 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Non-Belizean Students" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.zoom" value="1.5"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<style name="repeating">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{stuRepeating} == true]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF9999" fill="Solid"/>
+		</conditionalStyle>
+	</style>
+	<style name="non-belizean">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{stuNonBelizean} == true]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FFFF99" fill="Solid"/>
+		</conditionalStyle>
+	</style>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Java\\iLearn\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`),`stuDOB`, `stuGender`, `stuNonBelizean`, `stuClsCode`
+		<![CDATA[SELECT CONCAT_WS(', ',`stuLastName`,`stuFirstName`),`stuDOB`, `stuGender`, `stuNonBelizean`,`stuRepeating`, `stuClsCode`
 FROM `Student`
 WHERE `stuStatus` = 'Active'
-ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
+ORDER BY `stuClsCode`, `stuLastName`,`stuFirstName`]]>
 	</queryString>
-	<field name="CONCAT_WS(&apos; &apos;,`stuFirstName`,`stuLastName`)" class="java.lang.String"/>
+	<field name="CONCAT_WS(&apos;, &apos;,`stuLastName`,`stuFirstName`)" class="java.lang.String"/>
 	<field name="stuDOB" class="java.sql.Date"/>
 	<field name="stuGender" class="java.lang.String"/>
 	<field name="stuNonBelizean" class="java.lang.Boolean"/>
+	<field name="stuRepeating" class="java.lang.Boolean"/>
 	<field name="stuClsCode" class="java.lang.String"/>
 	<variable name="nonBelizean" class="java.lang.String">
 		<variableExpression><![CDATA[( ($F{stuNonBelizean} == true) ? "Yes" : "No" )]]></variableExpression>
+	</variable>
+	<variable name="Repeating" class="java.lang.String">
+		<variableExpression><![CDATA[( ($F{stuRepeating} == true) ? "Yes" : "No" )]]></variableExpression>
 	</variable>
 	<group name="Class" isStartNewPage="true" isReprintHeaderOnEachPage="true">
 		<groupExpression><![CDATA[$F{stuClsCode}]]></groupExpression>
@@ -40,21 +56,35 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 			<subreport>
 				<reportElement x="0" y="0" width="200" height="100"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
 			</subreport>
 			<textField>
 				<reportElement x="0" y="100" width="572" height="20"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Nationality Report - " + $F{stuClsCode}]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Nationality Report - " + $F{stuClsCode}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="50" y="0" width="169" height="20" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="371" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Non Belizean]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="2" y="0" width="169" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -68,7 +98,7 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="219" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="171" y="0" width="100" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -82,7 +112,7 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 				<text><![CDATA[DOB]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="319" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="271" y="0" width="100" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -96,7 +126,7 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 				<text><![CDATA[Gender]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="419" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<reportElement mode="Opaque" x="471" y="0" width="98" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -107,14 +137,14 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font isBold="true"/>
 				</textElement>
-				<text><![CDATA[Non Belizean]]></text>
+				<text><![CDATA[Repeating]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="50" y="0" width="169" height="20"/>
+				<reportElement style="non-belizean" x="371" y="0" width="100" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -123,10 +153,10 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{CONCAT_WS(' ',`stuFirstName`,`stuLastName`)}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{nonBelizean}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="219" y="0" width="100" height="20"/>
+				<reportElement x="2" y="0" width="169" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -135,10 +165,22 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.util.Date"><![CDATA[$F{stuDOB}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{CONCAT_WS(', ',`stuLastName`,`stuFirstName`)}]]></textFieldExpression>
+			</textField>
+			<textField pattern="MMM dd, yyyy">
+				<reportElement x="171" y="0" width="100" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{stuDOB}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="319" y="0" width="100" height="20"/>
+				<reportElement x="271" y="0" width="100" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -147,10 +189,10 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{stuGender}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{stuGender}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="419" y="0" width="100" height="20"/>
+				<reportElement style="repeating" x="471" y="0" width="98" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -159,7 +201,7 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$V{nonBelizean}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$V{Repeating}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -173,21 +215,21 @@ ORDER BY `stuClsCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)]]>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Printed:  "+ new java.text.SimpleDateFormat("MMM d yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Printed:  "+ new java.text.SimpleDateFormat("MMM d yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="452" y="0" width="80" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="532" y="0" width="40" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>

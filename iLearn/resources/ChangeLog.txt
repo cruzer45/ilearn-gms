@@ -1,5 +1,9 @@
 Version 1.5.5
 
+-   Update to iReport 4.1.2
+
+-   Added Report displaying nationality status.
+
 -   Added check to ensure that attendance would only be recorded once for a class for a day.
 
 -   Added field in the student module to capture if they are Belizean or not.
