@@ -7,6 +7,7 @@ package ilearn.grades;
 
 import ilearn.classes.Classes;
 import ilearn.kernel.Utilities;
+import ilearn.subject.Subject;
 import ilearn.term.Term;
 import ilearn.user.User;
 import java.util.ArrayList;
@@ -25,7 +26,7 @@ import org.jdesktop.application.Action;
  */
 public class FrmRecordGrade extends javax.swing.JInternalFrame
 {
-
+    
     String validationText = "";
     String gradesText = "";
 
@@ -281,19 +282,19 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
         }
     }//GEN-LAST:event_cmbClassActionPerformed
-
+    
     private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
     {
 //GEN-HEADEREND:event_cmbSubjectActionPerformed
         next();
     }//GEN-LAST:event_cmbSubjectActionPerformed
-
+    
     @Action
     public void Cancel()
     {
         Utilities.showCancelScreen(this);
     }
-
+    
     @Action
     public void save()
     {
@@ -312,16 +313,16 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             }
         }
         String assmtTerm = Term.getCurrentTerm(),
-               assmtSubject = cmbSubject.getSelectedItem().toString(),
-               assmtTeacher = "",
-               assmtTitle = txtTitle.getText().trim(),
-               assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
-               assmtType = cmbType.getSelectedItem().toString(),
-               assmtTotalPoints = String.valueOf(spinnerMaxPoints.getValue()),
-               assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
+                assmtSubject = cmbSubject.getSelectedItem().toString(),
+                assmtTeacher = Subject.getSubjectTeacher(assmtSubject),
+                assmtTitle = txtTitle.getText().trim(),
+                assmtDate = Utilities.YMD_Formatter.format(calDate.getDate()),
+                assmtType = cmbType.getSelectedItem().toString(),
+                assmtTotalPoints = String.valueOf(spinnerMaxPoints.getValue()),
+                assmtClassID = Classes.getClassID(cmbClass.getSelectedItem().toString());
         ArrayList<String> stuID = new ArrayList<String>(),
-        grade = new ArrayList<String>(),
-        remarks = new ArrayList<String>();
+                grade = new ArrayList<String>(),
+                remarks = new ArrayList<String>();
         //get the values from the tables.
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
@@ -338,7 +339,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         if (addAssessment && addGrades)
         {
             String message = "The assessment was successfully saved. \n"
-                             + "Would you like to add another?";
+                    + "Would you like to add another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -352,18 +353,18 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this assessment.\n"
-                             + "Kindly verify your information and try again.";
+                    + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }
-
+    
     private void resetForm()
     {
         remove(assmtTabbedPane);
         initComponents();
         populateLists();
     }
-
+    
     private void populateLists()
     {
         Date today = new Date();
@@ -386,7 +387,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
         }
     }
-
+    
     @Action
     public void next()
     {
@@ -405,7 +406,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         tcm.getColumn(3).setCellEditor(editor);
         assmtTabbedPane.setSelectedIndex(assmtTabbedPane.getSelectedIndex() + 1);
     }
-
+    
     private boolean gradesOK()
     {
         boolean gradesOK = true;
@@ -417,7 +418,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
             if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))
             {
-                int grade = Integer.valueOf(points);
+                double grade = Double.valueOf(points);
                 if (grade > totalPoints)
                 {
                     gradesOK = false;
@@ -427,7 +428,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         }
         return gradesOK;
     }
-
+    
     private boolean passedValidation()
     {
         boolean inputValid = true;

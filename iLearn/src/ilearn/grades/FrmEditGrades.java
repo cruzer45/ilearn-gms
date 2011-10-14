@@ -630,7 +630,7 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
             if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))
             {
-                int grade = Integer.valueOf(points);
+                double grade = Double.valueOf(points);
                 if (grade > totalPoints)
                 {
                     gradesOK = false;

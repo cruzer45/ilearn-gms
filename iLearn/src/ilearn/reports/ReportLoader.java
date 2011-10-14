@@ -36,7 +36,7 @@ public class ReportLoader
 
     public static void showMidTermReports()
     {
-        String report = "reports/MidTerm_Report_WIth_GPA.jasper";
+        String report = "reports/MidTerm_Report_With_GPA.jasper";
         String title = "Report - Mid-Term Report Cards";
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
