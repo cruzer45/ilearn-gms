@@ -16,7 +16,7 @@ public class EncryptionTest
      */
     public static void main(String[] args)
     {
-        String plain = "iLearn";
+        String plain = "jdbc:mysql://localhost:3306/iLearn_tcc";
         //plain = "2099-12-31";
         String encrypted = EncryptionHandler.encrypt(plain);
         //encrypted = "amRiYzpteXNxbDovL2xvY2FsaG9zdDozMzA2L2lMZWFybg==";

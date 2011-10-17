@@ -321,7 +321,7 @@ public class Subject
         }
         return classesforSubject;
     }
-    
+
     public static String getSubjectTeacher(String subCode)
     {
         String teacher = "";

@@ -806,17 +806,17 @@ public class Grade
             ArrayList<String> classes = Classes.getClassList();
             for (String cls : classes) // loop classes
             {
-                //System.out.println("Now doing class: " + cls);
+                System.out.println("Now doing class: " + cls);
                 //Get all students in a class.
                 ArrayList<String> studentList = Classes.getStudentIDList(cls);
                 //Get list of all subjects for class
                 ArrayList<String> subjects = Classes.getSubjectList(cls);
                 for (String sub : subjects) // loop subjects
                 {
-                    //  System.out.println("\tNow doing subject: " + sub);
+                    System.out.println("\tNow doing subject: " + sub);
                     for (String stuID : studentList) // loop students
                     {
-                        //    System.out.println("\t\tNow doing student: " + stuID);
+                        System.out.println("\t\tNow doing student: " + stuID);
                         double subGrades = 0.0;
                         double subTotal = 0.0;
                         String clsID = Classes.getClassID(cls);
@@ -824,18 +824,38 @@ public class Grade
                         ArrayList<Integer> assmtList = getAssessmentList(clsID, sub);
                         for (Integer assmtID : assmtList) // loop assessmenst
                         {
-                            //System.out.println("\t\t\tNow doing assmt: " + assmtID);
+                            System.out.println("\t\t\tNow doing assmt: " + assmtID);
                             ArrayList<Object> assmtInfo = getAssessmentInfo(assmtID.toString());
                             ArrayList<String> stuGrade = getStudentGrade(String.valueOf(assmtID), stuID);
                             try
                             {
                                 double totalPoints = Double.valueOf((String) assmtInfo.get(4));
-                                double grade = Double.valueOf(stuGrade.get(0));
+                                double grade = 0;
+                                String strGrade = stuGrade.get(0);
+                                //Test if student was escused
+                                //
+                                if (strGrade.equals("Excused"))
+                                {
+                                    System.out.println("\t\t\t\tStudent was excused");
+                                    continue;
+                                }
+                                else if (strGrade.equals("Absent") || strGrade.equals("Incomplete")
+                                         || strGrade.equals(" ") || strGrade.equals("")
+                                         || strGrade.isEmpty())
+                                {
+                                    System.out.println("\t\t\t\tStudent was absent");
+                                    grade = 0;
+                                }
+                                else
+                                {
+                                    grade = Double.valueOf(stuGrade.get(0));
+                                }
                                 subGrades += grade;
                                 subTotal += totalPoints;
                             }
                             catch (Exception e)
                             {
+                                e.printStackTrace();
                             }
                         }// loop assessments
                         double grade = 0.0;
