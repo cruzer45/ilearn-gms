@@ -343,4 +343,22 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
+    public static void showMissingGradeReportReport()
+    {
+        String report = "reports/Missing Grades.jasper";
+        String title = "Missing Grades";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
 }

@@ -108,6 +108,11 @@ public class Utilities
     {
         return JOptionPane.showConfirmDialog(rootpane, message, "iLearn", JOptionPane.YES_NO_OPTION);
     }
+    
+     public static int showYNCConfirmDialog(Component rootpane, String message)
+    {
+        return JOptionPane.showConfirmDialog(rootpane, message, "iLearn", JOptionPane.YES_NO_CANCEL_OPTION);
+    }
 
     public static void showInfoMessage(Component rootpane, String message)
     {
