@@ -45,7 +45,7 @@ public class Grade
         ArrayList<String> list = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `assmtType` FROM `iLearn`.`listAssessmentTypes` ORDER BY `assmtType` DESC; ";
+            String sql = "SELECT `assmtType` FROM `listAssessmentTypes` ORDER BY `assmtType` DESC; ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -66,7 +66,7 @@ public class Grade
         ArrayList<Integer> assmtIDs = new ArrayList<Integer>();
         try
         {
-            String sql1 = "SELECT `assmtID` FROM `iLearn`.`Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active';";
+            String sql1 = "SELECT `assmtID` FROM `Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
             prep.setString(1, clsCode);
             prep.setString(2, Term.getCurrentTerm());
@@ -192,7 +192,7 @@ public class Grade
         ArrayList<String> remarks = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -478,7 +478,7 @@ public class Grade
         String assmtID = "";
         try
         {
-            String sql = "SELECT `assmtID` FROM `iLearn`.`Assments` "
+            String sql = "SELECT `assmtID` FROM `Assments` "
                          + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
                          + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -546,7 +546,7 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` , `clsCode` "
-                         + "FROM `iLearn`.`Assments` "
+                         + "FROM `Assments` "
                          + "INNER JOIN `Class` ON `Assments`.`assmtClassID` = `Class`.`clsID` "
                          + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ? OR `clsCode` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
                          + "LIMIT 0, 1000;";
@@ -594,7 +594,7 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                         + "FROM `iLearn`.`Assments` "
+                         + "FROM `Assments` "
                          + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
@@ -623,7 +623,7 @@ public class Grade
         ArrayList<String> stuGrade = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `iLearn`.`TermGrade` "
+            String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `TermGrade` "
                          + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);

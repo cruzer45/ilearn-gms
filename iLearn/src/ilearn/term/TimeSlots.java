@@ -48,7 +48,7 @@ public class TimeSlots
         ArrayList<String> list = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `id`, `hrsKey` ,`hrsStatus` FROM `iLearn`.`TimeSlots` WHERE `hrsStatus` = 'Active';";
+            String sql = "SELECT `id`, `hrsKey` ,`hrsStatus` FROM `TimeSlots` WHERE `hrsStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -85,7 +85,7 @@ public class TimeSlots
         ArrayList<String> status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `id`, `hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`, `hrsStatus` FROM `iLearn`.`TimeSlots`;";
+            String sql = "SELECT `id`, `hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`, `hrsStatus` FROM `TimeSlots`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -132,7 +132,7 @@ public class TimeSlots
         ArrayList<String> status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `id`, `hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`, `hrsStatus` FROM `iLearn`.`TimeSlots` WHERE `hrsStatus` = 'Active';";
+            String sql = "SELECT `id`, `hrsKey`, `hrsDay`, `hrsBegin`, `hrsEnd`, `hrsStatus` FROM `TimeSlots` WHERE `hrsStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -191,7 +191,7 @@ public class TimeSlots
         String slotName = "";
         try
         {
-            String sql = "SELECT `id`, `hrsKey` FROM `iLearn`.`TimeSlots` WHERE `id` = ?;";
+            String sql = "SELECT `id`, `hrsKey` FROM `TimeSlots` WHERE `id` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, slotID);
             ResultSet rs = prep.executeQuery();

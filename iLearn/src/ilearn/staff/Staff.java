@@ -62,7 +62,7 @@ public class Staff
         ArrayList<String> Status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`,`staDOB`, `staStatus` FROM `iLearn`.`Staff`;";
+            String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`,`staDOB`, `staStatus` FROM `Staff`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -106,7 +106,7 @@ public class Staff
         try
         {
             String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`,`staDOB` "
-                         + "FROM `iLearn`.`Staff` "
+                         + "FROM `Staff` "
                          + "WHERE (`staID` LIKE ? OR `staCode` LIKE ? OR `staFirstName` LIKE ? OR `staLastName` LIKE ?) AND `staStatus` =  'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
@@ -139,7 +139,7 @@ public class Staff
         ArrayList<String> details = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`, `staGender`, `staDOB`, `staNotes`, `staEmail`, `staStatus` FROM `iLearn`.`Staff` WHERE `staID` = ?;";
+            String sql = "SELECT `staID`, `staCode`, `staFirstName`, `staLastName`, `staGender`, `staDOB`, `staNotes`, `staEmail`, `staStatus` FROM `Staff` WHERE `staID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, id);
             ResultSet rs = prep.executeQuery();
@@ -199,7 +199,7 @@ public class Staff
         ArrayList<String> staffList = new ArrayList<String>();
         try
         {
-            String sql = "SELECT  CONCAT_WS( ' ', `staFirstName`, `staLastName`) AS Name  FROM `iLearn`.`Staff` WHERE `staStatus` = 'Active' ORDER BY Name Asc;";
+            String sql = "SELECT  CONCAT_WS( ' ', `staFirstName`, `staLastName`) AS Name  FROM `Staff` WHERE `staStatus` = 'Active' ORDER BY Name Asc;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())

@@ -8,7 +8,7 @@
 	</parameter>
 	<parameter name="classCode" class="java.lang.String"/>
 	<queryString>
-		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` FROM `iLearn`.`Student` WHERE `stuStatus` = 'Active' AND `stuClsCode` LIKE $P{classCode};]]>
+		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` FROM `Student` WHERE `stuStatus` = 'Active' AND `stuClsCode` LIKE $P{classCode};]]>
 	</queryString>
 	<field name="stuID" class="java.lang.Long"/>
 	<field name="stuFirstName" class="java.lang.String"/>

@@ -71,7 +71,7 @@ public class Register
         ArrayList<String> remark = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS `Name` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS `Name` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -143,7 +143,7 @@ public class Register
         try
         {
             String sql = "SELECT `rolID`, `rolStuID`, `rolClsCode`, `rolTrmCode`, `rolDate`, `rolAbsent`, `rolTardy`, `rolRemark`, `rolStatus`"
-                         + " FROM `iLearn`.`RollCall`"
+                         + " FROM `RollCall`"
                          + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
@@ -177,7 +177,7 @@ public class Register
         try
         {
             String sql = "DELETE "
-                         + " FROM `iLearn`.`RollCall`"
+                         + " FROM `RollCall`"
                          + " WHERE (`rolClsCode` = ? AND `rolDate` = ?) AND (`rolStatus` = 'Active');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);

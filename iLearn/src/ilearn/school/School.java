@@ -23,7 +23,7 @@ public class School
         ArrayList<Object> school = new ArrayList<Object>();
         try
         {
-            String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, `schPhone2`, `schAddress`, `schLogo`, `registrationCode`, `timeCode`, `dbVersion` FROM `iLearn`.`School`;";
+            String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, `schPhone2`, `schAddress`, `schLogo`, `registrationCode`, `timeCode`, `dbVersion` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();

@@ -63,7 +63,7 @@ public class Term
         ArrayList<String> status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `trmID`, `trmCode`, `trmShortName`, `trmLongName`, `trmStatus` FROM `iLearn`.`Term` ;";
+            String sql = "SELECT `trmID`, `trmCode`, `trmShortName`, `trmLongName`, `trmStatus` FROM `Term` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -123,7 +123,7 @@ public class Term
         String currentTerm = "";
         try
         {
-            String sql = "SELECT `trmID` FROM `iLearn`.`Term`  WHERE `trmStatus` = 'Active';";
+            String sql = "SELECT `trmID` FROM `Term`  WHERE `trmStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -150,7 +150,7 @@ public class Term
         String currentTerm = "";
         try
         {
-            String sql = "SELECT `trmLongName` FROM `iLearn`.`Term`  WHERE `trmStatus` = 'Active';";
+            String sql = "SELECT `trmLongName` FROM `Term`  WHERE `trmStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())

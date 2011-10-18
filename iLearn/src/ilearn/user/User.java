@@ -52,7 +52,7 @@ public class User
         boolean successful = false;
         try
         {
-            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`,  `usrStatus`, `usrTimeout`, `usrPermissions` FROM `iLearn`.`User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
+            String sql = "SELECT `usrName`, `usrPassword`, `usrGroup`,  `usrStatus`, `usrTimeout`, `usrPermissions` FROM `User` WHERE `usrName` = ? AND `usrStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, username);
             ResultSet rs = prep.executeQuery();
@@ -316,7 +316,7 @@ public class User
     public static ArrayList<String> getUserGroups()
     {
         ArrayList<String> groups = new ArrayList<String>();
-        String sql = "SELECT DISTINCT `groupName` FROM `iLearn`.`listUserGroups` ORDER BY `groupName` ASC;";
+        String sql = "SELECT DISTINCT `groupName` FROM `listUserGroups` ORDER BY `groupName` ASC;";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -558,7 +558,7 @@ public class User
         try
         {
             resetStaffLinks();
-            String sql = "SELECT `staID` FROM `iLearn`.`User_Staff` WHERE `userID` = ?;";
+            String sql = "SELECT `staID` FROM `User_Staff` WHERE `userID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, usrID);
             ResultSet rs = prep.executeQuery();

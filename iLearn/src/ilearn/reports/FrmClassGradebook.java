@@ -219,7 +219,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 ArrayList<String> studentIDs = new ArrayList<String>();
                 ArrayList<String> studentNames = new ArrayList<String>();
                 //Get the list of assessments
-                String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `iLearn`.`Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY  `assmtDate` ASC LIMIT 0, 1000;";
+                String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY  `assmtDate` ASC LIMIT 0, 1000;";
                 PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
                 prep.setString(1, classID);
                 prep.setString(2, Term.getCurrentTerm());

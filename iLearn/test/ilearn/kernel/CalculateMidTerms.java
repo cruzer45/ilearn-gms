@@ -5,9 +5,7 @@
 package ilearn.kernel;
 
 import ilearn.grades.Grade;
-import ilearn.student.Student;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 /**
  *
@@ -23,7 +21,7 @@ public class CalculateMidTerms
     {
         Environment.createConnection();
         System.out.println(Environment.getConnection().getCatalog().toString());
-        boolean calculateMidTerms = Grade.calculateMidTerms();
+        Grade.calculateMidTerms();
         
 //        ArrayList<Object> results = Grade.checkAllGrades();
 //        if (!results.isEmpty())

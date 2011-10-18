@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`,  `stuClsCode` FROM `iLearn`.`Student`
+		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`,  `stuClsCode` FROM `Student`
 WHERE (`stuRepeating` = true)
 And (`stuStatus` = 'Active');]]>
 	</queryString>
