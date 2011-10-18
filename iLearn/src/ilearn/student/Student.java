@@ -94,7 +94,7 @@ public class Student
         ArrayList<String> classCode = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuClsCode` FROM `iLearn`.`Student` "
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuClsCode` FROM `Student` "
                          + "WHERE ( `stuID` LIKE ?  OR "
                          + "`stuFirstName` LIKE ?  OR "
                          + "`stuLastName` LIKE ?  OR "
@@ -141,7 +141,7 @@ public class Student
                          + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
                          + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
                          + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`"
-                         + "FROM `iLearn`.`Student` WHERE `stuID` = ?;";
+                         + "FROM `Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             ResultSet rs = prep.executeQuery();
@@ -195,7 +195,7 @@ public class Student
         String stuClass = "";
         try
         {
-            String sql = "SELECT `stuID` , `stuClsCode` FROM `iLearn`.`Student` WHERE `stuID` = ?;";
+            String sql = "SELECT `stuID` , `stuClsCode` FROM `Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             ResultSet rs = prep.executeQuery();
@@ -219,7 +219,7 @@ public class Student
         String studentName = "";
         try
         {
-            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName` FROM `iLearn`.`Student` WHERE `stuID` = ?;";
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName` FROM `Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             ResultSet rs = prep.executeQuery();

@@ -173,7 +173,7 @@ public class Detention
         ArrayList<String> detionTypes = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `detType` FROM `iLearn`.`listDetentionTypes` ORDER BY `detType` ASC;";
+            String sql = "SELECT `detType` FROM `listDetentionTypes` ORDER BY `detType` ASC;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())

@@ -79,6 +79,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -102,6 +103,7 @@ public class Classes
         resetSubjects();
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -110,8 +112,8 @@ public class Classes
         };
         try
         {
-            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `ClassSubjects` "
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -151,8 +153,8 @@ public class Classes
         resetSubjects();
         try
         {
-            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+            String sql = "SELECT `id`, `clsCode`, `subCode` FROM `ClassSubjects` "
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -240,6 +242,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -253,7 +256,7 @@ public class Classes
         ArrayList<String> Status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` ;";
+            String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `Class` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -290,6 +293,7 @@ public class Classes
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -303,8 +307,8 @@ public class Classes
         ArrayList<String> Status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` "
-                         + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
+            String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `Class` "
+                    + "WHERE `clsID` LIKE ? OR `clsCode` LIKE ? OR `clsName` LIKE ? OR `clsHomeRoom` LIKE ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -345,7 +349,7 @@ public class Classes
         ArrayList<String> info = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `clsID`, `clsCode`, `clsName`, `clsDescription`, `clsLevel`, `clsHomeRoom`, `clsStatus` FROM `iLearn`.`Class` WHERE `clsID` = ?;";
+            String sql = "SELECT `clsID`, `clsCode`, `clsName`, `clsDescription`, `clsLevel`, `clsHomeRoom`, `clsStatus` FROM `Class` WHERE `clsID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classID);
             ResultSet rs = prep.executeQuery();
@@ -432,7 +436,7 @@ public class Classes
         ArrayList<String> classes = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `clsCode`,`clsName` FROM `iLearn`.`Class` WHERE `clsStatus` = 'Active' ORDER BY `clsName` ASC ;";
+            String sql = "SELECT `clsCode`,`clsName` FROM `Class` WHERE `clsStatus` = 'Active' ORDER BY `clsName` ASC ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -455,7 +459,7 @@ public class Classes
         String classID = "";
         try
         {
-            String sql = "SELECT `clsID` FROM `iLearn`.`Class` WHERE `clsCode` = ?;";
+            String sql = "SELECT `clsID` FROM `Class` WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             ResultSet rs = prep.executeQuery();
@@ -479,7 +483,7 @@ public class Classes
         String classCode = "";
         try
         {
-            String sql = "SELECT `clsCode` FROM `iLearn`.`Class` WHERE `clsID` = ?;";
+            String sql = "SELECT `clsCode` FROM `Class` WHERE `clsID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsID);
             ResultSet rs = prep.executeQuery();
@@ -502,6 +506,7 @@ public class Classes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -513,7 +518,7 @@ public class Classes
         ArrayList<String> lastName = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -542,7 +547,7 @@ public class Classes
         ArrayList<String> studentID = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -567,7 +572,7 @@ public class Classes
         ArrayList<String> stuName = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'Name', `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'Name', `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -596,7 +601,7 @@ public class Classes
         ArrayList<String> list = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `level` FROM `iLearn`.`listClassLevels` ORDER BY `id` ASC";
+            String sql = "SELECT `level` FROM `listClassLevels` ORDER BY `id` ASC";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -620,8 +625,8 @@ public class Classes
         ArrayList<String> permittedSubjects = User.getPermittedSubjects();
         try
         {
-            String sql = "SELECT `subCode` FROM `iLearn`.`ClassSubjects` "
-                         + "WHERE `clsCode` = ?;";
+            String sql = "SELECT `subCode` FROM `ClassSubjects` "
+                    + "WHERE `clsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -651,7 +656,7 @@ public class Classes
         try
         {
             String sql = "SELECT COUNT(`stuID`) as ClassSize FROM `Student` "
-                         + "WHERE `stuStatus` = 'Active' AND `stuClsCode` = ?;";
+                    + "WHERE `stuStatus` = 'Active' AND `stuClsCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, clsCode);
             ResultSet rs = prep.executeQuery();

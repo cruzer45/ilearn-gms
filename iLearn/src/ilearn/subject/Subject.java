@@ -158,7 +158,7 @@ public class Subject
         ArrayList<String> status = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `iLearn`.`Subject` "
+            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `Subject` "
                          + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
@@ -199,7 +199,7 @@ public class Subject
         ArrayList<String> details = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subStatus` FROM `iLearn`.`Subject` WHERE `subID` = ?;";
+            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subStatus` FROM `Subject` WHERE `subID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();
@@ -228,7 +228,7 @@ public class Subject
         String subID = "";
         try
         {
-            String sql = "SELECT `subID` FROM `iLearn`.`Subject` WHERE `subCode` = ?;";
+            String sql = "SELECT `subID` FROM `Subject` WHERE `subCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subCode);
             ResultSet rs = prep.executeQuery();
@@ -252,7 +252,7 @@ public class Subject
         String subCode = "";
         try
         {
-            String sql = "SELECT `subCode` FROM `iLearn`.`Subject` WHERE `subID` = ?;";
+            String sql = "SELECT `subCode` FROM `Subject` WHERE `subID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();
@@ -276,7 +276,7 @@ public class Subject
         resetHours();
         try
         {
-            String sql = "SELECT `subHoursID`, `subCode`, `hrsKey` FROM `iLearn`.`SubjectHours` WHERE `subCode` = ?;";
+            String sql = "SELECT `subHoursID`, `subCode`, `hrsKey` FROM `SubjectHours` WHERE `subCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subCode);
             ResultSet rs = prep.executeQuery();
@@ -327,7 +327,7 @@ public class Subject
         String teacher = "";
         try
         {
-            String sql = "SELECT `subStaffCode` FROM `iLearn`.`Subject` WHERE `subCode` = ?;";
+            String sql = "SELECT `subStaffCode` FROM `Subject` WHERE `subCode` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subCode);
             ResultSet rs = prep.executeQuery();

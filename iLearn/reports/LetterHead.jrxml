@@ -15,7 +15,7 @@
 		</conditionalStyle>
 	</style>
 	<queryString>
-		<![CDATA[SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, `schPhone2`, `schAddress`, `schLogo` FROM `iLearn`.`School`;]]>
+		<![CDATA[SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, `schPhone2`, `schAddress`, `schLogo` FROM `School`;]]>
 	</queryString>
 	<field name="schlID" class="java.lang.Long"/>
 	<field name="schName" class="java.lang.String"/>

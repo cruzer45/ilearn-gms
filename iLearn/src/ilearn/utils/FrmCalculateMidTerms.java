@@ -125,6 +125,11 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
             boolean gradesOk = checkGrades();
             if (!gradesOk)
             {
+                String message = "The system found some students with missing grades.\n"
+                        + "Do you still want to proceed calculating Mid Terms?";
+                
+                
+                
                 return false;
             }
             setProgress(1, 0, 3);

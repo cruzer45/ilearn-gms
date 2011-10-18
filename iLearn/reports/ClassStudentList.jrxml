@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA["C:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuAddress1`, `stuClsCode`, `curCode`, `curTerm`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuStatus` = 'Active';]]>
+		<![CDATA[SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuAddress1`, `stuClsCode`, `curCode`, `curTerm`, `stuStatus` FROM `Student` WHERE `stuStatus` = 'Active';]]>
 	</queryString>
 	<field name="stuID" class="java.lang.Long"/>
 	<field name="stuFirstName" class="java.lang.String"/>

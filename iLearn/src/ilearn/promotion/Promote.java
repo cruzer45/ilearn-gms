@@ -109,7 +109,7 @@ public class Promote
         ArrayList<String> stuNewClass = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `iLearn`.`Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -147,7 +147,7 @@ public class Promote
         try
         {
             resetPromotions();
-            String sqlSelect = "SELECT `proID`, `proTermID`, `proStudID`, `proNewClsCode` FROM `iLearn`.`Promotion` ORDER BY `proTermID`;";
+            String sqlSelect = "SELECT `proID`, `proTermID`, `proStudID`, `proNewClsCode` FROM `Promotion` ORDER BY `proTermID`;";
             String sqlUpdate = "UPDATE `Student` SET `stuClsCode`= ? WHERE `stuID`=? LIMIT 1;";
             String sqlEmptyTable = "TRUNCATE `Promotion`;";
             //load the promotions
