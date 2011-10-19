@@ -7,7 +7,7 @@
 		<defaultValueExpression><![CDATA["C:\\Java\\iLearn\\reports\\"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom`
+		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom`
 FROM `Grade`
 INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID
 INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode
@@ -24,6 +24,8 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<field name="stuLastName" class="java.lang.String"/>
 	<field name="stuClsCode" class="java.lang.String"/>
 	<field name="subName" class="java.lang.String"/>
+	<field name="subStaffCode" class="java.lang.String"/>
+	<field name="subCredits" class="java.lang.Integer"/>
 	<field name="graID" class="java.lang.Long"/>
 	<field name="graStuID" class="java.lang.Integer"/>
 	<field name="graClsCode" class="java.lang.String"/>
@@ -57,7 +59,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textField>
 					<reportElement x="59" y="20" width="206" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{stuFirstName} + " " + $F{stuLastName}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{stuFirstName} + " " + $F{stuLastName}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="0" y="0" width="59" height="20"/>
@@ -67,12 +69,12 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textField>
 					<reportElement x="59" y="0" width="206" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression class="java.lang.Long"><![CDATA[$F{stuID}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{stuID}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="417" y="20" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{stuClsCode}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{stuClsCode}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement x="375" y="20" width="42" height="20"/>
@@ -93,7 +95,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Subject]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="174" y="61" width="56" height="20" backcolor="#CCCCCC"/>
+					<reportElement mode="Opaque" x="174" y="61" width="38" height="20" backcolor="#CCCCCC"/>
 					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="0.5" lineStyle="Solid"/>
 						<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -106,7 +108,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Grade]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="358" y="61" width="214" height="20" backcolor="#CCCCCC"/>
+					<reportElement mode="Opaque" x="375" y="61" width="197" height="20" backcolor="#CCCCCC"/>
 					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="0.5" lineStyle="Solid"/>
 						<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -126,10 +128,10 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textField>
 					<reportElement x="417" y="0" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{trmShortName}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{trmShortName}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="230" y="61" width="59" height="20" backcolor="#CCCCCC"/>
+					<reportElement mode="Opaque" x="212" y="61" width="35" height="20" backcolor="#CCCCCC"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -143,7 +145,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[GPA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="289" y="61" width="69" height="20" backcolor="#CCCCCC"/>
+					<reportElement mode="Opaque" x="247" y="61" width="45" height="20" backcolor="#CCCCCC"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -154,64 +156,72 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
-					<text><![CDATA[Letter Grade]]></text>
+					<text><![CDATA[Letter]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="292" y="61" width="28" height="20" backcolor="#CCCCCC"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Cr.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement mode="Opaque" x="320" y="61" width="55" height="20" backcolor="#CCCCCC"/>
+					<box>
+						<pen lineWidth="0.5"/>
+						<topPen lineWidth="0.5"/>
+						<leftPen lineWidth="0.5"/>
+						<bottomPen lineWidth="0.5"/>
+						<rightPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font isBold="true"/>
+					</textElement>
+					<text><![CDATA[Staff]]></text>
 				</staticText>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="86">
-				<textField pattern="###0.00">
-					<reportElement x="174" y="0" width="56" height="20"/>
-					<box rightPadding="5">
-						<topPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font isBold="true"/>
-					</textElement>
-					<textFieldExpression class="java.lang.Double"><![CDATA[$V{graMid_1}]]></textFieldExpression>
-				</textField>
+			<band height="67">
 				<textField pattern="#,##0" isBlankWhenNull="true">
-					<reportElement x="59" y="38" width="100" height="20"/>
+					<reportElement x="59" y="15" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{demerits}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{demerits}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="38" width="59" height="20"/>
+					<reportElement x="0" y="15" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Demerits:]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement x="59" y="58" width="100" height="20"/>
+					<reportElement x="59" y="35" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression class="java.lang.Long"><![CDATA[$F{rolAbsent}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{rolAbsent}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="58" width="59" height="20"/>
+					<reportElement x="0" y="35" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Absents:]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="348" y="38" width="59" height="20"/>
+					<reportElement x="348" y="15" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Homeroom:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="407" y="58" width="165" height="20"/>
+					<reportElement x="407" y="35" width="165" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<textFieldExpression class="java.lang.String"><![CDATA[$F{clsHomeRoom}]]></textFieldExpression>
-				</textField>
-				<textField pattern="###0.00">
-					<reportElement x="230" y="0" width="59" height="20"/>
-					<box rightPadding="5">
-						<topPen lineWidth="0.0"/>
-					</box>
-					<textElement textAlignment="Right" verticalAlignment="Middle">
-						<font isBold="true"/>
-					</textElement>
-					<textFieldExpression class="java.lang.Double"><![CDATA[$V{graGPA_1}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clsHomeRoom}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -227,7 +237,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 			<subreport>
 				<reportElement x="0" y="0" width="572" height="100"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression class="java.lang.String"><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
 				<reportElement x="0" y="77" width="572" height="34"/>
@@ -252,10 +262,10 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{subName}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{subName}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
-				<reportElement x="174" y="0" width="56" height="20"/>
+				<reportElement x="174" y="0" width="38" height="20"/>
 				<box leftPadding="5" rightPadding="10">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -263,10 +273,10 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{graMid}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{graMid}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="358" y="0" width="214" height="20"/>
+				<reportElement x="375" y="0" width="197" height="20"/>
 				<box leftPadding="5" rightPadding="5">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -274,10 +284,10 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
 				<textElement verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{graRemark}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{graRemark}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
-				<reportElement x="230" y="0" width="59" height="20"/>
+				<reportElement x="212" y="0" width="35" height="20"/>
 				<box rightPadding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -286,11 +296,11 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Right" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.Double"><![CDATA[$F{graGPA}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{graGPA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="289" y="0" width="69" height="20"/>
-				<box rightPadding="5">
+				<reportElement x="247" y="0" width="45" height="20"/>
+				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
 					<leftPen lineWidth="0.5"/>
@@ -298,7 +308,31 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<rightPen lineWidth="0.5"/>
 				</box>
 				<textElement textAlignment="Center" verticalAlignment="Middle"/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{graLetterGrade}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{graLetterGrade}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="292" y="0" width="28" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{subCredits}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="320" y="0" width="55" height="20"/>
+				<box>
+					<pen lineWidth="0.5"/>
+					<topPen lineWidth="0.5"/>
+					<leftPen lineWidth="0.5"/>
+					<bottomPen lineWidth="0.5"/>
+					<rightPen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{subStaffCode}]]></textFieldExpression>
 			</textField>
 		</band>
 	</detail>
@@ -312,21 +346,21 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="MMM d yyyy  h:mm a">
 				<reportElement x="0" y="0" width="174" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA["Printed: on "+ new java.text.SimpleDateFormat("MMM d, yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
+				<textFieldExpression><![CDATA["Printed: on "+ new java.text.SimpleDateFormat("MMM d, yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
 				<reportElement x="532" y="0" width="40" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
-				<textFieldExpression class="java.lang.String"><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
