@@ -1038,6 +1038,9 @@
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
                       <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="cleanMidTerms" methodName="cleanMidTerms"/>
+                        </Property>
                         <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem2.icon"/>
                         <Property name="text" type="java.lang.String" resourceKey="jMenuItem2.text"/>
                         <Property name="name" type="java.lang.String" value="jMenuItem2" noResource="true"/>
