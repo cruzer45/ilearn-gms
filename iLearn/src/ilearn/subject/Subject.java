@@ -21,6 +21,9 @@ public class Subject
     static final Logger logger = Logger.getLogger(Subject.class.getName());
     private static ArrayList<String> hours = new ArrayList<String>();
     private static ArrayList<String> hourCodes = new ArrayList<String>();
+    //Add 
+    private static ArrayList<String> assessment = new ArrayList<String>();
+    private static ArrayList<Double> weighting = new ArrayList<Double>();
 
     public static void addHour(String hour, String code)
     {
@@ -143,6 +146,7 @@ public class Subject
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -159,7 +163,7 @@ public class Subject
         try
         {
             String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `Subject` "
-                         + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
+                    + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);

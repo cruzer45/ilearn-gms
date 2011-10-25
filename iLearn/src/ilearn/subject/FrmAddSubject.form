@@ -27,174 +27,39 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Component id="jTabbedPane1" alignment="0" min="-2" pref="497" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="156" max="32767" attributes="0"/>
+                      <EmptySpace pref="241" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <Component id="cmdAdd" min="-2" max="-2" attributes="1"/>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="cmdRemove" min="-2" max="-2" attributes="1"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="lblSubjectCode" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblTeacher" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jScrollPane2" alignment="1" pref="361" max="32767" attributes="0"/>
-                          <Component id="cmbTeacher" alignment="1" pref="361" max="32767" attributes="0"/>
-                          <Component id="spinnerCreditHours" alignment="1" pref="361" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" pref="361" max="32767" attributes="0"/>
-                          <Component id="txtSubjectName" alignment="0" pref="361" max="32767" attributes="0"/>
-                          <Component id="txtSubjectCode" alignment="0" pref="361" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSubjectCode" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSubjectCode" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblSubjectName" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="txtSubjectName" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblDescription" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="spinnerCreditHours" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cmbTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="lblTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jScrollPane2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cmdRemove" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cmdAdd" alignment="3" min="-2" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="37" max="32767" attributes="0"/>
+              <Component id="jTabbedPane1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="27" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdSave" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdReset" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace max="-2" attributes="0"/>
+              <EmptySpace min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="lblSubjectCode">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblSubjectCode.text"/>
-        <Property name="name" type="java.lang.String" value="lblSubjectCode" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtSubjectCode">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="txtSubjectCode.text"/>
-        <Property name="toolTipText" type="java.lang.String" resourceKey="txtSubjectCode.toolTipText"/>
-        <Property name="name" type="java.lang.String" value="txtSubjectCode" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblSubjectName">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblSubjectName.text"/>
-        <Property name="name" type="java.lang.String" value="lblSubjectName" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtSubjectName">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="txtSubjectName.text"/>
-        <Property name="toolTipText" type="java.lang.String" resourceKey="txtSubjectName.toolTipText"/>
-        <Property name="name" type="java.lang.String" value="txtSubjectName" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblDescription">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblDescription.text"/>
-        <Property name="name" type="java.lang.String" value="lblDescription" noResource="true"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JTextArea" name="txtDescription">
-          <Properties>
-            <Property name="columns" type="int" value="20"/>
-            <Property name="rows" type="int" value="5"/>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="txtDescription.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="txtDescription" noResource="true"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
-    <Component class="javax.swing.JLabel" name="lblDays_Time">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblDays_Time.text"/>
-        <Property name="name" type="java.lang.String" value="lblDays_Time" noResource="true"/>
-      </Properties>
-    </Component>
-    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
-      <Properties>
-        <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
-      </AuxValues>
-
-      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
-      <SubComponents>
-        <Component class="javax.swing.JList" name="TimeList">
-          <Properties>
-            <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
-              <StringArray count="0"/>
-            </Property>
-            <Property name="toolTipText" type="java.lang.String" resourceKey="TimeList.toolTipText"/>
-            <Property name="name" type="java.lang.String" value="TimeList" noResource="true"/>
-          </Properties>
-        </Component>
-      </SubComponents>
-    </Container>
     <Component class="javax.swing.JButton" name="cmdCancel">
       <Properties>
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
@@ -222,53 +87,344 @@
         <Property name="name" type="java.lang.String" value="cmdReset" noResource="true"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="cmdAdd">
+    <Container class="javax.swing.JTabbedPane" name="jTabbedPane1">
       <Properties>
-        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-          <action class="ilearn.subject.FrmAddSubject" id="add" methodName="add"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" resourceKey="cmdAdd.icon"/>
-        <Property name="text" type="java.lang.String" resourceKey="cmdAdd.text"/>
-        <Property name="name" type="java.lang.String" value="cmdAdd" noResource="true"/>
+        <Property name="name" type="java.lang.String" value="jTabbedPane1" noResource="true"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="cmdRemove">
-      <Properties>
-        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-          <action class="ilearn.subject.FrmAddSubject" id="remove" methodName="remove"/>
-        </Property>
-        <Property name="icon" type="javax.swing.Icon" resourceKey="cmdRemove.icon"/>
-        <Property name="text" type="java.lang.String" resourceKey="cmdRemove.text"/>
-        <Property name="name" type="java.lang.String" value="cmdRemove" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbTeacher">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="cmbTeacher" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="lblTeacher">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="lblTeacher.text"/>
-        <Property name="name" type="java.lang.String" value="lblTeacher" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JSpinner" name="spinnerCreditHours">
-      <Properties>
-        <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
-          <SpinnerModel initial="3" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
-        </Property>
-        <Property name="name" type="java.lang.String" value="spinnerCreditHours" noResource="true"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel1">
-      <Properties>
-        <Property name="text" type="java.lang.String" resourceKey="jLabel1.text"/>
-        <Property name="name" type="java.lang.String" value="jLabel1" noResource="true"/>
-      </Properties>
-    </Component>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout"/>
+      <SubComponents>
+        <Container class="javax.swing.JPanel" name="generalPanel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="generalPanel" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="General">
+                <Property name="tabTitle" type="java.lang.String" resourceKey="generalPanel.TabConstraints.tabTitle"/>
+                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="generalPanel.TabConstraints.tabIcon"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="cmdAdd" min="-2" max="-2" attributes="1"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdRemove" min="-2" max="-2" attributes="1"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="lblSubjectCode" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblSubjectName" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDescription" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblCreditHours" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblTeacher" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="jScrollPane2" alignment="1" pref="365" max="32767" attributes="0"/>
+                                  <Component id="cmbTeacher" alignment="1" pref="365" max="32767" attributes="0"/>
+                                  <Component id="spinnerCreditHours" alignment="1" pref="365" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="365" max="32767" attributes="0"/>
+                                  <Component id="txtSubjectName" alignment="0" pref="365" max="32767" attributes="0"/>
+                                  <Component id="txtSubjectCode" alignment="0" pref="365" max="32767" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSubjectCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSubjectCode" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSubjectName" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSubjectName" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblDescription" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="spinnerCreditHours" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblCreditHours" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmbTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="lblTeacher" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblDays_Time" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="jScrollPane2" alignment="0" min="-2" pref="103" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmdRemove" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdAdd" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="lblSubjectCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSubjectCode.text"/>
+                <Property name="name" type="java.lang.String" value="lblSubjectCode" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSubjectCode">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="txtSubjectCode.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtSubjectCode.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="txtSubjectCode" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblSubjectName">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSubjectName.text"/>
+                <Property name="name" type="java.lang.String" value="lblSubjectName" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSubjectName">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="txtSubjectName.text"/>
+                <Property name="toolTipText" type="java.lang.String" resourceKey="txtSubjectName.toolTipText"/>
+                <Property name="name" type="java.lang.String" value="txtSubjectName" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblDescription">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblDescription.text"/>
+                <Property name="name" type="java.lang.String" value="lblDescription" noResource="true"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jScrollPane1" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextArea" name="txtDescription">
+                  <Properties>
+                    <Property name="columns" type="int" value="20"/>
+                    <Property name="rows" type="int" value="5"/>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="txtDescription.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="txtDescription" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="lblDays_Time">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblDays_Time.text"/>
+                <Property name="name" type="java.lang.String" value="lblDays_Time" noResource="true"/>
+              </Properties>
+            </Component>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jScrollPane2" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JList" name="TimeList">
+                  <Properties>
+                    <Property name="model" type="javax.swing.ListModel" editor="org.netbeans.modules.form.editors2.ListModelEditor">
+                      <StringArray count="0"/>
+                    </Property>
+                    <Property name="toolTipText" type="java.lang.String" resourceKey="TimeList.toolTipText"/>
+                    <Property name="name" type="java.lang.String" value="TimeList" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="cmdAdd">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.subject.FrmAddSubject" id="add" methodName="add"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="cmdAdd.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="cmdAdd.text"/>
+                <Property name="name" type="java.lang.String" value="cmdAdd" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="cmdRemove">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.subject.FrmAddSubject" id="remove" methodName="remove"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="cmdRemove.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="cmdRemove.text"/>
+                <Property name="name" type="java.lang.String" value="cmdRemove" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="cmbTeacher">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="0"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="cmbTeacher" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblTeacher">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblTeacher.text"/>
+                <Property name="name" type="java.lang.String" value="lblTeacher" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JSpinner" name="spinnerCreditHours">
+              <Properties>
+                <Property name="model" type="javax.swing.SpinnerModel" editor="org.netbeans.modules.form.editors2.SpinnerModelEditor">
+                  <SpinnerModel initial="3" minimum="0" numberType="java.lang.Integer" stepSize="1" type="number"/>
+                </Property>
+                <Property name="name" type="java.lang.String" value="spinnerCreditHours" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="lblCreditHours">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblCreditHours.text"/>
+                <Property name="name" type="java.lang.String" value="lblCreditHours" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="weightingPanel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="weightingPanel" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Weighting">
+                <Property name="tabTitle" type="java.lang.String" resourceKey="weightingPanel.TabConstraints.tabTitle"/>
+                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="weightingPanel.TabConstraints.tabIcon"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane3" alignment="0" pref="468" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="cmdAddWeighting" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="cmdRemoveWeighting" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="297" max="32767" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="cmdRemoveWeighting" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdAddWeighting" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jScrollPane3" noResource="true"/>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+              </AuxValues>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTable" name="weightingTable">
+                  <Properties>
+                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
+                    <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
+                      <Table columnCount="2" rowCount="0">
+                        <Column editable="true" title="Assessment Type" type="java.lang.Object"/>
+                        <Column editable="true" title="Weight (Percent)" type="java.lang.Double"/>
+                      </Table>
+                    </Property>
+                    <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
+                      <TableColumnModel selectionModel="1">
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title resourceKey="weightingTable.columnModel.title0"/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                        <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                          <Title resourceKey="weightingTable.columnModel.title1"/>
+                          <Editor/>
+                          <Renderer/>
+                        </Column>
+                      </TableColumnModel>
+                    </Property>
+                    <Property name="columnSelectionAllowed" type="boolean" value="true"/>
+                    <Property name="name" type="java.lang.String" value="weightingTable" noResource="true"/>
+                    <Property name="rowSelectionAllowed" type="boolean" value="true"/>
+                    <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
+                      <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JButton" name="cmdRemoveWeighting">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.subject.FrmAddSubject" id="weightingRemove" methodName="weightingRemove"/>
+                </Property>
+                <Property name="text" type="java.lang.String" resourceKey="cmdRemoveWeighting.text"/>
+                <Property name="name" type="java.lang.String" value="cmdRemoveWeighting" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="cmdAddWeighting">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.subject.FrmAddSubject" id="weightingAdd" methodName="weightingAdd"/>
+                </Property>
+                <Property name="text" type="java.lang.String" resourceKey="cmdAddWeighting.text"/>
+                <Property name="name" type="java.lang.String" value="cmdAddWeighting" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>
