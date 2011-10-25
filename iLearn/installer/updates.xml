@@ -1,12 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updateDescriptor baseUrl="">
-  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_5_5.exe" newVersion="1.5.5" newMediaFileId="20" fileSize="63492096" bundledJre="" archive="false">
-    <comment />
-  </entry>
-  <entry targetMediaFileId="21" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_unix_1_5_5.sh" newVersion="1.5.5" newMediaFileId="21" fileSize="62790643" bundledJre="" archive="false">
-    <comment />
-  </entry>
-  <entry targetMediaFileId="104" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_macos_1_5_5.dmg" newVersion="1.5.5" newMediaFileId="104" fileSize="63246336" bundledJre="" archive="false">
+  <entry targetMediaFileId="187" updatableVersionMin="" updatableVersionMax="" fileName="windows_slim_1_5_7.exe" newVersion="1.5.7" newMediaFileId="187" fileSize="2885632" bundledJre="" archive="false">
     <comment />
   </entry>
 </updateDescriptor>
