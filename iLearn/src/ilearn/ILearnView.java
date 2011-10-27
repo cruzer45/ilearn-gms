@@ -16,6 +16,7 @@ import ilearn.detentions.FrmEditDetention;
 import ilearn.detentions.FrmRecordDetention;
 import ilearn.detentions.FrmRecordServedDetention;
 import ilearn.grades.FrmEditRemarks;
+import ilearn.grades.FrmRemoveGrades;
 import ilearn.grades.Grade;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
@@ -122,6 +123,7 @@ public class ILearnView extends FrameView
     FrmLockUsers frmLockUsers = null;
     FrmUnlockUsers frmUnlockUsers = null;
     FrmExcellClassListImporter frmExcellClassListImporter = null;
+    FrmRemoveGrades frmRemoveGrades = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -281,6 +283,7 @@ public class ILearnView extends FrameView
         recordGrades = new javax.swing.JMenuItem();
         editGrades = new javax.swing.JMenuItem();
         editRemarks = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         demeritsMenu = new javax.swing.JMenu();
         recordDemerits = new javax.swing.JMenuItem();
         editDemerits = new javax.swing.JMenuItem();
@@ -444,6 +447,11 @@ public class ILearnView extends FrameView
         editRemarks.setText(resourceMap.getString("editRemarks.text")); // NOI18N
         editRemarks.setName("editRemarks"); // NOI18N
         gradesMenu.add(editRemarks);
+        jMenuItem3.setAction(actionMap.get("showDeleteGrade")); // NOI18N
+        jMenuItem3.setIcon(resourceMap.getIcon("jMenuItem3.icon")); // NOI18N
+        jMenuItem3.setText(resourceMap.getString("jMenuItem3.text")); // NOI18N
+        jMenuItem3.setName("jMenuItem3"); // NOI18N
+        gradesMenu.add(jMenuItem3);
         menuBar.add(gradesMenu);
         demeritsMenu.setMnemonic('D');
         demeritsMenu.setText(resourceMap.getString("demeritsMenu.text")); // NOI18N
@@ -2336,6 +2344,30 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showDeleteGrade()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Remove Grades");
+        if (AlreadyLoaded == false)
+        {
+            frmRemoveGrades = new FrmRemoveGrades();
+            desktopPane.add(frmRemoveGrades);
+            //Load the Form
+            frmRemoveGrades.setVisible(true);
+            frmRemoveGrades.show();
+            try
+            {
+                frmRemoveGrades.setIcon(false);
+                frmRemoveGrades.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private static javax.swing.JMenuItem addStaff;
@@ -2387,6 +2419,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenu gradesMenu;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private static javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private static javax.swing.JMenuItem lockUsers;

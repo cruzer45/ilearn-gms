@@ -30,94 +30,90 @@ public class FrmWeighting extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         weightingPanel = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
         weightingTable = new javax.swing.JTable();
         cmdRemoveWeighting = new javax.swing.JButton();
         cmdAddWeighting = new javax.swing.JButton();
-
         weightingPanel.setEnabled(false);
         weightingPanel.setName("weightingPanel"); // NOI18N
-
         jScrollPane3.setName("jScrollPane3"); // NOI18N
-
         weightingTable.setAutoCreateRowSorter(true);
         weightingTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                    new Object [][]
+                                    {
 
-            },
-            new String [] {
-                "Assessment Type", "Weight (Percent)"
-            }
-        ) {
-            Class[] types = new Class [] {
+                                    },
+                                    new String []
+                                    {
+                                        "Assessment Type", "Weight (Percent)"
+                                    }
+                                )
+        {
+            Class[] types = new Class []
+            {
                 java.lang.Object.class, java.lang.Double.class
             };
-
-            public Class getColumnClass(int columnIndex) {
+            public Class getColumnClass(int columnIndex)
+            {
                 return types [columnIndex];
             }
         });
         weightingTable.setColumnSelectionAllowed(true);
         weightingTable.setName("weightingTable"); // NOI18N
         jScrollPane3.setViewportView(weightingTable);
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmWeighting.class, this);
         cmdRemoveWeighting.setAction(actionMap.get("weightingRemove")); // NOI18N
         cmdRemoveWeighting.setName("cmdRemoveWeighting"); // NOI18N
-
         cmdAddWeighting.setAction(actionMap.get("weightingAdd")); // NOI18N
         cmdAddWeighting.setName("cmdAddWeighting"); // NOI18N
-
         javax.swing.GroupLayout weightingPanelLayout = new javax.swing.GroupLayout(weightingPanel);
         weightingPanel.setLayout(weightingPanelLayout);
         weightingPanelLayout.setHorizontalGroup(
             weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                    .addGroup(weightingPanelLayout.createSequentialGroup()
-                        .addComponent(cmdAddWeighting)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdRemoveWeighting)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
+                                .addGroup(weightingPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdAddWeighting)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdRemoveWeighting)))
+                      .addContainerGap())
         );
         weightingPanelLayout.setVerticalGroup(
             weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdRemoveWeighting)
-                    .addComponent(cmdAddWeighting))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdRemoveWeighting)
+                                .addComponent(cmdAddWeighting))
+                      .addContainerGap())
         );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 492, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(weightingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                      .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(weightingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 355, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(weightingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                      .addGroup(layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(weightingPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables

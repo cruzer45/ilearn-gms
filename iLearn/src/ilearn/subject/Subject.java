@@ -35,7 +35,6 @@ public class Subject
 
     public static void removeWeighting(String assesment, double weighting)
     {
-
         for (int i = 0; i < assessments.size(); i++)
         {
             if (assesment.equals(assessments.get(i)))
@@ -44,7 +43,6 @@ public class Subject
                 weightings.remove(i);
             }
         }
-
     }
 
     public static void addHour(String hour, String code)
@@ -168,7 +166,6 @@ public class Subject
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -185,7 +182,7 @@ public class Subject
         try
         {
             String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `Subject` "
-                    + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
+                         + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
