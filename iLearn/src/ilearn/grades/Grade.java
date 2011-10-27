@@ -6,6 +6,7 @@ import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.student.Student;
 import ilearn.term.Term;
+import ilearn.user.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -564,12 +565,15 @@ public class Grade
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                ID.add(rs.getString("assmtID"));
-                type.add(rs.getString("assmtType"));
-                title.add(rs.getString("assmtTitle"));
-                date.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));
-                cls.add(rs.getString("clsCode"));
-                subject.add(rs.getString("assmtSubject"));
+                if ((User.getPermittedClasses().contains(rs.getString("clsCode")) || User.getPermittedSubjects().contains(rs.getString("assmtSubject"))) || User.getUserGroup().equals("Administration"))
+                {
+                    ID.add(rs.getString("assmtID"));
+                    type.add(rs.getString("assmtType"));
+                    title.add(rs.getString("assmtTitle"));
+                    date.add(Utilities.MDY_Formatter.format(rs.getDate("assmtDate")));
+                    cls.add(rs.getString("clsCode"));
+                    subject.add(rs.getString("assmtSubject"));
+                }
             }
             rs.close();
             prep.close();
@@ -1237,5 +1241,29 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
         return gpa;
+    }
+
+    public static boolean disableGrade(String assmtID)
+    {
+        boolean successful = false;
+        try
+        {
+            String sql = "UPDATE `Assments` SET `assmtStatus` = 'Inactive' WHERE `assmtID` = ?;",
+                   sql2 = "UPDATE `TermGrade` SET `grdStatus`='Inactive' WHERE `grdAssmtID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtID);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql2);
+            prep.setString(1, assmtID);
+            prep.execute();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while looking up the GPA and Letter grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
     }
 }
