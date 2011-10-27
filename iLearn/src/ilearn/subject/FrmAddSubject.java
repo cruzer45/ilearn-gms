@@ -136,11 +136,6 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         lblTeacher = new javax.swing.JLabel();
         spinnerCreditHours = new javax.swing.JSpinner();
         lblCreditHours = new javax.swing.JLabel();
-        weightingPanel = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        weightingTable = new javax.swing.JTable();
-        cmdRemoveWeighting = new javax.swing.JButton();
-        cmdAddWeighting = new javax.swing.JButton();
 
         setClosable(true);
         setIconifiable(true);
@@ -287,71 +282,6 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
 
         jTabbedPane1.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
 
-        weightingPanel.setName("weightingPanel"); // NOI18N
-
-        jScrollPane3.setName("jScrollPane3"); // NOI18N
-
-        weightingTable.setAutoCreateRowSorter(true);
-        weightingTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Assessment Type", "Weight (Percent)"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.Double.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        weightingTable.setColumnSelectionAllowed(true);
-        weightingTable.setName("weightingTable"); // NOI18N
-        weightingTable.setRowSelectionAllowed(true);
-        jScrollPane3.setViewportView(weightingTable);
-        weightingTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-        weightingTable.getColumnModel().getColumn(0).setHeaderValue(resourceMap.getString("weightingTable.columnModel.title0")); // NOI18N
-        weightingTable.getColumnModel().getColumn(1).setHeaderValue(resourceMap.getString("weightingTable.columnModel.title1")); // NOI18N
-
-        cmdRemoveWeighting.setAction(actionMap.get("weightingRemove")); // NOI18N
-        cmdRemoveWeighting.setText(resourceMap.getString("cmdRemoveWeighting.text")); // NOI18N
-        cmdRemoveWeighting.setName("cmdRemoveWeighting"); // NOI18N
-
-        cmdAddWeighting.setAction(actionMap.get("weightingAdd")); // NOI18N
-        cmdAddWeighting.setText(resourceMap.getString("cmdAddWeighting.text")); // NOI18N
-        cmdAddWeighting.setName("cmdAddWeighting"); // NOI18N
-
-        javax.swing.GroupLayout weightingPanelLayout = new javax.swing.GroupLayout(weightingPanel);
-        weightingPanel.setLayout(weightingPanelLayout);
-        weightingPanelLayout.setHorizontalGroup(
-            weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE)
-                    .addGroup(weightingPanelLayout.createSequentialGroup()
-                        .addComponent(cmdAddWeighting)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdRemoveWeighting)))
-                .addContainerGap())
-        );
-        weightingPanelLayout.setVerticalGroup(
-            weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdRemoveWeighting)
-                    .addComponent(cmdAddWeighting))
-                .addContainerGap())
-        );
-
-        jTabbedPane1.addTab(resourceMap.getString("weightingPanel.TabConstraints.tabTitle"), resourceMap.getIcon("weightingPanel.TabConstraints.tabIcon"), weightingPanel); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -387,26 +317,25 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     @Action
     public void weightingRemove()
     {
+        
     }
 
     @Action
     public void weightingAdd()
     {
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList TimeList;
     private javax.swing.JComboBox cmbTeacher;
     private javax.swing.JButton cmdAdd;
-    private javax.swing.JButton cmdAddWeighting;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdRemove;
-    private javax.swing.JButton cmdRemoveWeighting;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JLabel lblCreditHours;
     private javax.swing.JLabel lblDays_Time;
@@ -418,7 +347,5 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtSubjectCode;
     private javax.swing.JTextField txtSubjectName;
-    private javax.swing.JPanel weightingPanel;
-    private javax.swing.JTable weightingTable;
     // End of variables declaration//GEN-END:variables
 }
