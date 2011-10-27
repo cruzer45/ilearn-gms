@@ -565,7 +565,7 @@ public class Grade
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                if ((User.getPermittedClasses().contains(rs.getString("clsCode")) || User.getPermittedSubjects().contains(rs.getString("assmtSubject"))) || User.getUserGroup().equals("Administration"))
+                if ((User.getPermittedClasses().contains(rs.getString("clsCode")) && User.getPermittedSubjects().contains(rs.getString("assmtSubject"))) || User.getUserGroup().equals("Administration"))
                 {
                     ID.add(rs.getString("assmtID"));
                     type.add(rs.getString("assmtType"));
