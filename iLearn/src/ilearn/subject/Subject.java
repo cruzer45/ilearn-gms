@@ -21,9 +21,31 @@ public class Subject
     static final Logger logger = Logger.getLogger(Subject.class.getName());
     private static ArrayList<String> hours = new ArrayList<String>();
     private static ArrayList<String> hourCodes = new ArrayList<String>();
-    //Add 
-    private static ArrayList<String> assessment = new ArrayList<String>();
-    private static ArrayList<Double> weighting = new ArrayList<Double>();
+    private static ArrayList<String> assessments = new ArrayList<String>();
+    private static ArrayList<Double> weightings = new ArrayList<Double>();
+
+    public static void addWeighting(String assesment, double weighting)
+    {
+        if (assessments.contains(assesment))
+        {
+            assessments.add(assesment);
+            weightings.add(weighting);
+        }
+    }
+
+    public static void removeWeighting(String assesment, double weighting)
+    {
+
+        for (int i = 0; i < assessments.size(); i++)
+        {
+            if (assesment.equals(assessments.get(i)))
+            {
+                assessments.remove(i);
+                weightings.remove(i);
+            }
+        }
+
+    }
 
     public static void addHour(String hour, String code)
     {
