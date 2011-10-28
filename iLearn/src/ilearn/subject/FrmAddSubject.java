@@ -19,12 +19,13 @@ import org.jdesktop.application.Action;
 public class FrmAddSubject extends javax.swing.JInternalFrame
 {
 
+    String validationText = "";
+
     /** Creates new form FrmAddSubject */
     public FrmAddSubject()
     {
         initComponents();
-        Subject.resetHours();
-        loadTeacherList();
+        populateLists();
         //TimeList.setListData(TimeSlots.getTimeSlotList().toArray());
     }
 
@@ -37,6 +38,11 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        if (!passedValidation())
+        {
+            Utilities.showWarningMessage(rootPane, validationText);
+            return;
+        }
         String subCode = txtSubjectCode.getText().trim(),
                subStaffCode = Staff.getStaffCodeFromName(cmbTeacher.getSelectedItem().toString()),
                subName = txtSubjectName.getText().trim(),
@@ -86,8 +92,10 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         TimeList.setListData(Subject.getHours().toArray());
     }
 
-    private void loadTeacherList()
+    private void populateLists()
     {
+        Subject.resetHours();
+        Subject.resetWeightings();
         ArrayList<String> teacherList = new ArrayList<String>();
         teacherList.add("--- Select One ---");
         teacherList.addAll(Staff.getStaffList());
@@ -103,7 +111,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         txtSubjectName.setText("");
         Subject.resetHours();
         loadSelectedHours();
-        loadTeacherList();
+        populateLists();
     }
 
     /** This method is called from within the constructor to
@@ -118,7 +126,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         cmdReset = new javax.swing.JButton();
-        jTabbedPane1 = new javax.swing.JTabbedPane();
+        subjectTabbedPane = new javax.swing.JTabbedPane();
         generalPanel = new javax.swing.JPanel();
         lblSubjectCode = new javax.swing.JLabel();
         txtSubjectCode = new javax.swing.JTextField();
@@ -136,6 +144,12 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         lblTeacher = new javax.swing.JLabel();
         spinnerCreditHours = new javax.swing.JSpinner();
         lblCreditHours = new javax.swing.JLabel();
+        weightingPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        weightingTable = new javax.swing.JTable();
+        cmdRemoveWeighting = new javax.swing.JButton();
+        cmdAddWeighting = new javax.swing.JButton();
+        lblTotalWeight = new javax.swing.JLabel();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmAddSubject.class);
@@ -153,7 +167,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         cmdReset.setAction(actionMap.get("resetForm")); // NOI18N
         cmdReset.setText(resourceMap.getString("cmdReset.text")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-        jTabbedPane1.setName("jTabbedPane1"); // NOI18N
+        subjectTabbedPane.setName("subjectTabbedPane"); // NOI18N
         generalPanel.setName("generalPanel"); // NOI18N
         lblSubjectCode.setText(resourceMap.getString("lblSubjectCode.text")); // NOI18N
         lblSubjectCode.setName("lblSubjectCode"); // NOI18N
@@ -215,12 +229,12 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                                                   .addComponent(lblDays_Time))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                                                  .addComponent(cmbTeacher, javax.swing.GroupLayout.Alignment.TRAILING, 0, 365, Short.MAX_VALUE)
-                                                  .addComponent(spinnerCreditHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                                                  .addComponent(txtSubjectName, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE)
-                                                  .addComponent(txtSubjectCode, javax.swing.GroupLayout.DEFAULT_SIZE, 365, Short.MAX_VALUE))))
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                                                  .addComponent(cmbTeacher, javax.swing.GroupLayout.Alignment.TRAILING, 0, 421, Short.MAX_VALUE)
+                                                  .addComponent(spinnerCreditHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                                                  .addComponent(txtSubjectName, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                                                  .addComponent(txtSubjectCode, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -254,9 +268,72 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdRemove)
                                 .addComponent(cmdAdd))
-                      .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                      .addContainerGap(14, Short.MAX_VALUE))
         );
-        jTabbedPane1.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+        subjectTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
+        weightingPanel.setEnabled(false);
+        weightingPanel.setName("weightingPanel"); // NOI18N
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+        weightingTable.setAutoCreateRowSorter(true);
+        weightingTable.setModel(new javax.swing.table.DefaultTableModel(
+                                    new Object [][]
+                                    {
+
+                                    },
+                                    new String []
+                                    {
+                                        "Assessment Type", "Weight (Percent)"
+                                    }
+                                )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.Object.class, java.lang.Double.class
+            };
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+        });
+        weightingTable.setCellSelectionEnabled(false);
+        weightingTable.setName("weightingTable"); // NOI18N
+        weightingTable.setRowSelectionAllowed(true);
+        jScrollPane3.setViewportView(weightingTable);
+        cmdRemoveWeighting.setAction(actionMap.get("weightingRemove")); // NOI18N
+        cmdRemoveWeighting.setName("cmdRemoveWeighting"); // NOI18N
+        cmdAddWeighting.setAction(actionMap.get("weightingAdd")); // NOI18N
+        cmdAddWeighting.setName("cmdAddWeighting"); // NOI18N
+        lblTotalWeight.setText(resourceMap.getString("lblTotalWeight.text")); // NOI18N
+        lblTotalWeight.setName("lblTotalWeight"); // NOI18N
+        javax.swing.GroupLayout weightingPanelLayout = new javax.swing.GroupLayout(weightingPanel);
+        weightingPanel.setLayout(weightingPanelLayout);
+        weightingPanelLayout.setHorizontalGroup(
+            weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                                .addGroup(weightingPanelLayout.createSequentialGroup()
+                                          .addComponent(lblTotalWeight)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                                          .addComponent(cmdAddWeighting)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdRemoveWeighting)))
+                      .addContainerGap())
+        );
+        weightingPanelLayout.setVerticalGroup(
+            weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 297, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdRemoveWeighting)
+                                .addComponent(cmdAddWeighting)
+                                .addComponent(lblTotalWeight))
+                      .addContainerGap())
+        );
+        subjectTabbedPane.addTab(resourceMap.getString("weightingPanel.TabConstraints.tabTitle"), resourceMap.getIcon("weightingPanel.TabConstraints.tabIcon"), weightingPanel); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -264,7 +341,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 497, Short.MAX_VALUE)
+                                .addComponent(subjectTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 520, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdReset)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
@@ -277,8 +354,8 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                      .addComponent(subjectTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
                                 .addComponent(cmdSave)
@@ -291,33 +368,91 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     @Action
     public void weightingRemove()
     {
+        if (weightingTable.getSelectedColumn() != -1)
+        {
+            String message = "Are you sure you want to remove this item from the list?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                String assessment = weightingTable.getValueAt(weightingTable.getSelectedRow(), 0).toString();
+                Subject.removeWeighting(assessment);
+                weightingTable.setModel(Subject.getWeightingTable());
+                lblTotalWeight.setText("Total Weight: " + Subject.getWeightTotal() + "%");
+            }
+        }
+        else
+        {
+            String message = "Kindly select an item before clicking remove.";
+            Utilities.showWarningMessage(rootPane, message);
+        }
     }
 
     @Action
     public void weightingAdd()
     {
+        FrmAddWeighting frmAddWeighting = new FrmAddWeighting(null, true);
+        frmAddWeighting.setLocationRelativeTo(this);
+        frmAddWeighting.setVisible(true);
+        weightingTable.setModel(Subject.getWeightingTable());
+        lblTotalWeight.setText("Total Weight: " + Subject.getWeightTotal() + "%");
     }
+
+    private boolean passedValidation()
+    {
+        boolean passed = true;
+        validationText = "The following issue(s) were found while trying to save:\n\n";
+        if (Subject.getWeightTotal() != 100 && Subject.getWeightTotal() != 0)
+        {
+            validationText += "The weighting total must either be equal to 0 OR 100 before you are able to save.\n";
+            passed = false;
+        }
+        if (txtSubjectCode.getText().trim().isEmpty())
+        {
+            validationText += "The subject code cannot be empty.\n";
+            passed = false;
+        }
+        if (txtSubjectName.getText().trim().isEmpty())
+        {
+            validationText += "The subject name cannot be empty.\n";
+            passed = false;
+        }
+        
+        if (cmbTeacher.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            validationText += "You must select a teacher from the list.\n";
+            passed = false;
+        }
+        return passed;
+    }
+
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList TimeList;
     private javax.swing.JComboBox cmbTeacher;
     private javax.swing.JButton cmdAdd;
+    private javax.swing.JButton cmdAddWeighting;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdRemove;
+    private javax.swing.JButton cmdRemoveWeighting;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblCreditHours;
     private javax.swing.JLabel lblDays_Time;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblSubjectCode;
     private javax.swing.JLabel lblSubjectName;
     private javax.swing.JLabel lblTeacher;
+    private javax.swing.JLabel lblTotalWeight;
     private javax.swing.JSpinner spinnerCreditHours;
+    private javax.swing.JTabbedPane subjectTabbedPane;
     private javax.swing.JTextArea txtDescription;
     private javax.swing.JTextField txtSubjectCode;
     private javax.swing.JTextField txtSubjectName;
+    private javax.swing.JPanel weightingPanel;
+    private javax.swing.JTable weightingTable;
     // End of variables declaration//GEN-END:variables
 }

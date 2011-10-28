@@ -22,18 +22,18 @@ public class Subject
     private static ArrayList<String> hours = new ArrayList<String>();
     private static ArrayList<String> hourCodes = new ArrayList<String>();
     private static ArrayList<String> assessments = new ArrayList<String>();
-    private static ArrayList<Double> weightings = new ArrayList<Double>();
+    private static ArrayList<Integer> weightings = new ArrayList<Integer>();
 
-    public static void addWeighting(String assesment, double weighting)
+    public static void addWeighting(String assesment, int weighting)
     {
-        if (assessments.contains(assesment))
+        if (!assessments.contains(assesment))
         {
             assessments.add(assesment);
             weightings.add(weighting);
         }
     }
 
-    public static void removeWeighting(String assesment, double weighting)
+    public static void removeWeighting(String assesment)
     {
         for (int i = 0; i < assessments.size(); i++)
         {
@@ -43,6 +43,37 @@ public class Subject
                 weightings.remove(i);
             }
         }
+    }
+
+    public static DefaultTableModel getWeightingTable()
+    {
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+            }
+        };
+        model.addColumn("Assessment Type", assessments.toArray());
+        model.addColumn("Weight (Percent)", weightings.toArray());
+        return model;
+    }
+
+    public static int getWeightTotal()
+    {
+        int weightTotal = 0;
+        for (int weight : weightings)
+        {
+            weightTotal += weight;
+        }
+        return weightTotal;
+    }
+
+    public static void resetWeightings()
+    {
+        assessments = new ArrayList<String>();
+        weightings = new ArrayList<Integer>();
     }
 
     public static void addHour(String hour, String code)
