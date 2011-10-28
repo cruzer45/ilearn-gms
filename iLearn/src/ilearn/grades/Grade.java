@@ -58,6 +58,32 @@ public class Grade
         }
         catch (Exception e)
         {
+            String message = "An error occurred while getting the list of assessment types.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return list;
+    }
+
+    public static String getAssessmentTypeID(String assessmentType)
+    {
+        String list = "";
+        try
+        {
+            String sql = "SELECT `id` FROM `listAssessmentTypes` where `assmtType` = ?; ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assessmentType);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                list = rs.getString("id");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the ID of an assessment type.";
+            logger.log(Level.SEVERE, message, e);
         }
         return list;
     }

@@ -48,7 +48,10 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                subName = txtSubjectName.getText().trim(),
                subDescription = txtDescription.getText().trim(),
                subCreditHours = spinnerCreditHours.getValue().toString();
-        if (Subject.addSubject(subCode, subStaffCode, subName, subDescription, subCreditHours))
+        boolean subjectAdded = Subject.addSubject(subCode, subStaffCode, subName, subDescription, subCreditHours);
+        String subjectID = Subject.getSubjectID(subCode);
+        boolean weightingsSaved = Subject.saveWeightings(subjectID);
+        if (subjectAdded && weightingsSaved)
         {
             String message = "The Subject was successfully added.\n"
                              + "Would you like to add another?";
@@ -105,12 +108,8 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
     @Action
     public void resetForm()
     {
-        //TimeList.setListData(TimeSlots.getTimeSlotList().toArray());
-        txtDescription.setText("");
-        txtSubjectCode.setText("");
-        txtSubjectName.setText("");
-        Subject.resetHours();
-        loadSelectedHours();
+        remove(subjectTabbedPane);
+        initComponents();
         populateLists();
     }
 
@@ -229,12 +228,12 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                                                   .addComponent(lblDays_Time))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                           .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                                  .addComponent(cmbTeacher, javax.swing.GroupLayout.Alignment.TRAILING, 0, 421, Short.MAX_VALUE)
-                                                  .addComponent(spinnerCreditHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                                  .addComponent(txtSubjectName, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                                  .addComponent(txtSubjectCode, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE))))
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                                                  .addComponent(cmbTeacher, javax.swing.GroupLayout.Alignment.TRAILING, 0, 340, Short.MAX_VALUE)
+                                                  .addComponent(spinnerCreditHours, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                                                  .addComponent(txtSubjectName, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
+                                                  .addComponent(txtSubjectCode, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -295,9 +294,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
                 return types [columnIndex];
             }
         });
-        weightingTable.setCellSelectionEnabled(false);
         weightingTable.setName("weightingTable"); // NOI18N
-        weightingTable.setRowSelectionAllowed(true);
         jScrollPane3.setViewportView(weightingTable);
         cmdRemoveWeighting.setAction(actionMap.get("weightingRemove")); // NOI18N
         cmdRemoveWeighting.setName("cmdRemoveWeighting"); // NOI18N
@@ -312,10 +309,10 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 495, Short.MAX_VALUE)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
                                 .addGroup(weightingPanelLayout.createSequentialGroup()
                                           .addComponent(lblTotalWeight)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 238, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 157, Short.MAX_VALUE)
                                           .addComponent(cmdAddWeighting)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdRemoveWeighting)))
@@ -338,13 +335,13 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(subjectTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 520, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(subjectTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 439, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdReset)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 241, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)
                                           .addComponent(cmdSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdCancel)))
@@ -355,7 +352,7 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(subjectTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 52, Short.MAX_VALUE)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
                                 .addComponent(cmdSave)
@@ -416,7 +413,6 @@ public class FrmAddSubject extends javax.swing.JInternalFrame
             validationText += "The subject name cannot be empty.\n";
             passed = false;
         }
-        
         if (cmbTeacher.getSelectedItem().toString().equals("--- Select One ---"))
         {
             validationText += "You must select a teacher from the list.\n";

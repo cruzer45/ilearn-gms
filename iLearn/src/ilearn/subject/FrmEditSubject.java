@@ -19,11 +19,13 @@ import org.jdesktop.application.Action;
 public class FrmEditSubject extends javax.swing.JInternalFrame
 {
 
+    String validationText = "";
+
     /** Creates new form FrmAddSubject */
     public FrmEditSubject()
     {
         initComponents();
-        loadTeacherList();
+        populateLists();
         search();
     }
 
@@ -36,6 +38,11 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        if (!passedValidation())
+        {
+            Utilities.showWarningMessage(rootPane, validationText);
+            return;
+        }
         String subCode = txtSubjectCode.getText().trim(),
                subStaffCode = Staff.getStaffCodeFromName(cmbTeacher.getSelectedItem().toString()),
                subName = txtSubjectName.getText().trim(),
@@ -43,7 +50,9 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
                subStatus = cmbStatus.getSelectedItem().toString(),
                subID = txtID.getText().trim(),
                subCredits = spinnerCredits.getValue().toString();
-        if (Subject.updateSubject(subCode, subStaffCode, subName, subDescription, subCredits, subStatus, subID))
+        boolean subjectUpdated = Subject.updateSubject(subCode, subStaffCode, subName, subDescription, subCredits, subStatus, subID);
+         boolean weightingsSaved = Subject.saveWeightings(subID);
+        if (subjectUpdated && weightingsSaved)
         {
             String message = "The Subject was successfully updated.\n"
                              + "Would you like to edit another?";
@@ -88,6 +97,10 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
         cmbTeacher.setSelectedItem(detail.get(2));
         txtSubjectName.setText(detail.get(3));
         txtDescription.setText(detail.get(4));
+        Subject.resetWeightings();
+        Subject.loadSubjectWeightings(id);
+        weightingTable.setModel(Subject.getWeightingTable());
+        lblTotalWeight.setText("Total Weight: " + Subject.getWeightTotal() + "%");
     }
 
     @Action
@@ -110,7 +123,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
         TimeList.setListData(Subject.getHours().toArray());
     }
 
-    private void loadTeacherList()
+    private void populateLists()
     {
         ArrayList<String> teacherList = new ArrayList<String>();
         teacherList.add("--- Select One ---");
@@ -186,6 +199,13 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
         lblStatus = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         spinnerCredits = new javax.swing.JSpinner();
+        weightingPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        weightingTable = new javax.swing.JTable();
+        cmdRemoveWeighting = new javax.swing.JButton();
+        cmdAddWeighting = new javax.swing.JButton();
+        lblTotalWeight = new javax.swing.JLabel();
+        cmdSave1 = new javax.swing.JButton();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmEditSubject.class);
@@ -315,7 +335,6 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
         cmdRemove.setAction(actionMap.get("remove")); // NOI18N
         cmdRemove.setIcon(resourceMap.getIcon("cmdRemove.icon")); // NOI18N
         cmdRemove.setName("cmdRemove"); // NOI18N
-        cmbTeacher.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         cmbTeacher.setName("cmbTeacher"); // NOI18N
         lblTeacer.setText(resourceMap.getString("lblTeacer.text")); // NOI18N
         lblTeacer.setName("lblTeacer"); // NOI18N
@@ -417,6 +436,72 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
                       .addContainerGap())
         );
         subjectTabbedPane.addTab(resourceMap.getString("detailsPanel.TabConstraints.tabTitle"), resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
+        weightingPanel.setEnabled(false);
+        weightingPanel.setName("weightingPanel"); // NOI18N
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
+        weightingTable.setAutoCreateRowSorter(true);
+        weightingTable.setModel(new javax.swing.table.DefaultTableModel(
+                                    new Object [][]
+                                    {
+
+                                    },
+                                    new String []
+                                    {
+                                        "Assessment Type", "Weight (Percent)"
+                                    }
+                                )
+        {
+            Class[] types = new Class []
+            {
+                java.lang.Object.class, java.lang.Double.class
+            };
+            public Class getColumnClass(int columnIndex)
+            {
+                return types [columnIndex];
+            }
+        });
+        weightingTable.setName("weightingTable"); // NOI18N
+        jScrollPane4.setViewportView(weightingTable);
+        cmdRemoveWeighting.setAction(actionMap.get("weightingRemove")); // NOI18N
+        cmdRemoveWeighting.setName("cmdRemoveWeighting"); // NOI18N
+        cmdAddWeighting.setAction(actionMap.get("weightingAdd")); // NOI18N
+        cmdAddWeighting.setName("cmdAddWeighting"); // NOI18N
+        lblTotalWeight.setText(resourceMap.getString("lblTotalWeight.text")); // NOI18N
+        lblTotalWeight.setName("lblTotalWeight"); // NOI18N
+        cmdSave1.setAction(actionMap.get("save")); // NOI18N
+        cmdSave1.setName("cmdSave1"); // NOI18N
+        javax.swing.GroupLayout weightingPanelLayout = new javax.swing.GroupLayout(weightingPanel);
+        weightingPanel.setLayout(weightingPanelLayout);
+        weightingPanelLayout.setHorizontalGroup(
+            weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE)
+                                .addGroup(weightingPanelLayout.createSequentialGroup()
+                                          .addComponent(lblTotalWeight)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
+                                          .addComponent(cmdSave1)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmdAddWeighting)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdRemoveWeighting)))
+                      .addContainerGap())
+        );
+        weightingPanelLayout.setVerticalGroup(
+            weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, weightingPanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 355, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(weightingPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdRemoveWeighting)
+                                .addComponent(cmdAddWeighting)
+                                .addComponent(lblTotalWeight)
+                                .addComponent(cmdSave1))
+                      .addContainerGap())
+        );
+        subjectTabbedPane.addTab("Weighting", resourceMap.getIcon("weightingPanel.TabConstraints.tabIcon"), weightingPanel); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -431,7 +516,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(subjectTabbedPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                      .addContainerGap(15, Short.MAX_VALUE))
+                      .addContainerGap(31, Short.MAX_VALUE))
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -444,23 +529,86 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
             next();
         }
     }//GEN-LAST:event_tblResultsMouseClicked
+
+    @Action
+    public void weightingAdd()
+    {
+        FrmAddWeighting frmAddWeighting = new FrmAddWeighting(null, true);
+        frmAddWeighting.setLocationRelativeTo(this);
+        frmAddWeighting.setVisible(true);
+        weightingTable.setModel(Subject.getWeightingTable());
+        lblTotalWeight.setText("Total Weight: " + Subject.getWeightTotal() + "%");
+    }
+
+    @Action
+    public void weightingRemove()
+    {
+        if (weightingTable.getSelectedColumn() != -1)
+        {
+            String message = "Are you sure you want to remove this item from the list?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                String assessment = weightingTable.getValueAt(weightingTable.getSelectedRow(), 0).toString();
+                Subject.removeWeighting(assessment);
+                weightingTable.setModel(Subject.getWeightingTable());
+                lblTotalWeight.setText("Total Weight: " + Subject.getWeightTotal() + "%");
+            }
+        }
+        else
+        {
+            String message = "Kindly select an item before clicking remove.";
+            Utilities.showWarningMessage(rootPane, message);
+        }
+    }
+
+    private boolean passedValidation()
+    {
+        boolean passed = true;
+        validationText = "The following issue(s) were found while trying to save:\n\n";
+        if (Subject.getWeightTotal() != 100 && Subject.getWeightTotal() != 0)
+        {
+            validationText += "The weighting total must either be equal to 0 OR 100 before you are able to save.\n";
+            passed = false;
+        }
+        if (txtSubjectCode.getText().trim().isEmpty())
+        {
+            validationText += "The subject code cannot be empty.\n";
+            passed = false;
+        }
+        if (txtSubjectName.getText().trim().isEmpty())
+        {
+            validationText += "The subject name cannot be empty.\n";
+            passed = false;
+        }
+        if (cmbTeacher.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            validationText += "You must select a teacher from the list.\n";
+            passed = false;
+        }
+        return passed;
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JList TimeList;
     private javax.swing.JComboBox cmbStatus;
     private javax.swing.JComboBox cmbTeacher;
     private javax.swing.JButton cmdAdd;
+    private javax.swing.JButton cmdAddWeighting;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdCancel1;
     private javax.swing.JButton cmdNext;
     private javax.swing.JButton cmdRemove;
+    private javax.swing.JButton cmdRemoveWeighting;
     private javax.swing.JButton cmdReset;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdSave1;
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel detailsPanel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JLabel lblDays_Time;
     private javax.swing.JLabel lblDescription;
     private javax.swing.JLabel lblID;
@@ -471,6 +619,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblSubjectCode;
     private javax.swing.JLabel lblSubjectName;
     private javax.swing.JLabel lblTeacer;
+    private javax.swing.JLabel lblTotalWeight;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JSpinner spinnerCredits;
     private javax.swing.JTabbedPane subjectTabbedPane;
@@ -480,5 +629,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
     private javax.swing.JTextField txtSearch;
     private javax.swing.JTextField txtSubjectCode;
     private javax.swing.JTextField txtSubjectName;
+    private javax.swing.JPanel weightingPanel;
+    private javax.swing.JTable weightingTable;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,5 +1,6 @@
 package ilearn.subject;
 
+import ilearn.grades.Grade;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.staff.Staff;
@@ -76,6 +77,41 @@ public class Subject
         weightings = new ArrayList<Integer>();
     }
 
+    public static boolean saveWeightings(String subID)
+    {
+        boolean successful = false;
+        try
+        {
+            ArrayList<String> assmtTypeID = new ArrayList<String>();
+            for (String assmtType : assessments)
+            {
+                assmtTypeID.add(Grade.getAssessmentTypeID(assmtType));
+            }
+            String sql1 = " DELETE FROM `Subject_Weightings` WHERE `subID` = ?;",
+                   sql2 = " INSERT INTO `Subject_Weightings` (`subID`, `assmentTypeID`, `weighting`) VALUES (?, ?, ?); ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
+            prep.setString(1, subID);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql2);
+            for (int i = 0; i < assmtTypeID.size(); i++)
+            {
+                prep.setString(1, subID);
+                prep.setString(2, assmtTypeID.get(i));
+                prep.setInt(3, weightings.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+            successful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while saving the subject weightings ";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
+
     public static void addHour(String hour, String code)
     {
         if (!hours.contains(hour))
@@ -147,6 +183,29 @@ public class Subject
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    public static void loadSubjectWeightings(String subID)
+    {
+        try
+        {
+            String sql = " SELECT `assmtType`, `weighting` "
+                         + " FROM `Subject_Weightings` "
+                         + " INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID`"
+                         + " WHERE `subID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, subID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                addWeighting(rs.getString("assmtType"), rs.getInt("weighting"));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading subject's weightings;";
+            logger.log(Level.SEVERE, message, e);
+        }
     }
 
     public static boolean updateSubject(String subCode, String subStaffCode, String subName, String subDescription, String subCredits, String subStatus, String subID)

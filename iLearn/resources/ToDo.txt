@@ -6,7 +6,8 @@ Report 1
 Age Distribution report per class (Semis)
 
 0%      Have students listed by first name then last name.
-
+        
+-       Add handling of calculation to grade system.
 
 0%      Filter Promotion Lists to only a higher class level.
 0%      Students who are not promoted are set as repeating.
