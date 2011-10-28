@@ -1,3 +1,18 @@
+Version 1.6.0
+
+-   Added the ability to remove grades from the system.
+
+-   Fixed a bug that allowed a teacher to edit the grades of others.
+
+-   Fixed a bug that prevented teachers from entering grades with a decimal point.
+
+-   Added a query allowing you to view all grades for a specific subject.
+
+-   Added Utilities to cleanup grades.
+
+-   Added Delay to the dialog box so it can confirm before it generate grades.
+
+
 Version 1.5.5
 
 -   Update to iReport 4.1.2
