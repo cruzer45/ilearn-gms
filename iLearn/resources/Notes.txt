@@ -1,0 +1,14 @@
+1.  Get list of classes.
+
+2.  Get all students in a class.
+
+3.  Get all subjects in a class. 
+
+4.  Check if subjects have weightings.
+4.1     If subject has weightings assigned.
+4.1.1   Get a list of the weighted assessment types.
+4.1.2   For each assessment type, get the average of all the assessments 
+
+
+335 vodafone 845 
+399 lg optimus me
