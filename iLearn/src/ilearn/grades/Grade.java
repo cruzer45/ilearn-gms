@@ -1292,4 +1292,19 @@ public class Grade
         }
         return successful;
     }
+    
+    public static boolean calculateGradeWithWeighting()
+    {
+        boolean successful = false;
+        try
+        {
+            
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while calculating the grades that have weightings.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return successful;
+    }
 }
