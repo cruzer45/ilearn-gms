@@ -246,8 +246,10 @@ public class Staff
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, staCode);
             ResultSet rs = prep.executeQuery();
-            rs.first();
-            name = rs.getString("Name");
+            while (rs.next())
+            {
+                name = rs.getString("Name");
+            }
             rs.close();
             prep.close();
         }

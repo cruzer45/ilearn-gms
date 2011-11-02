@@ -1292,13 +1292,12 @@ public class Grade
         }
         return successful;
     }
-    
+
     public static boolean calculateGradeWithWeighting()
     {
         boolean successful = false;
         try
         {
-            
         }
         catch (Exception e)
         {

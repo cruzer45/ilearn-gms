@@ -9,6 +9,7 @@ import ilearn.classes.Classes;
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
 import ilearn.term.Term;
+import ilearn.user.User;
 import java.awt.event.KeyEvent;
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -384,7 +385,15 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
 //GEN-HEADEREND:event_cmbClassActionPerformed
         if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
         {
-            ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
+            ArrayList<String> classSubjects = new ArrayList<String>();
+            if (User.getUserGroup().equals("Administration"))
+            {
+                classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
+            }
+            else
+            {
+                classSubjects.addAll(Classes.getPermittedSubjects(cmbClass.getSelectedItem().toString()));
+            }
             classSubjects.add(0, "--- Select One ---");
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
             DefaultTableModel model = Grade.getStudentList(cmbClass.getSelectedItem().toString());
@@ -508,9 +517,19 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
         ArrayList<String> assmtTypes = Grade.getAssessmentTypes();
         cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
         cmbType.setSelectedItem("Home Work");
-        ArrayList<String> classList = Classes.getClassList();
-        classList.add(0, "--- Select One ---");
-        cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+        ArrayList<String> classList = new ArrayList<String>();
+        if (User.getUserGroup().equals("Administration"))
+        {
+            classList = Classes.getClassList();
+            classList.add(0, "--- Select One ---");
+            cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+        }
+        else
+        {
+            classList.addAll(User.getPermittedClasses());
+            classList.add(0, "--- Select One ---");
+            cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+        }
     }
 
     private void loadInfo()
