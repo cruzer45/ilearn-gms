@@ -51,7 +51,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
                subID = txtID.getText().trim(),
                subCredits = spinnerCredits.getValue().toString();
         boolean subjectUpdated = Subject.updateSubject(subCode, subStaffCode, subName, subDescription, subCredits, subStatus, subID);
-         boolean weightingsSaved = Subject.saveWeightings(subID);
+        boolean weightingsSaved = Subject.saveWeightings(subID);
         if (subjectUpdated && weightingsSaved)
         {
             String message = "The Subject was successfully updated.\n"

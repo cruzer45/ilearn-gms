@@ -10,6 +10,7 @@ import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.term.Term;
+import ilearn.user.User;
 import java.awt.Desktop;
 import java.io.File;
 import java.io.FileOutputStream;
@@ -28,6 +29,7 @@ import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
+import org.apache.poi.ss.usermodel.DataFormat;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -50,9 +52,19 @@ public class FrmClassGradebook extends javax.swing.JDialog
     {
         super(parent, modal);
         initComponents();
-        ArrayList<String> classList = Classes.getClassList();
-        classList.add(0, "--- Select One ---");
-        cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+        ArrayList<String> classList = new ArrayList<String>();
+        if (User.getUserGroup().equals("Administration"))
+        {
+            classList = Classes.getClassList();
+            classList.add(0, "--- Select One ---");
+            cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+        }
+        else
+        {
+            classList.addAll(User.getPermittedClasses());
+            classList.add(0, "--- Select One ---");
+            cmbClass.setModel(new DefaultComboBoxModel(classList.toArray()));
+        }
     }
 
     /** This method is called from within the constructor to
@@ -72,7 +84,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
         lblSubject = new javax.swing.JLabel();
         cmbSubject = new javax.swing.JComboBox();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmClassGradebook.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmClassGradebook.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
         lblTitle.setFont(resourceMap.getFont("lblTitle.font")); // NOI18N
@@ -88,7 +100,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 cmbClassActionPerformed(evt);
             }
         });
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmClassGradebook.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmClassGradebook.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
@@ -145,9 +157,20 @@ public class FrmClassGradebook extends javax.swing.JDialog
     private void cmbClassActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbClassActionPerformed
     {
 //GEN-HEADEREND:event_cmbClassActionPerformed
-        ArrayList<String> classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
-        classSubjects.add(0, "--- Select One ---");
-        cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
+        if (!cmbClass.getSelectedItem().toString().equals("--- Select One ---"))
+        {
+            ArrayList<String> classSubjects = new ArrayList<String>();
+            if (User.getUserGroup().equals("Administration"))
+            {
+                classSubjects = Classes.getSubjectList(cmbClass.getSelectedItem().toString());
+            }
+            else
+            {
+                classSubjects.addAll(Classes.getPermittedSubjects(cmbClass.getSelectedItem().toString()));
+            }
+            classSubjects.add(0, "--- Select One ---");
+            cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
+        }
     }//GEN-LAST:event_cmbClassActionPerformed
 
     @Action
@@ -156,7 +179,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
         this.dispose();
     }
 
-    @Action
+    @Action(block = Task.BlockingScope.COMPONENT)
     public Task run()
     {
         return new RunTask(org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class));
@@ -175,8 +198,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
             super(app);
             JFileChooser fc = new JFileChooser();
             fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
-            //fc.addChoosableFileFilter(new ImageFilter());
-            //fc.setFileFilter(new ImageFilter());
             int returnVal = fc.showSaveDialog(rootPane);
             if (returnVal == JFileChooser.APPROVE_OPTION)
             {
@@ -208,6 +229,10 @@ public class FrmClassGradebook extends javax.swing.JDialog
         @Override
         protected Object doInBackground()
         {
+            if (selFile == null)
+            {
+                return null;
+            }
             try
             {
                 //Create the list objects
@@ -243,6 +268,11 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 CreationHelper createHelper = wb.getCreationHelper();
                 Sheet sheet = wb.createSheet(classCode + " Gradebook");
                 setMessage("Creating Gradebook.");
+                //Create the number format cell style
+                CellStyle numberStyle = wb.createCellStyle();
+                DataFormat format = wb.createDataFormat();
+                numberStyle.setDataFormat(format.getFormat("#,##0.00"));
+                //Insert Initial info
                 Row row = sheet.createRow(0);
                 Cell cell = row.createCell(0);
                 cell.setCellValue("Gradebook");
@@ -257,12 +287,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 row = sheet.createRow(3);
                 row.createCell(0).setCellValue(createHelper.createRichTextString("ID"));
                 row.createCell(1).setCellValue(createHelper.createRichTextString("Name"));
-//                row.createCell(2).setCellValue("Course Grade");
-//                row.createCell(3).setCellValue("Exam");
-//                row.createCell(4).setCellValue("Final Grade");
-//                row.createCell(5).setCellValue("Total Points");
-//                row.createCell(6).setCellValue("Course Grade");
-//                row.createCell(7).setCellValue("Exam");
                 int startColumn = 2; //This is the column the assessments will start to print.
                 int finishColumn = 0;
                 int studentStartRow = 7;
@@ -377,7 +401,9 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     }
                     else
                     {
-                        studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
+                        Cell avgCell = studentRow.createCell(finishColumn + 1);
+                        avgCell.setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
+                        avgCell.setCellStyle(numberStyle);
                     }
                 }
                 //calculate assessment minimum , maximum and average
@@ -391,9 +417,15 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 {
                     CellReference cellRefStart = new CellReference(7, i);
                     CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
-                    minRow.createCell(i).setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                    avgRow.createCell(i).setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                    maxRow.createCell(i).setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    Cell minCell = minRow.createCell(i);
+                    minCell.setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    minCell.setCellStyle(numberStyle);
+                    Cell avgCell = avgRow.createCell(i);
+                    avgCell.setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    avgCell.setCellStyle(numberStyle);
+                    Cell maxCell = maxRow.createCell(i);
+                    maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    maxCell.setCellStyle(numberStyle);
                 }
                 setMessage("Saving the file.");
                 // Write the output to a file
