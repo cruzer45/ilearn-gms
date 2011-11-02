@@ -1,8 +1,8 @@
-SELECT `stuClsCode`,CONCAT_WS(', ',`stuLastName`,`stuFirstName`) as 'Student',`subName`, avg(`grdPointsEarned`) AS "Average"
+SELECT `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`) AS 'Student',`subName`,((SUM(`grdPointsEarned`)/ SUM(`Assments`.assmtTotalPoints)) * 100) AS 'Grade'
 FROM `TermGrade`
 INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID`
 INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID`
-inner join `Subject` on `Subject`.`subCode` = `Assments`.`assmtSubject`
-WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' and `assmtType` = 'Home Work' and `assmtSubject` = '1PE'
-group by `grdStuID`, `subCode`
-order by `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `subName`
+INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject`
+WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused'
+GROUP BY `grdStuID`, `subCode`
+ORDER BY `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `subName`
