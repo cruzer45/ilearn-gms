@@ -938,8 +938,8 @@ public class Grade
         boolean succesful = true;
         try
         {
-            String sql1 = "DELETE FROM `grade` WHERE `graSubCode` LIKE '%COUN%';";
-            String sql2 = "DELETE FROM `grade` WHERE `graMid` = 0 AND (`graClsCode` LIKE '3%' OR `graClsCode` LIKE '4%');";
+            String sql1 = "DELETE FROM `Grade` WHERE `graSubCode` LIKE '%COUN%';";
+            String sql2 = "DELETE FROM `Grade` WHERE `graMid` = 0 AND (`graClsCode` LIKE '3%' OR `graClsCode` LIKE '4%');";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
             prep.execute();
             prep = Environment.getConnection().prepareStatement(sql2);
