@@ -1260,18 +1260,19 @@ public class Grade
         return successful;
     }
 
-    public static boolean calculateGradeWithWeighting()
+    public static double calculateGradeWithWeighting(String stuID, String subCode)
     {
-        boolean successful = false;
+        double grade = 0;
         try
         {
+            
         }
         catch (Exception e)
         {
             String message = "An error occurred while calculating the grades that have weightings.";
             logger.log(Level.SEVERE, message, e);
         }
-        return successful;
+        return grade;
     }
 
     public static double calculateGradeWithoutWeighting(String stuID, String subCode)
