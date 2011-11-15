@@ -20,6 +20,8 @@ import org.jdesktop.application.Action;
  */
 public class FrmAddWeighting extends javax.swing.JDialog
 {
+    
+    boolean editing = false;
 
     /** Creates new form FrmAddWeighting */
     public FrmAddWeighting(java.awt.Frame parent, boolean modal)
@@ -27,6 +29,18 @@ public class FrmAddWeighting extends javax.swing.JDialog
         super(parent, modal);
         initComponents();
         populateLists();
+    }
+
+    /** Creates new form FrmAddWeighting */
+    public FrmAddWeighting(java.awt.Frame parent, boolean modal, String assmtType, int weight)
+    {
+        super(parent, modal);
+        initComponents();
+        populateLists();
+        editing = true;
+        cmbAssessmentType.setSelectedItem(assmtType);
+        cmbAssessmentType.setEnabled(false);
+        spinnerWeight.setValue(weight);
     }
 
     /** This method is called from within the constructor to
@@ -89,16 +103,22 @@ public class FrmAddWeighting extends javax.swing.JDialog
     {
         this.dispose();
     }
-
+    
     @Action
     public void add()
     {
         String assessment = cmbAssessmentType.getSelectedItem().toString();
         int weighting = Integer.valueOf(spinnerWeight.getValue().toString());
+        //Remove the old item from the list before adding the new one if we are in editing mode.        
+        if (editing)
+        {
+            Subject.removeWeighting(assessment);
+        }
+        //Add the weighting
         Subject.addWeighting(assessment, weighting);
         this.dispose();
     }
-
+    
     private void populateLists()
     {
         cmbAssessmentType.setModel(new DefaultComboBoxModel(Grade.getAssessmentTypes().toArray()));

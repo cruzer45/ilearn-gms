@@ -33,7 +33,7 @@
                   <Component id="subjectTabbedPane" alignment="0" pref="439" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace pref="160" max="32767" attributes="0"/>
+                      <EmptySpace pref="183" max="32767" attributes="0"/>
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -129,12 +129,12 @@
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane2" alignment="1" pref="340" max="32767" attributes="0"/>
-                                  <Component id="cmbTeacher" alignment="1" pref="340" max="32767" attributes="0"/>
-                                  <Component id="spinnerCreditHours" alignment="1" pref="340" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane1" alignment="0" pref="340" max="32767" attributes="0"/>
-                                  <Component id="txtSubjectName" alignment="0" pref="340" max="32767" attributes="0"/>
-                                  <Component id="txtSubjectCode" alignment="0" pref="340" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="307" max="32767" attributes="0"/>
+                                  <Component id="cmbTeacher" alignment="1" pref="307" max="32767" attributes="0"/>
+                                  <Component id="spinnerCreditHours" alignment="1" pref="307" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" alignment="0" pref="307" max="32767" attributes="0"/>
+                                  <Component id="txtSubjectName" alignment="0" pref="307" max="32767" attributes="0"/>
+                                  <Component id="txtSubjectCode" alignment="0" pref="307" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -335,10 +335,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane3" alignment="0" pref="414" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" pref="410" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTotalWeight" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="157" max="32767" attributes="0"/>
+                              <EmptySpace pref="153" max="32767" attributes="0"/>
                               <Component id="cmdAddWeighting" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdRemoveWeighting" min="-2" max="-2" attributes="0"/>
@@ -352,7 +352,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="297" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="300" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdRemoveWeighting" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -389,6 +389,9 @@
                       <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
                     </Property>
                   </Properties>
+                  <Events>
+                    <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="weightingTableMouseClicked"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>

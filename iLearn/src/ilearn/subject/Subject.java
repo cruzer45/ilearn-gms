@@ -192,24 +192,27 @@ public class Subject
         int weighting = 0;
         try
         {
-            String sql = " SELECT `assmtType`, `weighting` "
+            String sql = " SELECT COUNT(`id`) AS 'Count' "
                     + " FROM `Subject_Weightings` "
-                    + " INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID`"
-                    + " WHERE `subID` = ?;";
+                    + " WHERE `subID` =  ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                weighting++;
+                weighting = rs.getInt("Count");
             }
             rs.close();
             prep.close();
+            if (weighting > 0)
+            {
+                hasWeight = true;
+            }
 
         }
         catch (Exception e)
         {
-            String message = "An error occurred while loading subject's weightings;";
+            String message = "An error occurred while checking if a subject is weighted.";
             logger.log(Level.SEVERE, message, e);
         }
         return hasWeight;
