@@ -1242,7 +1242,7 @@ public class Grade
         try
         {
             String sql = "UPDATE `Assments` SET `assmtStatus` = 'Inactive' WHERE `assmtID` = ?;",
-                    sql2 = "UPDATE `TermGrade` SET `grdStatus`='Inactive' WHERE `grdAssmtID` = ?;";
+                    sql2 = "UPDATE `TermGrade` SET `grdStatus` = 'Inactive' WHERE `grdAssmtID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.execute();
@@ -1265,7 +1265,6 @@ public class Grade
         double grade = 0;
         try
         {
-            
         }
         catch (Exception e)
         {
