@@ -5,7 +5,6 @@ import ilearn.kernel.Utilities;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -58,7 +57,6 @@ public class Staff
         ArrayList<String> id = new ArrayList<String>();
         ArrayList<String> code = new ArrayList<String>();
         ArrayList<String> name = new ArrayList<String>();
-        ArrayList<Date> DOB = new ArrayList<Date>();
         ArrayList<String> Status = new ArrayList<String>();
         try
         {
@@ -70,15 +68,12 @@ public class Staff
                 id.add(rs.getString("staID"));
                 code.add(rs.getString("staCode"));
                 name.add(rs.getString("staFirstName") + " " + rs.getString("staLastName"));
-//                DOB.add(rs.getDate("staDOB"));
                 Status.add(rs.getString("staStatus"));
             }
             rs.close();
             prep.close();
             model.addColumn("ID", id.toArray());
-            //model.addColumn("Code", code.toArray());
             model.addColumn("Name", name.toArray());
-            //model.addColumn("DOB", DOB.toArray());
             model.addColumn("Status", Status.toArray());
         }
         catch (Exception e)
