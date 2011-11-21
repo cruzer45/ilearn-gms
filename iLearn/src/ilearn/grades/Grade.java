@@ -181,28 +181,11 @@ public class Grade
                         }
                     }
                 }
-                if (isInteger(sValue))
-                {
-                    return true;
-                }
                 if (isDouble(sValue))
                 {
                     return true;
                 }
                 return false;
-            }
-
-            protected boolean isInteger(String input)
-            {
-                try
-                {
-                    Integer.parseInt(input);
-                    return true;
-                }
-                catch (Exception e)
-                {
-                    return false;
-                }
             }
 
             protected boolean isDouble(String input)
