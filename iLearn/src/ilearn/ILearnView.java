@@ -22,6 +22,7 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.kernel.session.InactivityListener;
+import ilearn.merits.FrmEditMerits;
 import ilearn.merits.FrmRecordMerits;
 import ilearn.promotion.FrmAssignPromotions;
 import ilearn.promotion.FrmPromote;
@@ -126,6 +127,7 @@ public class ILearnView extends FrameView
     FrmExcellClassListImporter frmExcellClassListImporter = null;
     FrmRemoveGrades frmRemoveGrades = null;
     FrmRecordMerits frmRecordMerits = null;
+    FrmEditMerits frmEditMerits = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -291,6 +293,7 @@ public class ILearnView extends FrameView
         jMenuItem3 = new javax.swing.JMenuItem();
         meritsMenu = new javax.swing.JMenu();
         recordMerit = new javax.swing.JMenuItem();
+        editMerits = new javax.swing.JMenuItem();
         demeritsMenu = new javax.swing.JMenu();
         recordDemerits = new javax.swing.JMenuItem();
         editDemerits = new javax.swing.JMenuItem();
@@ -493,6 +496,12 @@ public class ILearnView extends FrameView
         recordMerit.setText(resourceMap.getString("recordMerit.text")); // NOI18N
         recordMerit.setName("recordMerit"); // NOI18N
         meritsMenu.add(recordMerit);
+
+        editMerits.setAction(actionMap.get("showEditMerits")); // NOI18N
+        editMerits.setIcon(resourceMap.getIcon("editMerits.icon")); // NOI18N
+        editMerits.setText(resourceMap.getString("editMerits.text")); // NOI18N
+        editMerits.setName("editMerits"); // NOI18N
+        meritsMenu.add(editMerits);
 
         menuBar.add(meritsMenu);
 
@@ -2515,7 +2524,8 @@ public class ILearnView extends FrameView
 
     @Action
     public void showRecordMerit()
-    {//Verify if the form is already loaded
+    {
+        //Verify if the form is already loaded
         boolean AlreadyLoaded = isLoaded("Record Merits");
         if (AlreadyLoaded == false)
         {
@@ -2528,6 +2538,30 @@ public class ILearnView extends FrameView
             {
                 frmRecordMerits.setIcon(false);
                 frmRecordMerits.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showEditMerits()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Edit Merits");
+        if (AlreadyLoaded == false)
+        {
+            frmEditMerits = new FrmEditMerits();
+            desktopPane.add(frmEditMerits);
+            //Load the Form
+            frmEditMerits.setVisible(true);
+            frmEditMerits.show();
+            try
+            {
+                frmEditMerits.setIcon(false);
+                frmEditMerits.setSelected(true);
             }
             catch (Exception e)
             {
@@ -2573,6 +2607,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem editDemerits;
     private static javax.swing.JMenuItem editDetention;
     private static javax.swing.JMenuItem editGrades;
+    private javax.swing.JMenuItem editMerits;
     private static javax.swing.JMenuItem editRemarks;
     private static javax.swing.JMenuItem editStaff;
     private static javax.swing.JMenuItem editStudent;

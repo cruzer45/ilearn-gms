@@ -1,0 +1,4 @@
+SELECT 
+    `merDate`, `merits` ,`merRemarks`
+FROM
+    `Merits`;

@@ -5,11 +5,13 @@
 package ilearn.merits;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -67,5 +69,76 @@ public class Merits
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    public static DefaultTableModel searchMerits(String criteria)
+    {
+        criteria = Utilities.percent(criteria);
+        DefaultTableModel model = new DefaultTableModel()
+        {
+
+            @Override
+            public Class getColumnClass(int columnIndex)
+            {
+                Object o = getValueAt(0, columnIndex);
+                if (o == null)
+                {
+                    return Object.class;
+                }
+                else
+                {
+                    return o.getClass();
+                }
+            }
+
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+        };
+        
+        try
+        {
+            ArrayList<String> id = new ArrayList<String>();
+            ArrayList<String> name = new ArrayList<String>();
+            ArrayList<String> staff = new ArrayList<String>();
+            ArrayList<String> date = new ArrayList<String>();
+
+            String sql = " SELECT `merID`, CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) AS 'Name', CONCAT_WS(' ',`Staff`.`staFirstName`,`Staff`.`staLastName`) AS 'Staff',`merDate` "
+                    + " FROM `Merits` "
+                    + " INNER JOIN `Student` ON `Merits`.`merStuID` = `Student`.`stuID` "
+                    + " INNER JOIN `Staff` ON `Merits`.`merStaID`= `Staff`.`staID` "
+                    + " WHERE `merStatus` = 'Active'  "
+                    + " AND (CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) LIKE ? OR `merStuID` LIKE ? OR `merDate` LIKE ? OR `merClsCode` LIKE ?) ";
+
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, criteria);
+            prep.setString(2, criteria);
+            prep.setString(3, criteria);
+            prep.setString(4, criteria);
+            ResultSet rs = prep.executeQuery();
+
+            while (rs.next())
+            {
+                id.add(rs.getString("merID"));
+                name.add(rs.getString("Name"));
+                staff.add(rs.getString("Staff"));
+                date.add(Utilities.MDY_Formatter.format(rs.getDate("merDate")));
+            }
+            rs.close();
+            prep.close();
+
+            model.addColumn("ID", id.toArray());
+            model.addColumn("Student", name.toArray());
+            model.addColumn("Staff", staff.toArray());
+            model.addColumn("Date", date.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while searching for a demerit.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
     }
 }
