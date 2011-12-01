@@ -20,13 +20,13 @@ import org.jdesktop.application.Action;
  *
  * @author mrogers
  */
-public class FrmRecordMerits extends javax.swing.JInternalFrame
+public class FrmEditMerits extends javax.swing.JInternalFrame
 {
 
     String warnings = "";
 
     /** Creates new form FrmRecordMerits */
-    public FrmRecordMerits()
+    public FrmEditMerits()
     {
         initComponents();
         populateLists();
@@ -68,8 +68,8 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
 
         setClosable(true);
         setIconifiable(true);
-        setTitle("Record Merits");
-        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/star_add.png"))); // NOI18N
+        setTitle("Edit Merits");
+        setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/star_edit.png"))); // NOI18N
 
         meritTabbedPane1.setName("meritTabbedPane1"); // NOI18N
 
@@ -80,7 +80,7 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
 
         txtSearch.setName("txtSearch"); // NOI18N
 
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmRecordMerits.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmEditMerits.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
         cmdSearch.setName("cmdSearch"); // NOI18N
 
@@ -106,6 +106,7 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
 
+        cmdNext.setAction(actionMap.get("next")); // NOI18N
         cmdNext.setText("Next");
         cmdNext.setName("cmdNext"); // NOI18N
 
@@ -146,7 +147,7 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
                 .addContainerGap())
         );
 
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmRecordMerits.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmEditMerits.class);
         meritTabbedPane1.addTab("Search", resourceMap.getIcon("jPanel1.TabConstraints.tabIcon"), searchPanel); // NOI18N
 
         meritPanel.setName("meritPanel"); // NOI18N
@@ -300,7 +301,7 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
     public void search()
     {
         String criteria = txtSearch.getText().trim();
-        tblSearch.setModel(Student.searchStudents(criteria));
+        tblSearch.setModel(Merits.searchMerits(criteria));
         TableColumnAdjuster tca = new TableColumnAdjuster(tblSearch);
         tca.adjustColumns();
     }
@@ -329,9 +330,10 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
     private void loadInfo()
     {
         String id = tblSearch.getValueAt(tblSearch.getSelectedRow(), 0).toString();
-        String name = tblSearch.getValueAt(tblSearch.getSelectedRow(), 1).toString() + " " + tblSearch.getValueAt(tblSearch.getSelectedRow(), 2).toString();
+        String name = tblSearch.getValueAt(tblSearch.getSelectedRow(), 1).toString();
         txtID.setText(id);
         txtName.setText(name);
+        cmbStaff.setSelectedItem(tblSearch.getValueAt(tblSearch.getSelectedRow(), 2).toString());
     }
 
     private boolean passesValidation()
@@ -413,7 +415,6 @@ public class FrmRecordMerits extends javax.swing.JInternalFrame
             Utilities.showErrorMessage(rootPane, message);
         }
     }
-    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calDate;
     private javax.swing.JComboBox cmbRemarks;

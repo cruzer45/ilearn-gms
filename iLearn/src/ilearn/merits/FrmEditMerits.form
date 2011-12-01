@@ -4,9 +4,9 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
-    <Property name="title" type="java.lang.String" value="Record Merits"/>
+    <Property name="title" type="java.lang.String" value="Edit Merits"/>
     <Property name="frameIcon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
-      <Image iconType="3" name="/ilearn/resources/star_add.png"/>
+      <Image iconType="3" name="/ilearn/resources/star_edit.png"/>
     </Property>
   </Properties>
   <SyntheticProperties>
@@ -189,6 +189,9 @@
             </Component>
             <Component class="javax.swing.JButton" name="cmdNext">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.merits.FrmEditMerits" id="next" methodName="next"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Next"/>
                 <Property name="name" type="java.lang.String" value="cmdNext" noResource="true"/>
               </Properties>
