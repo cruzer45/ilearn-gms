@@ -10,6 +10,10 @@ Menu
   Record Grade
   Edit Grade
   Edit Report Card Remarks
+  Remove Grades
+ Merits
+  Record Merits
+  Edit Merits
  Demerits
   Record Demerits
   Edit Demerits
@@ -29,6 +33,7 @@ Menu
   Class Reports
    Class List Report
    Class Grade Book
+   Nationality Report
   Report Cards Menu
    Mid Term Reports
    Mid Term Class Ranking
@@ -71,6 +76,8 @@ Menu
   Utilities Menu
    Mid Term
     Calculate Mid Term Grades
+    Reset Grade Remarks
+    Clear Empty Grades
    End Of Term
     Calculate End of Term Grades
     Close Term

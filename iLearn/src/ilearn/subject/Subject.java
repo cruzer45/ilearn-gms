@@ -50,7 +50,6 @@ public class Subject
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int row, int column)
             {
@@ -89,7 +88,7 @@ public class Subject
                 assmtTypeID.add(Grade.getAssessmentTypeID(assmtType));
             }
             String sql1 = " DELETE FROM `Subject_Weightings` WHERE `subID` = ?;",
-                    sql2 = " INSERT INTO `Subject_Weightings` (`subID`, `assmentTypeID`, `weighting`) VALUES (?, ?, ?); ";
+                   sql2 = " INSERT INTO `Subject_Weightings` (`subID`, `assmentTypeID`, `weighting`) VALUES (?, ?, ?); ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
             prep.setString(1, subID);
             prep.execute();
@@ -193,8 +192,8 @@ public class Subject
         try
         {
             String sql = " SELECT COUNT(`id`) AS 'Count' "
-                    + " FROM `Subject_Weightings` "
-                    + " WHERE `subID` =  ?;";
+                         + " FROM `Subject_Weightings` "
+                         + " WHERE `subID` =  ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();
@@ -208,7 +207,6 @@ public class Subject
             {
                 hasWeight = true;
             }
-
         }
         catch (Exception e)
         {
@@ -223,9 +221,9 @@ public class Subject
         try
         {
             String sql = " SELECT `assmtType`, `weighting` "
-                    + " FROM `Subject_Weightings` "
-                    + " INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID`"
-                    + " WHERE `subID` = ?;";
+                         + " FROM `Subject_Weightings` "
+                         + " INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID`"
+                         + " WHERE `subID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();
@@ -289,7 +287,6 @@ public class Subject
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -306,7 +303,7 @@ public class Subject
         try
         {
             String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `Subject` "
-                    + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
+                         + " WHERE (`subID` LIKE ? OR `subCode` LIKE ? OR `subStaffCode` LIKE ? OR `subName` LIKE ? OR `subDescription` LIKE ? ) ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
