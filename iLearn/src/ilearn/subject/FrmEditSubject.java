@@ -7,6 +7,7 @@ package ilearn.subject;
 
 import ilearn.kernel.Utilities;
 import ilearn.staff.Staff;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
@@ -114,8 +115,11 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
     @Action
     public void resetForm()
     {
-        loadSubjectInfo();
-        search();
+       remove(subjectTabbedPane);
+       initComponents();
+       populateLists();
+       subjectTabbedPane.setSelectedIndex(1);
+       txtSearch.grabFocus();
     }
 
     private void loadSelectedHours()
@@ -224,6 +228,11 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
 
         txtSearch.setText(resourceMap.getString("txtSearch.text")); // NOI18N
         txtSearch.setName("txtSearch"); // NOI18N
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSearchKeyPressed(evt);
+            }
+        });
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmEditSubject.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
@@ -591,6 +600,14 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
             lblTotalWeight.setText("Total Weight: " + Subject.getWeightTotal() + "%");
         }
     }//GEN-LAST:event_weightingTableMouseClicked
+
+    private void txtSearchKeyPressed(java.awt.event.KeyEvent evt)//GEN-FIRST:event_txtSearchKeyPressed
+    {//GEN-HEADEREND:event_txtSearchKeyPressed
+        if (evt.getKeyCode() == KeyEvent.VK_ENTER)
+        {
+            search();
+        }
+    }//GEN-LAST:event_txtSearchKeyPressed
 
     @Action
     public void weightingAdd()
