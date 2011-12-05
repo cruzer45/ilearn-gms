@@ -128,7 +128,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                                 .addComponent(cmdNext))
                       .addContainerGap())
         );
@@ -136,7 +136,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             userPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, userPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addComponent(cmdNext)
                       .addContainerGap())
@@ -196,14 +196,14 @@ public class FrmEditUser extends javax.swing.JInternalFrame
                                 .addComponent(lblStatis))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(cmbStatus, 0, 260, Short.MAX_VALUE)
-                                .addComponent(spinnerTimeout, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(cmbGroup, 0, 260, Short.MAX_VALUE)
-                                .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE)
-                                .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 260, Short.MAX_VALUE))
+                                .addComponent(cmbStatus, 0, 279, Short.MAX_VALUE)
+                                .addComponent(spinnerTimeout, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addComponent(cmbGroup, 0, 279, Short.MAX_VALUE)
+                                .addComponent(txtPassword, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addComponent(txtUserName, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+                                .addComponent(txtFirstName, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE))
                       .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
@@ -241,7 +241,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
                       .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblStatis)
                                 .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addContainerGap(62, Short.MAX_VALUE))
+                      .addContainerGap(70, Short.MAX_VALUE))
         );
         userTabbedPane.addTab("Details", resourceMap.getIcon("detailsPanel.TabConstraints.tabIcon"), detailsPanel); // NOI18N
         linksPanel.setName("linksPanel"); // NOI18N
@@ -275,7 +275,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 339, Short.MAX_VALUE)
                                 .addGroup(linksPanelLayout.createSequentialGroup()
                                           .addComponent(cmdLink)
                                           .addGap(18, 18, 18)
@@ -286,7 +286,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, linksPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 225, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(linksPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdUnlink)
@@ -316,6 +316,14 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Grade");
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Report Card Remarks");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Remove Grades");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Merits");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Record Merits");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Merits");
         treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Demerits");
@@ -353,6 +361,8 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class List Report");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class Grade Book");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Nationality Report");
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Report Cards Menu");
@@ -437,6 +447,10 @@ public class FrmEditUser extends javax.swing.JInternalFrame
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid Term");
         javax.swing.tree.DefaultMutableTreeNode treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Calculate Mid Term Grades");
         treeNode4.add(treeNode5);
+        treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Reset Grade Remarks");
+        treeNode4.add(treeNode5);
+        treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Clear Empty Grades");
+        treeNode4.add(treeNode5);
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("End Of Term");
         treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Calculate End of Term Grades");
@@ -464,10 +478,10 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             .addGroup(wrapperPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(userTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                .addComponent(userTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 364, Short.MAX_VALUE)
                                 .addGroup(wrapperPanelLayout.createSequentialGroup()
                                           .addComponent(cmdReset)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 153, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 111, Short.MAX_VALUE)
                                           .addComponent(cmdSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdCancel2)))
@@ -477,7 +491,7 @@ public class FrmEditUser extends javax.swing.JInternalFrame
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 318, Short.MAX_VALUE)
+                      .addComponent(userTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 313, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdReset)

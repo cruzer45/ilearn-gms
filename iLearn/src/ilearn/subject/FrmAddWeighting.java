@@ -20,7 +20,7 @@ import org.jdesktop.application.Action;
  */
 public class FrmAddWeighting extends javax.swing.JDialog
 {
-    
+
     boolean editing = false;
 
     /** Creates new form FrmAddWeighting */
@@ -103,13 +103,13 @@ public class FrmAddWeighting extends javax.swing.JDialog
     {
         this.dispose();
     }
-    
+
     @Action
     public void add()
     {
         String assessment = cmbAssessmentType.getSelectedItem().toString();
         int weighting = Integer.valueOf(spinnerWeight.getValue().toString());
-        //Remove the old item from the list before adding the new one if we are in editing mode.        
+        //Remove the old item from the list before adding the new one if we are in editing mode.
         if (editing)
         {
             Subject.removeWeighting(assessment);
@@ -118,7 +118,7 @@ public class FrmAddWeighting extends javax.swing.JDialog
         Subject.addWeighting(assessment, weighting);
         this.dispose();
     }
-    
+
     private void populateLists()
     {
         cmbAssessmentType.setModel(new DefaultComboBoxModel(Grade.getAssessmentTypes().toArray()));

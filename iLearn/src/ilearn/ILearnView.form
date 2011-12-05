@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -223,14 +223,14 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
             </MenuItem>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem3">
+            <MenuItem class="javax.swing.JMenuItem" name="removeGrade">
               <Properties>
                 <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                   <action class="ilearn.ILearnView" id="showDeleteGrade" methodName="showDeleteGrade"/>
                 </Property>
-                <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem3.icon"/>
-                <Property name="text" type="java.lang.String" resourceKey="jMenuItem3.text"/>
-                <Property name="name" type="java.lang.String" value="jMenuItem3" noResource="true"/>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="removeGrade.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="removeGrade.text"/>
+                <Property name="name" type="java.lang.String" value="removeGrade" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -240,6 +240,9 @@
             <Property name="text" type="java.lang.String" resourceKey="meritsMenu.text"/>
             <Property name="name" type="java.lang.String" value="meritsMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="recordMerit">
               <Properties>
@@ -250,6 +253,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="recordMerit.text"/>
                 <Property name="name" type="java.lang.String" value="recordMerit" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editMerits">
               <Properties>
@@ -260,6 +266,9 @@
                 <Property name="text" type="java.lang.String" resourceKey="editMerits.text"/>
                 <Property name="name" type="java.lang.String" value="editMerits" noResource="true"/>
               </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+              </AuxValues>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -306,6 +315,9 @@
             <Property name="text" type="java.lang.String" resourceKey="detentionsMenu.text"/>
             <Property name="name" type="java.lang.String" value="detentionsMenu" noResource="true"/>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+          </AuxValues>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="recordDetention">
               <Properties>
@@ -441,6 +453,9 @@
                     <Property name="text" type="java.lang.String" resourceKey="nationalityReport.text"/>
                     <Property name="name" type="java.lang.String" value="nationalityReport" noResource="true"/>
                   </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -770,6 +785,45 @@
                 </MenuItem>
               </SubComponents>
             </Menu>
+            <Menu class="javax.swing.JMenu" name="dataMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="dataMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="dataMenu.text"/>
+                <Property name="name" type="java.lang.String" value="dataMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="assmentTypes">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAssmentType" methodName="showAssmentType"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="assmentTypes.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="assmentTypes.text"/>
+                    <Property name="name" type="java.lang.String" value="assmentTypes" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="demeritReasons">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showDemeritReasons" methodName="showDemeritReasons"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="demeritReasons.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="demeritReasons.text"/>
+                    <Property name="name" type="java.lang.String" value="demeritReasons" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="meritReason">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showMeritReasons" methodName="showMeritReasons"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="meritReason.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="meritReason.text"/>
+                    <Property name="name" type="java.lang.String" value="meritReason" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <Menu class="javax.swing.JMenu" name="promoteMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="promoteMenu.icon"/>
@@ -1064,25 +1118,31 @@
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                       </AuxValues>
                     </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
+                    <MenuItem class="javax.swing.JMenuItem" name="resetGradeRemarks">
                       <Properties>
                         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                           <action class="ilearn.ILearnView" id="updateRemarks" methodName="updateRemarks"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem1.icon"/>
-                        <Property name="text" type="java.lang.String" resourceKey="jMenuItem1.text"/>
-                        <Property name="name" type="java.lang.String" value="jMenuItem1" noResource="true"/>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="resetGradeRemarks.icon"/>
+                        <Property name="text" type="java.lang.String" resourceKey="resetGradeRemarks.text"/>
+                        <Property name="name" type="java.lang.String" value="resetGradeRemarks" noResource="true"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                      </AuxValues>
                     </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                    <MenuItem class="javax.swing.JMenuItem" name="removeEmptyGrades">
                       <Properties>
                         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
                           <action class="ilearn.ILearnView" id="cleanMidTerms" methodName="cleanMidTerms"/>
                         </Property>
-                        <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem2.icon"/>
-                        <Property name="text" type="java.lang.String" resourceKey="jMenuItem2.text"/>
-                        <Property name="name" type="java.lang.String" value="jMenuItem2" noResource="true"/>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="removeEmptyGrades.icon"/>
+                        <Property name="text" type="java.lang.String" resourceKey="removeEmptyGrades.text"/>
+                        <Property name="name" type="java.lang.String" value="removeEmptyGrades" noResource="true"/>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                      </AuxValues>
                     </MenuItem>
                   </SubComponents>
                 </Menu>
@@ -1172,7 +1232,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="616" max="32767" attributes="0"/>
+                  <EmptySpace pref="630" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>

@@ -66,6 +66,14 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Report Card Remarks");
         treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Remove Grades");
+        treeNode2.add(treeNode3);
+        treeNode1.add(treeNode2);
+        treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Merits");
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Record Merits");
+        treeNode2.add(treeNode3);
+        treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Edit Merits");
+        treeNode2.add(treeNode3);
         treeNode1.add(treeNode2);
         treeNode2 = new javax.swing.tree.DefaultMutableTreeNode("Demerits");
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Record Demerits");
@@ -102,6 +110,8 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class List Report");
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Class Grade Book");
+        treeNode3.add(treeNode4);
+        treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Nationality Report");
         treeNode3.add(treeNode4);
         treeNode2.add(treeNode3);
         treeNode3 = new javax.swing.tree.DefaultMutableTreeNode("Report Cards Menu");
@@ -186,6 +196,10 @@ public class FrmPermissionMaker extends javax.swing.JFrame
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("Mid Term");
         javax.swing.tree.DefaultMutableTreeNode treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Calculate Mid Term Grades");
         treeNode4.add(treeNode5);
+        treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Reset Grade Remarks");
+        treeNode4.add(treeNode5);
+        treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Clear Empty Grades");
+        treeNode4.add(treeNode5);
         treeNode3.add(treeNode4);
         treeNode4 = new javax.swing.tree.DefaultMutableTreeNode("End Of Term");
         treeNode5 = new javax.swing.tree.DefaultMutableTreeNode("Calculate End of Term Grades");
@@ -239,7 +253,7 @@ public class FrmPermissionMaker extends javax.swing.JFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 294, Short.MAX_VALUE)
+                                .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 321, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdLoad)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
