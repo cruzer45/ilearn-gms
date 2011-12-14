@@ -797,10 +797,10 @@ public class Grade
                 ArrayList<String> subjects = Classes.getSubjectList(cls);
                 for (String sub : subjects) // loop subjects
                 {
-                     System.out.println("\tNow doing subject: " + sub);
+                    System.out.println("\tNow doing subject: " + sub);
                     for (String stuID : studentList) // loop students
                     {
-                         System.out.println("\t\tNow doing student: " + stuID);
+                        System.out.println("\t\tNow doing student: " + stuID);
                         double termGrade = 0.0;
                         double examGrade = 0.0;
 
@@ -918,6 +918,34 @@ public class Grade
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
             prep.execute();
             prep = Environment.getConnection().prepareStatement(sql2);
+            prep.execute();
+            prep.close();
+            succesful = true;
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while cleaning mid-term grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return succesful;
+    }
+
+    public static boolean cleanFinalGrades()
+    {
+        boolean succesful = true;
+        try
+        {
+            String sql1 = "DELETE FROM `Grade` WHERE `graSubCode` LIKE '%COUN%';";
+            String sql2 = "DELETE FROM `Grade` WHERE `graFinal` = 0;";
+            String sql3 = "UPDATE `Grade` SET `graFinal` = 70 WHERE `graFinal` >= 68.5 AND `graFinal` < 70;";
+            String sql4 = "UPDATE `Grade` SET `graFinal` = 60 WHERE `graFinal` < 60;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql2);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql3);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql4);
             prep.execute();
             prep.close();
             succesful = true;
@@ -1185,6 +1213,8 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
     }
+    
+    
 
     private static ArrayList<String> getGPA(double grade)
     {
