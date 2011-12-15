@@ -1122,7 +1122,7 @@ public class Grade
         return successful;
     }
 
-    private static void updateFinalGPA()
+    public static void updateFinalGPA()
     {
         try
         {
@@ -1134,30 +1134,46 @@ public class Grade
             String sql = "SELECT `graID`, `graFinal`  FROM `Grade` WHERE `graStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
+            System.out.println("Retreiving Results");
             while (rs.next())
             {
                 gradeIDs.add(rs.getString("graID"));
                 grades.add(rs.getDouble("graFinal"));
             }
             rs.close();
+
+            int counter = 0;
+
             for (double grade : grades)
             {
+                counter++;
+                System.out.println("Getting GPAs: " + counter + " of " + grades.size());
+
                 ArrayList<String> gpa = getGPA(grade);
                 GPAs.add(gpa.get(0));
                 letters.add(gpa.get(1));
                 remarks.add(gpa.get(2));
+
             }
+
+            System.out.println("Creating commit query");
+
             sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
                     + " WHERE `graID`= ?;";
             prep = Environment.getConnection().prepareStatement(sql);
+
+
+
             for (int i = 0; i < gradeIDs.size(); i++)
             {
+                System.out.println("Adding " + i + " of " + gradeIDs.size() + "to batch");
                 prep.setString(1, GPAs.get(i));
                 prep.setString(2, letters.get(i));
                 prep.setString(3, remarks.get(i));
                 prep.setString(4, gradeIDs.get(i));
                 prep.addBatch();
             }
+            System.out.println("Executing batch");
             prep.executeBatch();
             prep.close();
         }
@@ -1213,8 +1229,6 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
     }
-    
-    
 
     private static ArrayList<String> getGPA(double grade)
     {
@@ -1371,5 +1385,33 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
         return examGrade;
+    }
+
+    public static int getAssessmentPassCount(String assmtID)
+    {
+        int passCount = 0;
+        try
+        {
+            //get the general info about the assessment
+            String sql = "SELECT COUNT(`grdStuID`) AS 'Pass' "
+                    + " FROM `TermGrade` "
+                    + " INNER JOIN `Assments` ON `TermGrade`.`grdAssmtID` = `Assments`.`assmtID`"
+                    + " WHERE (`grdPointsEarned` >= (`assmtTotalPoints` * .7)) AND `assmtID` = ? ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, assmtID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                passCount = rs.getInt("Pass");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while gathering the pass/fail info for an assessment.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return passCount;
     }
 }

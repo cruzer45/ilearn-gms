@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -1118,19 +1118,6 @@
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                       </AuxValues>
                     </MenuItem>
-                    <MenuItem class="javax.swing.JMenuItem" name="resetGradeRemarks">
-                      <Properties>
-                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                          <action class="ilearn.ILearnView" id="updateRemarks" methodName="updateRemarks"/>
-                        </Property>
-                        <Property name="icon" type="javax.swing.Icon" resourceKey="resetGradeRemarks.icon"/>
-                        <Property name="text" type="java.lang.String" resourceKey="resetGradeRemarks.text"/>
-                        <Property name="name" type="java.lang.String" value="resetGradeRemarks" noResource="true"/>
-                      </Properties>
-                      <AuxValues>
-                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-                      </AuxValues>
-                    </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="removeEmptyGrades">
                       <Properties>
                         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
@@ -1139,6 +1126,19 @@
                         <Property name="icon" type="javax.swing.Icon" resourceKey="removeEmptyGrades.icon"/>
                         <Property name="text" type="java.lang.String" resourceKey="removeEmptyGrades.text"/>
                         <Property name="name" type="java.lang.String" value="removeEmptyGrades" noResource="true"/>
+                      </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                      </AuxValues>
+                    </MenuItem>
+                    <MenuItem class="javax.swing.JMenuItem" name="resetGradeRemarks">
+                      <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="updateRemarks" methodName="updateRemarks"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="resetGradeRemarks.icon"/>
+                        <Property name="text" type="java.lang.String" resourceKey="resetGradeRemarks.text"/>
+                        <Property name="name" type="java.lang.String" value="resetGradeRemarks" noResource="true"/>
                       </Properties>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
@@ -1171,12 +1171,20 @@
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="clearBlankGrades">
                       <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="cleanFinalGrades" methodName="cleanFinalGrades"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="clearBlankGrades.icon"/>
                         <Property name="text" type="java.lang.String" resourceKey="clearBlankGrades.text"/>
                         <Property name="name" type="java.lang.String" value="clearBlankGrades" noResource="true"/>
                       </Properties>
                     </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="resetFinalGradeRemarks">
                       <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="updateFinalRemarks" methodName="updateFinalRemarks"/>
+                        </Property>
+                        <Property name="icon" type="javax.swing.Icon" resourceKey="resetFinalGradeRemarks.icon"/>
                         <Property name="text" type="java.lang.String" resourceKey="resetFinalGradeRemarks.text"/>
                         <Property name="name" type="java.lang.String" value="resetFinalGradeRemarks" noResource="true"/>
                       </Properties>
@@ -1244,7 +1252,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="630" max="32767" attributes="0"/>
+                  <EmptySpace pref="616" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
