@@ -25,6 +25,7 @@ public class AssessmentTypes
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -38,6 +39,7 @@ public class AssessmentTypes
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -94,7 +96,7 @@ public class AssessmentTypes
         boolean successful = false;
         try
         {
-            String sql = "DELETE FROM `listassessmenttypes` WHERE `id`= ? LIMIT 1;";
+            String sql = "DELETE FROM `listAssessmentTypes` WHERE `id`= ? LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, id);
             prep.executeUpdate();

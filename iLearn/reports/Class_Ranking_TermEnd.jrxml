@@ -21,6 +21,7 @@ ORDER BY `graClsCode` DESC]]>
 	<field name="Average" class="java.lang.Double"/>
 	<field name="Name" class="java.lang.String"/>
 	<field name="Term" class="java.lang.String"/>
+	<sortField name="Class"/>
 	<sortField name="Average" order="Descending"/>
 	<group name="ClassGroup" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{Class}]]></groupExpression>
@@ -49,7 +50,7 @@ ORDER BY `graClsCode` DESC]]>
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{Term} + " Final Class Ranking: "+ $F{Class}]]></textFieldExpression>
+				<textFieldExpression><![CDATA[$F{Term} + " Term End Class Ranking: "+ $F{Class}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageHeader>
@@ -110,7 +111,9 @@ ORDER BY `graClsCode` DESC]]>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement verticalAlignment="Middle"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
 			</textField>
 			<textField>
@@ -122,7 +125,9 @@ ORDER BY `graClsCode` DESC]]>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Student ID}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
@@ -134,7 +139,9 @@ ORDER BY `graClsCode` DESC]]>
 					<bottomPen lineWidth="0.5"/>
 					<rightPen lineWidth="0.5"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font size="10"/>
+				</textElement>
 				<textFieldExpression><![CDATA[$F{Average}]]></textFieldExpression>
 			</textField>
 		</band>

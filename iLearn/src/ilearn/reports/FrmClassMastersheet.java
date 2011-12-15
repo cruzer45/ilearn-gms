@@ -9,8 +9,6 @@ import ilearn.grades.Grade;
 import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
-import ilearn.staff.Staff;
-import ilearn.subject.Subject;
 import ilearn.term.Term;
 import ilearn.user.User;
 import java.awt.Desktop;
@@ -43,14 +41,14 @@ import org.jdesktop.application.Task;
  *
  * @author mrogers
  */
-public class FrmClassGradebook extends javax.swing.JDialog
+public class FrmClassMastersheet extends javax.swing.JDialog
 {
 
     File selectedFile;
-    static final Logger logger = Logger.getLogger(FrmClassGradebook.class.getName());
+    static final Logger logger = Logger.getLogger(FrmClassMastersheet.class.getName());
 
     /** Creates new form DialogStudentByClass */
-    public FrmClassGradebook(java.awt.Frame parent, boolean modal)
+    public FrmClassMastersheet(java.awt.Frame parent, boolean modal)
     {
         super(parent, modal);
         initComponents();
@@ -76,8 +74,8 @@ public class FrmClassGradebook extends javax.swing.JDialog
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
+
         lblTitle = new javax.swing.JLabel();
         lblClass = new javax.swing.JLabel();
         cmbClass = new javax.swing.JComboBox();
@@ -85,74 +83,82 @@ public class FrmClassGradebook extends javax.swing.JDialog
         cmdRun = new javax.swing.JButton();
         lblSubject = new javax.swing.JLabel();
         cmbSubject = new javax.swing.JComboBox();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmClassGradebook.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmClassMastersheet.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setName("Form"); // NOI18N
+
         lblTitle.setFont(resourceMap.getFont("lblTitle.font")); // NOI18N
         lblTitle.setText(resourceMap.getString("lblTitle.text")); // NOI18N
         lblTitle.setName("lblTitle"); // NOI18N
+
         lblClass.setText(resourceMap.getString("lblClass.text")); // NOI18N
         lblClass.setName("lblClass"); // NOI18N
+
         cmbClass.setName("cmbClass"); // NOI18N
-        cmbClass.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
+        cmbClass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbClassActionPerformed(evt);
             }
         });
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmClassGradebook.class, this);
+
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmClassMastersheet.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
+
         cmdRun.setAction(actionMap.get("run")); // NOI18N
         cmdRun.setText(resourceMap.getString("cmdRun.text")); // NOI18N
         cmdRun.setName("cmdRun"); // NOI18N
+
         lblSubject.setText(resourceMap.getString("lblSubject.text")); // NOI18N
         lblSubject.setName("lblSubject"); // NOI18N
+
         cmbSubject.setName("cmbSubject"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblTitle)
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                          .addComponent(cmdRun)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel))
-                                .addGroup(layout.createSequentialGroup()
-                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(lblClass)
-                                                  .addComponent(lblSubject))
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                                  .addComponent(cmbClass, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                  .addComponent(cmbSubject, 0, 270, Short.MAX_VALUE))))
-                      .addContainerGap(12, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTitle)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(cmdRun)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblClass)
+                            .addComponent(lblSubject))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(cmbClass, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cmbSubject, 0, 270, Short.MAX_VALUE))))
+                .addContainerGap(12, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(lblTitle)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblClass)
-                                .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblSubject)
-                                .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel)
-                                .addComponent(cmdRun))
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(lblTitle)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblClass)
+                    .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblSubject)
+                    .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdRun))
+                .addContainerGap())
         );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -193,7 +199,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
         File selFile;
         String classID;
         String classCode;
-        String subjectCode;
+        String subjectID;
 
         RunTask(org.jdesktop.application.Application app)
         {
@@ -215,12 +221,12 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 }
                 catch (IOException ex)
                 {
-                    Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(FrmClassMastersheet.class.getName()).log(Level.SEVERE, null, ex);
                 }
                 selFile = selectedFile;
                 classCode = cmbClass.getSelectedItem().toString();
                 classID = Classes.getClassID(cmbClass.getSelectedItem().toString());
-                subjectCode = cmbSubject.getSelectedItem().toString();
+                subjectID = cmbSubject.getSelectedItem().toString();
             }
             else
             {
@@ -250,7 +256,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
                 prep.setString(1, classID);
                 prep.setString(2, Term.getCurrentTerm());
-                prep.setString(3, subjectCode);
+                prep.setString(3, subjectID);
                 ResultSet rs = prep.executeQuery();
                 while (rs.next())
                 {
@@ -272,12 +278,8 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 setMessage("Creating Gradebook.");
                 //Create the number format cell style
                 CellStyle numberStyle = wb.createCellStyle();
-                CellStyle numberStyle2 = wb.createCellStyle();
-                CellStyle percentStyle = wb.createCellStyle();
                 DataFormat format = wb.createDataFormat();
                 numberStyle.setDataFormat(format.getFormat("#,##0.00"));
-                numberStyle2.setDataFormat(format.getFormat("#,##0"));
-                percentStyle.setDataFormat((short) 0xa);
                 //Insert Initial info
                 Row row = sheet.createRow(0);
                 Cell cell = row.createCell(0);
@@ -286,11 +288,9 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 row.createCell(0).setCellValue("Class:");
                 row.createCell(1).setCellValue(classCode);
                 row.createCell(3).setCellValue("Subject:");
-                row.createCell(4).setCellValue(subjectCode);
+                row.createCell(4).setCellValue(subjectID);
                 row.createCell(6).setCellValue("Term:");
                 row.createCell(7).setCellValue(Term.getCurrentTermName());
-                row.createCell(9).setCellValue("Teacher:");
-                row.createCell(10).setCellValue(Staff.getStaffName(Subject.getSubjectTeacher(subjectCode)));
                 setMessage("Inserting Data.");
                 row = sheet.createRow(3);
                 row.createCell(0).setCellValue(createHelper.createRichTextString("ID"));
@@ -418,18 +418,9 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 Row minRow = sheet.createRow(8 + studentIDs.size());
                 Row avgRow = sheet.createRow(9 + studentIDs.size());
                 Row maxRow = sheet.createRow(10 + studentIDs.size());
-                Row passCountRow = sheet.createRow(11 + studentIDs.size());
-                Row passPercentRow = sheet.createRow(12 + studentIDs.size());
-                Row failCountRow = sheet.createRow(13 + studentIDs.size());
-                Row failPercentRow = sheet.createRow(14 + studentIDs.size());
-
                 minRow.createCell(1).setCellValue("Minimum");
                 avgRow.createCell(1).setCellValue("Average");
                 maxRow.createCell(1).setCellValue("Maximum");
-                passCountRow.createCell(1).setCellValue("Pass Count");
-                passPercentRow.createCell(1).setCellValue("Pass Percent");
-                failCountRow.createCell(1).setCellValue("Fail Count");
-                failPercentRow.createCell(1).setCellValue("Fail Percent");
                 for (int i = 2; i <= finishColumn; i++)
                 {
                     CellReference cellRefStart = new CellReference(7, i);
@@ -443,31 +434,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     Cell maxCell = maxRow.createCell(i);
                     maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
                     maxCell.setCellStyle(numberStyle);
-                    //Pass Info
-                    int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
-                    Cell passCountCell = passCountRow.createCell(i);
-                    passCountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                    passCountCell.setCellValue(passCount);
-                    passCountCell.setCellStyle(numberStyle2);
-                    //Pass Percent
-                    Cell passPercentCell = passPercentRow.createCell(i);
-                    //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                    int classSize = studentIDs.size();
-                    passPercentCell.setCellValue( Double.valueOf(passCount) / Double.valueOf(classSize));
-                    passPercentCell.setCellStyle(percentStyle);
-                    
-                    //Pass Info
-                    int failcount = classSize - passCount;
-                    Cell failcountCell = failCountRow.createCell(i);
-                    failcountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                    failcountCell.setCellValue(failcount);
-                    failcountCell.setCellStyle(numberStyle2);
-                    //Pass Percent
-                    Cell failPercentCell = failPercentRow.createCell(i);
-                    //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                    failPercentCell.setCellValue( Double.valueOf(failcount) / Double.valueOf(classSize));
-                    failPercentCell.setCellStyle(percentStyle);
-
                 }
                 setMessage("Saving the file.");
                 // Write the output to a file
@@ -483,9 +449,9 @@ public class FrmClassGradebook extends javax.swing.JDialog
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
-                Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(FrmClassMastersheet.class.getName()).log(Level.SEVERE, null, ex);
             }
             return null;
         }

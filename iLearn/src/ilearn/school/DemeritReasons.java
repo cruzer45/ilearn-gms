@@ -5,6 +5,7 @@
 package ilearn.school;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.logger.iLogger;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ public class DemeritReasons
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -38,6 +40,7 @@ public class DemeritReasons
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -68,6 +71,7 @@ public class DemeritReasons
         model.addColumn("Reason", types.toArray());
         return model;
     }
+
     public static boolean addDemeritReason(String demReason)
     {
         boolean successful = false;
@@ -79,6 +83,9 @@ public class DemeritReasons
             prep.execute();
             prep.close();
             successful = true;
+
+            String message = "Demerit reason was added " + demReason + " was added.";
+            iLogger.logMessage(message, "Add", "Demerit Reason");
         }
         catch (Exception e)
         {
@@ -99,6 +106,9 @@ public class DemeritReasons
             prep.executeUpdate();
             prep.close();
             successful = true;
+
+            String message = "Demerit reason with id " + id + " was deleted.";
+            iLogger.logMessage(message, "Delete", "Demerit Reason");
         }
         catch (Exception e)
         {

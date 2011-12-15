@@ -143,6 +143,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -156,6 +157,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -169,6 +171,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -366,8 +369,8 @@ public class ILearnView extends FrameView
         utilitiesMenu = new javax.swing.JMenu();
         midTerm = new javax.swing.JMenu();
         calculateMidTerm = new javax.swing.JMenuItem();
-        resetGradeRemarks = new javax.swing.JMenuItem();
         removeEmptyGrades = new javax.swing.JMenuItem();
+        resetGradeRemarks = new javax.swing.JMenuItem();
         endOfTerm = new javax.swing.JMenu();
         calculateFinals = new javax.swing.JMenuItem();
         clearBlankGrades = new javax.swing.JMenuItem();
@@ -396,7 +399,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -911,17 +914,17 @@ public class ILearnView extends FrameView
         calculateMidTerm.setName("calculateMidTerm"); // NOI18N
         midTerm.add(calculateMidTerm);
 
-        resetGradeRemarks.setAction(actionMap.get("updateRemarks")); // NOI18N
-        resetGradeRemarks.setIcon(resourceMap.getIcon("resetGradeRemarks.icon")); // NOI18N
-        resetGradeRemarks.setText(resourceMap.getString("resetGradeRemarks.text")); // NOI18N
-        resetGradeRemarks.setName("resetGradeRemarks"); // NOI18N
-        midTerm.add(resetGradeRemarks);
-
         removeEmptyGrades.setAction(actionMap.get("cleanMidTerms")); // NOI18N
         removeEmptyGrades.setIcon(resourceMap.getIcon("removeEmptyGrades.icon")); // NOI18N
         removeEmptyGrades.setText(resourceMap.getString("removeEmptyGrades.text")); // NOI18N
         removeEmptyGrades.setName("removeEmptyGrades"); // NOI18N
         midTerm.add(removeEmptyGrades);
+
+        resetGradeRemarks.setAction(actionMap.get("updateRemarks")); // NOI18N
+        resetGradeRemarks.setIcon(resourceMap.getIcon("resetGradeRemarks.icon")); // NOI18N
+        resetGradeRemarks.setText(resourceMap.getString("resetGradeRemarks.text")); // NOI18N
+        resetGradeRemarks.setName("resetGradeRemarks"); // NOI18N
+        midTerm.add(resetGradeRemarks);
 
         utilitiesMenu.add(midTerm);
 
@@ -935,10 +938,14 @@ public class ILearnView extends FrameView
         calculateFinals.setName("calculateFinals"); // NOI18N
         endOfTerm.add(calculateFinals);
 
+        clearBlankGrades.setAction(actionMap.get("cleanFinalGrades")); // NOI18N
+        clearBlankGrades.setIcon(resourceMap.getIcon("clearBlankGrades.icon")); // NOI18N
         clearBlankGrades.setText(resourceMap.getString("clearBlankGrades.text")); // NOI18N
         clearBlankGrades.setName("clearBlankGrades"); // NOI18N
         endOfTerm.add(clearBlankGrades);
 
+        resetFinalGradeRemarks.setAction(actionMap.get("updateFinalRemarks")); // NOI18N
+        resetFinalGradeRemarks.setIcon(resourceMap.getIcon("resetFinalGradeRemarks.icon")); // NOI18N
         resetFinalGradeRemarks.setText(resourceMap.getString("resetFinalGradeRemarks.text")); // NOI18N
         resetFinalGradeRemarks.setName("resetFinalGradeRemarks"); // NOI18N
         endOfTerm.add(resetFinalGradeRemarks);
@@ -988,7 +995,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(statusMessageLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
                 .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(statusAnimationLabel)
@@ -2508,6 +2515,44 @@ public class ILearnView extends FrameView
     }
 
     @Action
+    public Task updateFinalRemarks()
+    {
+        return new UpdateFinalRemarksTask(getApplication());
+    }
+
+    private class UpdateFinalRemarksTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        UpdateFinalRemarksTask(org.jdesktop.application.Application app)
+        {
+            super(app);
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            String message = "Are you sure you want to reset all Active report card remarks with the defaults?";
+            int response = Utilities.showConfirmDialog(desktopPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                Grade.updateFinalGPA();
+                return true;
+            }
+            return false;  // return your result
+        }
+
+        @Override
+        protected void succeeded(Object result)
+        {
+            if (result.equals(Boolean.TRUE))
+            {
+                String message = "The process was completed succesfully.";
+                Utilities.showInfoMessage(desktopPane, message);
+            }
+        }
+    }
+
+    @Action
     public Task cleanMidTerms()
     {
         return new CleanMidTermsTask(getApplication());
@@ -2526,6 +2571,58 @@ public class ILearnView extends FrameView
         {
             Grade.cleanMidTermGrades();
             return true;
+        }
+
+        @Override
+        protected void succeeded(Object result)
+        {
+            if (result.equals(Boolean.TRUE))
+            {
+                String message = "The process was completed succesfully.";
+                Utilities.showInfoMessage(desktopPane, message);
+            }
+        }
+    }
+
+    @Action(block = Task.BlockingScope.COMPONENT)
+    public Task cleanFinalGrades()
+    {
+        return new CleanFinalGradesTask(getApplication());
+
+    }
+
+    private class CleanFinalGradesTask extends org.jdesktop.application.Task<Object, Void>
+    {
+
+        CleanFinalGradesTask(org.jdesktop.application.Application app)
+        {
+
+            super(app);
+
+        }
+
+        @Override
+        protected Object doInBackground()
+        {
+            try
+            {
+                Thread.sleep(2000);
+            }
+            catch (Exception e)
+            {
+            }
+
+            String message = "This action will do the following:\n\n"
+                    + "1.   Remove ALL grades with a 0.\n"
+                    + "2.   Raise all grades between 68.5 and 70 to a 70.\n"
+                    + "3.   Raise all grades lower than a 60 to a 60.\n\n"
+                    + "Are you sure you want to proceed?";
+            int response = Utilities.showConfirmDialog(desktopPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                return Grade.cleanFinalGrades();
+            }
+            return null;
         }
 
         @Override

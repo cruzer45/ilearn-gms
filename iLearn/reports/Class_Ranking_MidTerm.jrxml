@@ -14,13 +14,14 @@ INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.`stuID`
 INNER JOIN `Term` ON `Grade`.`graTrmCode` = `Term`.`trmID`
 WHERE `graStatus` = 'Active'
 GROUP BY `graClsCode`,`graStuID`
-ORDER BY `graClsCode` DESC ]]>
+ORDER BY `graClsCode` DESC]]>
 	</queryString>
 	<field name="Student ID" class="java.lang.Integer"/>
 	<field name="Class" class="java.lang.String"/>
 	<field name="Average" class="java.lang.Double"/>
 	<field name="Name" class="java.lang.String"/>
 	<field name="Term" class="java.lang.String"/>
+	<sortField name="Class"/>
 	<sortField name="Average" order="Descending"/>
 	<group name="ClassGroup" isStartNewPage="true">
 		<groupExpression><![CDATA[$F{Class}]]></groupExpression>
