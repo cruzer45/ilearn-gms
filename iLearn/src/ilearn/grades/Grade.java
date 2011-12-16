@@ -5,6 +5,7 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.student.Student;
+import ilearn.subject.Subject;
 import ilearn.term.Term;
 import ilearn.user.User;
 import java.sql.PreparedStatement;
@@ -1413,5 +1414,36 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
         return passCount;
+    }
+
+    public static boolean checkStudentGrade(String stuID, String subID)
+    {
+        boolean gradeEntered = false;
+        try
+        {
+            int count = 0;
+            String sql = "SELECT COUNT(`graID`) as 'Count' FROM `Grade` WHERE `graStuID` = ? AND `graSubCode` = ? AND `graStatus` = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            prep.setString(2, subID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                count = rs.getInt("Count");
+            }
+            rs.close();
+            prep.close();
+
+            if (count > 0)
+            {
+                gradeEntered = true;
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while checking if the student has a grade entered.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return gradeEntered;
     }
 }
