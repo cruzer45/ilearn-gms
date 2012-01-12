@@ -371,7 +371,6 @@
   </mediaSets>
   <buildIds buildAll="false">
     <mediaSet refId="20" />
-    <mediaSet refId="187" />
   </buildIds>
 </install4j>
 
