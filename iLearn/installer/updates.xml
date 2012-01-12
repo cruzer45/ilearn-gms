@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updateDescriptor baseUrl="">
-  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_7_0.exe" newVersion="1.7.0" newMediaFileId="20" fileSize="59528704" bundledJre="" archive="false">
-    <comment />
-  </entry>
-  <entry targetMediaFileId="187" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_Slim_1_7_0.exe" newVersion="1.7.0" newMediaFileId="187" fileSize="2926080" bundledJre="" archive="false">
+  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_7_1.exe" newVersion="1.7.1" newMediaFileId="20" fileSize="59535872" bundledJre="" archive="false">
     <comment />
   </entry>
 </updateDescriptor>
