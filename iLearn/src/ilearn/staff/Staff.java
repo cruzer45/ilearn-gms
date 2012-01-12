@@ -189,6 +189,10 @@ public class Staff
         return successful;
     }
 
+    /**
+     * Returns a list of the staff members names.
+     * @return 
+     */
     public static ArrayList<String> getStaffList()
     {
         ArrayList<String> staffList = new ArrayList<String>();
