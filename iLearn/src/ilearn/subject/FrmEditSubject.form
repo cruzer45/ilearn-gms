@@ -4,6 +4,8 @@
   <Properties>
     <Property name="closable" type="boolean" value="true"/>
     <Property name="iconifiable" type="boolean" value="true"/>
+    <Property name="maximizable" type="boolean" value="true"/>
+    <Property name="resizable" type="boolean" value="true"/>
     <Property name="title" type="java.lang.String" resourceKey="Form.title"/>
     <Property name="toolTipText" type="java.lang.String" resourceKey="Form.toolTipText"/>
     <Property name="frameIcon" type="javax.swing.Icon" resourceKey="Form.frameIcon"/>
@@ -71,11 +73,11 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane3" alignment="0" pref="404" max="32767" attributes="0"/>
+                          <Component id="jScrollPane3" alignment="0" pref="400" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="lblSearch" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Component id="txtSearch" pref="268" max="32767" attributes="0"/>
+                              <Component id="txtSearch" pref="250" max="32767" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdSearch" min="-2" max="-2" attributes="0"/>
                           </Group>
@@ -83,7 +85,7 @@
                               <Component id="lblResults1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="lblResults2" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="183" max="32767" attributes="0"/>
+                              <EmptySpace pref="187" max="32767" attributes="0"/>
                               <Component id="cmdNext" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cmdCancel1" min="-2" max="-2" attributes="0"/>
@@ -103,7 +105,7 @@
                           <Component id="cmdSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane3" pref="338" max="32767" attributes="0"/>
+                      <Component id="jScrollPane3" pref="352" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblResults1" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -243,7 +245,7 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="cmdReset" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="125" max="32767" attributes="0"/>
+                              <EmptySpace pref="144" max="32767" attributes="0"/>
                               <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                               <Component id="cmdCancel" min="-2" max="-2" attributes="0"/>
@@ -263,14 +265,14 @@
                               </Group>
                               <EmptySpace min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jScrollPane1" pref="307" max="32767" attributes="0"/>
-                                  <Component id="spinnerCredits" alignment="0" pref="307" max="32767" attributes="0"/>
-                                  <Component id="cmbStatus" alignment="1" pref="307" max="32767" attributes="0"/>
-                                  <Component id="txtID" alignment="0" pref="307" max="32767" attributes="0"/>
-                                  <Component id="cmbTeacher" alignment="1" pref="307" max="32767" attributes="0"/>
-                                  <Component id="txtSubjectName" alignment="0" pref="307" max="32767" attributes="0"/>
-                                  <Component id="txtSubjectCode" alignment="0" pref="307" max="32767" attributes="0"/>
-                                  <Component id="jScrollPane2" alignment="1" pref="307" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane1" pref="297" max="32767" attributes="0"/>
+                                  <Component id="spinnerCredits" alignment="0" pref="297" max="32767" attributes="0"/>
+                                  <Component id="cmbStatus" alignment="1" pref="297" max="32767" attributes="0"/>
+                                  <Component id="txtID" alignment="0" pref="297" max="32767" attributes="0"/>
+                                  <Component id="cmbTeacher" alignment="1" pref="297" max="32767" attributes="0"/>
+                                  <Component id="txtSubjectName" alignment="0" pref="297" max="32767" attributes="0"/>
+                                  <Component id="txtSubjectCode" alignment="0" pref="297" max="32767" attributes="0"/>
+                                  <Component id="jScrollPane2" alignment="1" pref="297" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -538,10 +540,10 @@
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jScrollPane4" alignment="0" pref="404" max="32767" attributes="0"/>
+                          <Component id="jScrollPane4" alignment="0" pref="400" max="32767" attributes="0"/>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="lblTotalWeight" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace pref="64" max="32767" attributes="0"/>
+                              <EmptySpace pref="74" max="32767" attributes="0"/>
                               <Component id="cmdSave1" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="cmdAddWeighting" min="-2" max="-2" attributes="0"/>
@@ -557,7 +559,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane4" pref="369" max="32767" attributes="0"/>
+                      <Component id="jScrollPane4" pref="380" max="32767" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="cmdRemoveWeighting" alignment="3" min="-2" max="-2" attributes="0"/>
