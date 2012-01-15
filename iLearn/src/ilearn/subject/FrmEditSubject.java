@@ -98,6 +98,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
         cmbTeacher.setSelectedItem(detail.get(2));
         txtSubjectName.setText(detail.get(3));
         txtDescription.setText(detail.get(4));
+        spinnerCredits.setValue(Integer.valueOf(detail.get(6)));
         Subject.resetWeightings();
         Subject.loadSubjectWeightings(id);
         weightingTable.setModel(Subject.getWeightingTable());

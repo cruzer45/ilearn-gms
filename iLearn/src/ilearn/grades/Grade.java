@@ -5,7 +5,6 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.student.Student;
-import ilearn.subject.Subject;
 import ilearn.term.Term;
 import ilearn.user.User;
 import java.sql.PreparedStatement;

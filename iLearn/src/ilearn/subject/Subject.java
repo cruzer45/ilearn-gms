@@ -343,18 +343,19 @@ public class Subject
         ArrayList<String> details = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subStatus` FROM `Subject` WHERE `subID` = ?;";
+            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `Subject` WHERE `subID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
-                details.add(rs.getString("subID"));
-                details.add(rs.getString("subCode"));
-                details.add(Staff.getStaffName(rs.getString("subStaffCode")));
-                details.add(rs.getString("subName"));
-                details.add(rs.getString("subDescription"));
-                details.add(rs.getString("subStatus"));
+                details.add(rs.getString("subID"));//0
+                details.add(rs.getString("subCode"));//1
+                details.add(Staff.getStaffName(rs.getString("subStaffCode")));//2
+                details.add(rs.getString("subName"));//3
+                details.add(rs.getString("subDescription"));//4
+                details.add(rs.getString("subStatus"));//5
+                details.add(rs.getString("subCredits"));//6
             }
             rs.close();
             prep.close();
