@@ -1207,7 +1207,7 @@ public class ILearnView extends FrameView
         //CLASS REPORTS
         classReports.setEnabled(UserCheck.canSeeClassReports());
         classListReport.setEnabled(UserCheck.canSeeClassListReport());
-        classGradeBook.setEnabled(UserCheck.canSeeClassListReport());
+        classGradeBook.setEnabled(UserCheck.canSeeClassGradeBook());
         //REPORT CARD REPORTS
         reportCardsMenu.setEnabled(UserCheck.canSeeReportCards());
         midTermReports.setEnabled(UserCheck.canSeeMidTermReports());
