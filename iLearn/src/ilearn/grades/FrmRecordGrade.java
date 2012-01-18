@@ -398,12 +398,12 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         }
         DefaultTableModel model = Grade.getStudentList(cmbClass.getSelectedItem().toString());
         tblGrades.setModel(model);
-        JComboBox comboBox = new JComboBox(Grade.getValidStates());
-        comboBox.setEditable(true);
-        DefaultCellEditor editor = new DefaultCellEditor(comboBox);
+        //JComboBox comboBox = new JComboBox(Grade.getValidStates());
+        //comboBox.setEditable(true);
+        //DefaultCellEditor editor = new DefaultCellEditor(comboBox);
         // Assign the editor to the fourth column
-        TableColumnModel tcm = tblGrades.getColumnModel();
-        tcm.getColumn(3).setCellEditor(editor);
+        //TableColumnModel tcm = tblGrades.getColumnModel();
+        //tcm.getColumn(3).setCellEditor(editor);
         assmtTabbedPane.setSelectedIndex(assmtTabbedPane.getSelectedIndex() + 1);
     }
 
@@ -415,6 +415,22 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         for (int i = 0; i < tblGrades.getRowCount(); i++)
         {
             String points = tblGrades.getValueAt(i, 3).toString().trim();
+            if (points.equals("A") || points.equals("a"))
+            {
+                points = "Absent";
+                tblGrades.setValueAt(points,i, 3);
+            }
+            else if (points.equals("E") || points.equals("e"))
+            {
+                points = "Excused";
+                tblGrades.setValueAt(points,i, 3);
+            }
+            else if (points.equals("I") || points.equals("i"))
+            {
+                points = "Incomplete";
+                tblGrades.setValueAt(points,i, 3);
+            }
+                                    
             String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
             if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))
             {

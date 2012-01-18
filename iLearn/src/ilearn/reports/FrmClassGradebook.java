@@ -9,6 +9,7 @@ import ilearn.grades.Grade;
 import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.school.School;
 import ilearn.staff.Staff;
 import ilearn.subject.Subject;
 import ilearn.term.Term;
@@ -235,6 +236,25 @@ public class FrmClassGradebook extends javax.swing.JDialog
             {
                 return null;
             }
+            String subID = Subject.getSubjectID(subjectCode);
+            if (Subject.hasWeighting(subID))
+            {
+                exportWeightedSubject();
+            }
+            else
+            {
+                exportUnWeightedSubject();
+            }
+            return null;
+        }
+
+        private void exportWeightedSubject()
+        {
+            //TODO Inplement the weighted spreadsheet
+        }
+
+        private void exportUnWeightedSubject()
+        {
             try
             {
                 //Create the list objects
@@ -245,6 +265,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 ArrayList<Integer> assmtTotalPoints = new ArrayList<Integer>();
                 ArrayList<String> studentIDs = new ArrayList<String>();
                 ArrayList<String> studentNames = new ArrayList<String>();
+                int passingMark = (School.getPassingMark() / 100);
                 //Get the list of assessments
                 String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY  `assmtDate` ASC LIMIT 0, 1000;";
                 PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
@@ -340,7 +361,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                                 double maxPoints = Double.valueOf(assmtTotalPoints.get(i));
                                 double assmtGrade = Double.valueOf(grade);
                                 gradeCell.setCellValue(assmtGrade);
-                                if ((assmtGrade / maxPoints) < .7)
+                                if ((assmtGrade / maxPoints) < passingMark)
                                 {
                                     CellStyle style = wb.createCellStyle();
                                     Font font = wb.createFont();
@@ -422,7 +443,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 Row passPercentRow = sheet.createRow(12 + studentIDs.size());
                 Row failCountRow = sheet.createRow(13 + studentIDs.size());
                 Row failPercentRow = sheet.createRow(14 + studentIDs.size());
-
                 minRow.createCell(1).setCellValue("Minimum");
                 avgRow.createCell(1).setCellValue("Average");
                 maxRow.createCell(1).setCellValue("Maximum");
@@ -453,9 +473,8 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     Cell passPercentCell = passPercentRow.createCell(i);
                     //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
                     int classSize = studentIDs.size();
-                    passPercentCell.setCellValue( Double.valueOf(passCount) / Double.valueOf(classSize));
+                    passPercentCell.setCellValue(Double.valueOf(passCount) / Double.valueOf(classSize));
                     passPercentCell.setCellStyle(percentStyle);
-                    
                     //Pass Info
                     int failcount = classSize - passCount;
                     Cell failcountCell = failCountRow.createCell(i);
@@ -465,9 +484,8 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     //Pass Percent
                     Cell failPercentCell = failPercentRow.createCell(i);
                     //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                    failPercentCell.setCellValue( Double.valueOf(failcount) / Double.valueOf(classSize));
+                    failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
                     failPercentCell.setCellStyle(percentStyle);
-
                 }
                 setMessage("Saving the file.");
                 // Write the output to a file
@@ -487,7 +505,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }
-            return null;
         }
 
         @Override

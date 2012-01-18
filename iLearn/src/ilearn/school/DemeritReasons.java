@@ -26,7 +26,6 @@ public class DemeritReasons
     {
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -40,7 +39,6 @@ public class DemeritReasons
                     return o.getClass();
                 }
             }
-
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -83,7 +81,6 @@ public class DemeritReasons
             prep.execute();
             prep.close();
             successful = true;
-
             String message = "Demerit reason was added " + demReason + " was added.";
             iLogger.logMessage(message, "Add", "Demerit Reason");
         }
@@ -106,7 +103,6 @@ public class DemeritReasons
             prep.executeUpdate();
             prep.close();
             successful = true;
-
             String message = "Demerit reason with id " + id + " was deleted.";
             iLogger.logMessage(message, "Delete", "Demerit Reason");
         }
