@@ -8,7 +8,7 @@ package ilearn.kernel;
  *
  * @author mrogers
  */
-public class KeyboardInputListener 
+public class KeyboardInputListener
 {
-    
+
 }

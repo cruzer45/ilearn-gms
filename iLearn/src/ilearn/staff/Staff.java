@@ -191,7 +191,7 @@ public class Staff
 
     /**
      * Returns a list of the staff members names.
-     * @return 
+     * @return
      */
     public static ArrayList<String> getStaffList()
     {

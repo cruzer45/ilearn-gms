@@ -93,4 +93,25 @@ public class School
         }
         return successful;
     }
+
+    public static int getPassingMark()
+    {
+        int passingmark = 70; //set a default passing mark of 70%
+        try
+        {
+            String sql = "SELECT `schPassingMark` FROM `School`;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                passingmark = rs.getInt("schPassingMark");
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retreiving the passing mark.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return passingmark;
+    }
 }

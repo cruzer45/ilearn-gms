@@ -185,6 +185,11 @@ public class Subject
         return successful;
     }
 
+    /**
+     * This method checks if the specified subject has weighting assigned to it.
+     * @param subID
+     * @return
+     */
     public static boolean hasWeighting(String subID)
     {
         boolean hasWeight = false;
@@ -216,6 +221,10 @@ public class Subject
         return hasWeight;
     }
 
+    /**
+     * This method loads the subject weighting in to the class variables to be manipulated later.
+     * @param subID
+     */
     public static void loadSubjectWeightings(String subID)
     {
         try
@@ -239,6 +248,17 @@ public class Subject
         }
     }
 
+    /**
+     * This method updates a subject's details with the ones supplied
+     * @param subCode
+     * @param subStaffCode
+     * @param subName
+     * @param subDescription
+     * @param subCredits
+     * @param subStatus
+     * @param subID
+     * @return
+     */
     public static boolean updateSubject(String subCode, String subStaffCode, String subName, String subDescription, String subCredits, String subStatus, String subID)
     {
         boolean successful = false;
