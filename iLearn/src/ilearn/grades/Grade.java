@@ -4,6 +4,7 @@ import ilearn.classes.Classes;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
+import ilearn.school.School;
 import ilearn.student.Student;
 import ilearn.term.Term;
 import ilearn.user.User;
@@ -1369,13 +1370,15 @@ public class Grade
         int passCount = 0;
         try
         {
+            double passMark = (School.getPassingMark() / 100);
             //get the general info about the assessment
             String sql = "SELECT COUNT(`grdStuID`) AS 'Pass' "
                          + " FROM `TermGrade` "
                          + " INNER JOIN `Assments` ON `TermGrade`.`grdAssmtID` = `Assments`.`assmtID`"
-                         + " WHERE (`grdPointsEarned` >= (`assmtTotalPoints` * .7)) AND `assmtID` = ? ";
+                         + " WHERE (`grdPointsEarned` >= (`assmtTotalPoints` * ?)) AND `assmtID` = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-            prep.setString(1, assmtID);
+            prep.setDouble(1, passMark);
+            prep.setString(2, assmtID);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {

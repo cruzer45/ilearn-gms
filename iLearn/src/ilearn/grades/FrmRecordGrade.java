@@ -12,12 +12,9 @@ import ilearn.term.Term;
 import ilearn.user.User;
 import java.util.ArrayList;
 import java.util.Date;
-import javax.swing.DefaultCellEditor;
 import javax.swing.DefaultComboBoxModel;
-import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
 import org.jdesktop.application.Action;
 
 /**
@@ -430,7 +427,6 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
                 points = "Incomplete";
                 tblGrades.setValueAt(points,i, 3);
             }
-                                    
             String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
             if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))
             {
