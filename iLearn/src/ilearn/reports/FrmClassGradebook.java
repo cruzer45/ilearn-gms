@@ -239,7 +239,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
             String subID = Subject.getSubjectID(subjectCode);
             if (Subject.hasWeighting(subID))
             {
-                exportWeightedSubject();
+                exportWeightedSubject(subID);
             }
             else
             {
@@ -248,11 +248,292 @@ public class FrmClassGradebook extends javax.swing.JDialog
             return null;
         }
 
-        private void exportWeightedSubject()
+        /**
+         * This method calculates the grade for a subject with weighting assigned to it.
+         */
+        private void exportWeightedSubject(String subID)
         {
-            //TODO Inplement the weighted spreadsheet
+            try
+            {
+                /**
+                 * Get the passing marks and assessments
+                 */
+                double passingMark = (School.getPassingMark() / 100);
+                ArrayList<String> assmtWeightType = new ArrayList<String>();
+                ArrayList<Integer> assmtWeight = new ArrayList<Integer>();
+                //
+                //Get the assignment types and weightings.
+                String sql = " SELECT `assmtType`, `weighting` FROM `Subject_Weightings`  INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID` WHERE `subID` = ? ORDER BY `weighting` DESC;";
+                PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+                prep.setString(1, subID);
+                ResultSet rs = prep.executeQuery();
+                while (rs.next())
+                {
+                    assmtWeightType.add(rs.getString("assmtType"));
+                    assmtWeight.add(rs.getInt("weighting"));
+                }
+                /**
+                 * Setup the workbook
+                 */
+                ArrayList<String> studentIDs = new ArrayList<String>();
+                ArrayList<String> studentNames = new ArrayList<String>();
+                Object[] stuInfo = Classes.getStudentNameList(classCode);
+                studentIDs = (ArrayList<String>) stuInfo[0];
+                studentNames = (ArrayList<String>) stuInfo[1];
+                setMessage("Creating the workbook.");
+                Workbook wb = new HSSFWorkbook();
+                CreationHelper createHelper = wb.getCreationHelper();
+                Sheet sheet = wb.createSheet(classCode + " Gradebook");
+                setMessage("Creating Gradebook.");
+                //Create the number format cell style
+                CellStyle numberStyle = wb.createCellStyle();
+                CellStyle numberStyle2 = wb.createCellStyle();
+                CellStyle percentStyle = wb.createCellStyle();
+                DataFormat format = wb.createDataFormat();
+                numberStyle.setDataFormat(format.getFormat("#,##0.00"));
+                numberStyle2.setDataFormat(format.getFormat("#,##0"));
+                percentStyle.setDataFormat((short) 0xa);
+                //Insert Initial info
+                Row row = sheet.createRow(0);
+                Cell cell = row.createCell(0);
+                cell.setCellValue("Gradebook");
+                row = sheet.createRow(1);
+                row.createCell(0).setCellValue("Class:");
+                row.createCell(1).setCellValue(classCode);
+                row.createCell(3).setCellValue("Subject:");
+                row.createCell(4).setCellValue(subjectCode);
+                row.createCell(6).setCellValue("Term:");
+                row.createCell(7).setCellValue(Term.getCurrentTermName());
+                row.createCell(9).setCellValue("Teacher:");
+                row.createCell(10).setCellValue(Staff.getStaffName(Subject.getSubjectTeacher(subjectCode)));
+                setMessage("Inserting Data.");
+                row = sheet.createRow(3);
+                row.createCell(0).setCellValue(createHelper.createRichTextString("ID"));
+                row.createCell(1).setCellValue(createHelper.createRichTextString("Name"));
+                int startColumn = 2; //This is the column the assessments will start to print.
+                int finishColumn = 0;
+                int studentStartRow = 7;
+                Row typeRow = sheet.getRow(3);
+                Row maxGradeRow = sheet.createRow(6);
+                maxGradeRow.createCell(1).setCellValue("Total Points");
+                Row titleRow = sheet.createRow(4);
+                titleRow.createCell(1).setCellValue("Title");
+                Row dateRow = sheet.createRow(5);
+                dateRow.createCell(1).setCellValue("Date");
+                //Print The student List.
+                for (int i = 0; i < studentIDs.size(); i++)
+                {
+                    Row studentRow = sheet.createRow(i + studentStartRow);
+                    studentRow.createCell(0).setCellValue(Integer.valueOf(studentIDs.get(i)));
+                    studentRow.createCell(1).setCellValue(studentNames.get(i));
+                }
+                /**
+                 * Print the Grades ordered by type and date.
+                 */
+                //Create the list objects
+                ArrayList<Integer> assmtIDs = new ArrayList<Integer>();
+                ArrayList<String> assmtTypes = new ArrayList<String>();
+                ArrayList<String> assmtTitles = new ArrayList<String>();
+                ArrayList<Date> assmtDates = new ArrayList<Date>();
+                ArrayList<Integer> assmtTotalPoints = new ArrayList<Integer>();
+                for (String assmtType : assmtWeightType)
+                {
+                    //Get the list of assessments
+                    String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' AND `assmtType` = ? ORDER BY  `assmtDate` ASC ";
+                    prep = Environment.getConnection().prepareStatement(sql1);
+                    prep.setString(1, classID);
+                    prep.setString(2, Term.getCurrentTerm());
+                    prep.setString(3, subjectCode);
+                    prep.setString(4, assmtType);
+                    rs = prep.executeQuery();
+                    while (rs.next())
+                    {
+                        assmtIDs.add(rs.getInt("assmtID"));
+                        assmtTypes.add(rs.getString("assmtType"));
+                        assmtTitles.add(rs.getString("assmtTitle"));
+                        assmtTotalPoints.add(rs.getInt("assmtTotalPoints"));
+                        assmtDates.add(rs.getDate("assmtDate"));
+                    }
+                    rs.close();
+                    prep.close();
+                    //Print the assessments
+                    for (int i = 0; i < assmtIDs.size(); i++)
+                    {
+                        finishColumn = startColumn + i;
+                        typeRow.createCell(startColumn + i).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
+                        maxGradeRow.createCell(startColumn + i).setCellValue(assmtTotalPoints.get(i));
+                        titleRow.createCell(startColumn + i).setCellValue(assmtTitles.get(i));
+                        Cell dateCell = dateRow.createCell(startColumn + i);
+                        dateCell.setCellValue(new Date(assmtDates.get(i).getTime()));
+                        CellStyle cellStyle = wb.createCellStyle();
+                        cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("MMM d, yyyy"));
+                        dateCell.setCellStyle(cellStyle);
+                        //for each student get their grade
+                        for (int j = 7; j < (sheet.getLastRowNum() + 1); j++)
+                        {
+                            Row studentRow = sheet.getRow(j);
+                            double stuID = studentRow.getCell(0).getNumericCellValue();
+                            ArrayList<String> stuGrade = Grade.getStudentGrade(assmtIDs.get(i).toString(), String.valueOf(stuID));
+                            try
+                            {
+                                String grade = stuGrade.get(0);
+                                Cell gradeCell = studentRow.createCell(startColumn + i);
+                                gradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                                try
+                                {
+                                    double maxPoints = Double.valueOf(assmtTotalPoints.get(i));
+                                    double assmtGrade = Double.valueOf(grade);
+                                    gradeCell.setCellValue(assmtGrade);
+                                    if ((assmtGrade / maxPoints) < passingMark)
+                                    {
+                                        CellStyle style = wb.createCellStyle();
+                                        Font font = wb.createFont();
+                                        font.setColor(HSSFColor.RED.index);
+                                        style.setFont(font);
+                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    }
+                                }
+                                catch (NumberFormatException numberFormatException)
+                                {
+                                    gradeCell.setCellValue(grade);
+                                    if (grade.equals("Excused"))
+                                    {
+                                        CellStyle style = wb.createCellStyle();
+                                        Font font = wb.createFont();
+                                        font.setColor(HSSFColor.LIGHT_BLUE.index);
+                                        style.setFont(font);
+                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    }
+                                    if (grade.equals("Incomplete"))
+                                    {
+                                        CellStyle style = wb.createCellStyle();
+                                        Font font = wb.createFont();
+                                        font.setColor(HSSFColor.RED.index);
+                                        style.setFont(font);
+                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    }
+                                    if (grade.equals("Absent"))
+                                    {
+                                        CellStyle style = wb.createCellStyle();
+                                        Font font = wb.createFont();
+                                        font.setColor(HSSFColor.RED.index);
+                                        style.setFont(font);
+                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    }
+                                }
+                            }
+                            catch (Exception e)
+                            {
+                                studentRow.createCell(startColumn + i).setCellValue("Missing");
+                                CellStyle style = wb.createCellStyle();
+                                Font font = wb.createFont();
+                                font.setColor(HSSFColor.RED.index);
+                                style.setFont(font);
+                                studentRow.getCell(startColumn + i).setCellStyle(style);
+                            }
+                        }
+                    }
+                    //Calculate student averages
+                    String totalPointsCell = "";
+                    titleRow = sheet.getRow(3);
+                    titleRow.createCell(finishColumn + 1).setCellValue("Average");
+                    for (int j = 6; j <= sheet.getLastRowNum(); j++)
+                    {
+                        Row studentRow = sheet.getRow(j);
+                        CellReference cellRefStart = new CellReference(studentRow.getRowNum(), startColumn);
+                        CellReference cellRefEnd = new CellReference(studentRow.getRowNum(), finishColumn);
+                        if (totalPointsCell.isEmpty())
+                        {
+                            CellReference totalMaxPoints = new CellReference(studentRow.getRowNum(), finishColumn + 1);
+                            totalPointsCell = totalMaxPoints.formatAsString();
+                        }
+                        if (j == 6)
+                        {
+                            studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + "))");
+                        }
+                        else
+                        {
+                            Cell avgCell = studentRow.createCell(finishColumn + 1);
+                            avgCell.setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
+                            avgCell.setCellStyle(numberStyle);
+                        }
+                    }
+                }
+                //calculate assessment minimum , maximum and average
+                Row minRow = sheet.createRow(8 + studentIDs.size());
+                Row avgRow = sheet.createRow(9 + studentIDs.size());
+                Row maxRow = sheet.createRow(10 + studentIDs.size());
+                Row passCountRow = sheet.createRow(11 + studentIDs.size());
+                Row passPercentRow = sheet.createRow(12 + studentIDs.size());
+                Row failCountRow = sheet.createRow(13 + studentIDs.size());
+                Row failPercentRow = sheet.createRow(14 + studentIDs.size());
+                minRow.createCell(1).setCellValue("Minimum");
+                avgRow.createCell(1).setCellValue("Average");
+                maxRow.createCell(1).setCellValue("Maximum");
+                passCountRow.createCell(1).setCellValue("Pass Count");
+                passPercentRow.createCell(1).setCellValue("Pass Percent");
+                failCountRow.createCell(1).setCellValue("Fail Count");
+                failPercentRow.createCell(1).setCellValue("Fail Percent");
+                for (int i = 2; i <= finishColumn; i++)
+                {
+                    CellReference cellRefStart = new CellReference(7, i);
+                    CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
+                    Cell minCell = minRow.createCell(i);
+                    minCell.setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    minCell.setCellStyle(numberStyle);
+                    Cell avgCell = avgRow.createCell(i);
+                    avgCell.setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    avgCell.setCellStyle(numberStyle);
+                    Cell maxCell = maxRow.createCell(i);
+                    maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                    maxCell.setCellStyle(numberStyle);
+                    //Pass Info
+                    int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
+                    Cell passCountCell = passCountRow.createCell(i);
+                    passCountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    passCountCell.setCellValue(passCount);
+                    passCountCell.setCellStyle(numberStyle2);
+                    //Pass Percent
+                    Cell passPercentCell = passPercentRow.createCell(i);
+                    //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
+                    int classSize = studentIDs.size();
+                    passPercentCell.setCellValue(Double.valueOf(passCount) / Double.valueOf(classSize));
+                    passPercentCell.setCellStyle(percentStyle);
+                    //Pass Info
+                    int failcount = classSize - passCount;
+                    Cell failcountCell = failCountRow.createCell(i);
+                    failcountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    failcountCell.setCellValue(failcount);
+                    failcountCell.setCellStyle(numberStyle2);
+                    //Pass Percent
+                    Cell failPercentCell = failPercentRow.createCell(i);
+                    //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
+                    failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
+                    failPercentCell.setCellStyle(percentStyle);
+                }
+                setMessage("Saving the file.");
+                // Write the output to a file
+                FileOutputStream fileOut = new FileOutputStream(selFile);
+                wb.write(fileOut);
+                fileOut.close();
+                if (Desktop.isDesktopSupported())
+                {
+                    Desktop desktop = Desktop.getDesktop();
+                    desktop.open(selFile);
+                }
+            }
+            catch (Exception e)
+            {
+                String message = "An error occurred while generating the gradebook.\n"
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
+                Utilities.showErrorMessage(rootPane, message);
+                Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, e);
+            }
         }
 
+        /**
+         * This method calculates the grades for a subject without weighting.
+         */
         private void exportUnWeightedSubject()
         {
             try
@@ -501,7 +782,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }
