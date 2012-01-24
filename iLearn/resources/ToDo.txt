@@ -1,6 +1,14 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
+Only assessments pertinent to subjects sho up.
+Change SBA to Practical for Agric, TD, Building,   Percentage beside assignment
+Integrated science, Bio & Chem Weighting changed to Test 40 , quiz 25 , 3rd & 4th, 
+Human & social Biology  TEst 40 , quiz 25 , research paper / Lab Activities Presentations 20
+
+4th Spanish Weighting , Quiz 30 , Activities pres Hw 15 , Test 40 , Proj 10 , Participation 5
+
+
 Report 1
     -  Gender , Village, District, SSN, DOB , 
 Age Distribution report per class (Semis)

@@ -398,12 +398,12 @@ public class FrmEditGrades extends javax.swing.JInternalFrame
             cmbSubject.setModel(new DefaultComboBoxModel(classSubjects.toArray()));
             DefaultTableModel model = Grade.getStudentList(cmbClass.getSelectedItem().toString());
             tblGrades.setModel(model);
-            JComboBox comboBox = new JComboBox(Grade.getValidStates());
-            comboBox.setEditable(true);
-            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
-            // Assign the editor to the fourth column
-            TableColumnModel tcm = tblGrades.getColumnModel();
-            tcm.getColumn(3).setCellEditor(editor);
+//            JComboBox comboBox = new JComboBox(Grade.getValidStates());
+//            comboBox.setEditable(true);
+//            DefaultCellEditor editor = new DefaultCellEditor(comboBox);
+//            // Assign the editor to the fourth column
+//            TableColumnModel tcm = tblGrades.getColumnModel();
+//            tcm.getColumn(3).setCellEditor(editor);
             //Get the grades if the class changed.
             getStudentGrades();
         }
