@@ -567,7 +567,7 @@ public class Classes
         ArrayList<String> stuName = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, CONCAT_WS(' ',`stuFirstName`, `stuLastName`) AS 'Name', `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, CONCAT_WS(', ',`stuLastName`, `stuFirstName` ) AS 'Name', `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active' ORDER BY CONCAT_WS(', ',`stuLastName`, `stuFirstName`);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();

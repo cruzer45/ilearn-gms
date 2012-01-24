@@ -29,6 +29,7 @@ import javax.swing.JFileChooser;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.hssf.util.HSSFColor;
+import org.apache.poi.ss.formula.FormulaParseException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -258,9 +259,11 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 /**
                  * Get the passing marks and assessments
                  */
+                String subCode = Subject.getSubjectCode(subID);
                 double passingMark = (School.getPassingMark() / 100);
                 ArrayList<String> assmtWeightType = new ArrayList<String>();
                 ArrayList<Integer> assmtWeight = new ArrayList<Integer>();
+                ArrayList<CellReference> cellReferences = new ArrayList<CellReference>();
                 //
                 //Get the assignment types and weightings.
                 String sql = " SELECT `assmtType`, `weighting` FROM `Subject_Weightings`  INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID` WHERE `subID` = ? ORDER BY `weighting` DESC;";
@@ -311,8 +314,9 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 row.createCell(0).setCellValue(createHelper.createRichTextString("ID"));
                 row.createCell(1).setCellValue(createHelper.createRichTextString("Name"));
                 int startColumn = 2; //This is the column the assessments will start to print.
-                int finishColumn = 0;
+                int finishColumn = 2;
                 int studentStartRow = 7;
+                int assessmentPrinted = 0;
                 Row typeRow = sheet.getRow(3);
                 Row maxGradeRow = sheet.createRow(6);
                 maxGradeRow.createCell(1).setCellValue("Total Points");
@@ -357,13 +361,13 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     rs.close();
                     prep.close();
                     //Print the assessments
-                    for (int i = 0; i < assmtIDs.size(); i++)
+                    for (int i = assessmentPrinted; i < assmtIDs.size(); i++)
                     {
-                        finishColumn = startColumn + i;
-                        typeRow.createCell(startColumn + i).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
-                        maxGradeRow.createCell(startColumn + i).setCellValue(assmtTotalPoints.get(i));
-                        titleRow.createCell(startColumn + i).setCellValue(assmtTitles.get(i));
-                        Cell dateCell = dateRow.createCell(startColumn + i);
+                        finishColumn++;
+                        typeRow.createCell(finishColumn).setCellValue(assmtIDs.get(i) + " - " + assmtTypes.get(i));
+                        maxGradeRow.createCell(finishColumn).setCellValue(assmtTotalPoints.get(i));
+                        titleRow.createCell(finishColumn).setCellValue(assmtTitles.get(i));
+                        Cell dateCell = dateRow.createCell(finishColumn);
                         dateCell.setCellValue(new Date(assmtDates.get(i).getTime()));
                         CellStyle cellStyle = wb.createCellStyle();
                         cellStyle.setDataFormat(createHelper.createDataFormat().getFormat("MMM d, yyyy"));
@@ -377,7 +381,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                             try
                             {
                                 String grade = stuGrade.get(0);
-                                Cell gradeCell = studentRow.createCell(startColumn + i);
+                                Cell gradeCell = studentRow.createCell(finishColumn);
                                 gradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
                                 try
                                 {
@@ -390,7 +394,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                                         Font font = wb.createFont();
                                         font.setColor(HSSFColor.RED.index);
                                         style.setFont(font);
-                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                        studentRow.getCell(finishColumn).setCellStyle(style);
                                     }
                                 }
                                 catch (NumberFormatException numberFormatException)
@@ -402,7 +406,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                                         Font font = wb.createFont();
                                         font.setColor(HSSFColor.LIGHT_BLUE.index);
                                         style.setFont(font);
-                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                        studentRow.getCell(finishColumn).setCellStyle(style);
                                     }
                                     if (grade.equals("Incomplete"))
                                     {
@@ -410,7 +414,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                                         Font font = wb.createFont();
                                         font.setColor(HSSFColor.RED.index);
                                         style.setFont(font);
-                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                        studentRow.getCell(finishColumn).setCellStyle(style);
                                     }
                                     if (grade.equals("Absent"))
                                     {
@@ -418,46 +422,43 @@ public class FrmClassGradebook extends javax.swing.JDialog
                                         Font font = wb.createFont();
                                         font.setColor(HSSFColor.RED.index);
                                         style.setFont(font);
-                                        studentRow.getCell(startColumn + i).setCellStyle(style);
+                                        studentRow.getCell(finishColumn).setCellStyle(style);
                                     }
                                 }
                             }
                             catch (Exception e)
                             {
-                                studentRow.createCell(startColumn + i).setCellValue("Missing");
+                                studentRow.createCell(finishColumn).setCellValue("Missing");
                                 CellStyle style = wb.createCellStyle();
                                 Font font = wb.createFont();
                                 font.setColor(HSSFColor.RED.index);
                                 style.setFont(font);
-                                studentRow.getCell(startColumn + i).setCellStyle(style);
+                                studentRow.getCell(finishColumn).setCellStyle(style);
                             }
                         }
+                        assessmentPrinted++;
                     }
-                    //Calculate student averages
-                    String totalPointsCell = "";
-                    titleRow = sheet.getRow(3);
-                    titleRow.createCell(finishColumn + 1).setCellValue("Average");
-                    for (int j = 6; j <= sheet.getLastRowNum(); j++)
+
+
+                    //Calculate SectionAverage
+                    maxGradeRow.createCell(finishColumn + 1).setCellValue("");
+                    titleRow.createCell(finishColumn + 1).setCellValue(assmtType + " Average");
+                    for (int j = 7; j < (sheet.getLastRowNum() + 1); j++)
                     {
                         Row studentRow = sheet.getRow(j);
-                        CellReference cellRefStart = new CellReference(studentRow.getRowNum(), startColumn);
-                        CellReference cellRefEnd = new CellReference(studentRow.getRowNum(), finishColumn);
-                        if (totalPointsCell.isEmpty())
-                        {
-                            CellReference totalMaxPoints = new CellReference(studentRow.getRowNum(), finishColumn + 1);
-                            totalPointsCell = totalMaxPoints.formatAsString();
-                        }
-                        if (j == 6)
-                        {
-                            studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + "))");
-                        }
-                        else
-                        {
-                            Cell avgCell = studentRow.createCell(finishColumn + 1);
-                            avgCell.setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
-                            avgCell.setCellStyle(numberStyle);
-                        }
+                        int stuID = (int) studentRow.getCell(0).getNumericCellValue();
+                        Cell averageGradeCell = studentRow.createCell(finishColumn + 1);
+                        averageGradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        //System.out.println(String.valueOf(stuID)+"-"+ subCode+"-"+ assmtType);
+                        double assessmentTypeAverage = Grade.getAssessmentTypeAverage(String.valueOf(stuID), subCode, assmtType);
+                        averageGradeCell.setCellValue(assessmentTypeAverage);
+                        averageGradeCell.setCellStyle(numberStyle);
                     }
+                    finishColumn += 2;
+
+                    CellReference aveReference = new CellReference(7, finishColumn + 1);
+                    cellReferences.add(aveReference);
+
                 }
                 //calculate assessment minimum , maximum and average
                 Row minRow = sheet.createRow(8 + studentIDs.size());
@@ -476,41 +477,67 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 failPercentRow.createCell(1).setCellValue("Fail Percent");
                 for (int i = 2; i <= finishColumn; i++)
                 {
-                    CellReference cellRefStart = new CellReference(7, i);
-                    CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
-                    Cell minCell = minRow.createCell(i);
-                    minCell.setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                    minCell.setCellStyle(numberStyle);
-                    Cell avgCell = avgRow.createCell(i);
-                    avgCell.setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                    avgCell.setCellStyle(numberStyle);
-                    Cell maxCell = maxRow.createCell(i);
-                    maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                    maxCell.setCellStyle(numberStyle);
-                    //Pass Info
-                    int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
-                    Cell passCountCell = passCountRow.createCell(i);
-                    passCountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                    passCountCell.setCellValue(passCount);
-                    passCountCell.setCellStyle(numberStyle2);
-                    //Pass Percent
-                    Cell passPercentCell = passPercentRow.createCell(i);
-                    //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                    int classSize = studentIDs.size();
-                    passPercentCell.setCellValue(Double.valueOf(passCount) / Double.valueOf(classSize));
-                    passPercentCell.setCellStyle(percentStyle);
-                    //Pass Info
-                    int failcount = classSize - passCount;
-                    Cell failcountCell = failCountRow.createCell(i);
-                    failcountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                    failcountCell.setCellValue(failcount);
-                    failcountCell.setCellStyle(numberStyle2);
-                    //Pass Percent
-                    Cell failPercentCell = failPercentRow.createCell(i);
-                    //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                    failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
-                    failPercentCell.setCellStyle(percentStyle);
+                    try
+                    {
+                        int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
+                        CellReference cellRefStart = new CellReference(7, i);
+                        CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
+                        Cell minCell = minRow.createCell(i);
+                        minCell.setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                        minCell.setCellStyle(numberStyle);
+                        Cell avgCell = avgRow.createCell(i);
+                        avgCell.setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                        avgCell.setCellStyle(numberStyle);
+                        Cell maxCell = maxRow.createCell(i);
+                        maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+                        maxCell.setCellStyle(numberStyle);
+                        //Pass Info
+                        //int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
+                        Cell passCountCell = passCountRow.createCell(i);
+                        passCountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        passCountCell.setCellValue(passCount);
+                        passCountCell.setCellStyle(numberStyle2);
+                        //Pass Percent
+                        Cell passPercentCell = passPercentRow.createCell(i);
+                        //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
+                        int classSize = studentIDs.size();
+                        passPercentCell.setCellValue(Double.valueOf(passCount) / Double.valueOf(classSize));
+                        passPercentCell.setCellStyle(percentStyle);
+                        //Pass Info
+                        int failcount = classSize - passCount;
+                        Cell failcountCell = failCountRow.createCell(i);
+                        failcountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        failcountCell.setCellValue(failcount);
+                        failcountCell.setCellStyle(numberStyle2);
+                        //Pass Percent
+                        Cell failPercentCell = failPercentRow.createCell(i);
+                        //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
+                        failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
+                        failPercentCell.setCellStyle(percentStyle);
+                    }
+                    catch (Exception ex)
+                    {
+                    }
                 }
+
+                //Calculate student averages
+                titleRow = sheet.getRow(4);
+                titleRow.createCell(finishColumn + 1).setCellValue("Weighted Average");
+                for (int j = 6; j <= sheet.getLastRowNum(); j++)
+                {
+                    try
+                    {
+                        Row studentRow = sheet.getRow(j);
+                        int stuID = (int) studentRow.getCell(0).getNumericCellValue();
+                        Cell avgCell = studentRow.createCell(finishColumn + 1);
+                        avgCell.setCellValue(Grade.calculateGradeWithWeighting(String.valueOf(stuID), subCode));
+                        avgCell.setCellStyle(numberStyle);
+                    }
+                    catch (Exception e)
+                    {
+                    }
+                }
+
                 setMessage("Saving the file.");
                 // Write the output to a file
                 FileOutputStream fileOut = new FileOutputStream(selFile);
@@ -525,7 +552,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
             catch (Exception e)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                                 + "Kindly check to make sure the file is not open in Excel and try again.";
+                        + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -782,7 +809,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                                 + "Kindly check to make sure the file is not open in Excel and try again.";
+                        + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }
