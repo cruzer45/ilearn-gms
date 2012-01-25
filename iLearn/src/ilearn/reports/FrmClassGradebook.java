@@ -29,7 +29,6 @@ import javax.swing.JFileChooser;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.CellReference;
 import org.apache.poi.hssf.util.HSSFColor;
-import org.apache.poi.ss.formula.FormulaParseException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.CreationHelper;
@@ -460,65 +459,65 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     cellReferences.add(aveReference);
 
                 }
-                //calculate assessment minimum , maximum and average
-                Row minRow = sheet.createRow(8 + studentIDs.size());
-                Row avgRow = sheet.createRow(9 + studentIDs.size());
-                Row maxRow = sheet.createRow(10 + studentIDs.size());
-                Row passCountRow = sheet.createRow(11 + studentIDs.size());
-                Row passPercentRow = sheet.createRow(12 + studentIDs.size());
-                Row failCountRow = sheet.createRow(13 + studentIDs.size());
-                Row failPercentRow = sheet.createRow(14 + studentIDs.size());
-                minRow.createCell(1).setCellValue("Minimum");
-                avgRow.createCell(1).setCellValue("Average");
-                maxRow.createCell(1).setCellValue("Maximum");
-                passCountRow.createCell(1).setCellValue("Pass Count");
-                passPercentRow.createCell(1).setCellValue("Pass Percent");
-                failCountRow.createCell(1).setCellValue("Fail Count");
-                failPercentRow.createCell(1).setCellValue("Fail Percent");
-                for (int i = 2; i <= finishColumn; i++)
-                {
-                    try
-                    {
-                        int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
-                        CellReference cellRefStart = new CellReference(7, i);
-                        CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
-                        Cell minCell = minRow.createCell(i);
-                        minCell.setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                        minCell.setCellStyle(numberStyle);
-                        Cell avgCell = avgRow.createCell(i);
-                        avgCell.setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                        avgCell.setCellStyle(numberStyle);
-                        Cell maxCell = maxRow.createCell(i);
-                        maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
-                        maxCell.setCellStyle(numberStyle);
-                        //Pass Info
-                        //int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
-                        Cell passCountCell = passCountRow.createCell(i);
-                        passCountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                        passCountCell.setCellValue(passCount);
-                        passCountCell.setCellStyle(numberStyle2);
-                        //Pass Percent
-                        Cell passPercentCell = passPercentRow.createCell(i);
-                        //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                        int classSize = studentIDs.size();
-                        passPercentCell.setCellValue(Double.valueOf(passCount) / Double.valueOf(classSize));
-                        passPercentCell.setCellStyle(percentStyle);
-                        //Pass Info
-                        int failcount = classSize - passCount;
-                        Cell failcountCell = failCountRow.createCell(i);
-                        failcountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                        failcountCell.setCellValue(failcount);
-                        failcountCell.setCellStyle(numberStyle2);
-                        //Pass Percent
-                        Cell failPercentCell = failPercentRow.createCell(i);
-                        //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
-                        failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
-                        failPercentCell.setCellStyle(percentStyle);
-                    }
-                    catch (Exception ex)
-                    {
-                    }
-                }
+//                //calculate assessment minimum , maximum and average
+//                Row minRow = sheet.createRow(8 + studentIDs.size());
+//                Row avgRow = sheet.createRow(9 + studentIDs.size());
+//                Row maxRow = sheet.createRow(10 + studentIDs.size());
+//                Row passCountRow = sheet.createRow(11 + studentIDs.size());
+//                Row passPercentRow = sheet.createRow(12 + studentIDs.size());
+//                Row failCountRow = sheet.createRow(13 + studentIDs.size());
+//                Row failPercentRow = sheet.createRow(14 + studentIDs.size());
+//                minRow.createCell(1).setCellValue("Minimum");
+//                avgRow.createCell(1).setCellValue("Average");
+//                maxRow.createCell(1).setCellValue("Maximum");
+//                passCountRow.createCell(1).setCellValue("Pass Count");
+//                passPercentRow.createCell(1).setCellValue("Pass Percent");
+//                failCountRow.createCell(1).setCellValue("Fail Count");
+//                failPercentRow.createCell(1).setCellValue("Fail Percent");
+//                for (int i = 2; i <= finishColumn; i++)
+//                {
+//                    try
+//                    {
+//                        int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
+//                        CellReference cellRefStart = new CellReference(7, i);
+//                        CellReference cellRefEnd = new CellReference(studentIDs.size() + 7, i);
+//                        Cell minCell = minRow.createCell(i);
+//                        minCell.setCellFormula("MIN(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+//                        minCell.setCellStyle(numberStyle);
+//                        Cell avgCell = avgRow.createCell(i);
+//                        avgCell.setCellFormula("AVERAGE(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+//                        avgCell.setCellStyle(numberStyle);
+//                        Cell maxCell = maxRow.createCell(i);
+//                        maxCell.setCellFormula("MAX(" + cellRefStart.formatAsString() + ":" + cellRefEnd.formatAsString() + ")");
+//                        maxCell.setCellStyle(numberStyle);
+//                        //Pass Info
+//                        //int passCount = Grade.getAssessmentPassCount(assmtIDs.get(i - 2).toString());
+//                        Cell passCountCell = passCountRow.createCell(i);
+//                        passCountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+//                        passCountCell.setCellValue(passCount);
+//                        passCountCell.setCellStyle(numberStyle2);
+//                        //Pass Percent
+//                        Cell passPercentCell = passPercentRow.createCell(i);
+//                        //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
+//                        int classSize = studentIDs.size();
+//                        passPercentCell.setCellValue(Double.valueOf(passCount) / Double.valueOf(classSize));
+//                        passPercentCell.setCellStyle(percentStyle);
+//                        //Pass Info
+//                        int failcount = classSize - passCount;
+//                        Cell failcountCell = failCountRow.createCell(i);
+//                        failcountCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+//                        failcountCell.setCellValue(failcount);
+//                        failcountCell.setCellStyle(numberStyle2);
+//                        //Pass Percent
+//                        Cell failPercentCell = failPercentRow.createCell(i);
+//                        //passPercentCell.setCellType(Cell.CELL_TYPE_FORMULA);
+//                        failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
+//                        failPercentCell.setCellStyle(percentStyle);
+//                    }
+//                    catch (Exception ex)
+//                    {
+//                    }
+//                }
 
                 //Calculate student averages
                 titleRow = sheet.getRow(4);
@@ -565,6 +564,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
         {
             try
             {
+                
                 //Create the list objects
                 ArrayList<Integer> assmtIDs = new ArrayList<Integer>();
                 ArrayList<String> assmtTypes = new ArrayList<String>();
@@ -718,31 +718,34 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         }
                     }
                 }
+                
                 //Calculate student averages
-                String totalPointsCell = "";
-                titleRow = sheet.getRow(3);
+                titleRow = sheet.getRow(4);
                 titleRow.createCell(finishColumn + 1).setCellValue("Average");
                 for (int j = 6; j <= sheet.getLastRowNum(); j++)
                 {
-                    Row studentRow = sheet.getRow(j);
-                    CellReference cellRefStart = new CellReference(studentRow.getRowNum(), startColumn);
-                    CellReference cellRefEnd = new CellReference(studentRow.getRowNum(), finishColumn);
-                    if (totalPointsCell.isEmpty())
+                    try
                     {
-                        CellReference totalMaxPoints = new CellReference(studentRow.getRowNum(), finishColumn + 1);
-                        totalPointsCell = totalMaxPoints.formatAsString();
-                    }
-                    if (j == 6)
-                    {
-                        studentRow.createCell(finishColumn + 1).setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + "))");
-                    }
-                    else
-                    {
+                        Row studentRow = sheet.getRow(j);
+                        int stuID = (int) studentRow.getCell(0).getNumericCellValue();
                         Cell avgCell = studentRow.createCell(finishColumn + 1);
-                        avgCell.setCellFormula("(SUM(" + cellRefStart.formatAsString() + ": " + cellRefEnd.formatAsString() + ")/" + totalPointsCell + "*100)");
+                        double grade = Grade.calculateGradeWithoutWeighting(String.valueOf(stuID), subjectCode);
+                        avgCell.setCellValue(grade);
                         avgCell.setCellStyle(numberStyle);
+                        if (grade < passingMark * 100)
+                        {
+                            CellStyle style = wb.createCellStyle();
+                            Font font = wb.createFont();
+                            font.setColor(HSSFColor.RED.index);
+                            style.setFont(font);
+                            avgCell.setCellStyle(style);
+                        }
+                    }
+                    catch (Exception e)
+                    {
                     }
                 }
+                
                 //calculate assessment minimum , maximum and average
                 Row minRow = sheet.createRow(8 + studentIDs.size());
                 Row avgRow = sheet.createRow(9 + studentIDs.size());
