@@ -4,7 +4,7 @@
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["c:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom`
@@ -219,18 +219,13 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Absents:]]></text>
 				</staticText>
-				<staticText>
-					<reportElement x="348" y="56" width="59" height="20"/>
-					<textElement verticalAlignment="Middle"/>
-					<text><![CDATA[Homeroom:]]></text>
-				</staticText>
-				<textField>
-					<reportElement x="407" y="76" width="165" height="20"/>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="199" y="76" width="165" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{clsHomeRoom}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{clsHomeRoom} + "\n Homeroom"]]></textFieldExpression>
 				</textField>
 				<textField pattern="###0.00">
 					<reportElement x="174" y="0" width="38" height="20"/>
@@ -272,6 +267,18 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					</textElement>
 					<text><![CDATA[Average]]></text>
 				</staticText>
+				<textField isStretchWithOverflow="true">
+					<reportElement x="407" y="76" width="165" height="20"/>
+					<box>
+						<topPen lineWidth="0.5"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[ "Mr. Omar Longsworth \n Principal"]]></textFieldExpression>
+				</textField>
+				<image scaleImage="FillFrame">
+					<reportElement x="407" y="18" width="165" height="56"/>
+					<imageExpression><![CDATA["../images/report_signature.jpg"]]></imageExpression>
+				</image>
 			</band>
 		</groupFooter>
 	</group>
