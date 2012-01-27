@@ -10,8 +10,6 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.kernel.logger.iLogger;
 import ilearn.reports.ReportLoader;
-import ilearn.student.Student;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.Task;
