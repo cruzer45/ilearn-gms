@@ -437,8 +437,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         }
                         assessmentPrinted++;
                     }
-
-
                     //Calculate SectionAverage
                     maxGradeRow.createCell(finishColumn + 1).setCellValue("");
                     titleRow.createCell(finishColumn + 1).setCellValue(assmtType + " Average");
@@ -454,10 +452,8 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         averageGradeCell.setCellStyle(numberStyle);
                     }
                     finishColumn += 2;
-
                     CellReference aveReference = new CellReference(7, finishColumn + 1);
                     cellReferences.add(aveReference);
-
                 }
 //                //calculate assessment minimum , maximum and average
 //                Row minRow = sheet.createRow(8 + studentIDs.size());
@@ -518,7 +514,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
 //                    {
 //                    }
 //                }
-
                 //Calculate student averages
                 titleRow = sheet.getRow(4);
                 titleRow.createCell(finishColumn + 1).setCellValue("Weighted Average");
@@ -536,7 +531,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     {
                     }
                 }
-
                 setMessage("Saving the file.");
                 // Write the output to a file
                 FileOutputStream fileOut = new FileOutputStream(selFile);
@@ -551,7 +545,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
             catch (Exception e)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -564,7 +558,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
         {
             try
             {
-                
                 //Create the list objects
                 ArrayList<Integer> assmtIDs = new ArrayList<Integer>();
                 ArrayList<String> assmtTypes = new ArrayList<String>();
@@ -718,7 +711,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                         }
                     }
                 }
-                
                 //Calculate student averages
                 titleRow = sheet.getRow(4);
                 titleRow.createCell(finishColumn + 1).setCellValue("Average");
@@ -745,7 +737,6 @@ public class FrmClassGradebook extends javax.swing.JDialog
                     {
                     }
                 }
-                
                 //calculate assessment minimum , maximum and average
                 Row minRow = sheet.createRow(8 + studentIDs.size());
                 Row avgRow = sheet.createRow(9 + studentIDs.size());
@@ -812,7 +803,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmClassGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }
