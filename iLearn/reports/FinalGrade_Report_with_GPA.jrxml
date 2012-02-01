@@ -3,8 +3,18 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
+	<style name="FailingGrade">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{graFinal} < 60]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF9999"/>
+		</conditionalStyle>
+	</style>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["c:/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="principalName" class="java.lang.String"/>
+	<parameter name="passingMark" class="int">
+		<defaultValueExpression><![CDATA[70]]></defaultValueExpression>
 	</parameter>
 	<queryString>
 		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom`
@@ -105,7 +115,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				</staticText>
 				<staticText>
 					<reportElement mode="Opaque" x="174" y="61" width="38" height="20" backcolor="#CCCCCC"/>
-					<box leftPadding="3" rightPadding="3">
+					<box leftPadding="0" rightPadding="0">
 						<topPen lineWidth="0.5" lineStyle="Solid"/>
 						<leftPen lineWidth="0.5" lineStyle="Solid"/>
 						<bottomPen lineWidth="0.5" lineStyle="Solid"/>
@@ -227,7 +237,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{clsHomeRoom} + "\n Homeroom"]]></textFieldExpression>
 				</textField>
-				<textField pattern="###0.00">
+				<textField pattern="###0">
 					<reportElement x="174" y="0" width="38" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
@@ -273,7 +283,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 						<topPen lineWidth="0.5"/>
 					</box>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[ "Mr. Omar Longsworth \n Principal"]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$P{principalName} + "\n Principal"]]></textFieldExpression>
 				</textField>
 				<image scaleImage="FillFrame">
 					<reportElement x="407" y="18" width="165" height="56"/>
@@ -321,7 +331,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{subName}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
-				<reportElement x="174" y="0" width="38" height="20"/>
+				<reportElement style="FailingGrade" mode="Opaque" x="174" y="0" width="38" height="20"/>
 				<box leftPadding="5" rightPadding="10">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
