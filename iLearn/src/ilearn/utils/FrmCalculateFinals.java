@@ -157,7 +157,7 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
             }
             if (!isCancelled())
             {
-                setProgress(1, 0, 3);
+                setProgress(1, 0, 4);
                 setMessage("Calculating Final Grades.");
                 boolean calculateFinals = Grade.calculateFinalGrade();
                 if (!calculateFinals)
@@ -165,7 +165,7 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
                     warnings += "An error occurred while calculating the grades.\n";
                     return false;
                 }
-                setProgress(2, 0, 3);
+                setProgress(2, 0, 4);
                 setMessage("Saving Grades");
                 boolean saveMidTerms = Grade.saveFinalGrades();
                 if (!saveMidTerms)
@@ -173,7 +173,10 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
                     warnings += "An error occurred while saving the grades.\n";
                     return false;
                 }
-                setProgress(3, 0, 3);
+                setProgress(3, 0,4);
+                setMessage("Calculating Averages");
+                Grade.calculateFinalAverage();
+                setProgress(4, 0, 4);
                 return true;  // return your result
             }
             return null;
