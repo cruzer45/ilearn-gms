@@ -10,18 +10,19 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["c:/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="principalName" class="java.lang.String"/>
 	<parameter name="passingMark" class="int">
 		<defaultValueExpression><![CDATA[70]]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom`
+		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom` , `graAvgFinal`,`graAvgGPA`
 FROM `Grade`
 INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID
 INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode
 INNER JOIN `Term` ON `Grade`.`graTrmCode` = `Term`.`trmID`
+LEFT JOIN `Grade_Average` ON `Grade_Average`.`graAvgStuID` = `Grade`.`graStuID`
 LEFT JOIN `Demerits` ON `Demerits`.`demStuID` = `Grade`.`graStuID` AND `Demerits`.`demTermID` = `Grade`.`graTrmCode` AND `Demerits`.`demStatus` = 'Active'
 LEFT JOIN `RollCall` ON `RollCall`.`rolStuID` = `Grade`.`graStuID` AND `RollCall`.`rolTrmCode` = `Grade`.`graTrmCode` AND `RollCall`.`rolStatus` = 'Active'
 LEFT JOIN `Class` ON `Class`.`clsCode` = `Student`.`stuClsCode`
@@ -51,6 +52,8 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<field name="rolAbsent" class="java.lang.Long"/>
 	<field name="trmShortName" class="java.lang.String"/>
 	<field name="clsHomeRoom" class="java.lang.String"/>
+	<field name="graAvgFinal" class="java.lang.Double"/>
+	<field name="graAvgGPA" class="java.lang.Double"/>
 	<variable name="graMid_1" class="java.lang.Double" resetType="Group" resetGroup="Student" calculation="Average">
 		<variableExpression><![CDATA[$F{graMid}]]></variableExpression>
 	</variable>
@@ -245,7 +248,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{graFinal_1}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{graAvgFinal}]]></textFieldExpression>
 				</textField>
 				<textField pattern="###0.00">
 					<reportElement x="212" y="0" width="35" height="20"/>
@@ -255,7 +258,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[$V{graGPA_2}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{graAvgGPA}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="292" y="0" width="28" height="20"/>

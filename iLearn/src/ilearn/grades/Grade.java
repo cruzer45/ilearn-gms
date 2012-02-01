@@ -818,7 +818,7 @@ public class Grade
                             grade = calculateGradeWithoutWeighting(stuID, sub);
                         }
                         addFinalGrade(stuID, sub, currentTerm, grade);
-                        System.out.println("Student No " + stuID + " got a " + grade + " for Subject " + sub);
+                        //System.out.println("Student No " + stuID + " got a " + grade + " for Subject " + sub);
                     }// end loop student
                     //get list of students and make sure they have a grade for each assessment
                 }// end loop subjects
@@ -1314,7 +1314,7 @@ public class Grade
             for (int i = 0; i < assmtWeightType.size(); i++)
             {
                 double assGrade = getAssessmentTypeAverage(stuID, subCode, assmtWeightType.get(i));
-                grade = grade + ((assGrade * assmtWeight.get(i) )/ 100);
+                grade = grade + ((assGrade * assmtWeight.get(i)) / 100);
             }
         }
         catch (Exception e)
@@ -1510,5 +1510,95 @@ public class Grade
             logger.log(Level.SEVERE, message, e);
         }
         return average;
+    }
+
+    public static void calculateFinalAverage()
+    {
+        try
+        {
+            ArrayList<String> students = new ArrayList<String>();
+            ArrayList<String> classCodes = new ArrayList<String>();
+            ArrayList<Double> grades = new ArrayList<Double>();
+            ArrayList<Double> gpas = new ArrayList<Double>();
+            String sql = "SELECT `graStuID`, `graClsCode`,`graTrmCode`, SUM(`subCredits`) as 'credits', SUM(`graFinal`*`subCredits`) AS 'points_earned' , (SUM(`graFinal`*`subCredits`) / SUM(`subCredits`)) as 'grade'  , (SUM(`graGPA`*`subCredits`) / SUM(`subCredits`)) as 'GPA' "
+                         + " FROM `Grade` "
+                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
+                         + " WHERE  `graSubCode` NOT LIKE '%ESPART%' "
+                         + " GROUP BY `graStuID`, `graClsCode`,`graTrmCode`;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                students.add(rs.getString("graStuID"));
+                classCodes.add(rs.getString("graClsCode"));
+                grades.add(rs.getDouble("grade"));
+                gpas.add(rs.getDouble("GPA"));
+            }
+            //Save the grades to a table
+            sql = "UPDATE `Grade_Average`  "
+                  + " SET `graAvgClsCode` = ?, `graAvgFinal` = ? , graAvgGPA = ?"
+                  + " WHERE `graAvgStuID` = ?  ";
+            prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < students.size(); i++)
+            {
+                prep.setString(1, classCodes.get(i));
+                prep.setDouble(2, grades.get(i));
+                prep.setDouble(3, gpas.get(i));
+                prep.setString(4, students.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while calculating final grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
+
+    public static void calculateMidAverage()
+    {
+        try
+        {
+            ArrayList<String> students = new ArrayList<String>();
+            ArrayList<String> classCodes = new ArrayList<String>();
+            ArrayList<Double> grades = new ArrayList<Double>();
+            ArrayList<Double> gpas = new ArrayList<Double>();
+            String currentTerm = Term.getCurrentTerm();
+            String sql = "SELECT `graStuID`, `graClsCode`,`graTrmCode`, SUM(`subCredits`) as 'credits', SUM(`graMid`*`subCredits`) AS 'points_earned' , (SUM(`graMid`*`subCredits`) / SUM(`subCredits`)) as 'grade' , (SUM(`graGPA`*`subCredits`) / SUM(`subCredits`)) as 'GPA' "
+                         + " FROM `Grade` "
+                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
+                         + " WHERE  `graSubCode` NOT LIKE '%ESPART%' "
+                         + " GROUP BY `graStuID`, `graClsCode`,`graTrmCode`;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                students.add(rs.getString("graStuID"));
+                classCodes.add(rs.getString("graClsCode"));
+                grades.add(rs.getDouble("grade"));
+                gpas.add(rs.getDouble("GPA"));
+            }
+            //Save the grades to a table
+            sql = "INSERT INTO `Grade_Average` (`graAvgStuID`, `graAvgClsCode`, `graAvgMid`, `graAvgTerm`, `graAvgGPA`) VALUES (?, ?, ?, ?, ?);";
+            prep = Environment.getConnection().prepareStatement(sql);
+            for (int i = 0; i < students.size(); i++)
+            {
+                prep.setString(1, students.get(i));
+                prep.setString(2, classCodes.get(i));
+                prep.setDouble(3, grades.get(i));
+                prep.setString(4, currentTerm);
+                prep.setDouble(5, gpas.get(i));
+                prep.addBatch();
+            }
+            prep.executeBatch();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while calculating final grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
     }
 }

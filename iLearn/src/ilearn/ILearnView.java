@@ -2470,8 +2470,8 @@ public class ILearnView extends FrameView
             }
             String message = "This action will do the following:\n\n"
                              + "1.   Remove ALL grades with a 0.\n"
-                             + "2.   Raise all grades between 68.5 and 70 to a 70.\n"
-                             + "3.   Raise all grades lower than a 60 to a 60.\n\n"
+                             // + "2.   Raise all grades between 68.5 and 70 to a 70.\n"
+                             // + "3.   Raise all grades lower than a 60 to a 60.\n\n"
                              + "Are you sure you want to proceed?";
             int response = Utilities.showConfirmDialog(desktopPane, message);
             if (response == JOptionPane.YES_OPTION)
