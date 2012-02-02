@@ -16,6 +16,10 @@
 	<parameter name="passingMark" class="int">
 		<defaultValueExpression><![CDATA[70]]></defaultValueExpression>
 	</parameter>
+	<parameter name="class" class="java.lang.String">
+		<parameterDescription><![CDATA[This is the class that will be loaded.]]></parameterDescription>
+		<defaultValueExpression><![CDATA['%']]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom` , `graAvgFinal`,`graAvgGPA`
 FROM `Grade`
@@ -26,7 +30,7 @@ LEFT JOIN `Grade_Average` ON `Grade_Average`.`graAvgStuID` = `Grade`.`graStuID`
 LEFT JOIN `Demerits` ON `Demerits`.`demStuID` = `Grade`.`graStuID` AND `Demerits`.`demTermID` = `Grade`.`graTrmCode` AND `Demerits`.`demStatus` = 'Active'
 LEFT JOIN `RollCall` ON `RollCall`.`rolStuID` = `Grade`.`graStuID` AND `RollCall`.`rolTrmCode` = `Grade`.`graTrmCode` AND `RollCall`.`rolStatus` = 'Active'
 LEFT JOIN `Class` ON `Class`.`clsCode` = `Student`.`stuClsCode`
-WHERE `Grade`.graStatus = 'Active'
+WHERE `Grade`.graStatus = 'Active' AND `Student`.`stuClsCode` LIKE $P{class}
 GROUP BY `Student`.`stuID`,`graSubCode`
 ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	</queryString>

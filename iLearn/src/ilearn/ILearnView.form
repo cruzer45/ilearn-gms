@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -231,6 +231,26 @@
                 <Property name="icon" type="javax.swing.Icon" resourceKey="removeGrade.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="removeGrade.text"/>
                 <Property name="name" type="java.lang.String" value="removeGrade" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="midTermHomeroomReportCards">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showMidTermHomeroomReports" methodName="showMidTermHomeroomReports"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="midTermHomeroomReportCards.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="midTermHomeroomReportCards.text"/>
+                <Property name="name" type="java.lang.String" value="midTermHomeroomReportCards" noResource="true"/>
+              </Properties>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="termEndHomeroomReportCards">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showHomeRoomReportCard" methodName="showHomeRoomReportCard"/>
+                </Property>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="termEndHomeroomReportCards.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="termEndHomeroomReportCards.text"/>
+                <Property name="name" type="java.lang.String" value="termEndHomeroomReportCards" noResource="true"/>
               </Properties>
             </MenuItem>
           </SubComponents>
@@ -1252,7 +1272,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="630" max="32767" attributes="0"/>
+                  <EmptySpace pref="616" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
