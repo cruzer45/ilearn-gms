@@ -673,4 +673,33 @@ public class User
         }
         return successful;
     }
+
+    public static String getHomeRoom()
+    {
+        String homeroom = "";
+        try
+        {
+            String sql = " SELECT `User`.`usrName`, `Class`.`clsCode` as 'homeroom' "
+                         + " FROM `User` "
+                         + " INNER JOIN `User_Staff` ON `User_Staff`.`userID` = `User`.`usrID` "
+                         + " INNER JOIN `Staff` ON `Staff`.`staID` = `User_Staff`.`staID` "
+                         + " INNER JOIN `Class` ON `Class`.`clsHomeRoom` = CONCAT_WS(' ',`staFirstName`,`staLastName`) "
+                         + " WHERE `usrName` = ? "
+                         + " ORDER BY `Class`.`clsCode`";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, userName);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                homeroom = rs.getString("homeroom");
+            }
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred retreiving the homeroom for this user.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return homeroom;
+    }
 }
