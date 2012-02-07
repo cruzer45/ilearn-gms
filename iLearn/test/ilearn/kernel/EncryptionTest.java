@@ -16,10 +16,10 @@ public class EncryptionTest
      */
     public static void main(String[] args)
     {
-        String plain = "jdbc:mysql://200.32.223.162:3306/iLearn";
+        String plain = "r0b3rt0";
         //plain = "2099-12-31";
         String encrypted = EncryptionHandler.encrypt(plain);
-        encrypted = "amRiYzpteXNxbDovLzIwMC4zMi4yMjMuMTYyOjMzMDYvaUxlYXJu";
+        //encrypted = "amRiYzpteXNxbDovLzIwMC4zMi4yMjMuMTYyOjMzMDYvaUxlYXJu";
         // System.out.println(plain);
         System.out.println(encrypted);
         System.out.println(EncryptionHandler.decrypt(encrypted));

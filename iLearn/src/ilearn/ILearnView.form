@@ -451,6 +451,16 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="classMastersheet">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showClassMastersheet" methodName="showClassMastersheet"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="classMastersheet.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="classMastersheet.text"/>
+                    <Property name="name" type="java.lang.String" value="classMastersheet" noResource="true"/>
+                  </Properties>
+                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="classGradeBook">
                   <Properties>
                     <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">

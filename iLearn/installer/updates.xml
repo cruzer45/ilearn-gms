@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <updateDescriptor baseUrl="">
-  <entry targetMediaFileId="20" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_windows_1_7_3.exe" newVersion="1.7.3" newMediaFileId="20" fileSize="67554816" bundledJre="" archive="false">
+  <entry targetMediaFileId="190" updatableVersionMin="" updatableVersionMax="" fileName="iLearn_unix_1_7_4.tar.gz" newVersion="1.7.4" newMediaFileId="190" fileSize="66813895" bundledJre="" archive="true">
     <comment />
   </entry>
 </updateDescriptor>
