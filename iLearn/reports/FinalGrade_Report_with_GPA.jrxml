@@ -244,7 +244,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{clsHomeRoom} + "\n Homeroom"]]></textFieldExpression>
 				</textField>
-				<textField pattern="###0">
+				<textField pattern="###0.00">
 					<reportElement x="174" y="0" width="38" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
