@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
+import javax.swing.SwingWorker;
 import javax.swing.table.DefaultTableModel;
 import org.jdesktop.application.Action;
 
@@ -111,13 +112,6 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         lblType.setName("lblType"); // NOI18N
         cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Select Subject ---" }));
         cmbType.setName("cmbType"); // NOI18N
-        cmbType.addActionListener(new java.awt.event.ActionListener()
-        {
-            public void actionPerformed(java.awt.event.ActionEvent evt)
-            {
-                cmbTypeActionPerformed(evt);
-            }
-        });
         jButton1.setAction(actionMap.get("next")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
@@ -302,13 +296,18 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             ArrayList<String> assmtTypes = Grade.getAssessmentTypes();
             cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
         }
+        SwingWorker swingWorker = new SwingWorker()
+        {
+            @Override
+            protected Object doInBackground() throws Exception
+            {
+                DefaultTableModel model = Grade.getStudentList(cmbClass.getSelectedItem().toString());
+                tblGrades.setModel(model);
+                return null;
+            }
+        };
+        swingWorker.run();
     }//GEN-LAST:event_cmbSubjectActionPerformed
-
-    private void cmbTypeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbTypeActionPerformed
-    {
-//GEN-HEADEREND:event_cmbTypeActionPerformed
-        next();
-    }//GEN-LAST:event_cmbTypeActionPerformed
 
     @Action
     public void Cancel()
