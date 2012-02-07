@@ -82,18 +82,18 @@
                                   <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblDate" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblMaxPoints" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="lblType" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblClass" alignment="0" min="-2" max="-2" attributes="0"/>
                                   <Component id="lblSubject" alignment="0" min="-2" max="-2" attributes="0"/>
-                                  <Component id="lblType" alignment="0" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="1" attributes="0">
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="cmbSubject" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="spinnerMaxPoints" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="calDate" alignment="0" pref="288" max="32767" attributes="0"/>
+                                  <Component id="txtTitle" alignment="0" pref="288" max="32767" attributes="0"/>
                                   <Component id="cmbType" alignment="0" pref="288" max="32767" attributes="0"/>
-                                  <Component id="calDate" alignment="1" pref="288" max="32767" attributes="0"/>
-                                  <Component id="txtTitle" alignment="1" pref="288" max="32767" attributes="0"/>
-                                  <Component id="cmbClass" alignment="0" pref="288" max="32767" attributes="0"/>
-                                  <Component id="cmbSubject" alignment="0" pref="288" max="32767" attributes="0"/>
-                                  <Component id="spinnerMaxPoints" alignment="1" pref="288" max="32767" attributes="0"/>
+                                  <Component id="cmbClass" alignment="1" pref="288" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -104,6 +104,16 @@
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSubject" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmbSubject" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblType" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -123,16 +133,6 @@
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="lblMaxPoints" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="spinnerMaxPoints" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="lblSubject" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cmbSubject" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace pref="222" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -227,10 +227,15 @@
             <Component class="javax.swing.JComboBox" name="cmbType">
               <Properties>
                 <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                  <StringArray count="0"/>
+                  <StringArray count="1">
+                    <StringItem index="0" value="--- Select Subject ---"/>
+                  </StringArray>
                 </Property>
                 <Property name="name" type="java.lang.String" value="cmbType" noResource="true"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cmbTypeActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JButton" name="jButton1">
               <Properties>

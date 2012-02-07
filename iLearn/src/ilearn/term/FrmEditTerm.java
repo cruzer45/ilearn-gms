@@ -19,7 +19,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
     public FrmEditTerm()
     {
         initComponents();
-        tblTerms.setModel(Term.getTermList());
+        tblTerms.setModel(Term.getTermListTableModel());
     }
 
     /** This method is called from within the constructor to
@@ -286,7 +286,7 @@ public class FrmEditTerm extends javax.swing.JInternalFrame
         if (Term.updateTerm(ID, termCode, shortName, longName, status))
         {
             //reload the list
-            tblTerms.setModel(Term.getTermList());
+            tblTerms.setModel(Term.getTermListTableModel());
             String message = "Succesfully updated the term's information.";
             Utilities.showInfoMessage(rootPane, message);
         }

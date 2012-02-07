@@ -46,7 +46,7 @@ public class Term
         return successful;
     }
 
-    public static DefaultTableModel getTermList()
+    public static DefaultTableModel getTermListTableModel()
     {
         DefaultTableModel model = new DefaultTableModel()
         {
@@ -188,5 +188,149 @@ public class Term
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    public static ArrayList<String> getTermList()
+    {
+        ArrayList<String> list = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `trmShortName` FROM `Term`";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                list.add(rs.getString("trmShortName"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the list of terms.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return list;
+    }
+
+    public static Object[] getClassListForTerm(String classCode, String termID)
+    {
+        ArrayList<String> studentID = new ArrayList<String>();
+        ArrayList<String> stuName = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT DISTINCT `stuID` as 'id', CONCAT_WS(', ',`stuLastName`,`stuFirstName`) as 'name' "
+                         + " FROM `Grade` "
+                         + " INNER JOIN `Student` ON `Student`.`stuID` = `Grade`.`graStuID` "
+                         + " WHERE `graTrmCode` = ? AND `graClsCode` = ? "
+                         + " ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`);";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, termID);
+            prep.setString(2, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentID.add(rs.getString("id"));
+                stuName.add(rs.getString("name"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of students for a class.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        Object[] stuList = new Object[]
+        {
+            studentID, stuName
+        };
+        return stuList;
+    }
+
+    public static Object[] getSubjectsforTerm(String classCode, String termID)
+    {
+        ArrayList<String> subCodes = new ArrayList<String>();
+        ArrayList<String> subNames = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT DISTINCT `Grade`.`graSubCode`, `subName` "
+                         + " FROM `Grade` "
+                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.`graSubCode` "
+                         + " WHERE `graTrmCode` = ? AND `graClsCode` = ? ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, termID);
+            prep.setString(2, classCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                subCodes.add(rs.getString("graSubCode"));
+                subNames.add(rs.getString("subName"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the list of subjects for a term.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        Object[] subList = new Object[]
+        {
+            subCodes, subNames
+        };
+        return subList;
+    }
+
+    public static String getTermIDFromShortName(String termName)
+    {
+        String id = "";
+        try
+        {
+            String sql = "SELECT `trmID` FROM `Term` WHERE `trmShortName` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, termName);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                id = rs.getString("trmID");
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the term id for the specified term short name.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return id;
+    }
+
+    public static double getStudentGradeforTerm(String classCode, String termID, String subCode, String stuID)
+    {
+        double grade = 0.0;
+        try
+        {
+            String sql = "SELECT `graFinal` FROM `Grade` "
+                         + " WHERE `graClsCode` = ? AND `graTrmCode` = ?  and `graSubCode` = ? and `graStuID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            prep.setString(2, termID);
+            prep.setString(3, subCode);
+            prep.setString(4, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                grade = rs.getDouble("graFinal");
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting a grade for a specific term.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return grade;
     }
 }

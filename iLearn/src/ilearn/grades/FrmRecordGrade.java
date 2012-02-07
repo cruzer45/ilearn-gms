@@ -68,7 +68,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getResourceMap(FrmRecordGrade.class);
+        org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmRecordGrade.class);
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
@@ -93,7 +93,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
                 cmbClassActionPerformed(evt);
             }
         });
-        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class).getContext().getActionMap(FrmRecordGrade.class, this);
+        javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmRecordGrade.class, this);
         cmdCancel1.setAction(actionMap.get("Cancel")); // NOI18N
         cmdCancel1.setName("cmdCancel1"); // NOI18N
         lblSubject.setText(resourceMap.getString("lblSubject.text")); // NOI18N
@@ -109,7 +109,15 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         });
         lblType.setText(resourceMap.getString("lblType.text")); // NOI18N
         lblType.setName("lblType"); // NOI18N
+        cmbType.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Select Subject ---" }));
         cmbType.setName("cmbType"); // NOI18N
+        cmbType.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
+                cmbTypeActionPerformed(evt);
+            }
+        });
         jButton1.setAction(actionMap.get("next")); // NOI18N
         jButton1.setText(resourceMap.getString("jButton1.text")); // NOI18N
         jButton1.setName("jButton1"); // NOI18N
@@ -131,23 +139,31 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
                                                   .addComponent(lblTitle)
                                                   .addComponent(lblDate)
                                                   .addComponent(lblMaxPoints)
+                                                  .addComponent(lblType)
                                                   .addComponent(lblClass)
-                                                  .addComponent(lblSubject)
-                                                  .addComponent(lblType))
+                                                  .addComponent(lblSubject))
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                                  .addComponent(cmbType, javax.swing.GroupLayout.Alignment.LEADING, 0, 288, Short.MAX_VALUE)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(cmbSubject, javax.swing.GroupLayout.Alignment.TRAILING, 0, 288, Short.MAX_VALUE)
+                                                  .addComponent(spinnerMaxPoints, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                                                   .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
                                                   .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE)
-                                                  .addComponent(cmbClass, javax.swing.GroupLayout.Alignment.LEADING, 0, 288, Short.MAX_VALUE)
-                                                  .addComponent(cmbSubject, javax.swing.GroupLayout.Alignment.LEADING, 0, 288, Short.MAX_VALUE)
-                                                  .addComponent(spinnerMaxPoints, javax.swing.GroupLayout.DEFAULT_SIZE, 288, Short.MAX_VALUE))))
+                                                  .addComponent(cmbType, 0, 288, Short.MAX_VALUE)
+                                                  .addComponent(cmbClass, javax.swing.GroupLayout.Alignment.TRAILING, 0, 288, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(generalPanelLayout.createSequentialGroup()
                       .addContainerGap()
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblClass)
+                                .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSubject)
+                                .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblType)
                                 .addComponent(cmbType, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -163,15 +179,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblMaxPoints)
                                 .addComponent(spinnerMaxPoints, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblClass)
-                                .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(lblSubject)
-                                .addComponent(cmbSubject, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 222, Short.MAX_VALUE)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel1)
                                 .addComponent(jButton1))
@@ -234,7 +242,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, gradesPanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -255,7 +263,7 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                      .addComponent(assmtTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 456, Short.MAX_VALUE)
                       .addContainerGap())
         );
         pack();
@@ -283,8 +291,24 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
     private void cmbSubjectActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbSubjectActionPerformed
     {
 //GEN-HEADEREND:event_cmbSubjectActionPerformed
-        next();
+        String subID = Subject.getSubjectID(cmbSubject.getSelectedItem().toString());
+        if (Subject.hasWeighting(subID))
+        {
+            ArrayList<String> assmtTypes = Subject.getSubjectAssessmentTypes(subID);
+            cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
+        }
+        else
+        {
+            ArrayList<String> assmtTypes = Grade.getAssessmentTypes();
+            cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
+        }
     }//GEN-LAST:event_cmbSubjectActionPerformed
+
+    private void cmbTypeActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbTypeActionPerformed
+    {
+//GEN-HEADEREND:event_cmbTypeActionPerformed
+        next();
+    }//GEN-LAST:event_cmbTypeActionPerformed
 
     @Action
     public void Cancel()
@@ -367,9 +391,9 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
         Date today = new Date();
         calDate.setDate(today);
         spinnerMaxPoints.setValue(100);
-        ArrayList<String> assmtTypes = Grade.getAssessmentTypes();
-        cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
-        cmbType.setSelectedItem("Home Work");
+//        ArrayList<String> assmtTypes = Grade.getAssessmentTypes();
+//        cmbType.setModel(new DefaultComboBoxModel(assmtTypes.toArray()));
+//        cmbType.setSelectedItem("Home Work");
         ArrayList<String> classList = new ArrayList<String>();
         if (User.getUserGroup().equals("Administration"))
         {
@@ -415,17 +439,17 @@ public class FrmRecordGrade extends javax.swing.JInternalFrame
             if (points.equals("A") || points.equals("a"))
             {
                 points = "Absent";
-                tblGrades.setValueAt(points,i, 3);
+                tblGrades.setValueAt(points, i, 3);
             }
             else if (points.equals("E") || points.equals("e"))
             {
                 points = "Excused";
-                tblGrades.setValueAt(points,i, 3);
+                tblGrades.setValueAt(points, i, 3);
             }
             else if (points.equals("I") || points.equals("i"))
             {
                 points = "Incomplete";
-                tblGrades.setValueAt(points,i, 3);
+                tblGrades.setValueAt(points, i, 3);
             }
             String name = tblGrades.getValueAt(i, 1).toString() + " " + tblGrades.getValueAt(i, 2).toString();
             if (!points.equals("Absent") && !points.equals("Excused") && !points.equals("Incomplete") && !points.equals(" ") && !points.equals(""))

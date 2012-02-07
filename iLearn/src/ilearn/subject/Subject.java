@@ -221,6 +221,33 @@ public class Subject
         return hasWeight;
     }
 
+    public static ArrayList<String> getSubjectAssessmentTypes(String subID)
+    {
+        ArrayList<String> assmtWeightType = new ArrayList<String>();
+        try
+        {
+            //Get the assignment types and weightings.
+            String sql = " SELECT `assmtType` "
+                         + " FROM `Subject_Weightings`  "
+                         + " INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID`  "
+                         + " WHERE `subID` = ? "
+                         + " ORDER BY `assmtType` ASC; ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, subID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                assmtWeightType.add(rs.getString("assmtType"));
+            }
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting the subject assessment types.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return assmtWeightType;
+    }
+
     /**
      * This method loads the subject weighting in to the class variables to be manipulated later.
      * @param subID
