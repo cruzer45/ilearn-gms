@@ -1,0 +1,27 @@
+			INSTALL
+============================================================
+
+Welcome to iLearn.
+
+In order to run iLearn you need the following;
+
+ - MySQL database server
+ - Oracle Java Runtime Environment 6 or later
+
+On Ubuntu / Debian based systems you can execute the following command to install MySQL:
+
+   $ sudo apt-get install mysql-server mysql-client
+   $ mysql --user=root
+     mysql> create database iLearn;
+     mysql> use iLearn;
+     mysql> grant all on iLearn.* to iLearn@localhost identified by '1l34rn';
+     mysql> flush privileges;
+     mysql> exit
+   
+   $ mysql --user=iLearn -p --database=iLearn
+
+To install the Java Runtime Environment you can follow the guide posted by Alin Andrei at the URL below.
+
+   http://www.webupd8.org/2011/09/how-to-install-oracle-java-7-jdk-in.html
+
+
