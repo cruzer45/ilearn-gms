@@ -7,7 +7,7 @@
 		<g:message code="student.socialSecurityNumber.label" default="Social Security Number" />
 		
 	</label>
-	<g:textField name="socialSecurityNumber" value="${studentInstance?.socialSecurityNumber}"/>
+	<g:textField name="socialSecurityNumber" readonly="readonly" value="${studentInstance?.socialSecurityNumber}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'firstName', 'error')} ">
@@ -15,7 +15,7 @@
 		<g:message code="student.firstName.label" default="First Name" />
 		
 	</label>
-	<g:textField name="firstName" value="${studentInstance?.firstName}"/>
+	<g:textField name="firstName" readonly="readonly" value="${studentInstance?.firstName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'lastName', 'error')} ">
@@ -23,7 +23,7 @@
 		<g:message code="student.lastName.label" default="Last Name" />
 		
 	</label>
-	<g:textField name="lastName" value="${studentInstance?.lastName}"/>
+	<g:textField name="lastName" readonly="readonly" value="${studentInstance?.lastName}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'otherNames', 'error')} ">
@@ -31,7 +31,7 @@
 		<g:message code="student.otherNames.label" default="Other Names" />
 		
 	</label>
-	<g:textField name="otherNames" value="${studentInstance?.otherNames}"/>
+	<g:textField name="otherNames" readonly="readonly" value="${studentInstance?.otherNames}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'dateOfBirth', 'error')} required">
@@ -39,7 +39,23 @@
 		<g:message code="student.dateOfBirth.label" default="Date Of Birth" />
 		<span class="required-indicator">*</span>
 	</label>
-	<g:datePicker name="dateOfBirth" precision="day"  value="${studentInstance?.dateOfBirth}"  />
+	${studentInstance?.dateOfBirth?.toString()}
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'classCode', 'error')} ">
+	<label for="classCode">
+		<g:message code="student.classCode.label" default="Class Code" />
+		
+	</label>
+	<g:textField name="classCode" readonly="readonly" value="${studentInstance?.classCode}"/>
+</div>
+
+<div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'status', 'error')} ">
+	<label for="status">
+		<g:message code="student.status.label" default="Status" />
+		
+	</label>
+	<g:textField name="status" readonly="readonly" value="${studentInstance?.status}"/>
 </div>
 
 <div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'photo', 'error')} required">
@@ -48,21 +64,5 @@
 		<span class="required-indicator">*</span>
 	</label>
 	<input type="file" id="photo" name="photo" />
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'classCode', 'error')} ">
-	<label for="classCode">
-		<g:message code="student.classCode.label" default="Class Code" />
-		
-	</label>
-	<g:textField name="classCode" value="${studentInstance?.classCode}"/>
-</div>
-
-<div class="fieldcontain ${hasErrors(bean: studentInstance, field: 'status', 'error')} ">
-	<label for="status">
-		<g:message code="student.status.label" default="Status" />
-		
-	</label>
-	<g:textField name="status" value="${studentInstance?.status}"/>
 </div>
 
