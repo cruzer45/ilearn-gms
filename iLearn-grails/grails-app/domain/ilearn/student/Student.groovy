@@ -8,7 +8,10 @@ class Student
 	String lastName
 	String otherNames
 	Date dateOfBirth
-
+	String classCode
+	String status
+	byte[] photo
+	
 
 	static mapping =
 	{
@@ -19,6 +22,9 @@ class Student
 		lastName column:'stuLastName'
 		otherNames column:'stuOtherNames'
 		dateOfBirth column:'stuDOB'
+		classCode column:'stuClsCode'
+		status column:'stuStatus'
+		photo column:'stuPhoto' 
 	}
 
 	static constraints =
@@ -29,5 +35,11 @@ class Student
 		lastName()
 		otherNames()
 		dateOfBirth()
+		photo()
+	}
+
+	String toString()
+	{
+		return firstName + " " + lastName
 	}
 }
