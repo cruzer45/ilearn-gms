@@ -34,7 +34,7 @@
 					
 						<g:sortableColumn property="dateOfBirth" title="${message(code: 'student.dateOfBirth.label', default: 'Date Of Birth')}" />
 					
-					
+						<g:sortableColumn property="classCode" title="${message(code: 'student.classCode.label', default: 'Class Code')}" />
 					
 					</tr>
 				</thead>
@@ -52,7 +52,7 @@
 					
 						<td><g:formatDate date="${studentInstance.dateOfBirth}" /></td>
 					
-						
+						<td>${fieldValue(bean: studentInstance, field: "classCode")}</td>
 					
 					</tr>
 				</g:each>

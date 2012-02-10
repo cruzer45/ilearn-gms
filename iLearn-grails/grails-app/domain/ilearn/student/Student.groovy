@@ -30,12 +30,14 @@ class Student
 	static constraints =
 	{
 		id( display:true)
-		socialSecurityNumber()
-		firstName()
-		lastName()
-		otherNames()
-		dateOfBirth()
-		photo()
+		socialSecurityNumber(editable:false)
+		firstName(editable:false)
+		lastName(editable:false)
+		otherNames(editable:false)
+		dateOfBirth(editable:false)
+		classCode(editable:false)
+		status(editable:false)
+		photo(editable:false)
 	}
 
 	String toString()
