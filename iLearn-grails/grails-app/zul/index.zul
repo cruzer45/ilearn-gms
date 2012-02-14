@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?init class="org.zkoss.zkplus.databind.AnnotateDataBinderInit" ?>
+<?variable-resolver class="org.zkoss.zkplus.spring.DelegatingVariableResolver"?>
+
+<zk xmlns="http://www.zkoss.org/2005/zul"
+    xmlns:h="http://www.w3.org/1999/xhtml"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.zkoss.org/2005/zul http://www.zkoss.org/2005/zul/zul.xsd">
+
+    
+    <window apply="ilearn.grails.IndexComposer" width="100%" height="100%">
+        <borderlayout width="100" height="100">
+            <north  size="100" flex="false"  splittable="false" collapsible="false">
+                <image id="logo" src="/images/logo.png" width="400"  height="140"/>
+            </north>
+           
+            <west title="West" size="25%" flex="true" maxsize="200" splittable="false" collapsible="true">
+                <vbox width ="100%">
+                    <menubar id="menubar" autodrop="true" orient="vertical" width="100%">
+                        <menu label="File"  >
+                            <menupopup>
+                                <menuitem src="/images/key_go.png" label="Change Password" />
+                                <menuseparator/>
+                                <menuitem src="/images/door_out.png" label="Log Out" /><menuseparator/>
+                            </menupopup>
+                        </menu>
+                        <menu label="Student" >
+                            <menupopup>
+                                <menuitem src="/images/user_student.png" label="New" />
+                                <menuitem src="/img/m2.gif" label="Open" />
+                                <menuitem src="/img/m3.gif" label="Save" />
+                                <menuseparator/>
+                                <menuitem label="Exit" onClick="alert(self.label)"/>
+                            </menupopup>
+                        </menu>
+                    </menubar>
+                </vbox>	
+            </west>
+            <center border="none" flex="true">
+				
+            </center>
+			
+        </borderlayout>
+    </window>
+
+</zk>
