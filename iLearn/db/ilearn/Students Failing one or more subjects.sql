@@ -1,6 +1,6 @@
-SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `Grade`.`graClsCode`,count(`graID`)
+SELECT CONCAT_WS(' ',`stuFirstName`,`stuLastName`) AS 'Name', `Grade`.`graClsCode`,`graSubCode`,`graFinal`
 FROM `Grade`
 INNER JOIN `Student` ON `Student`.`stuID` = `Grade`.`graStuID`
 WHERE `graFinal` < 60 
-group by `graStuID` 
-order by count(`graID`) desc,`graClsCode`, `graSubCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)
+
+order by `graClsCode`, `graStuID`, `graSubCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)
