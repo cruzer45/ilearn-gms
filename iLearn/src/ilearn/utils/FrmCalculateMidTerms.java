@@ -126,9 +126,9 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
             if (missingGrades > 0)
             {
                 String message = " There are " + missingGrades + " missing grades currently. \n\n"
-                                 + "Select Yes to proceed calculating mid terms with these missing grades.\n"
-                                 + "Select No to view a report displaying these missing grades.\n"
-                                 + "Select Cancel to stop the process.";
+                        + "Select Yes to proceed calculating mid terms with these missing grades.\n"
+                        + "Select No to view a report displaying these missing grades.\n"
+                        + "Select Cancel to stop the process.";
                 try
                 {
                     Thread.sleep(2000);
@@ -142,14 +142,14 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
                     setMessage("Loading reporting engine");
                     ReportLoader.showMissingGradeReportReport();
                     warnings += "Missing Grades were found in the system.\n"
-                                + "A report displaying the missing grades was generated.";
+                            + "A report displaying the missing grades was generated.";
                     this.cancel(true);
                     return false;
                 }
                 else if (response == JOptionPane.CANCEL_OPTION)
                 {
                     warnings += "Missing Grades were found in the system.\n"
-                                + "The user cancelled the process.";
+                            + "The user cancelled the process.";
                     this.cancel(true);
                     return false;
                 }

@@ -121,6 +121,7 @@ public class Grade
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -134,6 +135,7 @@ public class Grade
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -146,6 +148,7 @@ public class Grade
                 return editable;
                 //return false;
             }
+
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -166,6 +169,7 @@ public class Grade
                 }
             }
             // Protected methods
+
             protected boolean isValidValue(Object value)
             {
                 String sValue = (String) value;
@@ -186,6 +190,7 @@ public class Grade
                 }
                 return false;
             }
+
             protected boolean isDouble(String input)
             {
                 try
@@ -238,6 +243,7 @@ public class Grade
     {
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -251,6 +257,7 @@ public class Grade
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -262,6 +269,7 @@ public class Grade
                 }
                 return editable;
             }
+
             @Override
             public void setValueAt(Object value, int row, int column)
             {
@@ -283,11 +291,11 @@ public class Grade
         try
         {
             String sql = "SELECT `Student`.`stuID`, `Subject`.`subName`,`graMid`,`graFinal`,`graRemark`, `graID` "
-                         + "FROM `Grade` "
-                         + "INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID "
-                         + "INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
-                         + "WHERE `Grade`.graStatus = 'Active' AND `stuID` =  ? "
-                         + "ORDER BY `stuClsCode`,`stuID`, `Subject`.subName;";
+                    + "FROM `Grade` "
+                    + "INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID "
+                    + "INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
+                    + "WHERE `Grade`.graStatus = 'Active' AND `stuID` =  ? "
+                    + "ORDER BY `stuClsCode`,`stuID`, `Subject`.subName;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             ResultSet rs = prep.executeQuery();
@@ -320,6 +328,7 @@ public class Grade
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -333,6 +342,7 @@ public class Grade
                     return o.getClass();
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -345,10 +355,10 @@ public class Grade
         try
         {
             String sql = "SELECT DISTINCT `Student`.`stuID`,CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) AS `Name`,`Student`.`stuClsCode`"
-                         + "FROM `Grade` "
-                         + "INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID "
-                         + "WHERE `Grade`.graStatus = 'Active' AND ((stuID LIKE ?) OR (CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) LIKE ?) OR (stuClsCode LIKE ?)) "
-                         + "ORDER BY `stuClsCode`,`stuID`";
+                    + "FROM `Grade` "
+                    + "INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID "
+                    + "WHERE `Grade`.graStatus = 'Active' AND ((stuID LIKE ?) OR (CONCAT_WS(' ',`Student`.`stuFirstName`,`Student`.`stuLastName`) LIKE ?) OR (stuClsCode LIKE ?)) "
+                    + "ORDER BY `stuClsCode`,`stuID`";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -493,8 +503,8 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID` FROM `Assments` "
-                         + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
-                         + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
+                    + "WHERE  `assmtType` = ? AND `assmtTitle` = ? AND `assmtDate` = ? AND `assmtTotalPoints` = ? AND "
+                    + "`assmtClassID` = ? AND `assmtSubject` = ? AND `assmtTerm` = ? AND `assmtTeacher` = ? ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtType);
             prep.setString(2, assmtTitle);
@@ -525,6 +535,7 @@ public class Grade
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class getColumnClass(int columnIndex)
             {
@@ -545,6 +556,7 @@ public class Grade
                     return Object.class;
                 }
             }
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -560,10 +572,10 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` , `clsCode` "
-                         + "FROM `Assments` "
-                         + "INNER JOIN `Class` ON `Assments`.`assmtClassID` = `Class`.`clsID` "
-                         + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ? OR `clsCode` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
-                         + "LIMIT 0, 1000;";
+                    + "FROM `Assments` "
+                    + "INNER JOIN `Class` ON `Assments`.`assmtClassID` = `Class`.`clsID` "
+                    + "WHERE (`assmtID` LIKE ? OR `assmtType` LIKE ? OR `assmtTitle` LIKE ? OR `assmtDate` LIKE ? OR `assmtTotalPoints` LIKE ? OR `assmtClassID` LIKE ? OR `assmtSubject` LIKE ?  OR `assmtTeacher` LIKE ? OR `clsCode` LIKE ?) AND `assmtStatus` = 'Active' AND `assmtTerm` = ? "
+                    + "LIMIT 0, 1000;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -611,8 +623,8 @@ public class Grade
         try
         {
             String sql = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` "
-                         + "FROM `Assments` "
-                         + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
+                    + "FROM `Assments` "
+                    + "WHERE `assmtID` = ? AND `assmtStatus` = 'Active' ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             ResultSet rs = prep.executeQuery();
@@ -641,7 +653,7 @@ public class Grade
         try
         {
             String sql = "SELECT `grdID`, `grdStuID`, `grdAssmtID`, `grdPointsEarned`, `grdRemark`, `grdStatus` FROM `TermGrade` "
-                         + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
+                    + "WHERE `grdAssmtID` = ? AND `grdStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.setString(2, stuID);
@@ -691,8 +703,8 @@ public class Grade
         try
         {
             String sql = "SELECT count(`grdID`) AS 'Empty_Count'"
-                         + " FROM `TermGrade` "
-                         + " WHERE (`grdPointsEarned` IS NULL OR `grdPointsEarned` = '' OR `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete') AND `grdStatus` = 'Active'";
+                    + " FROM `TermGrade` "
+                    + " WHERE (`grdPointsEarned` IS NULL OR `grdPointsEarned` = '' OR `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete') AND `grdStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -827,9 +839,9 @@ public class Grade
             long endTime = System.currentTimeMillis();
             long duration = endTime - startTime;
             String time = String.format("%d min, %d sec",
-                                        TimeUnit.MILLISECONDS.toMinutes(duration),
-                                        TimeUnit.MILLISECONDS.toSeconds(duration)
-                                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
+                    TimeUnit.MILLISECONDS.toMinutes(duration),
+                    TimeUnit.MILLISECONDS.toSeconds(duration)
+                    - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
             System.out.println("That took " + time);
         }
         catch (Exception e)
@@ -882,9 +894,9 @@ public class Grade
             long endTime = System.currentTimeMillis();
             long duration = endTime - startTime;
             String time = String.format("%d min, %d sec",
-                                        TimeUnit.MILLISECONDS.toMinutes(duration),
-                                        TimeUnit.MILLISECONDS.toSeconds(duration)
-                                        - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
+                    TimeUnit.MILLISECONDS.toMinutes(duration),
+                    TimeUnit.MILLISECONDS.toSeconds(duration)
+                    - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(duration)));
             System.out.println("That took " + time);
         }
         catch (Exception e)
@@ -901,7 +913,7 @@ public class Grade
         try
         {
             String sql = "INSERT INTO `Grade` (`graStuID`, `graSubCode`, `graTrmCode`, `graMid`, `graFinal`, `graGPA`, `graLetterGrade`, `graRemark`) "
-                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < graStuID.size(); i++)
             {
@@ -987,7 +999,7 @@ public class Grade
         try
         {
             String sql = "UPDATE `Grade` SET `graFinal`= ? , `graRemark` = '' "
-                         + " WHERE `graStuID`= ? AND `graSubCode` = ? AND `graTrmCode` = ?; ";
+                    + " WHERE `graStuID`= ? AND `graSubCode` = ? AND `graTrmCode` = ?; ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < graStuID.size(); i++)
             {
@@ -1062,7 +1074,7 @@ public class Grade
                 stuCls.add(Student.getStudentClass(stuID));
             }
             sql = "UPDATE `Grade` SET `graClsCode`= ? "
-                  + "WHERE `graStuID`= ? AND `graStatus` = 'Active';";
+                    + "WHERE `graStuID`= ? AND `graStatus` = 'Active';";
             prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < stuIDs.size(); i++)
             {
@@ -1111,7 +1123,7 @@ public class Grade
         try
         {
             String sql = "UPDATE `Assments` SET `assmtStatus` = 'Closed' "
-                         + " WHERE `assmtStatus` = 'Active'";
+                    + " WHERE `assmtStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.execute();
             prep.close();
@@ -1131,7 +1143,7 @@ public class Grade
         try
         {
             String sql = "UPDATE `Grade` SET `graStatus` = 'Closed' "
-                         + " WHERE `graStatus` = 'Active'";
+                    + " WHERE `graStatus` = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.execute();
             prep.close();
@@ -1176,7 +1188,7 @@ public class Grade
             }
             System.out.println("Creating commit query");
             sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
-                  + " WHERE `graID`= ?;";
+                    + " WHERE `graID`= ?;";
             prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < gradeIDs.size(); i++)
             {
@@ -1224,7 +1236,7 @@ public class Grade
                 remarks.add(gpa.get(2));
             }
             sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
-                  + " WHERE `graID`= ?;";
+                    + " WHERE `graID`= ?;";
             prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < gradeIDs.size(); i++)
             {
@@ -1275,7 +1287,7 @@ public class Grade
         try
         {
             String sql = "UPDATE `Assments` SET `assmtStatus` = 'Inactive' WHERE `assmtID` = ?;",
-                   sql2 = "UPDATE `TermGrade` SET `grdStatus` = 'Inactive' WHERE `grdAssmtID` = ?;";
+                    sql2 = "UPDATE `TermGrade` SET `grdStatus` = 'Inactive' WHERE `grdAssmtID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, assmtID);
             prep.execute();
@@ -1331,11 +1343,11 @@ public class Grade
         try
         {
             String sql = " SELECT `grdStuID`, ((SUM(`grdPointsEarned`)/ SUM(`Assments`.assmtTotalPoints)) * 100) AS 'Grade' "
-                         + " FROM `TermGrade` "
-                         + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
-                         + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' "
-                         + " AND `grdStuID` = ? AND `assmtSubject` = ? "
-                         + " GROUP BY `grdStuID`;";
+                    + " FROM `TermGrade` "
+                    + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
+                    + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' "
+                    + " AND `grdStuID` = ? AND `assmtSubject` = ? "
+                    + " GROUP BY `grdStuID`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, subCode);
@@ -1361,13 +1373,13 @@ public class Grade
         try
         {
             String sql = " SELECT `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`) AS 'Student',`subName`, ((SUM(`grdPointsEarned`)/ SUM(`Assments`.assmtTotalPoints)) * 100) AS 'Grade' "
-                         + " FROM `TermGrade` "
-                         + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
-                         + " INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID` "
-                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject` "
-                         + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' AND `assmtType` != 'Exam' AND `stuID` = ? and `subCode` = ? "
-                         + " GROUP BY `grdStuID`, `subCode` "
-                         + " ORDER BY `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `subName` ;";
+                    + " FROM `TermGrade` "
+                    + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
+                    + " INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID` "
+                    + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject` "
+                    + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' AND `assmtType` != 'Exam' AND `stuID` = ? and `subCode` = ? "
+                    + " GROUP BY `grdStuID`, `subCode` "
+                    + " ORDER BY `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `subName` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, subCode);
@@ -1393,13 +1405,13 @@ public class Grade
         try
         {
             String sql = " SELECT `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`) AS 'Student',`subName`, ((SUM(`grdPointsEarned`)/ SUM(`Assments`.assmtTotalPoints)) * 100) AS 'Grade' "
-                         + " FROM `TermGrade` "
-                         + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
-                         + " INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID` "
-                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject` "
-                         + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' AND `assmtType` = 'Exam' AND `stuID` = ? and `subCode` = ? "
-                         + " GROUP BY `grdStuID`, `subCode` "
-                         + " ORDER BY `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `subName` ;";
+                    + " FROM `TermGrade` "
+                    + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
+                    + " INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID` "
+                    + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject` "
+                    + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused' AND `assmtType` = 'Exam' AND `stuID` = ? and `subCode` = ? "
+                    + " GROUP BY `grdStuID`, `subCode` "
+                    + " ORDER BY `stuClsCode`, CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `subName` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, subCode);
@@ -1427,9 +1439,9 @@ public class Grade
             double passMark = (School.getPassingMark() / 100);
             //get the general info about the assessment
             String sql = "SELECT COUNT(`grdStuID`) AS 'Pass' "
-                         + " FROM `TermGrade` "
-                         + " INNER JOIN `Assments` ON `TermGrade`.`grdAssmtID` = `Assments`.`assmtID`"
-                         + " WHERE (`grdPointsEarned` >= (`assmtTotalPoints` * ?)) AND `assmtID` = ? ";
+                    + " FROM `TermGrade` "
+                    + " INNER JOIN `Assments` ON `TermGrade`.`grdAssmtID` = `Assments`.`assmtID`"
+                    + " WHERE (`grdPointsEarned` >= (`assmtTotalPoints` * ?)) AND `assmtID` = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setDouble(1, passMark);
             prep.setString(2, assmtID);
@@ -1485,12 +1497,12 @@ public class Grade
         try
         {
             String sql = " SELECT  ((SUM(`grdPointsEarned`)/ SUM(`Assments`.assmtTotalPoints)) * 100) AS 'Grade' "
-                         + " FROM `TermGrade` "
-                         + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
-                         + " INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID` "
-                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject` "
-                         + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused'  AND `stuID` = ? and `subCode` = ? AND `assmtType` = ?"
-                         + " GROUP BY `grdStuID`, `subCode` ;";
+                    + " FROM `TermGrade` "
+                    + " INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID` "
+                    + " INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID` "
+                    + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Assments`.`assmtSubject` "
+                    + " WHERE `grdStatus` = 'Active' AND `grdPointsEarned` != 'Excused'  AND `stuID` = ? and `subCode` = ? AND `assmtType` = ?"
+                    + " GROUP BY `grdStuID`, `subCode` ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, subCode);
@@ -1521,10 +1533,10 @@ public class Grade
             ArrayList<Double> grades = new ArrayList<Double>();
             ArrayList<Double> gpas = new ArrayList<Double>();
             String sql = "SELECT `graStuID`, `graClsCode`,`graTrmCode`, SUM(`subCredits`) as 'credits', SUM(`graFinal`*`subCredits`) AS 'points_earned' , (SUM(`graFinal`*`subCredits`) / SUM(`subCredits`)) as 'grade'  , (SUM(`graGPA`*`subCredits`) / SUM(`subCredits`)) as 'GPA' "
-                         + " FROM `Grade` "
-                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
-                         + " WHERE  `graSubCode` NOT LIKE '%ESPART%' "
-                         + " GROUP BY `graStuID`, `graClsCode`,`graTrmCode`;";
+                    + " FROM `Grade` "
+                    + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
+                    + " WHERE  `graSubCode` NOT LIKE '%ESPART%' "
+                    + " GROUP BY `graStuID`, `graClsCode`,`graTrmCode`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -1536,8 +1548,8 @@ public class Grade
             }
             //Save the grades to a table
             sql = "UPDATE `Grade_Average`  "
-                  + " SET `graAvgClsCode` = ?, `graAvgFinal` = ? , graAvgGPA = ?"
-                  + " WHERE `graAvgStuID` = ?  ";
+                    + " SET `graAvgClsCode` = ?, `graAvgFinal` = ? , graAvgGPA = ?"
+                    + " WHERE `graAvgStuID` = ?  ";
             prep = Environment.getConnection().prepareStatement(sql);
             for (int i = 0; i < students.size(); i++)
             {
@@ -1567,11 +1579,12 @@ public class Grade
             ArrayList<Double> gpas = new ArrayList<Double>();
             String currentTerm = Term.getCurrentTerm();
             String sql = "SELECT `graStuID`, `graClsCode`,`graTrmCode`, SUM(`subCredits`) as 'credits', SUM(`graMid`*`subCredits`) AS 'points_earned' , (SUM(`graMid`*`subCredits`) / SUM(`subCredits`)) as 'grade' , (SUM(`graGPA`*`subCredits`) / SUM(`subCredits`)) as 'GPA' "
-                         + " FROM `Grade` "
-                         + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
-                         + " WHERE  `graSubCode` NOT LIKE '%ESPART%' "
-                         + " GROUP BY `graStuID`, `graClsCode`,`graTrmCode`;";
+                    + " FROM `Grade` "
+                    + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "
+                    + " WHERE  `graSubCode` NOT LIKE '%ESPART%' AND `graSubCode` NOT LIKE '%REM. MATH%' AND `graTrmCode` = ?"
+                    + " GROUP BY `graStuID`, `graClsCode`,`graTrmCode`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, currentTerm);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {

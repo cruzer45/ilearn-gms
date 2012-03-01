@@ -42,6 +42,8 @@ public class ReportLoader
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");
+        parameters.put("principalName", School.getPrincipal());
+        parameters.put("passingMark", School.getPassingMark());
         try
         {
             ReportViewer.generateReport(report, parameters, title);
