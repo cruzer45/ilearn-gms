@@ -493,8 +493,7 @@
     </unixArchive>
   </mediaSets>
   <buildIds buildAll="false">
-    <mediaSet refId="20" />
-    <mediaSet refId="187" />
+    <mediaSet refId="104" />
   </buildIds>
   <buildOptions verbose="false" faster="false" debug="false" />
 </install4j>

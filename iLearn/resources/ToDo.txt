@@ -1,6 +1,11 @@
 FEATURE / CHANGE REQUESTS
 ================================================================================
 
+
+Record Action taken for demerits.
+
+
+
 Only assessments pertinent to subjects sho up.
 Change SBA to Practical for Agric, TD, Building,   Percentage beside assignment
 Integrated science, Bio & Chem Weighting changed to Test 40 , quiz 25 , 3rd & 4th, 
