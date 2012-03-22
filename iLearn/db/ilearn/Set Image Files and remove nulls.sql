@@ -1,0 +1,18 @@
+UPDATE `Student` SET `stuPhoto` = LOAD_FILE('/tmp/no-image-selected.png'), 
+`stuEthnicity` = '',`stuPrimaryLanguage` = '',`stuEmail` = '',
+`stuAddress2` = '',
+`stuPCName` = '',
+`stuPCPhone` = '',
+`stuPCAddress` = '',
+`stuSCName` = '',
+`stuSCPhone` = '',
+`stuSCAddress` = '',
+`stuDoctorName` = '',
+`stuDoctorContact` = '',
+`stuHospital` = '',
+`stuPSEGrade` = '',
+`stuFeederSchool` = '',
+`stuSpecialNeeds` = '',
+`stuNotes` = '',
+`stuRepeating` = false
+WHERE stuStatus = 'Active' AND `stuPhoto` IS NULL;

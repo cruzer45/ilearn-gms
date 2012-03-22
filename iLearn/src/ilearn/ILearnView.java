@@ -223,6 +223,8 @@ public class ILearnView extends FrameView
             InactivityListener listener = new InactivityListener(logout, timeout);
             listener.start();
         }
+        demeritsMenu.setVisible(false);
+        demeritReports.setVisible(false);
     }
 
     /**
