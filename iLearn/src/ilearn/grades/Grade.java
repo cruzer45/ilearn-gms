@@ -211,7 +211,9 @@ public class Grade
         ArrayList<String> remarks = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active';";
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuStatus` "
+                    + " FROM `Student` WHERE `stuClsCode` = ? AND `stuStatus` = 'Active'"
+                    + "ORDER BY stuLastName , stuFirstName ;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, classCode);
             ResultSet rs = prep.executeQuery();
@@ -226,8 +228,8 @@ public class Grade
             prep.close();
             rs.close();
             model.addColumn("ID", studentID.toArray());
-            model.addColumn("First Name", firstName.toArray());
             model.addColumn("Last Name", lastName.toArray());
+            model.addColumn("First Name", firstName.toArray());
             model.addColumn("Grade", grade.toArray());
             model.addColumn("Remarks", remarks.toArray());
         }
