@@ -408,7 +408,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -479,7 +479,6 @@ public class ILearnView extends FrameView
 
         menuBar.add(attendanceMenu);
 
-        gradesMenu.setAction(actionMap.get("showEditSubject")); // NOI18N
         gradesMenu.setMnemonic('g');
         gradesMenu.setText(resourceMap.getString("gradesMenu.text")); // NOI18N
         gradesMenu.setName("gradesMenu"); // NOI18N
@@ -520,6 +519,7 @@ public class ILearnView extends FrameView
         termEndHomeroomReportCards.setName("termEndHomeroomReportCards"); // NOI18N
         gradesMenu.add(termEndHomeroomReportCards);
 
+        editSubjectWeighting.setAction(actionMap.get("showEditSubject")); // NOI18N
         editSubjectWeighting.setIcon(resourceMap.getIcon("editSubjectWeighting.icon")); // NOI18N
         editSubjectWeighting.setText(resourceMap.getString("editSubjectWeighting.text")); // NOI18N
         editSubjectWeighting.setName("editSubjectWeighting"); // NOI18N

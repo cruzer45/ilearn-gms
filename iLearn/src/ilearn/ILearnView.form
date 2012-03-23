@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="546" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -176,9 +176,6 @@
         </Menu>
         <Menu class="javax.swing.JMenu" name="gradesMenu">
           <Properties>
-            <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-              <action class="ilearn.ILearnView" id="showEditSubject" methodName="showEditSubject"/>
-            </Property>
             <Property name="mnemonic" type="int" value="103"/>
             <Property name="text" type="java.lang.String" resourceKey="gradesMenu.text"/>
             <Property name="name" type="java.lang.String" value="gradesMenu" noResource="true"/>
@@ -258,6 +255,9 @@
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="editSubjectWeighting">
               <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.ILearnView" id="showEditSubject" methodName="showEditSubject"/>
+                </Property>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="editSubjectWeighting.icon"/>
                 <Property name="text" type="java.lang.String" resourceKey="editSubjectWeighting.text"/>
                 <Property name="name" type="java.lang.String" value="editSubjectWeighting" noResource="true"/>

@@ -240,7 +240,7 @@ public class SettingsEditor extends javax.swing.JFrame
                 properties.setProperty("dbLocation", EncryptionHandler.encrypt(dbLocation));
                 properties.setProperty("dbUser", EncryptionHandler.encrypt(dbUser));
                 properties.setProperty("dbPass", EncryptionHandler.encrypt(dbPass));
-                properties.store(new FileOutputStream("conf/iLearn.properties"), "Database config settings for iLoan");
+                properties.store(new FileOutputStream("conf/iLearn.properties"), "Database config settings for iLearn");
                 message = "Settings were successfully saved.";
                 Utilities.showInfoMessage(rootPane, message);
             }
