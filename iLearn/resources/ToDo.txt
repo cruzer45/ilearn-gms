@@ -3,7 +3,9 @@ FEATURE / CHANGE REQUESTS
 
 
 Record Action taken for demerits.
+Flag three or more demerits.
 
+Add ability to generate report per parent.
 
 
 Only assessments pertinent to subjects sho up.
