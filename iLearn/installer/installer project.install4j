@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="5.0.11" transformSequenceNumber="3">
-  <directoryPresets config="/home/mrogers/Projects/Java/iLearn/resources/documents/Admin Manual.pdf" />
+  <directoryPresets config="/home/mrogers/Projects/Java/iLearn/src/ilearn/resources" />
   <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="false" shortName="iLearn" publisher="Maurice Rogers, Chris Agular" publisherWeb="http://mauricerogers.com" version="1.7.7" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="en" customLocalizationFile="" />
@@ -79,6 +79,35 @@
       <iconImageFiles>
         <file path="/home/mrogers/Projects/Java/iLearn/resources/images/Logo-Hat-16.png" />
         <file path="/home/mrogers/Projects/Java/iLearn/resources/images/Logo-Hat-32.png" />
+      </iconImageFiles>
+    </launcher>
+    <launcher name="Settings Editor" id="238" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" swtApp="false" fileset="">
+      <executable name="Settings Editor" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false">
+        <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" />
+      </executable>
+      <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="" java6SplashScreen="false">
+        <text>
+          <statusLine x="20" y="20" text="" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+          <versionLine x="20" y="40" text="version ${compiler:sys.version}" font="Arial" fontSize="8" fontColor="0,0,0" fontWeight="500" />
+        </text>
+      </splashScreen>
+      <java mainClass="ilearn.SettingsEditor" vmParameters="" arguments="" allowVMPassthroughParameters="true" preferredVM="" bundleRuntime="true">
+        <classPath>
+          <archive location="iLearn.jar" failOnError="false" />
+          <scanDirectory location="." failOnError="false" />
+        </classPath>
+        <nativeLibraryDirectories />
+      </java>
+      <includedFiles />
+      <unextractableFiles />
+      <vmOptionsFile mode="template" overwriteMode="0" fileMode="644">
+        <content />
+      </vmOptionsFile>
+      <customScript mode="1" file="">
+        <content />
+      </customScript>
+      <iconImageFiles>
+        <file path="/home/mrogers/Projects/Java/iLearn/src/ilearn/resources/setting_tools.png" />
       </iconImageFiles>
     </launcher>
   </launchers>
@@ -266,7 +295,7 @@
                             </void>
                             <void property="target">
                               <object class="java.io.File">
-                                <string>documents/Admin Manual.odt</string>
+                                <string>documents/Admin Manual.pdf</string>
                               </object>
                             </void>
                           </object>
@@ -283,7 +312,7 @@
                             </void>
                             <void property="target">
                               <object class="java.io.File">
-                                <string>documents/User Manual.odt</string>
+                                <string>documents/User Manual.pdf</string>
                               </object>
                             </void>
                           </object>
