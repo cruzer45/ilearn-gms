@@ -63,18 +63,18 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
             return;
         }
         String subCode = txtSubjectCode.getText().trim(),
-                subStaffCode = Staff.getStaffCodeFromName(cmbTeacher.getSelectedItem().toString()),
-                subName = txtSubjectName.getText().trim(),
-                subDescription = txtDescription.getText().trim(),
-                subStatus = cmbStatus.getSelectedItem().toString(),
-                subID = txtID.getText().trim(),
-                subCredits = spinnerCredits.getValue().toString();
+               subStaffCode = Staff.getStaffCodeFromName(cmbTeacher.getSelectedItem().toString()),
+               subName = txtSubjectName.getText().trim(),
+               subDescription = txtDescription.getText().trim(),
+               subStatus = cmbStatus.getSelectedItem().toString(),
+               subID = txtID.getText().trim(),
+               subCredits = spinnerCredits.getValue().toString();
         boolean subjectUpdated = Subject.updateSubject(subCode, subStaffCode, subName, subDescription, subCredits, subStatus, subID);
         boolean weightingsSaved = Subject.saveWeightings(subID);
         if (subjectUpdated && weightingsSaved)
         {
             String message = "The Subject was successfully updated.\n"
-                    + "Would you like to edit another?";
+                             + "Would you like to edit another?";
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -89,8 +89,8 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to modify this subject.\n"
-                    + "Kindly verify your information and try again.\n"
-                    + "If the problem persists kindly contact your system administrator.";
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists kindly contact your system administrator.";
             Utilities.showErrorMessage(rootPane, message);
         }
     }

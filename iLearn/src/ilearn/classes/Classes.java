@@ -281,6 +281,70 @@ public class Classes
     }
 
     /**
+     * @returns a table model containing a list of classes.
+     */
+    public static DefaultTableModel getSelectableClassTable()
+    {
+        final Class<?>[] columnClasses =
+        {
+            Boolean.class, Integer.class, String.class, String.class, String.class, String.class
+        };
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                if (mColIndex == 0)
+                {
+                    return true;
+                }
+                return false;
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnClasses[columnIndex];
+            }
+        };
+        ArrayList<Boolean> selected = new ArrayList<Boolean>();
+        ArrayList<Integer> ID = new ArrayList<Integer>();
+        ArrayList<String> code = new ArrayList<String>();
+        ArrayList<String> Name = new ArrayList<String>();
+        ArrayList<String> HomeRoom = new ArrayList<String>();
+        ArrayList<String> Status = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT `clsID`, `clsCode`, `clsName`,`clsHomeRoom`, `clsStatus` FROM `Class` "
+                         + " WHERE  `clsStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                selected.add(false);
+                ID.add(rs.getInt("clsID"));
+                code.add(rs.getString("clsCode"));
+                Name.add(rs.getString("clsName"));
+                HomeRoom.add(rs.getString("clsHomeRoom"));
+                Status.add(rs.getString("clsStatus"));
+            }
+            rs.close();
+            prep.close();
+            model.addColumn("Selected", selected.toArray());
+            model.addColumn("ID", ID.toArray());
+            model.addColumn("Code", code.toArray());
+            model.addColumn("Name", Name.toArray());
+            model.addColumn("Home Room", HomeRoom.toArray());
+            model.addColumn("Status", Status.toArray());
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while generating the class table model.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return model;
+    }
+
+    /**
      *
      * @param criteria
      * @returns a table model containing a filtered list of classes.

@@ -1196,6 +1196,15 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
                   <SubComponents>
+                    <MenuItem class="javax.swing.JMenuItem" name="generateFinalsSelectable">
+                      <Properties>
+                        <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                          <action class="ilearn.ILearnView" id="showGenerateFinals" methodName="showGenerateFinals"/>
+                        </Property>
+                        <Property name="text" type="java.lang.String" resourceKey="generateFinalsSelectable.text"/>
+                        <Property name="name" type="java.lang.String" value="generateFinalsSelectable" noResource="true"/>
+                      </Properties>
+                    </MenuItem>
                     <MenuItem class="javax.swing.JMenuItem" name="calculateFinals">
                       <Properties>
                         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">

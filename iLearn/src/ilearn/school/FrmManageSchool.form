@@ -29,7 +29,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="schoolTabbedPane" alignment="0" pref="396" max="32767" attributes="0"/>
+                  <Component id="schoolTabbedPane" alignment="0" pref="383" max="32767" attributes="0"/>
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="cmdSave" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
@@ -44,7 +44,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="schoolTabbedPane" pref="300" max="32767" attributes="0"/>
+              <Component id="schoolTabbedPane" pref="317" max="32767" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -92,13 +92,13 @@
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="spinnerPassingMark" alignment="1" pref="248" max="32767" attributes="0"/>
-                          <Component id="txtPrincipalName" alignment="1" pref="248" max="32767" attributes="0"/>
-                          <Component id="jScrollPane1" alignment="0" pref="248" max="32767" attributes="0"/>
-                          <Component id="txtTelephone2" alignment="0" pref="248" max="32767" attributes="0"/>
-                          <Component id="txtTelephone" alignment="0" pref="248" max="32767" attributes="0"/>
-                          <Component id="txtShortName" alignment="0" pref="248" max="32767" attributes="0"/>
-                          <Component id="txtSchoolName" alignment="0" pref="248" max="32767" attributes="0"/>
+                          <Component id="spinnerPassingMark" alignment="1" pref="235" max="32767" attributes="0"/>
+                          <Component id="txtPrincipalName" alignment="1" pref="235" max="32767" attributes="0"/>
+                          <Component id="jScrollPane1" alignment="0" pref="235" max="32767" attributes="0"/>
+                          <Component id="txtTelephone2" alignment="0" pref="235" max="32767" attributes="0"/>
+                          <Component id="txtTelephone" alignment="0" pref="235" max="32767" attributes="0"/>
+                          <Component id="txtShortName" alignment="0" pref="235" max="32767" attributes="0"/>
+                          <Component id="txtSchoolName" alignment="0" pref="235" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace max="-2" attributes="0"/>
                   </Group>
@@ -142,7 +142,7 @@
                           <Component id="spinnerPassingMark" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="lblPassingMark" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="29" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -265,24 +265,34 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="2" attributes="0">
-                          <Component id="cmdBrowse" alignment="2" min="-2" max="-2" attributes="0"/>
-                          <Component id="jScrollPane2" alignment="2" min="-2" pref="367" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="jScrollPane2" alignment="0" pref="354" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="lblSchoolLogo" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtSchoolLogo" pref="177" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmdBrowse" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jScrollPane2" min="-2" pref="180" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSchoolLogo" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSchoolLogo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="13" max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" pref="232" max="32767" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="cmdBrowse" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="71" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -304,17 +314,119 @@
 
               <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
               <SubComponents>
-                <Component class="javax.swing.JLabel" name="lblImage">
+                <Component class="javax.swing.JLabel" name="lblLogoImage">
                   <Properties>
                     <Property name="horizontalAlignment" type="int" value="0"/>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="lblImage.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="lblImage.text"/>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="lblLogoImage.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="lblLogoImage.text"/>
                     <Property name="autoscrolls" type="boolean" value="true"/>
-                    <Property name="name" type="java.lang.String" value="lblImage" noResource="true"/>
+                    <Property name="name" type="java.lang.String" value="lblLogoImage" noResource="true"/>
                   </Properties>
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="lblSchoolLogo">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSchoolLogo.text"/>
+                <Property name="name" type="java.lang.String" value="lblSchoolLogo" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSchoolLogo">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" resourceKey="txtSchoolLogo.text"/>
+                <Property name="name" type="java.lang.String" value="txtSchoolLogo" noResource="true"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="signaturePanel">
+          <Properties>
+            <Property name="name" type="java.lang.String" value="signaturePanel" noResource="true"/>
+          </Properties>
+          <Constraints>
+            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
+              <JTabbedPaneConstraints tabName="Signature">
+                <Property name="tabTitle" type="java.lang.String" resourceKey="signaturePanel.TabConstraints.tabTitle"/>
+                <Property name="tabIcon" type="javax.swing.Icon" resourceKey="signaturePanel.TabConstraints.tabIcon"/>
+              </JTabbedPaneConstraints>
+            </Constraint>
+          </Constraints>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="1" attributes="0">
+                          <Component id="jScrollPane3" alignment="0" pref="354" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <Component id="lblSignature" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="txtSignature" pref="192" max="32767" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="cmdSignatureBrowse" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="lblSignature" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txtSignature" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cmdSignatureBrowse" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane3" pref="239" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Container class="javax.swing.JScrollPane" name="jScrollPane3">
+              <Properties>
+                <Property name="name" type="java.lang.String" value="jScrollPane3" noResource="true"/>
+              </Properties>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JLabel" name="lblPrincipalSignature">
+                  <Properties>
+                    <Property name="horizontalAlignment" type="int" value="0"/>
+                    <Property name="text" type="java.lang.String" resourceKey="lblPrincipalSignature.text"/>
+                    <Property name="name" type="java.lang.String" value="lblPrincipalSignature" noResource="true"/>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+            <Component class="javax.swing.JLabel" name="lblSignature">
+              <Properties>
+                <Property name="text" type="java.lang.String" resourceKey="lblSignature.text"/>
+                <Property name="name" type="java.lang.String" value="lblSignature" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txtSignature">
+              <Properties>
+                <Property name="editable" type="boolean" value="false"/>
+                <Property name="text" type="java.lang.String" resourceKey="txtSignature.text"/>
+                <Property name="name" type="java.lang.String" value="txtSignature" noResource="true"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JButton" name="cmdSignatureBrowse">
+              <Properties>
+                <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                  <action class="ilearn.school.FrmManageSchool" id="browseSignature" methodName="browseSignature"/>
+                </Property>
+                <Property name="text" type="java.lang.String" resourceKey="cmdSignatureBrowse.text"/>
+                <Property name="name" type="java.lang.String" value="cmdSignatureBrowse" noResource="true"/>
+              </Properties>
+            </Component>
           </SubComponents>
         </Container>
       </SubComponents>
