@@ -1,13 +1,20 @@
 package ilearn.school;
 
 import ilearn.kernel.Environment;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.RenderingHints;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
+import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,7 +30,9 @@ public class School
         ArrayList<Object> school = new ArrayList<Object>();
         try
         {
-            String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, `schPhone2`, `schAddress`, `schLogo`, `registrationCode`, `timeCode`, `dbVersion` , `schPassingMark` , `schPrincipal` FROM `School`;";
+            String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
+                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();
@@ -35,6 +44,7 @@ public class School
             school.add(rs.getBlob("schLogo"));//5
             school.add(rs.getString("schPassingMark"));//6
             school.add(rs.getString("schPrincipal"));//7
+            school.add(rs.getBlob("schPrincipalSignature"));//8
             rs.close();
             prep.close();
         }
@@ -46,13 +56,19 @@ public class School
         return school;
     }
 
-    public static boolean updateSchoolInfo(String schName, String schShortName, String schPhone1, String schPhone2, String schAddress, File schLogo, String schPassingMark, String schPrincipal)
+    public static boolean updateSchoolInfo(String schName, String schShortName,
+                                           String schPhone1, String schPhone2, String schAddress, File schLogo,
+                                           String schPassingMark, String schPrincipal, File schPrincipalSignature)
     {
         boolean successful = false;
         try
         {
+            FileInputStream signatureInputStream = new FileInputStream(schPrincipalSignature);
             FileInputStream fis = new FileInputStream(schLogo);
-            String sql = "UPDATE `School` SET `schName`= ?, `schShortName`=?, `schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , schLogo = ? , schPassingMark = ? , schPrincipal = ? WHERE `schlID`=1 LIMIT 1;";
+            String sql = "UPDATE `School` SET `schName`= ?, `schShortName`=?, "
+                         + "`schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , "
+                         + "schLogo = ? , schPassingMark = ? , schPrincipal = ? , `schPrincipalSignature` = ?"
+                         + "WHERE `schlID`=1 LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, schName);
             prep.setString(2, schShortName);
@@ -62,32 +78,7 @@ public class School
             prep.setBlob(6, fis, schLogo.length());
             prep.setString(7, schPassingMark);
             prep.setString(8, schPrincipal);
-            prep.executeUpdate();
-            prep.close();
-            successful = true;
-        }
-        catch (Exception e)
-        {
-            String message = "An error occurred while updating the school info.";
-            logger.log(Level.SEVERE, message, e);
-        }
-        return successful;
-    }
-
-    public static boolean updateSchoolInfo(String schName, String schShortName, String schPhone1, String schPhone2, String schAddress, String schPassingMark, String schPrincipal)
-    {
-        boolean successful = false;
-        try
-        {
-            String sql = "UPDATE `School` SET `schName`= ?, `schShortName`=?, `schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , schPassingMark = ? , schPrincipal = ? WHERE `schlID`=1 LIMIT 1;";
-            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-            prep.setString(1, schName);
-            prep.setString(2, schShortName);
-            prep.setString(3, schPhone1);
-            prep.setString(4, schPhone2);
-            prep.setString(5, schAddress);
-            prep.setString(6, schPassingMark);
-            prep.setString(7, schPrincipal);
+            prep.setBlob(9, signatureInputStream, schPrincipalSignature.length());
             prep.executeUpdate();
             prep.close();
             successful = true;
@@ -120,6 +111,7 @@ public class School
         }
         return passingmark;
     }
+
     public static String getPrincipal()
     {
         String principal = "";
@@ -141,4 +133,33 @@ public class School
         return principal;
     }
 
+    public static void downloadSignature()
+    {
+        try
+        {
+            String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
+                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+            Blob blob = rs.getBlob("schPrincipalSignature");
+            ImageIcon original = new ImageIcon(blob.getBytes(1, (int) blob.length()));
+            //draw original image
+            Image img = original.getImage();
+            BufferedImage originalImage = new BufferedImage(original.getIconWidth(), original.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+            Graphics2D graphics2D = originalImage.createGraphics();
+            graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            graphics2D.drawImage(img, 0, 0, original.getIconWidth(), original.getIconHeight(), null);
+            File output = new File("images/report_signature.png");
+            ImageIO.write(originalImage, "PNG", output);
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while downloading the principal's signature.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
 }

@@ -6,6 +6,7 @@
 package ilearn.school;
 
 import ilearn.kernel.ImageFilter;
+import ilearn.kernel.ImageScaler;
 import ilearn.kernel.Utilities;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -13,7 +14,6 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.sql.Blob;
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +31,8 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
 {
 
     static final Logger logger = Logger.getLogger(FrmManageSchool.class.getName());
-    File selectedFile;
+    File selectedSchoolLogo;
+    File selectedSignature;
     boolean imageChanged = false;
 
     /** Creates new form FrmManageSchool */
@@ -70,7 +71,15 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
         ImagePanel = new javax.swing.JPanel();
         cmdBrowse = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        lblImage = new javax.swing.JLabel();
+        lblLogoImage = new javax.swing.JLabel();
+        lblSchoolLogo = new javax.swing.JLabel();
+        txtSchoolLogo = new javax.swing.JTextField();
+        signaturePanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        lblPrincipalSignature = new javax.swing.JLabel();
+        lblSignature = new javax.swing.JLabel();
+        txtSignature = new javax.swing.JTextField();
+        cmdSignatureBrowse = new javax.swing.JButton();
         cmdCancel = new javax.swing.JButton();
         cmdSave = new javax.swing.JButton();
         setClosable(true);
@@ -128,13 +137,13 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                                 .addComponent(lblPassingMark))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(spinnerPassingMark, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(txtPrincipalName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(txtTelephone2, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE)
-                                .addComponent(txtSchoolName, javax.swing.GroupLayout.DEFAULT_SIZE, 248, Short.MAX_VALUE))
+                                .addComponent(spinnerPassingMark, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtPrincipalName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtTelephone2, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtTelephone, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtShortName, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
+                                .addComponent(txtSchoolName, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE))
                       .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -168,7 +177,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                       .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(spinnerPassingMark, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lblPassingMark))
-                      .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                      .addContainerGap(29, Short.MAX_VALUE))
         );
         schoolTabbedPane.addTab(resourceMap.getString("generalPanel.TabConstraints.tabTitle"), resourceMap.getIcon("generalPanel.TabConstraints.tabIcon"), generalPanel); // NOI18N
         ImagePanel.setName("ImagePanel"); // NOI18N
@@ -177,33 +186,89 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
         cmdBrowse.setText(resourceMap.getString("cmdBrowse.text")); // NOI18N
         cmdBrowse.setName("cmdBrowse"); // NOI18N
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-        lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lblImage.setIcon(resourceMap.getIcon("lblImage.icon")); // NOI18N
-        lblImage.setText(resourceMap.getString("lblImage.text")); // NOI18N
-        lblImage.setAutoscrolls(true);
-        lblImage.setName("lblImage"); // NOI18N
-        jScrollPane2.setViewportView(lblImage);
+        lblLogoImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblLogoImage.setIcon(resourceMap.getIcon("lblLogoImage.icon")); // NOI18N
+        lblLogoImage.setText(resourceMap.getString("lblLogoImage.text")); // NOI18N
+        lblLogoImage.setAutoscrolls(true);
+        lblLogoImage.setName("lblLogoImage"); // NOI18N
+        jScrollPane2.setViewportView(lblLogoImage);
+        lblSchoolLogo.setText(resourceMap.getString("lblSchoolLogo.text")); // NOI18N
+        lblSchoolLogo.setName("lblSchoolLogo"); // NOI18N
+        txtSchoolLogo.setEditable(false);
+        txtSchoolLogo.setText(resourceMap.getString("txtSchoolLogo.text")); // NOI18N
+        txtSchoolLogo.setName("txtSchoolLogo"); // NOI18N
         javax.swing.GroupLayout ImagePanelLayout = new javax.swing.GroupLayout(ImagePanel);
         ImagePanel.setLayout(ImagePanelLayout);
         ImagePanelLayout.setHorizontalGroup(
             ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(ImagePanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addGroup(ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                                .addComponent(cmdBrowse)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 367, Short.MAX_VALUE))
+                      .addGroup(ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                                .addGroup(ImagePanelLayout.createSequentialGroup()
+                                          .addComponent(lblSchoolLogo)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(txtSchoolLogo, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmdBrowse)))
                       .addContainerGap())
         );
         ImagePanelLayout.setVerticalGroup(
             ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ImagePanelLayout.createSequentialGroup()
+            .addGroup(ImagePanelLayout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 180, Short.MAX_VALUE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(cmdBrowse)
-                      .addGap(71, 71, 71))
+                      .addGroup(ImagePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSchoolLogo)
+                                .addComponent(cmdBrowse)
+                                .addComponent(txtSchoolLogo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addGap(13, 13, 13)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 232, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         schoolTabbedPane.addTab(resourceMap.getString("ImagePanel.TabConstraints.tabTitle"), resourceMap.getIcon("ImagePanel.TabConstraints.tabIcon"), ImagePanel); // NOI18N
+        signaturePanel.setName("signaturePanel"); // NOI18N
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+        lblPrincipalSignature.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lblPrincipalSignature.setText(resourceMap.getString("lblPrincipalSignature.text")); // NOI18N
+        lblPrincipalSignature.setName("lblPrincipalSignature"); // NOI18N
+        jScrollPane3.setViewportView(lblPrincipalSignature);
+        lblSignature.setText(resourceMap.getString("lblSignature.text")); // NOI18N
+        lblSignature.setName("lblSignature"); // NOI18N
+        txtSignature.setEditable(false);
+        txtSignature.setText(resourceMap.getString("txtSignature.text")); // NOI18N
+        txtSignature.setName("txtSignature"); // NOI18N
+        cmdSignatureBrowse.setAction(actionMap.get("browseSignature")); // NOI18N
+        cmdSignatureBrowse.setText(resourceMap.getString("cmdSignatureBrowse.text")); // NOI18N
+        cmdSignatureBrowse.setName("cmdSignatureBrowse"); // NOI18N
+        javax.swing.GroupLayout signaturePanelLayout = new javax.swing.GroupLayout(signaturePanel);
+        signaturePanel.setLayout(signaturePanelLayout);
+        signaturePanelLayout.setHorizontalGroup(
+            signaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, signaturePanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(signaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 354, Short.MAX_VALUE)
+                                .addGroup(signaturePanelLayout.createSequentialGroup()
+                                          .addComponent(lblSignature)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(txtSignature, javax.swing.GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmdSignatureBrowse)))
+                      .addContainerGap())
+        );
+        signaturePanelLayout.setVerticalGroup(
+            signaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(signaturePanelLayout.createSequentialGroup()
+                      .addContainerGap()
+                      .addGroup(signaturePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSignature)
+                                .addComponent(txtSignature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmdSignatureBrowse))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                      .addContainerGap())
+        );
+        schoolTabbedPane.addTab(resourceMap.getString("signaturePanel.TabConstraints.tabTitle"), resourceMap.getIcon("signaturePanel.TabConstraints.tabIcon"), signaturePanel); // NOI18N
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
@@ -217,7 +282,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(schoolTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                                .addComponent(schoolTabbedPane, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
                                 .addGroup(layout.createSequentialGroup()
                                           .addComponent(cmdSave)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -228,7 +293,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(schoolTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
+                      .addComponent(schoolTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -254,56 +319,38 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                schAddress = txtAddress.getText().trim(),
                schPassingMark = String.valueOf(spinnerPassingMark.getValue()),
                schPrincipal = txtPrincipalName.getText().trim();
-        File schLogo = selectedFile;
-        if (imageChanged)
+        File schLogo = selectedSchoolLogo;
+        File schPrincipalSignature = selectedSignature;
+        try
         {
-            if (School.updateSchoolInfo(schName, schShortName, schPhone1, schPhone2, schAddress, schLogo, schPassingMark, schPrincipal))
+            System.out.println(selectedSignature.getCanonicalPath());
+            System.out.println(selectedSchoolLogo.getCanonicalPath());
+        }
+        catch (IOException ex)
+        {
+            Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        if (School.updateSchoolInfo(schName, schShortName, schPhone1, schPhone2, schAddress, schLogo, schPassingMark, schPrincipal, schPrincipalSignature))
+        {
+            String message = "The information was saved.\n"
+                             + "Would you like to continue editing?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
             {
-                String message = "The information was saved.\n"
-                                 + "Would you like to continue editing?";
-                int response = Utilities.showConfirmDialog(rootPane, message);
-                if (response == JOptionPane.YES_OPTION)
-                {
-                    loadInfo();
-                    imageChanged = false;//reset the image
-                }
-                else
-                {
-                    this.dispose();
-                }
+                loadInfo();
+                imageChanged = false;//reset the image
             }
             else
             {
-                String message = "An error occurred while updating the school info.\n"
-                                 + "Kindly verify your information and try again.\n"
-                                 + "If the problem persists, kindly contact your system administrator.";
-                Utilities.showErrorMessage(rootPane, message);
+                this.dispose();
             }
         }
         else
         {
-            if (School.updateSchoolInfo(schName, schShortName, schPhone1, schPhone2, schAddress, schPassingMark, schPrincipal))
-            {
-                String message = "The information was saved.\n"
-                                 + "Would you like to continue editing?";
-                int response = Utilities.showConfirmDialog(rootPane, message);
-                if (response == JOptionPane.YES_OPTION)
-                {
-                    loadInfo();
-                    imageChanged = false;//reset the image
-                }
-                else
-                {
-                    this.dispose();
-                }
-            }
-            else
-            {
-                String message = "An error occurred while updating the school info.\n"
-                                 + "Kindly verify your information and try again.\n"
-                                 + "If the problem persists, kindly contact your system administrator.";
-                Utilities.showErrorMessage(rootPane, message);
-            }
+            String message = "An error occurred while updating the school info.\n"
+                             + "Kindly verify your information and try again.\n"
+                             + "If the problem persists, kindly contact your system administrator.";
+            Utilities.showErrorMessage(rootPane, message);
         }
     }
 
@@ -316,15 +363,15 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
         int returnVal = fc.showOpenDialog(rootPane);
         if (returnVal == JFileChooser.APPROVE_OPTION)
         {
-            selectedFile = fc.getSelectedFile();
+            selectedSchoolLogo = fc.getSelectedFile();
             imageChanged = true;
-            ImageIcon ii = new ImageIcon(selectedFile.getAbsolutePath());
+            ImageIcon ii = new ImageIcon(selectedSchoolLogo.getAbsolutePath());
             if (ii.getIconHeight() > 170 || ii.getIconWidth() > 170)
             {
                 Image img = ii.getImage();
                 Image newimg = img.getScaledInstance(170, 170, java.awt.Image.SCALE_SMOOTH);
                 ii = new ImageIcon(newimg);
-                File image = new File(System.getProperty("java.io.tmpdir") + "/image.jpg");
+                File image = new File(System.getProperty("java.io.tmpdir") + "/logo_image.jpg");
                 BufferedImage bi = new BufferedImage(ii.getIconWidth(), ii.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
                 Graphics2D g2 = bi.createGraphics();
                 g2.drawImage(newimg, 0, 0, null);
@@ -339,7 +386,7 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                     Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            lblImage.setIcon(ii);
+            lblLogoImage.setIcon(ii);
         }
     }
 
@@ -353,16 +400,55 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
             txtTelephone.setText(info.get(2).toString());
             txtTelephone2.setText(info.get(3).toString());
             txtAddress.setText(info.get(4).toString());
-            Blob blob = (Blob) info.get(5);
-            ImageIcon ii = new ImageIcon(blob.getBytes(1, (int) blob.length()));
-            lblImage.setIcon(ii);
+            Blob logoBlob = (Blob) info.get(5);
+            selectedSchoolLogo = ImageScaler.getScaledImage(logoBlob, jScrollPane2.getHeight(), jScrollPane2.getWidth(), selectedSchoolLogo, lblLogoImage);
             spinnerPassingMark.setValue(Integer.valueOf(info.get(6).toString()));
             txtPrincipalName.setText(info.get(7).toString());
+            Blob signatureBlob = (Blob) info.get(8);
+            selectedSignature = ImageScaler.getScaledImage(signatureBlob, jScrollPane3.getHeight(), jScrollPane3.getWidth(), selectedSignature, lblPrincipalSignature);
         }
-        catch (SQLException ex)
+        catch (Exception ex)
         {
             String message = "An error occurred while loading the information.";
             logger.log(Level.SEVERE, message, ex);
+        }
+    }
+
+    @Action
+    public void browseSignature()
+    {
+        JFileChooser fc = new JFileChooser();
+        fc.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        fc.setFileFilter(new ImageFilter());
+        int returnVal = fc.showOpenDialog(rootPane);
+        if (returnVal == JFileChooser.APPROVE_OPTION)
+        {
+            selectedSignature = fc.getSelectedFile();
+            imageChanged = true;
+            ImageIcon ii = new ImageIcon(selectedSignature.getAbsolutePath());
+            int width = jScrollPane3.getWidth();
+            int height = jScrollPane3.getHeight();
+            if (ii.getIconHeight() > height || ii.getIconWidth() > width)
+            {
+                Image img = ii.getImage();
+                Image newimg = img.getScaledInstance(170, 170, java.awt.Image.SCALE_SMOOTH);
+                ii = new ImageIcon(newimg);
+                File image = new File(System.getProperty("java.io.tmpdir") + "/signature_image.jpg");
+                BufferedImage bi = new BufferedImage(ii.getIconWidth(), ii.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+                Graphics2D g2 = bi.createGraphics();
+                g2.drawImage(newimg, 0, 0, null);
+                g2.dispose();
+                try
+                {
+                    ImageIO.write(bi, "jpg", image);
+                    //selectedFile = image;
+                }
+                catch (IOException ex)
+                {
+                    Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            lblPrincipalSignature.setIcon(ii);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -370,23 +456,31 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdBrowse;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdSave;
+    private javax.swing.JButton cmdSignatureBrowse;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblImage;
+    private javax.swing.JLabel lblLogoImage;
     private javax.swing.JLabel lblPassingMark;
     private javax.swing.JLabel lblPrincipalName;
+    private javax.swing.JLabel lblPrincipalSignature;
+    private javax.swing.JLabel lblSchoolLogo;
     private javax.swing.JLabel lblSchoolName;
     private javax.swing.JLabel lblShortName;
+    private javax.swing.JLabel lblSignature;
     private javax.swing.JLabel lblTelephone;
     private javax.swing.JLabel lblTelephone2;
     private javax.swing.JTabbedPane schoolTabbedPane;
+    private javax.swing.JPanel signaturePanel;
     private javax.swing.JSpinner spinnerPassingMark;
     private javax.swing.JTextArea txtAddress;
     private javax.swing.JTextField txtPrincipalName;
+    private javax.swing.JTextField txtSchoolLogo;
     private javax.swing.JTextField txtSchoolName;
     private javax.swing.JTextField txtShortName;
+    private javax.swing.JTextField txtSignature;
     private javax.swing.JTextField txtTelephone;
     private javax.swing.JTextField txtTelephone2;
     // End of variables declaration//GEN-END:variables

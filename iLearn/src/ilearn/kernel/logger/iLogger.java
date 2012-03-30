@@ -58,6 +58,11 @@ public class iLogger
         }
     }
 
+    /**
+     *
+     * @param action
+     * @return true if the action has already been run.
+     */
     public static boolean checkAction(String action)
     {
         boolean actionRun = false;

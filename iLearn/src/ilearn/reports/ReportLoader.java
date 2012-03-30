@@ -37,6 +37,7 @@ public class ReportLoader
 
     public static void showMidTermReports()
     {
+        School.downloadSignature();
         String report = "reports/MidTerm_Report_With_GPA.jasper";
         String title = "Report - Mid-Term Report Cards";
         // Second, create a map of parameters to pass to the report.
@@ -277,6 +278,7 @@ public class ReportLoader
 
     public static void showTermEndReport()
     {
+        School.downloadSignature();
         String report = "reports/FinalGrade_Report_with_GPA.jasper";
         String title = "Term End Report Card";
         // Second, create a map of parameters to pass to the report.
