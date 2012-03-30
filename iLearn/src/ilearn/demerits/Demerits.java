@@ -44,13 +44,13 @@ public class Demerits
         return demeritReasons;
     }
 
-    public static boolean addDemerit(String demStuID, String demDate, String demStaCode, String demClsCode, String demTermID, String demerits, String demRemarks)
+    public static boolean addDemerit(String demStuID, String demDate, String demStaCode, String demClsCode, String demTermID, String demerits, String demRemarks, String demActionTaken)
     {
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `Demerits` (`demStuID`, `demDate`, `demStaCode`, `demClsCode`, `demTermID`, `demerits`, `demRemarks`) "
-                         + "VALUES (?, ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `Demerits` (`demStuID`, `demDate`, `demStaCode`, `demClsCode`, `demTermID`, `demerits`, `demRemarks`, demActionTaken) "
+                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, demStuID);
             prep.setString(2, demDate);
@@ -59,6 +59,7 @@ public class Demerits
             prep.setString(5, demTermID);
             prep.setString(6, demerits);
             prep.setString(7, demRemarks);
+            prep.setString(8, demActionTaken);
             prep.execute();
             prep.close();
             successful = true;
@@ -74,14 +75,14 @@ public class Demerits
         return successful;
     }
 
-    public static boolean updateDemerit(String demID, String demDate, String demStaCode, String demerits, String demRemarks, String demStatus)
+    public static boolean updateDemerit(String demID, String demDate, String demStaCode, String demerits, String demRemarks, String demStatus, String demActionTaken)
     {
         boolean successful = false;
         try
         {
             String sql = "UPDATE `Demerits` "
                          + "SET `demDate`=?, `demStaCode`=?, `demerits`= ?, "
-                         + "`demRemarks`=?,`demStatus`=? "
+                         + "`demRemarks`=?,`demStatus`=? , demActionTaken=? "
                          + "WHERE `demID`=? LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, demDate);
@@ -89,6 +90,7 @@ public class Demerits
             prep.setString(3, demerits);
             prep.setString(4, demRemarks);
             prep.setString(5, demStatus);
+            prep.setString(6, demActionTaken);
             prep.setString(6, demID);
             prep.execute();
             prep.close();
@@ -174,7 +176,9 @@ public class Demerits
         ArrayList<String> demeritInfo = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `demID`,`demStuID`,`demDate`,`demStaCode`,`demClsCode`,`demTermID`,`demerits`,`demRemarks`,`demStatus` "
+            String sql = "SELECT `demID`,`demStuID`,`demDate`,`demStaCode`,"
+                         + " `demClsCode`,`demTermID`,`demerits`,`demRemarks`,"
+                         + " `demStatus`, demActionTaken "
                          + " FROM `Demerits` "
                          + " WHERE `demID` = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
@@ -191,6 +195,7 @@ public class Demerits
                 demeritInfo.add(rs.getString("demerits")); //6
                 demeritInfo.add(rs.getString("demRemarks")); //7
                 demeritInfo.add(rs.getString("demStatus")); //8
+                demeritInfo.add(rs.getString("demActionTaken")); //9
             }
             rs.close();
             prep.close();

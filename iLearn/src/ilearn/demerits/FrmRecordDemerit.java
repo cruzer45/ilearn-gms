@@ -65,6 +65,9 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
         calDate = new com.toedter.calendar.JDateChooser();
         cmbStaff = new javax.swing.JComboBox();
         lblStaff = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtActionTaken = new javax.swing.JTextArea();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmRecordDemerit.class);
@@ -122,11 +125,11 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
                                 .addGroup(searchPanelLayout.createSequentialGroup()
                                           .addComponent(lblSearch)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                          .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
+                                          .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 222, Short.MAX_VALUE)
                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                           .addComponent(cmdSearch))
                                 .addGroup(searchPanelLayout.createSequentialGroup()
-                                          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                          .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 371, Short.MAX_VALUE)
                                           .addGap(1, 1, 1))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                                           .addComponent(cmdNext)
@@ -143,7 +146,7 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
                                 .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(cmdSearch))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 274, Short.MAX_VALUE)
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                       .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
@@ -184,6 +187,13 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
         cmbStaff.setName("cmbStaff"); // NOI18N
         lblStaff.setText(resourceMap.getString("lblStaff.text")); // NOI18N
         lblStaff.setName("lblStaff"); // NOI18N
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+        txtActionTaken.setColumns(20);
+        txtActionTaken.setRows(5);
+        txtActionTaken.setName("txtActionTaken"); // NOI18N
+        jScrollPane2.setViewportView(txtActionTaken);
         javax.swing.GroupLayout demeritPanelLayout = new javax.swing.GroupLayout(demeritPanel);
         demeritPanel.setLayout(demeritPanelLayout);
         demeritPanelLayout.setHorizontalGroup(
@@ -202,15 +212,17 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
                                                   .addComponent(lblDate)
                                                   .addComponent(lblStaff)
                                                   .addComponent(lblDemerit)
-                                                  .addComponent(lblRemarks))
+                                                  .addComponent(lblRemarks)
+                                                  .addComponent(jLabel1))
                                           .addGap(1, 1, 1)
                                           .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(spinnerDemerits, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                                  .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                                  .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 328, Short.MAX_VALUE)
-                                                  .addComponent(cmbStaff, 0, 328, Short.MAX_VALUE)
-                                                  .addComponent(cmbRemarks, javax.swing.GroupLayout.Alignment.TRAILING, 0, 328, Short.MAX_VALUE))))
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                                  .addComponent(spinnerDemerits, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                                  .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                                  .addComponent(calDate, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
+                                                  .addComponent(cmbStaff, 0, 310, Short.MAX_VALUE)
+                                                  .addComponent(cmbRemarks, javax.swing.GroupLayout.Alignment.TRAILING, 0, 310, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         demeritPanelLayout.setVerticalGroup(
@@ -240,7 +252,11 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
                       .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblRemarks)
                                 .addComponent(cmbRemarks, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 71, Short.MAX_VALUE)
                       .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
                                 .addComponent(cmdSave))
@@ -316,7 +332,8 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
         String demTermID = Term.getCurrentTerm();
         String demerits = spinnerDemerits.getValue().toString();
         String demRemarks = cmbRemarks.getSelectedItem().toString().trim();
-        boolean demeritAdded = Demerits.addDemerit(demStuID, demDate, demStaCode, demClsCode, demTermID, demerits, demRemarks);
+        String demActionTaken = txtActionTaken.getText().trim();
+        boolean demeritAdded = Demerits.addDemerit(demStuID, demDate, demStaCode, demClsCode, demTermID, demerits, demRemarks, demActionTaken);
         if (demeritAdded)
         {
             String message = "The demerit was successfully recorded. \n"
@@ -411,7 +428,9 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel demeritPanel;
     private javax.swing.JTabbedPane demeritTabbedPane;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDemerit;
     private javax.swing.JLabel lblID;
@@ -422,6 +441,7 @@ public class FrmRecordDemerit extends javax.swing.JInternalFrame
     private javax.swing.JPanel searchPanel;
     private javax.swing.JSpinner spinnerDemerits;
     private javax.swing.JTable tblSearch;
+    private javax.swing.JTextArea txtActionTaken;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSearch;
