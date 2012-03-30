@@ -69,6 +69,9 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
         lblStaff = new javax.swing.JLabel();
         lblStatus = new javax.swing.JLabel();
         cmbStatus = new javax.swing.JComboBox();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        txtActionTaken = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         setClosable(true);
         setIconifiable(true);
         org.jdesktop.application.ResourceMap resourceMap = org.jdesktop.application.Application.getInstance().getContext().getResourceMap(FrmEditDemerit.class);
@@ -192,6 +195,13 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
         lblStatus.setName("lblStatus"); // NOI18N
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Inactive" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
+        jScrollPane2.setName("jScrollPane2"); // NOI18N
+        txtActionTaken.setColumns(20);
+        txtActionTaken.setRows(5);
+        txtActionTaken.setName("txtActionTaken"); // NOI18N
+        jScrollPane2.setViewportView(txtActionTaken);
+        jLabel1.setText(resourceMap.getString("jLabel1.text")); // NOI18N
+        jLabel1.setName("jLabel1"); // NOI18N
         javax.swing.GroupLayout demeritPanelLayout = new javax.swing.GroupLayout(demeritPanel);
         demeritPanel.setLayout(demeritPanelLayout);
         demeritPanelLayout.setHorizontalGroup(
@@ -211,9 +221,11 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
                                                   .addComponent(lblStaff)
                                                   .addComponent(lblDemerit)
                                                   .addComponent(lblRemarks)
-                                                  .addComponent(lblStatus))
+                                                  .addComponent(lblStatus)
+                                                  .addComponent(jLabel1))
                                           .addGap(1, 1, 1)
                                           .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                                                   .addComponent(cmbStatus, 0, 310, Short.MAX_VALUE)
                                                   .addComponent(spinnerDemerits, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
                                                   .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 310, Short.MAX_VALUE)
@@ -254,7 +266,11 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
                       .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblStatus)
                                 .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                       .addGroup(demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel2)
                                 .addComponent(cmdSave))
@@ -329,6 +345,7 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
         String demerits = spinnerDemerits.getValue().toString();
         String demRemarks = cmbRemarks.getSelectedItem().toString().trim();
         String demStatus = cmbStatus.getSelectedItem().toString().trim();
+        String demActionTaken = txtActionTaken.getText().trim();
         if (demStatus.equals("Inactive"))
         {
             String message = "Are you sure you want to remove this demerit?";
@@ -338,7 +355,7 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
                 return;
             }
         }
-        boolean demeritUpdated = Demerits.updateDemerit(demID, demDate, demStaCode, demerits, demRemarks, demStatus);
+        boolean demeritUpdated = Demerits.updateDemerit(demID, demDate, demStaCode, demerits, demRemarks, demStatus, demActionTaken);
         if (demeritUpdated)
         {
             String message = "The demerit was successfully updated. \n"
@@ -388,6 +405,7 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
         cmbRemarks.addItem(demeritInfo.get(7));
         cmbRemarks.setSelectedItem(demeritInfo.get(7));
         cmbStatus.setSelectedItem(demeritInfo.get(8));
+        txtActionTaken.setText(demeritInfo.get(9));
         try
         {
             calDate.setDate(Utilities.YMD_Formatter.parse(demeritInfo.get(2)));
@@ -448,7 +466,9 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdSearch;
     private javax.swing.JPanel demeritPanel;
     private javax.swing.JTabbedPane demeritTabbedPane;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel lblDate;
     private javax.swing.JLabel lblDemerit;
     private javax.swing.JLabel lblID;
@@ -460,6 +480,7 @@ public class FrmEditDemerit extends javax.swing.JInternalFrame
     private javax.swing.JPanel searchPanel;
     private javax.swing.JSpinner spinnerDemerits;
     private javax.swing.JTable tblSearch;
+    private javax.swing.JTextArea txtActionTaken;
     private javax.swing.JTextField txtID;
     private javax.swing.JTextField txtName;
     private javax.swing.JTextField txtSearch;
