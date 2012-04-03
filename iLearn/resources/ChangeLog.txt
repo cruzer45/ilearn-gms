@@ -1,3 +1,8 @@
+Version 1.7.8 For Georgetown
+-   Added the action taken field to the demerits module
+-   Made the report card signature field picture editable
+
+
 Version 1.6.0
 
 -   Added the ability to remove grades from the system.
