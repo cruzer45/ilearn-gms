@@ -47,6 +47,7 @@ import ilearn.user.FrmAddUser;
 import ilearn.user.FrmEditUser;
 import ilearn.user.FrmLogin;
 import ilearn.student.FrmNewStudent;
+import ilearn.student.FrmStudentDashBoard;
 import ilearn.student.FrmViewStudent;
 import ilearn.subject.FrmAddSubject;
 import ilearn.subject.FrmEditSubject;
@@ -142,6 +143,7 @@ public class ILearnView extends FrameView
     FrmMeritReasons frmMeritReasons = null;
     FrmMastersheetExport frmMastersheetExport = null;
     FrmSelectiveCalculate frmSelectiveCalculate = null;
+    FrmStudentDashBoard frmStudentDashBoard = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -293,6 +295,7 @@ public class ILearnView extends FrameView
         changePasswordMenuItem = new javax.swing.JMenuItem();
         javax.swing.JMenuItem exitMenuItem = new javax.swing.JMenuItem();
         studentMenu = new javax.swing.JMenu();
+        studentDashBoard = new javax.swing.JMenuItem();
         addStudent = new javax.swing.JMenuItem();
         editStudent = new javax.swing.JMenuItem();
         viewStudent = new javax.swing.JMenuItem();
@@ -434,6 +437,11 @@ public class ILearnView extends FrameView
         studentMenu.setMnemonic('s');
         studentMenu.setText(resourceMap.getString("studentMenu.text")); // NOI18N
         studentMenu.setName("studentMenu"); // NOI18N
+        studentDashBoard.setAction(actionMap.get("showStudentDashBoard")); // NOI18N
+        studentDashBoard.setIcon(resourceMap.getIcon("studentDashBoard.icon")); // NOI18N
+        studentDashBoard.setText(resourceMap.getString("studentDashBoard.text")); // NOI18N
+        studentDashBoard.setName("studentDashBoard"); // NOI18N
+        studentMenu.add(studentDashBoard);
         addStudent.setAction(actionMap.get("showAddStudent")); // NOI18N
         addStudent.setText(resourceMap.getString("addStudent.text")); // NOI18N
         addStudent.setName("addStudent"); // NOI18N
@@ -2822,6 +2830,30 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showStudentDashBoard()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Student Dashboard");
+        if (AlreadyLoaded == false)
+        {
+            frmStudentDashBoard = new FrmStudentDashBoard();
+            desktopPane.add(frmStudentDashBoard);
+            //Load the Form
+            frmStudentDashBoard.setVisible(true);
+            frmStudentDashBoard.show();
+            try
+            {
+                frmStudentDashBoard.setIcon(false);
+                frmStudentDashBoard.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private static javax.swing.JMenuItem addStaff;
@@ -2912,6 +2944,7 @@ public class ILearnView extends FrameView
     private javax.swing.JLabel statusAnimationLabel;
     private javax.swing.JLabel statusMessageLabel;
     private javax.swing.JPanel statusPanel;
+    private javax.swing.JMenuItem studentDashBoard;
     private static javax.swing.JMenuItem studentIDCards;
     private static javax.swing.JMenuItem studentList;
     private static javax.swing.JMenuItem studentListByClass;

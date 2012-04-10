@@ -6,7 +6,6 @@
 package ilearn.student;
 
 import ilearn.kernel.Utilities;
-import ilearn.school.FrmManageSchool;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.event.KeyEvent;
@@ -138,7 +137,7 @@ public class FrmViewStudent extends javax.swing.JInternalFrame
                     }
                     catch (IOException ex)
                     {
-                        Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(FrmViewStudent.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
                 lblImage.setIcon(ii);

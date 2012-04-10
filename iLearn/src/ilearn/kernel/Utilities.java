@@ -104,6 +104,14 @@ public class Utilities
         return total;
     }
 
+    public static double roundDoubleToDouble(double value)
+    {
+        DecimalFormat df = new DecimalFormat("#,##0.00");
+        String total = df.format(value);
+        double doubleValue = Double.valueOf(total);
+        return doubleValue;
+    }
+
     public static int showConfirmDialog(Component rootpane, String message)
     {
         return JOptionPane.showConfirmDialog(rootpane, message, "iLearn", JOptionPane.YES_NO_OPTION);
