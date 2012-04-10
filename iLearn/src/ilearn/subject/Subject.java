@@ -394,7 +394,9 @@ public class Subject
         ArrayList<String> details = new ArrayList<String>();
         try
         {
-            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, `subDescription`, `subCredits`,`subStatus` FROM `Subject` WHERE `subID` = ?;";
+            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, "
+                         + "`subDescription`, `subCredits`,`subStatus` "
+                         + " FROM `Subject` WHERE `subID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, subID);
             ResultSet rs = prep.executeQuery();

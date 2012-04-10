@@ -1,12 +1,17 @@
 package ilearn.student;
 
+import ilearn.classes.Classes;
+import ilearn.grades.Grade;
 import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
+import ilearn.subject.Subject;
+import ilearn.term.Term;
 import java.io.File;
 import java.io.FileInputStream;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -342,5 +347,104 @@ public class Student
             logger.log(Level.SEVERE, message, e);
         }
         return successful;
+    }
+
+    public static DefaultTableModel getStudentGradeTable(String stuID)
+    {
+        ArrayList<String> subCodes = new ArrayList<String>();
+        ArrayList<String> subjects = new ArrayList<String>();
+        ArrayList<Double> grades = new ArrayList<Double>();
+        final Class<?>[] columnClasses =
+        {
+            String.class, String.class, Double.class
+        };
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnClasses[columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+            }
+        };
+        String cls = getStudentClass(stuID);
+        ArrayList<String> clsSubjects = Classes.getSubjectList(cls);
+        for (String sub : clsSubjects) // loop subjects
+        {
+            double grade = 0.0;
+            if (Subject.hasWeighting(Subject.getSubjectID(sub)))
+            {
+                grade = Grade.calculateGradeWithWeighting(stuID, sub);
+            }
+            else
+            {
+                grade = Grade.calculateGradeWithoutWeighting(stuID, sub);
+            }
+            subCodes.add(sub);
+            ArrayList<String> details = Subject.getSubjectDetails(Subject.getSubjectID(sub));
+            subjects.add(details.get(3).toString());
+            grades.add(Utilities.roundDoubleToDouble(grade));
+        }// end loop subjects
+        model.addColumn("Subject Code", subCodes.toArray());
+        model.addColumn("Subject", subjects.toArray());
+        model.addColumn("Grade", grades.toArray());
+        return model;
+    }
+    public static DefaultTableModel getStudentAttendanceTable(String stuID)
+    {
+        ArrayList<Date> dates = new ArrayList<Date>();
+        ArrayList<Integer> absents = new ArrayList<Integer>();
+        ArrayList<Integer> lates = new ArrayList<Integer>();
+        ArrayList<String> remarks = new ArrayList<String>();
+        ArrayList<String> status = new ArrayList<String>();
+        final Class<?>[] columnClasses =
+        {
+           Date.class, Integer.class,  Integer.class,  String.class, String.class
+        };
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnClasses[columnIndex];
+            }
+            @Override
+            public boolean isCellEditable(int row, int column)
+            {
+                return false;
+            }
+        };
+        try
+        {
+            String sql = " SELECT `rolStuID`,`rolDate`,`rolAbsent`,`rolTardy`,`rolRemark`,`rolStatus`"
+                    + " FROM`RollCall` "
+                    + " WHERE `rolStuID` = ? AND `rolTrmCode` = ?"
+                    + " ORDER BY `rolDate`";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            prep.setString(2, Term.getCurrentTerm());
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                dates.add(rs.getDate("rolDate"));
+                absents.add(rs.getInt("rolAbsent"));
+                lates.add(rs.getInt("rolTardy"));
+                remarks.add(rs.getString("rolRemark"));
+                status.add(rs.getString("rolStatus"));
+            }
+        }
+        catch (Exception e)
+        {
+        }
+        model.addColumn("Date", dates.toArray());
+        model.addColumn("Absent", absents.toArray());
+        model.addColumn("Late", lates.toArray());
+        model.addColumn("Remark", remarks.toArray());
+        model.addColumn("Status", status.toArray());
+        return model;
     }
 }
