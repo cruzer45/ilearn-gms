@@ -15,7 +15,7 @@
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
-              <Component id="desktopPane" alignment="0" pref="548" max="32767" attributes="0"/>
+              <Component id="desktopPane" alignment="0" pref="554" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
       </Layout>
@@ -481,19 +481,6 @@
                     <Property name="name" type="java.lang.String" value="classMastersheet" noResource="true"/>
                   </Properties>
                 </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="classGradeBook">
-                  <Properties>
-                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
-                      <action class="ilearn.ILearnView" id="showGradebookReport" methodName="showGradebookReport"/>
-                    </Property>
-                    <Property name="icon" type="javax.swing.Icon" resourceKey="classGradeBook.icon"/>
-                    <Property name="text" type="java.lang.String" resourceKey="classGradeBook.text"/>
-                    <Property name="name" type="java.lang.String" value="classGradeBook" noResource="true"/>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
-                  </AuxValues>
-                </MenuItem>
                 <MenuItem class="javax.swing.JMenuItem" name="nationalityReport">
                   <Properties>
                     <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
@@ -595,6 +582,38 @@
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
+            <Menu class="javax.swing.JMenu" name="gradesReportMenu">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="gradesReportMenu.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="gradesReportMenu.text"/>
+                <Property name="name" type="java.lang.String" value="gradesReportMenu" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="subjectGradeBook">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showGradebookReport" methodName="showGradebookReport"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="subjectGradeBook.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="subjectGradeBook.text"/>
+                    <Property name="name" type="java.lang.String" value="subjectGradeBook" noResource="true"/>
+                  </Properties>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="teacherWorkbook">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showTeacherGradebook" methodName="showTeacherGradebook"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="teacherWorkbook.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="teacherWorkbook.text"/>
+                    <Property name="name" type="java.lang.String" value="teacherWorkbook" noResource="true"/>
+                  </Properties>
                 </MenuItem>
               </SubComponents>
             </Menu>
@@ -1311,7 +1330,7 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusMessageLabel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="616" max="32767" attributes="0"/>
+                  <EmptySpace pref="630" max="32767" attributes="0"/>
                   <Component id="progressBar" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="statusAnimationLabel" min="-2" max="-2" attributes="0"/>
