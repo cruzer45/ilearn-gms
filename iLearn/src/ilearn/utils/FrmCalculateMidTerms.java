@@ -186,6 +186,15 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
             }
         }
 
+        private boolean calculateNewGrades()
+        {
+            boolean successful = false;
+            
+            return successful;
+        }
+        
+        
+        
         @Override
         protected void succeeded(Object result)
         {

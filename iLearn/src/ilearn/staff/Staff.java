@@ -5,6 +5,7 @@ import ilearn.kernel.Utilities;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -329,4 +330,41 @@ public class Staff
         }
         return staffSubjects;
     }
+    
+    public static ArrayList<HashMap> getStaffSubjectList(String staffCode)
+    {
+        ArrayList<HashMap> subjectList = new ArrayList<HashMap>();
+
+        try
+        {
+            String sql = "SELECT `clsID`,`Class`.`clsCode` as 'class',`subID`, `Subject`.`subCode` as 'subject' , subStaffCode "
+                    + " FROM `Class` "
+                    + " INNER JOIN `ClassSubjects` ON `Class`.`clsCode` = `ClassSubjects`.`clsCode` "
+                    + " INNER JOIN `Subject` ON `Subject`.subID = `ClassSubjects`.`subCode` "
+                    + " WHERE `Subject`.`subStaffCode` = ? ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, staffCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                HashMap<String, String> classDetails = new HashMap<String, String>();
+                classDetails.put("classID", rs.getString("clsID"));
+                classDetails.put("classCode", rs.getString("class"));
+                classDetails.put("subID", rs.getString("subID"));
+                classDetails.put("subCode", rs.getString("subject"));
+                classDetails.put("staffCode", rs.getString("subStaffCode"));
+                subjectList.add(classDetails);
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+             String message = "An error occurred while retrieving the class a subject is assigned to.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return subjectList;
+
+    }
+    
 }
