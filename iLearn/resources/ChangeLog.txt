@@ -1,5 +1,6 @@
--   Working on student dashboard.
-
+-   Finished the student dashboard.
+-   Finished the Teacher gradebook export.
+-   Moved the export subject gradebook option to its own menu under reports.
 
 Version 1.7.8 For Georgetown
 -   Added the action taken field to the demerits module

@@ -20,6 +20,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.SwingWorker;
 import org.jdesktop.application.Action;
 
 /**
@@ -60,7 +61,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
     {
         if (tblStudents.getSelectedRow() != -1)
         {
-            String stuID = tblStudents.getValueAt(tblStudents.getSelectedRow(), 0).toString();
+            final String stuID = tblStudents.getValueAt(tblStudents.getSelectedRow(), 0).toString();
             ArrayList<Object> studentInfo = Student.getStudentInfo(stuID);
             txtID.setText(studentInfo.get(0).toString());
             txtFirstName.setText(studentInfo.get(1).toString());
@@ -104,8 +105,22 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
             catch (SQLException sQLException)
             {
             }
-            gradesTable.setModel(Student.getStudentGradeTable(stuID));
-            attendanceTable.setModel(Student.getStudentAttendanceTable(stuID));
+
+            new Thread(new Runnable()
+            {
+
+                @Override
+                public void run()
+                {
+                    gradesTable.setModel(Student.getStudentGradeTable(stuID));
+                    attendanceTable.setModel(Student.getStudentAttendanceTable(stuID));
+                    meritTable.setModel(Student.getStudentMeritTable(stuID));
+                    demeritTable.setModel(Student.getStudentDemeritTable(stuID));
+                }
+            }).start();
+
+
+
         }
     }
 
@@ -154,6 +169,12 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
         attendancePanel = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         attendanceTable = new javax.swing.JTable();
+        meritPanel = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        meritTable = new javax.swing.JTable();
+        demeritPanel = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        demeritTable = new javax.swing.JTable();
 
         setClosable(true);
         setIconifiable(true);
@@ -218,18 +239,18 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
                         .addComponent(lblSearch)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 303, Short.MAX_VALUE)
+                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdSearch))
                     .addGroup(searchPanelLayout.createSequentialGroup()
                         .addComponent(lblResults)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(lblResults2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
                         .addComponent(cmdNext4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(cmdCancel5)))
@@ -342,15 +363,15 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
                         .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(generalPanelLayout.createSequentialGroup()
                                 .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE)
-                                    .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 210, Short.MAX_VALUE))
+                                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                    .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                    .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                    .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                    .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtClasss, javax.swing.GroupLayout.DEFAULT_SIZE, 362, Short.MAX_VALUE))))
+                            .addComponent(txtClasss, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
@@ -406,11 +427,20 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
 
             },
             new String [] {
-                "ID", "Date", "Staff", "Demerits"
+                "Loading"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         gradesTable.setName("gradesTable"); // NOI18N
         jScrollPane1.setViewportView(gradesTable);
+        gradesTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         javax.swing.GroupLayout gradesPanelLayout = new javax.swing.GroupLayout(gradesPanel);
         gradesPanel.setLayout(gradesPanelLayout);
@@ -418,7 +448,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradesPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                 .addContainerGap())
         );
         gradesPanelLayout.setVerticalGroup(
@@ -440,7 +470,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Loading"
             }
         ));
         attendanceTable.setName("attendanceTable"); // NOI18N
@@ -452,7 +482,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
             attendancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(attendancePanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
                 .addContainerGap())
         );
         attendancePanelLayout.setVerticalGroup(
@@ -465,13 +495,81 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
 
         studentTabbedPane.addTab("Attendance", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/book_open.png")), attendancePanel); // NOI18N
 
+        meritPanel.setName("meritPanel"); // NOI18N
+
+        jScrollPane3.setName("jScrollPane3"); // NOI18N
+
+        meritTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Loading"
+            }
+        ));
+        meritTable.setName("meritTable"); // NOI18N
+        jScrollPane3.setViewportView(meritTable);
+
+        javax.swing.GroupLayout meritPanelLayout = new javax.swing.GroupLayout(meritPanel);
+        meritPanel.setLayout(meritPanelLayout);
+        meritPanelLayout.setHorizontalGroup(
+            meritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(meritPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        meritPanelLayout.setVerticalGroup(
+            meritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(meritPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        studentTabbedPane.addTab("Merits", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/star.png")), meritPanel); // NOI18N
+
+        demeritPanel.setName("demeritPanel"); // NOI18N
+
+        jScrollPane4.setName("jScrollPane4"); // NOI18N
+
+        demeritTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Loading"
+            }
+        ));
+        demeritTable.setName("demeritTable"); // NOI18N
+        jScrollPane4.setViewportView(demeritTable);
+
+        javax.swing.GroupLayout demeritPanelLayout = new javax.swing.GroupLayout(demeritPanel);
+        demeritPanel.setLayout(demeritPanelLayout);
+        demeritPanelLayout.setHorizontalGroup(
+            demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(demeritPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        demeritPanelLayout.setVerticalGroup(
+            demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(demeritPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        studentTabbedPane.addTab("Demerit", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/error.png")), demeritPanel); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 482, Short.MAX_VALUE)
+                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -510,11 +608,15 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
     private javax.swing.JButton cmdNext1;
     private javax.swing.JButton cmdNext4;
     private javax.swing.JButton cmdSearch;
+    private javax.swing.JPanel demeritPanel;
+    private javax.swing.JTable demeritTable;
     private javax.swing.JPanel generalPanel;
     private javax.swing.JPanel gradesPanel;
     private javax.swing.JTable gradesTable;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JLabel lblClass;
@@ -528,6 +630,8 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
     private javax.swing.JLabel lblResults;
     private javax.swing.JLabel lblResults2;
     private javax.swing.JLabel lblSearch;
+    private javax.swing.JPanel meritPanel;
+    private javax.swing.JTable meritTable;
     private javax.swing.JPanel searchPanel;
     private javax.swing.JTabbedPane studentTabbedPane;
     private javax.swing.JTable tblStudents;
