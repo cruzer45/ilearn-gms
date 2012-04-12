@@ -44,6 +44,7 @@ public class SettingsEditor extends javax.swing.JFrame
             String dbPass = EncryptionHandler.decrypt(properties.getProperty("dbPass"));
             txtUser.setText(dbUser);
             txtPassword.setText(dbPass);
+            System.out.println(dbPass);
             dbLocation = dbLocation.substring(13);
             String[] split = dbLocation.split("/");
             txtServer.setText(split[0]);
