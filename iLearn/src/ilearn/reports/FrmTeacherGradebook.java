@@ -47,7 +47,7 @@ import org.jdesktop.application.Task;
  */
 public class FrmTeacherGradebook extends javax.swing.JInternalFrame
 {
-    
+
     File selectedFile;
     static final Logger logger = Logger.getLogger(FrmTeacherGradebook.class.getName());
 
@@ -57,7 +57,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
         initComponents();
         populateLists();
     }
-    
+
     private void populateLists()
     {
         ArrayList<String> staffList = new ArrayList<String>();
@@ -82,14 +82,13 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         lblTitle = new javax.swing.JLabel();
         lblStaff = new javax.swing.JLabel();
         cmbStaff = new javax.swing.JComboBox();
         cmdCancel = new javax.swing.JButton();
         cmdRun = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -98,59 +97,52 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
         setTitle(resourceMap.getString("Form.title")); // NOI18N
         setFrameIcon(resourceMap.getIcon("Form.frameIcon")); // NOI18N
         setName("Form"); // NOI18N
-
         lblTitle.setFont(resourceMap.getFont("lblTitle.font")); // NOI18N
         lblTitle.setText(resourceMap.getString("lblTitle.text")); // NOI18N
         lblTitle.setName("lblTitle"); // NOI18N
-
         lblStaff.setText(resourceMap.getString("lblStaff.text")); // NOI18N
         lblStaff.setName("lblStaff"); // NOI18N
-
         cmbStaff.setName("cmbStaff"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmTeacherGradebook.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText(resourceMap.getString("cmdCancel.text")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdRun.setAction(actionMap.get("run")); // NOI18N
         cmdRun.setText(resourceMap.getString("cmdRun.text")); // NOI18N
         cmdRun.setName("cmdRun"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTitle)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblStaff)
-                        .addGap(15, 15, 15)
-                        .addComponent(cmbStaff, 0, 258, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cmdRun)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(lblTitle)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addComponent(lblStaff)
+                                          .addGap(15, 15, 15)
+                                          .addComponent(cmbStaff, 0, 258, Short.MAX_VALUE))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(cmdRun)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblStaff)
-                    .addComponent(cmbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdRun))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                      .addContainerGap()
+                      .addComponent(lblTitle)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblStaff)
+                                .addComponent(cmbStaff, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdRun))
+                      .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -159,23 +151,23 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
     {
         this.dispose();
     }
-    
+
     @Action(block = Task.BlockingScope.COMPONENT)
     public Task run()
     {
         return new RunTask(org.jdesktop.application.Application.getInstance(ilearn.ILearnApp.class));
     }
-    
+
     private class RunTask extends org.jdesktop.application.Task<Object, Void>
     {
-        
+
         File selFile;
         String staffCode;
         String classID;
         String classCode;
         String subjectCode;
         Workbook wb = new HSSFWorkbook();
-        
+
         RunTask(org.jdesktop.application.Application app)
         {
             super(app);
@@ -206,7 +198,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 return;
             }
         }
-        
+
         @Override
         protected Object doInBackground()
         {
@@ -214,9 +206,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             {
                 return null;
             }
-            
             ArrayList<HashMap> subjectList = Staff.getStaffSubjectList(staffCode);
-            
             for (HashMap<String, String> subject : subjectList)
             {
                 subjectCode = subject.get("subCode");
@@ -231,9 +221,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 {
                     exportUnWeightedSubject();
                 }
-                
             }
-            
             try
             {
                 setMessage("Saving the file.");
@@ -250,7 +238,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (IOException iOException)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, iOException);
             }
@@ -292,7 +280,6 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 studentIDs = (ArrayList<String>) stuInfo[0];
                 studentNames = (ArrayList<String>) stuInfo[1];
                 setMessage("Creating the workbook.");
-                
                 CreationHelper createHelper = wb.getCreationHelper();
                 Sheet sheet = wb.createSheet(classCode + " Gradebook");
                 setMessage("Creating Gradebook.");
@@ -481,12 +468,11 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                     {
                     }
                 }
-                
             }
             catch (Exception e)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -743,12 +729,12 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
         @Override
         protected void succeeded(Object result)
         {

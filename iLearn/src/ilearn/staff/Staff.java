@@ -330,18 +330,17 @@ public class Staff
         }
         return staffSubjects;
     }
-    
+
     public static ArrayList<HashMap> getStaffSubjectList(String staffCode)
     {
         ArrayList<HashMap> subjectList = new ArrayList<HashMap>();
-
         try
         {
             String sql = "SELECT `clsID`,`Class`.`clsCode` as 'class',`subID`, `Subject`.`subCode` as 'subject' , subStaffCode "
-                    + " FROM `Class` "
-                    + " INNER JOIN `ClassSubjects` ON `Class`.`clsCode` = `ClassSubjects`.`clsCode` "
-                    + " INNER JOIN `Subject` ON `Subject`.subID = `ClassSubjects`.`subCode` "
-                    + " WHERE `Subject`.`subStaffCode` = ? ";
+                         + " FROM `Class` "
+                         + " INNER JOIN `ClassSubjects` ON `Class`.`clsCode` = `ClassSubjects`.`clsCode` "
+                         + " INNER JOIN `Subject` ON `Subject`.subID = `ClassSubjects`.`subCode` "
+                         + " WHERE `Subject`.`subStaffCode` = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, staffCode);
             ResultSet rs = prep.executeQuery();
@@ -360,11 +359,10 @@ public class Staff
         }
         catch (Exception e)
         {
-             String message = "An error occurred while retrieving the class a subject is assigned to.";
+            String message = "An error occurred while retrieving the class a subject is assigned to.";
             logger.log(Level.SEVERE, message, e);
         }
         return subjectList;
-
     }
-    
+
 }
