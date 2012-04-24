@@ -20,7 +20,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.SwingWorker;
 import org.jdesktop.application.Action;
 
 /**
@@ -105,10 +104,8 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
             catch (SQLException sQLException)
             {
             }
-
             new Thread(new Runnable()
             {
-
                 @Override
                 public void run()
                 {
@@ -118,9 +115,6 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
                     demeritTable.setModel(Student.getStudentDemeritTable(stuID));
                 }
             }).start();
-
-
-
         }
     }
 
@@ -131,8 +125,8 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         studentTabbedPane = new javax.swing.JTabbedPane();
         searchPanel = new javax.swing.JPanel();
         lblSearch = new javax.swing.JLabel();
@@ -175,411 +169,370 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
         demeritPanel = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
         demeritTable = new javax.swing.JTable();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Student Dashboard");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/user.png"))); // NOI18N
-
         studentTabbedPane.setName("studentTabbedPane"); // NOI18N
-
         searchPanel.setName("searchPanel"); // NOI18N
-
         lblSearch.setText("Search:");
         lblSearch.setName("lblSearch"); // NOI18N
-
         txtSearch.setName("txtSearch"); // NOI18N
-        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter()
+        {
+            public void keyPressed(java.awt.event.KeyEvent evt)
+            {
                 txtSearchKeyPressed(evt);
             }
         });
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmStudentDashBoard.class, this);
         cmdSearch.setAction(actionMap.get("search")); // NOI18N
         cmdSearch.setName("cmdSearch"); // NOI18N
-
         jScrollPane5.setName("jScrollPane5"); // NOI18N
-
         tblStudents.setAutoCreateRowSorter(true);
         tblStudents.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                 new Object [][]
+                                 {
 
-            },
-            new String [] {
-                "ID", "First Name", "Last Name", "Class"
-            }
-        ));
+                                 },
+                                 new String []
+                                 {
+                                     "ID", "First Name", "Last Name", "Class"
+                                 }
+                             ));
         tblStudents.setName("tblStudents"); // NOI18N
-        tblStudents.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tblStudents.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 tblStudentsMouseClicked(evt);
             }
         });
         jScrollPane5.setViewportView(tblStudents);
-
         cmdCancel5.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel5.setName("cmdCancel5"); // NOI18N
-
         cmdNext4.setAction(actionMap.get("next")); // NOI18N
         cmdNext4.setName("cmdNext4"); // NOI18N
-
         lblResults.setText("Results:");
         lblResults.setName("lblResults"); // NOI18N
-
         lblResults2.setText("0");
         lblResults2.setName("lblResults2"); // NOI18N
-
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
-                        .addComponent(lblSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdSearch))
-                    .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addComponent(lblResults)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblResults2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
-                        .addComponent(cmdNext4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel5)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, searchPanelLayout.createSequentialGroup()
+                                          .addComponent(lblSearch)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(txtSearch, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdSearch))
+                                .addGroup(searchPanelLayout.createSequentialGroup()
+                                          .addComponent(lblResults)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(lblResults2)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 270, Short.MAX_VALUE)
+                                          .addComponent(cmdNext4)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel5)))
+                      .addContainerGap())
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSearch)
-                    .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmdSearch))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel5)
-                    .addComponent(cmdNext4)
-                    .addComponent(lblResults)
-                    .addComponent(lblResults2))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSearch)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(cmdSearch))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 378, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel5)
+                                .addComponent(cmdNext4)
+                                .addComponent(lblResults)
+                                .addComponent(lblResults2))
+                      .addContainerGap())
         );
-
         studentTabbedPane.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/find.png")), searchPanel); // NOI18N
-
         generalPanel.setName("generalPanel"); // NOI18N
-
         lblFirstName.setText("First Name:");
         lblFirstName.setName("lblFirstName"); // NOI18N
-
         txtFirstName.setEditable(false);
         txtFirstName.setToolTipText("<html>\nThis is the student's first name.<br />\n<strong>This is a mandatory field.</strong> <br />\nE.g. Mark\n</html>");
         txtFirstName.setName("txtFirstName"); // NOI18N
-
         lblLastName.setText("Last Name:");
         lblLastName.setName("lblLastName"); // NOI18N
-
         txtLastName.setEditable(false);
         txtLastName.setToolTipText("<html>\nThis is the student's last name.<br />\n<strong>This is a mandatory field.</strong><br />\nE.g. Johnson\n</html>");
         txtLastName.setName("txtLastName"); // NOI18N
-
         lblOtherName.setText("Other Name:");
         lblOtherName.setName("lblOtherName"); // NOI18N
-
         txtOtherName.setEditable(false);
         txtOtherName.setToolTipText("<html>\nThis is any other name that the student carries.<br />\nAn example could be their middle name.<br />\nE.g. Anthony\n</html>");
         txtOtherName.setName("txtOtherName"); // NOI18N
-
         lblGender.setText("Gender:");
         lblGender.setName("lblGender"); // NOI18N
-
         lblDOB.setText("DOB:");
         lblDOB.setToolTipText("Date of Birth");
         lblDOB.setName("lblDOB"); // NOI18N
-
         cmdCancel1.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel1.setName("cmdCancel1"); // NOI18N
-
         cmdNext1.setAction(actionMap.get("next")); // NOI18N
         cmdNext1.setName("cmdNext1"); // NOI18N
-
         lblClass.setText("Class:");
         lblClass.setName("lblClass"); // NOI18N
-
         lblID.setText("ID:");
         lblID.setName("lblID"); // NOI18N
-
         txtID.setEditable(false);
         txtID.setName("txtID"); // NOI18N
-
         jScrollPane6.setMaximumSize(new java.awt.Dimension(128, 128));
         jScrollPane6.setMinimumSize(new java.awt.Dimension(128, 128));
         jScrollPane6.setName("jScrollPane6"); // NOI18N
-
         lblImage.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         lblImage.setName("lblImage"); // NOI18N
         jScrollPane6.setViewportView(lblImage);
-
         txtGender.setEditable(false);
         txtGender.setName("txtGender"); // NOI18N
-
         txtDOB.setEditable(false);
         txtDOB.setName("txtDOB"); // NOI18N
-
         txtClasss.setEditable(false);
         txtClasss.setName("txtClasss"); // NOI18N
-
         javax.swing.GroupLayout generalPanelLayout = new javax.swing.GroupLayout(generalPanel);
         generalPanel.setLayout(generalPanelLayout);
         generalPanelLayout.setHorizontalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addComponent(cmdNext1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(cmdCancel1))
-                    .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generalPanelLayout.createSequentialGroup()
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblFirstName)
-                            .addComponent(lblLastName)
-                            .addComponent(lblGender)
-                            .addComponent(lblDOB)
-                            .addComponent(lblOtherName)
-                            .addComponent(lblClass))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(generalPanelLayout.createSequentialGroup()
-                                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
-                                    .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtClasss, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(generalPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdNext1)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addComponent(cmdCancel1))
+                                .addComponent(lblID, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, generalPanelLayout.createSequentialGroup()
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblFirstName)
+                                                  .addComponent(lblLastName)
+                                                  .addComponent(lblGender)
+                                                  .addComponent(lblDOB)
+                                                  .addComponent(lblOtherName)
+                                                  .addComponent(lblClass))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addGroup(generalPanelLayout.createSequentialGroup()
+                                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                                  .addComponent(txtID, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                                                  .addComponent(txtLastName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                                                  .addComponent(txtOtherName, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                                                  .addComponent(txtGender, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE)
+                                                                  .addComponent(txtDOB, javax.swing.GroupLayout.DEFAULT_SIZE, 240, Short.MAX_VALUE))
+                                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                          .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                  .addComponent(txtClasss, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         generalPanelLayout.setVerticalGroup(
             generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, generalPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(generalPanelLayout.createSequentialGroup()
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblID)
-                            .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblFirstName)
-                            .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblLastName)
-                            .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblOtherName, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtOtherName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblGender)
-                            .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblDOB)
-                            .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblClass)
-                            .addComponent(txtClasss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(211, 211, 211)
-                        .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cmdCancel1)
-                            .addComponent(cmdNext1))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(generalPanelLayout.createSequentialGroup()
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblID)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblFirstName)
+                                                  .addComponent(txtFirstName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblLastName)
+                                                  .addComponent(txtLastName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblOtherName, javax.swing.GroupLayout.PREFERRED_SIZE, 12, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                  .addComponent(txtOtherName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblGender)
+                                                  .addComponent(txtGender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblDOB)
+                                                  .addComponent(txtDOB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(lblClass)
+                                                  .addComponent(txtClasss, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                          .addGap(211, 211, 211)
+                                          .addGroup(generalPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                                  .addComponent(cmdCancel1)
+                                                  .addComponent(cmdNext1))))
+                      .addContainerGap())
         );
-
         studentTabbedPane.addTab("General", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/user.png")), generalPanel); // NOI18N
-
         gradesPanel.setName("gradesPanel"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         gradesTable.setAutoCreateRowSorter(true);
         gradesTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                 new Object [][]
+                                 {
 
-            },
-            new String [] {
-                "Loading"
-            }
-        ) {
-            boolean[] canEdit = new boolean [] {
+                                 },
+                                 new String []
+                                 {
+                                     "Loading"
+                                 }
+                             )
+        {
+            boolean[] canEdit = new boolean []
+            {
                 false
             };
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
+            public boolean isCellEditable(int rowIndex, int columnIndex)
+            {
                 return canEdit [columnIndex];
             }
         });
         gradesTable.setName("gradesTable"); // NOI18N
         jScrollPane1.setViewportView(gradesTable);
         gradesTable.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
         javax.swing.GroupLayout gradesPanelLayout = new javax.swing.GroupLayout(gradesPanel);
         gradesPanel.setLayout(gradesPanelLayout);
         gradesPanelLayout.setHorizontalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         gradesPanelLayout.setVerticalGroup(
             gradesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(gradesPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(30, Short.MAX_VALUE))
+                      .addContainerGap()
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                      .addContainerGap(30, Short.MAX_VALUE))
         );
-
         studentTabbedPane.addTab("Grades", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/medal_gold_1.png")), gradesPanel); // NOI18N
-
         attendancePanel.setName("attendancePanel"); // NOI18N
-
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-
         attendanceTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                     new Object [][]
+                                     {
 
-            },
-            new String [] {
-                "Loading"
-            }
-        ));
+                                     },
+                                     new String []
+                                     {
+                                         "Loading"
+                                     }
+                                 ));
         attendanceTable.setName("attendanceTable"); // NOI18N
         jScrollPane2.setViewportView(attendanceTable);
-
         javax.swing.GroupLayout attendancePanelLayout = new javax.swing.GroupLayout(attendancePanel);
         attendancePanel.setLayout(attendancePanelLayout);
         attendancePanelLayout.setHorizontalGroup(
             attendancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(attendancePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         attendancePanelLayout.setVerticalGroup(
             attendancePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(attendancePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                      .addContainerGap())
         );
-
         studentTabbedPane.addTab("Attendance", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/book_open.png")), attendancePanel); // NOI18N
-
         meritPanel.setName("meritPanel"); // NOI18N
-
         jScrollPane3.setName("jScrollPane3"); // NOI18N
-
         meritTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                new Object [][]
+                                {
 
-            },
-            new String [] {
-                "Loading"
-            }
-        ));
+                                },
+                                new String []
+                                {
+                                    "Loading"
+                                }
+                            ));
         meritTable.setName("meritTable"); // NOI18N
         jScrollPane3.setViewportView(meritTable);
-
         javax.swing.GroupLayout meritPanelLayout = new javax.swing.GroupLayout(meritPanel);
         meritPanel.setLayout(meritPanelLayout);
         meritPanelLayout.setHorizontalGroup(
             meritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(meritPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         meritPanelLayout.setVerticalGroup(
             meritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(meritPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                      .addContainerGap())
         );
-
         studentTabbedPane.addTab("Merits", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/star.png")), meritPanel); // NOI18N
-
         demeritPanel.setName("demeritPanel"); // NOI18N
-
         jScrollPane4.setName("jScrollPane4"); // NOI18N
-
         demeritTable.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                  new Object [][]
+                                  {
 
-            },
-            new String [] {
-                "Loading"
-            }
-        ));
+                                  },
+                                  new String []
+                                  {
+                                      "Loading"
+                                  }
+                              ));
         demeritTable.setName("demeritTable"); // NOI18N
         jScrollPane4.setViewportView(demeritTable);
-
         javax.swing.GroupLayout demeritPanelLayout = new javax.swing.GroupLayout(demeritPanel);
         demeritPanel.setLayout(demeritPanelLayout);
         demeritPanelLayout.setHorizontalGroup(
             demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(demeritPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 483, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         demeritPanelLayout.setVerticalGroup(
             demeritPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(demeritPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
+                      .addContainerGap())
         );
-
         studentTabbedPane.addTab("Demerit", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/error.png")), demeritPanel); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(studentTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 490, Short.MAX_VALUE)
+                      .addContainerGap())
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 

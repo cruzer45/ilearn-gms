@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="5.0.11" transformSequenceNumber="3">
   <directoryPresets config="/home/mrogers/Projects/Java/iLearn/installer/executables" />
-  <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer/executables" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="false" shortName="iLearn" publisher="Maurice Rogers, Chris Agular" publisherWeb="http://mauricerogers.com" version="1.7.8" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer/executables" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="false" shortName="iLearn" publisher="Maurice Rogers, Chris Agular" publisherWeb="http://mauricerogers.com" version="1.7.9" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="en" customLocalizationFile="" />
       <additionalLanguages />
@@ -25,7 +25,7 @@
       <mountPoint id="17" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="23" file="/home/mrogers/Projects/Java/iLearn/conf" overwriteMode="3" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" entryMode="direct" subDirectory="" excludeSuffixes="" dirMode="755" overrideDirMode="true">
+      <dirEntry mountPoint="23" file="/home/mrogers/Projects/Java/iLearn/conf" overwriteMode="1" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" entryMode="direct" subDirectory="" excludeSuffixes="" dirMode="755" overrideDirMode="true">
         <exclude>
           <entry location=".svn" fileType="regular" />
         </exclude>
