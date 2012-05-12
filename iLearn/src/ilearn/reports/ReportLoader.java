@@ -368,7 +368,7 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
-     public static void showEndofYearReport()
+    public static void showEndofYearReport()
     {
         String report = "reports/Year_End_Report_with_GPA.jasper";
         String title = "End of Year Report";
