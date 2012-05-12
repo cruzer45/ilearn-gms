@@ -12,9 +12,11 @@ package ilearn.utils;
 
 import ilearn.grades.Grade;
 import ilearn.kernel.Utilities;
+import ilearn.reports.ReportLoader;
 import ilearn.term.Term;
 import java.util.ArrayList;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.Task;
 
@@ -126,7 +128,7 @@ public class FrmCalculateYearAverage extends javax.swing.JInternalFrame
 
     private void cmbFirstMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_cmbFirstMouseClicked
     {
-        //GEN-HEADEREND:event_cmbFirstMouseClicked
+//GEN-HEADEREND:event_cmbFirstMouseClicked
         cmbSecond.remove(cmbFirst.getSelectedIndex());
     }//GEN-LAST:event_cmbFirstMouseClicked
 
@@ -167,6 +169,27 @@ public class FrmCalculateYearAverage extends javax.swing.JInternalFrame
             Grade.calculateYearAverage(sem1, sem2);
             return null;  // return your result
         }
+
+        @Override
+        protected void succeeded(Object result)
+        {
+            super.succeeded(result);
+            String message = "Process complete. \nWould you like to open the report now?";
+            int response = Utilities.showConfirmDialog(rootPane, message);
+            if (response == JOptionPane.YES_OPTION)
+            {
+                Runnable runnable = new Runnable() {
+
+                    public void run()
+                    {
+                        ReportLoader.showEndofYearReport();
+                    }
+                };
+                runnable.run();
+            }
+            
+        }
+        
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbFirst;
