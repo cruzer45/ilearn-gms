@@ -63,6 +63,7 @@ import ilearn.user.User;
 import ilearn.user.UserCheck;
 import ilearn.utils.FrmCalculateMidTerms;
 import ilearn.utils.FrmCalculateFinals;
+import ilearn.utils.FrmCalculateYearAverage;
 import ilearn.utils.FrmExcellClassListImporter;
 import ilearn.utils.FrmSelectiveCalculate;
 import org.jdesktop.application.Action;
@@ -146,6 +147,7 @@ public class ILearnView extends FrameView
     FrmSelectiveCalculate frmSelectiveCalculate = null;
     FrmStudentDashBoard frmStudentDashBoard = null;
     FrmTeacherGradebook frmTeacherGradebook = null;
+    FrmCalculateYearAverage frmCalculateYearAverage = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -391,6 +393,7 @@ public class ILearnView extends FrameView
         resetGradeRemarks = new javax.swing.JMenuItem();
         endOfTerm = new javax.swing.JMenu();
         generateFinalsSelectable = new javax.swing.JMenuItem();
+        jMenuItem1 = new javax.swing.JMenuItem();
         calculateFinals = new javax.swing.JMenuItem();
         clearBlankGrades = new javax.swing.JMenuItem();
         resetFinalGradeRemarks = new javax.swing.JMenuItem();
@@ -415,7 +418,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
         );
         menuBar.setName("menuBar"); // NOI18N
         fileMenu.setMnemonic('F');
@@ -869,6 +872,11 @@ public class ILearnView extends FrameView
         generateFinalsSelectable.setText(resourceMap.getString("generateFinalsSelectable.text")); // NOI18N
         generateFinalsSelectable.setName("generateFinalsSelectable"); // NOI18N
         endOfTerm.add(generateFinalsSelectable);
+        jMenuItem1.setAction(actionMap.get("showCalculateYearAverage")); // NOI18N
+        jMenuItem1.setIcon(resourceMap.getIcon("jMenuItem1.icon")); // NOI18N
+        jMenuItem1.setText(resourceMap.getString("jMenuItem1.text")); // NOI18N
+        jMenuItem1.setName("jMenuItem1"); // NOI18N
+        endOfTerm.add(jMenuItem1);
         calculateFinals.setAction(actionMap.get("showCalculateFinals")); // NOI18N
         calculateFinals.setIcon(resourceMap.getIcon("calculateFinals.icon")); // NOI18N
         calculateFinals.setText(resourceMap.getString("calculateFinals.text")); // NOI18N
@@ -916,7 +924,7 @@ public class ILearnView extends FrameView
             .addGroup(statusPanelLayout.createSequentialGroup()
                       .addContainerGap()
                       .addComponent(statusMessageLabel)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 630, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 616, Short.MAX_VALUE)
                       .addComponent(progressBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addComponent(statusAnimationLabel)
@@ -2891,6 +2899,30 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showCalculateYearAverage()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Calculate Year Average");
+        if (AlreadyLoaded == false)
+        {
+            frmCalculateYearAverage = new FrmCalculateYearAverage();
+            desktopPane.add(frmCalculateYearAverage);
+            //Load the Form
+            frmCalculateYearAverage.setVisible(true);
+            frmCalculateYearAverage.show();
+            try
+            {
+                frmCalculateYearAverage.setIcon(false);
+                frmCalculateYearAverage.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private static javax.swing.JMenuItem addStaff;
@@ -2948,6 +2980,7 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem generateFinalsSelectable;
     private static javax.swing.JMenu gradesMenu;
     private javax.swing.JMenu gradesReportMenu;
+    private javax.swing.JMenuItem jMenuItem1;
     private static javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private static javax.swing.JMenuItem lockUsers;
