@@ -178,8 +178,8 @@ public class FrmCalculateYearAverage extends javax.swing.JInternalFrame
             int response = Utilities.showConfirmDialog(rootPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
-                Runnable runnable = new Runnable() {
-
+                Runnable runnable = new Runnable()
+                {
                     public void run()
                     {
                         ReportLoader.showEndofYearReport();
@@ -187,9 +187,8 @@ public class FrmCalculateYearAverage extends javax.swing.JInternalFrame
                 };
                 runnable.run();
             }
-            
         }
-        
+
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbFirst;
