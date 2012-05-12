@@ -18,6 +18,7 @@ import ilearn.kernel.logger.iLogger;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
+import org.jdesktop.application.Task;
 
 /**
  *
@@ -32,7 +33,7 @@ public class FrmSelectiveCalculate extends javax.swing.JInternalFrame
         initComponents();
         populateLists();
     }
-
+    
     private void populateLists()
     {
         tblClasses.setModel(Classes.getSelectableClassTable());
@@ -47,70 +48,74 @@ public class FrmSelectiveCalculate extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
+
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblClasses = new javax.swing.JTable();
         cmdCancel = new javax.swing.JButton();
         cmdGenerate = new javax.swing.JButton();
+
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Generate Finals");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/calendar.png"))); // NOI18N
+
         jLabel1.setText("This form generate the final grades for the classes you specify.");
         jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
         jLabel1.setName("jLabel1"); // NOI18N
-        jScrollPane1.setName("jScrollPane1"); // NOI18N
-        tblClasses.setModel(new javax.swing.table.DefaultTableModel(
-                                new Object [][]
-                                {
 
-                                },
-                                new String []
-                                {
-                                    "Generate", "Class", "Home Room"
-                                }
-                            ));
+        jScrollPane1.setName("jScrollPane1"); // NOI18N
+
+        tblClasses.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Generate", "Class", "Home Room"
+            }
+        ));
         tblClasses.setName("tblClasses"); // NOI18N
         jScrollPane1.setViewportView(tblClasses);
+
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmSelectiveCalculate.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
+
         cmdGenerate.setAction(actionMap.get("generateGrades")); // NOI18N
-        cmdGenerate.setText("Generate");
         cmdGenerate.setName("cmdGenerate"); // NOI18N
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
-                                .addGroup(layout.createSequentialGroup()
-                                          .addComponent(cmdGenerate)
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                          .addComponent(cmdCancel))
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE))
-                      .addContainerGap())
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(cmdGenerate)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmdCancel))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                      .addContainerGap()
-                      .addComponent(jLabel1)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                .addComponent(cmdCancel)
-                                .addComponent(cmdGenerate))
-                      .addContainerGap())
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 373, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cmdCancel)
+                    .addComponent(cmdGenerate))
+                .addContainerGap())
         );
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -119,63 +124,95 @@ public class FrmSelectiveCalculate extends javax.swing.JInternalFrame
     {
         Utilities.showCancelScreen(this);
     }
-
-    @Action
-    public void generateGrades()
+    
+    @Action(block = Task.BlockingScope.COMPONENT)
+    public Task generateGrades()
     {
+        return new GenerateGradesTask(org.jdesktop.application.Application.getInstance());
+    }
+    
+    private class GenerateGradesTask extends org.jdesktop.application.Task<Object, Void>
+    {
+        
         ArrayList<String> selectedClasses = new ArrayList<String>();
         ArrayList<String> rejectedClasses = new ArrayList<String>();
-        for (int i = 0; i < tblClasses.getRowCount(); i++)
+        boolean calculate = false;
+        
+        GenerateGradesTask(org.jdesktop.application.Application app)
         {
-            boolean selected = Boolean.valueOf(tblClasses.getValueAt(i, 0).toString());
-            String currentClass = tblClasses.getValueAt(i, 2).toString();
-            if (selected)
+            
+            super(app);
+            
+            for (int i = 0; i < tblClasses.getRowCount(); i++)
             {
-                boolean actionRan = iLogger.checkAction(Grade.generateClassMessage + currentClass);
-                if (!actionRan)
+                boolean selected = Boolean.valueOf(tblClasses.getValueAt(i, 0).toString());
+                String currentClass = tblClasses.getValueAt(i, 2).toString();
+                if (selected)
                 {
-                    selectedClasses.add(currentClass);
+                    boolean actionRan = iLogger.checkAction(Grade.generateClassMessage + currentClass);
+                    if (!actionRan)
+                    {
+                        selectedClasses.add(currentClass);
+                    }
+                    else
+                    {
+                        rejectedClasses.add(currentClass);
+                    }
                 }
-                else
+            }
+            if (selectedClasses.isEmpty() && rejectedClasses.isEmpty())
+            {
+                String message = "You need to select at least one class to generate grades for.";
+                Utilities.showWarningMessage(rootPane, message);
+            }
+            else if (selectedClasses.isEmpty() && !rejectedClasses.isEmpty())
+            {
+                String message = "Grades have already been generated for the selected classes.";
+                Utilities.showWarningMessage(rootPane, message);
+            }
+            else if (!selectedClasses.isEmpty() && !rejectedClasses.isEmpty())
+            {
+                String message = "The grades for the classes below have already been generated.\n\n"
+                        + "They will be ignored.\n\n";
+                for (String string : rejectedClasses)
                 {
-                    rejectedClasses.add(currentClass);
+                    message += string + "\n";
+                }
+                Utilities.showWarningMessage(rootPane, message);
+                message = "Are you sure you want to calculate grades for the selected classes?";
+                int response = Utilities.showConfirmDialog(rootPane, message);
+                if (response == JOptionPane.YES_OPTION)
+                {
+                    calculate = true;                    
+                }
+            }
+            else
+            {
+                String message = "Are you sure you want to calculate grades for the selected classes?";
+                int response = Utilities.showConfirmDialog(rootPane, message);
+                if (response == JOptionPane.YES_OPTION)
+                {
+                    calculate = true;
                 }
             }
         }
-        if (selectedClasses.isEmpty() && rejectedClasses.isEmpty())
+        
+        @Override
+        protected Object doInBackground()
         {
-            String message = "You need to select at least one class to generate grades for.";
-            Utilities.showWarningMessage(rootPane, message);
-        }
-        else if (selectedClasses.isEmpty() && !rejectedClasses.isEmpty())
-        {
-            String message = "Grades have already been generated for the selected classes.";
-            Utilities.showWarningMessage(rootPane, message);
-        }
-        else if (!selectedClasses.isEmpty() && !rejectedClasses.isEmpty())
-        {
-            String message = "The grades for the classes below have already been generated.\n\n"
-                             + "They will be ignored.\n\n";
-            for (String string : rejectedClasses)
+            if (calculate)
             {
-                message += string + "\n";
-            }
-            Utilities.showWarningMessage(rootPane, message);
-            message = "Are you sure you want to calculate grades for the selected classes?";
-            int response = Utilities.showConfirmDialog(rootPane, message);
-            if (response == JOptionPane.YES_OPTION)
-            {
+                setMessage("Calculating Grades");
                 Grade.calculateSelectedFinalGrades(selectedClasses);
             }
+            return null;  // return your result
         }
-        else
+        
+        @Override
+        protected void succeeded(Object result)
         {
-            String message = "Are you sure you want to calculate grades for the selected classes?";
-            int response = Utilities.showConfirmDialog(rootPane, message);
-            if (response == JOptionPane.YES_OPTION)
-            {
-                Grade.calculateSelectedFinalGrades(selectedClasses);
-            }
+            // Runs on the EDT.  Update the GUI based on
+            // the result computed by doInBackground().
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,9 +3,21 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<style name="FailingGrade">
+	<style name="FailingYear">
 		<conditionalStyle>
 			<conditionExpression><![CDATA[$F{yrgraYearAverage} < $P{passingMark}]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF9999"/>
+		</conditionalStyle>
+	</style>
+	<style name="FailingSem2">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{yrgraSem2} < $P{passingMark}]]></conditionExpression>
+			<style mode="Opaque" backcolor="#FF9999"/>
+		</conditionalStyle>
+	</style>
+	<style name="FailingSem1">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$F{yrgraSem1} < $P{passingMark}]]></conditionExpression>
 			<style mode="Opaque" backcolor="#FF9999"/>
 		</conditionalStyle>
 	</style>
@@ -14,7 +26,7 @@
 	</parameter>
 	<parameter name="principalName" class="java.lang.String"/>
 	<parameter name="passingMark" class="int">
-		<defaultValueExpression><![CDATA[70]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA[60]]></defaultValueExpression>
 	</parameter>
 	<parameter name="class" class="java.lang.String">
 		<parameterDescription><![CDATA[This is the class that will be loaded.]]></parameterDescription>
@@ -51,6 +63,10 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<field name="yrgraGPA" class="java.lang.Double"/>
 	<field name="yrgraLetterGrade" class="java.lang.String"/>
 	<field name="yrgraRemark" class="java.lang.String"/>
+	<field name="yrgraSem1Avg" class="java.lang.Double"/>
+	<field name="yrgraSem2Avg" class="java.lang.Double"/>
+	<field name="yrgraYrAvg" class="java.lang.Double"/>
+	<field name="yrgraYrGPA" class="java.lang.Double"/>
 	<field name="yrgraStatus" class="java.lang.String"/>
 	<field name="demerits" class="java.math.BigDecimal"/>
 	<field name="rolAbsent" class="java.lang.Long"/>
@@ -141,7 +157,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<reportElement x="417" y="0" width="155" height="20"/>
 					<box leftPadding="5"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[2011 - 2012]]></textFieldExpression>
+					<textFieldExpression><![CDATA["2011 - 2012"]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement mode="Opaque" x="294" y="61" width="40" height="20" backcolor="#CCCCCC"/>
@@ -251,7 +267,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
-					<textFieldExpression><![CDATA[]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{yrgraSem1Avg}]]></textFieldExpression>
 				</textField>
 				<textField pattern="###0.00">
 					<reportElement x="294" y="0" width="40" height="20"/>
@@ -261,6 +277,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
+					<textFieldExpression><![CDATA[$F{yrgraYrGPA}]]></textFieldExpression>
 				</textField>
 				<textField>
 					<reportElement x="379" y="0" width="28" height="20"/>
@@ -302,6 +319,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
+					<textFieldExpression><![CDATA[$F{yrgraYrAvg}]]></textFieldExpression>
 				</textField>
 				<textField pattern="###0.00">
 					<reportElement x="214" y="0" width="40" height="20"/>
@@ -311,6 +329,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle">
 						<font isBold="true"/>
 					</textElement>
+					<textFieldExpression><![CDATA[$F{yrgraSem2Avg}]]></textFieldExpression>
 				</textField>
 			</band>
 		</groupFooter>
@@ -354,7 +373,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{subName}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
-				<reportElement style="FailingGrade" mode="Opaque" x="174" y="0" width="40" height="20"/>
+				<reportElement style="FailingSem1" mode="Opaque" x="174" y="0" width="40" height="20"/>
 				<box leftPadding="5" rightPadding="10">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -412,7 +431,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{subCredits}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
-				<reportElement style="FailingGrade" mode="Opaque" x="254" y="0" width="40" height="20"/>
+				<reportElement style="FailingYear" mode="Opaque" x="254" y="0" width="40" height="20"/>
 				<box leftPadding="5" rightPadding="10">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -423,7 +442,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{yrgraYearAverage}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
-				<reportElement style="FailingGrade" mode="Opaque" x="214" y="0" width="40" height="20"/>
+				<reportElement style="FailingSem2" mode="Opaque" x="214" y="0" width="40" height="20"/>
 				<box leftPadding="5" rightPadding="10">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>

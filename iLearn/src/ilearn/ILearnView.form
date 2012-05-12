@@ -687,6 +687,16 @@
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
                 </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="jMenuItem2">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showEndOfYearReport" methodName="showEndOfYearReport"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="jMenuItem2.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="jMenuItem2.text"/>
+                    <Property name="name" type="java.lang.String" value="jMenuItem2" noResource="true"/>
+                  </Properties>
+                </MenuItem>
               </SubComponents>
             </Menu>
             <Menu class="javax.swing.JMenu" name="studentReports">

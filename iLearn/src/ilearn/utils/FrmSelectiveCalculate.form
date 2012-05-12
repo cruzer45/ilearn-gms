@@ -120,7 +120,6 @@
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="ilearn.utils.FrmSelectiveCalculate" id="cancel" methodName="cancel"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cancel"/>
         <Property name="name" type="java.lang.String" value="cmdCancel" noResource="true"/>
       </Properties>
     </Component>
@@ -129,7 +128,6 @@
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="ilearn.utils.FrmSelectiveCalculate" id="generateGrades" methodName="generateGrades"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Generate"/>
         <Property name="name" type="java.lang.String" value="cmdGenerate" noResource="true"/>
       </Properties>
     </Component>

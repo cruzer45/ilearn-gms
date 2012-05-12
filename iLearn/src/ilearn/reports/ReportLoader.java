@@ -368,4 +368,23 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+     public static void showEndofYearReport()
+    {
+        String report = "reports/Year_End_Report_with_GPA.jasper";
+        String title = "End of Year Report";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        parameters.put("principalName", School.getPrincipal());
+        parameters.put("passingMark", School.getPassingMark());
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
 }
