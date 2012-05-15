@@ -196,6 +196,8 @@ public class FrmSelectiveCalculate extends javax.swing.JInternalFrame
             {
                 setMessage("Calculating Grades");
                 Grade.calculateSelectedFinalGrades(selectedClasses);
+                Grade.saveFinalGrades();
+                Grade.calculateFinalAverage();
             }
             return null;  // return your result
         }
