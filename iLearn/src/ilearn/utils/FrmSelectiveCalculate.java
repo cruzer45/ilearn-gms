@@ -205,8 +205,8 @@ public class FrmSelectiveCalculate extends javax.swing.JInternalFrame
         @Override
         protected void succeeded(Object result)
         {
-            // Runs on the EDT.  Update the GUI based on
-            // the result computed by doInBackground().
+            String message = "Finished calculating grades.";
+            Utilities.showInfoMessage(rootPane, message);
         }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables

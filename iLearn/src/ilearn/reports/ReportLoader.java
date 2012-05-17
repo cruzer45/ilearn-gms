@@ -368,8 +368,10 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
+
     public static void showEndofYearReport()
     {
+        School.downloadSignature();
         String report = "reports/Year_End_Report_with_GPA.jasper";
         String title = "End of Year Report";
         // Second, create a map of parameters to pass to the report.

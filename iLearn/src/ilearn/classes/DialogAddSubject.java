@@ -186,7 +186,7 @@ public class DialogAddSubject extends javax.swing.JDialog
     public void search()
     {
         String criteria = txtSearch.getText().trim();
-        tblResults.setModel(Subject.getSubjectList(criteria));
+        tblResults.setModel(Subject.getSubjectTable(criteria));
         lblResults2.setText(String.valueOf(tblResults.getRowCount()));
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
