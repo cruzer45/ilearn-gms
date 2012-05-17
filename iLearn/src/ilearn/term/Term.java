@@ -333,4 +333,31 @@ public class Term
         }
         return grade;
     }
+
+    public static double getStudentAverageforTerm(String classCode, String termID,  String stuID)
+    {
+        double grade = 0.0;
+        try
+        {
+            String sql = "SELECT graAvgFinal FROM Grade_Average "
+                         + " WHERE `graAvgClsCode` = ? AND `graAvgTerm` = ?  and `graAvgStuID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, classCode);
+            prep.setString(2, termID);
+            prep.setString(3, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                grade = rs.getDouble("graAvgFinal");
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting a grade for a specific term.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return grade;
+    }
 }

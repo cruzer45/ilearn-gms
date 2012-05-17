@@ -331,7 +331,7 @@ public class Subject
         return successful;
     }
 
-    public static DefaultTableModel getSubjectList(String criteria)
+    public static DefaultTableModel getSubjectTable(String criteria)
     {
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
@@ -388,6 +388,39 @@ public class Subject
         model.addColumn("Credits", credits.toArray());
         model.addColumn("Status", status.toArray());
         return model;
+    }
+
+    public static ArrayList<HashMap> getSubjectDetailList()
+    {
+        ArrayList<HashMap> details = new ArrayList<HashMap>();
+        try
+        {
+            String sql = "SELECT `subID`, `subCode`, `subStaffCode`, `subName`, "
+                         + "`subDescription`, `subCredits`,`subStatus` "
+                         + " FROM `Subject` ";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                HashMap<String, String> subject = new HashMap<String, String>();
+                subject.put("subID", rs.getString("subID"));
+                subject.put("subCode", rs.getString("subCode"));
+                subject.put("subStaffCode", Staff.getStaffName(rs.getString("subStaffCode")));
+                subject.put("subName", rs.getString("subName"));
+                subject.put("subDescription", rs.getString("subDescription"));
+                subject.put("subStatus", rs.getString("subStatus"));
+                subject.put("subCredits", rs.getString("subCredits"));
+                details.add(subject);
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving subject details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return details;
     }
 
     public static ArrayList<String> getSubjectDetails(String subID)

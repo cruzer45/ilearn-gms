@@ -127,7 +127,7 @@ public class FrmEditSubject extends javax.swing.JInternalFrame
     public void search()
     {
         String criteria = txtSearch.getText().trim();
-        tblResults.setModel(Subject.getSubjectList(criteria));
+        tblResults.setModel(Subject.getSubjectTable(criteria));
         lblResults2.setText(String.valueOf(tblResults.getRowCount()));
     }
 

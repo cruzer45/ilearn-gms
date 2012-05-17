@@ -330,7 +330,6 @@ public class ILearnView extends FrameView
         attendanceDetail = new javax.swing.JMenuItem();
         classReports = new javax.swing.JMenu();
         classListReport = new javax.swing.JMenuItem();
-        classMastersheet = new javax.swing.JMenuItem();
         nationalityReport = new javax.swing.JMenuItem();
         demeritReports = new javax.swing.JMenu();
         demeritSummaryStudent = new javax.swing.JMenuItem();
@@ -342,6 +341,7 @@ public class ILearnView extends FrameView
         gradesReportMenu = new javax.swing.JMenu();
         subjectGradeBook = new javax.swing.JMenuItem();
         teacherWorkbook = new javax.swing.JMenuItem();
+        classMastersheet = new javax.swing.JMenuItem();
         reportCardsMenu = new javax.swing.JMenu();
         midTermReports = new javax.swing.JMenuItem();
         classRankReport = new javax.swing.JMenuItem();
@@ -588,11 +588,6 @@ public class ILearnView extends FrameView
         classListReport.setText(resourceMap.getString("classListReport.text")); // NOI18N
         classListReport.setName("classListReport"); // NOI18N
         classReports.add(classListReport);
-        classMastersheet.setAction(actionMap.get("showClassMastersheet")); // NOI18N
-        classMastersheet.setIcon(resourceMap.getIcon("classMastersheet.icon")); // NOI18N
-        classMastersheet.setText(resourceMap.getString("classMastersheet.text")); // NOI18N
-        classMastersheet.setName("classMastersheet"); // NOI18N
-        classReports.add(classMastersheet);
         nationalityReport.setAction(actionMap.get("showNationalityReport")); // NOI18N
         nationalityReport.setIcon(resourceMap.getIcon("nationalityReport.icon")); // NOI18N
         nationalityReport.setText(resourceMap.getString("nationalityReport.text")); // NOI18N
@@ -645,6 +640,11 @@ public class ILearnView extends FrameView
         teacherWorkbook.setText(resourceMap.getString("teacherWorkbook.text")); // NOI18N
         teacherWorkbook.setName("teacherWorkbook"); // NOI18N
         gradesReportMenu.add(teacherWorkbook);
+        classMastersheet.setAction(actionMap.get("showClassMastersheet")); // NOI18N
+        classMastersheet.setIcon(resourceMap.getIcon("classMastersheet.icon")); // NOI18N
+        classMastersheet.setText(resourceMap.getString("classMastersheet.text")); // NOI18N
+        classMastersheet.setName("classMastersheet"); // NOI18N
+        gradesReportMenu.add(classMastersheet);
         reportsMenu.add(gradesReportMenu);
         reportCardsMenu.setIcon(resourceMap.getIcon("reportCardsMenu.icon")); // NOI18N
         reportCardsMenu.setText(resourceMap.getString("reportCardsMenu.text")); // NOI18N

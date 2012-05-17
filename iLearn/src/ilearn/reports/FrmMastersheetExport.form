@@ -57,17 +57,19 @@
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="lblTerm1" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblTerm" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="lblClass" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="cmbClass" alignment="0" pref="257" max="32767" attributes="0"/>
-                              <Component id="cmbTerm" alignment="0" pref="257" max="32767" attributes="0"/>
+                              <Component id="cmbClass" alignment="0" pref="327" max="32767" attributes="0"/>
+                              <Component id="cmbTerm" alignment="0" pref="327" max="32767" attributes="0"/>
+                              <Component id="cmbTerm1" alignment="0" pref="327" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -81,10 +83,15 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="lblTerm1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="cmbTerm1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="lblClass" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmbClass" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace type="unrelated" pref="15" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="cmdExport" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -100,7 +107,6 @@
             <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
               <action class="ilearn.reports.FrmMastersheetExport" id="cancel" methodName="cancel"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Cancel"/>
             <Property name="name" type="java.lang.String" value="cmdCancel" noResource="true"/>
           </Properties>
         </Component>
@@ -109,13 +115,12 @@
             <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
               <action class="ilearn.reports.FrmMastersheetExport" id="export" methodName="export"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Export"/>
             <Property name="name" type="java.lang.String" value="cmdExport" noResource="true"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTerm">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Term:"/>
+            <Property name="text" type="java.lang.String" value="First Term:"/>
             <Property name="name" type="java.lang.String" value="lblTerm" noResource="true"/>
           </Properties>
         </Component>
@@ -143,6 +148,22 @@
               </StringArray>
             </Property>
             <Property name="name" type="java.lang.String" value="cmbClass" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="cmbTerm1">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="1">
+                <StringItem index="0" value="--- Select One ---"/>
+              </StringArray>
+            </Property>
+            <Property name="name" type="java.lang.String" value="cmbTerm1" noResource="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="lblTerm1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Second Term:"/>
+            <Property name="name" type="java.lang.String" value="lblTerm1" noResource="true"/>
           </Properties>
         </Component>
       </SubComponents>

@@ -1,9 +1,4 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/*
  * FrmMastersheetExport.java
  *
  * Created on Feb 6, 2012, 6:55:36 PM
@@ -33,6 +28,7 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.util.CellRangeAddress;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.Task;
 
@@ -70,6 +66,8 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
         cmbTerm = new javax.swing.JComboBox();
         lblClass = new javax.swing.JLabel();
         cmbClass = new javax.swing.JComboBox();
+        cmbTerm1 = new javax.swing.JComboBox();
+        lblTerm1 = new javax.swing.JLabel();
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -79,12 +77,10 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
         wrapperPanel.setName("wrapperPanel"); // NOI18N
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmMastersheetExport.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
         cmdExport.setAction(actionMap.get("export")); // NOI18N
-        cmdExport.setText("Export");
         cmdExport.setName("cmdExport"); // NOI18N
-        lblTerm.setText("Term:");
+        lblTerm.setText("First Term:");
         lblTerm.setName("lblTerm"); // NOI18N
         cmbTerm.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Select One ---" }));
         cmbTerm.setName("cmbTerm"); // NOI18N
@@ -92,6 +88,10 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
         lblClass.setName("lblClass"); // NOI18N
         cmbClass.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Select Term ---" }));
         cmbClass.setName("cmbClass"); // NOI18N
+        cmbTerm1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "--- Select One ---" }));
+        cmbTerm1.setName("cmbTerm1"); // NOI18N
+        lblTerm1.setText("Second Term:");
+        lblTerm1.setName("lblTerm1"); // NOI18N
         javax.swing.GroupLayout wrapperPanelLayout = new javax.swing.GroupLayout(wrapperPanel);
         wrapperPanel.setLayout(wrapperPanelLayout);
         wrapperPanelLayout.setHorizontalGroup(
@@ -105,12 +105,14 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                                           .addComponent(cmdCancel))
                                 .addGroup(wrapperPanelLayout.createSequentialGroup()
                                           .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblTerm1)
                                                   .addComponent(lblTerm)
                                                   .addComponent(lblClass))
-                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGap(14, 14, 14)
                                           .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                  .addComponent(cmbClass, 0, 257, Short.MAX_VALUE)
-                                                  .addComponent(cmbTerm, 0, 257, Short.MAX_VALUE))))
+                                                  .addComponent(cmbClass, 0, 327, Short.MAX_VALUE)
+                                                  .addComponent(cmbTerm, 0, 327, Short.MAX_VALUE)
+                                                  .addComponent(cmbTerm1, 0, 327, Short.MAX_VALUE))))
                       .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(
@@ -122,9 +124,13 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                                 .addComponent(cmbTerm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblTerm1)
+                                .addComponent(cmbTerm1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(lblClass)
                                 .addComponent(cmbClass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 15, Short.MAX_VALUE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                       .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                 .addComponent(cmdCancel)
                                 .addComponent(cmdExport))
@@ -148,6 +154,7 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
         ArrayList<String> list = Term.getTermList();
         list.add(0, "--- Select One ---");
         cmbTerm.setModel(new DefaultComboBoxModel(list.toArray()));
+        cmbTerm1.setModel(new DefaultComboBoxModel(list.toArray()));
         list = Classes.getClassList();
         list.add(0, "--- Select One ---");
         cmbClass.setModel(new DefaultComboBoxModel(list.toArray()));
@@ -193,7 +200,8 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
     {
 
         File selFile;
-        String selectedTerm;
+        String firstTerm;
+        String secondTerm;
         String classCode;
 
         ExportTask(org.jdesktop.application.Application app)
@@ -220,7 +228,8 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                 }
                 selFile = selectedFile;
                 classCode = cmbClass.getSelectedItem().toString();
-                selectedTerm = cmbTerm.getSelectedItem().toString();
+                firstTerm = cmbTerm.getSelectedItem().toString();
+                secondTerm = cmbTerm1.getSelectedItem().toString();
             }
             else
             {
@@ -234,14 +243,15 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
             try
             {
                 int passingMark = (School.getPassingMark());
-                String termID = Term.getTermIDFromShortName(selectedTerm);
-                Object[] stuInfo = Term.getClassListForTerm(classCode, termID);
+                String firstTermID = Term.getTermIDFromShortName(firstTerm);
+                String secondTermID = Term.getTermIDFromShortName(secondTerm);
+                Object[] stuInfo = Term.getClassListForTerm(classCode, firstTermID);
                 ArrayList<String> studentIDs = (ArrayList<String>) stuInfo[0];
                 ArrayList<String> studentNames = (ArrayList<String>) stuInfo[1];
                 setMessage("Creating Gradebook.");
                 Workbook wb = new HSSFWorkbook();
                 CreationHelper createHelper = wb.getCreationHelper();
-                Sheet sheet = wb.createSheet(classCode + " Mastersheet - " + selectedTerm);
+                Sheet sheet = wb.createSheet(classCode + " Mastersheet - " + firstTerm + " and " + secondTerm);
                 //Create the number format cell style
                 CellStyle numberStyle = wb.createCellStyle();
                 CellStyle numberStyle2 = wb.createCellStyle();
@@ -258,12 +268,12 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                 row.createCell(0).setCellValue("Class:");
                 row.createCell(1).setCellValue(classCode);
                 row.createCell(3).setCellValue("Term:");
-                row.createCell(4).setCellValue(selectedTerm);
+                row.createCell(4).setCellValue(firstTerm + " and " + secondTerm);
                 setMessage("Inserting Data.");
-                row = sheet.createRow(3);
+                row = sheet.createRow(4);
                 row.createCell(0).setCellValue(createHelper.createRichTextString("ID"));
                 row.createCell(1).setCellValue(createHelper.createRichTextString("Name"));
-                int studentStartRow = 5;
+                int studentStartRow = 6;
                 int startColumn = 2; //This is the column the assessments will start to print.
                 int finishColumn = 0;
                 //Print The student List.
@@ -273,23 +283,35 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                     studentRow.createCell(0).setCellValue(Integer.valueOf(studentIDs.get(i)));
                     studentRow.createCell(1).setCellValue(studentNames.get(i));
                 }
-                Object[] subjectList = Term.getSubjectsforTerm(classCode, termID);
+                Object[] subjectList = Term.getSubjectsforTerm(classCode, firstTermID);
                 ArrayList<String> subCodes = (ArrayList<String>) subjectList[0];
                 ArrayList<String> subNames = (ArrayList<String>) subjectList[1];
                 Row subjectTitleRow = sheet.createRow(3);
+                Row termTitleRow = sheet.createRow(4);
                 //Print the subjects
                 for (int i = 0; i < subNames.size(); i++)
                 {
-                    finishColumn = startColumn + i;
-                    Cell subjectCell = subjectTitleRow.createCell(startColumn + i);
+                    if (i == 0)
+                    {
+                        finishColumn = startColumn + i;
+                    }
+                    Cell subjectCell = subjectTitleRow.createCell(finishColumn);
                     subjectCell.setCellValue(subNames.get(i));
+                    sheet.addMergedRegion(new CellRangeAddress(3, 3, finishColumn, finishColumn + 2));
+                    Cell term1Cell = termTitleRow.createCell(finishColumn);
+                    term1Cell.setCellValue("Sem 1");
+                    Cell term2Cell = termTitleRow.createCell(finishColumn + 1);
+                    term2Cell.setCellValue("Sem 2");
+                    Cell term3Cell = termTitleRow.createCell(finishColumn + 2);
+                    term3Cell.setCellValue("Average");
                     //for each student get their grade
                     for (int j = studentStartRow; j < (sheet.getLastRowNum() + 1); j++)
                     {
                         Row studentRow = sheet.getRow(j);
                         double stuID = studentRow.getCell(0).getNumericCellValue();
-                        double grade = Term.getStudentGradeforTerm(classCode, termID, subCodes.get(i), String.valueOf(stuID));
-                        Cell gradeCell = studentRow.createCell(startColumn + i);
+                        double grade = Term.getStudentGradeforTerm(classCode, firstTermID, subCodes.get(i), String.valueOf(stuID));
+                        //Term1
+                        Cell gradeCell = studentRow.createCell(finishColumn);
                         gradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
                         gradeCell.setCellValue(grade);
                         gradeCell.setCellStyle(numberStyle);
@@ -302,6 +324,61 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                             style.setDataFormat(format.getFormat("#,##0.00"));
                             gradeCell.setCellStyle(style);
                         }
+                        //Term2
+                        double grade2 = Term.getStudentGradeforTerm(classCode, secondTermID, subCodes.get(i), String.valueOf(stuID));
+                        Cell gradeCell2 = studentRow.createCell(finishColumn + 1);
+                        gradeCell2.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        gradeCell2.setCellValue(grade2);
+                        gradeCell2.setCellStyle(numberStyle);
+                        if (grade2 < passingMark)
+                        {
+                            CellStyle style = wb.createCellStyle();
+                            Font font = wb.createFont();
+                            font.setColor(HSSFColor.RED.index);
+                            style.setFont(font);
+                            style.setDataFormat(format.getFormat("#,##0.00"));
+                            gradeCell2.setCellStyle(style);
+                        }
+                        //Average
+                        double average = (grade + grade2) / 2;
+                        Cell averageCell = studentRow.createCell(finishColumn + 2);
+                        averageCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                        averageCell.setCellValue(average);
+                        averageCell.setCellStyle(numberStyle);
+                        if (average < passingMark)
+                        {
+                            CellStyle style = wb.createCellStyle();
+                            Font font = wb.createFont();
+                            font.setColor(HSSFColor.RED.index);
+                            style.setFont(font);
+                            style.setDataFormat(format.getFormat("#,##0.00"));
+                            averageCell.setCellStyle(style);
+                        }
+                    }
+                    finishColumn += 3;
+                }
+                //Print the final grades
+                //for each student get their grade
+                Cell average = subjectTitleRow.createCell(finishColumn);
+                average.setCellValue("Average");
+                for (int j = studentStartRow; j < (sheet.getLastRowNum() + 1); j++)
+                {
+                    Row studentRow = sheet.getRow(j);
+                    double stuID = studentRow.getCell(0).getNumericCellValue();
+                    double grade = Term.getStudentAverageforTerm(classCode, firstTermID, String.valueOf(stuID));
+                    //Average
+                    Cell gradeCell = studentRow.createCell(finishColumn);
+                    gradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    gradeCell.setCellValue(grade);
+                    gradeCell.setCellStyle(numberStyle);
+                    if (grade < passingMark)
+                    {
+                        CellStyle style = wb.createCellStyle();
+                        Font font = wb.createFont();
+                        font.setColor(HSSFColor.RED.index);
+                        style.setFont(font);
+                        style.setDataFormat(format.getFormat("#,##0.00"));
+                        gradeCell.setCellStyle(style);
                     }
                 }
                 setMessage("Saving the file.");
@@ -334,10 +411,12 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbClass;
     private javax.swing.JComboBox cmbTerm;
+    private javax.swing.JComboBox cmbTerm1;
     private javax.swing.JButton cmdCancel;
     private javax.swing.JButton cmdExport;
     private javax.swing.JLabel lblClass;
     private javax.swing.JLabel lblTerm;
+    private javax.swing.JLabel lblTerm1;
     private javax.swing.JPanel wrapperPanel;
     // End of variables declaration//GEN-END:variables
 }
