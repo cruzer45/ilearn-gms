@@ -47,10 +47,9 @@ public class SettingsEditor extends javax.swing.JFrame
             System.out.println(dbPass);
             dbLocation = dbLocation.substring(13);
             String[] split = dbLocation.split("/");
-            String[] split2 = split[1].split("autoReconnect=true");
-            String db = split2[0].substring(0, split2[0].toString().toCharArray().length - 1);
+            String[] split2 = split[1].split("\\?");
             txtServer.setText(split[0]);
-            txtDatabase.setText(db);
+            txtDatabase.setText(split2[0]);
         }
         catch (Exception ex)
         {
