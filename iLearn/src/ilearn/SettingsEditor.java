@@ -1,6 +1,5 @@
 package ilearn;
 
-
 import ilearn.kernel.EncryptionHandler;
 import ilearn.kernel.Utilities;
 import java.awt.Toolkit;
@@ -40,6 +39,7 @@ public class SettingsEditor extends javax.swing.JFrame
         {
             properties.load(new FileInputStream("conf/iLearn.properties"));
             String dbLocation = EncryptionHandler.decrypt(properties.getProperty("dbLocation"));
+            System.out.println(dbLocation);
             String dbUser = EncryptionHandler.decrypt(properties.getProperty("dbUser"));
             String dbPass = EncryptionHandler.decrypt(properties.getProperty("dbPass"));
             txtUser.setText(dbUser);
@@ -47,8 +47,10 @@ public class SettingsEditor extends javax.swing.JFrame
             System.out.println(dbPass);
             dbLocation = dbLocation.substring(13);
             String[] split = dbLocation.split("/");
+            String[] split2 = split[1].split("autoReconnect=true");
+            String db = split2[0].substring(0, split2[0].toString().toCharArray().length - 1);
             txtServer.setText(split[0]);
-            txtDatabase.setText(split[1]);
+            txtDatabase.setText(db);
         }
         catch (Exception ex)
         {
@@ -206,7 +208,7 @@ public class SettingsEditor extends javax.swing.JFrame
         catch (Exception ex)
         {
             String message = "An error occurred while connecting to the database.\n"
-                             + "Kindly check with your system administrator.";
+                    + "Kindly check with your system administrator.";
             ilearn.kernel.Utilities.showErrorMessage(rootPane, message);
         }
     }//GEN-LAST:event_cmdTestConnActionPerformed
@@ -242,8 +244,8 @@ public class SettingsEditor extends javax.swing.JFrame
             catch (Exception e)
             {
                 message = "An error occurred."
-                          + "\nCould not read the application's settings."
-                          + "\n\nKindly consult the system administrator.";
+                        + "\nCould not read the application's settings."
+                        + "\n\nKindly consult the system administrator.";
                 Utilities.showErrorMessage(rootPane, message);
             }
         }
@@ -287,6 +289,7 @@ public class SettingsEditor extends javax.swing.JFrame
          */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
+
             @Override
             public void run()
             {
