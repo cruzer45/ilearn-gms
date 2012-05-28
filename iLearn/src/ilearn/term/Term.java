@@ -334,7 +334,7 @@ public class Term
         return grade;
     }
 
-    public static double getStudentAverageforTerm(String classCode, String termID,  String stuID)
+    public static double getStudentAverageforTerm(String classCode, String termID, String stuID)
     {
         double grade = 0.0;
         try
@@ -349,6 +349,58 @@ public class Term
             while (rs.next())
             {
                 grade = rs.getDouble("graAvgFinal");
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting a grade for a specific term.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return grade;
+    }
+
+    public static double getStudentGradeforYear( String subCode, String stuID)
+    {
+        double grade = 0.0;
+        try
+        {
+            String sql = "SELECT yrgraYearAverage "
+                         + " FROM Grade_Year_Average "
+                         + " WHERE yrgraStuID = ? AND yrgraSubCode = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            prep.setString(2, subCode);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                grade = rs.getDouble("yrgraYearAverage");
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while getting a grade for a specific term.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return grade;
+    }
+
+    public static double getStudentYearAverage(String stuID)
+    {
+        double grade = 0.0;
+        try
+        {
+            String sql = "SELECT DISTINCT yrgraYrAvg FROM Grade_Year_Average "
+                         + " WHERE yrgraStuID =  ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                grade = rs.getDouble("yrgraYrAvg");
             }
             prep.close();
             rs.close();

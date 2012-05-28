@@ -6,6 +6,7 @@
 package ilearn.reports;
 
 import ilearn.classes.Classes;
+import ilearn.grades.Grade;
 import ilearn.kernel.Utilities;
 import ilearn.school.School;
 import ilearn.term.Term;
@@ -260,6 +261,11 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                 numberStyle.setDataFormat(format.getFormat("#,##0.00"));
                 numberStyle2.setDataFormat(format.getFormat("#,##0"));
                 percentStyle.setDataFormat((short) 0xa);
+                CellStyle redTextStyle = wb.createCellStyle();
+                Font redFont = wb.createFont();
+                redFont.setColor(HSSFColor.RED.index);
+                redTextStyle.setFont(redFont);
+                redTextStyle.setDataFormat(format.getFormat("#,##0.00"));
                 //Insert Initial info
                 Row row = sheet.createRow(0);
                 Cell cell = row.createCell(0);
@@ -317,12 +323,7 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                         gradeCell.setCellStyle(numberStyle);
                         if (grade < passingMark)
                         {
-                            CellStyle style = wb.createCellStyle();
-                            Font font = wb.createFont();
-                            font.setColor(HSSFColor.RED.index);
-                            style.setFont(font);
-                            style.setDataFormat(format.getFormat("#,##0.00"));
-                            gradeCell.setCellStyle(style);
+                            gradeCell.setCellStyle(redTextStyle);
                         }
                         //Term2
                         double grade2 = Term.getStudentGradeforTerm(classCode, secondTermID, subCodes.get(i), String.valueOf(stuID));
@@ -332,53 +333,63 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
                         gradeCell2.setCellStyle(numberStyle);
                         if (grade2 < passingMark)
                         {
-                            CellStyle style = wb.createCellStyle();
-                            Font font = wb.createFont();
-                            font.setColor(HSSFColor.RED.index);
-                            style.setFont(font);
-                            style.setDataFormat(format.getFormat("#,##0.00"));
-                            gradeCell2.setCellStyle(style);
+                            gradeCell2.setCellStyle(redTextStyle);
                         }
                         //Average
-                        double average = (grade + grade2) / 2;
+                        double average = Term.getStudentGradeforYear(subCodes.get(i), String.valueOf(stuID));
                         Cell averageCell = studentRow.createCell(finishColumn + 2);
                         averageCell.setCellType(Cell.CELL_TYPE_NUMERIC);
                         averageCell.setCellValue(average);
                         averageCell.setCellStyle(numberStyle);
                         if (average < passingMark)
                         {
-                            CellStyle style = wb.createCellStyle();
-                            Font font = wb.createFont();
-                            font.setColor(HSSFColor.RED.index);
-                            style.setFont(font);
-                            style.setDataFormat(format.getFormat("#,##0.00"));
-                            averageCell.setCellStyle(style);
+                            averageCell.setCellStyle(redTextStyle);
                         }
                     }
                     finishColumn += 3;
                 }
+                finishColumn++;
                 //Print the final grades
                 //for each student get their grade
-                Cell average = subjectTitleRow.createCell(finishColumn);
-                average.setCellValue("Average");
+                Cell sem1Title = subjectTitleRow.createCell(finishColumn);
+                sem1Title.setCellValue("Sem 1 Average");
+                Cell sem2Title = subjectTitleRow.createCell(finishColumn + 1);
+                sem2Title.setCellValue("Sem 2 Average");
+                Cell yearTitle = subjectTitleRow.createCell(finishColumn + 2);
+                yearTitle.setCellValue("Year Average");
                 for (int j = studentStartRow; j < (sheet.getLastRowNum() + 1); j++)
                 {
                     Row studentRow = sheet.getRow(j);
                     double stuID = studentRow.getCell(0).getNumericCellValue();
-                    double grade = Term.getStudentAverageforTerm(classCode, firstTermID, String.valueOf(stuID));
-                    //Average
-                    Cell gradeCell = studentRow.createCell(finishColumn);
-                    gradeCell.setCellType(Cell.CELL_TYPE_NUMERIC);
-                    gradeCell.setCellValue(grade);
-                    gradeCell.setCellStyle(numberStyle);
-                    if (grade < passingMark)
+                    double sem1 = Term.getStudentAverageforTerm(classCode, firstTermID, String.valueOf(stuID));
+                    double sem2 = Term.getStudentAverageforTerm(classCode, secondTermID, String.valueOf(stuID));
+                    double yearGrade = Term.getStudentYearAverage(String.valueOf(stuID));
+                    //Sem1 Average
+                    Cell sem1Cell = studentRow.createCell(finishColumn);
+                    sem1Cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    sem1Cell.setCellValue(sem1);
+                    sem1Cell.setCellStyle(numberStyle);
+                    if (sem1 < passingMark)
                     {
-                        CellStyle style = wb.createCellStyle();
-                        Font font = wb.createFont();
-                        font.setColor(HSSFColor.RED.index);
-                        style.setFont(font);
-                        style.setDataFormat(format.getFormat("#,##0.00"));
-                        gradeCell.setCellStyle(style);
+                        sem1Cell.setCellStyle(redTextStyle);
+                    }
+                    //Sem2 Average
+                    Cell sem2Cell = studentRow.createCell(finishColumn + 1);
+                    sem2Cell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    sem2Cell.setCellValue(sem2);
+                    sem2Cell.setCellStyle(numberStyle);
+                    if (sem2 < passingMark)
+                    {
+                        sem2Cell.setCellStyle(redTextStyle);
+                    }
+                    //Year Average
+                    Cell yearCell = studentRow.createCell(finishColumn + 2);
+                    yearCell.setCellType(Cell.CELL_TYPE_NUMERIC);
+                    yearCell.setCellValue(yearGrade);
+                    yearCell.setCellStyle(numberStyle);
+                    if (yearGrade < passingMark)
+                    {
+                        yearCell.setCellStyle(redTextStyle);
                     }
                 }
                 setMessage("Saving the file.");
@@ -395,6 +406,7 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
             catch (Exception e)
             {
                 String message = "An error occurred while tring to export the master sheet.";
+                logger.log(Level.SEVERE, message, e);
                 return false;
             }
             return false;
