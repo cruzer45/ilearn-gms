@@ -1587,7 +1587,6 @@ public class Grade
         try
         {
             String currentTerm = Term.getCurrentTerm();
-            currentTerm = String.valueOf(1);
             ArrayList<String> students = new ArrayList<String>();
             ArrayList<String> classCodes = new ArrayList<String>();
             ArrayList<Double> grades = new ArrayList<Double>();
@@ -1646,7 +1645,6 @@ public class Grade
             ArrayList<Double> grades = new ArrayList<Double>();
             ArrayList<Double> gpas = new ArrayList<Double>();
             String currentTerm = Term.getCurrentTerm();
-            currentTerm = String.valueOf(1);
             String sql = "SELECT `graStuID`, `graClsCode`,`graTrmCode`, SUM(`subCredits`) as 'credits', SUM(`graMid`*`subCredits`) AS 'points_earned' , (SUM(`graMid`*`subCredits`) / SUM(`subCredits`)) as 'grade' , (SUM(`graGPA`*`subCredits`) / SUM(`subCredits`)) as 'GPA' "
                          + " FROM `Grade` "
                          + " INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode "

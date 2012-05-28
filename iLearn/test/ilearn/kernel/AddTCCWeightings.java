@@ -31,14 +31,20 @@ public class AddTCCWeightings
             {
                 if (subject.get("subCode").toString().startsWith("4"))
                 {
+                    if (subject.get("subCode").toString().contains("PE")
+                            || subject.get("subCode").toString().contains("COUN"))
+                    {
+                        continue;
+                    }
+
                     System.out.println("Adding Weighting for: " + subject.get("subCode").toString());
                     prep.setString(1, subject.get("subID").toString());
                     prep.setInt(2, 13);
-                    prep.setInt(3, 67);
+                    prep.setInt(3, 65);
                     prep.addBatch();
                     prep.setString(1, subject.get("subID").toString());
                     prep.setInt(2, 5);
-                    prep.setInt(3, 33);
+                    prep.setInt(3, 35);
                     prep.addBatch();
                 }
             }

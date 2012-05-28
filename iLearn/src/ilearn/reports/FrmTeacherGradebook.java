@@ -516,7 +516,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 studentNames = (ArrayList<String>) stuInfo[1];
                 setMessage("Creating the workbook.");
                 CreationHelper createHelper = wb.getCreationHelper();
-                Sheet sheet = wb.createSheet(classCode + " Gradebook");
+                Sheet sheet = wb.createSheet(classCode + " - " + subjectCode);
                 setMessage("Creating Gradebook.");
                 //Create the number format cell style
                 CellStyle numberStyle = wb.createCellStyle();

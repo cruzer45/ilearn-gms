@@ -207,7 +207,7 @@ public class SettingsEditor extends javax.swing.JFrame
         catch (Exception ex)
         {
             String message = "An error occurred while connecting to the database.\n"
-                    + "Kindly check with your system administrator.";
+                             + "Kindly check with your system administrator.";
             ilearn.kernel.Utilities.showErrorMessage(rootPane, message);
         }
     }//GEN-LAST:event_cmdTestConnActionPerformed
@@ -243,8 +243,8 @@ public class SettingsEditor extends javax.swing.JFrame
             catch (Exception e)
             {
                 message = "An error occurred."
-                        + "\nCould not read the application's settings."
-                        + "\n\nKindly consult the system administrator.";
+                          + "\nCould not read the application's settings."
+                          + "\n\nKindly consult the system administrator.";
                 Utilities.showErrorMessage(rootPane, message);
             }
         }
@@ -288,7 +288,6 @@ public class SettingsEditor extends javax.swing.JFrame
          */
         java.awt.EventQueue.invokeLater(new Runnable()
         {
-
             @Override
             public void run()
             {
