@@ -1494,7 +1494,7 @@ public class Grade
         int passCount = 0;
         try
         {
-            double passMark = (School.getPassingMark() / 100);
+            double passMark = (Double.valueOf(School.getPassingMark()) / Double.valueOf(100));
             //get the general info about the assessment
             String sql = "SELECT COUNT(`grdStuID`) AS 'Pass' "
                          + " FROM `TermGrade` "

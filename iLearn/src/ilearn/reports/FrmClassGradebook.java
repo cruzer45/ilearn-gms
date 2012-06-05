@@ -259,7 +259,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                  * Get the passing marks and assessments
                  */
                 String subCode = Subject.getSubjectCode(subID);
-                double passingMark = (School.getPassingMark() / 100);
+                double passingMark = (Double.valueOf(School.getPassingMark()) / Double.valueOf(100));
                 ArrayList<String> assmtWeightType = new ArrayList<String>();
                 ArrayList<Integer> assmtWeight = new ArrayList<Integer>();
                 ArrayList<CellReference> cellReferences = new ArrayList<CellReference>();
@@ -566,7 +566,7 @@ public class FrmClassGradebook extends javax.swing.JDialog
                 ArrayList<Integer> assmtTotalPoints = new ArrayList<Integer>();
                 ArrayList<String> studentIDs = new ArrayList<String>();
                 ArrayList<String> studentNames = new ArrayList<String>();
-                int passingMark = (School.getPassingMark() / 100);
+                double passingMark = (Double.valueOf(School.getPassingMark()) / Double.valueOf(100));
                 //Get the list of assessments
                 String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY  `assmtDate` ASC LIMIT 0, 1000;";
                 PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);

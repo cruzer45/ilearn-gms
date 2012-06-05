@@ -6,7 +6,6 @@
 package ilearn.reports;
 
 import ilearn.classes.Classes;
-import ilearn.grades.Grade;
 import ilearn.kernel.Utilities;
 import ilearn.school.School;
 import ilearn.term.Term;
@@ -243,7 +242,7 @@ public class FrmMastersheetExport extends javax.swing.JInternalFrame
         {
             try
             {
-                int passingMark = (School.getPassingMark());
+                double passingMark = (Double.valueOf(School.getPassingMark()) / Double.valueOf(100));
                 String firstTermID = Term.getTermIDFromShortName(firstTerm);
                 String secondTermID = Term.getTermIDFromShortName(secondTerm);
                 Object[] stuInfo = Term.getClassListForTerm(classCode, firstTermID);

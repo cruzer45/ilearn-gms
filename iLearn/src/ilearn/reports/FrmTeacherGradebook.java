@@ -238,7 +238,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (IOException iOException)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                                 + "Kindly check to make sure the file is not open in Excel and try again.";
+                        + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, iOException);
             }
@@ -256,7 +256,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                  * Get the passing marks and assessments
                  */
                 String subCode = Subject.getSubjectCode(subID);
-                double passingMark = (School.getPassingMark() / 100);
+                double passingMark = (Double.valueOf(School.getPassingMark()) / Double.valueOf(100));
                 ArrayList<String> assmtWeightType = new ArrayList<String>();
                 ArrayList<Integer> assmtWeight = new ArrayList<Integer>();
                 ArrayList<CellReference> cellReferences = new ArrayList<CellReference>();
@@ -291,6 +291,14 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 numberStyle.setDataFormat(format.getFormat("#,##0.00"));
                 numberStyle2.setDataFormat(format.getFormat("#,##0"));
                 percentStyle.setDataFormat((short) 0xa);
+                CellStyle redStyle = wb.createCellStyle();
+                Font redFont = wb.createFont();
+                redFont.setColor(HSSFColor.RED.index);
+                redStyle.setFont(redFont);
+                CellStyle blueStyle = wb.createCellStyle();
+                Font blueFont = wb.createFont();
+                blueFont.setColor(HSSFColor.LIGHT_BLUE.index);
+                blueStyle.setFont(blueFont);
                 //Insert Initial info
                 Row row = sheet.createRow(0);
                 Cell cell = row.createCell(0);
@@ -385,11 +393,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                                     gradeCell.setCellValue(assmtGrade);
                                     if ((assmtGrade / maxPoints) < passingMark)
                                     {
-                                        CellStyle style = wb.createCellStyle();
-                                        Font font = wb.createFont();
-                                        font.setColor(HSSFColor.RED.index);
-                                        style.setFont(font);
-                                        gradeCell.setCellStyle(style);
+                                        gradeCell.setCellStyle(redStyle);
                                     }
                                 }
                                 catch (NumberFormatException numberFormatException)
@@ -397,38 +401,23 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                                     gradeCell.setCellValue(grade);
                                     if (grade.equals("Excused"))
                                     {
-                                        CellStyle style = wb.createCellStyle();
-                                        Font font = wb.createFont();
-                                        font.setColor(HSSFColor.LIGHT_BLUE.index);
-                                        style.setFont(font);
-                                        studentRow.getCell(finishColumn).setCellStyle(style);
+                                        studentRow.getCell(finishColumn).setCellStyle(blueStyle);
                                     }
                                     if (grade.equals("Incomplete"))
                                     {
-                                        CellStyle style = wb.createCellStyle();
-                                        Font font = wb.createFont();
-                                        font.setColor(HSSFColor.RED.index);
-                                        style.setFont(font);
-                                        studentRow.getCell(finishColumn).setCellStyle(style);
+
+                                        studentRow.getCell(finishColumn).setCellStyle(redStyle);
                                     }
                                     if (grade.equals("Absent"))
                                     {
-                                        CellStyle style = wb.createCellStyle();
-                                        Font font = wb.createFont();
-                                        font.setColor(HSSFColor.RED.index);
-                                        style.setFont(font);
-                                        studentRow.getCell(finishColumn).setCellStyle(style);
+                                        studentRow.getCell(finishColumn).setCellStyle(redStyle);
                                     }
                                 }
                             }
                             catch (Exception e)
                             {
                                 studentRow.createCell(finishColumn).setCellValue("Missing");
-                                CellStyle style = wb.createCellStyle();
-                                Font font = wb.createFont();
-                                font.setColor(HSSFColor.RED.index);
-                                style.setFont(font);
-                                studentRow.getCell(finishColumn).setCellStyle(style);
+                                studentRow.getCell(finishColumn).setCellStyle(redStyle);
                             }
                         }
                         assessmentPrinted++;
@@ -472,7 +461,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (Exception e)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                                 + "Kindly check to make sure the file is not open in Excel and try again.";
+                        + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -493,7 +482,8 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 ArrayList<Integer> assmtTotalPoints = new ArrayList<Integer>();
                 ArrayList<String> studentIDs = new ArrayList<String>();
                 ArrayList<String> studentNames = new ArrayList<String>();
-                int passingMark = (School.getPassingMark() / 100);
+                int passPoint = School.getPassingMark();
+                double passingPercent = (passPoint / 100);
                 //Get the list of assessments
                 String sql1 = "SELECT `assmtID`, `assmtType`, `assmtTitle`, `assmtDate`, `assmtTotalPoints`, `assmtClassID`, `assmtSubject`, `assmtTerm`, `assmtTeacher`, `assmtStatus` FROM `Assments` WHERE `assmtClassID` = ? AND `assmtTerm` = ? AND `assmtSubject` = ? AND `assmtStatus` = 'Active' ORDER BY  `assmtDate` ASC LIMIT 0, 1000;";
                 PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
@@ -526,6 +516,14 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                 numberStyle.setDataFormat(format.getFormat("#,##0.00"));
                 numberStyle2.setDataFormat(format.getFormat("#,##0"));
                 percentStyle.setDataFormat((short) 0xa);
+                CellStyle redStyle = wb.createCellStyle();
+                Font redFont = wb.createFont();
+                redFont.setColor(HSSFColor.RED.index);
+                redStyle.setFont(redFont);
+                CellStyle blueStyle = wb.createCellStyle();
+                Font blueFont = wb.createFont();
+                blueFont.setColor(HSSFColor.LIGHT_BLUE.index);
+                blueStyle.setFont(blueFont);
                 //Insert Initial info
                 Row row = sheet.createRow(0);
                 Cell cell = row.createCell(0);
@@ -588,13 +586,9 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                                 double maxPoints = Double.valueOf(assmtTotalPoints.get(i));
                                 double assmtGrade = Double.valueOf(grade);
                                 gradeCell.setCellValue(assmtGrade);
-                                if ((assmtGrade / maxPoints) < passingMark)
+                                if (((assmtGrade / maxPoints) * 100) < passPoint)
                                 {
-                                    CellStyle style = wb.createCellStyle();
-                                    Font font = wb.createFont();
-                                    font.setColor(HSSFColor.RED.index);
-                                    style.setFont(font);
-                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    studentRow.getCell(startColumn + i).setCellStyle(redStyle);
                                 }
                             }
                             catch (NumberFormatException numberFormatException)
@@ -602,38 +596,23 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                                 gradeCell.setCellValue(grade);
                                 if (grade.equals("Excused"))
                                 {
-                                    CellStyle style = wb.createCellStyle();
-                                    Font font = wb.createFont();
-                                    font.setColor(HSSFColor.LIGHT_BLUE.index);
-                                    style.setFont(font);
-                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+
+                                    studentRow.getCell(startColumn + i).setCellStyle(blueStyle);
                                 }
                                 if (grade.equals("Incomplete"))
                                 {
-                                    CellStyle style = wb.createCellStyle();
-                                    Font font = wb.createFont();
-                                    font.setColor(HSSFColor.RED.index);
-                                    style.setFont(font);
-                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    studentRow.getCell(startColumn + i).setCellStyle(redStyle);
                                 }
                                 if (grade.equals("Absent"))
                                 {
-                                    CellStyle style = wb.createCellStyle();
-                                    Font font = wb.createFont();
-                                    font.setColor(HSSFColor.RED.index);
-                                    style.setFont(font);
-                                    studentRow.getCell(startColumn + i).setCellStyle(style);
+                                    studentRow.getCell(startColumn + i).setCellStyle(redStyle);
                                 }
                             }
                         }
                         catch (Exception e)
                         {
                             studentRow.createCell(startColumn + i).setCellValue("Missing");
-                            CellStyle style = wb.createCellStyle();
-                            Font font = wb.createFont();
-                            font.setColor(HSSFColor.RED.index);
-                            style.setFont(font);
-                            studentRow.getCell(startColumn + i).setCellStyle(style);
+                            studentRow.getCell(startColumn + i).setCellStyle(redStyle);
                         }
                     }
                 }
@@ -650,13 +629,9 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                         double grade = Grade.calculateGradeWithoutWeighting(String.valueOf(stuID), subjectCode);
                         avgCell.setCellValue(grade);
                         avgCell.setCellStyle(numberStyle);
-                        if (grade < passingMark * 100)
+                        if (grade < passPoint)
                         {
-                            CellStyle style = wb.createCellStyle();
-                            Font font = wb.createFont();
-                            font.setColor(HSSFColor.RED.index);
-                            style.setFont(font);
-                            avgCell.setCellStyle(style);
+                            avgCell.setCellStyle(redStyle);
                         }
                     }
                     catch (Exception e)
@@ -715,21 +690,11 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                     failPercentCell.setCellValue(Double.valueOf(failcount) / Double.valueOf(classSize));
                     failPercentCell.setCellStyle(percentStyle);
                 }
-//                setMessage("Saving the file.");
-//                // Write the output to a file
-//                FileOutputStream fileOut = new FileOutputStream(selFile);
-//                wb.write(fileOut);
-//                fileOut.close();
-//                if (Desktop.isDesktopSupported())
-//                {
-//                    Desktop desktop = Desktop.getDesktop();
-//                    desktop.open(selFile);
-//                }
             }
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                                 + "Kindly check to make sure the file is not open in Excel and try again.";
+                        + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }
