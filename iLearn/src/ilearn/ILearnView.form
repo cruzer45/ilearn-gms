@@ -954,6 +954,35 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
               </AuxValues>
             </MenuItem>
+            <Menu class="javax.swing.JMenu" name="schoolYear">
+              <Properties>
+                <Property name="icon" type="javax.swing.Icon" resourceKey="schoolYear.icon"/>
+                <Property name="text" type="java.lang.String" resourceKey="schoolYear.text"/>
+                <Property name="name" type="java.lang.String" value="schoolYear" noResource="true"/>
+              </Properties>
+              <SubComponents>
+                <MenuItem class="javax.swing.JMenuItem" name="addSchoolYear">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showAddSchoolYear" methodName="showAddSchoolYear"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="addSchoolYear.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="addSchoolYear.text"/>
+                    <Property name="name" type="java.lang.String" value="addSchoolYear" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+                <MenuItem class="javax.swing.JMenuItem" name="editSchoolYear">
+                  <Properties>
+                    <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
+                      <action class="ilearn.ILearnView" id="showEditSchoolYear" methodName="showEditSchoolYear"/>
+                    </Property>
+                    <Property name="icon" type="javax.swing.Icon" resourceKey="editSchoolYear.icon"/>
+                    <Property name="text" type="java.lang.String" resourceKey="editSchoolYear.text"/>
+                    <Property name="name" type="java.lang.String" value="editSchoolYear" noResource="true"/>
+                  </Properties>
+                </MenuItem>
+              </SubComponents>
+            </Menu>
             <Menu class="javax.swing.JMenu" name="staffMenu">
               <Properties>
                 <Property name="icon" type="javax.swing.Icon" resourceKey="staffMenu.icon"/>

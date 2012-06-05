@@ -49,7 +49,9 @@ public class Demerits
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `Demerits` (`demStuID`, `demDate`, `demStaCode`, `demClsCode`, `demTermID`, `demerits`, `demRemarks`, demActionTaken) "
+            String sql = "INSERT INTO `Demerits` (`demStuID`, `demDate`, "
+                    + " `demStaCode`, `demClsCode`, `demTermID`, `demerits`, "
+                    + " `demRemarks`, demActionTaken) "
                          + "VALUES (?, ?, ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, demStuID);
@@ -75,7 +77,9 @@ public class Demerits
         return successful;
     }
 
-    public static boolean updateDemerit(String demID, String demDate, String demStaCode, String demerits, String demRemarks, String demStatus, String demActionTaken)
+    public static boolean updateDemerit(String demID, String demDate, 
+            String demStaCode, String demerits, 
+            String demRemarks, String demStatus, String demActionTaken)
     {
         boolean successful = false;
         try
