@@ -155,7 +155,7 @@ public class SchoolYear
             String sql = " SELECT syID FROM SchoolYear WHERE syStatus = 'Active'";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-            while(rs.next())
+            while (rs.next())
             {
                 result = rs.getInt("syID");
             }
@@ -165,6 +165,53 @@ public class SchoolYear
         catch (Exception e)
         {
             String message = "An error occurred while updating the school year details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return result;
+    }
+
+    public static ArrayList getSchoolYearList()
+    {
+        ArrayList<String> schoolYears = new ArrayList<String>();
+        try
+        {
+            String sql = "SELECT syName FROM SchoolYear WHERE syStatus = 'Active' ORDER BY syStartDate";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                schoolYears.add(rs.getString("syName"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the list of school years.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return schoolYears;
+    }
+
+    public static int getSchoolYearIDbyName(String name)
+    {
+        int result = -1;
+        try
+        {
+            String sql = "SELECT syID FROM SchoolYear WHERE syName = ?";
+            PreparedStatement pre = Environment.getConnection().prepareStatement(sql);
+            pre.setString(1, name);
+            ResultSet rs = pre.executeQuery();
+            while (rs.next())
+            {
+                result = rs.getInt("syID");
+            }
+            rs.close();
+            pre.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the ID of a school year.";
             logger.log(Level.SEVERE, message, e);
         }
         return result;
