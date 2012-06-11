@@ -398,13 +398,13 @@ public class Student
     public static DefaultTableModel getStudentAttendanceTable(String stuID)
     {
         ArrayList<Date> dates = new ArrayList<Date>();
-        ArrayList<Integer> absents = new ArrayList<Integer>();
-        ArrayList<Integer> lates = new ArrayList<Integer>();
+        ArrayList<Boolean> absents = new ArrayList<Boolean>();
+        ArrayList<Boolean> lates = new ArrayList<Boolean>();
         ArrayList<String> remarks = new ArrayList<String>();
         ArrayList<String> status = new ArrayList<String>();
         final Class<?>[] columnClasses =
         {
-            Date.class, Integer.class, Integer.class, String.class, String.class
+            Date.class, Boolean.class, Boolean.class, String.class, String.class
         };
         DefaultTableModel model = new DefaultTableModel()
         {
@@ -432,8 +432,8 @@ public class Student
             while (rs.next())
             {
                 dates.add(rs.getDate("rolDate"));
-                absents.add(rs.getInt("rolAbsent"));
-                lates.add(rs.getInt("rolTardy"));
+                absents.add(rs.getBoolean("rolAbsent"));
+                lates.add(rs.getBoolean("rolTardy"));
                 remarks.add(rs.getString("rolRemark"));
                 status.add(rs.getString("rolStatus"));
             }

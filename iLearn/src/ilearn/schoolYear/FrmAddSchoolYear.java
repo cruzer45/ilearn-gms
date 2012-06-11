@@ -18,14 +18,14 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
 {
 
     String validationText = "";
-    
+
     /** Creates new form FrmAddSchoolYear */
     public FrmAddSchoolYear()
     {
         initComponents();
         populateLists();
     }
-    
+
     private void populateLists()
     {
         Date start = new Date(new Date().getYear(), 8, 1);
@@ -41,8 +41,8 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         wrapperPanel = new javax.swing.JPanel();
         lblName = new javax.swing.JLabel();
         txtName = new javax.swing.JTextField();
@@ -53,92 +53,79 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
         cmdReset = new javax.swing.JButton();
         lblStart = new javax.swing.JLabel();
         lblEnd = new javax.swing.JLabel();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Add School Year");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/calendar_add.png"))); // NOI18N
-
         wrapperPanel.setName("wrapperPanel"); // NOI18N
-
         lblName.setText("Year Name:");
         lblName.setName("lblName"); // NOI18N
-
         txtName.setName("txtName"); // NOI18N
-
         calStart.setName("calStart"); // NOI18N
-
         calEnd.setName("calEnd"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmAddSchoolYear.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(" Save");
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdReset.setAction(actionMap.get("reset")); // NOI18N
         cmdReset.setText("Reset");
         cmdReset.setName("cmdReset"); // NOI18N
-
         lblStart.setText("Start Date:");
         lblStart.setName("lblStart"); // NOI18N
-
         lblEnd.setText("End Date:");
         lblEnd.setName("lblEnd"); // NOI18N
-
         javax.swing.GroupLayout wrapperPanelLayout = new javax.swing.GroupLayout(wrapperPanel);
         wrapperPanel.setLayout(wrapperPanelLayout);
         wrapperPanelLayout.setHorizontalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(wrapperPanelLayout.createSequentialGroup()
-                        .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblName)
-                            .addComponent(lblStart)
-                            .addComponent(lblEnd))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(calEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                            .addComponent(calStart, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(wrapperPanelLayout.createSequentialGroup()
+                                          .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblName)
+                                                  .addComponent(lblStart)
+                                                  .addComponent(lblEnd))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                                  .addComponent(calEnd, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                                                  .addComponent(txtName, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
+                                                  .addComponent(calStart, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapperPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 138, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addGap(18, 18, 18)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         wrapperPanelLayout.setVerticalGroup(
             wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapperPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(calStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStart))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblEnd)
-                    .addComponent(calEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblName)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(calStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblStart))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(lblEnd)
+                                .addComponent(calEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addGroup(wrapperPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -149,7 +136,6 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(wrapperPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -160,13 +146,13 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
         initComponents();
         populateLists();
     }
-    
+
     @Action
     public void cancel()
     {
         Utilities.showCancelScreen(this);
     }
-    
+
     @Action
     public void save()
     {
@@ -175,13 +161,11 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
             Utilities.showWarningMessage(rootPane,validationText);
             return;
         }
-        
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("syName", txtName.getText().trim());
         params.put("syStartDate", Utilities.YMD_Formatter.format(calStart.getDate()));
         params.put("syEndDate", Utilities.YMD_Formatter.format(calEnd.getDate()));
         boolean addSchoolYear = SchoolYear.addSchoolYear(params);
-        
         if (addSchoolYear)
         {
             String message = "The school year was successfully added.";
@@ -191,25 +175,23 @@ public class FrmAddSchoolYear extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to add the new school year.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showWarningMessage(rootPane, message);
         }
     }
-    
+
     private boolean passedValidation()
     {
         boolean passed = true ;
         validationText = "";
-        
         if (txtName.getText().trim().isEmpty())
         {
             validationText += "You must enter a name for the new school year.\n\n" ;
             passed = false;
         }
-        
         return passed;
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser calEnd;
     private com.toedter.calendar.JDateChooser calStart;

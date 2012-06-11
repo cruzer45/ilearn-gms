@@ -321,15 +321,15 @@ public class FrmManageSchool extends javax.swing.JInternalFrame
                schPrincipal = txtPrincipalName.getText().trim();
         File schLogo = selectedSchoolLogo;
         File schPrincipalSignature = selectedSignature;
-        try
-        {
-            System.out.println(selectedSignature.getCanonicalPath());
-            System.out.println(selectedSchoolLogo.getCanonicalPath());
-        }
-        catch (IOException ex)
-        {
-            Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
-        }
+//        try
+//        {
+//            System.out.println(selectedSignature.getCanonicalPath());
+//            System.out.println(selectedSchoolLogo.getCanonicalPath());
+//        }
+//        catch (IOException ex)
+//        {
+//            Logger.getLogger(FrmManageSchool.class.getName()).log(Level.SEVERE, null, ex);
+//        }
         if (School.updateSchoolInfo(schName, schShortName, schPhone1, schPhone2, schAddress, schLogo, schPassingMark, schPrincipal, schPrincipalSignature))
         {
             String message = "The information was saved.\n"

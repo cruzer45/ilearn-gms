@@ -55,8 +55,8 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         schoolYearTabbedPane = new javax.swing.JTabbedPane();
         searchPanel = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -77,178 +77,156 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
         txtID = new javax.swing.JTextField();
         cmbStatus = new javax.swing.JComboBox();
         lblStatus = new javax.swing.JLabel();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Edit School Year");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/calendar_edit.png"))); // NOI18N
-
         schoolYearTabbedPane.setName("schoolYearTabbedPane"); // NOI18N
-
         searchPanel.setName("searchPanel"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         tblResults.setAutoCreateRowSorter(true);
         tblResults.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+                                new Object [][]
+                                {
 
-            },
-            new String [] {
-                "ID", "Name", "Start", "End", "Status"
-            }
-        ));
+                                },
+                                new String []
+                                {
+                                    "ID", "Name", "Start", "End", "Status"
+                                }
+                            ));
         tblResults.setCellSelectionEnabled(false);
         tblResults.setName("tblResults"); // NOI18N
         tblResults.setRowSelectionAllowed(true);
-        tblResults.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
+        tblResults.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
                 tblResultsMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tblResults);
         tblResults.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmEditSchoolYear.class, this);
         cmdCancel2.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel2.setText("Cancel");
         cmdCancel2.setName("cmdCancel2"); // NOI18N
-
         cmdNext.setAction(actionMap.get("next")); // NOI18N
         cmdNext.setText("Next");
         cmdNext.setName("cmdNext"); // NOI18N
-
         javax.swing.GroupLayout searchPanelLayout = new javax.swing.GroupLayout(searchPanel);
         searchPanel.setLayout(searchPanelLayout);
         searchPanelLayout.setHorizontalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
-                    .addGroup(searchPanelLayout.createSequentialGroup()
-                        .addComponent(cmdNext)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmdCancel2)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 458, Short.MAX_VALUE)
+                                .addGroup(searchPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdNext)
+                                          .addGap(18, 18, 18)
+                                          .addComponent(cmdCancel2)))
+                      .addContainerGap())
         );
         searchPanelLayout.setVerticalGroup(
             searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, searchPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel2)
-                    .addComponent(cmdNext))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE)
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                      .addGroup(searchPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel2)
+                                .addComponent(cmdNext))
+                      .addContainerGap())
         );
-
         schoolYearTabbedPane.addTab("Search", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/find.png")), searchPanel); // NOI18N
-
         detailsPanel.setName("detailsPanel"); // NOI18N
-
         lblName.setText("Year Name:");
         lblName.setName("lblName"); // NOI18N
-
         txtName.setName("txtName"); // NOI18N
-
         calStart.setName("calStart"); // NOI18N
-
         calEnd.setName("calEnd"); // NOI18N
-
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setText(" Save");
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmdReset.setAction(actionMap.get("reset")); // NOI18N
         cmdReset.setName("cmdReset"); // NOI18N
-
         lblStart.setText("Start Date:");
         lblStart.setName("lblStart"); // NOI18N
-
         lblEnd.setText("End Date:");
         lblEnd.setName("lblEnd"); // NOI18N
-
         lblID.setText("ID:");
         lblID.setName("lblID"); // NOI18N
-
         txtID.setEditable(false);
         txtID.setName("txtID"); // NOI18N
-
         cmbStatus.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Active", "Closed" }));
         cmbStatus.setName("cmbStatus"); // NOI18N
-
         lblStatus.setText("Status:");
         lblStatus.setName("lblStatus"); // NOI18N
-
         javax.swing.GroupLayout detailsPanelLayout = new javax.swing.GroupLayout(detailsPanel);
         detailsPanel.setLayout(detailsPanelLayout);
         detailsPanelLayout.setHorizontalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(detailsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addComponent(cmdReset)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
-                        .addComponent(cmdSave)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmdCancel))
-                    .addGroup(detailsPanelLayout.createSequentialGroup()
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblName)
-                            .addComponent(lblStart)
-                            .addComponent(lblEnd)
-                            .addComponent(lblStatus)
-                            .addComponent(lblID))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                            .addComponent(cmbStatus, javax.swing.GroupLayout.Alignment.TRAILING, 0, 374, Short.MAX_VALUE)
-                            .addComponent(calEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                            .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
-                            .addComponent(calStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(detailsPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdReset)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 226, Short.MAX_VALUE)
+                                          .addComponent(cmdSave)
+                                          .addGap(18, 18, 18)
+                                          .addComponent(cmdCancel))
+                                .addGroup(detailsPanelLayout.createSequentialGroup()
+                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblName)
+                                                  .addComponent(lblStart)
+                                                  .addComponent(lblEnd)
+                                                  .addComponent(lblStatus)
+                                                  .addComponent(lblID))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(txtID, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                                  .addComponent(cmbStatus, javax.swing.GroupLayout.Alignment.TRAILING, 0, 374, Short.MAX_VALUE)
+                                                  .addComponent(calEnd, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                                  .addComponent(txtName, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE)
+                                                  .addComponent(calStart, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 374, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         detailsPanelLayout.setVerticalGroup(
             detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, detailsPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblID)
-                    .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblName)
-                    .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(calStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStart))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
-                    .addComponent(lblEnd)
-                    .addComponent(calEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblStatus))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
-                .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave)
-                    .addComponent(cmdReset))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblID)
+                                .addComponent(txtID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblName)
+                                .addComponent(txtName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(calStart, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblStart))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.CENTER)
+                                .addComponent(lblEnd)
+                                .addComponent(calEnd, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblStatus))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 177, Short.MAX_VALUE)
+                      .addGroup(detailsPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave)
+                                .addComponent(cmdReset))
+                      .addContainerGap())
         );
-
         schoolYearTabbedPane.addTab("Details", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/calendar.png")), detailsPanel); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -259,12 +237,12 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(schoolYearTabbedPane, javax.swing.GroupLayout.DEFAULT_SIZE, 383, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void tblResultsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblResultsMouseClicked
-    {//GEN-HEADEREND:event_tblResultsMouseClicked
+    {
+        //GEN-HEADEREND:event_tblResultsMouseClicked
         if (evt.getClickCount() >= 2 && tblResults.getSelectedRow() != -1)
         {
             next();
@@ -284,7 +262,6 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
         {
             loadSchoolYear(-1);
             schoolYearTabbedPane.setSelectedIndex(schoolYearTabbedPane.getSelectedIndex() + 1);
-
         }
         else
         {
@@ -296,13 +273,11 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
-
         if (!passedValidation())
         {
             Utilities.showWarningMessage(rootPane, validationText);
             return;
         }
-
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("syName", txtName.getText().trim());
         params.put("syStartDate", Utilities.YMD_Formatter.format(calStart.getDate()));
@@ -310,7 +285,6 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
         params.put("syID", txtID.getText().trim());
         params.put("syStatus", cmbStatus.getSelectedItem().toString());
         boolean updateSchoolYear = SchoolYear.updateSchoolYear(params);
-
         if (updateSchoolYear)
         {
             String message = "The school year was successfully updated.";
@@ -320,7 +294,7 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to update the school year.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showWarningMessage(rootPane, message);
         }
     }
@@ -329,13 +303,11 @@ public class FrmEditSchoolYear extends javax.swing.JInternalFrame
     {
         boolean passed = true;
         validationText = "";
-
         if (txtName.getText().trim().isEmpty())
         {
             validationText += "You must enter a name for the new school year.\n\n";
             passed = false;
         }
-
         return passed;
     }
 

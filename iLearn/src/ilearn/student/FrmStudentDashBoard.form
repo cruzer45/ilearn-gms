@@ -565,6 +565,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="attendanceTable">
                   <Properties>
+                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="0">
                         <Column editable="true" title="Loading" type="java.lang.Object"/>
@@ -597,7 +598,7 @@
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Merits">
                 <Property name="tabTitle" type="java.lang.String" value="Merits"/>
-                <Property name="tabIcon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/ilearn/resources/star.png"/>
                 </Property>
               </JTabbedPaneConstraints>
@@ -637,6 +638,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="meritTable">
                   <Properties>
+                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="0">
                         <Column editable="true" title="Loading" type="java.lang.Object"/>
@@ -669,7 +671,7 @@
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JTabbedPaneSupportLayout$JTabbedPaneConstraintsDescription">
               <JTabbedPaneConstraints tabName="Demerit">
                 <Property name="tabTitle" type="java.lang.String" value="Demerit"/>
-                <Property name="tabIcon" type="javax.swing.Icon" noResource="true" editor="org.netbeans.modules.form.editors2.IconEditor">
+                <Property name="tabIcon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
                   <Image iconType="3" name="/ilearn/resources/error.png"/>
                 </Property>
               </JTabbedPaneConstraints>
@@ -709,6 +711,7 @@
               <SubComponents>
                 <Component class="javax.swing.JTable" name="demeritTable">
                   <Properties>
+                    <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                     <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                       <Table columnCount="1" rowCount="0">
                         <Column editable="true" title="Loading" type="java.lang.Object"/>
