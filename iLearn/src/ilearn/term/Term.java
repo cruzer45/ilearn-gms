@@ -4,6 +4,7 @@ import ilearn.kernel.Environment;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -19,24 +20,31 @@ public class Term
 
     /**
      * This function tries to add a term to the system.
-     * @param trmCode - The short code for the term.
-     * @param trmShortName - The short name for the term.
-     * @param trmLongName - The long name for the term.
      * @return A boolean indicating if it was successful or not.
      */
-    public static boolean addTerm(String trmCode, String trmShortName, String trmLongName)
+    public static boolean addTerm(HashMap params)
     {
         boolean successful = false;
-        String sql = "INSERT INTO `Term` (`trmCode`, `trmShortName`, `trmLongName`) VALUES (?, ?, ?);";
+        String sql = "INSERT INTO `Term` (`trmCode`, `trmShortName`, `trmLongName`, "
+                     + " `trmSchoolYear`, `trmStartDate`, `trmEndDate`) VALUES (?, ?, ?, ?, ?, ?);";
         try
         {
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-            prep.setString(1, trmCode);
-            prep.setString(2, trmShortName);
-            prep.setString(3, trmLongName);
+            prep.setString(1, params.get("trmCode").toString());
+            prep.setString(2, params.get("trmShortName").toString());
+            prep.setString(3, params.get("trmLongName").toString());
+            prep.setString(4, params.get("trmSchoolYear").toString());
+            prep.setString(5, params.get("trmStartDate").toString());
+            prep.setString(6, params.get("trmEndDate").toString());
             prep.execute();
             prep.close();
             successful = true;
+        }
+        catch (com.mysql.jdbc.exceptions.jdbc4.MySQLIntegrityConstraintViolationException e)
+        {
+            String message = "A term with that code already exists. \n"
+                             + "Kindly verify your information and try again.";
+            logger.log(Level.SEVERE, message, e);
         }
         catch (Exception e)
         {
@@ -361,7 +369,7 @@ public class Term
         return grade;
     }
 
-    public static double getStudentGradeforYear( String subCode, String stuID)
+    public static double getStudentGradeforYear(String subCode, String stuID)
     {
         double grade = 0.0;
         try
