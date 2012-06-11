@@ -43,37 +43,32 @@ public class SchoolYear
 
     public static DefaultTableModel getSchoolYearTable()
     {
-
         ArrayList<Integer> ids = new ArrayList<Integer>();
         ArrayList<String> names = new ArrayList<String>();
         ArrayList<Date> starts = new ArrayList<Date>();
         ArrayList<Date> ends = new ArrayList<Date>();
         ArrayList<String> status = new ArrayList<String>();
-
         final Class[] columnClasses =
         {
             Integer.class, String.class, Date.class, Date.class, String.class
         };
         DefaultTableModel model = new DefaultTableModel()
         {
-
             @Override
             public Class<?> getColumnClass(int columnIndex)
             {
                 return columnClasses[columnIndex];
             }
-
             @Override
             public boolean isCellEditable(int row, int column)
             {
                 return false;
             }
         };
-
         try
         {
             String sql = "SELECT syID,syName,syStartDate,syEndDate,syStatus "
-                    + " FROM SchoolYear ORDER BY syID";
+                         + " FROM SchoolYear ORDER BY syID";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
@@ -92,13 +87,11 @@ public class SchoolYear
             String message = "An error occurred while retreiving the table of school years.";
             logger.log(Level.SEVERE, message, e);
         }
-
         model.addColumn("ID", ids.toArray());
         model.addColumn("Name", names.toArray());
         model.addColumn("Start", starts.toArray());
         model.addColumn("End", ends.toArray());
         model.addColumn("Status", status.toArray());
-
         return model;
     }
 
@@ -136,8 +129,8 @@ public class SchoolYear
         try
         {
             String sql = "UPDATE `SchoolYear` "
-                    + " SET `syName`= ?, `syStartDate`= ?, `syEndDate`= ?, "
-                    + " `syStatus`=? WHERE  `syID`= ?;";
+                         + " SET `syName`= ?, `syStartDate`= ?, `syEndDate`= ?, "
+                         + " `syStatus`=? WHERE  `syID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, params.get("syName").toString());
             prep.setString(2, params.get("syStartDate").toString());
@@ -157,7 +150,6 @@ public class SchoolYear
     public static int getCurrentSchoolYear()
     {
         int result = -1;
-
         try
         {
             String sql = " SELECT syID FROM SchoolYear WHERE syStatus = 'Active'";

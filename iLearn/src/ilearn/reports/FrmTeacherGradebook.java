@@ -238,7 +238,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (IOException iOException)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, iOException);
             }
@@ -405,7 +405,6 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                                     }
                                     if (grade.equals("Incomplete"))
                                     {
-
                                         studentRow.getCell(finishColumn).setCellStyle(redStyle);
                                     }
                                     if (grade.equals("Absent"))
@@ -461,7 +460,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (Exception e)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, e);
             }
@@ -596,7 +595,6 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
                                 gradeCell.setCellValue(grade);
                                 if (grade.equals("Excused"))
                                 {
-
                                     studentRow.getCell(startColumn + i).setCellStyle(blueStyle);
                                 }
                                 if (grade.equals("Incomplete"))
@@ -694,7 +692,7 @@ public class FrmTeacherGradebook extends javax.swing.JInternalFrame
             catch (Exception ex)
             {
                 String message = "An error occurred while generating the gradebook.\n"
-                        + "Kindly check to make sure the file is not open in Excel and try again.";
+                                 + "Kindly check to make sure the file is not open in Excel and try again.";
                 Utilities.showErrorMessage(rootPane, message);
                 Logger.getLogger(FrmTeacherGradebook.class.getName()).log(Level.SEVERE, null, ex);
             }

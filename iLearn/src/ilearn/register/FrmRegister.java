@@ -189,25 +189,25 @@ public class FrmRegister extends javax.swing.JInternalFrame
     {
         String date = Utilities.YMD_Formatter.format(calDate.getDate());
         String clsCode = cmbClass.getSelectedItem().toString();
-        ArrayList<String> stuID = new ArrayList<String>();
-        ArrayList<Boolean> absent = new ArrayList<Boolean>();
-        ArrayList<Boolean> tardy = new ArrayList<Boolean>();
+        ArrayList<String> stuIDs = new ArrayList<String>();
+        ArrayList<Boolean> absents = new ArrayList<Boolean>();
+        ArrayList<Boolean> tardies = new ArrayList<Boolean>();
         ArrayList<String> remarks = new ArrayList<String>();
         for (int i = 0; i < tblStudents.getRowCount(); i++)
         {
             String stuid = tblStudents.getValueAt(i, 0).toString();
-            boolean Absent = (Boolean) tblStudents.getValueAt(i, 2);
-            boolean Tardy = (Boolean) tblStudents.getValueAt(i, 3);
-            String Remark = tblStudents.getValueAt(i, 4).toString();
-            if (Absent == true || Tardy == true)
+            boolean absent = (Boolean) tblStudents.getValueAt(i, 2);
+            boolean tardy = (Boolean) tblStudents.getValueAt(i, 3);
+            String remark = tblStudents.getValueAt(i, 4).toString();
+            if (absent == true || tardy == true)
             {
-                stuID.add(stuid);
-                absent.add(Absent);
-                tardy.add(Tardy);
-                remarks.add(Remark);
+                stuIDs.add(stuid);
+                absents.add(absent);
+                tardies.add(tardy);
+                remarks.add(remark);
             }
         }
-        if (Register.addRegister(date, stuID, absent, tardy, remarks, clsCode))
+        if (Register.addRegister(date, stuIDs, absents, tardies, remarks, clsCode))
         {
             String message = "The register was successfully saved. \n"
                              + "Would you like to add another?";

@@ -174,6 +174,8 @@ public class FrmCalculateMidTerms extends javax.swing.JInternalFrame
                     return false;
                 }
                 setProgress(3, 0, 4);
+                setMessage("Calculating GPAs");
+                Grade.updateMidTermGPA();
                 setMessage("Calculating Averages");
                 Grade.calculateMidAverage();
                 setProgress(4, 0, 4);

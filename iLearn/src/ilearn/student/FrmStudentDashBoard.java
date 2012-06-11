@@ -426,6 +426,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
         studentTabbedPane.addTab("Grades", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/medal_gold_1.png")), gradesPanel); // NOI18N
         attendancePanel.setName("attendancePanel"); // NOI18N
         jScrollPane2.setName("jScrollPane2"); // NOI18N
+        attendanceTable.setAutoCreateRowSorter(true);
         attendanceTable.setModel(new javax.swing.table.DefaultTableModel(
                                      new Object [][]
                                      {
@@ -457,6 +458,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
         studentTabbedPane.addTab("Attendance", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/book_open.png")), attendancePanel); // NOI18N
         meritPanel.setName("meritPanel"); // NOI18N
         jScrollPane3.setName("jScrollPane3"); // NOI18N
+        meritTable.setAutoCreateRowSorter(true);
         meritTable.setModel(new javax.swing.table.DefaultTableModel(
                                 new Object [][]
                                 {
@@ -488,6 +490,7 @@ public class FrmStudentDashBoard extends javax.swing.JInternalFrame
         studentTabbedPane.addTab("Merits", new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/star.png")), meritPanel); // NOI18N
         demeritPanel.setName("demeritPanel"); // NOI18N
         jScrollPane4.setName("jScrollPane4"); // NOI18N
+        demeritTable.setAutoCreateRowSorter(true);
         demeritTable.setModel(new javax.swing.table.DefaultTableModel(
                                   new Object [][]
                                   {

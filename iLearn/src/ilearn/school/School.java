@@ -151,8 +151,8 @@ public class School
             Graphics2D graphics2D = originalImage.createGraphics();
             graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             graphics2D.drawImage(img, 0, 0, original.getIconWidth(), original.getIconHeight(), null);
-            File output = new File("images/report_signature.png");
-            ImageIO.write(originalImage, "PNG", output);
+            File output = new File("images/report_signature.jpg");
+            ImageIO.write(originalImage, "JPG", output);
             rs.close();
             prep.close();
         }

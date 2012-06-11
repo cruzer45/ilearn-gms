@@ -174,6 +174,8 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
                     return false;
                 }
                 setProgress(3, 0,4);
+                setMessage("Calculating GPAs");
+                Grade.updateFinalGPA();
                 setMessage("Calculating Averages");
                 Grade.calculateFinalAverage();
                 setProgress(4, 0, 4);
