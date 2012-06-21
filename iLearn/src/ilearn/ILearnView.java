@@ -43,6 +43,8 @@ import ilearn.school.FrmMeritReasons;
 import ilearn.school.School;
 import ilearn.schoolYear.FrmAddSchoolYear;
 import ilearn.schoolYear.FrmEditSchoolYear;
+import ilearn.scripts.FrmAddScript;
+import ilearn.scripts.FrmScriptModules;
 import ilearn.staff.FrmAddStaff;
 import ilearn.staff.FrmEditStaff;
 import ilearn.student.FrmEditStudent;
@@ -152,6 +154,8 @@ public class ILearnView extends FrameView
     FrmCalculateYearAverage frmCalculateYearAverage = null;
     FrmAddSchoolYear frmAddSchoolYear = null;
     FrmEditSchoolYear frmEditSchoolYear = null;
+    FrmAddScript frmAddScript = null;
+    FrmScriptModules frmScriptModules = null;
 
     public ILearnView(SingleFrameApplication app)
     {
@@ -377,6 +381,9 @@ public class ILearnView extends FrameView
         schoolYear = new javax.swing.JMenu();
         addSchoolYear = new javax.swing.JMenuItem();
         editSchoolYear = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenuItem4 = new javax.swing.JMenuItem();
         staffMenu = new javax.swing.JMenu();
         addStaff = new javax.swing.JMenuItem();
         editStaff = new javax.swing.JMenuItem();
@@ -796,6 +803,20 @@ public class ILearnView extends FrameView
         editSchoolYear.setName("editSchoolYear"); // NOI18N
         schoolYear.add(editSchoolYear);
         manageMenu.add(schoolYear);
+        jMenu1.setIcon(resourceMap.getIcon("jMenu1.icon")); // NOI18N
+        jMenu1.setText(resourceMap.getString("jMenu1.text")); // NOI18N
+        jMenu1.setName("jMenu1"); // NOI18N
+        jMenuItem3.setAction(actionMap.get("showAddScript")); // NOI18N
+        jMenuItem3.setIcon(resourceMap.getIcon("jMenuItem3.icon")); // NOI18N
+        jMenuItem3.setText(resourceMap.getString("jMenuItem3.text")); // NOI18N
+        jMenuItem3.setName("jMenuItem3"); // NOI18N
+        jMenu1.add(jMenuItem3);
+        jMenuItem4.setAction(actionMap.get("showScriptModules")); // NOI18N
+        jMenuItem4.setIcon(resourceMap.getIcon("jMenuItem4.icon")); // NOI18N
+        jMenuItem4.setText(resourceMap.getString("jMenuItem4.text")); // NOI18N
+        jMenuItem4.setName("jMenuItem4"); // NOI18N
+        jMenu1.add(jMenuItem4);
+        manageMenu.add(jMenu1);
         staffMenu.setIcon(resourceMap.getIcon("staffMenu.icon")); // NOI18N
         staffMenu.setText(resourceMap.getString("staffMenu.text")); // NOI18N
         staffMenu.setName("staffMenu"); // NOI18N
@@ -3021,6 +3042,54 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showAddScript()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Add Script");
+        if (AlreadyLoaded == false)
+        {
+            frmAddScript = new FrmAddScript();
+            desktopPane.add(frmAddScript);
+            //Load the Form
+            frmAddScript.setVisible(true);
+            frmAddScript.show();
+            try
+            {
+                frmAddScript.setIcon(false);
+                frmAddScript.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
+
+    @Action
+    public void showScriptModules()
+    {
+        //Verify if the form is already loaded
+        boolean AlreadyLoaded = isLoaded("Script Modules");
+        if (AlreadyLoaded == false)
+        {
+            frmScriptModules = new FrmScriptModules();
+            desktopPane.add(frmScriptModules);
+            //Load the Form
+            frmScriptModules.setVisible(true);
+            frmScriptModules.show();
+            try
+            {
+                frmScriptModules.setIcon(false);
+                frmScriptModules.setSelected(true);
+            }
+            catch (Exception e)
+            {
+                logger.log(Level.SEVERE, "Error displaying the form.", e);
+            }
+        }
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addSchoolYear;
@@ -3080,8 +3149,11 @@ public class ILearnView extends FrameView
     private javax.swing.JMenuItem generateFinalsSelectable;
     private static javax.swing.JMenu gradesMenu;
     private javax.swing.JMenu gradesReportMenu;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private static javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JPopupMenu.Separator jSeparator2;
     private static javax.swing.JMenuItem lockUsers;
