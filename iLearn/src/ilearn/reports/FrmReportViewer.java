@@ -6,6 +6,7 @@
 package ilearn.reports;
 
 import ilearn.kernel.Environment;
+import ilearn.kernel.Utilities;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.util.Map;
@@ -48,6 +49,7 @@ public class FrmReportViewer extends javax.swing.JInternalFrame
         catch (JRException jre)
         {
             String message = "An error occurred while generating a report.";
+            Utilities.showWarningMessage(rootPane, message);
             logger.log(Level.SEVERE, message, jre);
         }
     }
