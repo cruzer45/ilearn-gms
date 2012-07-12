@@ -20,6 +20,8 @@ import org.jdesktop.application.Action;
 public class FrmAddTerm extends javax.swing.JInternalFrame
 {
 
+    String validationText = "";
+
     /** Creates new form FrmAddTerm */
     public FrmAddTerm()
     {
@@ -197,15 +199,20 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
+        if (!passedValidation())
+        {
+            Utilities.showWarningMessage(rootPane, validationText);
+            return;
+        }
         int selectedYear = SchoolYear.getSchoolYearIDbyName(cmbSchoolYear.getSelectedItem().toString());
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("trmCode", txtTermCode.getText().trim());
         params.put("trmShortName", txtShortName.getText().trim());
-        params.put("trmLongName",txtLongName.getText().trim());
+        params.put("trmLongName", txtLongName.getText().trim());
         params.put("trmSchoolYear", String.valueOf(selectedYear));
         params.put("trmStartDate", Utilities.YMD_Formatter.format(calStartDate.getDate()));
         params.put("trmEndDate", Utilities.YMD_Formatter.format(calEndDate.getDate()));
-        if(Term.addTerm(params))
+        if (Term.addTerm(params))
         {
             String message = "The term was successfully added. \n"
                              + "Would you like to add another?";
@@ -225,6 +232,27 @@ public class FrmAddTerm extends javax.swing.JInternalFrame
                              + "Kindly verify your information and try again.";
             Utilities.showErrorMessage(rootPane, message);
         }
+    }
+
+    private boolean passedValidation()
+    {
+        boolean passed = true;
+        validationText = "Kindly correct the following issues before proceeding.\n\n";
+        if (cmbSchoolYear.getSelectedItem().toString().equals("---Select One---"))
+        {
+            validationText += "You must select a school year before saving;\n\n";
+            passed = false;
+        }
+        if (txtTermCode.getText().trim().isEmpty())
+        {
+            validationText += "You must enter a term code.";
+            passed = false;
+        }
+        if (txtShortName.getText().trim().isEmpty())
+        {
+            validationText += "You must enter a short name.";
+        }
+        return passed;
     }
 
     @Action

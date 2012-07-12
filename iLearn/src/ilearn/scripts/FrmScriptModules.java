@@ -7,7 +7,6 @@ package ilearn.scripts;
 
 import ilearn.kernel.TableColumnAdjuster;
 import ilearn.kernel.Utilities;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 
@@ -58,23 +57,24 @@ public class FrmScriptModules extends javax.swing.JInternalFrame
                                     "ID", "Module", "Section"
                                 }
                             ));
-        tblScripts.setCellSelectionEnabled(false);
         tblScripts.setName("tblScripts"); // NOI18N
-        tblScripts.setRowSelectionAllowed(true);
+        tblScripts.addMouseListener(new java.awt.event.MouseAdapter()
+        {
+            public void mouseClicked(java.awt.event.MouseEvent evt)
+            {
+                tblScriptsMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblScripts);
         tblScripts.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmScriptModules.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
         cmdRemove.setAction(actionMap.get("remove")); // NOI18N
-        cmdRemove.setText("Remove");
         cmdRemove.setName("cmdRemove"); // NOI18N
         cmdAdd.setAction(actionMap.get("add")); // NOI18N
-        cmdAdd.setText("Add");
         cmdAdd.setName("cmdAdd"); // NOI18N
         cmdReload.setAction(actionMap.get("reload")); // NOI18N
-        cmdReload.setText("Reload");
         cmdReload.setName("cmdReload"); // NOI18N
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +109,18 @@ public class FrmScriptModules extends javax.swing.JInternalFrame
         );
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tblScriptsMouseClicked(java.awt.event.MouseEvent evt)//GEN-FIRST:event_tblScriptsMouseClicked
+    {
+        //GEN-HEADEREND:event_tblScriptsMouseClicked
+        if (evt.getClickCount() >= 2 && tblScripts.getSelectedRow() != -1)
+        {
+            FrmScriptModuleDetails frmScriptModuleDetails = new FrmScriptModuleDetails(null, true);
+            frmScriptModuleDetails.setLocationRelativeTo(this);
+            frmScriptModuleDetails.setVisible(true);
+            reload();
+        }
+    }//GEN-LAST:event_tblScriptsMouseClicked
 
     @Action
     public void cancel()
@@ -156,9 +168,6 @@ public class FrmScriptModules extends javax.swing.JInternalFrame
         TableColumnAdjuster tca = new TableColumnAdjuster(tblScripts);
         tca.adjustColumns();
     }
-
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton cmdAdd;
     private javax.swing.JButton cmdCancel;

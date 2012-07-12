@@ -17,12 +17,30 @@ public class FrmScriptModuleDetails extends javax.swing.JDialog
 {
 
     String validationText = "";
+    boolean updating = false;
+    HashMap<String, String> details;
 
     /** Creates new form FrmScriptModuleDetails */
     public FrmScriptModuleDetails(java.awt.Frame parent, boolean modal)
     {
         super(parent, modal);
         initComponents();
+    }
+
+    /** Creates new form FrmScriptModuleDetails */
+    public FrmScriptModuleDetails(java.awt.Frame parent, boolean modal, int id)
+    {
+        super(parent, modal);
+        initComponents();
+        updating = true;
+        loadModule(id);
+    }
+
+    private void loadModule(int id)
+    {
+        details = ScriptModules.getScriptModuleDetails(id);
+        txtModule.setText(details.get("smModuleName"));
+        txtSection.setText(details.get("smSection"));
     }
 
     /** This method is called from within the constructor to
