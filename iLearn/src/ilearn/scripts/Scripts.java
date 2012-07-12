@@ -21,12 +21,13 @@ public class Scripts
 
         try
         {
-            String sql = "INSERT INTO `Scripts` (`scriptModule`, `scriptTitle`, `scriptQuery`, `scriptPriority`) VALUES (?, ?,?, ?);";
+            String sql = "INSERT INTO `Scripts` (`scriptModule`, `scriptTitle`, `scriptQuery`, `scriptPriority`, `scriptRemark`) VALUES (?, ?,?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, params.get("scriptModule").toString());
             prep.setString(2, params.get("scriptTitle").toString());
             prep.setString(3, params.get("scriptQuery").toString());
             prep.setString(4, params.get("scriptPriority").toString());
+            prep.setString(5, params.get("scriptRemark").toString());
             prep.execute();
             prep.close();
             successful = true;
