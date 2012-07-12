@@ -183,11 +183,17 @@ public class ScriptModules
         int result = -1;
         try
         {
-            //TODO finish the sql for this
-            String sql = "";
+            String sql = "SELECT smID FROM listScriptModules WHERE smModuleName = ? AND smSection = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, module);
             prep.setString(2, section);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                result = rs.getInt("smID");
+            }
+            rs.close();
+            prep.close();
         }
         catch (Exception e)
         {
