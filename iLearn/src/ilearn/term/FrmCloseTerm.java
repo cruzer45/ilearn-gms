@@ -12,9 +12,8 @@ import ilearn.kernel.Environment;
 import ilearn.kernel.Utilities;
 import ilearn.promotion.Promote;
 import ilearn.register.Register;
-import ilearn.student.Student;
+import ilearn.reports.ReportLoader;
 import ilearn.utils.FrmErrors;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import org.jdesktop.application.Action;
 import org.jdesktop.application.Task;
@@ -133,10 +132,37 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
         {
             setMessage("Running pre-close checks.");
             setMessage("Checking grades");
-            boolean gradesOk = checkGrades();
-            if (!gradesOk)
+            int missingGrades = Grade.getMissingGradeCount();
+            if (missingGrades > 0)
             {
-                return false;
+                String message = " There are " + missingGrades + " missing grades currently. \n\n"
+                                 + "Select Yes to proceed closinbg the term with these missing grades.\n"
+                                 + "Select No to view a report displaying these missing grades.\n"
+                                 + "Select Cancel to stop the process.";
+                try
+                {
+                    Thread.sleep(2000);
+                }
+                catch (Exception e)
+                {
+                }
+                int response = Utilities.showYNCConfirmDialog(rootPane, message);
+                if (response == JOptionPane.NO_OPTION)
+                {
+                    setMessage("Loading reporting engine");
+                    ReportLoader.showMissingGradeReportReport();
+                    warnings += "Missing Grades were found in the system.\n"
+                                + "A report displaying the missing grades was generated.";
+                    this.cancel(true);
+                    return null;
+                }
+                else if (response == JOptionPane.CANCEL_OPTION)
+                {
+                    warnings += "Missing Grades were found in the system.\n"
+                                + "The user cancelled the process.";
+                    this.cancel(true);
+                    return null;
+                }
             }
             setProgress(1, 0, 8);
             setMessage("Closing Assessments");
@@ -196,23 +222,6 @@ public class FrmCloseTerm extends javax.swing.JInternalFrame
             }
             setProgress(8, 0, 8);
             return true;  // return your result
-        }
-
-        private boolean checkGrades()
-        {
-            boolean gradesOk = true;
-            String message = "";
-            ArrayList<Object> results = Grade.checkAllGrades();
-            for (Object missingGrade : results)
-            {
-                String[] missing = (String[]) missingGrade;
-                String studentName = Student.getStudentName(missing[0]);
-                ArrayList<Object> assmt = Grade.getAssessmentInfo(missing[1]);
-                message += studentName + " from " + Student.getStudentClass(missing[0]) + " is a missing grade for the " + assmt.get(1) + " titled \"" + assmt.get(2) + "\" given on " + assmt.get(3) + ".\n";
-                gradesOk = false;
-            }
-            warnings += message;
-            return gradesOk;
         }
 
         @Override

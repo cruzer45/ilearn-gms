@@ -1,3 +1,5 @@
+update  Grade set graFinal = 60 where graFinal >= 58.5 and graFinal < 60;
+
 UPDATE `Grade` SET `graLetterGrade` = 'P', `graRemark` = 'Pass' WHERE `graSubCode` LIKE '%ESPART%' AND `graFinal` >= 60;
 
 DELETE FROM `Grade` WHERE `graSubCode` LIKE '%REM. MATH%' AND `graFinal` = 0;

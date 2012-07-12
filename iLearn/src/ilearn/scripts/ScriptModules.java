@@ -152,8 +152,48 @@ public class ScriptModules
         return list;
     }
 
-
-
-
-
+    public static HashMap getScriptModuleDetails(int id)
+    {
+        HashMap<String, String> details = new HashMap<String, String>();
+        try
+        {
+            String sql = "SELECT smID, smModuleName, smSection FROM listScriptModules WHERE smID = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setInt(1, id);
+            ResultSet rs = prep.executeQuery();
+            while(rs.next())
+            {
+                details.put("smID", rs.getString("smID"));
+                details.put("smModuleName", rs.getString("smModuleName"));
+                details.put("smSection", rs.getString("smSection"));
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while loading the  script module details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return details;
+    }
+    
+    public static int findIDByModuleNameAndSection(String module, String section)
+    {
+        int result = -1;
+        try
+        {
+            //TODO finish the sql for this
+            String sql = "";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, module);
+            prep.setString(2, section);
+        }
+        catch (Exception e)
+        {
+             String message = "An error occurred while loading the  script module details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return result;
+    }
 }

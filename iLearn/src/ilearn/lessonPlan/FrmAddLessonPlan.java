@@ -108,11 +108,11 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
                                 .addComponent(jLabel5))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE))
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                                .addComponent(jTextField2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                                .addComponent(jDateChooser2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                                .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, 436, Short.MAX_VALUE))
                       .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -160,7 +160,7 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
                       .addContainerGap()
                       .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 449, Short.MAX_VALUE)
+                      .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 440, Short.MAX_VALUE)
                       .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -189,7 +189,7 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
                       .addContainerGap()
                       .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
+                      .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 420, Short.MAX_VALUE)
                       .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -218,7 +218,7 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
                       .addContainerGap()
                       .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                      .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 438, Short.MAX_VALUE)
+                      .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 429, Short.MAX_VALUE)
                       .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -270,14 +270,14 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
                                           .addContainerGap()
                                           .addComponent(jLabel9)
                                           .addGap(23, 23, 23)
-                                          .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                                          .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                           .addGap(13, 13, 13)
                                           .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                   .addGroup(jPanel5Layout.createSequentialGroup()
                                                           .addComponent(jLabel10)
                                                           .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                          .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE))
+                                                          .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 434, Short.MAX_VALUE))
                                                   .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
                                                           .addComponent(jButton2)
                                                           .addGap(18, 18, 18)
@@ -309,6 +309,7 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
         jScrollPane7.setName("jScrollPane7"); // NOI18N
         jTextArea6.setColumns(20);
         jTextArea6.setRows(5);
+        jTextArea6.setText("This is collected at the end of the week / end of class.");
         jTextArea6.setName("jTextArea6"); // NOI18N
         jScrollPane7.setViewportView(jTextArea6);
         jLabel11.setText("Evaluation:");
@@ -318,6 +319,7 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
         jScrollPane8.setName("jScrollPane8"); // NOI18N
         jTextArea7.setColumns(20);
         jTextArea7.setRows(5);
+        jTextArea7.setText("This is where the HOD can document their recommendations .");
         jTextArea7.setName("jTextArea7"); // NOI18N
         jScrollPane8.setViewportView(jTextArea7);
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
@@ -331,8 +333,8 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
                                 .addComponent(jLabel12))
                       .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                       .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE)
-                                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 444, Short.MAX_VALUE))
+                                .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE)
+                                .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 435, Short.MAX_VALUE))
                       .addContainerGap())
         );
         jPanel7Layout.setVerticalGroup(
@@ -358,7 +360,7 @@ public class FrmAddLessonPlan extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                       .addContainerGap()
-                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                      .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 546, Short.MAX_VALUE)
                       .addContainerGap())
         );
         layout.setVerticalGroup(

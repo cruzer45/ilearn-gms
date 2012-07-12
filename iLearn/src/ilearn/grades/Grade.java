@@ -797,22 +797,7 @@ public class Grade
                     for (String stuID : studentList) // loop students
                     {
                         System.out.println("\t\tNow doing student: " + stuID);
-//                        double termGrade = 0.0;
-//                        double examGrade = 0.0;
-                        //Get all term grade for a subject
-//                        termGrade = getTermGrade(stuID, sub);
-//                        examGrade = getExamGrade(stuID, sub);
-                        //Get Exam grade for a subject
-                        // loop assessments
                         double grade = 0.0;
-//                        if (termGrade != 0 && examGrade != 0)
-//                        {
-//                            grade = (termGrade * .65) + (examGrade * .35);
-//                        }
-//                        else
-//                        {
-//                            grade = termGrade;
-//                        }
                         if (Subject.hasWeighting(Subject.getSubjectID(sub)))
                         {
                             grade = calculateGradeWithWeighting(stuID, sub);
@@ -1747,7 +1732,7 @@ public class Grade
                     prep = Environment.getConnection().prepareStatement(sql9);
                     prep.execute();
                     setProgress(94);
-                    String sql10 = " UPDATE `Grade_Year_Average` SET `yrgraGPA` = 1.5, `yrgraRemark` = 'Passing' , `yrgraLetterGrade` = 'D+' WHERE ROUND(`yrgraYearAverage`) >= 60 AND ROUND(`yrgraYearAverage`) < 70;";
+                    String sql10 = " UPDATE `Grade_Year_Average` SET `yrgraGPA` = 1.5, `yrgraRemark` = 'Passing' , `yrgraLetterGrade` = 'D+' WHERE ROUND(`yrgraYearAverage`) >= 65 AND ROUND(`yrgraYearAverage`) < 70;";
                     prep = Environment.getConnection().prepareStatement(sql10);
                     prep.execute();
                     setProgress(95);

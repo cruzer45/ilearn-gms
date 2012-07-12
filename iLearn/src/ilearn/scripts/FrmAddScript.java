@@ -7,6 +7,7 @@ package ilearn.scripts;
 
 import ilearn.kernel.Utilities;
 import java.util.ArrayList;
+import java.util.HashMap;
 import javax.swing.DefaultComboBoxModel;
 import org.jdesktop.application.Action;
 
@@ -180,7 +181,7 @@ public class FrmAddScript extends javax.swing.JInternalFrame
 
     private void cmbModuleActionPerformed(java.awt.event.ActionEvent evt)//GEN-FIRST:event_cmbModuleActionPerformed
     {
-        //GEN-HEADEREND:event_cmbModuleActionPerformed
+//GEN-HEADEREND:event_cmbModuleActionPerformed
         String selected = cmbModule.getSelectedItem().toString();
         if (!selected.equals("---Select One---"))
         {
@@ -199,8 +200,13 @@ public class FrmAddScript extends javax.swing.JInternalFrame
     @Action
     public void save()
     {
-        String message = "Saved";
-        Utilities.showInfoMessage(rootPane, message);
+        //String message = "Saved";
+        //Utilities.showInfoMessage(rootPane, message);
+        //`scriptModule`, `scriptTitle`, `scriptQuery`, `scriptPriority`
+        
+        HashMap<String, String> params = new HashMap<String, String>();
+        params.put("scriptModule", "");
+        //TODO finish this function
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox cmbModule;
