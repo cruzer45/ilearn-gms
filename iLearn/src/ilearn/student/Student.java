@@ -12,6 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
@@ -26,22 +27,22 @@ public class Student
     static final Logger logger = Logger.getLogger(Student.class.getName());
 
     public static boolean saveStudent(String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
-                                      String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
-                                      String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-                                      String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                      String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, boolean stuNonBelizean)
+            String stuEmail, String stuPhone, File stuPhoto, String stuAddress1, String stuAddress2,
+            String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
+            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
+            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, boolean stuNonBelizean)
     {
         boolean successful = false;
         try
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "INSERT INTO `Student` "
-                         + "(`stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEmail`, "
-                         + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
-                         + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
-                         + "`stuDoctorContact`, `stuHospital`, `stuClsCode`, `stuPSEGrade`, "
-                         + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`) "
-                         + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? );";
+                    + "(`stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`, `stuEmail`, "
+                    + "`stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`, `stuPCName`, `stuPCPhone`, "
+                    + "`stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`, "
+                    + "`stuDoctorContact`, `stuHospital`, `stuClsCode`, `stuPSEGrade`, "
+                    + "`stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`) "
+                    + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?,? );";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -87,6 +88,7 @@ public class Student
         criteria = Utilities.percent(criteria);
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public boolean isCellEditable(int rowIndex, int mColIndex)
             {
@@ -100,12 +102,12 @@ public class Student
         try
         {
             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuClsCode` FROM `Student` "
-                         + "WHERE ( `stuID` LIKE ?  OR "
-                         + "`stuFirstName` LIKE ?  OR "
-                         + "`stuLastName` LIKE ?  OR "
-                         + "`stuOtherNames` LIKE ?  OR "
-                         + "`stuSSN` LIKE ? OR"
-                         + "`stuClsCode` LIKE ? ) AND `stuStatus` = 'Active';";
+                    + "WHERE ( `stuID` LIKE ?  OR "
+                    + "`stuFirstName` LIKE ?  OR "
+                    + "`stuLastName` LIKE ?  OR "
+                    + "`stuOtherNames` LIKE ?  OR "
+                    + "`stuSSN` LIKE ? OR"
+                    + "`stuClsCode` LIKE ? ) AND `stuStatus` = 'Active';";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);
             prep.setString(2, criteria);
@@ -136,17 +138,141 @@ public class Student
         return model;
     }
 
+    public static DefaultTableModel getStudentsSearchTable(String criteria)
+    {
+        criteria = Utilities.percent(criteria);
+
+        final Class[] columnTypes =
+        {
+            Integer.class, String.class, String.class,  Date.class
+        };
+
+        DefaultTableModel model = new DefaultTableModel()
+        {
+            @Override
+            public boolean isCellEditable(int rowIndex, int mColIndex)
+            {
+                return false;
+            }
+            @Override
+            public Class<?> getColumnClass(int columnIndex)
+            {
+                return columnTypes[columnIndex];
+            }
+        };
+        ArrayList<String> studentID = new ArrayList<String>();
+        ArrayList<String> firstName = new ArrayList<String>();
+        ArrayList<String> lastName = new ArrayList<String>();
+        ArrayList<Date> dob = new ArrayList<Date>();
+        try
+        {
+            String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB` FROM `Student` "
+                    + "WHERE ( `stuID` LIKE ?  OR "
+                    + "`stuFirstName` LIKE ?  OR "
+                    + "`stuLastName` LIKE ?  OR "
+                    + "`stuOtherNames` LIKE ?  OR "
+                    + "`stuSSN` LIKE ? OR"
+                    + "`stuClsCode` LIKE ? ) AND `stuStatus` = 'Active';";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, criteria);
+            prep.setString(2, criteria);
+            prep.setString(3, criteria);
+            prep.setString(4, criteria);
+            prep.setString(5, criteria);
+            prep.setString(6, criteria);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                studentID.add(rs.getString("stuID"));
+                firstName.add(rs.getString("stuFirstName"));
+                lastName.add(rs.getString("stuLastName"));
+                dob.add(rs.getDate("stuDOB"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while adding a student to the system.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        model.addColumn("ID", studentID.toArray());
+        model.addColumn("First Name", firstName.toArray());
+        model.addColumn("Last Name", lastName.toArray());
+        model.addColumn("DOB", dob.toArray());
+        return model;
+    }
+
+    public static HashMap getStudentDetails(String stuID)
+    {
+        HashMap <String, Object> details = new HashMap<String, Object>();
+        try
+        {
+             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`,"
+                    + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
+                    + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
+                    + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
+                    + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`"
+                    + "FROM `Student` WHERE `stuID` = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, stuID);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                details.put("stuID",rs.getString("stuID"));
+                details.put("stuFirstName",rs.getString("stuFirstName"));
+                details.put("stuLastName",rs.getString("stuLastName"));
+                details.put("stuOtherNames",rs.getString("stuOtherNames"));
+                details.put("stuDOB",rs.getDate("stuDOB"));
+                details.put("stuGender",rs.getString("stuGender"));
+                details.put("stuEthnicity",rs.getString("stuEthnicity"));
+                details.put("stuPrimaryLanguage",rs.getString("stuPrimaryLanguage"));
+                details.put("stuEmail",rs.getString("stuEmail"));
+                details.put("stuPhone",rs.getString("stuPhone"));
+                details.put("stuPhoto",rs.getBlob("stuPhoto"));
+                details.put("stuAddress1",rs.getString("stuAddress1"));
+                details.put("stuAddress2",rs.getString("stuAddress2"));
+                details.put("stuPCName",rs.getString("stuPCName"));
+                details.put("stuPCPhone",rs.getString("stuPCPhone"));
+                details.put("stuPCAddress",rs.getString("stuPCAddress"));
+                details.put("stuSCName",rs.getString("stuSCName"));
+                details.put("stuSCPhone",rs.getString("stuSCPhone"));
+                details.put("stuSCAddress",rs.getString("stuSCAddress"));
+                details.put("stuDoctorName",rs.getString("stuDoctorName"));
+                details.put("stuDoctorContact",rs.getString("stuDoctorContact"));
+                details.put("stuHospital",rs.getString("stuHospital"));
+                details.put("stuClsCode",rs.getString("stuClsCode"));
+                details.put("stuPSEGrade",rs.getString("stuPSEGrade"));
+                details.put("stuFeederSchool",rs.getString("stuFeederSchool"));
+                details.put("stuRepeating",rs.getBoolean("stuRepeating"));
+                details.put("stuSpecialNeeds",rs.getString("stuSpecialNeeds"));
+                details.put("stuNotes",rs.getString("stuNotes"));
+                details.put("stuStatus",rs.getString("stuStatus"));
+                details.put("stuSSN",rs.getString("stuSSN"));
+                details.put("stuNonBelizean",rs.getBoolean("stuNonBelizean"));
+            }
+            prep.close();
+            rs.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the student information.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return details;
+    }
+    
     public static ArrayList<Object> getStudentInfo(String stuID)
     {
         ArrayList<Object> studentInfo = new ArrayList<Object>();
         try
         {
             String sql = "SELECT `stuID`, `stuFirstName`, `stuLastName`, `stuOtherNames`, `stuDOB`, `stuGender`,"
-                         + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
-                         + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
-                         + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
-                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`"
-                         + "FROM `Student` WHERE `stuID` = ?;";
+                    + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
+                    + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
+                    + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
+                    + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`"
+                    + "FROM `Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             ResultSet rs = prep.executeQuery();
@@ -254,7 +380,7 @@ public class Student
         {
             FileInputStream fis = new FileInputStream(stuPhoto);
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuPhoto` = ? ,`stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ?, `stuStatus` = ?, `stuNonBelizean` = ? WHERE `stuID`= ?;";
+                    + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ?, `stuStatus` = ?, `stuNonBelizean` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -298,16 +424,16 @@ public class Student
     }
 
     public static boolean updateStudent(String stuID, String stuFirstName, String stuLastName, String stuOtherNames, String stuDOB, String stuGender,
-                                        String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
-                                        String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
-                                        String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
-                                        String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus, boolean stuNonBelizean)
+            String stuEmail, String stuPhone, String stuAddress1, String stuAddress2,
+            String stuPCName, String stuPCPhone, String stuSCName, String stuPCAddress, String stuSCPhone, String stuSCAddress,
+            String stuDoctorName, String stuDoctorContact, String stuHospital, String stuClsCode,
+            String stuPSEGrade, String stuFeederSchool, boolean stuRepeating, String stuSpecialNeeds, String stuNotes, String stuSSN, String stuStatus, boolean stuNonBelizean)
     {
         boolean successful = false;
         try
         {
             String sql = "UPDATE `Student` SET `stuFirstName`= ?, `stuLastName`= ?, `stuOtherNames`= ?, `stuDOB`= ?, `stuGender`= ?, `stuEmail`= ?, `stuPhone`= ?, `stuAddress1`= ?, `stuAddress2`= ?, `stuPCName`= ?, `stuPCPhone`= ?, `stuPCAddress`= ?, `stuSCName`= ?, `stuSCPhone`= ?, `stuSCAddress`= ?, `stuDoctorName`= ?, `stuDoctorContact`= ?, `stuHospital`= ?, `stuClsCode`= ?,"
-                         + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? , `stuStatus` = ?, `stuNonBelizean` = ? WHERE `stuID`= ?;";
+                    + " `stuPSEGrade` = ?, `stuFeederSchool` = ?, `stuRepeating` = ?, `stuSpecialNeeds` = ?, `stuNotes` = ?, `stuSSN` = ? , `stuStatus` = ?, `stuNonBelizean` = ? WHERE `stuID`= ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuFirstName);
             prep.setString(2, stuLastName);
@@ -360,11 +486,13 @@ public class Student
         };
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class<?> getColumnClass(int columnIndex)
             {
                 return columnClasses[columnIndex];
             }
+
             @Override
             public boolean isCellEditable(int row, int column)
             {
@@ -408,11 +536,13 @@ public class Student
         };
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class<?> getColumnClass(int columnIndex)
             {
                 return columnClasses[columnIndex];
             }
+
             @Override
             public boolean isCellEditable(int row, int column)
             {
@@ -422,9 +552,9 @@ public class Student
         try
         {
             String sql = " SELECT `rolStuID`,`rolDate`,`rolAbsent`,`rolTardy`,`rolRemark`,`rolStatus`"
-                         + " FROM`RollCall` "
-                         + " WHERE `rolStuID` = ? AND `rolTrmCode` = ?"
-                         + " ORDER BY `rolDate`";
+                    + " FROM`RollCall` "
+                    + " WHERE `rolStuID` = ? AND `rolTrmCode` = ?"
+                    + " ORDER BY `rolDate`";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, Term.getCurrentTerm());
@@ -461,11 +591,13 @@ public class Student
         };
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class<?> getColumnClass(int columnIndex)
             {
                 return columnClasses[columnIndex];
             }
+
             @Override
             public boolean isCellEditable(int row, int column)
             {
@@ -475,9 +607,9 @@ public class Student
         try
         {
             String sql = "  SELECT `merDate`,`merits`, `merRemarks`, CONCAT_WS(' ',`staFirstName`, `staLastName`) as 'Staff'"
-                         + " FROM `Merits`"
-                         + "INNER JOIN `Staff` ON `Staff`.`staID` = `Merits`.`merStaID`"
-                         + "WHERE `merStatus` = 'Active' AND `merStuID` = ? AND `merTermID` = ?";
+                    + " FROM `Merits`"
+                    + "INNER JOIN `Staff` ON `Staff`.`staID` = `Merits`.`merStaID`"
+                    + "WHERE `merStatus` = 'Active' AND `merStuID` = ? AND `merTermID` = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, Term.getCurrentTerm());
@@ -499,6 +631,7 @@ public class Student
         model.addColumn("Staff", staff.toArray());
         return model;
     }
+
     public static DefaultTableModel getStudentDemeritTable(String stuID)
     {
         ArrayList<Date> dates = new ArrayList<Date>();
@@ -512,11 +645,13 @@ public class Student
         };
         DefaultTableModel model = new DefaultTableModel()
         {
+
             @Override
             public Class<?> getColumnClass(int columnIndex)
             {
                 return columnClasses[columnIndex];
             }
+
             @Override
             public boolean isCellEditable(int row, int column)
             {
@@ -526,9 +661,9 @@ public class Student
         try
         {
             String sql = "  SELECT `demDate`, `demerits`, `demRemarks`, `demActionTaken`, CONCAT_WS(' ',`staFirstName`, `staLastName`) AS 'staff'"
-                         + " FROM `Demerits`"
-                         + " INNER JOIN `Staff` ON `Staff`.`staCode` = `Demerits`.`demStaCode`"
-                         + " WHERE `demStatus` = 'Active' AND `demStuID` = ? AND `demTermID` = ? ";
+                    + " FROM `Demerits`"
+                    + " INNER JOIN `Staff` ON `Staff`.`staCode` = `Demerits`.`demStaCode`"
+                    + " WHERE `demStatus` = 'Active' AND `demStuID` = ? AND `demTermID` = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
             prep.setString(2, Term.getCurrentTerm());
