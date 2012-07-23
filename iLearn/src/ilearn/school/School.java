@@ -11,6 +11,7 @@ import java.sql.Blob;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -25,14 +26,45 @@ public class School
 
     static final Logger logger = Logger.getLogger(School.class.getName());
 
+    public static HashMap<String, Object> getSchoolDetails()
+    {
+        HashMap<String, Object> details = new HashMap<String, Object>();
+        try
+        {
+            String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
+                    + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                    + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+            details.put("schName", rs.getString("schName"));
+            details.put("schShortName", rs.getString("schShortName"));
+            details.put("schPhone1", rs.getString("schPhone1"));
+            details.put("schPhone2", rs.getString("schPhone2"));
+            details.put("schAddress", rs.getString("schAddress"));
+            details.put("schLogo", rs.getBlob("schLogo"));
+            details.put("schPassingMark", rs.getString("schPassingMark"));
+            details.put("schPrincipal", rs.getString("schPrincipal"));
+            details.put("schPrincipalSignature", rs.getBlob("schPrincipalSignature"));
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while retrieving the school information.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return details;
+    }
+
     public static ArrayList<Object> getSchoolInfo()
     {
         ArrayList<Object> school = new ArrayList<Object>();
         try
         {
             String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
-                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
-                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+                    + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                    + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();
@@ -57,8 +89,8 @@ public class School
     }
 
     public static boolean updateSchoolInfo(String schName, String schShortName,
-                                           String schPhone1, String schPhone2, String schAddress, File schLogo,
-                                           String schPassingMark, String schPrincipal, File schPrincipalSignature)
+            String schPhone1, String schPhone2, String schAddress, File schLogo,
+            String schPassingMark, String schPrincipal, File schPrincipalSignature)
     {
         boolean successful = false;
         try
@@ -66,9 +98,9 @@ public class School
             FileInputStream signatureInputStream = new FileInputStream(schPrincipalSignature);
             FileInputStream fis = new FileInputStream(schLogo);
             String sql = "UPDATE `School` SET `schName`= ?, `schShortName`=?, "
-                         + "`schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , "
-                         + "schLogo = ? , schPassingMark = ? , schPrincipal = ? , `schPrincipalSignature` = ?"
-                         + "WHERE `schlID`=1 LIMIT 1;";
+                    + "`schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , "
+                    + "schLogo = ? , schPassingMark = ? , schPrincipal = ? , `schPrincipalSignature` = ?"
+                    + "WHERE `schlID`=1 LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, schName);
             prep.setString(2, schShortName);
@@ -138,8 +170,8 @@ public class School
         try
         {
             String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
-                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
-                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+                    + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                    + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();
@@ -147,7 +179,7 @@ public class School
             ImageIcon original = new ImageIcon(blob.getBytes(1, (int) blob.length()));
             //draw original image
             Image img = original.getImage();
-            BufferedImage originalImage = new BufferedImage(original.getIconWidth(), original.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
+            BufferedImage originalImage = new BufferedImage(original.getIconWidth(), original.getIconHeight(), BufferedImage.TYPE_INT_RGB);
             Graphics2D graphics2D = originalImage.createGraphics();
             graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
             graphics2D.drawImage(img, 0, 0, original.getIconWidth(), original.getIconHeight(), null);
@@ -159,6 +191,34 @@ public class School
         catch (Exception e)
         {
             String message = "An error occurred while downloading the principal's signature.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
+
+    public static void downloadlogo()
+    {
+        try
+        {
+            String sql = "SELECT `schLogo` FROM `School`;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            rs.first();
+            Blob blob = rs.getBlob("schLogo");
+            ImageIcon original = new ImageIcon(blob.getBytes(1, (int) blob.length()));
+            //draw original image
+            Image img = original.getImage();
+            BufferedImage originalImage = new BufferedImage(original.getIconWidth(), original.getIconHeight(), BufferedImage.TYPE_INT_RGB);
+            Graphics2D graphics2D = originalImage.createGraphics();
+            graphics2D.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BILINEAR);
+            graphics2D.drawImage(img, 0, 0, original.getIconWidth(), original.getIconHeight(), null);
+            File output = new File("images/school_logo.jpg");
+            ImageIO.write(originalImage, "jpg", output);
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while downloading the school's logo.";
             logger.log(Level.SEVERE, message, e);
         }
     }
