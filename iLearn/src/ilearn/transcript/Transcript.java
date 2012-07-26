@@ -48,16 +48,16 @@ public class Transcript
             Sheet sheet = wb.createSheet("Transcript - " + studentDetails.get("stuFirstName").toString() + " " + studentDetails.get("stuLastName").toString());
             Row topRow = sheet.createRow(0);
             Cell cell = topRow.createCell(0);
-            cell.setCellValue(1);
+            int finishRow = 0;
             //Insert Logo
             //add picture data to this workbook.
-            InputStream is = new FileInputStream("images/school_logo.jpg");
-            byte[] bytes = IOUtils.toByteArray(is);
+            InputStream inputStream = new FileInputStream("images/school_logo.jpg");
+            byte[] bytes = IOUtils.toByteArray(inputStream);
             int pictureIdx = wb.addPicture(bytes, Workbook.PICTURE_TYPE_JPEG);
-            is.close();
+            inputStream.close();
             //Add helper
             CreationHelper helper = wb.getCreationHelper();
-            // Create the drawing patriarch.  This is the top level container for all shapes. 
+            // Create the drawing patriarch.  This is the top level container for all shapes.
             Drawing drawing = sheet.createDrawingPatriarch();
             //add a picture shape
             ClientAnchor anchor = helper.createClientAnchor();
@@ -66,17 +66,44 @@ public class Transcript
             anchor.setCol1(0);
             anchor.setRow1(0);
             anchor.setCol2(3);
-            anchor.setRow2(8);
+            anchor.setRow2(9);
             Picture pict = drawing.createPicture(anchor, pictureIdx);
             //pict.resize();
             //Insert school Info
             topRow.createCell(4).setCellValue(schoolDetails.get("schName").toString());
+            finishRow++;
             String address = schoolDetails.get("schAddress").toString();
-            //address.sp
-            sheet.createRow(1).createCell(4).setCellValue(address);
-            //TODO Finish adding the school details.
+            String[] addressLines = address.split("\n");
+            for (int i = 0; i < addressLines.length; i++)
+            {
+                String addLine = addressLines[i];
+                addLine.trim();
+                sheet.createRow(finishRow).createCell(4).setCellValue(addLine);
+                finishRow++;
+            }
+            finishRow++;
             
+            sheet.createRow(finishRow).createCell(4).setCellValue("Student Transcript");
+            finishRow += 2;
+            //Student General Info
+            Row studentNameRow = sheet.createRow(finishRow);
+            studentNameRow.createCell(0).setCellValue("Student Name:");
+            String studentName = studentDetails.get("stuFirstName").toString() + " " + studentDetails.get("stuOtherNames").toString() + " " + studentDetails.get("stuLastName").toString();
+            studentNameRow.createCell(2).setCellValue(studentName);
+            finishRow++;
             
+            Row parentRow = sheet.createRow(finishRow);
+            parentRow.createCell(0).setCellValue("Parent / Guardian:");
+            String parent = studentDetails.get("stuPCName").toString() ;
+            if (!studentDetails.get("stuSCName").toString().trim().isEmpty())
+            {
+                parent = parent +  " & " + studentDetails.get("stuSCName").toString() ;
+            }
+            parentRow.createCell(2).setCellValue(parent);
+            finishRow++;
+
+            
+
             //Save Workbook
             FileOutputStream fileOut = new FileOutputStream(selectedFile);
             wb.write(fileOut);
@@ -91,6 +118,5 @@ public class Transcript
             String message = "An error occurred while trying to generate a student's transcripts";
             logger.log(Level.SEVERE, message, e);
         }
-
     }
 }

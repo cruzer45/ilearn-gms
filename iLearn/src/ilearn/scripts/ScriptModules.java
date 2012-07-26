@@ -177,7 +177,7 @@ public class ScriptModules
         }
         return details;
     }
-    
+
     public static int findIDByModuleNameAndSection(String module, String section)
     {
         int result = -1;
@@ -197,7 +197,7 @@ public class ScriptModules
         }
         catch (Exception e)
         {
-             String message = "An error occurred while loading the  script module details.";
+            String message = "An error occurred while loading the  script module details.";
             logger.log(Level.SEVERE, message, e);
         }
         return result;

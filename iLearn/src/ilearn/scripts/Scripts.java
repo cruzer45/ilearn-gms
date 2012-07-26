@@ -18,7 +18,6 @@ public class Scripts
     public static boolean addScript(HashMap params)
     {
         boolean successful = false;
-
         try
         {
             String sql = "INSERT INTO `Scripts` (`scriptModule`, `scriptTitle`, `scriptQuery`, `scriptPriority`, `scriptRemark`) VALUES (?, ?,?, ?);";
@@ -31,15 +30,12 @@ public class Scripts
             prep.execute();
             prep.close();
             successful = true;
-                    
-
         }
         catch (Exception e)
         {
             String message = "An error occurred while trying to save a script.";
             logger.log(Level.SEVERE, message, e);
         }
-
         return successful;
     }
 }
