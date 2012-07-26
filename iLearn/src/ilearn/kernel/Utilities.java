@@ -22,6 +22,7 @@ public class Utilities
 
     public static DateFormat YMD_Formatter = new SimpleDateFormat("yyyy-MM-dd");
     public static DateFormat MDY_Formatter = new SimpleDateFormat("MMM d, yyyy");
+    public static DateFormat MonthYear_Formatter = new SimpleDateFormat("MMMM yyyy");
 
     /**
      * This method loads the result set contents into the provided combo box.
