@@ -209,7 +209,7 @@ public class Student
                          + " `stuEthnicity`, `stuPrimaryLanguage`, `stuEmail`, `stuPhone`, `stuPhoto`, `stuAddress1`, `stuAddress2`,"
                          + " `stuPCName`, `stuPCPhone`, `stuPCAddress`, `stuSCName`, `stuSCPhone`, `stuSCAddress`, `stuDoctorName`,"
                          + " `stuDoctorContact`, `stuHospital`, `stuClsCode`,  `stuStatus` ,"
-                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`"
+                         + " `stuPSEGrade`, `stuFeederSchool`, `stuRepeating`, `stuSpecialNeeds`, `stuNotes`, `stuSSN`, `stuNonBelizean`, `stuRegistrationDate`"
                          + "FROM `Student` WHERE `stuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, stuID);
@@ -247,6 +247,7 @@ public class Student
                 details.put("stuStatus",rs.getString("stuStatus"));
                 details.put("stuSSN",rs.getString("stuSSN"));
                 details.put("stuNonBelizean",rs.getBoolean("stuNonBelizean"));
+                details.put("stuRegistrationDate",rs.getDate("stuRegistrationDate"));
             }
             prep.close();
             rs.close();

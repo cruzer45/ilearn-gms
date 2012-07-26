@@ -4,6 +4,7 @@
  */
 package ilearn.transcript;
 
+import ilearn.kernel.Utilities;
 import ilearn.school.School;
 import ilearn.student.Student;
 import java.awt.Desktop;
@@ -11,6 +12,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -72,8 +74,8 @@ public class Transcript
             //Insert school Info
             topRow.createCell(4).setCellValue(schoolDetails.get("schName").toString());
             finishRow++;
-            String address = schoolDetails.get("schAddress").toString();
-            String[] addressLines = address.split("\n");
+            String schoolAddress = schoolDetails.get("schAddress").toString();
+            String[] addressLines = schoolAddress.split("\n");
             for (int i = 0; i < addressLines.length; i++)
             {
                 String addLine = addressLines[i];
@@ -82,27 +84,45 @@ public class Transcript
                 finishRow++;
             }
             finishRow++;
-            
+
             sheet.createRow(finishRow).createCell(4).setCellValue("Student Transcript");
-            finishRow += 2;
+            finishRow += 5;
             //Student General Info
             Row studentNameRow = sheet.createRow(finishRow);
             studentNameRow.createCell(0).setCellValue("Student Name:");
             String studentName = studentDetails.get("stuFirstName").toString() + " " + studentDetails.get("stuOtherNames").toString() + " " + studentDetails.get("stuLastName").toString();
             studentNameRow.createCell(2).setCellValue(studentName);
             finishRow++;
-            
+
             Row parentRow = sheet.createRow(finishRow);
             parentRow.createCell(0).setCellValue("Parent / Guardian:");
-            String parent = studentDetails.get("stuPCName").toString() ;
+            String parent = studentDetails.get("stuPCName").toString();
             if (!studentDetails.get("stuSCName").toString().trim().isEmpty())
             {
-                parent = parent +  " & " + studentDetails.get("stuSCName").toString() ;
+                parent = parent + " & " + studentDetails.get("stuSCName").toString();
             }
             parentRow.createCell(2).setCellValue(parent);
             finishRow++;
 
-            
+            Row dateOfBirth = sheet.createRow(finishRow);
+            dateOfBirth.createCell(0).setCellValue("Date Of Birth:");
+            String dob = Utilities.MDY_Formatter.format((Date) studentDetails.get("stuDOB"));
+            dateOfBirth.createCell(2).setCellValue(dob);
+            finishRow++;
+
+            Row studentAddress = sheet.createRow(finishRow);
+            studentAddress.createCell(0).setCellValue("Address:");
+            String stuAddress = studentDetails.get("stuAddress1").toString();
+            stuAddress.replaceAll("\n", "");
+            studentAddress.createCell(2).setCellValue(stuAddress);
+            finishRow++;
+
+            Row entranceDate = sheet.createRow(finishRow);
+            entranceDate.createCell(0).setCellValue("Entrance Date:");
+            String stuEntranceDate = Utilities.MonthYear_Formatter.format((Date) studentDetails.get("stuRegistrationDate"));
+            stuEntranceDate.replaceAll("\n", "");
+            entranceDate.createCell(2).setCellValue(stuEntranceDate);
+            finishRow++;
 
             //Save Workbook
             FileOutputStream fileOut = new FileOutputStream(selectedFile);
