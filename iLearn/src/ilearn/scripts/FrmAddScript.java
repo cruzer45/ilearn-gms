@@ -39,8 +39,8 @@ public class FrmAddScript extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         wrapPanel = new javax.swing.JPanel();
         lblTitle = new javax.swing.JLabel();
         lblModule = new javax.swing.JLabel();
@@ -58,132 +58,114 @@ public class FrmAddScript extends javax.swing.JInternalFrame
         cmbModule = new javax.swing.JComboBox();
         lblSection = new javax.swing.JLabel();
         cmbSection = new javax.swing.JComboBox();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
         setTitle("Add Script");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/script_add.png"))); // NOI18N
-
         wrapPanel.setName("wrapPanel"); // NOI18N
-
         lblTitle.setText("Title:");
         lblTitle.setName("lblTitle"); // NOI18N
-
         lblModule.setText("Module:");
         lblModule.setName("lblModule"); // NOI18N
-
         lblPriority.setText("Priority:");
         lblPriority.setName("lblPriority"); // NOI18N
-
         lblQauery.setText("Query:");
         lblQauery.setName("lblQauery"); // NOI18N
-
         lblRemarke.setText("Remarks:");
         lblRemarke.setName("lblRemarke"); // NOI18N
-
         txtTitle.setName("txtTitle"); // NOI18N
-
         spinnerPriority.setModel(new javax.swing.SpinnerNumberModel(0, 0, 10, 1));
         spinnerPriority.setName("spinnerPriority"); // NOI18N
-
         jScrollPane1.setName("jScrollPane1"); // NOI18N
-
         txtQuery.setColumns(20);
         txtQuery.setRows(5);
         txtQuery.setName("txtQuery"); // NOI18N
         jScrollPane1.setViewportView(txtQuery);
-
         jScrollPane2.setName("jScrollPane2"); // NOI18N
-
         txtRemarks.setColumns(20);
         txtRemarks.setRows(5);
         txtRemarks.setName("txtRemarks"); // NOI18N
         jScrollPane2.setViewportView(txtRemarks);
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmAddScript.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdSave.setAction(actionMap.get("save")); // NOI18N
         cmdSave.setName("cmdSave"); // NOI18N
-
         cmbModule.setName("cmbModule"); // NOI18N
-        cmbModule.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
+        cmbModule.addActionListener(new java.awt.event.ActionListener()
+        {
+            public void actionPerformed(java.awt.event.ActionEvent evt)
+            {
                 cmbModuleActionPerformed(evt);
             }
         });
-
         lblSection.setText("Section:");
         lblSection.setName("lblSection"); // NOI18N
-
         cmbSection.setName("cmbSection"); // NOI18N
-
         javax.swing.GroupLayout wrapPanelLayout = new javax.swing.GroupLayout(wrapPanel);
         wrapPanel.setLayout(wrapPanelLayout);
         wrapPanelLayout.setHorizontalGroup(
             wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapPanelLayout.createSequentialGroup()
-                        .addComponent(cmdSave)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(cmdCancel))
-                    .addGroup(wrapPanelLayout.createSequentialGroup()
-                        .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblTitle)
-                            .addComponent(lblPriority)
-                            .addComponent(lblQauery)
-                            .addComponent(lblRemarke)
-                            .addComponent(lblModule)
-                            .addComponent(lblSection))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                            .addComponent(spinnerPriority, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                            .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
-                            .addComponent(cmbSection, 0, 379, Short.MAX_VALUE)
-                            .addComponent(cmbModule, 0, 379, Short.MAX_VALUE))))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, wrapPanelLayout.createSequentialGroup()
+                                          .addComponent(cmdSave)
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                          .addComponent(cmdCancel))
+                                .addGroup(wrapPanelLayout.createSequentialGroup()
+                                          .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblTitle)
+                                                  .addComponent(lblPriority)
+                                                  .addComponent(lblQauery)
+                                                  .addComponent(lblRemarke)
+                                                  .addComponent(lblModule)
+                                                  .addComponent(lblSection))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                                                  .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                                                  .addComponent(spinnerPriority, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                                                  .addComponent(txtTitle, javax.swing.GroupLayout.DEFAULT_SIZE, 379, Short.MAX_VALUE)
+                                                  .addComponent(cmbSection, 0, 379, Short.MAX_VALUE)
+                                                  .addComponent(cmbModule, 0, 379, Short.MAX_VALUE))))
+                      .addContainerGap())
         );
         wrapPanelLayout.setVerticalGroup(
             wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(wrapPanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblModule)
-                    .addComponent(cmbModule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSection)
-                    .addComponent(cmbSection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblTitle)
-                    .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblPriority)
-                    .addComponent(spinnerPriority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(lblQauery)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblRemarke))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdSave))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblModule)
+                                .addComponent(cmbModule, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSection)
+                                .addComponent(cmbSection, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblTitle)
+                                .addComponent(txtTitle, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblPriority)
+                                .addComponent(spinnerPriority, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(lblQauery)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lblRemarke))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                      .addGroup(wrapPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdSave))
+                      .addContainerGap())
         );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -194,7 +176,6 @@ public class FrmAddScript extends javax.swing.JInternalFrame
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(wrapPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 360, Short.MAX_VALUE)
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -220,7 +201,6 @@ public class FrmAddScript extends javax.swing.JInternalFrame
     public void save()
     {
         int scriptModule = ScriptModules.findIDByModuleNameAndSection(cmbModule.getSelectedItem().toString(), cmbSection.getSelectedItem().toString());
-
         HashMap<String, String> params = new HashMap<String, String>();
         params.put("scriptModule", String.valueOf(scriptModule));
         params.put("scriptTitle", txtTitle.getText().trim());
@@ -228,7 +208,6 @@ public class FrmAddScript extends javax.swing.JInternalFrame
         params.put("scriptPriority", spinnerPriority.getValue().toString());
         params.put("scriptRemark", txtRemarks.getText().toString());
         boolean addScript = Scripts.addScript(params);
-
         if (addScript)
         {
             String message = "The script was successfully saved.";
@@ -237,7 +216,7 @@ public class FrmAddScript extends javax.swing.JInternalFrame
         else
         {
             String message = "An error occurred while trying to save this item.\n"
-                    + "Kindly verify your information and try again.";
+                             + "Kindly verify your information and try again.";
             Utilities.showWarningMessage(rootPane, message);
         }
     }

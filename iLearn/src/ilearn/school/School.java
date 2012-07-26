@@ -32,8 +32,8 @@ public class School
         try
         {
             String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
-                    + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
-                    + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();
@@ -63,8 +63,8 @@ public class School
         try
         {
             String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
-                    + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
-                    + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();
@@ -89,8 +89,8 @@ public class School
     }
 
     public static boolean updateSchoolInfo(String schName, String schShortName,
-            String schPhone1, String schPhone2, String schAddress, File schLogo,
-            String schPassingMark, String schPrincipal, File schPrincipalSignature)
+                                           String schPhone1, String schPhone2, String schAddress, File schLogo,
+                                           String schPassingMark, String schPrincipal, File schPrincipalSignature)
     {
         boolean successful = false;
         try
@@ -98,9 +98,9 @@ public class School
             FileInputStream signatureInputStream = new FileInputStream(schPrincipalSignature);
             FileInputStream fis = new FileInputStream(schLogo);
             String sql = "UPDATE `School` SET `schName`= ?, `schShortName`=?, "
-                    + "`schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , "
-                    + "schLogo = ? , schPassingMark = ? , schPrincipal = ? , `schPrincipalSignature` = ?"
-                    + "WHERE `schlID`=1 LIMIT 1;";
+                         + "`schPhone1`=?, `schPhone2`= ?, `schAddress`= ? , "
+                         + "schLogo = ? , schPassingMark = ? , schPrincipal = ? , `schPrincipalSignature` = ?"
+                         + "WHERE `schlID`=1 LIMIT 1;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, schName);
             prep.setString(2, schShortName);
@@ -170,8 +170,8 @@ public class School
         try
         {
             String sql = "SELECT `schlID`, `schName`, `schShortName`, `schPhone1`, "
-                    + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
-                    + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
+                         + "`schPhone2`, `schAddress`, `schLogo`, `registrationCode`, "
+                         + " `schPassingMark` , `schPrincipal`, `schPrincipalSignature` FROM `School`;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
             rs.first();
