@@ -21,7 +21,6 @@ public class CalculateFirstTermGradeForTCC
         Environment.createConnection();
         Grade.calculateMidAverage();
         Grade.calculateFinalAverage();
-        
         System.exit(0);
     }
 }

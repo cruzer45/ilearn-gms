@@ -22,7 +22,6 @@ public class AddTCCWeightings
             Environment.createConnection();
             String sql = "INSERT INTO `Subject_Weightings` (`subID`, `assmentTypeID`, `weighting`) VALUES (?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-
             System.out.println("Getting subject listing");
             //get list of 4th form subjects
             ArrayList<HashMap> subjects = Subject.getSubjectDetailList();
@@ -36,7 +35,6 @@ public class AddTCCWeightings
                     {
                         continue;
                     }
-
                     System.out.println("Adding Weighting for: " + subject.get("subCode").toString());
                     prep.setString(1, subject.get("subID").toString());
                     prep.setInt(2, 13);
@@ -57,6 +55,5 @@ public class AddTCCWeightings
         {
             Logger.getLogger(AddTCCWeightings.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 }
