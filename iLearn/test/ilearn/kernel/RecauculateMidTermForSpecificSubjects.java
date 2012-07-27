@@ -19,26 +19,20 @@ public class RecauculateMidTermForSpecificSubjects
         try
         {
             Environment.createConnection();
-
             String currentTerm = Term.getCurrentTerm();
             ArrayList<String> stuDentList = new ArrayList<String>(); //maintain a list of students that will need to be recalculated
-
             String sql = "UPDATE `Grade_Average` SET `graAvgMid` = ? WHERE `graAvgTerm` = ? AND `graAvgStuID` = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-
             String[] subjectCodes =
             {
                 "4A-I.T.", "4A-I.T.", "4B-I.T.", "4G-I.T.", "4S-I.T.", "4T-I.T.", "4V-I.T."
             };
-
             for (String subCode : subjectCodes)
             {
                 System.out.println("Subject: " + subCode);
-
                 String[] split = subCode.split("-");//separate the subject from the class
                 String current_class = (split[0]);//add the class to the class list
                 ArrayList<String> stuList = Classes.getStudentIDList(current_class);
-
                 for (String stuID : stuList)
                 {
                     //If the studen't id isn't in the list already add it in
@@ -46,7 +40,6 @@ public class RecauculateMidTermForSpecificSubjects
                     {
                         stuDentList.add(stuID);
                     }
-
                     System.out.println("\tStudent: " + stuID);
                     double grade = 0.0;
                     if (Subject.hasWeighting(Subject.getSubjectID(subCode)))
