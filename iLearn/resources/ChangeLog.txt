@@ -1,3 +1,6 @@
+Version 1.9.0
+    Included Student Transcripts
+
 Version 1.7.9 For Georgetown
 -   Set the Installer for georgetown to overwrite the previous config file.
 -   Finished the student dashboard.
