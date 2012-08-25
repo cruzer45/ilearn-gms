@@ -1,3 +1,6 @@
+Version 1.9.1
+-   Updated to Jasper Reports 4.7.0
+
 Version 1.9.0
     Included Student Transcripts
 
