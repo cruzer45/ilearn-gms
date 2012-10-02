@@ -27,10 +27,12 @@ public class ILearnApp extends SingleFrameApplication
         show(new ILearnView(this));
         ILearnApp.getApplication().addExitListener(new ExitListener()
         {
+            @Override
             public boolean canExit(EventObject arg0)
             {
                 return exitMethod();
             }
+            @Override
             public void willExit(EventObject arg0)
             {
             }

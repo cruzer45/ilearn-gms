@@ -1355,6 +1355,9 @@ public class Grade
         {
             ArrayList<String> assmtWeightType = new ArrayList<String>();
             ArrayList<Integer> assmtWeight = new ArrayList<Integer>();
+            
+            int total_weighted = 0;
+            
             //
             //Get the assignment types and weightings.
             String sql = " SELECT `assmtType`, `weighting` FROM `Subject_Weightings`  INNER JOIN `listAssessmentTypes` ON `listAssessmentTypes`.`id` = `Subject_Weightings` .`assmentTypeID` WHERE `subID` = ? ORDER BY `weighting` DESC;";
@@ -1373,8 +1376,15 @@ public class Grade
                 {
                     continue;
                 }
+                total_weighted += assmtWeight.get(i);
                 grade = grade + ((assGrade * assmtWeight.get(i)) / 100);
             }
+            
+            if (total_weighted != 100)
+            {
+                grade = ((grade / total_weighted) * 100);
+            }
+            
         }
         catch (Exception e)
         {
