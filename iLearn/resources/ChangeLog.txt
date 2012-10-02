@@ -1,5 +1,6 @@
 Version 1.9.2
 -   Fixed a bug that that prevented the weighted grades from being calculated with out of the entire 100% when it was not included.
+-   Added consideration for absolute 0 grades when calculating weighting
 
 
 Version 1.9.1
