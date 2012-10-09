@@ -2,6 +2,7 @@ package ilearn.reports;
 
 import ilearn.classes.Classes;
 import ilearn.school.School;
+import ilearn.term.Term;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -358,6 +359,7 @@ public class ReportLoader
         // Second, create a map of parameters to pass to the report.
         Map parameters = new HashMap();
         parameters.put("SUBREPORT_DIR", "reports/");
+        parameters.put("currentTermID", Term.getCurrentTerm());
         try
         {
             ReportViewer.generateReport(report, parameters, title);

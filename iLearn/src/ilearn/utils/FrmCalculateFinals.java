@@ -119,17 +119,35 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
             boolean previouslyGenerated = iLogger.checkAction(iLogger.finalGrades);
             if (previouslyGenerated)
             {
-                warnings += "Finals have already been calculated for this Term.\n";
-                return false;
+                try
+                {
+                    Thread.sleep(2000);
+                }
+                catch (Exception e)
+                {
+                }
+                String message = "Finals have already been calculated for this Term.\n"
+                        + "Do you wish to recalculate?";
+                int response = Utilities.showConfirmDialog(rootPane, message);
+                if (response == JOptionPane.YES_OPTION)
+                {
+                   
+                }
+                else
+                {
+                    warnings += message;
+                    return false;
+                }
+
             }
             setMessage("Checking grades");
             int missingGrades = Grade.getMissingGradeCount();
             if (missingGrades > 0)
             {
                 String message = " There are " + missingGrades + " missing grades currently. \n\n"
-                                 + "Select Yes to proceed calculating Finals with these missing grades.\n"
-                                 + "Select No to view a report displaying these missing grades.\n"
-                                 + "Select Cancel to stop the process.";
+                        + "Select Yes to proceed calculating Finals with these missing grades.\n"
+                        + "Select No to view a report displaying these missing grades.\n"
+                        + "Select Cancel to stop the process.";
                 try
                 {
                     Thread.sleep(2000);
@@ -143,14 +161,14 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
                     setMessage("Loading reporting engine");
                     ReportLoader.showMissingGradeReportReport();
                     warnings += "Missing Grades were found in the system.\n"
-                                + "A report displaying the missing grades was generated.";
+                            + "A report displaying the missing grades was generated.";
                     this.cancel(true);
                     return false;
                 }
                 else if (response == JOptionPane.CANCEL_OPTION)
                 {
                     warnings += "Missing Grades were found in the system.\n"
-                                + "The user cancelled the process.";
+                            + "The user cancelled the process.";
                     this.cancel(true);
                     return false;
                 }
@@ -173,7 +191,7 @@ public class FrmCalculateFinals extends javax.swing.JInternalFrame
                     warnings += "An error occurred while saving the grades.\n";
                     return false;
                 }
-                setProgress(3, 0,4);
+                setProgress(3, 0, 4);
                 setMessage("Calculating GPAs");
                 Grade.updateFinalGPA();
                 setMessage("Calculating Averages");

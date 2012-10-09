@@ -1,17 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Missing Grades" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Missing Grades" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="de68fe50-2eef-46cd-8f0e-30d71dbc2bf1">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["C:\\Java\\iLearn\\reports\\"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
+	<parameter name="currentTermID" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT CONCAT_WS(', ',`stuLastName`,`stuFirstName`) AS 'Name',`stuClsCode`, `assmtType`, `assmtTitle`, `assmtDate`, `grdPointsEarned`
 FROM `TermGrade`
 INNER JOIN `Student` ON `Student`.`stuID` = `TermGrade`.`grdStuID`
 INNER JOIN `Assments` ON `Assments`.`assmtID` = `TermGrade`.`grdAssmtID`
-WHERE (`grdPointsEarned` IS NULL OR `grdPointsEarned` = '' OR `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete') AND `grdStatus` = 'Active'
+WHERE (`grdPointsEarned` IS NULL OR `grdPointsEarned` = '' OR `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete') AND `grdStatus` = 'Active' AND assmtTerm = $P{currentTermID}
 ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]]>
 	</queryString>
 	<field name="Name" class="java.lang.String"/>
@@ -26,12 +27,12 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 	<title>
 		<band height="125" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="0" width="200" height="100"/>
+				<reportElement uuid="8f6592ad-39a2-4fee-970e-6d955a2bd6aa" x="0" y="0" width="200" height="100"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement x="0" y="100" width="572" height="25"/>
+				<reportElement uuid="d7886a36-45c3-4ef5-9f71-59136f0529fb" x="0" y="100" width="572" height="25"/>
 				<textElement textAlignment="Center" verticalAlignment="Middle" markup="none">
 					<font size="14" isBold="true"/>
 				</textElement>
@@ -45,7 +46,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 	<columnHeader>
 		<band height="20" splitType="Stretch">
 			<staticText>
-				<reportElement mode="Opaque" x="0" y="0" width="139" height="20" backcolor="#CCCCCC"/>
+				<reportElement uuid="d887dc71-67e4-4293-ad42-3e8b72e18c32" mode="Opaque" x="0" y="0" width="139" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -59,7 +60,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<text><![CDATA[Name]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="139" y="0" width="54" height="20" backcolor="#CCCCCC"/>
+				<reportElement uuid="47c0e09a-685b-4ec7-94ee-f86ac8d63e6f" mode="Opaque" x="139" y="0" width="54" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -73,7 +74,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<text><![CDATA[Class]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="193" y="0" width="100" height="20" backcolor="#CCCCCC"/>
+				<reportElement uuid="9e1ef467-5211-469c-bc3c-5f3c488721bf" mode="Opaque" x="193" y="0" width="100" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -87,7 +88,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<text><![CDATA[Type]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="293" y="0" width="159" height="20" backcolor="#CCCCCC"/>
+				<reportElement uuid="0ced83c7-ed27-45aa-b1b4-a1c980b8ce9b" mode="Opaque" x="293" y="0" width="159" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -101,7 +102,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<text><![CDATA[Title]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="452" y="0" width="57" height="20" backcolor="#CCCCCC"/>
+				<reportElement uuid="6be39f9d-3c2c-45a1-ae7b-3a771280544c" mode="Opaque" x="452" y="0" width="57" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -115,7 +116,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<text><![CDATA[Date]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Opaque" x="509" y="0" width="63" height="20" backcolor="#CCCCCC"/>
+				<reportElement uuid="04149fae-38c0-4eb9-a6f4-2268f4407b13" mode="Opaque" x="509" y="0" width="63" height="20" backcolor="#CCCCCC"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -133,7 +134,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="139" height="20"/>
+				<reportElement uuid="89585568-6e6d-477e-847f-a30ca1614564" x="0" y="0" width="139" height="20"/>
 				<box leftPadding="3">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -145,7 +146,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<textFieldExpression><![CDATA[$F{Name}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="139" y="0" width="54" height="20"/>
+				<reportElement uuid="cfdd6587-fcfc-415b-829a-2387dfc2265b" x="139" y="0" width="54" height="20"/>
 				<box leftPadding="3">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -157,7 +158,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<textFieldExpression><![CDATA[$F{stuClsCode}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="193" y="0" width="100" height="20"/>
+				<reportElement uuid="61aab2c7-3601-41d4-a815-31bacfc41bb8" x="193" y="0" width="100" height="20"/>
 				<box leftPadding="3">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -169,7 +170,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<textFieldExpression><![CDATA[$F{assmtType}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="293" y="0" width="159" height="20"/>
+				<reportElement uuid="307efd92-cc3a-4fa7-aa86-686c04168a76" x="293" y="0" width="159" height="20"/>
 				<box leftPadding="3">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -181,7 +182,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<textFieldExpression><![CDATA[$F{assmtTitle}]]></textFieldExpression>
 			</textField>
 			<textField pattern="MMM dd, yy">
-				<reportElement x="452" y="0" width="57" height="20"/>
+				<reportElement uuid="2aaf7917-f78c-4e5b-92cc-74db1099aed1" x="452" y="0" width="57" height="20"/>
 				<box leftPadding="3">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -193,7 +194,7 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 				<textFieldExpression><![CDATA[$F{assmtDate}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="509" y="0" width="63" height="20"/>
+				<reportElement uuid="a1d0594c-28c5-40e0-9cfa-6a4eecf5aaed" x="509" y="0" width="63" height="20"/>
 				<box leftPadding="3">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -212,21 +213,21 @@ ORDER BY CONCAT_WS(', ',`stuLastName`,`stuFirstName`), `assmtDate`, `assmtType`]
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField isStretchWithOverflow="true" pattern="MMM d yyyy  h:mm a">
-				<reportElement x="0" y="0" width="174" height="20"/>
+				<reportElement uuid="fa07e5b4-dcc0-4c8c-988c-fd4a8899732f" x="0" y="0" width="174" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Printed:  "+ new java.text.SimpleDateFormat("MMM d yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="452" y="0" width="80" height="20"/>
+				<reportElement uuid="1114cea9-6dc9-4518-aafb-f31f988be302" x="452" y="0" width="80" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="532" y="0" width="40" height="20"/>
+				<reportElement uuid="8ba9b41c-7885-4ab3-aebd-8b2fed2d4405" x="532" y="0" width="40" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>

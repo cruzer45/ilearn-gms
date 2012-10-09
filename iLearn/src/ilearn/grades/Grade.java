@@ -704,12 +704,15 @@ public class Grade
     public static int getMissingGradeCount()
     {
         int missingGrades = 0;
+        String currentTerm = Term.getCurrentTerm();
         try
         {
             String sql = "SELECT count(`grdID`) AS 'Empty_Count'"
                     + " FROM `TermGrade` "
-                    + " WHERE (`grdPointsEarned` IS NULL OR `grdPointsEarned` = '' OR `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete') AND `grdStatus` = 'Active'";
+                    + " INNER JOIN Assments ON Assments.assmtID = TermGrade.grdAssmtID "
+                    + " WHERE (`grdPointsEarned` IS NULL OR `grdPointsEarned` = '' OR `grdPointsEarned` = ' ' OR `grdPointsEarned` = 'Absent' OR `grdPointsEarned` = 'Incomplete') AND `grdStatus` = 'Active'  AND assmtTerm = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setString(1, currentTerm);
             ResultSet rs = prep.executeQuery();
             while (rs.next())
             {
@@ -1212,45 +1215,41 @@ public class Grade
     {
         try
         {
-            ArrayList<String> gradeIDs = new ArrayList<String>();
-            ArrayList<Double> grades = new ArrayList<Double>();
+            ArrayList<String> Mins = new ArrayList<String>();
+            ArrayList<String> Nexts = new ArrayList<String>();
             ArrayList<String> GPAs = new ArrayList<String>();
             ArrayList<String> letters = new ArrayList<String>();
             ArrayList<String> remarks = new ArrayList<String>();
-            String sql = "SELECT `graID`, `graFinal`  FROM `Grade` WHERE `graStatus` = 'Active'";
+            String sql = "SELECT gradeMin,gradeNext,gradeLetter,gpa,remark "
+                    + " FROM GPA_Lookup "
+                    + "ORDER BY gradeMin DESC ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
-            System.out.println("Retreiving Results");
+            //System.out.println("Retreiving Results");
             while (rs.next())
             {
-                gradeIDs.add(rs.getString("graID"));
-                grades.add(rs.getDouble("graFinal"));
+                Mins.add(rs.getString("gradeMin"));
+                Nexts.add(rs.getString("gradeNext"));
+                GPAs.add(rs.getString("gpa"));
+                letters.add(rs.getString("gradeLetter"));
+                remarks.add(rs.getString("remark"));
             }
             rs.close();
-            int counter = 0;
-            for (double grade : grades)
-            {
-                counter++;
-                System.out.println("Getting GPAs: " + counter + " of " + grades.size());
-                ArrayList<String> gpa = getGPA(grade);
-                GPAs.add(gpa.get(0));
-                letters.add(gpa.get(1));
-                remarks.add(gpa.get(2));
-            }
-            System.out.println("Creating commit query");
-            sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
-                    + " WHERE `graID`= ?;";
+
+            //System.out.println("Creating commit query");
+            sql = "UPDATE `Grade` SET `graGPA` = ?, `graRemark` = ?, `graLetterGrade` = ? WHERE ROUND(`graFinal`) >= ? AND ROUND(`graFinal`) < ? AND `graStatus` = 'Active';";
             prep = Environment.getConnection().prepareStatement(sql);
-            for (int i = 0; i < gradeIDs.size(); i++)
+            for (int i = 0; i < Mins.size(); i++)
             {
-                System.out.println("Adding " + i + " of " + gradeIDs.size() + "to batch");
                 prep.setString(1, GPAs.get(i));
-                prep.setString(2, letters.get(i));
-                prep.setString(3, remarks.get(i));
-                prep.setString(4, gradeIDs.get(i));
+                prep.setString(2, remarks.get(i));
+                prep.setString(3, letters.get(i));
+                prep.setString(4, Mins.get(i));
+                prep.setString(5, Nexts.get(i));
                 prep.addBatch();
+
             }
-            System.out.println("Executing batch");
+            //System.out.println("Executing batch");
             prep.executeBatch();
             prep.close();
         }
@@ -1265,42 +1264,41 @@ public class Grade
     {
         try
         {
-            ArrayList<String> gradeIDs = new ArrayList<String>();
-            ArrayList<Double> grades = new ArrayList<Double>();
+            ArrayList<String> Mins = new ArrayList<String>();
+            ArrayList<String> Nexts = new ArrayList<String>();
             ArrayList<String> GPAs = new ArrayList<String>();
             ArrayList<String> letters = new ArrayList<String>();
             ArrayList<String> remarks = new ArrayList<String>();
-            String sql = "SELECT `graID`, `graMid` FROM `Grade` WHERE `graStatus` = 'Active'";
+            String sql = "SELECT gradeMin,gradeNext,gradeLetter,gpa,remark "
+                    + " FROM GPA_Lookup "
+                    + "ORDER BY gradeMin DESC ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             ResultSet rs = prep.executeQuery();
+            //System.out.println("Retreiving Results");
             while (rs.next())
             {
-                gradeIDs.add(rs.getString("graID"));
-                grades.add(rs.getDouble("graMid"));
+                Mins.add(rs.getString("gradeMin"));
+                Nexts.add(rs.getString("gradeNext"));
+                GPAs.add(rs.getString("gpa"));
+                letters.add(rs.getString("gradeLetter"));
+                remarks.add(rs.getString("remark"));
             }
             rs.close();
-            for (double grade : grades)
-            {
-                ArrayList<String> gpa = getGPA(grade);
-                GPAs.add(gpa.get(0));
-                letters.add(gpa.get(1));
-                remarks.add(gpa.get(2));
-            }
-            sql = "UPDATE `Grade` SET `graGPA` = ?, `graLetterGrade` = ?, `graRemark` = ?"
-                    + " WHERE `graID`= ?;";
+
+            //System.out.println("Creating commit query");
+            sql = "UPDATE `Grade` SET `graGPA` = ?, `graRemark` = ?, `graLetterGrade` = ? WHERE ROUND(`graMid`) >= ? AND ROUND(`graMid`) < ? AND `graStatus` = 'Active';";
             prep = Environment.getConnection().prepareStatement(sql);
-            for (int i = 0; i < gradeIDs.size(); i++)
+            for (int i = 0; i < Mins.size(); i++)
             {
                 prep.setString(1, GPAs.get(i));
-                prep.setString(2, letters.get(i));
-                prep.setString(3, remarks.get(i));
-                prep.setString(4, gradeIDs.get(i));
+                prep.setString(2, remarks.get(i));
+                prep.setString(3, letters.get(i));
+                prep.setString(4, Mins.get(i));
+                prep.setString(5, Nexts.get(i));
                 prep.addBatch();
-                if (i % 5 == 0)
-                {
-                    prep.execute();
-                }
+
             }
+            //System.out.println("Executing batch");
             prep.executeBatch();
             prep.close();
         }
@@ -1309,31 +1307,6 @@ public class Grade
             String message = "An error occurred while updating GPA and Letter grades.";
             logger.log(Level.SEVERE, message, e);
         }
-    }
-
-    private static ArrayList<String> getGPA(double grade)
-    {
-        ArrayList<String> gpa = new ArrayList<String>();
-        try
-        {
-            String sql = "SELECT `gradeLetter`,`gpa`,`remark`  FROM `GPA_Lookup` WHERE `gradeMin` <= ? AND `gradeNext` > ?";
-            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-            prep.setDouble(1, grade);
-            prep.setDouble(2, grade);
-            ResultSet rs = prep.executeQuery();
-            while (rs.next())
-            {
-                gpa.add(rs.getString("gpa"));//0
-                gpa.add(rs.getString("gradeLetter"));//1
-                gpa.add(rs.getString("remark"));//2
-            }
-        }
-        catch (Exception e)
-        {
-            String message = "An error occurred while looking up the GPA and Letter grades.";
-            logger.log(Level.SEVERE, message, e);
-        }
-        return gpa;
     }
 
     public static boolean disableGrade(String assmtID)
@@ -1889,6 +1862,29 @@ public class Grade
         catch (Exception e)
         {
             String message = "An error occurred while calculating final grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+    }
+
+    public static void removeMidTermGrades()
+    {
+        try
+        {
+            String currentTerm = Term.getCurrentTerm();
+
+            String sql1 = "DELETE FROM Grade WHERE graTrmCode = ?;";
+            String sql2 = "DELETE FROM Grade_Average WHERE graAvgTerm = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql1);
+            prep.setString(1, currentTerm);
+            prep.execute();
+            prep = Environment.getConnection().prepareStatement(sql2);
+            prep.setString(1, currentTerm);
+            prep.execute();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while remove the mid term grades.";
             logger.log(Level.SEVERE, message, e);
         }
     }

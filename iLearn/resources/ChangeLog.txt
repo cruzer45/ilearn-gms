@@ -1,3 +1,9 @@
+Version 1.9.3
+-   Upgraded to Jasper Reports 4.7.1
+-   Pushed the updating of GPA's to the database for faster processing.
+-   Allowed the program to automatically clear and recalculate previously generated grades for the current semester.
+
+
 Version 1.9.2
 -   Fixed a bug that that prevented the weighted grades from being calculated with out of the entire 100% when it was not included.
 -   Added consideration for absolute 0 grades when calculating weighting
