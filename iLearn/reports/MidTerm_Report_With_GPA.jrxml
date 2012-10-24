@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Mid-Term_Report" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Mid-Term_Report" language="groovy" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a74ec10c-3a2e-4bcd-b542-831ec83c001f">
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
@@ -30,7 +30,7 @@ LEFT JOIN `Grade_Average` ON `Grade_Average`.`graAvgStuID` = `Grade`.`graStuID`
 LEFT JOIN `Demerits` ON `Demerits`.`demStuID` = `Grade`.`graStuID` AND `Demerits`.`demTermID` = `Grade`.`graTrmCode` AND `Demerits`.`demStatus` = 'Active'
 LEFT JOIN `RollCall` ON `RollCall`.`rolStuID` = `Grade`.`graStuID` AND `RollCall`.`rolTrmCode` = `Grade`.`graTrmCode` AND `RollCall`.`rolStatus` = 'Active'
 LEFT JOIN `Class` ON `Class`.`clsCode` = `Student`.`stuClsCode`
-WHERE `Grade`.graStatus = 'Active' AND `Student`.`stuClsCode` LIKE $P{class}
+WHERE `Grade`.graStatus = 'Active' AND Grade_Average.graAvgStatus = 'Active' AND `Student`.`stuClsCode` LIKE $P{class}
 GROUP BY `Student`.`stuID`,`graSubCode`
 ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	</queryString>
@@ -78,37 +78,37 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 		<groupHeader>
 			<band height="81">
 				<staticText>
-					<reportElement x="0" y="20" width="59" height="20"/>
+					<reportElement uuid="e8ecdfd7-1678-4616-98ea-30257b07fee0" x="0" y="20" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Name:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="59" y="20" width="206" height="20"/>
+					<reportElement uuid="29bfdcf4-0cf0-4fec-8dd2-995d6c9ce5de" x="59" y="20" width="206" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{stuFirstName} + " " + $F{stuLastName}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="0" width="59" height="20"/>
+					<reportElement uuid="9361e133-456b-4559-b2fa-fe2d676fd98b" x="0" y="0" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Student ID:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="59" y="0" width="206" height="20"/>
+					<reportElement uuid="25b10966-f9d4-48ab-94ef-1b36b79bf9d8" x="59" y="0" width="206" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{stuID}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="417" y="20" width="100" height="20"/>
+					<reportElement uuid="29046792-8053-44ba-8d79-e9631f69e91c" x="417" y="20" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{stuClsCode}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="375" y="20" width="42" height="20"/>
+					<reportElement uuid="c7321380-4217-4bcc-b4aa-61f39f8a24f6" x="375" y="20" width="42" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Class:]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="0" y="61" width="174" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="57d9f2fb-b05c-47b8-9179-aa29dceb70f5" mode="Opaque" x="0" y="61" width="174" height="20" backcolor="#CCCCCC"/>
 					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="0.5" lineStyle="Solid"/>
 						<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -121,7 +121,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Subject]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="174" y="61" width="38" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="e84786a0-4067-4f3a-ad00-f6e6d539e29f" mode="Opaque" x="174" y="61" width="38" height="20" backcolor="#CCCCCC"/>
 					<box leftPadding="0" rightPadding="0">
 						<topPen lineWidth="0.5" lineStyle="Solid"/>
 						<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -134,7 +134,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Grade]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="375" y="61" width="197" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="db9f0ea2-6140-4b41-b65d-1ba6beb94eef" mode="Opaque" x="375" y="61" width="197" height="20" backcolor="#CCCCCC"/>
 					<box leftPadding="3" rightPadding="3">
 						<topPen lineWidth="0.5" lineStyle="Solid"/>
 						<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -147,17 +147,17 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Remark]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="375" y="0" width="42" height="20"/>
+					<reportElement uuid="36388c17-17ef-4791-862f-fd4e0ce4103e" x="375" y="0" width="42" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Term:]]></text>
 				</staticText>
 				<textField>
-					<reportElement x="417" y="0" width="155" height="20"/>
+					<reportElement uuid="1fe9266b-df0a-4fb7-a590-7b7e7cf51d37" x="417" y="0" width="155" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{trmShortName}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement mode="Opaque" x="212" y="61" width="35" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="38c521ef-eb20-4b7d-8cdd-b9371030cf87" mode="Opaque" x="212" y="61" width="35" height="20" backcolor="#CCCCCC"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -171,7 +171,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[GPA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="247" y="61" width="45" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="c626b5f6-1b69-40b1-981e-ce8ca4d5dbea" mode="Opaque" x="247" y="61" width="45" height="20" backcolor="#CCCCCC"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -185,7 +185,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Letter]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="292" y="61" width="28" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="638d7ec8-6f46-4652-a557-bd48a9aafef0" mode="Opaque" x="292" y="61" width="28" height="20" backcolor="#CCCCCC"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -199,7 +199,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Cr.]]></text>
 				</staticText>
 				<staticText>
-					<reportElement mode="Opaque" x="320" y="61" width="55" height="20" backcolor="#CCCCCC"/>
+					<reportElement uuid="d6f57b57-3c46-4c73-adfb-615a38e2d666" mode="Opaque" x="320" y="61" width="55" height="20" backcolor="#CCCCCC"/>
 					<box>
 						<pen lineWidth="0.5"/>
 						<topPen lineWidth="0.5"/>
@@ -217,27 +217,27 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 		<groupFooter>
 			<band height="109">
 				<textField pattern="#,##0" isBlankWhenNull="true">
-					<reportElement x="59" y="56" width="100" height="20"/>
+					<reportElement uuid="025b1018-f817-4012-9252-84e69f7e78e3" x="59" y="56" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{demerits}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="56" width="59" height="20"/>
+					<reportElement uuid="ba544f38-3366-406e-8b35-63f9b9a9fe3d" x="0" y="56" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Demerits:]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement x="59" y="76" width="100" height="20"/>
+					<reportElement uuid="67f2edfa-1cc5-4372-a74d-3fe6b29c5394" x="59" y="76" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{rolAbsent}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="0" y="76" width="59" height="20"/>
+					<reportElement uuid="aa06cf12-b616-4fcf-bb36-d140feb0533c" x="0" y="76" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<text><![CDATA[Absents:]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="199" y="76" width="165" height="20"/>
+					<reportElement uuid="f6934051-31b8-43b9-b006-7c84a4046622" x="199" y="76" width="165" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
@@ -245,7 +245,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textFieldExpression><![CDATA[$F{clsHomeRoom} + "\n Homeroom"]]></textFieldExpression>
 				</textField>
 				<textField pattern="###0">
-					<reportElement x="174" y="0" width="38" height="20"/>
+					<reportElement uuid="89eb8aee-6d59-4f35-8f48-26ec5d472407" x="174" y="0" width="38" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
@@ -255,7 +255,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textFieldExpression><![CDATA[$F{graAvgMid}]]></textFieldExpression>
 				</textField>
 				<textField pattern="###0.00">
-					<reportElement x="212" y="0" width="35" height="20"/>
+					<reportElement uuid="df6ce273-b115-4a26-8792-087eaad909f1" x="212" y="0" width="35" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
@@ -265,7 +265,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textFieldExpression><![CDATA[$F{graAvgGPA}]]></textFieldExpression>
 				</textField>
 				<textField>
-					<reportElement x="292" y="0" width="28" height="20"/>
+					<reportElement uuid="0870e7e8-3842-41e6-9f8d-b4c3c02db3e2" x="292" y="0" width="28" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
@@ -275,7 +275,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textFieldExpression><![CDATA[$V{subCredits_1}]]></textFieldExpression>
 				</textField>
 				<staticText>
-					<reportElement x="74" y="0" width="100" height="20"/>
+					<reportElement uuid="b8525011-ebce-49c8-8f1e-7f108b1622bb" x="74" y="0" width="100" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
@@ -285,7 +285,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<text><![CDATA[Average]]></text>
 				</staticText>
 				<textField isStretchWithOverflow="true">
-					<reportElement x="407" y="76" width="165" height="20"/>
+					<reportElement uuid="4f77a82e-1619-4a01-b112-7e6ba73cd67b" x="407" y="76" width="165" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
 					</box>
@@ -293,7 +293,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textFieldExpression><![CDATA[$P{principalName} + "\n Principal"]]></textFieldExpression>
 				</textField>
 				<image scaleImage="FillFrame">
-					<reportElement x="407" y="18" width="165" height="56"/>
+					<reportElement uuid="ca247f6c-6676-4e91-bfe7-39b556803ff3" x="407" y="18" width="165" height="56"/>
 					<imageExpression><![CDATA["../images/report_signature.jpg"]]></imageExpression>
 				</image>
 			</band>
@@ -308,12 +308,12 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<pageHeader>
 		<band height="120" splitType="Stretch">
 			<subreport>
-				<reportElement x="0" y="0" width="572" height="100"/>
+				<reportElement uuid="fc45a0b2-06fd-4db5-9e56-f5dbfd763773" x="0" y="0" width="572" height="100"/>
 				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
 				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "LetterHead.jasper"]]></subreportExpression>
 			</subreport>
 			<staticText>
-				<reportElement x="0" y="77" width="572" height="34"/>
+				<reportElement uuid="1b52d597-cb48-460c-b06c-7419d6f5bf0a" x="0" y="77" width="572" height="34"/>
 				<textElement textAlignment="Center" verticalAlignment="Bottom">
 					<font size="12" isBold="true"/>
 				</textElement>
@@ -327,7 +327,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<detail>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="0" y="0" width="174" height="20"/>
+				<reportElement uuid="3e62b440-8708-4f1e-8980-b4abed07c64c" x="0" y="0" width="174" height="20"/>
 				<box leftPadding="5" rightPadding="5">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -338,7 +338,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{subName}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0">
-				<reportElement style="FailingGrade" mode="Opaque" x="174" y="0" width="38" height="20"/>
+				<reportElement uuid="ecc0c73e-b0a6-467a-b170-b94300c28b24" style="FailingGrade" mode="Opaque" x="174" y="0" width="38" height="20"/>
 				<box leftPadding="5" rightPadding="10">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -349,7 +349,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{graMid}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="375" y="0" width="197" height="20"/>
+				<reportElement uuid="d7d2cfa4-ea61-47da-a30f-082cf729185a" x="375" y="0" width="197" height="20"/>
 				<box leftPadding="5" rightPadding="5">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
@@ -360,7 +360,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{graRemark}]]></textFieldExpression>
 			</textField>
 			<textField pattern="###0.00">
-				<reportElement x="212" y="0" width="35" height="20"/>
+				<reportElement uuid="5e1ed421-4210-4d7e-91ac-af37b0775575" x="212" y="0" width="35" height="20"/>
 				<box rightPadding="5">
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -372,7 +372,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{graGPA}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="247" y="0" width="45" height="20"/>
+				<reportElement uuid="e42a7989-e26d-4a8b-985b-1b450ce9e21a" x="247" y="0" width="45" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -384,7 +384,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{graLetterGrade}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="292" y="0" width="28" height="20"/>
+				<reportElement uuid="3905e2d3-58f6-41cc-b8fd-b194f02ed953" x="292" y="0" width="28" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -396,7 +396,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textFieldExpression><![CDATA[$F{subCredits}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="320" y="0" width="55" height="20"/>
+				<reportElement uuid="62508201-e5a5-4259-b618-9a27c28cf432" x="320" y="0" width="55" height="20"/>
 				<box>
 					<pen lineWidth="0.5"/>
 					<topPen lineWidth="0.5"/>
@@ -415,21 +415,21 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
 			<textField>
-				<reportElement x="452" y="0" width="80" height="20"/>
+				<reportElement uuid="2b8c3721-a7c3-4f61-8804-40317d3afda9" x="452" y="0" width="80" height="20"/>
 				<textElement textAlignment="Right" verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
 			</textField>
 			<textField isStretchWithOverflow="true" pattern="MMM d yyyy  h:mm a">
-				<reportElement x="0" y="0" width="174" height="20"/>
+				<reportElement uuid="2aff9af5-6996-4534-a17d-80952c08864c" x="0" y="0" width="174" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Printed: on "+ new java.text.SimpleDateFormat("MMM d, yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField evaluationTime="Report">
-				<reportElement x="532" y="0" width="40" height="20"/>
+				<reportElement uuid="44c87dfc-4d16-4e38-9e43-f985e4a714d0" x="532" y="0" width="40" height="20"/>
 				<textElement verticalAlignment="Middle">
 					<font size="8"/>
 				</textElement>
