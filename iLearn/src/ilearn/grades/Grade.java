@@ -11,6 +11,7 @@ import ilearn.term.Term;
 import ilearn.user.User;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
@@ -976,10 +977,18 @@ public class Grade
                 prep.setString(3, graTrmCode.get(i));
                 prep.setString(4, graMid.get(i));
                 prep.addBatch();
-                if (i % 5 == 0)
+                System.out.println("Saving: " + graStuID.get(i) + " , " + graSubCode.get(i) + " , " + graTrmCode.get(i) + " , " + graMid.get(i));
+
+                try
                 {
                     prep.executeBatch();
                 }
+                catch (SQLException sQLException)
+                {
+                    String message = "An error occurred while saving mid-term grades.";
+                    logger.log(Level.SEVERE, message, sQLException);
+                }
+
             }
             prep.executeBatch();
             prep.close();
@@ -1376,6 +1385,7 @@ public class Grade
         {
             String message = "An error occurred while calculating the grades that have weightings.";
             logger.log(Level.SEVERE, message, e);
+            grade = 0;
         }
         return grade;
     }

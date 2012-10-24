@@ -1,0 +1,7 @@
+/*delete from Grade_Average where  graAvgTerm = 3;
+
+update Grade 
+inner join Student on Student.stuID = Grade.graStuID
+set Grade.graClsCode = Student.stuClsCode
+where Grade.graClsCode is null;
+*/

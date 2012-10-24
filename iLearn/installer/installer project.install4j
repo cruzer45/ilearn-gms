@@ -25,7 +25,7 @@
       <mountPoint id="17" root="" location="" mode="755" />
     </mountPoints>
     <entries>
-      <dirEntry mountPoint="23" file="/home/mrogers/Projects/Java/iLearn/conf" overwriteMode="0" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" entryMode="direct" subDirectory="" excludeSuffixes="" dirMode="755" overrideDirMode="true">
+      <dirEntry mountPoint="23" file="/home/mrogers/Projects/Java/iLearn/conf" overwriteMode="1" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" entryMode="direct" subDirectory="" excludeSuffixes="" dirMode="755" overrideDirMode="true">
         <exclude>
           <entry location=".svn" fileType="regular" />
         </exclude>

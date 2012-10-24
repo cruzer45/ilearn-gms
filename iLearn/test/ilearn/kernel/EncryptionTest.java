@@ -16,7 +16,7 @@ public class EncryptionTest
      */
     public static void main(String[] args)
     {
-        String plain = "jdbc:mysql://localhost:3306/iLearn?useSSL=true";
+        String plain = "jdbc:mysql://192.168.1.10:3306/iLearn?autoReconnect=true";
         //plain = "2099-12-31";
         String encrypted = EncryptionHandler.encrypt(plain);
         //encrypted = "amRiYzpteXNxbDovL2xvY2FsaG9zdDozMzA2L2lMZWFybg==";
