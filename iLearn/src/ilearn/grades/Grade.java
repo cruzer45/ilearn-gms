@@ -987,6 +987,12 @@ public class Grade
                 {
                     String message = "An error occurred while saving mid-term grades.";
                     logger.log(Level.SEVERE, message, sQLException);
+                   
+                    prep.setString(1, graStuID.get(i));
+                    prep.setString(2, graSubCode.get(i));
+                    prep.setString(3, graTrmCode.get(i));
+                    prep.setDouble(4, 0);
+                    prep.execute();
                 }
 
             }
