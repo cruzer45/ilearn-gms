@@ -21,7 +21,7 @@
 		<defaultValueExpression><![CDATA['%']]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom` , `graAvgMid`,`graAvgGPA`
+		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, COALESCE(SUM(`Demerits`.`demerits`),0) AS 'demerits',COALESCE(sum(`RollCall`.`rolAbsent`),0)  AS 'rolAbsent', COALESCE(sum(`RollCall`.`rolTardy`),0) AS 'rolLate', `Term`.`trmShortName`, `clsHomeRoom` , `graAvgMid`,`graAvgGPA`
 FROM `Grade`
 INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID
 INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode
@@ -53,7 +53,8 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	<field name="graRemark" class="java.lang.String"/>
 	<field name="graStatus" class="java.lang.String"/>
 	<field name="demerits" class="java.math.BigDecimal"/>
-	<field name="rolAbsent" class="java.lang.Long"/>
+	<field name="rolAbsent" class="java.math.BigDecimal"/>
+	<field name="rolLate" class="java.math.BigDecimal"/>
 	<field name="trmShortName" class="java.lang.String"/>
 	<field name="clsHomeRoom" class="java.lang.String"/>
 	<field name="graAvgMid" class="java.lang.Double"/>
@@ -217,17 +218,17 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 		<groupFooter>
 			<band height="109">
 				<textField pattern="#,##0" isBlankWhenNull="true">
-					<reportElement uuid="025b1018-f817-4012-9252-84e69f7e78e3" x="59" y="56" width="100" height="20"/>
+					<reportElement uuid="025b1018-f817-4012-9252-84e69f7e78e3" x="59" y="56" width="115" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<textFieldExpression><![CDATA[$F{demerits}]]></textFieldExpression>
+					<textFieldExpression><![CDATA[$F{rolLate}]]></textFieldExpression>
 				</textField>
 				<staticText>
 					<reportElement uuid="ba544f38-3366-406e-8b35-63f9b9a9fe3d" x="0" y="56" width="59" height="20"/>
 					<textElement verticalAlignment="Middle"/>
-					<text><![CDATA[Demerits:]]></text>
+					<text><![CDATA[Lates:]]></text>
 				</staticText>
 				<textField isBlankWhenNull="true">
-					<reportElement uuid="67f2edfa-1cc5-4372-a74d-3fe6b29c5394" x="59" y="76" width="100" height="20"/>
+					<reportElement uuid="67f2edfa-1cc5-4372-a74d-3fe6b29c5394" x="59" y="76" width="115" height="20"/>
 					<textElement verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{rolAbsent}]]></textFieldExpression>
 				</textField>
@@ -244,7 +245,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<textElement textAlignment="Center" verticalAlignment="Middle"/>
 					<textFieldExpression><![CDATA[$F{clsHomeRoom} + "\n Homeroom"]]></textFieldExpression>
 				</textField>
-				<textField pattern="###0">
+				<textField pattern="###0.00">
 					<reportElement uuid="89eb8aee-6d59-4f35-8f48-26ec5d472407" x="174" y="0" width="38" height="20"/>
 					<box>
 						<topPen lineWidth="0.5"/>
@@ -337,15 +338,15 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{subName}]]></textFieldExpression>
 			</textField>
-			<textField pattern="###0">
+			<textField pattern="###0.00">
 				<reportElement uuid="ecc0c73e-b0a6-467a-b170-b94300c28b24" style="FailingGrade" mode="Opaque" x="174" y="0" width="38" height="20"/>
-				<box leftPadding="5" rightPadding="10">
+				<box leftPadding="5" rightPadding="5">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
 					<leftPen lineWidth="0.5" lineStyle="Solid"/>
 					<bottomPen lineWidth="0.5" lineStyle="Solid"/>
 					<rightPen lineWidth="0.5" lineStyle="Solid"/>
 				</box>
-				<textElement textAlignment="Right" verticalAlignment="Middle"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{graMid}]]></textFieldExpression>
 			</textField>
 			<textField>
