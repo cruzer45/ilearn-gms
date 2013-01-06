@@ -1,3 +1,6 @@
+Version 1.9.6
+-   Changed the report card decimal places
+
 Version 1.9.3
 -   Upgraded to Jasper Reports 4.7.1
 -   Pushed the updating of GPA's to the database for faster processing.
