@@ -1,5 +1,10 @@
 UPDATE `Student` SET `stuPhoto` = LOAD_FILE('/tmp/no-image-selected.png'), 
-`stuEthnicity` = '',`stuPrimaryLanguage` = '',`stuEmail` = '',
+stuSSN = '',
+stuPhone = '',
+stuAddress1= '',
+`stuEthnicity` = '',
+`stuPrimaryLanguage` = '',
+`stuEmail` = '',
 `stuAddress2` = '',
 `stuPCName` = '',
 `stuPCPhone` = '',
@@ -15,4 +20,4 @@ UPDATE `Student` SET `stuPhoto` = LOAD_FILE('/tmp/no-image-selected.png'),
 `stuSpecialNeeds` = '',
 `stuNotes` = '',
 `stuRepeating` = false
-WHERE stuStatus = 'Active' AND `stuPhoto` IS NULL;
+WHERE stuStatus = 'Active' AND `stuSSN` IS NULL;

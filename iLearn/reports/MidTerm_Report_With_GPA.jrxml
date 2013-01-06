@@ -10,7 +10,7 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["c:/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="principalName" class="java.lang.String"/>
 	<parameter name="passingMark" class="int">
