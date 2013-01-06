@@ -338,7 +338,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 				<textElement verticalAlignment="Middle"/>
 				<textFieldExpression><![CDATA[$F{subName}]]></textFieldExpression>
 			</textField>
-			<textField pattern="###0.00">
+			<textField pattern="###0">
 				<reportElement uuid="ecc0c73e-b0a6-467a-b170-b94300c28b24" style="FailingGrade" mode="Opaque" x="174" y="0" width="38" height="20"/>
 				<box leftPadding="5" rightPadding="5">
 					<topPen lineWidth="0.5" lineStyle="Solid"/>
