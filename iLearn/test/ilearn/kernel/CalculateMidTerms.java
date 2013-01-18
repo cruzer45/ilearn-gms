@@ -21,7 +21,7 @@ public class CalculateMidTerms
     {
         Environment.createConnection();
         System.out.println(Environment.getConnection().getCatalog().toString());
-        Grade.calculateMidTerms();
+//        Grade.calculateMidTerms();
 //        ArrayList<Object> results = Grade.checkAllGrades();
 //        if (!results.isEmpty())
 //        {
