@@ -1,3 +1,6 @@
+Version 1.10.1
+-   Added GUI for the semester grade adjustment procedure.
+
 Version 1.9.6
 -   Changed the report card decimal places for the mid term report. the grades have no decimal places and the average have 2 decimal places.
 -   Update to iReport 5.0.0

@@ -13,6 +13,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Vector;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -987,7 +988,7 @@ public class Grade
                 {
                     String message = "An error occurred while saving mid-term grades.";
                     logger.log(Level.SEVERE, message, sQLException);
-                   
+
                     prep.setString(1, graStuID.get(i));
                     prep.setString(2, graSubCode.get(i));
                     prep.setString(3, graTrmCode.get(i));
@@ -1903,5 +1904,36 @@ public class Grade
             String message = "An error occurred while remove the mid term grades.";
             logger.log(Level.SEVERE, message, e);
         }
+    }
+
+    static void adjustGrades(HashMap params)
+    {
+        try
+        {
+            Double gt = Double.valueOf((String) params.get("greaterThan"));
+            Double lt = Double.valueOf((String) params.get("lessThan"));
+            Double setTo = Double.valueOf((String) params.get("setTo"));
+            boolean regenerate = (Boolean) params.get("recalculateAverage");
+            
+            String sql = "UPDATE Grade_Average SET graAvgFinal = ? WHERE (graAvgFinal >= ? AND graAvgFinal < ?) AND graAvgTerm = ?;";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            prep.setDouble(1, setTo);
+            prep.setDouble(2, gt);
+            prep.setDouble(3, lt);
+            prep.setString(4, Term.getCurrentTerm());
+            prep.executeUpdate();
+            prep.close();
+           
+            if (regenerate){
+                calculateFinalAverage();
+            }
+            
+        }
+        catch (NumberFormatException | SQLException e)
+        {
+            String message = "An error occurred while trying to adjust the grades.";
+            logger.log(Level.SEVERE, message, e);
+        }
+
     }
 }
