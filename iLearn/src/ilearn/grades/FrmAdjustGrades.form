@@ -81,7 +81,7 @@
                   <Component id="chkCalculateAverage" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="lblCalcAverage" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="6" max="32767" attributes="0"/>
+              <EmptySpace pref="10" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="cmdCancel" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cmdProcess" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -145,7 +145,6 @@
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="ilearn.grades.FrmAdjustGrades" id="cancel" methodName="cancel"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Cancel"/>
         <Property name="name" type="java.lang.String" value="cmdCancel" noResource="true"/>
       </Properties>
     </Component>
@@ -154,7 +153,6 @@
         <Property name="action" type="javax.swing.Action" editor="org.netbeans.modules.swingapp.ActionEditor">
           <action class="ilearn.grades.FrmAdjustGrades" id="adjustGrades" methodName="adjustGrades"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Run Process"/>
         <Property name="name" type="java.lang.String" value="cmdProcess" noResource="true"/>
       </Properties>
     </Component>

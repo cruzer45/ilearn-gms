@@ -92,11 +92,9 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
 
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmAdjustGrades.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
-        cmdCancel.setText("Cancel");
         cmdCancel.setName("cmdCancel"); // NOI18N
 
         cmdProcess.setAction(actionMap.get("adjustGrades")); // NOI18N
-        cmdProcess.setText("Run Process");
         cmdProcess.setName("cmdProcess"); // NOI18N
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -143,7 +141,7 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(chkCalculateAverage)
                     .addComponent(lblCalcAverage))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(cmdCancel)
                     .addComponent(cmdProcess))
@@ -170,6 +168,8 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
         
         Grade.adjustGrades(params);
         
+        String message = "Process complete";
+        Utilities.showInfoMessage(rootPane, message);
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JCheckBox chkCalculateAverage;

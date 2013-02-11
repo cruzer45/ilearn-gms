@@ -1915,7 +1915,7 @@ public class Grade
             Double setTo = Double.valueOf((String) params.get("setTo"));
             boolean regenerate = (Boolean) params.get("recalculateAverage");
             
-            String sql = "UPDATE Grade_Average SET graAvgFinal = ? WHERE (graAvgFinal >= ? AND graAvgFinal < ?) AND graAvgTerm = ?;";
+            String sql = "UPDATE Grade SET graFinal = ? WHERE (graFinal >= ? AND graFinal < ?) AND graTrmCode = ?;";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setDouble(1, setTo);
             prep.setDouble(2, gt);
@@ -1925,6 +1925,7 @@ public class Grade
             prep.close();
            
             if (regenerate){
+                updateFinalGPA();
                 calculateFinalAverage();
             }
             
