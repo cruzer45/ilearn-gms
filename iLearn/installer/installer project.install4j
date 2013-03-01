@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="5.1.3" transformSequenceNumber="4">
-  <directoryPresets config="/home/mrogers/Projects/Java/iLearn/installer/executables" />
-  <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer/executables" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="false" shortName="iLearn" publisher="MC Consulting" publisherWeb="http://mauricerogers.com" version="1.10.1" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.6" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
+  <directoryPresets config="/home/mrogers/Projects/Java/iLearn/images" />
+  <application name="iLearn" distributionSourceDir="" applicationId="8060-8890-8110-0556" mediaDir="/home/mrogers/Projects/Java/iLearn/installer/executables" mediaFilePattern="${compiler:sys.shortName}_${compiler:sys.platform}_${compiler:sys.version}" compression="6" lzmaCompression="false" pack200Compression="false" excludeSignedFromPacking="true" commonExternalFiles="false" createMd5Sums="true" shrinkRuntime="false" shortName="iLearn" publisher="MC Consulting" publisherWeb="http://mauricerogers.com" version="1.10.2" allPathsRelative="false" backupOnSave="false" autoSave="false" convertDotsToUnderscores="true" macSignature="????" installerName="" javaMinVersion="1.7" javaMaxVersion="" allowBetaVM="false" jdkMode="runtimeJre" jdkName="">
     <languages skipLanguageSelection="false" languageSelectionInPrincipalLanguage="false">
       <principalLanguage id="en" customLocalizationFile="" />
       <additionalLanguages />
@@ -43,6 +43,8 @@
       <dirEntry mountPoint="146" file="/home/mrogers/Projects/Java/iLearn/images" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" entryMode="direct" subDirectory="" excludeSuffixes="" dirMode="755" overrideDirMode="true">
         <exclude>
           <entry location=".svn" fileType="regular" />
+          <entry location=".directory" fileType="regular" />
+          <entry location="John Hancock logo.jpg" fileType="regular" />
         </exclude>
       </dirEntry>
       <dirEntry mountPoint="17" file="/home/mrogers/Projects/Java/iLearn/dist" overwriteMode="4" shared="false" fileMode="644" uninstallMode="0" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" entryMode="direct" subDirectory="" excludeSuffixes="" dirMode="755" overrideDirMode="true">
@@ -54,7 +56,7 @@
     <components />
   </files>
   <launchers>
-    <launcher name="iLearn" id="18" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="">
+    <launcher name="iLearn" id="18" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="/home/mrogers/Projects/Java/iLearn/images/Logo-Hat-256.icns" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="">
       <executable name="iLearn" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="true" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="asInvoker" checkConsoleParameter="false" globalSingleInstance="false">
         <versionInfo include="true" fileVersion="" fileDescription="This file is the executable for the iLearn Student Management System" legalCopyright="Copyright 2011 Maurice Rogers" internalName="${compiler:sys.fullName}" productName="" />
       </executable>
@@ -84,10 +86,11 @@
       <iconImageFiles>
         <file path="/home/mrogers/Projects/Java/iLearn/resources/images/Logo-Hat-16.png" />
         <file path="/home/mrogers/Projects/Java/iLearn/resources/images/Logo-Hat-32.png" />
+        <file path="" />
       </iconImageFiles>
     </launcher>
-    <launcher name="Settings Editor" id="238" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="">
-      <executable name="Settings Editor" type="1" iconSet="true" iconFile="" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="requireAdministrator" checkConsoleParameter="false" globalSingleInstance="false">
+    <launcher name="Settings Editor" id="238" customizedId="" external="false" excludeFromMenu="false" unixMode="755" menuName="" icnsFile="/home/mrogers/Projects/Java/iLearn/images/setting_tools.icns" customMacBundleIdentifier="false" macBundleIdentifier="" swtApp="false" fileset="" macBundleBinary="JavaApplicationStub" addMacEntitlements="false" macEntitlementsFile="">
+      <executable name="Settings Editor" type="1" iconSet="true" iconFile="/home/mrogers/Projects/Java/iLearn/images/setting_tools.ico" executableDir="." redirectStderr="true" stderrFile="error.log" stderrMode="overwrite" redirectStdout="false" stdoutFile="output.log" stdoutMode="overwrite" failOnStderrOutput="true" executableMode="1" changeWorkingDirectory="true" workingDirectory="." singleInstance="true" serviceStartType="2" serviceDependencies="" serviceDescription="" jreLocation="" executionLevel="requireAdministrator" checkConsoleParameter="false" globalSingleInstance="false">
         <versionInfo include="false" fileVersion="" fileDescription="" legalCopyright="" internalName="" productName="" />
       </executable>
       <splashScreen show="false" autoOff="true" alwaysOnTop="true" width="0" height="0" bitmapFile="" java6SplashScreen="false">
@@ -116,6 +119,7 @@
       </infoPlist>
       <iconImageFiles>
         <file path="/home/mrogers/Projects/Java/iLearn/src/ilearn/resources/setting_tools.png" />
+        <file path="/home/mrogers/Projects/Java/iLearn/images/setting_tools.png" />
       </iconImageFiles>
     </launcher>
   </launchers>
@@ -295,7 +299,7 @@
                           <object class="com.install4j.runtime.beans.screens.components.ProgramGroupFileConfig">
                             <void property="iconFile">
                               <object class="com.install4j.api.beans.ExternalFile">
-                                <string>/home/mrogers/Projects/Java/iLearn/images/pdf_document.png</string>
+                                <string>/home/mrogers/Projects/Java/iLearn/images/pdf_document.ico</string>
                               </object>
                             </void>
                             <void property="name">
@@ -312,7 +316,7 @@
                           <object class="com.install4j.runtime.beans.screens.components.ProgramGroupFileConfig">
                             <void property="iconFile">
                               <object class="com.install4j.api.beans.ExternalFile">
-                                <string>/home/mrogers/Projects/Java/iLearn/images/pdf_document.png</string>
+                                <string>/home/mrogers/Projects/Java/iLearn/images/pdf_document.ico</string>
                               </object>
                             </void>
                             <void property="name">
