@@ -1213,9 +1213,14 @@ public class Grade
         try
         {
             String sql = "UPDATE `Grade` SET `graStatus` = 'Closed' "
-                    + " WHERE `graStatus` = 'Active'";
+                    + " WHERE `graStatus` = 'Active' AND graAvgTerm = ?";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
-            prep.execute();
+            prep.executeUpdate();
+            
+            sql = "UPDATE Grade_Average SET graAvgStatus = 'Closed'"
+                    + " WHERE  `graAvgStatus` = 'Active' AND graAvgTerm = ?;";
+            prep.setString(1, Term.getCurrentTerm());
+            prep.executeUpdate();
             prep.close();
             successful = true;
         }
