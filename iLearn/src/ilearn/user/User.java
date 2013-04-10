@@ -120,7 +120,7 @@ public class User
         boolean successful = false;
         try
         {
-            String sql = "INSERT INTO `iLearn`.`User` (`usrFirstName`, `usrLastName`, `usrName`, `usrPassword`, `usrGroup`, `usrPermissions`) VALUES ( ?, ?, ?, ?, ?, ?);";
+            String sql = "INSERT INTO `User` (`usrFirstName`, `usrLastName`, `usrName`, `usrPassword`, `usrGroup`, `usrPermissions`) VALUES ( ?, ?, ?, ?, ?, ?);";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, firstName);
             prep.setString(2, lastName);
