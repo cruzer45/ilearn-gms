@@ -18,6 +18,45 @@ public class ReportLoader
 
     static final Logger logger = Logger.getLogger(DialogStudentByClass.class.getName());
 
+    public static void showTeacherAssessmentCount()
+    {
+        String report = "reports/TeacherAssessmentCount.jasper";
+        String title = "Report - Teacher Assessment Count";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        parameters.put("term", Term.getCurrentTerm());
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+    
+    public static void showStudentsFailingASubject()
+    {
+        String report = "reports/Failing_List.jasper";
+        String title = "Report - Student Failing a Subject";
+        // Second, create a map of parameters to pass to the report.
+        Map parameters = new HashMap();
+        parameters.put("SUBREPORT_DIR", "reports/");
+        parameters.put("passingMark", School.getPassingMark());
+        parameters.put("term", Term.getCurrentTerm());
+        try
+        {
+            ReportViewer.generateReport(report, parameters, title);
+        }
+        catch (Exception exception)
+        {
+            String message = "An error occurred while generating a report.";
+            logger.log(Level.SEVERE, message, exception);
+        }
+    }
+    
     public static void showRepeatingStudents()
     {
         String report = "reports/List_of_Repeating_Students.jasper";
@@ -46,6 +85,7 @@ public class ReportLoader
         parameters.put("SUBREPORT_DIR", "reports/");
         parameters.put("principalName", School.getPrincipal());
         parameters.put("passingMark", School.getPassingMark());
+        parameters.put("term", Term.getCurrentTerm());
         try
         {
             ReportViewer.generateReport(report, parameters, title);
@@ -287,6 +327,7 @@ public class ReportLoader
         parameters.put("SUBREPORT_DIR", "reports/");
         parameters.put("principalName", School.getPrincipal());
         parameters.put("passingMark", School.getPassingMark());
+        parameters.put("term", Term.getCurrentTerm());
         try
         {
             ReportViewer.generateReport(report, parameters, title);

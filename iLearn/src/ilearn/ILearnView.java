@@ -169,6 +169,7 @@ public class ILearnView extends FrameView
         int messageTimeout = resourceMap.getInteger("StatusBar.messageTimeout");
         messageTimer = new Timer(messageTimeout, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 statusMessageLabel.setText("");
@@ -182,6 +183,7 @@ public class ILearnView extends FrameView
         }
         busyIconTimer = new Timer(busyAnimationRate, new ActionListener()
         {
+
             public void actionPerformed(ActionEvent e)
             {
                 busyIconIndex = (busyIconIndex + 1) % busyIcons.length;
@@ -195,6 +197,7 @@ public class ILearnView extends FrameView
         TaskMonitor taskMonitor = new TaskMonitor(getApplication().getContext());
         taskMonitor.addPropertyChangeListener(new java.beans.PropertyChangeListener()
         {
+
             public void propertyChange(java.beans.PropertyChangeEvent evt)
             {
                 String propertyName = evt.getPropertyName();
@@ -360,7 +363,8 @@ public class ILearnView extends FrameView
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         termEndReports = new javax.swing.JMenuItem();
         termRanking = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
+        studentsFailingaGrade = new javax.swing.JMenuItem();
+        endOfYear = new javax.swing.JMenuItem();
         studentReports = new javax.swing.JMenu();
         studentList = new javax.swing.JMenuItem();
         studentsRepeating = new javax.swing.JMenuItem();
@@ -370,6 +374,7 @@ public class ILearnView extends FrameView
         statisticsReports = new javax.swing.JMenu();
         classSizeDistribution = new javax.swing.JMenuItem();
         genderDistribution = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
         manageMenu = new javax.swing.JMenu();
         classMenu = new javax.swing.JMenu();
         addClass = new javax.swing.JMenuItem();
@@ -442,7 +447,7 @@ public class ILearnView extends FrameView
         );
         mainPanelLayout.setVerticalGroup(
             mainPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 554, Short.MAX_VALUE)
         );
 
         menuBar.setName("menuBar"); // NOI18N
@@ -762,11 +767,17 @@ public class ILearnView extends FrameView
         termRanking.setName("termRanking"); // NOI18N
         reportCardsMenu.add(termRanking);
 
-        jMenuItem2.setAction(actionMap.get("showEndOfYearReport")); // NOI18N
-        jMenuItem2.setIcon(resourceMap.getIcon("jMenuItem2.icon")); // NOI18N
-        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
-        jMenuItem2.setName("jMenuItem2"); // NOI18N
-        reportCardsMenu.add(jMenuItem2);
+        studentsFailingaGrade.setAction(actionMap.get("showStudentsFailingASubject")); // NOI18N
+        studentsFailingaGrade.setIcon(resourceMap.getIcon("studentsFailingaGrade.icon")); // NOI18N
+        studentsFailingaGrade.setText(resourceMap.getString("studentsFailingaGrade.text")); // NOI18N
+        studentsFailingaGrade.setName("studentsFailingaGrade"); // NOI18N
+        reportCardsMenu.add(studentsFailingaGrade);
+
+        endOfYear.setAction(actionMap.get("showEndOfYearReport")); // NOI18N
+        endOfYear.setIcon(resourceMap.getIcon("endOfYear.icon")); // NOI18N
+        endOfYear.setText(resourceMap.getString("endOfYear.text")); // NOI18N
+        endOfYear.setName("endOfYear"); // NOI18N
+        reportCardsMenu.add(endOfYear);
 
         reportsMenu.add(reportCardsMenu);
 
@@ -821,6 +832,12 @@ public class ILearnView extends FrameView
         genderDistribution.setText(resourceMap.getString("genderDistribution.text")); // NOI18N
         genderDistribution.setName("genderDistribution"); // NOI18N
         statisticsReports.add(genderDistribution);
+
+        jMenuItem2.setAction(actionMap.get("showTeacherAssessmentCount")); // NOI18N
+        jMenuItem2.setIcon(resourceMap.getIcon("jMenuItem2.icon")); // NOI18N
+        jMenuItem2.setText(resourceMap.getString("jMenuItem2.text")); // NOI18N
+        jMenuItem2.setName("jMenuItem2"); // NOI18N
+        statisticsReports.add(jMenuItem2);
 
         reportsMenu.add(statisticsReports);
 
@@ -2759,10 +2776,10 @@ public class ILearnView extends FrameView
             {
             }
             String message = "This action will do the following:\n\n"
-                             + "1.   Remove ALL grades with a 0.\n"
-                             // + "2.   Raise all grades between 68.5 and 70 to a 70.\n"
-                             // + "3.   Raise all grades lower than a 60 to a 60.\n\n"
-                             + "Are you sure you want to proceed?";
+                    + "1.   Remove ALL grades with a 0.\n"
+                    // + "2.   Raise all grades between 68.5 and 70 to a 70.\n"
+                    // + "3.   Raise all grades lower than a 60 to a 60.\n\n"
+                    + "Are you sure you want to proceed?";
             int response = Utilities.showConfirmDialog(desktopPane, message);
             if (response == JOptionPane.YES_OPTION)
             {
@@ -3312,6 +3329,26 @@ public class ILearnView extends FrameView
             }
         }
     }
+
+    @Action
+    public void showStudentsFailingASubject()
+    {
+        statusMessageLabel.setText("Loading reporing engine.");
+        progressBar.setIndeterminate(true);
+        ReportLoader.showStudentsFailingASubject();
+        statusMessageLabel.setText("");
+        progressBar.setIndeterminate(false);
+    }
+
+    @Action
+    public void showTeacherAssessmentCount()
+    {
+        statusMessageLabel.setText("Loading reporing engine.");
+        progressBar.setIndeterminate(true);
+        ReportLoader.showStudentsFailingASubject();
+        statusMessageLabel.setText("");
+        progressBar.setIndeterminate(false);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private static javax.swing.JMenuItem addClass;
     private javax.swing.JMenuItem addSchoolYear;
@@ -3367,6 +3404,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenuItem editTimeSlot;
     private static javax.swing.JMenuItem editUser;
     private static javax.swing.JMenu endOfTerm;
+    private javax.swing.JMenuItem endOfYear;
     private static javax.swing.JMenuItem enterAttendance;
     private static javax.swing.JMenuItem genderDistribution;
     private javax.swing.JMenuItem generateFinalsSelectable;
@@ -3418,6 +3456,7 @@ public class ILearnView extends FrameView
     private static javax.swing.JMenu studentMenu;
     private static javax.swing.JMenu studentReports;
     private javax.swing.JMenuItem studentTranscripts;
+    private javax.swing.JMenuItem studentsFailingaGrade;
     private static javax.swing.JMenuItem studentsRepeating;
     private static javax.swing.JMenuItem subjectGradeBook;
     private static javax.swing.JMenu subjectMenu;

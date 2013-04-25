@@ -33,7 +33,7 @@ ORDER BY `graClsCode`, `graSubCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font size="20"/>
 				</textElement>
-				<text><![CDATA[Students Failing a Subject]]></text>
+				<text><![CDATA[Students with a failing grade.]]></text>
 			</staticText>
 			<subreport>
 				<reportElement uuid="ea5f18b0-7005-48d6-95d8-e50f3d525a54" x="0" y="0" width="200" height="100"/>
@@ -154,13 +154,6 @@ ORDER BY `graClsCode`, `graSubCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)
 	</columnFooter>
 	<pageFooter>
 		<band height="20" splitType="Stretch">
-			<textField>
-				<reportElement uuid="800ee851-158b-4e95-ae7d-41047d923f2e" x="372" y="0" width="80" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
-					<font size="8"/>
-				</textElement>
-				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
-			</textField>
 			<textField isStretchWithOverflow="true" pattern="MMM d yyyy  h:mm a">
 				<reportElement uuid="e43ef64e-880e-4ffe-95b9-2db3a3901682" x="0" y="0" width="174" height="20"/>
 				<textElement verticalAlignment="Middle">
@@ -169,11 +162,18 @@ ORDER BY `graClsCode`, `graSubCode`, CONCAT_WS(' ',`stuFirstName`,`stuLastName`)
 				<textFieldExpression><![CDATA["Printed: on "+ new java.text.SimpleDateFormat("MMM d, yyyy  h:mm a").format(new java.util.Date())]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement uuid="2dda8cbc-6edf-4f4e-9131-2a37b0c44c22" x="452" y="0" width="80" height="20"/>
-				<textElement textAlignment="Right" verticalAlignment="Middle">
+				<reportElement uuid="58f3eb8e-8fba-4e24-a8d1-18b7ec5486ec" x="449" y="0" width="80" height="20"/>
+				<textElement textAlignment="Right">
 					<font size="8"/>
 				</textElement>
 				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="621af75f-ed88-4d6f-b4c7-6cb77b8126bd" x="529" y="0" width="40" height="20"/>
+				<textElement>
+					<font size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
 			</textField>
 		</band>
 	</pageFooter>
