@@ -20,6 +20,9 @@
 		<parameterDescription><![CDATA[This is the class that will be loaded.]]></parameterDescription>
 		<defaultValueExpression><![CDATA['%']]></defaultValueExpression>
 	</parameter>
+	<parameter name="term" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
 	<queryString>
 		<![CDATA[SELECT `Student`.`stuID`,
 		`Student`.`stuFirstName`,
@@ -55,6 +58,7 @@ LEFT JOIN `Class` ON `Class`.`clsCode` = `Student`.`stuClsCode`
 WHERE `Grade`.graStatus = 'Active'
 		AND Grade_Average.graAvgStatus = 'Active'
 		AND `Student`.`stuClsCode` LIKE $P{class}
+		AND Term.trmID = $P{term}
 GROUP BY `Student`.`stuID`,`graSubCode`
 ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	</queryString>
