@@ -10,7 +10,7 @@
 		</conditionalStyle>
 	</style>
 	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
-		<defaultValueExpression><![CDATA["c:/Java/iLearn/reports/"]]></defaultValueExpression>
+		<defaultValueExpression><![CDATA["/home/mrogers/Projects/Java/iLearn/reports/"]]></defaultValueExpression>
 	</parameter>
 	<parameter name="principalName" class="java.lang.String"/>
 	<parameter name="passingMark" class="int">
@@ -21,43 +21,123 @@
 		<defaultValueExpression><![CDATA['%']]></defaultValueExpression>
 	</parameter>
 	<queryString>
-		<![CDATA[SELECT `Student`.`stuID`,`Student`.`stuFirstName`,`Student`.`stuLastName`,`Student`.`stuClsCode`, `Subject`.subName,`Subject`.`subStaffCode`, `Subject`.`subCredits`,`Grade`.*, SUM(`Demerits`.`demerits`) AS 'demerits', COUNT(`RollCall`.`rolAbsent`) AS 'rolAbsent', `Term`.`trmShortName`, `clsHomeRoom` , `graAvgFinal`,`graAvgGPA`
+		<![CDATA[SELECT `Student`.`stuID`,
+		`Student`.`stuFirstName`,
+		`Student`.`stuLastName`,
+		`Student`.`stuClsCode`,
+		`Subject`.subName,
+		`Subject`.`subStaffCode`,
+		`Subject`.`subCredits`,
+		`Grade`.*,
+		COALESCE(SUM(`Demerits`.`demerits`),0) AS 'demerits',
+		COALESCE(SUM(`RollCall`.`rolAbsent`),0)  AS 'rolAbsent',
+		COALESCE(SUM(`RollCall`.`rolTardy`),0) AS 'rolLate',
+		COALESCE(SUM(Merits.merits),0) AS 'merits',
+		`Term`.`trmShortName`,
+		`clsHomeRoom` ,
+		`graAvgMid`,
+		graAvgFinal,
+		`graAvgGPA`
 FROM `Grade`
 INNER JOIN `Student` ON `Grade`.`graStuID` = `Student`.stuID
 INNER JOIN `Subject` ON `Subject`.`subCode` = `Grade`.graSubCode
 INNER JOIN `Term` ON `Grade`.`graTrmCode` = `Term`.`trmID`
 LEFT JOIN `Grade_Average` ON `Grade_Average`.`graAvgStuID` = `Grade`.`graStuID`
-LEFT JOIN `Demerits` ON `Demerits`.`demStuID` = `Grade`.`graStuID` AND `Demerits`.`demTermID` = `Grade`.`graTrmCode` AND `Demerits`.`demStatus` = 'Active'
-LEFT JOIN `RollCall` ON `RollCall`.`rolStuID` = `Grade`.`graStuID` AND `RollCall`.`rolTrmCode` = `Grade`.`graTrmCode` AND `RollCall`.`rolStatus` = 'Active'
+LEFT JOIN `Demerits` ON `Demerits`.`demStuID` = `Grade`.`graStuID`
+					AND `Demerits`.`demTermID` = `Grade`.`graTrmCode`
+					AND `Demerits`.`demStatus` = 'Active'
+LEFT JOIN `RollCall` ON `RollCall`.`rolStuID` = `Grade`.`graStuID`
+					AND `RollCall`.`rolTrmCode` = `Grade`.`graTrmCode`
+					AND `RollCall`.`rolStatus` = 'Active'
+LEFT JOIN Merits on Merits.merStuID = Student.stuID
+						AND Term.trmID = Merits.merTermID
 LEFT JOIN `Class` ON `Class`.`clsCode` = `Student`.`stuClsCode`
-WHERE `Grade`.graStatus = 'Active' AND Grade_Average.graAvgStatus = 'Active' AND `Student`.`stuClsCode` LIKE $P{class}
+WHERE `Grade`.graStatus = 'Active'
+		AND Grade_Average.graAvgStatus = 'Active'
+
+		AND `Student`.`stuClsCode` LIKE $P{class}
 GROUP BY `Student`.`stuID`,`graSubCode`
 ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 	</queryString>
-	<field name="stuID" class="java.lang.Long"/>
-	<field name="stuFirstName" class="java.lang.String"/>
-	<field name="stuLastName" class="java.lang.String"/>
-	<field name="stuClsCode" class="java.lang.String"/>
-	<field name="subName" class="java.lang.String"/>
-	<field name="subStaffCode" class="java.lang.String"/>
-	<field name="subCredits" class="java.lang.Integer"/>
-	<field name="graID" class="java.lang.Long"/>
-	<field name="graStuID" class="java.lang.Integer"/>
-	<field name="graClsCode" class="java.lang.String"/>
-	<field name="graSubCode" class="java.lang.String"/>
-	<field name="graTrmCode" class="java.lang.String"/>
-	<field name="graMid" class="java.lang.Double"/>
-	<field name="graFinal" class="java.lang.Double"/>
-	<field name="graGPA" class="java.lang.Double"/>
-	<field name="graLetterGrade" class="java.lang.String"/>
-	<field name="graRemark" class="java.lang.String"/>
-	<field name="graStatus" class="java.lang.String"/>
-	<field name="demerits" class="java.math.BigDecimal"/>
-	<field name="rolAbsent" class="java.lang.Long"/>
-	<field name="trmShortName" class="java.lang.String"/>
-	<field name="clsHomeRoom" class="java.lang.String"/>
-	<field name="graAvgFinal" class="java.lang.Double"/>
-	<field name="graAvgGPA" class="java.lang.Double"/>
+	<field name="stuID" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stuFirstName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stuLastName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="stuClsCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subStaffCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="subCredits" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graID" class="java.lang.Long">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graStuID" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graClsCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graSubCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graTrmCode" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graMid" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graFinal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graGPA" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graLetterGrade" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graRemark" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graStatus" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="demerits" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rolAbsent" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="rolLate" class="java.math.BigDecimal"/>
+	<field name="merits" class="java.math.BigDecimal">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="trmShortName" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="clsHomeRoom" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graAvgMid" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graAvgFinal" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="graAvgGPA" class="java.lang.Double">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
 	<variable name="graMid_1" class="java.lang.Double" resetType="Group" resetGroup="Student" calculation="Average">
 		<variableExpression><![CDATA[$F{graMid}]]></variableExpression>
 	</variable>
@@ -215,7 +295,7 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 			</band>
 		</groupHeader>
 		<groupFooter>
-			<band height="109">
+			<band height="122">
 				<textField pattern="#,##0" isBlankWhenNull="true">
 					<reportElement uuid="76e1500a-4b49-4c75-9e15-2a93f37234f9" x="59" y="56" width="100" height="20"/>
 					<textElement verticalAlignment="Middle"/>
@@ -296,6 +376,26 @@ ORDER BY `stuClsCode`,`stuID`, `Subject`.subName]]>
 					<reportElement uuid="3d6b3fa0-4682-4cb2-90eb-6c125c12d677" x="407" y="18" width="165" height="56"/>
 					<imageExpression><![CDATA["../images/report_signature.jpg"]]></imageExpression>
 				</image>
+				<textField>
+					<reportElement uuid="ff842ab8-c8e0-4dd7-b83d-c8fe1735b66e" x="59" y="96" width="100" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{rolLate}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="66abb8a1-ba2e-44ff-aa6a-0d99a68cdd3e" x="0" y="96" width="59" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Lates:]]></text>
+				</staticText>
+				<textField>
+					<reportElement uuid="a7592c9a-d900-45e7-ac67-fd5e7362ebe1" x="59" y="36" width="100" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{merits}]]></textFieldExpression>
+				</textField>
+				<staticText>
+					<reportElement uuid="dc8bed02-a089-4026-877f-3d250183dc62" x="0" y="36" width="59" height="20"/>
+					<textElement verticalAlignment="Middle"/>
+					<text><![CDATA[Merits:]]></text>
+				</staticText>
 			</band>
 		</groupFooter>
 	</group>
