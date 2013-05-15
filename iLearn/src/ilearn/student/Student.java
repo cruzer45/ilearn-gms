@@ -107,7 +107,6 @@ public class Student
                          + "`stuOtherNames` LIKE ?  OR "
                          + "`stuSSN` LIKE ? OR"
                          + "`stuClsCode` LIKE ? ) ;";
-            
             //AND `stuStatus` = 'Active'
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, criteria);

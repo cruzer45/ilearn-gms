@@ -169,6 +169,29 @@ public class SchoolYear
         }
         return result;
     }
+    
+    public static String getCurrentSchoolYearName()
+    {
+        String result = "";
+        try
+        {
+            String sql = " SELECT syName FROM SchoolYear WHERE syStatus = 'Active'";
+            PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
+            ResultSet rs = prep.executeQuery();
+            while (rs.next())
+            {
+                result = rs.getString("syName");
+            }
+            rs.close();
+            prep.close();
+        }
+        catch (Exception e)
+        {
+            String message = "An error occurred while updating the school year details.";
+            logger.log(Level.SEVERE, message, e);
+        }
+        return result;
+    }
 
     public static ArrayList getSchoolYearList()
     {
