@@ -26,9 +26,9 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
  */
 public class Transcript
 {
-    
+
     static final Logger logger = Logger.getLogger(Transcript.class.getName());
-    
+
     public static void generateTranscript(String stuID, File selectedFile)
     {
         try
@@ -135,12 +135,12 @@ public class Transcript
         catch (Exception e)
         {
             String message = "An error occurred while trying to generate a student's transcript.\n\n"
-                    + "Kindly ensure that you have the template installed.";
+                             + "Kindly ensure that you have the template installed.";
             Utilities.showErrorMessage(null, message);
             logger.log(Level.SEVERE, message, e);
         }
     }
-    
+
     private static ArrayList<HashMap> getSchoolYearsAttended(String stuID)
     {
         ArrayList schoolYearsAttended = new ArrayList();
@@ -167,7 +167,7 @@ public class Transcript
         }
         return schoolYearsAttended;
     }
-    
+
     private static ArrayList getSubjectsTaken(String stuID)
     {
         ArrayList subjectsTaken = new ArrayList();
@@ -191,17 +191,17 @@ public class Transcript
         }
         return subjectsTaken;
     }
-    
+
     private static String getTranscriptGrade(HashMap params)
     {
         String grade = "";
         try
         {
             String sql = "SELECT ROUND(yrgraYearAverage) as 'grade' "
-                    + " FROM Grade_Year_Average "
-                    + " INNER JOIN Subject ON subCode = yrgraSubCode "
-                    + " INNER JOIN SchoolYear ON syID = yrgraSchYear "
-                    + " WHERE yrgraStuID = ? AND yrgraClsCode = ? AND  syName = ? AND subName = ? ";
+                         + " FROM Grade_Year_Average "
+                         + " INNER JOIN Subject ON subCode = yrgraSubCode "
+                         + " INNER JOIN SchoolYear ON syID = yrgraSchYear "
+                         + " WHERE yrgraStuID = ? AND yrgraClsCode = ? AND  syName = ? AND subName = ? ";
             PreparedStatement prep = Environment.getConnection().prepareStatement(sql);
             prep.setString(1, params.get("stuID").toString());
             prep.setString(2, params.get("yrgraClsCode").toString());

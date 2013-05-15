@@ -31,7 +31,7 @@ LEFT JOIN Merits on Merits.merStuID = Student.stuID
 LEFT JOIN `Class` ON `Class`.`clsCode` = `Student`.`stuClsCode`
 WHERE `Grade`.graStatus = 'Active' 
 		AND Grade_Average.graAvgStatus = 'Active' 
-		AND Term.trmID = 
+		AND Term.trmID = 4
 --		AND `Student`.`stuClsCode` LIKE $P{class}
 GROUP BY `Student`.`stuID`,`graSubCode`
 ORDER BY `stuClsCode`,`stuID`, `Subject`.subName

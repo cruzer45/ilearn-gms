@@ -1,0 +1,1 @@
+update Grade_Year_Average set yrgraStatus = 'Closed' where yrgraSchYear = 1

@@ -2,6 +2,7 @@ package ilearn.reports;
 
 import ilearn.classes.Classes;
 import ilearn.school.School;
+import ilearn.schoolYear.SchoolYear;
 import ilearn.term.Term;
 import java.util.Date;
 import java.util.HashMap;
@@ -36,7 +37,7 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
-    
+
     public static void showStudentsFailingASubject()
     {
         String report = "reports/Failing_List.jasper";
@@ -56,7 +57,7 @@ public class ReportLoader
             logger.log(Level.SEVERE, message, exception);
         }
     }
-    
+
     public static void showRepeatingStudents()
     {
         String report = "reports/List_of_Repeating_Students.jasper";
@@ -422,6 +423,10 @@ public class ReportLoader
         parameters.put("SUBREPORT_DIR", "reports/");
         parameters.put("principalName", School.getPrincipal());
         parameters.put("passingMark", School.getPassingMark());
+        parameters.put("schoolYearID", SchoolYear.getCurrentSchoolYear());
+        parameters.put("schoolYearName", SchoolYear.getCurrentSchoolYearName());
+        
+        
         try
         {
             ReportViewer.generateReport(report, parameters, title);

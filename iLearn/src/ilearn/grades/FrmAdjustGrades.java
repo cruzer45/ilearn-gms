@@ -28,15 +28,16 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
     {
         initComponents();
     }
-    
-    void populateOptions(){
+
+    void populateOptions()
+    {
         int passingMark = School.getPassingMark();
         txtGT.setText("0");
         txtLT.setText(String.valueOf(passingMark));
         txtSetTo.setText(String.valueOf(passingMark));
         chkCalculateAverage.setSelected(true);
     }
-    
+
 
     /** This method is called from within the constructor to
      * initialize the form.
@@ -45,8 +46,8 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
-
+    private void initComponents()
+    {
         lblGT = new javax.swing.JLabel();
         txtGT = new javax.swing.JTextField();
         lblLT = new javax.swing.JLabel();
@@ -57,7 +58,6 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
         lblCalcAverage = new javax.swing.JLabel();
         cmdCancel = new javax.swing.JButton();
         cmdProcess = new javax.swing.JButton();
-
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
@@ -65,89 +65,77 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
         setTitle("Adjust Grades");
         setToolTipText("");
         setFrameIcon(new javax.swing.ImageIcon(getClass().getResource("/ilearn/resources/script_edit.png"))); // NOI18N
-
         lblGT.setText("Grades greater than or equal to:");
         lblGT.setName("lblGT"); // NOI18N
-
         txtGT.setText("0");
         txtGT.setName("txtGT"); // NOI18N
-
         lblLT.setText("but less than:");
         lblLT.setName("lblLT"); // NOI18N
-
         txtLT.setText("60");
         txtLT.setName("txtLT"); // NOI18N
-
         lblSetTo.setText("will be set to:");
         lblSetTo.setName("lblSetTo"); // NOI18N
-
         txtSetTo.setText("60");
         txtSetTo.setName("txtSetTo"); // NOI18N
-
         chkCalculateAverage.setSelected(true);
         chkCalculateAverage.setName("chkCalculateAverage"); // NOI18N
-
         lblCalcAverage.setText("Also recalculate the overall average:");
         lblCalcAverage.setName("lblCalcAverage"); // NOI18N
-
         javax.swing.ActionMap actionMap = org.jdesktop.application.Application.getInstance().getContext().getActionMap(FrmAdjustGrades.class, this);
         cmdCancel.setAction(actionMap.get("cancel")); // NOI18N
         cmdCancel.setName("cmdCancel"); // NOI18N
-
         cmdProcess.setAction(actionMap.get("adjustGrades")); // NOI18N
         cmdProcess.setName("cmdProcess"); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblGT)
-                            .addComponent(lblLT)
-                            .addComponent(lblSetTo)
-                            .addComponent(lblCalcAverage))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(chkCalculateAverage)
-                            .addComponent(txtSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(txtLT, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
-                            .addComponent(txtGT, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(cmdProcess)
-                        .addGap(18, 18, 18)
-                        .addComponent(cmdCancel)))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(lblGT)
+                                                  .addComponent(lblLT)
+                                                  .addComponent(lblSetTo)
+                                                  .addComponent(lblCalcAverage))
+                                          .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                          .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                  .addComponent(chkCalculateAverage)
+                                                  .addComponent(txtSetTo, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                                  .addComponent(txtLT, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)
+                                                  .addComponent(txtGT, javax.swing.GroupLayout.DEFAULT_SIZE, 138, Short.MAX_VALUE)))
+                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                          .addComponent(cmdProcess)
+                                          .addGap(18, 18, 18)
+                                          .addComponent(cmdCancel)))
+                      .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblGT)
-                    .addComponent(txtGT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLT)
-                    .addComponent(txtLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblSetTo)
-                    .addComponent(txtSetTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(chkCalculateAverage)
-                    .addComponent(lblCalcAverage))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmdCancel)
-                    .addComponent(cmdProcess))
-                .addContainerGap())
+                      .addContainerGap()
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblGT)
+                                .addComponent(txtGT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblLT)
+                                .addComponent(txtLT, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(lblSetTo)
+                                .addComponent(txtSetTo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(chkCalculateAverage)
+                                .addComponent(lblCalcAverage))
+                      .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
+                      .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cmdCancel)
+                                .addComponent(cmdProcess))
+                      .addContainerGap())
         );
-
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -165,9 +153,7 @@ public class FrmAdjustGrades extends javax.swing.JInternalFrame
         params.put("lessThan", txtLT.getText().trim());
         params.put("setTo", txtSetTo.getText().trim());
         params.put("recalculateAverage", chkCalculateAverage.isSelected());
-        
         Grade.adjustGrades(params);
-        
         String message = "Process complete";
         Utilities.showInfoMessage(rootPane, message);
     }
