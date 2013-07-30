@@ -8,3 +8,8 @@
 4.1     If subject has weightings assigned.
 4.1.1   Get a list of the weighted assessment types.
 4.1.2   For each assessment type, get the average of all the assessments 
+
+
+view yearly subject grade book
+edit current grades and recalculate for one student
+attendance register

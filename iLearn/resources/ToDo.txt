@@ -53,6 +53,15 @@ Age Distribution report per class (Semis)
 100%    Add class Rank report.
 
 
+		Promotion rate Per class level
+		Repitition Rate 
+		Transfers In and Out
+		Staff Trained / Untrained
+		Enrollment Per Year Level
+		
+
+
+
 DELIVERABLES
 ================================================================================
 
